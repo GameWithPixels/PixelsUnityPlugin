@@ -19,7 +19,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceConnecting(AndroidJavaObject device)
         {
-			Debug.Log("onDeviceConnecting");
+			Debug.Log("==> onDeviceConnecting");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Connecting, ConnectionEventReason.Success);
 		}
 
@@ -31,7 +31,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceConnected(AndroidJavaObject device)
         {
-			Debug.Log("onDeviceConnected");
+			Debug.Log("==> onDeviceConnected");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Connected, ConnectionEventReason.Success);
 		}
 
@@ -42,7 +42,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceFailedToConnect(AndroidJavaObject device, int reason)
         {
-			Debug.Log("onDeviceFailedToConnect " + (ConnectionEventReason)reason);
+			Debug.Log("==> onDeviceFailedToConnect " + (ConnectionEventReason)reason);
 			_connectionEventHandler?.Invoke(ConnectionEvent.FailedToConnect, (ConnectionEventReason)reason);
 		}
 
@@ -53,7 +53,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceReady(AndroidJavaObject device)
         {
-			Debug.Log("onDeviceReady");
+			Debug.Log("==> onDeviceReady");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Ready, ConnectionEventReason.Success);
 		}
 
@@ -64,7 +64,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceDisconnecting(AndroidJavaObject device)
         {
-			Debug.Log("onDeviceDisconnecting");
+			Debug.Log("==> onDeviceDisconnecting");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Disconnecting, ConnectionEventReason.Success);
 		}
 
@@ -79,7 +79,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceDisconnected(AndroidJavaObject device, int reason)
         {
-			Debug.Log("onDeviceDisconnected " + (ConnectionEventReason)reason);
+			Debug.Log("==> onDeviceDisconnected " + (ConnectionEventReason)reason);
 			_connectionEventHandler?.Invoke(ConnectionEvent.Disconnected, (ConnectionEventReason)reason);
 		}
 	}
