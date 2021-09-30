@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
     sealed class ScannerCallback : AndroidJavaProxy
     {

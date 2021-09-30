@@ -1,14 +1,9 @@
-using AOT;
-using Pixels.Unity.BluetoothLE.Internal;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using UnityEngine;
 
-namespace Pixels.Unity.BluetoothLE.Internal.Windows
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
 {
     //TODO catch exceptions in callback
     internal sealed class WinRTNativeInterfaceImpl : INativeInterfaceImpl

@@ -1,5 +1,5 @@
 ﻿
-namespace Pixels.Unity.BluetoothLE
+namespace Systemic.Pixels.Unity.BluetoothLE
 {
     //enum AndroidBluetoothError
     //{

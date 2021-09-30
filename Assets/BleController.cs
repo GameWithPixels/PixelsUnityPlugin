@@ -1,9 +1,8 @@
-using Pixels.Unity.BluetoothLE;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
+using Systemic.Pixels.Unity.BluetoothLE;
 using UnityEngine;
 using UnityEngine.UI;
 

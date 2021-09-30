@@ -1,14 +1,8 @@
-﻿using Pixels.Unity.BluetoothLE.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-	sealed class ConnectionObserver : AndroidJavaProxy
+    sealed class ConnectionObserver : AndroidJavaProxy
 	{
 		NativePeripheralConnectionEventHandler _connectionEventHandler;
 

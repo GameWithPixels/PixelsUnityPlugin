@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Pixels.Unity.BluetoothLE
+namespace Systemic.Pixels.Unity.BluetoothLE
 {
     //TODO Expose error code
     public class RequestError

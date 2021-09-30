@@ -1,12 +1,8 @@
-using Pixels.Unity.BluetoothLE.Internal;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Android;
 
-namespace Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
     enum AndroidRequestStatus : int
     {

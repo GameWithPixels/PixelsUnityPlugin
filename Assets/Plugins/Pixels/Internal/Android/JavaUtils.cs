@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
     static class JavaUtils
     {

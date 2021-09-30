@@ -1,10 +1,9 @@
-using Pixels.Unity.BluetoothLE.Internal;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Systemic.Pixels.Unity.BluetoothLE.Internal;
 
-namespace Pixels.Unity.BluetoothLE
+namespace Systemic.Pixels.Unity.BluetoothLE
 {
     public enum ConnectionEvent
     {

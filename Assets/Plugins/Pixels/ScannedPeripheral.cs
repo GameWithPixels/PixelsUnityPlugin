@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Pixels.Unity.BluetoothLE
+namespace Systemic.Pixels.Unity.BluetoothLE
 {
     public class ScannedPeripheral
     {

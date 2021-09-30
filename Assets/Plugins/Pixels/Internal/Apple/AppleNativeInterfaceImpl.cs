@@ -1,17 +1,14 @@
 using AOT;
-using Pixels.Unity.BluetoothLE.Internal;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using UnityEngine;
 
 using RequestIndex = System.Int32; // Can't have uint because Interlocked.Increment() only has support for signed integer in the version of .NET framework used by Unity at this time
 
-//TODO at some point we want to marshall Guid values instead of strings, purely for optimization reasons
-namespace Pixels.Unity.BluetoothLE.Internal.Apple
+//TODO at some point we want to marshal Guid values instead of strings, purely for optimization reasons
+namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
 {
     internal sealed class AppleNativeInterfaceImpl : INativeInterfaceImpl
     {
