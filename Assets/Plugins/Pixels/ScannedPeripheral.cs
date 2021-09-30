@@ -45,7 +45,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE
 
         public IReadOnlyList<byte> ManufacturerData { get; }
 
-        public IReadOnlyDictionary<string, byte[]> ServicesData;
+        public IReadOnlyDictionary<string, byte[]> ServicesData { get; }
 
         public IReadOnlyList<Guid> Services { get; }
 

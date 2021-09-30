@@ -50,6 +50,21 @@ namespace Systemic.Pixels.Unity.BluetoothLE
     //    CBATTErrorInsufficientResources = 0x11, // Resources are insufficient to complete the ATT request.
     //}
 
+    //private final static String ERROR_CONNECTION_STATE_CHANGE = "Error on connection state change";
+    //private final static String ERROR_DISCOVERY_SERVICE = "Error on discovering services";
+    //private final static String ERROR_AUTH_ERROR_WHILE_BONDED = "Phone has lost bonding information";
+    //private final static String ERROR_READ_CHARACTERISTIC = "Error on reading characteristic";
+    //private final static String ERROR_WRITE_CHARACTERISTIC = "Error on writing characteristic";
+    //private final static String ERROR_READ_DESCRIPTOR = "Error on reading descriptor";
+    //private final static String ERROR_WRITE_DESCRIPTOR = "Error on writing descriptor";
+    //private final static String ERROR_MTU_REQUEST = "Error on mtu request";
+    //private final static String ERROR_CONNECTION_PRIORITY_REQUEST = "Error on connection priority request";
+    //private final static String ERROR_READ_RSSI = "Error on RSSI read";
+    //private final static String ERROR_READ_PHY = "Error on PHY read";
+    //private final static String ERROR_PHY_UPDATE = "Error on PHY update";
+    //private final static String ERROR_RELIABLE_WRITE = "Error on Execute Reliable Write";
+    //private final static String ERROR_NOTIFY = "Error on sending notification/indication";
+
     //TODO need more errors, see above
     public enum Error
     {

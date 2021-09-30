@@ -82,6 +82,8 @@ namespace Systemic.Pixels.Unity.BluetoothLE
         // Dictionary key is peripheral SystemId
         static Dictionary<string, PeripheralState> _peripherals = new Dictionary<string, PeripheralState>();
 
+        public static event Action<ScannedPeripheral> PeripheralDiscovered;
+
         public static ScannedPeripheral[] ScannedPeripherals
         {
             get
@@ -162,6 +164,9 @@ namespace Systemic.Pixels.Unity.BluetoothLE
                     ps.ScannedPeripheral = scannedPeripheral;
                     ps.RequiredServices = requiredServices;
                 }
+
+                // Notify
+                EnqueueAction(() => PeripheralDiscovered?.Invoke(scannedPeripheral));
             });
 
             if (IsScanning)
@@ -201,7 +206,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE
             }
         }
 
-        public static RequestEnumerator ConnectPeripheralAsync(ScannedPeripheral peripheral, Action<bool> onConnectionEvent)
+        public static RequestEnumerator ConnectPeripheralAsync(ScannedPeripheral peripheral, Action<ScannedPeripheral, bool> onConnectionEvent)
         {
             PeripheralState ps = GetPeripheralState(peripheral);
             return new RequestEnumerator(Operation.ConnectPeripheral, ConnectionTimeout,
@@ -240,7 +245,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE
                 error => { }); //TODO if (!error.IsEmpty) ps.ConnectErrorHandler(error); });
         }
 
-        static void OnPeripheralConnectionEvent(PeripheralState ps, Action<bool> onConnectionEvent, ConnectionEvent connectionEvent, ConnectionEventReason reason)
+        static void OnPeripheralConnectionEvent(PeripheralState ps, Action<ScannedPeripheral, bool> onConnectionEvent, ConnectionEvent connectionEvent, ConnectionEventReason reason)
         {
             Debug.Log($"[BLE:{ps.ScannedPeripheral.Name}] ConnectionEvent => {connectionEvent}, reason: {reason}");
 
@@ -280,7 +285,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE
                 //TODO handle error + wait on response before having peripheral set to ready
             }
 
-            onConnectionEvent(ready);
+            onConnectionEvent(ps.ScannedPeripheral, ready);
 
             if (ready)
             {
@@ -387,8 +392,6 @@ namespace Systemic.Pixels.Unity.BluetoothLE
                 onResult => NativeInterface.UnsubscribeCharacteristic(
                     nativePeripheral, serviceUuid, characteristicUuid, instanceIndex, onResult));
         }
-
-        public static Guid ShortToCompleteUuid(ushort uuid) => new Guid($"0000{uuid:x4}-0000-1000-8000-00805f9b34fb");
 
         static PeripheralState GetPeripheralState(ScannedPeripheral scannedPeripheral)
         {

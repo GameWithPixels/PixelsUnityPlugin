@@ -207,7 +207,7 @@ public class BleController : MonoBehaviour
     {
         var p = Central.ScannedPeripherals.First(p => p.Services.Contains(ServiceUuid));
         var request = Central.ConnectPeripheralAsync(
-            p, connected => Debug.Log(connected ? "Connected!" : "Disconnected!"));
+            p, (_, connected) => Debug.Log(connected ? "Connected!" : "Disconnected!"));
         yield return request;
 
         if (request.IsSuccess)
@@ -303,7 +303,7 @@ public class BleController : MonoBehaviour
 
         var p = Central.ScannedPeripherals.First(p => p.Services.Contains(ServiceUuid));
         var request = Central.ConnectPeripheralAsync(
-            p, connected => Debug.Log(connected ? "Connected!" : "Failed to connect!"));
+            p, (_, connected) => Debug.Log(connected ? "Connected!" : "Failed to connect!"));
         yield return request;
 
         if (!request.IsSuccess)
