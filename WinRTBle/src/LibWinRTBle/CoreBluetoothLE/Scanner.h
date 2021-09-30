@@ -58,6 +58,7 @@ namespace Pixels::CoreBluetoothLE
             std::wstring name{};
             std::vector<winrt::guid> services{};
             std::vector<ManufacturerData> manufacturerData{};
+            std::vector<AdvertisingData> advertisingData{};
 
             auto advertisement = args.Advertisement();
             if (advertisement)
@@ -72,13 +73,24 @@ namespace Pixels::CoreBluetoothLE
                         services.push_back(uuid);
                     }
                 }
-                auto data = advertisement.ManufacturerData();
-                if (data)
+                auto manufDataList = advertisement.ManufacturerData();
+                if (manufDataList)
                 {
-                    manufacturerData.reserve(data.Size());
-                    for (const auto& adv : data)
+                    manufacturerData.reserve(manufDataList.Size());
+                    for (const auto& manuf : manufDataList)
                     {
-                        manufacturerData.emplace_back(ManufacturerData{ adv.CompanyId(), adv.Data() });
+                        auto size = manuf.Data().Length();
+                        manufacturerData.emplace_back(ManufacturerData{ manuf.CompanyId(), manuf.Data() });
+                    }
+                }
+                auto advDataList = advertisement.DataSections();
+                if (advDataList)
+                {
+                    advertisingData.reserve(advDataList.Size());
+                    for (const auto& adv : advDataList)
+                    {
+                        auto size = adv.Data().Length();
+                        advertisingData.emplace_back(AdvertisingData{ adv.DataType(), adv.Data() });
                     }
                 }
             }
@@ -98,7 +110,8 @@ namespace Pixels::CoreBluetoothLE
                         args.RawSignalStrengthInDBm(),
                         name,
                         services,
-                        manufacturerData) };
+                        manufacturerData,
+                        advertisingData) };
 
                 _peripherals[peripheral->address()] = peripheral;
                 notify(peripheral);
@@ -117,7 +130,8 @@ namespace Pixels::CoreBluetoothLE
                             args.RawSignalStrengthInDBm(),
                             name,
                             services,
-                            manufacturerData) };
+                            manufacturerData,
+                            advertisingData) };
 
                     _peripherals[updatedPeripheral->address()] = updatedPeripheral;
                     notify(updatedPeripheral);

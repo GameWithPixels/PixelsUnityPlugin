@@ -223,13 +223,13 @@ namespace
         }
         if (!peripheral->manufacturerData().empty())
         {
+            //TODO company id, multiple sets and peripheral->advertisingData()
+            auto& manuf = peripheral->manufacturerData()[0];
             str << ",\"manufacturerData\":[";
-            bool first = true;
-            for (auto b : peripheral->manufacturerData()[0].data()) //TODO company id, multiple sets
+            str << (manuf.companyId() & 0xFF) << "," << (manuf.companyId() >> 8);
+            for (auto b : manuf.data())
             {
-                if (!first) str << ",";
-                first = false;
-                str << (int)b;
+                str << "," << (int)b;
             }
             str << "]";
         }

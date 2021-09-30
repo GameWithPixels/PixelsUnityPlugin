@@ -22,11 +22,34 @@ namespace Pixels::CoreBluetoothLE
     private:
         friend Scanner;
 
-        ManufacturerData(uint16_t companyId, const std::vector<uint8_t> data)
-            : _companyId{ companyId }, _data{ data } {}
-
         ManufacturerData(uint16_t companyId, IBuffer data)
             : _companyId{ companyId }, _data{ toVector(data) } {}
+
+        std::vector<uint8_t> toVector(IBuffer data)
+        {
+            std::vector<uint8_t> dst;
+            dst.resize(data.Length());
+            auto reader = DataReader::FromBuffer(data);
+            reader.ReadBytes(dst);
+            return dst;
+        }
+    };
+
+    class AdvertisingData
+    {
+        uint8_t _dataType{};
+        std::vector<uint8_t> _data{};
+
+    public:
+        uint8_t dataType() const { return _dataType; }
+
+        const std::vector<uint8_t>& data() const { return _data; }
+
+    private:
+        friend Scanner;
+
+        AdvertisingData(uint8_t dataType, IBuffer data)
+            : _dataType{ dataType }, _data{ toVector(data) } {}
 
         std::vector<uint8_t> toVector(IBuffer data)
         {
@@ -47,6 +70,7 @@ namespace Pixels::CoreBluetoothLE
         std::wstring _name{};
         std::vector<winrt::guid> _services{};
         std::vector<ManufacturerData> _manufacturerData{};
+        std::vector<AdvertisingData> _advertisingData{};
 
     public:
         const DateTime& timestamp() const{ return _timestamp; }
@@ -63,6 +87,8 @@ namespace Pixels::CoreBluetoothLE
 
         const std::vector<ManufacturerData>& manufacturerData() const { return _manufacturerData; }
 
+        const std::vector<AdvertisingData>& advertisingData() const { return _advertisingData; }
+
     private:
         friend Scanner;
 
@@ -73,7 +99,8 @@ namespace Pixels::CoreBluetoothLE
             int rssi,
             const std::wstring& name,
             const std::vector<winrt::guid>& services,
-            const std::vector<ManufacturerData>& manufacturerData)
+            const std::vector<ManufacturerData>& manufacturerData,
+            const std::vector<AdvertisingData>& advertisingData)
             :
             _timestamp{ timestamp },
             _address{ address },
@@ -81,7 +108,8 @@ namespace Pixels::CoreBluetoothLE
             _rssi{ rssi },
             _name{ name },
             _services{ services },
-            _manufacturerData{ manufacturerData } {}
+            _manufacturerData{ manufacturerData },
+            _advertisingData{ advertisingData } {}
 
         DiscoveredPeripheral(
             const DateTime& timestamp,
@@ -89,7 +117,8 @@ namespace Pixels::CoreBluetoothLE
             int rssi,
             std::wstring& name,
             const std::vector<winrt::guid>& services,
-            const std::vector<ManufacturerData>& manufacturerData)
+            const std::vector<ManufacturerData>& manufacturerData,
+            const std::vector<AdvertisingData>& advertisingData)
             :
             _timestamp{ timestamp },
             _address{ peripheral.address() },
@@ -97,7 +126,8 @@ namespace Pixels::CoreBluetoothLE
             _rssi{ rssi },
             _name{ name.empty() ? peripheral._name : name },
             _services{ concat(peripheral._services, services) },
-            _manufacturerData{ concat(peripheral._manufacturerData, manufacturerData) } {}
+            _manufacturerData{ concat(peripheral._manufacturerData, manufacturerData) },
+            _advertisingData{ concat(peripheral._advertisingData, advertisingData) } {}
 
         template <typename T>
         std::vector<T> concat(const std::vector<T> a, const std::vector<T>& b)
