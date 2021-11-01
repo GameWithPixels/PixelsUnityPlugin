@@ -8,7 +8,7 @@ using UnityEngine;
 using RequestIndex = System.Int32; // Can't have uint because Interlocked.Increment() only has support for signed integer in the version of .NET framework used by Unity at this time
 
 //TODO at some point we want to marshal Guid values instead of strings, purely for optimization reasons
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
+namespace Systemic.Unity.BluetoothLE.Internal.Apple
 {
     internal sealed class AppleNativeInterfaceImpl : INativeInterfaceImpl
     {
@@ -84,55 +84,55 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
         delegate void ValueChangedHandler(RequestIndex requestIndex, IntPtr data, UIntPtr length, int errorCode);
 
         [DllImport(_libName)]
-        private static extern bool pxBleInitialize(CentralStateUpdateHandler onCentralStateUpdate);
+        private static extern bool sgBleInitialize(CentralStateUpdateHandler onCentralStateUpdate);
 
         [DllImport(_libName)]
-        private static extern void pxBleShutdown();
+        private static extern void sgBleShutdown();
 
         [DllImport(_libName)]
-        private static extern bool pxBleStartScan(string requiredServicesUuids, bool allowDuplicates, DiscoveredPeripheralHandler onDiscoveredPeripheral);
+        private static extern bool sgBleStartScan(string requiredServicesUuids, bool allowDuplicates, DiscoveredPeripheralHandler onDiscoveredPeripheral);
 
         [DllImport(_libName)]
-        private static extern void pxBleStopScan();
+        private static extern void sgBleStopScan();
 
         [DllImport(_libName)]
-        private static extern bool pxBleCreatePeripheral(string peripheralId, PeripheralConnectionEventHandler onConnectionEvent, RequestIndex requestIndex);
+        private static extern bool sgBleCreatePeripheral(string peripheralId, PeripheralConnectionEventHandler onConnectionEvent, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void pxBleReleasePeripheral(string peripheralId);
+        private static extern void sgBleReleasePeripheral(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern void pxBleConnectPeripheral(string peripheralId, string requiredServicesUuids, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleConnectPeripheral(string peripheralId, string requiredServicesUuids, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void pxBleDisconnectPeripheral(string peripheralId, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleDisconnectPeripheral(string peripheralId, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern string pxBleGetPeripheralName(string peripheralId);
+        private static extern string sgBleGetPeripheralName(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern int pxBleGetPeripheralMtu(string peripheralId);
+        private static extern int sgBleGetPeripheralMtu(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern void pxBleReadPeripheralRssi(string peripheralId, RssiReadHandler onRssiRead, RequestIndex requestIndex);
+        private static extern void sgBleReadPeripheralRssi(string peripheralId, RssiReadHandler onRssiRead, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern string pxBleGetPeripheralDiscoveredServices(string peripheralId);
+        private static extern string sgBleGetPeripheralDiscoveredServices(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern string pxBleGetPeripheralServiceCharacteristics(string peripheralId, string serviceUuid);
+        private static extern string sgBleGetPeripheralServiceCharacteristics(string peripheralId, string serviceUuid);
 
         [DllImport(_libName)]
-        private static extern ulong pxBleGetCharacteristicProperties(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex);
+        private static extern ulong sgBleGetCharacteristicProperties(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex);
 
         [DllImport(_libName)]
-        private static extern void pxBleReadCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleReadCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void pxBleWriteCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleWriteCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void pxBleSetNotifyCharacteristic(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleSetNotifyCharacteristic(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
 
         static NativeBluetoothEventHandler _onBluetoothEvent;
         static DiscoveredPeripheralHandler _onDiscoveredPeripheral; // We can have only one scan at a time, so one handler
@@ -320,12 +320,12 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
         public bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
         {
             _onBluetoothEvent = onBluetoothEvent;
-            return pxBleInitialize(OnCentralStateUpdate);
+            return sgBleInitialize(OnCentralStateUpdate);
         }
 
         public void Shutdown()
         {
-            pxBleShutdown();
+            sgBleShutdown();
         }
 
         public bool StartScan(string requiredServiceUuids, Action<ScannedPeripheral> onScannedPeripheral)
@@ -335,12 +335,12 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
                 var adv = JsonUtility.FromJson<AdvertisementDataJson>(jsonStr);
                 onScannedPeripheral(new ScannedPeripheral(new NativeCBPeripheral(adv.systemId), adv));
             };
-            return pxBleStartScan(requiredServiceUuids, true, OnDiscoveredPeripheral);
+            return sgBleStartScan(requiredServiceUuids, true, OnDiscoveredPeripheral);
         }
 
         public void StopScan()
         {
-            pxBleStopScan();
+            sgBleStopScan();
         }
 
         // Not available on Apple systems
@@ -358,14 +358,14 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
             }
 
             string peripheralId = GetPeripheralId(scannedPeripheral);
-            bool success = pxBleCreatePeripheral(peripheralId, OnPeripheralConnectionEvent, requestIndex);
+            bool success = sgBleCreatePeripheral(peripheralId, OnPeripheralConnectionEvent, requestIndex);
             return new PeripheralHandle(success ? new NativePxPeripheral(peripheralId, requestIndex) : null);
         }
 
         public void ReleasePeripheral(PeripheralHandle peripheral)
         {
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
-            pxBleReleasePeripheral(pxPeripheral.PeripheralId);
+            sgBleReleasePeripheral(pxPeripheral.PeripheralId);
             lock (_onConnectionEventHandlers)
             {
                 _onConnectionEventHandlers.Remove(pxPeripheral.ConnectionEventRequestIndex);
@@ -377,7 +377,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
         {
             var requestIndex = SetRequestHandler(Operation.ConnectPeripheral, onResult);
 
-            pxBleConnectPeripheral(GetPeripheralId(peripheral), requiredServicesUuids, OnRequestStatus, requestIndex);
+            sgBleConnectPeripheral(GetPeripheralId(peripheral), requiredServicesUuids, OnRequestStatus, requestIndex);
         }
 
         public void DisconnectPeripheral(PeripheralHandle peripheral, NativeRequestResultHandler onResult)
@@ -385,18 +385,18 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
             var requestIndex = SetRequestHandler(Operation.DisconnectPeripheral, onResult);
 
-            pxBleDisconnectPeripheral(pxPeripheral.PeripheralId, OnRequestStatus, requestIndex);
+            sgBleDisconnectPeripheral(pxPeripheral.PeripheralId, OnRequestStatus, requestIndex);
             pxPeripheral.ForgetAllValueHandlers();
         }
 
         public string GetPeripheralName(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralName(GetPeripheralId(peripheral));
+            return sgBleGetPeripheralName(GetPeripheralId(peripheral));
         }
 
         public int GetPeripheralMtu(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralMtu(GetPeripheralId(peripheral));
+            return sgBleGetPeripheralMtu(GetPeripheralId(peripheral));
         }
 
         public void RequestPeripheralMtu(PeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
@@ -413,22 +413,22 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
                 _onRssiReadHandlers.Add(requestIndex, onRssiRead);
             }
 
-            pxBleReadPeripheralRssi(GetPeripheralId(peripheral), OnRssiReadHandler, requestIndex);
+            sgBleReadPeripheralRssi(GetPeripheralId(peripheral), OnRssiReadHandler, requestIndex);
         }
 
         public string GetPeripheralDiscoveredServices(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralDiscoveredServices(GetPeripheralId(peripheral));
+            return sgBleGetPeripheralDiscoveredServices(GetPeripheralId(peripheral));
         }
 
         public string GetPeripheralServiceCharacteristics(PeripheralHandle peripheral, string serviceUuid)
         {
-            return pxBleGetPeripheralServiceCharacteristics(GetPeripheralId(peripheral), serviceUuid);
+            return sgBleGetPeripheralServiceCharacteristics(GetPeripheralId(peripheral), serviceUuid);
         }
 
         public CharacteristicProperties GetCharacteristicProperties(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex)
         {
-            return (CharacteristicProperties)pxBleGetCharacteristicProperties(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex);
+            return (CharacteristicProperties)sgBleGetCharacteristicProperties(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex);
         }
 
         public void ReadCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult)
@@ -439,7 +439,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
                 _onValueChangedHandlers.Add(requestIndex, onValueChanged);
             }
 
-            pxBleReadCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, OnValueChangedHandler, OnRequestStatus, requestIndex);
+            sgBleReadCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, OnValueChangedHandler, OnRequestStatus, requestIndex);
         }
 
         public void WriteCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
@@ -450,7 +450,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
             try
             {
                 Marshal.Copy(data, 0, ptr, data.Length);
-                pxBleWriteCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse, OnRequestStatus, requestIndex);
+                sgBleWriteCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse, OnRequestStatus, requestIndex);
             }
             finally
             {
@@ -468,7 +468,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
             }
             pxPeripheral.AddValueChangedHandlerRequestIndex(serviceUuid, characteristicUuid, instanceIndex, requestIndex);
 
-            pxBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, OnValueChangedHandler, OnRequestStatus, requestIndex);
+            sgBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, OnValueChangedHandler, OnRequestStatus, requestIndex);
         }
 
         public void UnsubscribeCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
@@ -476,7 +476,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Apple
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
             var requestIndex = SetRequestHandler(Operation.UnsubscribeCharacteristic, onResult);
 
-            pxBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, null, OnRequestStatus, requestIndex);
+            sgBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, null, OnRequestStatus, requestIndex);
             requestIndex = pxPeripheral.GetAndRemoveValueChangedHandlerRequestIndex(serviceUuid, characteristicUuid, instanceIndex);
             lock (_onValueChangedHandlers)
             {

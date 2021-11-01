@@ -1,16 +1,17 @@
 #include "pch.h"
-#include "../../include/pxwinrtble.h"
-#include "CoreBluetoothLE/Scanner.h"
-#include "CoreBluetoothLE/DiscoveredPeripheral.h"
-#include "CoreBluetoothLE/Peripheral.h"
-#include "CoreBluetoothLE/Service.h"
-#include "CoreBluetoothLE/Characteristic.h"
-#include "ComHelper.h"
+#include "../../include/cble.h"
+#include "Systemic/BluetoothLE/Scanner.h"
+#include "Systemic/BluetoothLE/DiscoveredPeripheral.h"
+#include "Systemic/BluetoothLE/Peripheral.h"
+#include "Systemic/BluetoothLE/Service.h"
+#include "Systemic/BluetoothLE/Characteristic.h"
+#include "Systemic/ComHelper.h"
 
 #include <sstream>
 #include <mutex>
 
-using namespace Pixels::CoreBluetoothLE;
+using namespace Systemic;
+using namespace Systemic::BluetoothLE;
 
 static std::shared_ptr<Scanner> _scanner;
 
@@ -246,7 +247,7 @@ namespace
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-bool pxBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback onCentralStateUpdate)
+bool sgBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback onCentralStateUpdate)
 {
     try
     {
@@ -260,7 +261,7 @@ bool pxBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback on
     }
 }
 
-void pxBleShutdown()
+void sgBleShutdown()
 {
     // Destroy scanner instance
     _scanner.reset();
@@ -289,7 +290,7 @@ void pxBleShutdown()
 }
 
 // requiredServicesUuids is a comma separated list of UUIDs, it can be null
-bool pxBleStartScan(
+bool sgBleStartScan(
     const char* requiredServicesUuids,
     DiscoveredPeripheralCallback onDiscoveredPeripheral)
 {
@@ -315,13 +316,13 @@ bool pxBleStartScan(
     }
 }
 
-void pxBleStopScan()
+void sgBleStopScan()
 {
     _scanner.reset();
 }
 
 // discoverServicesUuids is a comma separated list of UUIDs, it can be null
-bool pxBleCreatePeripheral(
+bool sgBleCreatePeripheral(
     bluetooth_address_t bluetoothAddress,
     PeripheralConnectionStatusChangedCallback onPeripheralStatusChanged)
 {
@@ -356,7 +357,7 @@ bool pxBleCreatePeripheral(
     return (peripheral != nullptr);
 }
 
-void pxBleReleasePeripheral(bluetooth_address_t address)
+void sgBleReleasePeripheral(bluetooth_address_t address)
 {
     std::shared_ptr<Peripheral> peripheral{};
     {
@@ -371,7 +372,7 @@ void pxBleReleasePeripheral(bluetooth_address_t address)
     // Peripheral is destroyed here
 }
 
-void pxBleConnectPeripheral(
+void sgBleConnectPeripheral(
     bluetooth_address_t address,
     const char* requiredServicesUuids,
     bool autoConnect,
@@ -389,7 +390,7 @@ void pxBleConnectPeripheral(
 }
 
 //TODO return BleRequestStatus as out parameter
-void pxBleDisconnectPeripheral(
+void sgBleDisconnectPeripheral(
     bluetooth_address_t address,
     RequestStatusCallback onRequestStatus)
 {
@@ -403,24 +404,24 @@ void pxBleDisconnectPeripheral(
 }
 
 //TODO return BleRequestStatus as out parameter
-int pxBleGetPeripheralMtu(bluetooth_address_t address)
+int sgBleGetPeripheralMtu(bluetooth_address_t address)
 {
     return runForPeripheral<int>(address, nullptr,
         [](auto p) { return (int)p->mtu(); });
 }
 
 //TODO return BleRequestStatus as out parameter
-// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
-const char* pxBleGetPeripheralName(bluetooth_address_t address)
+// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
+const char* sgBleGetPeripheralName(bluetooth_address_t address)
 {
     return runForPeripheral<const char*>(address, nullptr,
         [](auto p) { return ComHelper::copyToComBuffer(p->name()); });
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
-const char* pxBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
+const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
 {
     return runForPeripheral<const char*>(address, nullptr,
         [](auto p)
@@ -441,9 +442,9 @@ const char* pxBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
-const char* pxBleGetPeripheralServiceCharacteristics(
+const char* sgBleGetPeripheralServiceCharacteristics(
     bluetooth_address_t address,
     const char* serviceUuid)
 {
@@ -470,7 +471,7 @@ const char* pxBleGetPeripheralServiceCharacteristics(
 }
 
 //TODO return BleRequestStatus as out parameter
-characteristic_property_t pxBleGetCharacteristicProperties(
+characteristic_property_t sgBleGetCharacteristicProperties(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
@@ -485,7 +486,7 @@ characteristic_property_t pxBleGetCharacteristicProperties(
     );
 }
 
-void pxBleReadCharacteristicValue(
+void sgBleReadCharacteristicValue(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
@@ -506,7 +507,7 @@ void pxBleReadCharacteristicValue(
     );
 }
 
-void pxBleWriteCharacteristicValue(
+void sgBleWriteCharacteristicValue(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
@@ -529,7 +530,7 @@ void pxBleWriteCharacteristicValue(
     );
 }
 
-void pxBleSetNotifyCharacteristic(
+void sgBleSetNotifyCharacteristic(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
@@ -561,7 +562,7 @@ void pxBleSetNotifyCharacteristic(
     );
 }
 
-void pxBleFreeString(char* str)
+void sgFreeString(char* str)
 {
     ComHelper::freeComBuffer(str);
 }

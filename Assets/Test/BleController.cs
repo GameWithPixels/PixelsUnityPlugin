@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Linq;
-using Systemic.Pixels.Unity.BluetoothLE;
+using Systemic.Unity.BluetoothLE;
 using UnityEngine;
 using UnityEngine.UI;
 

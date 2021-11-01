@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
 	internal sealed class ConnectionObserver : AndroidJavaProxy
 	{

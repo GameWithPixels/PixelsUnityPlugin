@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Pixels::CoreBluetoothLE
+namespace Systemic::BluetoothLE
 {
     using bluetooth_address_t = std::uint64_t;
 

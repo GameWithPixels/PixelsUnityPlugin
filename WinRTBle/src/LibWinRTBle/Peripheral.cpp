@@ -1,13 +1,13 @@
 #include "pch.h"
-#include "CoreBluetoothLE/Peripheral.h"
-#include "CoreBluetoothLE/Service.h"
-#include "CoreBluetoothLE/Characteristic.h"
+#include "Systemic/BluetoothLE/Peripheral.h"
+#include "Systemic/BluetoothLE/Service.h"
+#include "Systemic/BluetoothLE/Characteristic.h"
 
 #include <chrono>
 using namespace std::chrono;
 using namespace ::winrt;
 
-namespace Pixels::CoreBluetoothLE
+namespace Systemic::BluetoothLE
 {
     namespace
     {

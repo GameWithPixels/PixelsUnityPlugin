@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal
+namespace Systemic.Unity.BluetoothLE.Internal
 {
     internal sealed class AdvertisementDataJson
     {

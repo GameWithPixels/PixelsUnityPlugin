@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Systemic.Pixels.Unity.BluetoothLE.Internal;
+using Systemic.Unity.BluetoothLE.Internal;
 
-namespace Systemic.Pixels.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE
 {
     public enum BluetoothStatus
     {

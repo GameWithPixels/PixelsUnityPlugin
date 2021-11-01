@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE
 {
     public enum Operation
     {
@@ -109,109 +109,6 @@ namespace Systemic.Pixels.Unity.BluetoothLE
         public void Reset()
         {
             // Not supported
-        }
-    }
-
-    public class ValueRequestEnumerator<T> : RequestEnumerator
-    {
-        public T Value { get; private set; }
-
-        public ValueRequestEnumerator(
-            Operation operation,
-            PeripheralHandle peripheralHandle,
-            float timeoutSec,
-            Action<PeripheralHandle, NativeValueRequestResultHandler<T>> action)
-            : base(operation, peripheralHandle, timeoutSec)
-        {
-            if (action == null) throw new ArgumentNullException(nameof(action));
-
-            if (Peripheral.IsValid)
-            {
-                action(Peripheral, (value, error) =>
-                {
-                    Value = value;
-                    SetResult(error);
-                });
-            }
-            else
-            {
-                SetResult(RequestStatus.InvalidPeripheral);
-            }
-        }
-    }
-
-    public class ConnectRequestEnumerator : RequestEnumerator
-    {
-        DisconnectRequestEnumerator _disconnect;
-        Action _onTimeoutDisconnect;
-
-        public ConnectRequestEnumerator(
-            PeripheralHandle peripheral,
-            float timeoutSec,
-            Action<PeripheralHandle, NativeRequestResultHandler> action,
-            Action onTimeoutDisconnect)
-            : base(Operation.ConnectPeripheral, peripheral, timeoutSec, action)
-        {
-            _onTimeoutDisconnect = onTimeoutDisconnect;
-        }
-
-        public override bool MoveNext()
-        {
-            bool done;
-
-            if (_disconnect == null)
-            {
-                done = !base.MoveNext();
-
-                // Did we fail with a timeout?
-                if (done && IsTimeout && Peripheral.IsValid)
-                {
-                    _onTimeoutDisconnect?.Invoke();
-
-                    // Cancel connection attempt
-                    _disconnect = new DisconnectRequestEnumerator(Peripheral);
-                    done = !_disconnect.MoveNext();
-                }
-            }
-            else
-            {
-                done = !_disconnect.MoveNext();
-            }
-
-            return !done;
-        }
-    }
-
-    public class DisconnectRequestEnumerator : RequestEnumerator
-    {
-        bool _released;
-
-        public DisconnectRequestEnumerator(PeripheralHandle peripheral)
-            : base(Operation.DisconnectPeripheral, peripheral, 0)
-        {
-            if (Peripheral.IsValid)
-            {
-                NativeInterface.DisconnectPeripheral(peripheral, SetResult);
-            }
-            else
-            {
-                SetResult(RequestStatus.InvalidPeripheral);
-            }
-        }
-
-        public override bool MoveNext()
-        {
-            bool done = !base.MoveNext();
-
-            // Are we done with the disconnect?
-            if (done && Peripheral.IsValid && (!_released))
-            {
-                // Release peripheral even if the disconnect might have failed
-                NativeInterface.ReleasePeripheral(Peripheral);
-                _released = true;
-            }
-
-            return !done;
         }
     }
 }

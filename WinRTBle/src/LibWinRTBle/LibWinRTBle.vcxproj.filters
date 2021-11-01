@@ -12,43 +12,52 @@
     <Filter Include="Public Header Files">
       <UniqueIdentifier>{003836db-dd79-4fa5-872d-64b90a718b7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\CoreBluetoothLE">
+    <Filter Include="Header Files\Systemic">
+      <UniqueIdentifier>{cd0a59a7-4785-4545-932e-7393d3f975dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systemic\BluetoothLE">
       <UniqueIdentifier>{2cadc9a4-81a4-4b81-a023-b706d5daf2c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systemic">
+      <UniqueIdentifier>{7382f3eb-b81b-4afd-93f5-0dc3b3ff3480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systemic\BluetoothLE">
+      <UniqueIdentifier>{f16259c3-f3f4-4bbe-84b6-060fee6ba185}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\Characteristic.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\DiscoveredPeripheral.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\Peripheral.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\Scanner.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\Service.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="CoreBluetoothLE\BleCommon.h">
-      <Filter>Header Files\CoreBluetoothLE</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ComHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\pxwinrtble.h">
+    <ClInclude Include="..\..\include\cble.h">
       <Filter>Public Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\bletypes.h">
       <Filter>Public Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\ComHelper.h">
+      <Filter>Header Files\Systemic</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\Logger.h">
+      <Filter>Header Files\Systemic</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\Peripheral.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\Scanner.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\Service.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\BleCommon.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\Characteristic.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -58,13 +67,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pxwinrtble.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Peripheral.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Systemic\BluetoothLE</Filter>
     </ClCompile>
     <ClCompile Include="ComHelper.cpp">
+      <Filter>Source Files\Systemic</Filter>
+    </ClCompile>
+    <ClCompile Include="cble.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

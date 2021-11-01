@@ -1,6 +1,6 @@
 using System;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal
+namespace Systemic.Unity.BluetoothLE.Internal
 {
     internal interface INativeInterfaceImpl
     {

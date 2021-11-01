@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class ScannerCallback : AndroidJavaProxy
     {
@@ -9,7 +9,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
         ScanResultHandler _onScanResult;
 
         public ScannerCallback(ScanResultHandler onScanResult)
-            : base("com.systemic.pixels.Scanner$ScannerCallback")
+            : base("com.systemic.bluetoothle.Scanner$ScannerCallback")
             => _onScanResult = onScanResult;
 
         void onScanResult(AndroidJavaObject device, string advertisementDataJson)

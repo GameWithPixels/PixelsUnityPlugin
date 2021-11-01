@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ComHelper
+namespace Systemic::ComHelper
 {
     const char* copyToComBuffer(const char* str);
     const char* copyToComBuffer(const wchar_t* str);

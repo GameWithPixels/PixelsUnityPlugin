@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../../../include/bletypes.h"
 
-namespace Pixels::CoreBluetoothLE
+namespace Systemic::BluetoothLE
 {
     namespace Internal
     {

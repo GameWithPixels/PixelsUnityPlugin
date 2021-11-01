@@ -1,7 +1,7 @@
-#import "PXBleCentralManagerDelegate.h"
+#import "SGBleCentralManagerDelegate.h"
 
 
-@implementation PXBleCentralManagerDelegate
+@implementation SGBleCentralManagerDelegate
 
 @synthesize peripheralDiscoveryHandler;
 
@@ -39,7 +39,7 @@
         _stateUpdateHandler = stateUpdateHandler;
         _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:pxBleGetSerialQueue()];
         _peripherals = [NSMutableDictionary<NSUUID *,CBPeripheral *> new];
-        _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, PXBlePeripheralConnectionEventHandler> new];
+        _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, SGBlePeripheralConnectionEventHandler> new];
     }
     return self;
 }
@@ -47,7 +47,7 @@
 #if DEBUG
 - (void)dealloc
 {
-    NSLog(@"PXBleCentralManagerDelegate dealloc");
+    NSLog(@"SGBleCentralManagerDelegate dealloc");
 }
 #endif
 
@@ -65,7 +65,7 @@
     }
 }
 
-- (void)setConnectionEventHandler:(PXBlePeripheralConnectionEventHandler)peripheralConnectionEventHandler
+- (void)setConnectionEventHandler:(SGBlePeripheralConnectionEventHandler)peripheralConnectionEventHandler
                     forPeripheral:(CBPeripheral *)peripheral
 {
     @synchronized (_peripheralsConnectionEventHandlers)
@@ -79,10 +79,10 @@
 //
 
 - (void)raiseConnectionEventForPeripheral:(CBPeripheral *)peripheral
-                          connectionEvent:(PXBlePeripheralConnectionEvent)connectionEvent
+                          connectionEvent:(SGBlePeripheralConnectionEvent)connectionEvent
                                     error:(NSError *)error
 {
-    PXBlePeripheralConnectionEventHandler handler;
+    SGBlePeripheralConnectionEventHandler handler;
     @synchronized (_peripheralsConnectionEventHandlers)
     {
         handler = _peripheralsConnectionEventHandlers[peripheral];
@@ -115,7 +115,7 @@
     {
         _peripherals[peripheral.identifier] = peripheral;
     }
-    PXBlePeripheralDiscoveryHandler handler = self.peripheralDiscoveryHandler;
+    SGBlePeripheralDiscoveryHandler handler = self.peripheralDiscoveryHandler;
     if (handler)
     {
         handler(peripheral, advertisementData, RSSI);
@@ -124,17 +124,17 @@
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:PXBlePeripheralConnectionEventConnected error:nil];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventConnected error:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:PXBlePeripheralConnectionEventDisconnected error:error];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventDisconnected error:error];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:PXBlePeripheralConnectionEventFailedToConnect error:error];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventFailedToConnect error:error];
 }
 
 // - (void)centralManager:(CBCentralManager *)central connectionEventDidOccur:(CBConnectionEvent)event forPeripheral:(CBPeripheral *)peripheral

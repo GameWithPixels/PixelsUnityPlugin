@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class RssiRequestCallback : AndroidJavaProxy
     {
         NativeValueRequestResultHandler<int> _onRssiRead;
 
         public RssiRequestCallback(NativeValueRequestResultHandler<int> onRssiRead)
-            : base("com.systemic.pixels.Peripheral$RssiRequestCallback")
+            : base("com.systemic.bluetoothle.Peripheral$RssiRequestCallback")
             => _onRssiRead = onRssiRead;
 
         // @IntRange(from = -128, to = 20)

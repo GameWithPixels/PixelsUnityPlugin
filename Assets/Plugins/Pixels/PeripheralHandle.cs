@@ -1,5 +1,5 @@
 
-namespace Systemic.Pixels.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE
 {
     internal interface INativePeripheral
     {

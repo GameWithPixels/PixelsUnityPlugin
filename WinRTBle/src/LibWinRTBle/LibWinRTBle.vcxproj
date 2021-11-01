@@ -159,20 +159,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\bletypes.h" />
-    <ClInclude Include="..\..\include\pxwinrtble.h" />
-    <ClInclude Include="CoreBluetoothLE\BleCommon.h" />
-    <ClInclude Include="CoreBluetoothLE\Characteristic.h" />
-    <ClInclude Include="CoreBluetoothLE\DiscoveredPeripheral.h" />
-    <ClInclude Include="CoreBluetoothLE\Peripheral.h" />
-    <ClInclude Include="CoreBluetoothLE\Scanner.h" />
-    <ClInclude Include="CoreBluetoothLE\Service.h" />
-    <ClInclude Include="ComHelper.h" />
-    <ClInclude Include="Logger.h" />
+    <ClInclude Include="..\..\include\cble.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Systemic\BluetoothLE\BleCommon.h" />
+    <ClInclude Include="Systemic\BluetoothLE\Characteristic.h" />
+    <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h" />
+    <ClInclude Include="Systemic\BluetoothLE\Peripheral.h" />
+    <ClInclude Include="Systemic\BluetoothLE\Scanner.h" />
+    <ClInclude Include="Systemic\BluetoothLE\Service.h" />
+    <ClInclude Include="Systemic\ComHelper.h" />
+    <ClInclude Include="Systemic\Logger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="cble.cpp" />
     <ClCompile Include="ComHelper.cpp" />
+    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -180,7 +181,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Peripheral.cpp" />
-    <ClCompile Include="pxwinrtble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

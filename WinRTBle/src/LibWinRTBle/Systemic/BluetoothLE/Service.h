@@ -2,7 +2,7 @@
 
 #include "BleCommon.h"
 
-namespace Pixels::CoreBluetoothLE
+namespace Systemic::BluetoothLE
 {
     using namespace winrt::Windows::Foundation;
     using namespace winrt::Windows::Devices::Bluetooth;

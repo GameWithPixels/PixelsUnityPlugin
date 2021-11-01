@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE
 {
     public static class BleUuid
     {

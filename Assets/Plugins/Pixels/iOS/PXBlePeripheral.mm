@@ -1,28 +1,28 @@
-#import "PXBlePeripheral.h"
+#import "SGBlePeripheral.h"
 
 
-static NSString *getRequestTypeString(PXBleRequestType type)
+static NSString *getRequestTypeString(SGBleRequestType type)
 {
     switch (type)
     {
-        case PXBleRequestTypeConnect: return @"Connect";
-        case PXBleRequestTypeDisconnect: return @"Disconnect";
-        case PXBleRequestTypeReadRssi: return @"ReadRssi";
-        case PXBleRequestTypeReadValue: return @"ReadValue";
-        case PXBleRequestTypeWriteValue: return @"WriteValue";
-        case PXBleRequestTypeSetNotifyValue: return @"SetNotifyValue";
+        case SGBleRequestTypeConnect: return @"Connect";
+        case SGBleRequestTypeDisconnect: return @"Disconnect";
+        case SGBleRequestTypeReadRssi: return @"ReadRssi";
+        case SGBleRequestTypeReadValue: return @"ReadValue";
+        case SGBleRequestTypeWriteValue: return @"WriteValue";
+        case SGBleRequestTypeSetNotifyValue: return @"SetNotifyValue";
         default: return @"Unknwown";
     }
 }
 
-@implementation PXBleRequest
+@implementation SGBleRequest
 
-- (PXBleRequestType)type
+- (SGBleRequestType)type
 {
     return _type;
 }
 
-- (instancetype)initWithRequestType:(PXBleRequestType)requestType executeHandler:(PXBleRequestExecuteHandler)executeHandler  completionHandler:(PXBleRequestCompletionHandler)completionHandler
+- (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(SGBleRequestExecuteHandler)executeHandler  completionHandler:(SGBleRequestCompletionHandler)completionHandler
 {
     if (self = [super init])
     {
@@ -51,22 +51,22 @@ static NSString *getRequestTypeString(PXBleRequestType type)
 @end
 
 static NSError *invalidCallError = [NSError errorWithDomain:pxBleGetErrorDomain()
-                                                       code:PXBlePeripheralRequestErrorInvalidCall
+                                                       code:SGBlePeripheralRequestErrorErrorInvalidCall
                                                    userInfo:@{ NSLocalizedDescriptionKey: @"Invalid call" }];
 
 static NSError *disconnectedError = [NSError errorWithDomain:pxBleGetErrorDomain()
-                                                        code:PXBlePeripheralRequestErrorDisconnected
+                                                        code:SGBlePeripheralRequestErrorErrorDisconnected
                                                     userInfo:@{ NSLocalizedDescriptionKey: @"Disconnected" }];
 
 static NSError *invalidParametersError = [NSError errorWithDomain:pxBleGetErrorDomain()
-                                                             code:PXBlePeripheralRequestErrorInvalidParameters
+                                                             code:SGBlePeripheralRequestErrorErrorInvalidParameters
                                                          userInfo:@{ NSLocalizedDescriptionKey: @"Invalid parameters" }];
 
 static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
-                                                    code:PXBlePeripheralRequestErrorCanceled
+                                                    code:SGBlePeripheralRequestErrorErrorCanceled
                                                 userInfo:@{ NSLocalizedDescriptionKey: @"Canceled" }];
 
-@implementation PXBlePeripheral
+@implementation SGBlePeripheral
 
 //
 // Getters
@@ -92,8 +92,8 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 //
 
 - (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
-            centralManagerDelegate:(PXBleCentralManagerDelegate *)centralManagerDelegate
-    connectionStatusChangedHandler:(void (^)(PXBlePeripheralConnectionEvent connectionEvent, PXBlePeripheralConnectionEventReason reason))connectionEventHandler;
+            centralManagerDelegate:(SGBleCentralManagerDelegate *)centralManagerDelegate
+    connectionStatusChangedHandler:(void (^)(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason))connectionEventHandler;
 {
     if (self = [super init])
     {
@@ -107,51 +107,51 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         _peripheral = peripheral;
         _peripheral.delegate = self;
         _connectionEventHandler = connectionEventHandler;
-        _pendingRequests = [NSMutableArray<PXBleRequest *> new];
+        _pendingRequests = [NSMutableArray<SGBleRequest *> new];
         _valueChangedHandlers = [NSMapTable<CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)> strongToStrongObjectsMapTable];
         
-        __weak PXBlePeripheral *weakSelf = self;
-        PXBlePeripheralConnectionEventHandler handler =
-        ^(CBPeripheral *peripheral, PXBlePeripheralConnectionEvent connectionEvent, NSError *error)
+        __weak SGBlePeripheral *weakSelf = self;
+        SGBlePeripheralConnectionEventHandler handler =
+        ^(CBPeripheral *peripheral, SGBlePeripheralConnectionEvent connectionEvent, NSError *error)
         {
             // Be sure to not use self directly (or implictly by referencing a property)
             // otherwise it creates a strong reference to itself and prevents the instance's deallocation
-            PXBlePeripheral *strongSelf = weakSelf;
+            SGBlePeripheral *strongSelf = weakSelf;
             if (strongSelf)
             {
-                bool connecting = strongSelf->_runningRequest.type == PXBleRequestTypeConnect;
-                bool disconnecting = strongSelf->_runningRequest.type == PXBleRequestTypeDisconnect;
+                bool connecting = strongSelf->_runningRequest.type == SGBleRequestTypeConnect;
+                bool disconnecting = strongSelf->_runningRequest.type == SGBleRequestTypeDisconnect;
                 NSLog(@">> PeripheralConnectionEvent: connecting=%i, disconnecting=%i", (int)connecting, (int)disconnecting);
 
                 switch (connectionEvent)
                 {
-                    case PXBlePeripheralConnectionEventConnected:
+                    case SGBlePeripheralConnectionEventConnected:
                     {
                         if (connecting)
                         {
                             NSLog(@">> PeripheralConnectionEvent => connected, now discovering services");
                             // We must discover services and characteristics before we can use them
-                            strongSelf->_disconnectReason = PXBlePeripheralConnectionEventReasonSuccess;
+                            strongSelf->_disconnectReason = SGBlePeripheralConnectionEventReasonSuccess;
                             [peripheral discoverServices:strongSelf->_requiredServices];
                         }
                         else
                         {
                             // This shouldn't happen
                             NSLog(@">> PeripheralConnectionEvent => connected, but not running a connection request => disconnecting");
-                            [strongSelf internalDisconnect:PXBlePeripheralConnectionEventReasonUnknown];
+                            [strongSelf internalDisconnect:SGBlePeripheralConnectionEventReasonUnknown];
                         }
                         break;
                     }
                         
-                    case PXBlePeripheralConnectionEventDisconnected:
+                    case SGBlePeripheralConnectionEventDisconnected:
                     {
                         NSLog(@">> PeripheralConnectionEvent => disconnected with error %@", error);
-                        PXBlePeripheralConnectionEventReason reason = strongSelf->_disconnectReason;
-                        if (reason != PXBlePeripheralConnectionEventReasonSuccess)
+                        SGBlePeripheralConnectionEventReason reason = strongSelf->_disconnectReason;
+                        if (reason != SGBlePeripheralConnectionEventReasonSuccess)
                         {
                             // Reset stored reason
-                            strongSelf->_disconnectReason = PXBlePeripheralConnectionEventReasonSuccess;
-                            if (reason == PXBlePeripheralConnectionEventReasonCanceled)
+                            strongSelf->_disconnectReason = SGBlePeripheralConnectionEventReasonSuccess;
+                            if (reason == SGBlePeripheralConnectionEventReasonCanceled)
                             {
                                 error = canceledError;
                             }
@@ -159,7 +159,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
                         else if (!disconnecting)
                         {
                             // We got disconnected but not because we asked for it
-                            reason = PXBlePeripheralConnectionEventReasonLinkLoss;
+                            reason = SGBlePeripheralConnectionEventReasonLinkLoss;
                         }
                         
                         // We were connecting, we need to have an error
@@ -168,7 +168,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
                             error = disconnectedError;
                         }
                         
-                        [strongSelf qNotifyConnectionEvent:PXBlePeripheralConnectionEventDisconnected reason:reason];
+                        [strongSelf qNotifyConnectionEvent:SGBlePeripheralConnectionEventDisconnected reason:reason];
 
                         [strongSelf qReportRequestResult:error forRequestType:strongSelf->_runningRequest.type];
                         break;
@@ -176,7 +176,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 
                     // This case happens rarely, and is usually caused by a transient issue
                     // Because connection shouldn't time out, we attempt to connect again
-                    case PXBlePeripheralConnectionEventFailedToConnect:
+                    case SGBlePeripheralConnectionEventFailedToConnect:
                     {
                         NSLog(@">> PeripheralConnectionEvent => failed with error %@", error);
                         if (connecting)
@@ -201,8 +201,8 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 - (void)dealloc
 {
     // No need to call super dealloc when ARC is enabled
-    [self internalDisconnect:PXBlePeripheralConnectionEventReasonSuccess];
-    NSLog(@">> PXBlePeripheral dealloc");
+    [self internalDisconnect:SGBlePeripheralConnectionEventReasonSuccess];
+    NSLog(@">> SGBlePeripheral dealloc");
 }
 
 - (void)queueConnectWithServices:(NSArray<CBUUID *> *)services
@@ -211,15 +211,15 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
     NSLog(@">> queueConnect");
     
     NSArray<CBUUID *> *requiredServices = [services copy];
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         NSLog(@">> Connect");
         self->_requiredServices = requiredServices;
-        [self qNotifyConnectionEvent:PXBlePeripheralConnectionEventConnecting reason:PXBlePeripheralConnectionEventReasonSuccess];
+        [self qNotifyConnectionEvent:SGBlePeripheralConnectionEventConnecting reason:SGBlePeripheralConnectionEventReasonSuccess];
         [self->_centralDelegate.centralManager connectPeripheral:self->_peripheral options:nil];
         return (NSError *)nil;
     };
     
-    [self queueRequest:PXBleRequestTypeConnect
+    [self queueRequest:SGBleRequestTypeConnect
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -228,14 +228,14 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 {
     NSLog(@">> queueDisconnect");
     
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         NSLog(@">> Disconnect");
-        [self qNotifyConnectionEvent:PXBlePeripheralConnectionEventDisconnecting reason:PXBlePeripheralConnectionEventReasonSuccess];
-        [self internalDisconnect:PXBlePeripheralConnectionEventReasonSuccess];
+        [self qNotifyConnectionEvent:SGBlePeripheralConnectionEventDisconnecting reason:SGBlePeripheralConnectionEventReasonSuccess];
+        [self internalDisconnect:SGBlePeripheralConnectionEventReasonSuccess];
         return (NSError *)nil;
     };
     
-    [self queueRequest:PXBleRequestTypeDisconnect
+    [self queueRequest:SGBleRequestTypeDisconnect
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -244,13 +244,13 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 {
     NSLog(@">> queueReadRsssi");
     
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         NSLog(@">> ReadRSSI");
         [self->_peripheral readRSSI];
         return (NSError *)nil;
     };
 
-    [self queueRequest:PXBleRequestTypeReadRssi
+    [self queueRequest:SGBleRequestTypeReadRssi
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -261,7 +261,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 {
     NSLog(@">> queueReadValueForCharacteristic");
     
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         if (!characteristic || !valueChangedHandler)
         {
             NSLog(@">> ReadValueForCharacteristic -> invalid call");
@@ -274,7 +274,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         return (NSError *)nil;
     };
 
-    [self queueRequest:PXBleRequestTypeReadValue
+    [self queueRequest:SGBleRequestTypeReadValue
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -286,7 +286,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 {
     NSLog(@">> queueWriteValue");
     
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         if (!characteristic)
         {
             NSLog(@">> WriteValue -> invalid call");
@@ -297,12 +297,12 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         [self->_peripheral writeValue:data forCharacteristic:characteristic type:type];
         if (type == CBCharacteristicWriteWithoutResponse)
         {
-            [self qReportRequestResult:nil forRequestType:PXBleRequestTypeWriteValue];
+            [self qReportRequestResult:nil forRequestType:SGBleRequestTypeWriteValue];
         }
         return (NSError *)nil;
     };
 
-    [self queueRequest:PXBleRequestTypeWriteValue
+    [self queueRequest:SGBleRequestTypeWriteValue
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -313,7 +313,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 {
     NSLog(@">> queueSetNotifyValueForCharacteristic");
     
-    PXBleRequestExecuteHandler block = ^{
+    SGBleRequestExecuteHandler block = ^{
         if (!characteristic || !valueChangedHandler)
         {
             NSLog(@">> SetNotifyValueForCharacteristic -> invalid call");
@@ -326,7 +326,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         return (NSError *)nil;
     };
 
-    [self queueRequest:PXBleRequestTypeSetNotifyValue
+    [self queueRequest:SGBleRequestTypeSetNotifyValue
         executeHandler:block
      completionHandler:completionHandler];
 }
@@ -344,17 +344,17 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
     dispatch_async(_queue, ^{
         if (_runningRequest)
         {
-            PXBleRequestType requestType = _runningRequest.type;
+            SGBleRequestType requestType = _runningRequest.type;
 
             // Cancel the running request
             NSLog(@">> Queue canceled while running request of type %@", getRequestTypeString(requestType));
             [self qReportRequestResult:canceledError forRequestType:requestType];
         
             // If were trying to connect, cancel connection immediately
-            if (requestType == PXBleRequestTypeConnect)
+            if (requestType == SGBleRequestTypeConnect)
             {
                 NSLog(@">> Queue canceled while connecting => cancelling connection");
-                [self internalDisconnect:PXBlePeripheralConnectionEventReasonCanceled];
+                [self internalDisconnect:SGBlePeripheralConnectionEventReasonCanceled];
             }
         }
     });
@@ -364,10 +364,10 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 // Private methods
 //
 
-- (void)internalDisconnect:(PXBlePeripheralConnectionEventReason)reason
+- (void)internalDisconnect:(SGBlePeripheralConnectionEventReason)reason
 {
-    if ((reason == PXBlePeripheralConnectionEventReasonCanceled)
-        || (_disconnectReason != PXBlePeripheralConnectionEventReasonCanceled))
+    if ((reason == SGBlePeripheralConnectionEventReasonCanceled)
+        || (_disconnectReason != SGBlePeripheralConnectionEventReasonCanceled))
     {
         _disconnectReason = reason;
     }
@@ -375,15 +375,15 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 }
 
 // completionHandler can be nil
-- (void)queueRequest:(PXBleRequestType)requestType
-      executeHandler:(PXBleRequestExecuteHandler)executeHandler
-   completionHandler:(PXBleRequestCompletionHandler)completionHandler
+- (void)queueRequest:(SGBleRequestType)requestType
+      executeHandler:(SGBleRequestExecuteHandler)executeHandler
+   completionHandler:(SGBleRequestCompletionHandler)completionHandler
 {
     bool runNow = false;
     @synchronized (_pendingRequests)
     {
         // Queue request and completion handler
-        PXBleRequest *request = [[PXBleRequest alloc] initWithRequestType:requestType executeHandler:executeHandler completionHandler:completionHandler];
+        SGBleRequest *request = [[SGBleRequest alloc] initWithRequestType:requestType executeHandler:executeHandler completionHandler:completionHandler];
         [_pendingRequests addObject:request];
         
         // Process request immediately if this is the only request in the queue
@@ -403,7 +403,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 // Should always be called on the queue
 - (void)qRunNextRequest
 {
-    PXBleRequest *request = nil;
+    SGBleRequest *request = nil;
 
     @synchronized (_pendingRequests)
     {
@@ -422,8 +422,8 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         CBPeripheralState state = _peripheral.state;
         bool connectState = (state == CBPeripheralStateConnecting) || (state == CBPeripheralStateConnected);
         bool disconnectState = (state == CBPeripheralStateDisconnecting) || (state == CBPeripheralStateDisconnected);
-        if (((request.type == PXBleRequestTypeConnect) && connectState)
-            || ((request.type == PXBleRequestTypeDisconnect) && disconnectState))
+        if (((request.type == SGBleRequestTypeConnect) && connectState)
+            || ((request.type == SGBleRequestTypeDisconnect) && disconnectState))
         {
             // Connect or disconnect return immediately a success if peripheral already
             // in desired state or transitionning to it
@@ -433,7 +433,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         {
             // Any other request other than connect are only valid when peripheral is connected
             NSError *error = invalidCallError;
-            if ((state == CBPeripheralStateConnected) || (request.type == PXBleRequestTypeConnect))
+            if ((state == CBPeripheralStateConnected) || (request.type == SGBleRequestTypeConnect))
             {
                 error = [request execute];
             }
@@ -446,9 +446,9 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 }
 
 // Should always be called on the queue
-- (void)qReportRequestResult:(NSError *)error forRequestType:(PXBleRequestType)requestType
+- (void)qReportRequestResult:(NSError *)error forRequestType:(SGBleRequestType)requestType
 {
-    PXBleRequest *request = nil;
+    SGBleRequest *request = nil;
     
     @synchronized (_pendingRequests)
     {
@@ -472,8 +472,8 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 }
 
 // Should always be called on the queue
-- (void)qNotifyConnectionEvent:(PXBlePeripheralConnectionEvent)connectionEvent
-                        reason:(PXBlePeripheralConnectionEventReason)reason
+- (void)qNotifyConnectionEvent:(SGBlePeripheralConnectionEvent)connectionEvent
+                        reason:(SGBlePeripheralConnectionEventReason)reason
 {
     NSLog(@">> Notifying connection event: %ld, reason: %ld", (long)connectionEvent, (long)reason);
     if (_connectionEventHandler)
@@ -506,11 +506,11 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
     NSLog(@">> peripheral:didDiscoverServices:error => %@", error);
     if (error)
     {
-        [self internalDisconnect:PXBlePeripheralConnectionEventReasonUnknown];
+        [self internalDisconnect:SGBlePeripheralConnectionEventReasonUnknown];
     }
     else if (![self hasAllRequiredServices:peripheral.services])
     {
-        [self internalDisconnect:PXBlePeripheralConnectionEventReasonNotSupported];
+        [self internalDisconnect:SGBlePeripheralConnectionEventReasonNotSupported];
     }
     else
     {
@@ -530,7 +530,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
     NSLog(@">> peripheral:didDiscoverCharacteristicsForService:error => %@", error);
     if (error)
     {
-        [self internalDisconnect:PXBlePeripheralConnectionEventReasonUnknown];
+        [self internalDisconnect:SGBlePeripheralConnectionEventReasonUnknown];
     }
     else
     {
@@ -540,8 +540,8 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         {
             // Notify connected when characteristics are discovered for all services
             // We must assume that each service will at least report one characteristic
-            [self qReportRequestResult:error forRequestType:PXBleRequestTypeConnect];
-            [self qNotifyConnectionEvent:PXBlePeripheralConnectionEventReady reason:PXBlePeripheralConnectionEventReasonSuccess];
+            [self qReportRequestResult:error forRequestType:SGBleRequestTypeConnect];
+            [self qNotifyConnectionEvent:SGBlePeripheralConnectionEventReady reason:SGBlePeripheralConnectionEventReasonSuccess];
         }
     }
 }
@@ -567,7 +567,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSLog(@">> peripheral:didWriteValueForCharacteristic:error => %@", error);
-    [self qReportRequestResult:error forRequestType:PXBleRequestTypeWriteValue];
+    [self qReportRequestResult:error forRequestType:SGBleRequestTypeWriteValue];
 }
 
 // - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error
@@ -581,14 +581,14 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSLog(@">> peripheral:didUpdateNotificationStateForCharacteristic:error => %@", error);
-    [self qReportRequestResult:error forRequestType:PXBleRequestTypeSetNotifyValue];
+    [self qReportRequestResult:error forRequestType:SGBleRequestTypeSetNotifyValue];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(NSError *)error
 {
     NSLog(@">> peripheral:didReadRSSI:error => %@", error);
     _rssi = RSSI.intValue;
-    [self qReportRequestResult:error forRequestType:PXBleRequestTypeReadRssi];
+    [self qReportRequestResult:error forRequestType:SGBleRequestTypeReadRssi];
 }
 
 // - (void)peripheralDidUpdateName:(CBPeripheral *)peripheral

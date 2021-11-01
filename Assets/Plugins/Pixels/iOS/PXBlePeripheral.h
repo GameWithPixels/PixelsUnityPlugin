@@ -1,26 +1,26 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "PXBleCentralManagerDelegate.h"
+#import "SGBleCentralManagerDelegate.h"
 #import "BleUtils.h"
 
 
-typedef NS_ENUM(NSInteger, PXBlePeripheralConnectionEventReason)
+typedef NS_ENUM(NSInteger, SGBlePeripheralConnectionEventReason)
 {
-    PXBlePeripheralConnectionEventReasonUnknown = -1,
-    PXBlePeripheralConnectionEventReasonSuccess = 0,
-    PXBlePeripheralConnectionEventReasonCanceled,
-    PXBlePeripheralConnectionEventReasonNotSupported,
-    PXBlePeripheralConnectionEventReasonTimeout,
-    PXBlePeripheralConnectionEventReasonLinkLoss,
-    PXBlePeripheralConnectionEventReasonAdpaterOff,
+    SGBlePeripheralConnectionEventReasonUnknown = -1,
+    SGBlePeripheralConnectionEventReasonSuccess = 0,
+    SGBlePeripheralConnectionEventReasonCanceled,
+    SGBlePeripheralConnectionEventReasonNotSupported,
+    SGBlePeripheralConnectionEventReasonTimeout,
+    SGBlePeripheralConnectionEventReasonLinkLoss,
+    SGBlePeripheralConnectionEventReasonAdpaterOff,
 };
 
-typedef NS_ENUM(NSInteger, PXBlePeripheralRequestError)
+typedef NS_ENUM(NSInteger, SGBlePeripheralRequestErrorError)
 {
-    PXBlePeripheralRequestErrorDisconnected,
-    PXBlePeripheralRequestErrorInvalidCall,
-    PXBlePeripheralRequestErrorInvalidParameters,
-    PXBlePeripheralRequestErrorCanceled,
+    SGBlePeripheralRequestErrorErrorDisconnected,
+    SGBlePeripheralRequestErrorErrorInvalidCall,
+    SGBlePeripheralRequestErrorErrorInvalidParameters,
+    SGBlePeripheralRequestErrorErrorCanceled,
 };
 
 // We can't find any reliable information about the thread safety of CoreBluetooth APIs
@@ -32,33 +32,33 @@ typedef NS_ENUM(NSInteger, PXBlePeripheralRequestError)
 // We're not concerned about performance by using a serial queue as Bluetooth LE operations
 // are "low" frequency by design anyways.
 
-typedef NS_ENUM(NSInteger, PXBleRequestType)
+typedef NS_ENUM(NSInteger, SGBleRequestType)
 {
-    PXBleRequestTypeUnknown = 0,
-    PXBleRequestTypeConnect,
-    PXBleRequestTypeDisconnect,
-    PXBleRequestTypeReadRssi,
-    PXBleRequestTypeReadValue,
-    PXBleRequestTypeWriteValue,
-    PXBleRequestTypeSetNotifyValue,
+    SGBleRequestTypeUnknown = 0,
+    SGBleRequestTypeConnect,
+    SGBleRequestTypeDisconnect,
+    SGBleRequestTypeReadRssi,
+    SGBleRequestTypeReadValue,
+    SGBleRequestTypeWriteValue,
+    SGBleRequestTypeSetNotifyValue,
 };
 
-typedef NSError *(^PXBleRequestExecuteHandler)();
-typedef void (^PXBleRequestCompletionHandler)(NSError *error);
+typedef NSError *(^SGBleRequestExecuteHandler)();
+typedef void (^SGBleRequestCompletionHandler)(NSError *error);
 
-@interface PXBleRequest : NSObject
+@interface SGBleRequest : NSObject
 {
-    PXBleRequestType _type;
-    PXBleRequestExecuteHandler _executeHandler;
-    PXBleRequestCompletionHandler _completionHandler;
+    SGBleRequestType _type;
+    SGBleRequestExecuteHandler _executeHandler;
+    SGBleRequestCompletionHandler _completionHandler;
 }
 
-@property(readonly, getter=type) PXBleRequestType type;
-- (PXBleRequestType)type;
+@property(readonly, getter=type) SGBleRequestType type;
+- (SGBleRequestType)type;
 
 // executeHandler returns an error if it has failed immediatly
 // completionHandler can be nil
-- (instancetype)initWithRequestType:(PXBleRequestType)requestType executeHandler:(PXBleRequestExecuteHandler)executeHandler  completionHandler:(PXBleRequestCompletionHandler)completionHandler;
+- (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(SGBleRequestExecuteHandler)executeHandler  completionHandler:(SGBleRequestCompletionHandler)completionHandler;
 
 - (NSError *)execute;
 
@@ -73,18 +73,18 @@ typedef void (^PXBleRequestCompletionHandler)(NSError *error);
 // On being de-allocated, instance will cancel connection to peripheral
 // Handlers (such as request completion handler) are called on the shared BLE queue,
 // user code for those handlers should return as quickly as possible to avoid blocking/delaying any other BLE event.
-@interface PXBlePeripheral : NSObject<CBPeripheralDelegate>
+@interface SGBlePeripheral : NSObject<CBPeripheralDelegate>
 {
     dispatch_queue_t _queue; // Run all peripheral requests
-    PXBleCentralManagerDelegate *_centralDelegate;
+    SGBleCentralManagerDelegate *_centralDelegate;
     CBPeripheral *_peripheral;
-    void (^_connectionEventHandler)(PXBlePeripheralConnectionEvent connectionEvent, PXBlePeripheralConnectionEventReason reason);
+    void (^_connectionEventHandler)(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason);
     NSArray<CBUUID *> *_requiredServices;
     NSUInteger _discoveringServicesCounter;
-    PXBlePeripheralConnectionEventReason _disconnectReason;
+    SGBlePeripheralConnectionEventReason _disconnectReason;
     int _rssi;
-    PXBleRequest *_runningRequest; // Accessed only from queue
-    NSMutableArray<PXBleRequest *> *_pendingRequests; // Always synchronize access to this list
+    SGBleRequest *_runningRequest; // Accessed only from queue
+    NSMutableArray<SGBleRequest *> *_pendingRequests; // Always synchronize access to this list
     NSMapTable<CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)> *_valueChangedHandlers;
 }
 
@@ -98,8 +98,8 @@ typedef void (^PXBleRequestCompletionHandler)(NSError *error);
 - (int)rssi;
 
 - (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
-            centralManagerDelegate:(PXBleCentralManagerDelegate *)centralManagerDelegate
-    connectionStatusChangedHandler:(void (^)(PXBlePeripheralConnectionEvent connectionEvent, PXBlePeripheralConnectionEventReason reason))connectionEventHandler;
+            centralManagerDelegate:(SGBleCentralManagerDelegate *)centralManagerDelegate
+    connectionStatusChangedHandler:(void (^)(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason))connectionEventHandler;
 
 - (void)queueConnectWithServices:(NSArray<CBUUID *> *)services
                completionHandler:(void (^)(NSError *error))completionHandler;

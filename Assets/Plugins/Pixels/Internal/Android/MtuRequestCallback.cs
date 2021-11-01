@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class MtuRequestCallback : AndroidJavaProxy
     {
         NativeValueRequestResultHandler<int> _onMtuResult;
 
         public MtuRequestCallback(NativeValueRequestResultHandler<int> onMtuResult)
-            : base("com.systemic.pixels.Peripheral$MtuRequestCallback")
+            : base("com.systemic.bluetoothle.Peripheral$MtuRequestCallback")
             => _onMtuResult = onMtuResult;
 
         void onMtuChanged(AndroidJavaObject device, int mtu)

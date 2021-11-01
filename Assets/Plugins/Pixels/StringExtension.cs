@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Systemic.Pixels.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE
 {
     public static class StringExtension
     {

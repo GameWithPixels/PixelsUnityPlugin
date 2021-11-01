@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "ComHelper.h"
+#include "Systemic/ComHelper.h"
 
 #include <strsafe.h>
 #include <objbase.h>
 
 #pragma comment(lib,"ole32.lib")
 
-namespace ComHelper
+namespace Systemic::ComHelper
 {
     const char* copyToComBuffer(const char* str)
     {

@@ -3,34 +3,34 @@
 #import "BleUtils.h"
 
 
-typedef NS_ENUM(NSInteger, PXBlePeripheralConnectionEvent)
+typedef NS_ENUM(NSInteger, SGBlePeripheralConnectionEvent)
 {
-    PXBlePeripheralConnectionEventConnecting,
-    PXBlePeripheralConnectionEventConnected,
-    PXBlePeripheralConnectionEventFailedToConnect, // + reason
-    PXBlePeripheralConnectionEventReady,
-    PXBlePeripheralConnectionEventDisconnecting,
-    PXBlePeripheralConnectionEventDisconnected, // + reason
+    SGBlePeripheralConnectionEventConnecting,
+    SGBlePeripheralConnectionEventConnected,
+    SGBlePeripheralConnectionEventFailedToConnect, // + reason
+    SGBlePeripheralConnectionEventReady,
+    SGBlePeripheralConnectionEventDisconnecting,
+    SGBlePeripheralConnectionEventDisconnected, // + reason
 };
 
 
-typedef void (^PXBlePeripheralDiscoveryHandler)(CBPeripheral *peripheral, NSDictionary<NSString *,id> *advertisementData, NSNumber *RSSI);
-typedef void (^PXBlePeripheralConnectionEventHandler)(CBPeripheral *peripheral, PXBlePeripheralConnectionEvent connectionEvent, NSError *error);
+typedef void (^SGBlePeripheralDiscoveryHandler)(CBPeripheral *peripheral, NSDictionary<NSString *,id> *advertisementData, NSNumber *RSSI);
+typedef void (^SGBlePeripheralConnectionEventHandler)(CBPeripheral *peripheral, SGBlePeripheralConnectionEvent connectionEvent, NSError *error);
 
 
-@interface PXBleCentralManagerDelegate : NSObject<CBCentralManagerDelegate>
+@interface SGBleCentralManagerDelegate : NSObject<CBCentralManagerDelegate>
 {
     NSObject *_startScanSync;
     void (^_stateUpdateHandler)(CBManagerState state);
     CBCentralManager *_centralManager;
     NSMutableDictionary<NSUUID *,CBPeripheral *> *_peripherals;
-    NSMutableDictionary<CBPeripheral *, PXBlePeripheralConnectionEventHandler> *_peripheralsConnectionEventHandlers;
+    NSMutableDictionary<CBPeripheral *, SGBlePeripheralConnectionEventHandler> *_peripheralsConnectionEventHandlers;
 }
 
 @property(readonly, getter=centralManager) CBCentralManager *centralManager;
 - (CBCentralManager *)centralManager;
 
-@property(strong) PXBlePeripheralDiscoveryHandler peripheralDiscoveryHandler;
+@property(strong) SGBlePeripheralDiscoveryHandler peripheralDiscoveryHandler;
 
 @property(readonly, getter=peripherals) NSArray<CBPeripheral *> *peripherals;
 - (NSArray<CBPeripheral *> *)peripherals;
@@ -44,7 +44,7 @@ typedef void (^PXBlePeripheralConnectionEventHandler)(CBPeripheral *peripheral, 
 
 - (CBPeripheral *)peripheralForIdentifier:(NSUUID *)identifier;
 
-- (void)setConnectionEventHandler:(PXBlePeripheralConnectionEventHandler)peripheralConnectionEventHandler
+- (void)setConnectionEventHandler:(SGBlePeripheralConnectionEventHandler)peripheralConnectionEventHandler
                     forPeripheral:(CBPeripheral *)peripheral;
 
 @end

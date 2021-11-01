@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class RequestCallback : AndroidJavaProxy
     {
@@ -9,7 +9,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
         NativeRequestResultHandler _onResult;
 
         public RequestCallback(Operation operation, NativeRequestResultHandler onResult)
-            : base("com.systemic.pixels.Peripheral$RequestCallback")
+            : base("com.systemic.bluetoothle.Peripheral$RequestCallback")
             => (_operation, _onResult) = (operation, onResult);
 
         void onRequestCompleted(AndroidJavaObject device)

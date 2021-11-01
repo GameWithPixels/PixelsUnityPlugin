@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Android;
 
-namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
+namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal enum AndroidRequestStatus : int
     {
@@ -90,8 +90,9 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
             public void Dispose() { JavaPeripheral = null; }
         }
 
-        readonly AndroidJavaClass _scannerClass = new AndroidJavaClass("com.systemic.pixels.Scanner");
-        readonly AndroidJavaClass _peripheralClass = new AndroidJavaClass("com.systemic.pixels.Peripheral");
+        const string PeripheralClassName = "com.systemic.bluetoothle.Peripheral";
+        readonly AndroidJavaClass _scannerClass = new AndroidJavaClass("com.systemic.bluetoothle.Scanner");
+        readonly AndroidJavaClass _peripheralClass = new AndroidJavaClass(PeripheralClassName);
 
         public bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
         {
@@ -141,7 +142,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
             else
             {
                 var client = new AndroidJavaObject(
-                    "com.systemic.pixels.Peripheral",
+                    PeripheralClassName,
                     device,
                     new ConnectionObserver(onConnectionEvent));
                 return new PeripheralHandle(new NativePeripheral(client));
@@ -155,7 +156,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
             if (device != null)
             {
                 javaPeripheral = new AndroidJavaObject(
-                    "com.systemic.pixels.Peripheral",
+                    PeripheralClassName,
                     device,
                     new ConnectionObserver(onConnectionEvent));
             }
