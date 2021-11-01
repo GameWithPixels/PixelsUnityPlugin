@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['android_15',['Android',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_internal_1_1_android.html',1,'Systemic::Unity::BluetoothLE::Internal']]],
+  ['apple_16',['Apple',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_internal_1_1_apple.html',1,'Systemic::Unity::BluetoothLE::Internal']]],
+  ['bluetoothle_17',['BluetoothLE',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html',1,'Systemic::Unity']]],
+  ['internal_18',['Internal',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_internal.html',1,'Systemic::Unity::BluetoothLE']]],
+  ['scanforperipheralswithservices_19',['ScanForPeripheralsWithServices',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a51b5f348e89adca677fd9c53f19334ed',1,'Systemic::Unity::BluetoothLE::Central']]],
+  ['scannedperipheral_20',['ScannedPeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html',1,'Systemic::Unity::BluetoothLE']]],
+  ['scanner_21',['Scanner',['../classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html',1,'com.systemic.bluetoothle.Scanner'],['../class_systemic_1_1_bluetooth_l_e_1_1_scanner.html',1,'Systemic::BluetoothLE::Scanner']]],
+  ['scannercallback_22',['ScannerCallback',['../interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html',1,'com::systemic::bluetoothle::Scanner']]],
+  ['service_23',['Service',['../class_systemic_1_1_bluetooth_l_e_1_1_service.html',1,'Systemic::BluetoothLE']]],
+  ['sgblecentralmanagerdelegate_24',['SGBleCentralManagerDelegate',['../interface_s_g_ble_central_manager_delegate.html',1,'']]],
+  ['sgbleperipheral_25',['SGBlePeripheral',['../interface_s_g_ble_peripheral.html',1,'']]],
+  ['sgblerequest_26',['SGBleRequest',['../interface_s_g_ble_request.html',1,'']]],
+  ['startscan_27',['StartScan',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3f36fc51c81b4dd98c9b7e73f1adc404',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['systemic_28',['Systemic',['../namespace_systemic.html',1,'']]],
+  ['unity_29',['Unity',['../namespace_systemic_1_1_unity.html',1,'Systemic']]],
+  ['windows_30',['Windows',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_internal_1_1_windows.html',1,'Systemic::Unity::BluetoothLE::Internal']]]
+];

@@ -1,0 +1,28 @@
+var interface_s_g_ble_peripheral =
+[
+    [ "cancelQueue", "interface_s_g_ble_peripheral.html#a48223a85a31f38db8d1f87bfdbe87f06", null ],
+    [ "identifier", "interface_s_g_ble_peripheral.html#acf29def74e38283ca123e2f35dba6caf", null ],
+    [ "initWithPeripheral:centralManagerDelegate:connectionStatusChangedHandler:", "interface_s_g_ble_peripheral.html#a12f2a3eaba126e0f2938e9f9be27bd3e", null ],
+    [ "isConnected", "interface_s_g_ble_peripheral.html#a9dfacf1e409ccfc292c40fb217f42f7b", null ],
+    [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral.html#ad3d02e8c13d1ddf68d24b3c5393bc40b", null ],
+    [ "queueDisconnect:", "interface_s_g_ble_peripheral.html#a3990cb4503452b3c77f7b5ef9a83cd31", null ],
+    [ "queueReadRssi:", "interface_s_g_ble_peripheral.html#ad8ee3977c2bd518a7894e924f5481bbd", null ],
+    [ "queueReadValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral.html#a50b012a5854dc12865fdca6371c04c68", null ],
+    [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a", null ],
+    [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral.html#a773c50ea682f7091bee1c58a3b1a366f", null ],
+    [ "rssi", "interface_s_g_ble_peripheral.html#ae8d2ea53e910c00fd1d3f288e516f3e2", null ],
+    [ "_centralDelegate", "interface_s_g_ble_peripheral.html#a75e68fd1e0dcc48a34ed0918b5313793", null ],
+    [ "_connectionEventHandler", "interface_s_g_ble_peripheral.html#a1088a3616f3fd9d7d88c42f122d1c533", null ],
+    [ "_disconnectReason", "interface_s_g_ble_peripheral.html#a972185b2ac445d81a72c8ce4e8861998", null ],
+    [ "_discoveringServicesCounter", "interface_s_g_ble_peripheral.html#a1a8d3a7b408f9cb0901521c1515dc1b7", null ],
+    [ "_pendingRequests", "interface_s_g_ble_peripheral.html#abd3e268382df977cfd78365ccca232b9", null ],
+    [ "_peripheral", "interface_s_g_ble_peripheral.html#a4ccf106ac68f4bdc2a4e2e36f4251d17", null ],
+    [ "_queue", "interface_s_g_ble_peripheral.html#a9418d093b5dc28bf01069a53e87150f6", null ],
+    [ "_requiredServices", "interface_s_g_ble_peripheral.html#a148d91465cb69b94b0a4d505dd551875", null ],
+    [ "_rssi", "interface_s_g_ble_peripheral.html#ab6b530cce06344509ad65a57c094e831", null ],
+    [ "_runningRequest", "interface_s_g_ble_peripheral.html#a07ac3ee9e03346e03854777e404e33de", null ],
+    [ "_valueChangedHandlers", "interface_s_g_ble_peripheral.html#a226ab6c4c0da14901f9c645f5b0181a3", null ],
+    [ "identifier", "interface_s_g_ble_peripheral.html#a7cc7a643e783d61a5981598fede77809", null ],
+    [ "isConnected", "interface_s_g_ble_peripheral.html#a2e65f1bf44e44ef09e4e175f21ea8b7a", null ],
+    [ "rssi", "interface_s_g_ble_peripheral.html#a8903b2ffd6d462044e0c2bd80ea2d3de", null ]
+];
