@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-    sealed class DataReceivedCallback : AndroidJavaProxy
+    internal sealed class DataReceivedCallback : AndroidJavaProxy
     {
         NativeValueChangedHandler _onDataReceived;
 
@@ -13,7 +13,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
         void onDataReceived(AndroidJavaObject device, AndroidJavaObject data)
         {
             using var javaArray = data.Call<AndroidJavaObject>("getValue");
-            _onDataReceived?.Invoke(JavaUtils.ToDotNetArray(javaArray), NativeError.Empty); // No notification with error on Android
+            _onDataReceived?.Invoke(JavaUtils.ToDotNetArray(javaArray), RequestStatus.Success); // No notification with error on Android
         }
     }
 }

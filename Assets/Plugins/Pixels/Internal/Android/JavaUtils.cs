@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-    static class JavaUtils
+    internal static class JavaUtils
     {
         public static sbyte[] ToSignedArray(byte[] data)
         {

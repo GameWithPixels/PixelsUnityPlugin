@@ -41,8 +41,14 @@
     <ClInclude Include="Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DotNetMarshalling.h">
+    <ClInclude Include="ComHelper.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\pxwinrtble.h">
+      <Filter>Public Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\bletypes.h">
+      <Filter>Public Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +64,7 @@
     <ClCompile Include="Peripheral.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DotNetMarshalling.cpp">
+    <ClCompile Include="ComHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include "bletypes.h"
 
 #ifdef LIBWINRTBLE_EXPORTS
 #define DLL_DECLSPEC __declspec(dllexport)
@@ -8,15 +9,18 @@
 #define DLL_DECLSPEC __declspec(dllimport)
 #endif
 
-using peripheral_id_t = std::uint64_t;
+using bluetooth_address_t = Pixels::CoreBluetoothLE::bluetooth_address_t;
+using BleRequestStatus = Pixels::CoreBluetoothLE::BleRequestStatus;
+using ConnectionEvent = Pixels::CoreBluetoothLE::ConnectionEvent;
+using ConnectionEventReason = Pixels::CoreBluetoothLE::ConnectionEventReason;
 using characteristic_index_t = std::uint32_t;
 using characteristic_property_t = std::uint64_t;
 
 typedef void (*CentralStateUpdateCallback)(bool available);
 typedef void (*DiscoveredPeripheralCallback)(const char* advertisementDataJson);
-typedef void (*RequestStatusCallback)(int errorCode);
-typedef void (*PeripheralConnectionStatusChangedCallback)(peripheral_id_t peripheralId, int connectionStatus, int reason);
-typedef void (*ValueChangedCallback)(const void* _data, size_t length, int errorCode);
+typedef void (*RequestStatusCallback)(BleRequestStatus status);
+typedef void (*PeripheralConnectionStatusChangedCallback)(bluetooth_address_t address, ConnectionEvent connectionEvent, ConnectionEventReason reason);
+typedef void (*ValueChangedCallback)(const void* _data, size_t length, BleRequestStatus status);
 
 extern "C"
 {
@@ -34,43 +38,44 @@ extern "C"
 
     // discoverServicesUuids is a comma separated list of UUIDs, it can be null
     DLL_DECLSPEC bool pxBleCreatePeripheral(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         PeripheralConnectionStatusChangedCallback onPeripheralStatusChanged);
 
-    DLL_DECLSPEC void pxBleReleasePeripheral(peripheral_id_t peripheralId);
+    DLL_DECLSPEC void pxBleReleasePeripheral(bluetooth_address_t address);
 
-    DLL_DECLSPEC void pxBleConnectPeripheral(peripheral_id_t peripheralId,
+    DLL_DECLSPEC void pxBleConnectPeripheral(bluetooth_address_t address,
         const char* requiredServicesUuids,
+        bool autoConnect,
         RequestStatusCallback onRequestStatus);
 
     DLL_DECLSPEC void pxBleDisconnectPeripheral(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         RequestStatusCallback onRequestStatus);
 
-    DLL_DECLSPEC int pxBleGetPeripheralMtu(peripheral_id_t peripheralId);
+    DLL_DECLSPEC int pxBleGetPeripheralMtu(bluetooth_address_t address);
 
-    // caller should free string with CoTaskMemFree (.NET marshaling takes care of it)
-    DLL_DECLSPEC const char* pxBleGetPeripheralName(peripheral_id_t peripheralId);
-
-    // returns a comma separated list of UUIDs
-    // caller should free string with CoTaskMemFree (.NET marshaling takes care of it)
-    DLL_DECLSPEC const char* pxBleGetPeripheralDiscoveredServices(peripheral_id_t peripheralId);
+    // caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+    DLL_DECLSPEC const char* pxBleGetPeripheralName(bluetooth_address_t address);
 
     // returns a comma separated list of UUIDs
-    // caller should free string with CoTaskMemFree (.NET marshaling takes care of it)
+    // caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+    DLL_DECLSPEC const char* pxBleGetPeripheralDiscoveredServices(bluetooth_address_t address);
+
+    // returns a comma separated list of UUIDs
+    // caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
     DLL_DECLSPEC const char* pxBleGetPeripheralServiceCharacteristics(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid);
 
     // https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc
     DLL_DECLSPEC characteristic_property_t pxBleGetCharacteristicProperties(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex);
 
     DLL_DECLSPEC void pxBleReadCharacteristicValue(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
@@ -78,7 +83,7 @@ extern "C"
         RequestStatusCallback onRequestStatus);
 
     DLL_DECLSPEC void pxBleWriteCharacteristicValue(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
@@ -88,11 +93,13 @@ extern "C"
         RequestStatusCallback onRequestStatus);
 
     DLL_DECLSPEC void pxBleSetNotifyCharacteristic(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
         ValueChangedCallback onValueChanged,
         RequestStatusCallback onRequestStatus);
+    
+    DLL_DECLSPEC void pxBleFreeString(char* str);
 
 } // extern "C"

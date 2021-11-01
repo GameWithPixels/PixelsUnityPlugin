@@ -2,7 +2,7 @@
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-    sealed class ConnectionObserver : AndroidJavaProxy
+	internal sealed class ConnectionObserver : AndroidJavaProxy
 	{
 		NativePeripheralConnectionEventHandler _connectionEventHandler;
 
@@ -19,7 +19,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceConnecting(AndroidJavaObject device)
         {
-			Debug.Log("==> onDeviceConnecting");
+			Debug.Log("ConnectionObserver ==> onDeviceConnecting");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Connecting, ConnectionEventReason.Success);
 		}
 
@@ -31,7 +31,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceConnected(AndroidJavaObject device)
         {
-			Debug.Log("==> onDeviceConnected");
+			Debug.Log("ConnectionObserver ==> onDeviceConnected");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Connected, ConnectionEventReason.Success);
 		}
 
@@ -42,8 +42,8 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceFailedToConnect(AndroidJavaObject device, int reason)
         {
-			Debug.Log("==> onDeviceFailedToConnect " + (ConnectionEventReason)reason);
-			_connectionEventHandler?.Invoke(ConnectionEvent.FailedToConnect, (ConnectionEventReason)reason);
+			Debug.Log($"ConnectionObserver ==> onDeviceFailedToConnect: {(AndroidConnectionEventReason)reason}");
+			_connectionEventHandler?.Invoke(ConnectionEvent.FailedToConnect, AndroidNativeInterfaceImpl.ToConnectionEventReason(reason));
 		}
 
 		/**
@@ -53,7 +53,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceReady(AndroidJavaObject device)
         {
-			Debug.Log("==> onDeviceReady");
+			Debug.Log("ConnectionObserver ==> onDeviceReady");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Ready, ConnectionEventReason.Success);
 		}
 
@@ -64,7 +64,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceDisconnecting(AndroidJavaObject device)
         {
-			Debug.Log("==> onDeviceDisconnecting");
+			Debug.Log("ConnectionObserver ==> onDeviceDisconnecting");
 			_connectionEventHandler?.Invoke(ConnectionEvent.Disconnecting, ConnectionEventReason.Success);
 		}
 
@@ -79,8 +79,8 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 		 */
 		void onDeviceDisconnected(AndroidJavaObject device, int reason)
         {
-			Debug.Log("==> onDeviceDisconnected " + (ConnectionEventReason)reason);
-			_connectionEventHandler?.Invoke(ConnectionEvent.Disconnected, (ConnectionEventReason)reason);
+			Debug.Log($"ConnectionObserver ==> onDeviceDisconnected: {(AndroidConnectionEventReason)reason}");
+			_connectionEventHandler?.Invoke(ConnectionEvent.Disconnected, AndroidNativeInterfaceImpl.ToConnectionEventReason(reason));
 		}
 	}
 }

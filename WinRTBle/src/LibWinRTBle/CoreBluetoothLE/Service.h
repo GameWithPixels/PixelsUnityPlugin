@@ -18,18 +18,35 @@ namespace Pixels::CoreBluetoothLE
         std::unordered_map<winrt::guid, std::vector<std::shared_ptr<Characteristic>>> _characteristics{};
 
     public:
-        std::uint16_t handle() const { return _service.AttributeHandle(); }
-
-        winrt::guid uuid() const { return _service.Uuid(); }
-
-        std::shared_ptr<const Peripheral> peripheral() const { return _peripheral.lock(); }
-        std::shared_ptr<Peripheral> peripheral() { return _peripheral.lock(); }
-
-        std::vector<std::shared_ptr<Characteristic>> characteristics()
+        std::uint16_t handle() const
         {
-            std::vector<std::shared_ptr<Characteristic>> ret{};
-            for (auto& [_,v] : _characteristics) for (auto& c : v) ret.emplace_back(c);
-            return ret;
+            return _service.AttributeHandle();
+        }
+
+        winrt::guid uuid() const
+        {
+            return _service.Uuid();
+        }
+
+        std::shared_ptr<const Peripheral> peripheral() const
+        {
+            return _peripheral.lock();
+        }
+        
+        std::shared_ptr<Peripheral> peripheral()
+        {
+            return _peripheral.lock();
+        }
+
+        void copyCharacteristics(std::vector<std::shared_ptr<Characteristic>>& outCharacteristics)
+        {
+            for (auto& [_, v] : _characteristics)
+            {
+                for (auto& c : v)
+                {
+                    outCharacteristics.emplace_back(c);
+                }
+            }
         }
 
         std::shared_ptr<Characteristic> getCharacteristic(const winrt::guid& uuid)

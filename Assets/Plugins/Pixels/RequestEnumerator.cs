@@ -1,63 +1,114 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE
 {
-    //TODO Expose error code
-    public class RequestError
-    {
-    }
-
     public enum Operation
     {
         ConnectPeripheral,
         DisconnectPeripheral,
         ReadPeripheralRssi,
+        RequestPeripheralMtu,
         ReadCharacteristic,
         WriteCharacteristic,
         SubscribeCharacteristic,
         UnsubscribeCharacteristic,
     }
 
-    public class RequestEnumerator : CustomYieldInstruction
+    public class RequestEnumerator : IEnumerator
     {
         readonly double _timeout;
-        Action _postAction;
-        bool _isTimedOut;
-        NativeError? _error;
+        RequestStatus? _status;
 
         public Operation Operation { get; }
 
-        public bool IsCompleted => _error.HasValue;
+        public bool IsDone => _status.HasValue;
 
-        public bool IsSuccess => _error.HasValue && _error.Value.IsEmpty;
+        public bool IsSuccess => _status.HasValue && (_status.Value == RequestStatus.Success);
 
-        public bool IsTimedOut => _isTimedOut = _isTimedOut || (Time.realtimeSinceStartupAsDouble >= _timeout);
+        public bool IsTimeout { get; private set; }
 
-        public override bool keepWaiting => Run();
+        public RequestStatus RequestStatus => _status.HasValue ? _status.Value : RequestStatus.InProgress;
 
-        internal RequestEnumerator(Operation operation, float timeoutSec, Action<NativeRequestResultHandler> action, Action postAction = null)
+        public string Error => RequestStatus switch
+        {
+            RequestStatus.Success => null,
+            RequestStatus.InProgress => "Operation in progress",
+            RequestStatus.Canceled => "Operation canceled",
+            RequestStatus.InvalidPeripheral => "Invalid peripheral",
+            RequestStatus.InvalidCall => "Invalid call",
+            RequestStatus.InvalidParameters => "Invalid parameters",
+            RequestStatus.NotSupported => "Operation not supported",
+            RequestStatus.ProtocolError => "GATT protocol error",
+            RequestStatus.AccessDenied => "Access denied",
+            RequestStatus.Timeout => "Timeout",
+            _ => "Unknown error",
+        };
+
+        public object Current => null;
+
+        protected PeripheralHandle Peripheral { get; }
+
+        internal RequestEnumerator(
+            Operation operation,
+            PeripheralHandle peripheralHandle,
+            float timeoutSec,
+            Action<PeripheralHandle, NativeRequestResultHandler> action)
+            : this(operation, peripheralHandle, timeoutSec)
+        {
+            if (action == null) throw new ArgumentNullException(nameof(action));
+
+            Operation = operation;
+            _timeout = timeoutSec == 0 ? 0 : Time.realtimeSinceStartupAsDouble + timeoutSec;
+            if (Peripheral.IsValid)
+            {
+                action?.Invoke(Peripheral, SetResult);
+            }
+            else
+            {
+                SetResult(RequestStatus.InvalidPeripheral);
+                //TODO check in NativeInterface instead
+            }
+        }
+
+        protected RequestEnumerator(
+            Operation operation,
+            PeripheralHandle peripheralHandle,
+            float timeoutSec)
         {
             Operation = operation;
-            _timeout = Time.realtimeSinceStartupAsDouble + timeoutSec;
-            _postAction = postAction;
-            action?.Invoke(SetResult);
+            Peripheral = peripheralHandle;
+            _timeout = timeoutSec == 0 ? 0 : Time.realtimeSinceStartupAsDouble + timeoutSec;
         }
 
-        protected void SetResult(NativeError error)
+        protected void SetResult(RequestStatus status)
         {
-            _error = error;
-        }
-
-        bool Run()
-        {
-            bool done = IsCompleted || IsTimedOut;
-            if (done)
+            // Only keep first error
+            if (!_status.HasValue)
             {
-                _postAction?.Invoke();
-                _postAction = null;
+                _status = status;
             }
-            return !done;
+        }
+
+        public virtual bool MoveNext()
+        {
+            if ((!_status.HasValue) && (_timeout > 0))
+            {
+                // Update timeout
+                if (Time.realtimeSinceStartupAsDouble > _timeout)
+                {
+                    IsTimeout = true;
+                    _status = RequestStatus.Timeout;
+                }
+            }
+
+            return !_status.HasValue;
+        }
+
+        public void Reset()
+        {
+            // Not supported
         }
     }
 
@@ -65,10 +116,102 @@ namespace Systemic.Pixels.Unity.BluetoothLE
     {
         public T Value { get; private set; }
 
-        public ValueRequestEnumerator(Operation operation, float timeoutSec, Action<NativeValueRequestResultHandler<T>> action, Action postAction = null)
-            : base(operation, timeoutSec, null, postAction)
+        public ValueRequestEnumerator(
+            Operation operation,
+            PeripheralHandle peripheralHandle,
+            float timeoutSec,
+            Action<PeripheralHandle, NativeValueRequestResultHandler<T>> action)
+            : base(operation, peripheralHandle, timeoutSec)
         {
-            action((value, error) => { Value = value; SetResult(error); });
+            if (action == null) throw new ArgumentNullException(nameof(action));
+
+            if (Peripheral.IsValid)
+            {
+                action(Peripheral, (value, error) =>
+                {
+                    Value = value;
+                    SetResult(error);
+                });
+            }
+            else
+            {
+                SetResult(RequestStatus.InvalidPeripheral);
+            }
+        }
+    }
+
+    public class ConnectRequestEnumerator : RequestEnumerator
+    {
+        DisconnectRequestEnumerator _disconnect;
+        Action _onTimeoutDisconnect;
+
+        public ConnectRequestEnumerator(
+            PeripheralHandle peripheral,
+            float timeoutSec,
+            Action<PeripheralHandle, NativeRequestResultHandler> action,
+            Action onTimeoutDisconnect)
+            : base(Operation.ConnectPeripheral, peripheral, timeoutSec, action)
+        {
+            _onTimeoutDisconnect = onTimeoutDisconnect;
+        }
+
+        public override bool MoveNext()
+        {
+            bool done;
+
+            if (_disconnect == null)
+            {
+                done = !base.MoveNext();
+
+                // Did we fail with a timeout?
+                if (done && IsTimeout && Peripheral.IsValid)
+                {
+                    _onTimeoutDisconnect?.Invoke();
+
+                    // Cancel connection attempt
+                    _disconnect = new DisconnectRequestEnumerator(Peripheral);
+                    done = !_disconnect.MoveNext();
+                }
+            }
+            else
+            {
+                done = !_disconnect.MoveNext();
+            }
+
+            return !done;
+        }
+    }
+
+    public class DisconnectRequestEnumerator : RequestEnumerator
+    {
+        bool _released;
+
+        public DisconnectRequestEnumerator(PeripheralHandle peripheral)
+            : base(Operation.DisconnectPeripheral, peripheral, 0)
+        {
+            if (Peripheral.IsValid)
+            {
+                NativeInterface.DisconnectPeripheral(peripheral, SetResult);
+            }
+            else
+            {
+                SetResult(RequestStatus.InvalidPeripheral);
+            }
+        }
+
+        public override bool MoveNext()
+        {
+            bool done = !base.MoveNext();
+
+            // Are we done with the disconnect?
+            if (done && Peripheral.IsValid && (!_released))
+            {
+                // Release peripheral even if the disconnect might have failed
+                NativeInterface.ReleasePeripheral(Peripheral);
+                _released = true;
+            }
+
+            return !done;
         }
     }
 }

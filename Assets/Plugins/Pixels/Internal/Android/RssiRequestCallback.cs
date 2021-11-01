@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-    sealed class RssiRequestCallback : AndroidJavaProxy
+    internal sealed class RssiRequestCallback : AndroidJavaProxy
     {
         NativeValueRequestResultHandler<int> _onRssiRead;
 
@@ -13,20 +13,20 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
         // @IntRange(from = -128, to = 20)
         void onRssiRead(AndroidJavaObject device, int rssi)
         {
-            Debug.Log("==> onRssiRead " + rssi);
-            _onRssiRead?.Invoke(rssi, NativeError.Empty);
+            Debug.Log($"{Operation.ReadPeripheralRssi} ==> onRssiRead {rssi}");
+            _onRssiRead?.Invoke(rssi, RequestStatus.Success);
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError("==> onRequestFailed with status " + (AndroidRequestStatus)status);
-            _onRssiRead?.Invoke(0, new NativeError(status, "Android error"));
+            Debug.LogError($"{Operation.ReadPeripheralRssi} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            _onRssiRead?.Invoke(int.MinValue, AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError("==> onInvalidRequest");
-            _onRssiRead?.Invoke(0, new NativeError((int)AndroidRequestStatus.REASON_REQUEST_INVALID, "Android error"));
+            Debug.LogError($"{Operation.ReadPeripheralRssi} ==> onInvalidRequest");
+            _onRssiRead?.Invoke(int.MinValue, RequestStatus.InvalidCall);
         }
     }
 }

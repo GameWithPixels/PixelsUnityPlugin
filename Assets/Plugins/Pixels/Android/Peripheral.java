@@ -18,6 +18,7 @@ import no.nordicsemi.android.ble.annotation.WriteType;
 
 import com.unity3d.player.UnityPlayer;
 
+// Not thread safe!
 public class Peripheral
 {
 	private static final String TAG = "systemic";
@@ -157,6 +158,11 @@ public class Peripheral
 		    return super.enableNotifications(characteristic);
         }
 
+        public void cancelOperations()
+        {
+            super.cancelQueue();
+        }
+
         @Override
         public void log(final int priority, final String message)
         {
@@ -200,7 +206,7 @@ public class Peripheral
         _client.setConnectionObserver(connectionObserver);
     }
 
-    public void connect(final String requiredServicesUuids, final RequestCallback callback)
+    public void connect(final String requiredServicesUuids, final boolean autoConnect, final RequestCallback callback)
     {
         Log.v(TAG, "==> connect");
 
@@ -227,16 +233,10 @@ public class Peripheral
 
         _requiredServices = requiredServices;
 
-        _client.connect(_device)//.useAutoConnect(true)
-            .timeout(0)
-            .done(new SuccessCallback()
-            {
-                public void onRequestCompleted(final BluetoothDevice device)
-                {
-                    callback.onRequestCompleted(device);
-                }
-            })
-            .fail(callback).invalid(callback)
+        _client.connect(_device)
+            .useAutoConnect(autoConnect)
+            .timeout(0) // Actually Android will timeout after 30s
+            .done(callback).fail(callback).invalid(callback)
             .enqueue();
     }
 
@@ -244,10 +244,22 @@ public class Peripheral
     {
         Log.v(TAG, "==> disconnect");
 
-        _client.disconnect()
-            //.timeout(0) TODO
-            .done(callback).fail(callback).invalid(callback)
-            .enqueue();
+        // Cancel all on-going operations so the disconnect can happen immediately
+        _client.cancelOperations();
+
+        // Disconnect (request will be ignored we are disconnecting)
+        if (_client.getConnectionState() != BluetoothProfile.STATE_DISCONNECTING)
+        {
+            _client.disconnect()
+                .done(callback).fail(callback).invalid(callback)
+                .enqueue();
+        }
+        else if (callback != null)
+        {
+            //TODO this will happen if device was connecting, we should return a success once disconnected!
+            // Immediately Notify invalid request
+            callback.onInvalidRequest();
+        }
     }
 
     public String getName()

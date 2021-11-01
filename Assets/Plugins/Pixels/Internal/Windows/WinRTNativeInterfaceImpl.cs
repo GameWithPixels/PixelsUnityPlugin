@@ -5,46 +5,108 @@ using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
 {
-    //TODO catch exceptions in callback
     internal sealed class WinRTNativeInterfaceImpl : INativeInterfaceImpl
     {
-        sealed class NativeScannedPeripheral : ScannedPeripheral.ISystemDevice
+        sealed class NativeScannedPeripheral : INativeDevice
         {
-            public NativeScannedPeripheral(ulong peripheralId) => PeripheralId = peripheralId;
+            public ulong BluetoothAddress { get; }
 
-            public ulong PeripheralId { get; }
+            public bool IsValid => BluetoothAddress != 0;
+
+            public NativeScannedPeripheral(ulong bluetoothAddress) => BluetoothAddress = bluetoothAddress;
         }
 
-        sealed class NativePeripheral : PeripheralHandle.INativePeripheral
+        sealed class NativePeripheral : INativePeripheral
         {
-            PeripheralConnectionEventHandler _onPeripheralConnectionStatusChanged;
-            List<RequestStatusHandler> _onRequestStatusHandlers = new List<RequestStatusHandler>();
-            Dictionary<string, ValueChangedHandler> _onValueChangedHandlers = new Dictionary<string, ValueChangedHandler>();
+            // Keep references to all callbacks so they are not reclaimed by the GC
+            PeripheralConnectionEventHandler _peripheralConnectionStatusChanged;
+            HashSet<RequestStatusHandler> _requestStatusHandlers = new HashSet<RequestStatusHandler>();
+            Dictionary<string, ValueChangedHandler> _valueChangedHandlers = new Dictionary<string, ValueChangedHandler>();
 
-            public NativePeripheral(ulong peripheralId, PeripheralConnectionEventHandler onPeripheralConnectionStatusChanged)
-                => (PeripheralId, _onPeripheralConnectionStatusChanged) = (peripheralId, onPeripheralConnectionStatusChanged);
+            static HashSet<NativePeripheral> _releasedPeripherals = new HashSet<NativePeripheral>();
 
-            public ulong PeripheralId { get; }
+            public NativePeripheral(ulong bluetoothAddress, string name, PeripheralConnectionEventHandler onPeripheralConnectionStatusChanged)
+                => (BluetoothAddress, Name, _peripheralConnectionStatusChanged) = (bluetoothAddress, name, onPeripheralConnectionStatusChanged);
 
-            public void Keep(RequestStatusHandler onRequestStatus)
+            public ulong BluetoothAddress { get; }
+
+            public string Name { get; }
+
+            public bool IsValid => BluetoothAddress != 0;
+
+            public void KeepRequestHandler(RequestStatusHandler onRequestStatus)
             {
-                _onRequestStatusHandlers.Add(onRequestStatus);
+                lock (_requestStatusHandlers)
+                {
+                    _requestStatusHandlers.Add(onRequestStatus);
+                }
             }
 
-            public void Forget(RequestStatusHandler onRequestStatus)
+            public void ForgetRequestHandler(RequestStatusHandler onRequestStatus)
             {
-                _onRequestStatusHandlers.Remove(onRequestStatus);
+                lock (_requestStatusHandlers)
+                {
+                    Debug.Assert(_requestStatusHandlers.Contains(onRequestStatus));
+                    _requestStatusHandlers.Remove(onRequestStatus);
+                }
+                CheckReleased();
             }
 
-            public void Keep(string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged)
+            public void KeepValueChangedHandler(string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged)
             {
-                _onValueChangedHandlers[$"{serviceUuid}:{characteristicUuid}#{instanceIndex}"] = onValueChanged;
+                lock (_valueChangedHandlers)
+                {
+                    _valueChangedHandlers[$"{serviceUuid}:{characteristicUuid}#{instanceIndex}"] = onValueChanged;
+                }
             }
 
-            public void Forget(string serviceUuid, string characteristicUuid, uint instanceIndex)
+            public void ForgetValueChangedHandler(string serviceUuid, string characteristicUuid, uint instanceIndex)
             {
-                _onValueChangedHandlers.Remove($"{serviceUuid}:{characteristicUuid}#{instanceIndex}");
+                lock (_valueChangedHandlers)
+                {
+                    string key = $"{serviceUuid}:{characteristicUuid}#{instanceIndex}";
+                    Debug.Assert(_valueChangedHandlers.ContainsKey(key));
+                    _valueChangedHandlers.Remove(key);
+                }
+                CheckReleased();
             }
+
+            //public void ForgetAllValueChangedHandlers()
+            //{
+            //    lock (_valueChangedHandlers)
+            //    {
+            //        _valueChangedHandlers.Clear();
+            //    }
+            //    CheckReleased();
+            //}
+
+            public void Release()
+            {
+                lock (_requestStatusHandlers)
+                {
+                    // Keep a reference to ourselves until all handlers have been cleared out
+                    if ((_requestStatusHandlers.Count > 0) && _releasedPeripherals.Add(this))
+                    {
+                        Debug.Log($"[BLE:{Name}] Added to WinRT release list");
+                    }
+                }
+            }
+
+            void CheckReleased()
+            {
+                lock (_requestStatusHandlers)
+                {
+                    if ((_requestStatusHandlers.Count == 0) && _releasedPeripherals.Remove(this))
+                    {
+                        Debug.Log($"[BLE:{Name}] Removed from WinRT release list");
+                    }
+                }
+            }
+
+            //~NativePeripheral()
+            //{
+            //    Debug.LogError($"[BLE:{Name}] WinRT GC");
+            //}
         }
 
         const string _libName =
@@ -54,23 +116,11 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
             "unsupported";
 #endif
 
-        enum BleRequestStatus : int
-        {
-            Success,
-            InvalidParameters,
-            NotSupported,
-            Busy,
-            LinkLoss,
-            GattError,
-            Error,
-            Canceled,
-        };
-
         delegate void CentralStateUpdateHandler(bool isAvailable);
         delegate void DiscoveredPeripheralHandler([MarshalAs(UnmanagedType.LPStr)] string advertisementDataJson);
-        delegate void RequestStatusHandler(BleRequestStatus errorCode);
+        delegate void RequestStatusHandler(RequestStatus errorCode);
         delegate void PeripheralConnectionEventHandler(ulong peripheralId, int connectionEvent, int reason);
-        delegate void ValueChangedHandler(IntPtr data, UIntPtr length, BleRequestStatus errorCode);
+        delegate void ValueChangedHandler(IntPtr data, UIntPtr length, RequestStatus errorCode);
 
         [DllImport(_libName)]
         private static extern bool pxBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateHandler onCentralStateUpdate);
@@ -91,7 +141,7 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
         private static extern void pxBleReleasePeripheral(ulong peripheralId);
 
         [DllImport(_libName)]
-        private static extern void pxBleConnectPeripheral(ulong peripheralId, string requiredServicesUuids, RequestStatusHandler onRequestStatus);
+        private static extern void pxBleConnectPeripheral(ulong peripheralId, string requiredServicesUuids, bool autoConnect, RequestStatusHandler onRequestStatus);
 
         [DllImport(_libName)]
         private static extern void pxBleDisconnectPeripheral(ulong peripheralId, RequestStatusHandler onRequestStatus);
@@ -120,12 +170,13 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
         [DllImport(_libName)]
         private static extern void pxBleSetNotifyCharacteristic(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus);
 
-        static CentralStateUpdateHandler _onCentralStateUpdate;
-        static DiscoveredPeripheralHandler _onDiscoveredPeripheral;
+        // Keep a reference to state update and discovery callbacks so they are not reclaimed by the GC
+        private static CentralStateUpdateHandler _onCentralStateUpdate;
+        private static DiscoveredPeripheralHandler _onDiscoveredPeripheral;
 
         public bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
         {
-            CentralStateUpdateHandler onCentralStateUpdate = available => onBluetoothEvent(available);
+            CentralStateUpdateHandler onCentralStateUpdate = available => onBluetoothEvent(available ? BluetoothStatus.Enabled : BluetoothStatus.Disabled);
             bool success = pxBleInitialize(true, onCentralStateUpdate);
             if (success)
             {
@@ -163,78 +214,101 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
             _onDiscoveredPeripheral = null;
         }
 
-        public PeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativePeripheralConnectionEventHandler onConnectionEvent)
+        private PeripheralHandle CreatePeripheral(ulong bluetoothAddress, string debugName, NativePeripheralConnectionEventHandler onConnectionEvent)
         {
-            PeripheralConnectionEventHandler peripheralConnectionEventHandler = (ulong peripheralId, int connectionEvent, int reason)
-                => onConnectionEvent((ConnectionEvent)connectionEvent, (ConnectionEventReason)reason);
+            PeripheralConnectionEventHandler peripheralConnectionEventHandler = (ulong peripheralId, int connectionEvent, int reason) =>
+            {
+                try
+                {
+                    onConnectionEvent((ConnectionEvent)connectionEvent, (ConnectionEventReason)reason);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            };
 
             bool success = pxBleCreatePeripheral(bluetoothAddress, peripheralConnectionEventHandler);
-            return new PeripheralHandle(success ? new NativePeripheral(bluetoothAddress, peripheralConnectionEventHandler) : null);
+            return new PeripheralHandle(success ? new NativePeripheral(bluetoothAddress, debugName, peripheralConnectionEventHandler) : null);
         }
 
-        public PeripheralHandle CreatePeripheral(ScannedPeripheral peripheral, NativePeripheralConnectionEventHandler onConnectionEvent)
+        public PeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativePeripheralConnectionEventHandler onConnectionEvent)
         {
-            return CreatePeripheral(GetPeripheralId(peripheral), onConnectionEvent);
+            return CreatePeripheral(bluetoothAddress, bluetoothAddress.ToString(), onConnectionEvent);
+        }
+
+        public PeripheralHandle CreatePeripheral(IScannedPeripheral scannedPeripheral, NativePeripheralConnectionEventHandler onConnectionEvent)
+        {
+            return CreatePeripheral(GetPeripheralAddress(scannedPeripheral), scannedPeripheral.Name, onConnectionEvent);
         }
 
         public void ReleasePeripheral(PeripheralHandle peripheral)
         {
-            pxBleReleasePeripheral(GetPeripheralId(peripheral));
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            periph.Release();
+            pxBleReleasePeripheral(GetPeripheralAddress(peripheral));
         }
 
-        public void ConnectPeripheral(PeripheralHandle peripheral, string requiredServicesUuids, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(PeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
         {
-            pxBleConnectPeripheral(GetPeripheralId(peripheral), requiredServicesUuids, GetRequestStatusHandler(peripheral, onResult));
+            pxBleConnectPeripheral(GetPeripheralAddress(peripheral), requiredServicesUuids, autoConnect,
+                GetRequestStatusHandler(Operation.ConnectPeripheral, peripheral, onResult));
         }
 
         public void DisconnectPeripheral(PeripheralHandle peripheral, NativeRequestResultHandler onResult)
         {
-            pxBleDisconnectPeripheral(GetPeripheralId(peripheral), GetRequestStatusHandler(peripheral, onResult));
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            pxBleDisconnectPeripheral(GetPeripheralAddress(peripheral),
+                GetRequestStatusHandler(Operation.DisconnectPeripheral, peripheral, onResult));
+            //TODO use static C# callback that redirects to peripheral, we might still get a callback on a different thread...
+            //periph.ForgetAllValueHandlers(); // We won't get such events anymore
         }
 
         public string GetPeripheralName(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralName(GetPeripheralId(peripheral));
+            return pxBleGetPeripheralName(GetPeripheralAddress(peripheral));
         }
 
         public int GetPeripheralMtu(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralMtu(GetPeripheralId(peripheral));
+            return pxBleGetPeripheralMtu(GetPeripheralAddress(peripheral));
         }
 
         public void RequestPeripheralMtu(PeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
         {
             // No support for MTU request with WinRT Bluetooth, we just return the automatically negotiated MTU
-            onMtuResult(GetPeripheralMtu(peripheral), new NativeError((int)Error.NotSupported));
+            onMtuResult(GetPeripheralMtu(peripheral), RequestStatus.NotSupported);
         }
 
         public void ReadPeripheralRssi(PeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead)
         {
             // No support for reading RSSI of connected device with WinRT Bluetooth
-            onRssiRead(0, new NativeError((int)Error.NotSupported));
+            onRssiRead(int.MinValue, RequestStatus.NotSupported);
         }
 
         public string GetPeripheralDiscoveredServices(PeripheralHandle peripheral)
         {
-            return pxBleGetPeripheralDiscoveredServices(GetPeripheralId(peripheral));
+            return pxBleGetPeripheralDiscoveredServices(GetPeripheralAddress(peripheral));
         }
 
         public string GetPeripheralServiceCharacteristics(PeripheralHandle peripheral, string serviceUuid)
         {
-            return pxBleGetPeripheralServiceCharacteristics(GetPeripheralId(peripheral), serviceUuid);
+            return pxBleGetPeripheralServiceCharacteristics(GetPeripheralAddress(peripheral), serviceUuid);
         }
 
         public CharacteristicProperties GetCharacteristicProperties(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex)
         {
-            return (CharacteristicProperties)pxBleGetCharacteristicProperties(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex);
+            return (CharacteristicProperties)pxBleGetCharacteristicProperties(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex);
         }
 
         public void ReadCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult)
         {
             var valueChangedHandler = GetValueChangedHandler(peripheral, onValueChanged);
-            pxBleReadCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler, GetRequestStatusHandler(peripheral, onResult));
-            var periph = (NativePeripheral)peripheral.SystemClient;
-            periph.Keep(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            periph.KeepValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
+            pxBleReadCharacteristicValue(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
+                GetRequestStatusHandler(Operation.ReadCharacteristic, peripheral, onResult));
+            //TODO when to forget value changed handler?
         }
 
         public void WriteCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
@@ -243,7 +317,8 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
             try
             {
                 Marshal.Copy(data, 0, ptr, data.Length);
-                pxBleWriteCharacteristicValue(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse, GetRequestStatusHandler(peripheral, onResult));
+                pxBleWriteCharacteristicValue(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse,
+                    GetRequestStatusHandler(Operation.WriteCharacteristic, peripheral, onResult));
             }
             finally
             {
@@ -254,49 +329,76 @@ namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Windows
         public void SubscribeCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult)
         {
             var valueChangedHandler = GetValueChangedHandler(peripheral, onValueChanged);
-            pxBleSetNotifyCharacteristic(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler, GetRequestStatusHandler(peripheral, onResult));
-            var periph = (NativePeripheral)peripheral.SystemClient;
-            periph.Keep(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            periph.KeepValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
+            pxBleSetNotifyCharacteristic(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
+                GetRequestStatusHandler(Operation.SubscribeCharacteristic, peripheral, onResult));
         }
 
         public void UnsubscribeCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
         {
-            pxBleSetNotifyCharacteristic(GetPeripheralId(peripheral), serviceUuid, characteristicUuid, instanceIndex, null, GetRequestStatusHandler(peripheral, onResult));
-            var periph = (NativePeripheral)peripheral.SystemClient;
-            periph.Forget(serviceUuid, characteristicUuid, instanceIndex);
+            pxBleSetNotifyCharacteristic(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, null,
+                GetRequestStatusHandler(Operation.UnsubscribeCharacteristic, peripheral, onResult));
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            periph.ForgetValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex);
         }
 
-        private ulong GetPeripheralId(ScannedPeripheral scannedPeripheral) => ((NativeScannedPeripheral)scannedPeripheral.SystemDevice).PeripheralId;
-
-        private ulong GetPeripheralId(PeripheralHandle peripheralHandle) => ((NativePeripheral)peripheralHandle.SystemClient).PeripheralId;
-
-        private RequestStatusHandler GetRequestStatusHandler(PeripheralHandle peripheral, NativeRequestResultHandler onResult)
+        private ulong GetPeripheralAddress(IScannedPeripheral scannedPeripheral)
         {
-            var periph = (NativePeripheral)peripheral.SystemClient;
+            return ((NativeScannedPeripheral)scannedPeripheral.NativeDevice).BluetoothAddress;
+        }
+
+        private ulong GetPeripheralAddress(PeripheralHandle peripheralHandle)
+        {
+            return ((NativePeripheral)peripheralHandle.NativePeripheral).BluetoothAddress;
+        }
+
+        private RequestStatusHandler GetRequestStatusHandler(Operation operation, PeripheralHandle peripheral, NativeRequestResultHandler onResult)
+        {
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
             RequestStatusHandler onRequestStatus = null;
             onRequestStatus = errorCode =>
             {
-                //Debug.LogWarning("Request status => " + errorCode);
-                periph.Forget(onRequestStatus);
-                onResult(new NativeError((int)errorCode, null));
+                try
+                {
+                    // Log success or error
+                    if (errorCode == RequestStatus.Success)
+                    {
+                        Debug.Log($"{operation} ==> Request successful");
+                    }
+                    else
+                    {
+                        Debug.LogError($"{operation} ==> Request failed: {errorCode}");
+                    }
+
+                    // We can forget about this handler instance, it won't be called anymore
+                    periph.ForgetRequestHandler(onRequestStatus);
+
+                    // Notify user code
+                    onResult(errorCode);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             };
-            periph.Keep(onRequestStatus);
+            periph.KeepRequestHandler(onRequestStatus);
             return onRequestStatus;
         }
 
         private ValueChangedHandler GetValueChangedHandler(PeripheralHandle peripheral, NativeValueChangedHandler onValueChanged)
         {
-            var periph = (NativePeripheral)peripheral.SystemClient;
-            ValueChangedHandler valueChangedHandler = (IntPtr data, UIntPtr length, BleRequestStatus errorCode) =>
+            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            ValueChangedHandler valueChangedHandler = (IntPtr data, UIntPtr length, RequestStatus errorCode) =>
             {
-                var array = new byte[(int)length];
-                if (data != IntPtr.Zero)
-                {
-                    Marshal.Copy(data, array, 0, array.Length);
-                }
                 try
                 {
-                    onValueChanged(array, new NativeError((int)errorCode));
+                    var array = new byte[(int)length];
+                    if (data != IntPtr.Zero)
+                    {
+                        Marshal.Copy(data, array, 0, array.Length);
+                    }
+                    onValueChanged(array, errorCode);
                 }
                 catch (Exception e)
                 {

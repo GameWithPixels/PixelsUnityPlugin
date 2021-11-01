@@ -1,23 +1,10 @@
 #pragma once
 
 #include <algorithm>
+#include "../../../include/bletypes.h"
 
 namespace Pixels::CoreBluetoothLE
 {
-    using bluetooth_address_t = std::uint64_t;
-
-    enum class BleRequestStatus
-    {
-        Success,
-        InvalidParameters,
-        NotSupported,
-        Busy,
-        Unreachable,
-        GattError,
-        Error,
-        Canceled,
-    };
-
     namespace Internal
     {
         template <typename T>

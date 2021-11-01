@@ -131,10 +131,6 @@ public final class Scanner
                 BluetoothDevice device = scanResult.getDevice();
                 if (device != null)
                 {
-                    StringBuilder sb = new StringBuilder();
-
-                    //Log.v(TAG, device.getAddress());
-
                     long address = 0, shift = 0;
                     String[] octets = device.getAddress().split(":");
                     for (int i = octets.length - 1; i >= 0; --i)
@@ -143,6 +139,7 @@ public final class Scanner
                         shift += 8;
                     }
 
+                    StringBuilder sb = new StringBuilder();
                     sb.append("{\"systemId\":\"");
                     sb.append(device.hashCode());
                     sb.append("\",\"address\":\"");

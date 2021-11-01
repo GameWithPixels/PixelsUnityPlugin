@@ -11,67 +11,63 @@ namespace Pixels::CoreBluetoothLE
 
     class Service;
 
-    enum class ConnectionEvent
-    {
-        Connecting,
-        Connected,
-        FailedToConnect, // + reason
-        Ready,
-        Disconnecting,
-        Disconnected, // + reason
-    };
-
-    enum class ConnectionEventReason
-    {
-        Unknown = -1,
-        Success = 0,
-        _Unused1,
-        _Unused2,
-        Unreachable,
-        NotSupported,
-        _Unused3,
-        ProtocolError,
-        AccessDenied,
-    };
-
-    //TODO see BleRequestStatus
-    enum class ConnectResult
-    {
-        Success, InvalidParameters, Error, Canceled
-    };
-
     class Peripheral : public std::enable_shared_from_this<Peripheral>
     {
         const bluetooth_address_t _address{};
+        const std::function<void(ConnectionEvent, ConnectionEventReason)> _onConnectionEvent{};
         BluetoothLEDevice _device{ nullptr };
         GattSession _session{ nullptr };
         winrt::event_token _connectionStatusChangedToken{};
-        std::function<void(ConnectionEvent, ConnectionEventReason)> _onConnectionEvent{};
         std::unordered_map<winrt::guid, std::shared_ptr<Service>> _services{};
         volatile size_t _connectCounter{};
         volatile bool _connecting{};
-        std::recursive_mutex _connectOpMtx{};
+        mutable std::recursive_mutex _connectOpMtx{};
         std::vector<std::tuple<ConnectionEvent, ConnectionEventReason>> _connectionEventsQueue{};
+        volatile bool _isReady{};
 
     public:
-        bool hasDevice() const { return _device != nullptr; }
+        bool hasDevice() const
+        {
+            return _device != nullptr;
+        }
 
-        bool isConnected() const { auto d = _device; return d ? (d.ConnectionStatus() == BluetoothConnectionStatus::Connected) : false; }
+        bool isConnected() const
+        {
+            auto dev = safeGetDevice();
+            return dev ? (dev.ConnectionStatus() == BluetoothConnectionStatus::Connected) : false;
+        }
 
-        const wchar_t* deviceId() const { auto d = _device; return d ? d.DeviceId().data() : nullptr; }
+        bool isReady() const
+        {
+            return _isReady;
+        }
 
-        bluetooth_address_t address() const { return _address; }
+        const wchar_t* deviceId() const
+        {
+            auto dev = safeGetDevice();
+            return dev ? dev.DeviceId().data() : nullptr;
+        }
 
-        const wchar_t* name() const { auto d = _device; return d ? d.Name().data() : nullptr; }
+        bluetooth_address_t address() const
+        {
+            return _address;
+        }
+
+        const wchar_t* name() const
+        {
+            auto dev = safeGetDevice();
+            return dev ? dev.Name().data() : nullptr;
+        }
 
         uint16_t mtu() const { auto s = _session; return s ? s.MaxPduSize() : 0; }
 
-        std::vector<std::shared_ptr<Service>> discoveredServices()
+        void copyDiscoveredServices(std::vector<std::shared_ptr<Service>>& outServices)
         {
             std::lock_guard lock{ _connectOpMtx };
-            std::vector<std::shared_ptr<Service>> ret{};
-            for (auto& [_,s] : _services) ret.push_back(s);
-            return ret;
+            for (auto& [_, s] : _services)
+            {
+                outServices.emplace_back(s);
+            }
         }
 
         Peripheral(bluetooth_address_t bluetoothAddress, std::function<void(ConnectionEvent, ConnectionEventReason)> onConnectionEvent)
@@ -90,6 +86,7 @@ namespace Pixels::CoreBluetoothLE
         void disconnect()
         {
             internalDisconnect(ConnectionEventReason::Success);
+            notifyQueuedConnectionEvents(); //TODO not getting those events!
         }
 
         std::shared_ptr<Service> getDiscoveredService(const winrt::guid& uuid)
@@ -105,7 +102,16 @@ namespace Pixels::CoreBluetoothLE
         }
 
     private:
-        void internalDisconnect(ConnectionEventReason reason, bool fromDeviceEvent = false);
+        BluetoothLEDevice safeGetDevice() const
+        {
+            std::lock_guard lock{ _connectOpMtx };
+            {
+                return _device;
+            }
+        }
+
+        // Take the lock and release device and session, be sure to call notifyQueuedConnectionEvents() afterwards
+        void internalDisconnect(ConnectionEventReason reason, bool triggeredByDevice = false);
 
         void notifyQueuedConnectionEvents()
         {
@@ -125,25 +131,17 @@ namespace Pixels::CoreBluetoothLE
             }
         }
 
-        void onDeviceConnectionStatusChanged(BluetoothLEDevice _, IInspectable __)
+        void onDeviceConnectionStatusChanged(BluetoothLEDevice device, IInspectable __)
         {
-            bool connected = false;
+            if (device.ConnectionStatus() == BluetoothConnectionStatus::Disconnected)
             {
-                std::lock_guard lock{ _connectOpMtx };
-                connected = isConnected();
-                if (connected)
-                {
-                    _connectionEventsQueue.emplace_back(ConnectionEvent::Connected, ConnectionEventReason::Success);
-                }
-            }
-
-            if (connected)
-            {
+                auto reason = (_session != nullptr) && (_session.MaintainConnection()) ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout;
+                internalDisconnect(reason, true);
                 notifyQueuedConnectionEvents();
             }
             else
             {
-                internalDisconnect(ConnectionEventReason::Unreachable, true);
+                // Connected event is raised in connectAsync() after it has successfully retrieved the services
             }
         }
     };

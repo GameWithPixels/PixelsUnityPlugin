@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <cstring>
+#include <limits>
 
 using peripheral_id_t = const char*;
 using request_index_t = std::uint32_t;
@@ -11,20 +12,53 @@ using characteristic_property_t = std::uint64_t;
 
 typedef void (*CentralStateUpdateCallback)(bool available);
 typedef void (*DiscoveredPeripheralCallback)(const char *advertisementDataJson);
-typedef void (*RequestStatusCallback)(request_index_t requestIndex, int errorCode, const char *errorMessage);
+typedef void (*RequestStatusCallback)(request_index_t requestIndex, int errorCode);
 typedef void (*PeripheralConnectionEventCallback)(request_index_t requestIndex, peripheral_id_t peripheralId, int connectionEvent, int reason);
-typedef void (*RssiReadCallback)(request_index_t requestIndex, int rssi, int errorCode, const char *errorMessage);
-typedef void (*ValueChangedCallback)(request_index_t requestIndex, const void* data, size_t length, int errorCode, const char *errorMessage);
+typedef void (*RssiReadCallback)(request_index_t requestIndex, int rssi, int errorCode);
+typedef void (*ValueChangedCallback)(request_index_t requestIndex, const void* data, size_t length, int errorCode);
 
 static PXBleCentralManagerDelegate *_central = nil;
 static NSMutableDictionary<CBPeripheral *, PXBlePeripheral *> *_peripherals = nil;
+
+
+static const int otherErrorsMask = 0x80000000;
+static const int unexpectedError = otherErrorsMask;
+static const int invalidPeripheralIdErrorCode = otherErrorsMask | 1;
+
+int toErrorCode(NSError *error)
+{
+    if (!error)
+    {
+        return 0;
+    }
+    else if (error.domain == CBErrorDomain)
+    {
+        // CoreBluetooth error (zero is CBErrorUnknown)
+        return -1 - (int)error.code;
+    }
+    else if (error.domain == CBATTErrorDomain)
+    {
+        // Protocol error (zero is success)
+        return (int)error.code;
+    }
+    else if (error.domain == pxBleGetErrorDomain())
+    {
+        // One of our own error
+        return otherErrorsMask | (0x100 + (int)error.code);
+    }
+    else
+    {
+        // Any other error
+        return unexpectedError;
+    }
+}
 
 typedef void (^CompletionHandler)(NSError *error);
 CompletionHandler toCompletionHandler(RequestStatusCallback onRequestStatus, request_index_t requestIndex)
 {
     return ^(NSError *error){
         if (onRequestStatus)
-            onRequestStatus(requestIndex, (int)error.code, [[error localizedDescription] UTF8String]);
+            onRequestStatus(requestIndex, toErrorCode(error));
     };
 }
 
@@ -36,7 +70,7 @@ ValueChangedHandler toValueChangedHandler(ValueChangedCallback onValueChanged, r
     {
         handler = ^(CBCharacteristic *characteristic, NSError *error){
             NSData *data = characteristic.value;
-            onValueChanged(requestIndex, data.bytes, data.length, (int)error.code, [[error localizedDescription] UTF8String]);
+            onValueChanged(requestIndex, data.bytes, data.length, toErrorCode(error));
             
         };
     }
@@ -216,6 +250,26 @@ PXBlePeripheral *getPxBlePeripheral(const char *peripheralId)
     return [_peripherals objectForKey:getCBPeripheral(peripheralId)];
 }
 
+PXBlePeripheral *getPxBlePeripheral(const char *peripheralId, RequestStatusCallback onRequestStatus, request_index_t requestIndex)
+{
+    PXBlePeripheral *pxPeripheral = getPxBlePeripheral(peripheralId);
+    if (!pxPeripheral && onRequestStatus)
+    {
+        onRequestStatus(requestIndex, invalidPeripheralIdErrorCode);
+    }
+    return pxPeripheral;
+}
+
+PXBlePeripheral *getPxBlePeripheral(const char *peripheralId, RssiReadCallback onRssiRead, request_index_t requestIndex)
+{
+    PXBlePeripheral *pxPeripheral = getPxBlePeripheral(peripheralId);
+    if (!pxPeripheral && onRssiRead)
+    {
+        onRssiRead(std::numeric_limits<int>::min(), requestIndex, invalidPeripheralIdErrorCode);
+    }
+    return pxPeripheral;
+}
+
 CBService *getService(const char *peripheralId, const char *serviceUuidStr)
 {
     if (peripheralId && serviceUuidStr)
@@ -271,25 +325,25 @@ extern "C"
 // None of the pxBle* methods are thread safe!
 bool pxBleInitialize(CentralStateUpdateCallback onCentralStateUpdate)
 {
-    if (_peripherals == nil)
+    if (!_peripherals)
     {
         // Allocate just once
         _peripherals = [NSMutableDictionary<CBPeripheral *, PXBlePeripheral *> new];
     }
-    if (_central == nil)
+    if (!_central)
     {
         // Allocate everytime (set to nil in shutdown)
         _central = [[PXBleCentralManagerDelegate alloc] initWithStateUpdateHandler:^(CBManagerState state) {
             if (onCentralStateUpdate) onCentralStateUpdate(state >= CBManagerStatePoweredOn);
         }];
     }
-
+    
     return _peripherals && _central;
 }
 
 void pxBleShutdown()
 {
-    if (_central != nil)
+    if (_central)
     {
         [_peripherals removeAllObjects];
         [_central clearPeripherals];
@@ -306,7 +360,7 @@ bool pxBleStartScan(const char *requiredServicesUuids,
     {
         return false;
     }
-
+    
     _central.peripheralDiscoveryHandler = ^(CBPeripheral *peripheral, NSDictionary<NSString *,id> *advertisementData, NSNumber *RSSI){
         onDiscoveredPeripheral([advertisementDataToJsonString(getPeripheralId(peripheral), advertisementData, RSSI) UTF8String]);
     };
@@ -328,19 +382,19 @@ bool pxBleCreatePeripheral(peripheral_id_t peripheralId,
                            PeripheralConnectionEventCallback onPeripheralConnectionEvent,
                            request_index_t requestIndex)
 {
-    if (getPxBlePeripheral(peripheralId) != nil)
+    if (getPxBlePeripheral(peripheralId))
     {
         // Already created
         return false;
     }
-
+    
     CBPeripheral *cbPeripheral = getCBPeripheral(peripheralId);
-    if (cbPeripheral == nil)
+    if (!cbPeripheral)
     {
         // No known peripheral for this id
         return false;
     }
-
+    
     PXBlePeripheral *pxPeripheral = [[PXBlePeripheral alloc] initWithPeripheral:cbPeripheral
                                                          centralManagerDelegate:_central
                                                  connectionStatusChangedHandler:^(PXBlePeripheralConnectionEvent connectionEvent, PXBlePeripheralConnectionEventReason reason){
@@ -359,7 +413,8 @@ bool pxBleCreatePeripheral(peripheral_id_t peripheralId,
 
 void pxBleReleasePeripheral(peripheral_id_t peripheralId)
 {
-    [_peripherals removeObjectForKey:getCBPeripheral(peripheralId)];
+    CBPeripheral *cbPeripheral = getCBPeripheral(peripheralId);
+    [_peripherals removeObjectForKey:cbPeripheral];
 }
 
 void pxBleConnectPeripheral(peripheral_id_t peripheralId,
@@ -367,39 +422,44 @@ void pxBleConnectPeripheral(peripheral_id_t peripheralId,
                             RequestStatusCallback onRequestStatus,
                             request_index_t requestIndex)
 {
-    [getPxBlePeripheral(peripheralId) queueConnectWithServices:toCBUUIDArray(requiredServicesUuids)
-                                             completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
+    PXBlePeripheral *pxPeripheral = getPxBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+    [pxPeripheral queueConnectWithServices:toCBUUIDArray(requiredServicesUuids)
+                         completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
 }
 
 void pxBleDisconnectPeripheral(peripheral_id_t peripheralId,
                                RequestStatusCallback onRequestStatus,
                                request_index_t requestIndex)
 {
-    [getPxBlePeripheral(peripheralId) queueDisconnect:toCompletionHandler(onRequestStatus, requestIndex)];
+    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+    [peripheral cancelQueue];
+    [peripheral queueDisconnect:toCompletionHandler(onRequestStatus, requestIndex)];
 }
 
 int pxBleGetPeripheralMtu(peripheral_id_t peripheralId)
 {
+    CBPeripheral *cbPeripheral = getCBPeripheral(peripheralId);
     // Return the smallest MTU since we don't differentiate the 2 values
-    int mtu1 = (int)[getCBPeripheral(peripheralId) maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
-    int mtu2 = (int)[getCBPeripheral(peripheralId) maximumWriteValueLengthForType:CBCharacteristicWriteWithoutResponse];
+    int mtu1 = (int)[cbPeripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithResponse];
+    int mtu2 = (int)[cbPeripheral maximumWriteValueLengthForType:CBCharacteristicWriteWithoutResponse];
     return mtu1 <= mtu2 ? mtu1 : mtu2;
 }
 
 // caller should free string (Unity marshaling takes care of it)
 const char* pxBleGetPeripheralName(peripheral_id_t peripheralId)
 {
-    return allocateCStr(getCBPeripheral(peripheralId).name);
+    CBPeripheral *cbPeripheral = getCBPeripheral(peripheralId);
+    return allocateCStr(cbPeripheral.name);
 }
 
 void pxBleReadPeripheralRssi(peripheral_id_t peripheralId,
                              RssiReadCallback onRssiRead,
                              request_index_t requestIndex)
 {
-    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId);
+    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId, onRssiRead, requestIndex);
     [peripheral queueReadRssi:^(NSError *error) {
         if (onRssiRead)
-            onRssiRead(requestIndex, error ? 0 : peripheral.rssi, (int)error.code, [[error localizedDescription] UTF8String]);
+            onRssiRead(requestIndex, error ? 0 : peripheral.rssi, toErrorCode(error));
     }];
 }
 
@@ -438,7 +498,7 @@ void pxBleReadCharacteristicValue(peripheral_id_t peripheralId,
                                   RequestStatusCallback onRequestStatus,
                                   request_index_t requestIndex)
 {
-    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId);
+    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId, onRequestStatus, requestIndex);
     [peripheral queueReadValueForCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                             valueChangedHandler:toValueChangedHandler(onValueChanged, requestIndex)
                               completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
@@ -456,7 +516,7 @@ void pxBleWriteCharacteristicValue(peripheral_id_t peripheralId,
 {
     if (data && length)
     {
-        PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId);
+        PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId, onRequestStatus, requestIndex);
         [peripheral queueWriteValue:[NSData dataWithBytes:data length:length]
                   forCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                                type:withoutResponse ? CBCharacteristicWriteWithoutResponse : CBCharacteristicWriteWithResponse
@@ -472,10 +532,10 @@ void pxBleSetNotifyCharacteristic(peripheral_id_t peripheralId,
                                   RequestStatusCallback onRequestStatus,
                                   request_index_t requestIndex)
 {
-    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId);
+    PXBlePeripheral *peripheral = getPxBlePeripheral(peripheralId, onRequestStatus, requestIndex);
     [peripheral queueSetNotifyValueForCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                                  valueChangedHandler:toValueChangedHandler(onValueChanged, requestIndex)
                                    completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
 }
-    
+
 } // extern "C"

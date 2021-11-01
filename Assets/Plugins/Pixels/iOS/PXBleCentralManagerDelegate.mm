@@ -37,7 +37,7 @@
     {
         _startScanSync = [NSObject new];
         _stateUpdateHandler = stateUpdateHandler;
-        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:GetBleSerialQueue()];
+        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:pxBleGetSerialQueue()];
         _peripherals = [NSMutableDictionary<NSUUID *,CBPeripheral *> new];
         _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, PXBlePeripheralConnectionEventHandler> new];
     }
@@ -87,7 +87,7 @@
     {
         handler = _peripheralsConnectionEventHandlers[peripheral];
     }
-    if (handler != nil)
+    if (handler)
     {
         handler(peripheral, connectionEvent, error);
     }
@@ -99,7 +99,7 @@
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
-    if (_stateUpdateHandler != nil)
+    if (_stateUpdateHandler)
     {
         _stateUpdateHandler(central.state);
     }
@@ -116,7 +116,7 @@
         _peripherals[peripheral.identifier] = peripheral;
     }
     PXBlePeripheralDiscoveryHandler handler = self.peripheralDiscoveryHandler;
-    if (handler != nil)
+    if (handler)
     {
         handler(peripheral, advertisementData, RSSI);
     }

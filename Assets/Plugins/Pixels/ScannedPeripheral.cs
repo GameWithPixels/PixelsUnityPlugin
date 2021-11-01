@@ -6,16 +6,32 @@ using System.Linq;
 
 namespace Systemic.Pixels.Unity.BluetoothLE
 {
-    public class ScannedPeripheral
+    internal interface INativeDevice
     {
-        public interface ISystemDevice { }
+        bool IsValid { get; }
+    }
 
-        internal ScannedPeripheral(ISystemDevice systemDevice, Internal.AdvertisementDataJson advertisementData)
+    internal interface IScannedPeripheral
+    {
+        INativeDevice NativeDevice { get; }
+
+        bool IsValid { get; }
+
+        string Name { get; }
+    }
+
+    // Readonly class
+    public class ScannedPeripheral : IScannedPeripheral
+    {
+        INativeDevice _nativeDevice;
+
+        internal ScannedPeripheral(INativeDevice nativeDevice, Internal.AdvertisementDataJson advertisementData)
         {
-            if (systemDevice == null) throw new ArgumentNullException(nameof(systemDevice));
+            if (nativeDevice == null) throw new ArgumentNullException(nameof(nativeDevice));
+            if (!nativeDevice.IsValid) throw new ArgumentException("Invalid native device", nameof(nativeDevice));
             if (advertisementData == null) throw new ArgumentNullException(nameof(advertisementData));
 
-            SystemDevice = systemDevice;
+            _nativeDevice = nativeDevice;
             SystemId = advertisementData.systemId;
             BluetoothAddress = advertisementData.address;
             Name = advertisementData.name;
@@ -29,7 +45,9 @@ namespace Systemic.Pixels.Unity.BluetoothLE
             SolicitedServices = Array.AsReadOnly(ToGuidArray(advertisementData.solicitedServiceUUIDs));
         }
 
-        public ISystemDevice SystemDevice { get; }
+        INativeDevice IScannedPeripheral.NativeDevice => _nativeDevice;
+
+        bool IScannedPeripheral.IsValid => _nativeDevice?.IsValid ?? false;
 
         public string SystemId { get; }
 

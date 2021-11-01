@@ -5,7 +5,7 @@
 #include "CoreBluetoothLE/Peripheral.h"
 #include "CoreBluetoothLE/Service.h"
 #include "CoreBluetoothLE/Characteristic.h"
-#include "DotNetMarshalling.h"
+#include "ComHelper.h"
 
 #include <sstream>
 #include <mutex>
@@ -16,17 +16,17 @@ static std::shared_ptr<Scanner> _scanner;
 
 // Always use lock to access the map
 static std::mutex _peripheralsMutex{};
-static std::map<peripheral_id_t, std::shared_ptr<Peripheral>> _peripherals{};
+static std::map<bluetooth_address_t, std::shared_ptr<Peripheral>> _peripherals{};
 
 // Anonymous namespace for our local functions
 namespace
 {
-    auto findPeripheral(peripheral_id_t peripheralId)
+    auto findPeripheral(bluetooth_address_t address)
     {
         std::shared_ptr<Peripheral> peripheral{};
         {
             std::lock_guard lock{ _peripheralsMutex };
-            auto it = _peripherals.find(peripheralId);
+            auto it = _peripherals.find(address);
             if (it != _peripherals.end())
             {
                 peripheral = it->second;
@@ -36,13 +36,13 @@ namespace
     }
 
     auto findCharacteristic(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex)
     {
         std::shared_ptr<Characteristic> characteristic{};
-        if (auto peripheral = findPeripheral(peripheralId))
+        if (auto peripheral = findPeripheral(address))
         {
             auto service = peripheral->getDiscoveredService(winrt::guid{ serviceUuid });
             if (service)
@@ -65,38 +65,38 @@ namespace
     }
 
     void runForPeripheral(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
         std::function<void(std::shared_ptr<Peripheral>)> action)
     {
         assert(action);
 
-        if (auto peripheral = findPeripheral(peripheralId))
+        if (auto peripheral = findPeripheral(address))
         {
             action(peripheral);
         }
         else if (onRequestStatus)
         {
-            onRequestStatus((int)BleRequestStatus::InvalidParameters);
+            onRequestStatus(BleRequestStatus::InvalidPeripheral);
         }
     }
 
     template <typename T>
     T runForPeripheral(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
         std::function<T(std::shared_ptr<Peripheral>)> func)
     {
         assert(func);
         T result{};
 
-        if (auto peripheral = findPeripheral(peripheralId))
+        if (auto peripheral = findPeripheral(address))
         {
             result = func(peripheral);
         }
         else if (onRequestStatus)
         {
-            onRequestStatus((int)BleRequestStatus::InvalidParameters);
+            onRequestStatus(BleRequestStatus::InvalidPeripheral);
         }
 
         return result;
@@ -104,7 +104,7 @@ namespace
 
     template <typename T>
     T runForCharacteristic(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
@@ -114,38 +114,38 @@ namespace
         assert(func);
         T result{};
 
-        if (auto characteristic = findCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex))
+        if (auto characteristic = findCharacteristic(address, serviceUuid, characteristicUuid, instanceIndex))
         {
             result = func(characteristic);
         }
         else if (onRequestStatus)
         {
-            onRequestStatus((int)BleRequestStatus::InvalidParameters);
+            onRequestStatus(BleRequestStatus::InvalidParameters);
         }
 
         return result;
     }
 
     void runForPeripheralAsync(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
         std::function<std::future<void>(std::shared_ptr<Peripheral>)> actionFuture)
     {
         assert(actionFuture);
 
-        if (auto peripheral = findPeripheral(peripheralId))
+        if (auto peripheral = findPeripheral(address))
         {
             // Run future (which will continue on another thread)
             actionFuture(peripheral);
         }
         else if (onRequestStatus)
         {
-            onRequestStatus((int)BleRequestStatus::InvalidParameters);
+            onRequestStatus(BleRequestStatus::InvalidPeripheral);
         }
     }
 
     void runForCharacteristicAsync(
-        peripheral_id_t peripheralId,
+        bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
@@ -154,13 +154,13 @@ namespace
     {
         assert(actionFuture);
 
-        if (auto characteristic = findCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex))
+        if (auto characteristic = findCharacteristic(address, serviceUuid, characteristicUuid, instanceIndex))
         {
             actionFuture(characteristic);
         }
         else if (onRequestStatus)
         {
-            onRequestStatus((int)BleRequestStatus::InvalidParameters);
+            onRequestStatus(BleRequestStatus::InvalidParameters);
         }
     }
 
@@ -185,11 +185,11 @@ namespace
         {
             if (data.empty())
             {
-                onValueChanged(nullptr, 0, (int)BleRequestStatus::Error);
+                onValueChanged(nullptr, 0, BleRequestStatus::Error);
             }
             else
             {
-                onValueChanged(data.data(), data.size(), (int)BleRequestStatus::Success);
+                onValueChanged(data.data(), data.size(), BleRequestStatus::Success);
             }
         }
     }
@@ -246,12 +246,12 @@ namespace
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-// None of the pxBle* methods are thread safe!
 bool pxBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback onCentralStateUpdate)
 {
     try
     {
         winrt::init_apartment(apartmentSingleThreaded ? winrt::apartment_type::single_threaded : winrt::apartment_type::multi_threaded);
+        onCentralStateUpdate(true); //TODO
         return true;
     }
     catch (const winrt::hresult_error&)
@@ -262,7 +262,10 @@ bool pxBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback on
 
 void pxBleShutdown()
 {
+    // Destroy scanner instance
     _scanner.reset();
+
+    // Destroy all peripherals
     {
         std::vector<std::shared_ptr<Peripheral>> copy{ _peripherals.size() };
         {
@@ -272,12 +275,17 @@ void pxBleShutdown()
                 copy.emplace_back(p);
             }
             _peripherals.clear();
+            //TODO remove all subscriptions callbacks so their are not triggered after this point
         }
-        // Peripherals are destroyed here (it's important that _peripherals is already empty
+        // Peripherals are destroyed here
+        // We want _peripherals to be empty in case a callback to user code tries
+        // to access to a peripheral (wile it's being destroyed)
     }
 
     winrt::clear_factory_cache();
     winrt::uninit_apartment();
+
+    //TODO prevent callbacks to native code after shutdown? But this as implications on the managed code which expect all requests to return a result
 }
 
 // requiredServicesUuids is a comma separated list of UUIDs, it can be null
@@ -314,7 +322,7 @@ void pxBleStopScan()
 
 // discoverServicesUuids is a comma separated list of UUIDs, it can be null
 bool pxBleCreatePeripheral(
-    peripheral_id_t bluetoothAddress,
+    bluetooth_address_t bluetoothAddress,
     PeripheralConnectionStatusChangedCallback onPeripheralStatusChanged)
 {
     if (!bluetoothAddress)
@@ -334,7 +342,8 @@ bool pxBleCreatePeripheral(
         bluetoothAddress,
         [onPeripheralStatusChanged, bluetoothAddress](ConnectionEvent ev, ConnectionEventReason reason)
         {
-            if (onPeripheralStatusChanged) onPeripheralStatusChanged(bluetoothAddress, (int)ev, (int)reason);
+            //TODO check valid peripheral
+            if (onPeripheralStatusChanged) onPeripheralStatusChanged(bluetoothAddress, ev, reason);
         }
     );
 
@@ -347,12 +356,12 @@ bool pxBleCreatePeripheral(
     return (peripheral != nullptr);
 }
 
-void pxBleReleasePeripheral(peripheral_id_t peripheralId)
+void pxBleReleasePeripheral(bluetooth_address_t address)
 {
     std::shared_ptr<Peripheral> peripheral{};
     {
         std::lock_guard lock{ _peripheralsMutex };
-        auto it = _peripherals.find(peripheralId);
+        auto it = _peripherals.find(address);
         if (it != _peripherals.end())
         {
             peripheral = it->second;
@@ -363,73 +372,82 @@ void pxBleReleasePeripheral(peripheral_id_t peripheralId)
 }
 
 void pxBleConnectPeripheral(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* requiredServicesUuids,
+    bool autoConnect,
     RequestStatusCallback onRequestStatus)
 {
     auto services = toGuids(requiredServicesUuids);
-    runForPeripheralAsync(peripheralId, onRequestStatus,
-        [services, onRequestStatus](std::shared_ptr<Peripheral> p)->std::future<void>
+    runForPeripheralAsync(address, onRequestStatus,
+        [services, autoConnect, onRequestStatus](std::shared_ptr<Peripheral> p)->std::future<void>
         {
             auto o = onRequestStatus;
-            auto result = co_await p->connectAsync(services);
-            if (o) o((int)result);
+            auto result = co_await p->connectAsync(services, autoConnect);
+            if (o) o(result);
         }
     );
 }
 
+//TODO return BleRequestStatus as out parameter
 void pxBleDisconnectPeripheral(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     RequestStatusCallback onRequestStatus)
 {
-    runForPeripheral(peripheralId, onRequestStatus,
+    runForPeripheral(address, onRequestStatus,
         [onRequestStatus](auto p)
         {
             p->disconnect();
-            if (onRequestStatus) onRequestStatus((int)BleRequestStatus::Success);
+            if (onRequestStatus) onRequestStatus(BleRequestStatus::Success);
         }
     );
 }
 
-int pxBleGetPeripheralMtu(peripheral_id_t peripheralId)
+//TODO return BleRequestStatus as out parameter
+int pxBleGetPeripheralMtu(bluetooth_address_t address)
 {
-    return runForPeripheral<int>(peripheralId, nullptr,
+    return runForPeripheral<int>(address, nullptr,
         [](auto p) { return (int)p->mtu(); });
 }
 
-const char* pxBleGetPeripheralName(peripheral_id_t peripheralId)
+//TODO return BleRequestStatus as out parameter
+// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+const char* pxBleGetPeripheralName(bluetooth_address_t address)
 {
-    return runForPeripheral<const char*>(peripheralId, nullptr,
-        [](auto p) { return marshalForReturningStrToDotNet(p->name()); });
+    return runForPeripheral<const char*>(address, nullptr,
+        [](auto p) { return ComHelper::copyToComBuffer(p->name()); });
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string (Unity marshaling takes care of it)
-const char* pxBleGetPeripheralDiscoveredServices(peripheral_id_t peripheralId)
+// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+//TODO return BleRequestStatus as out parameter
+const char* pxBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
 {
-    return runForPeripheral<const char*>(peripheralId, nullptr,
+    return runForPeripheral<const char*>(address, nullptr,
         [](auto p)
         {
             std::stringstream str{};
             bool first = true;
-            for (auto& s : p->discoveredServices())
+            std::vector<std::shared_ptr<Service>> services{};
+            p->copyDiscoveredServices(services);
+            for (auto& s : services)
             {
                 if (!first) str << ",";
                 first = false;
                 str << toStr(s->uuid());
             }
-            return marshalForReturningStrToDotNet(str.str().data());
+            return ComHelper::copyToComBuffer(str.str().data());
         }
     );
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string (Unity marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or pxBleFreeString() (.NET marshaling takes care of it)
+//TODO return BleRequestStatus as out parameter
 const char* pxBleGetPeripheralServiceCharacteristics(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* serviceUuid)
 {
-    return runForPeripheral<const char*>(peripheralId, nullptr,
+    return runForPeripheral<const char*>(address, nullptr,
         [serviceUuid](auto p)
         {
             std::stringstream str{};
@@ -437,27 +455,29 @@ const char* pxBleGetPeripheralServiceCharacteristics(
             if (service)
             {
                 bool first = true;
-                for (auto& c : service->characteristics())
+                std::vector<std::shared_ptr<Characteristic>> characteristics{};
+                service->copyCharacteristics(characteristics);
+                for (auto& c : characteristics)
                 {
                     if (!first) str << ",";
                     first = false;
                     str << toStr(c->uuid());
                 }
             }
-            return marshalForReturningStrToDotNet(str.str().data());
+            return ComHelper::copyToComBuffer(str.str().data());
         }
     );
 }
 
-// https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc
+//TODO return BleRequestStatus as out parameter
 characteristic_property_t pxBleGetCharacteristicProperties(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex)
 {
     return runForCharacteristic<characteristic_property_t>(
-        peripheralId, serviceUuid, characteristicUuid, instanceIndex, nullptr,
+        address, serviceUuid, characteristicUuid, instanceIndex, nullptr,
         [](auto c)
         {
             return (characteristic_property_t)c->properties();
@@ -466,7 +486,7 @@ characteristic_property_t pxBleGetCharacteristicProperties(
 }
 
 void pxBleReadCharacteristicValue(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex,
@@ -474,20 +494,20 @@ void pxBleReadCharacteristicValue(
     RequestStatusCallback onRequestStatus)
 {
     runForCharacteristicAsync(
-        peripheralId, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
+        address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
         [onValueChanged, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
         {
             auto o = onRequestStatus;
             auto v = onValueChanged;
             auto data = co_await c->readValueAsync();
             notifyValueChange(v, data);
-            if (o) o(int(!data.empty() ? BleRequestStatus::Success : BleRequestStatus::Error));
+            if (o) o((!data.empty()) ? BleRequestStatus::Success : BleRequestStatus::Error);
         }
     );
 }
 
 void pxBleWriteCharacteristicValue(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex,
@@ -499,18 +519,18 @@ void pxBleWriteCharacteristicValue(
     auto ptr = (std::uint8_t*)data;
     std::vector<std::uint8_t> value{ ptr, ptr + length };
     runForCharacteristicAsync(
-        peripheralId, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
+        address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
         [value, withoutResponse, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
         {
             auto o = onRequestStatus;
             auto result = co_await c->writeAsync(value, withoutResponse);
-            if (o) o((int)result);
+            if (o) o(result);
         }
     );
 }
 
 void pxBleSetNotifyCharacteristic(
-    peripheral_id_t peripheralId,
+    bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex,
@@ -518,7 +538,7 @@ void pxBleSetNotifyCharacteristic(
     RequestStatusCallback onRequestStatus)
 {
     runForCharacteristicAsync(
-        peripheralId, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
+        address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
         [onValueChanged, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
         {
             auto o = onRequestStatus;
@@ -526,14 +546,22 @@ void pxBleSetNotifyCharacteristic(
             BleRequestStatus result;
             if (v)
             {
-                result = co_await c->subscribeAsync([v](const std::vector<std::uint8_t>& data) {
-                    notifyValueChange(v, data); });
+                result = co_await c->subscribeAsync(
+                    [v](const std::vector<std::uint8_t>& data)
+                    {
+                        notifyValueChange(v, data);
+                    });
             }
             else
             {
                 result = co_await c->unsubscribeAsync();
             }
-            if (o) o((int)result);
+            if (o) o(result);
         }
     );
+}
+
+void pxBleFreeString(char* str)
+{
+    ComHelper::freeComBuffer(str);
 }

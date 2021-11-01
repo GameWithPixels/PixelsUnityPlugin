@@ -3,30 +3,31 @@ using UnityEngine;
 
 namespace Systemic.Pixels.Unity.BluetoothLE.Internal.Android
 {
-    sealed class RequestCallback : AndroidJavaProxy
+    internal sealed class RequestCallback : AndroidJavaProxy
     {
-        Action<int> _onRequestDone;
+        Operation _operation;
+        NativeRequestResultHandler _onResult;
 
-        public RequestCallback(NativeRequestResultHandler onResult)
+        public RequestCallback(Operation operation, NativeRequestResultHandler onResult)
             : base("com.systemic.pixels.Peripheral$RequestCallback")
-            => _onRequestDone = errorCode => onResult(new NativeError(errorCode, "Android error"));
+            => (_operation, _onResult) = (operation, onResult);
 
         void onRequestCompleted(AndroidJavaObject device)
         {
-            Debug.Log("==> onRequestCompleted");
-            _onRequestDone?.Invoke(0); //RequestStatus.GATT_SUCCESS
+            Debug.Log($"{_operation} ==> onRequestCompleted");
+            _onResult?.Invoke(0); //RequestStatus.GATT_SUCCESS
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError("==> onRequestFailed with status " + (AndroidRequestStatus)status);
-            _onRequestDone?.Invoke(status);
+            Debug.LogError($"{_operation} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            _onResult?.Invoke(AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError("==> onInvalidRequest");
-            _onRequestDone?.Invoke((int)AndroidRequestStatus.REASON_REQUEST_INVALID);
+            Debug.LogError($"{_operation} ==> onInvalidRequest");
+            _onResult?.Invoke(RequestStatus.InvalidCall);
         }
     }
 }

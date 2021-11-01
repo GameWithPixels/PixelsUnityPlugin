@@ -1,14 +1,18 @@
 
 namespace Systemic.Pixels.Unity.BluetoothLE
 {
+    internal interface INativePeripheral
+    {
+        bool IsValid { get; }
+    }
+
+    // Readonly struct
     public struct PeripheralHandle
     {
-        public interface INativePeripheral { }
+        internal PeripheralHandle(INativePeripheral client) => NativePeripheral = client;
 
-        public PeripheralHandle(INativePeripheral client) => SystemClient = client;
+        internal INativePeripheral NativePeripheral { get; }
 
-        public INativePeripheral SystemClient { get; }
-
-        public bool IsEmpty => SystemClient == null;
+        public bool IsValid => NativePeripheral?.IsValid ?? false;
     }
 }

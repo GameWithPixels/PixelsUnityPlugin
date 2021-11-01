@@ -19,17 +19,35 @@ namespace Pixels::CoreBluetoothLE
         std::recursive_mutex _subscribeMtx{};
 
     public:
-        std::uint16_t handle() const { return _characteristic.AttributeHandle(); }
+        std::uint16_t handle() const
+        {
+            return _characteristic.AttributeHandle();
+        }
 
-        winrt::guid uuid() const { return _characteristic.Uuid(); }
+        winrt::guid uuid() const
+        {
+            return _characteristic.Uuid();
+        }
 
-        GattCharacteristicProperties properties() const { return _characteristic.CharacteristicProperties(); }
+        GattCharacteristicProperties properties() const
+        {
+            return _characteristic.CharacteristicProperties();
+        }
 
-        bool canWrite() const { return (properties() & GattCharacteristicProperties::Write) == GattCharacteristicProperties::Write; }
+        bool canWrite() const
+        {
+            return (properties() & GattCharacteristicProperties::Write) == GattCharacteristicProperties::Write;
+        }
 
-        bool canRead() const { return (properties() & GattCharacteristicProperties::Read) == GattCharacteristicProperties::Read; }
+        bool canRead() const
+        {
+            return (properties() & GattCharacteristicProperties::Read) == GattCharacteristicProperties::Read;
+        }
 
-        bool canNotify() const { return (properties() & GattCharacteristicProperties::Notify) == GattCharacteristicProperties::Notify; }
+        bool canNotify() const
+        {
+            return (properties() & GattCharacteristicProperties::Notify) == GattCharacteristicProperties::Notify;
+        }
 
         //TODO return error code
         std::future<std::vector<std::uint8_t>> readValueAsync()
@@ -62,7 +80,7 @@ namespace Pixels::CoreBluetoothLE
                 std::lock_guard lock{ _subscribeMtx };
                 if (_onValueChanged != nullptr)
                 {
-                    co_return BleRequestStatus::Busy;
+                    co_return BleRequestStatus::InvalidCall;
                 }
                 _onValueChanged = onValueChanged;
                 _valueChangedToken = _characteristic.ValueChanged({ this, &Characteristic::onValueChanged });
