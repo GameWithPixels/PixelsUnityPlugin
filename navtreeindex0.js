@@ -1,5 +1,10 @@
 var NAVTREEINDEX0 =
 {
+"":[1,0,0],
+"":[1,0,1,0],
+"":[1,0,1,1],
+"":[1,0,0,0],
+"":[1,0,0,0,0],
 "_ble_common_8h_source.html":[3,0,1,1,0,0,0,0],
 "_ble_utils_8h_source.html":[3,0,0,0,0,0,0],
 "_characteristic_8h_source.html":[3,0,1,1,0,0,0,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX0 =
 "interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd":[2,0,2,13],
 "interface_s_g_ble_peripheral.html":[2,0,3],
 "interface_s_g_ble_peripheral.html#a07ac3ee9e03346e03854777e404e33de":[2,0,3,20],
-"interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a":[2,0,3,8],
-"interface_s_g_ble_peripheral.html#a1088a3616f3fd9d7d88c42f122d1c533":[2,0,3,12],
-"interface_s_g_ble_peripheral.html#a12f2a3eaba126e0f2938e9f9be27bd3e":[2,0,3,2],
-"interface_s_g_ble_peripheral.html#a148d91465cb69b94b0a4d505dd551875":[2,0,3,18],
-"interface_s_g_ble_peripheral.html#a1a8d3a7b408f9cb0901521c1515dc1b7":[2,0,3,14],
-"interface_s_g_ble_peripheral.html#a226ab6c4c0da14901f9c645f5b0181a3":[2,0,3,21]
+"interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a":[2,0,3,8]
 };

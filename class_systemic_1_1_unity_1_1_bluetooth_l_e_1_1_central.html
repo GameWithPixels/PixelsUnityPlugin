@@ -121,7 +121,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1148ab4e2eee6bd78d55bbd5c76e9519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a1148ab4e2eee6bd78d55bbd5c76e9519">More...</a><br /></td></tr>
 <tr class="separator:a1148ab4e2eee6bd78d55bbd5c76e9519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12936d8990bd67bdfa880ad495e072b3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a12936d8990bd67bdfa880ad495e072b3">GetPeripheralMtu</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral)</td></tr>
-<tr class="memdesc:a12936d8990bd67bdfa880ad495e072b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns Maximum Transmission Unit (MTU) for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a12936d8990bd67bdfa880ad495e072b3">More...</a><br /></td></tr>
+<tr class="memdesc:a12936d8990bd67bdfa880ad495e072b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Maximum Transmission Unit (MTU) for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a12936d8990bd67bdfa880ad495e072b3">More...</a><br /></td></tr>
 <tr class="separator:a12936d8990bd67bdfa880ad495e072b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea0a4ca9036f6fbc22184f704f8dcc1d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html">ValueRequestEnumerator</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aea0a4ca9036f6fbc22184f704f8dcc1d">ReadPeripheralRssi</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral, float timeoutSec=<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a77920256327290c429a1d83dfb690a06">RequestDefaultTimeout</a>)</td></tr>
 <tr class="memdesc:aea0a4ca9036f6fbc22184f704f8dcc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously reads the Received Signal Strength Indicator (RSSI) for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aea0a4ca9036f6fbc22184f704f8dcc1d">More...</a><br /></td></tr>
@@ -411,7 +411,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns Maximum Transmission Unit (MTU) for the given peripheral. </p>
+<p>Returns the Maximum Transmission Unit (MTU) for the given peripheral. </p>
 <p>The MTU is the maximum length of a packet that can be send to the BLE peripheral. However the BLE protocol uses 3 bytes, so the maximum data size that can be given to <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a5b93bfbc2083309f4b5932e504195f13" title="Asynchronously write to the specified service&#39;s characteristic for the given peripheral and wait for ...">WriteCharacteristicAsync</a> is 3 bytes less than the MTU.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
