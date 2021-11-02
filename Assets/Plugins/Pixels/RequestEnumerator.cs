@@ -48,14 +48,14 @@ namespace Systemic.Unity.BluetoothLE
 
         public object Current => null;
 
-        protected PeripheralHandle Peripheral { get; }
+        protected NativePeripheralHandle Peripheral { get; }
 
         internal RequestEnumerator(
             Operation operation,
-            PeripheralHandle peripheralHandle,
+            NativePeripheralHandle nativeHandle,
             float timeoutSec,
-            Action<PeripheralHandle, NativeRequestResultHandler> action)
-            : this(operation, peripheralHandle, timeoutSec)
+            Action<NativePeripheralHandle, NativeRequestResultHandler> action)
+            : this(operation, nativeHandle, timeoutSec)
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
 
@@ -74,11 +74,11 @@ namespace Systemic.Unity.BluetoothLE
 
         protected RequestEnumerator(
             Operation operation,
-            PeripheralHandle peripheralHandle,
+            NativePeripheralHandle nativeHandle,
             float timeoutSec)
         {
             Operation = operation;
-            Peripheral = peripheralHandle;
+            Peripheral = nativeHandle;
             _timeout = timeoutSec == 0 ? 0 : Time.realtimeSinceStartupAsDouble + timeoutSec;
         }
 

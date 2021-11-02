@@ -12,36 +12,36 @@ namespace Systemic.Unity.BluetoothLE.Internal
 
         void StopScan();
 
-        PeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativePeripheralConnectionEventHandler onConnectionEvent);
+        NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent);
 
-        PeripheralHandle CreatePeripheral(IScannedPeripheral scannedPeripheral, NativePeripheralConnectionEventHandler onConnectionEvent);
+        NativePeripheralHandle CreatePeripheral(IScannedPeripheral scannedPeripheral, NativeConnectionEventHandler onConnectionEvent);
 
-        void ReleasePeripheral(PeripheralHandle peripheral);
+        void ReleasePeripheral(NativePeripheralHandle peripheral);
 
-        void ConnectPeripheral(PeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult);
+        void ConnectPeripheral(NativePeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult);
 
-        void DisconnectPeripheral(PeripheralHandle peripheral, NativeRequestResultHandler onResult);
+        void DisconnectPeripheral(NativePeripheralHandle peripheral, NativeRequestResultHandler onResult);
 
-        string GetPeripheralName(PeripheralHandle peripheral);
+        string GetPeripheralName(NativePeripheralHandle peripheral);
 
-        int GetPeripheralMtu(PeripheralHandle peripheral);
+        int GetPeripheralMtu(NativePeripheralHandle peripheral);
 
-        void RequestPeripheralMtu(PeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult);
+        void RequestPeripheralMtu(NativePeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult);
 
-        void ReadPeripheralRssi(PeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead);
+        void ReadPeripheralRssi(NativePeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead);
 
-        string GetPeripheralDiscoveredServices(PeripheralHandle peripheral);
+        string GetPeripheralDiscoveredServices(NativePeripheralHandle peripheral);
 
-        string GetPeripheralServiceCharacteristics(PeripheralHandle peripheral, string serviceUuid);
+        string GetPeripheralServiceCharacteristics(NativePeripheralHandle peripheral, string serviceUuid);
 
-        CharacteristicProperties GetCharacteristicProperties(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex);
+        CharacteristicProperties GetCharacteristicProperties(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex);
 
-        void ReadCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult);
+        void ReadCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult);
 
-        void WriteCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult);
+        void WriteCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult);
 
-        void SubscribeCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult);
+        void SubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult);
 
-        void UnsubscribeCharacteristic(PeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult);
+        void UnsubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult);
     }
 }

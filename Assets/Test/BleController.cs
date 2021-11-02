@@ -190,7 +190,7 @@ public class BleController : MonoBehaviour
 
     public void Read()
     {
-        StartCoroutine(Central.ReadCharacteristicAsync(_peripheral, ServiceUuid, NotifyCharacteristicUuid, OnReceivedData));
+        //TODO StartCoroutine(Central.ReadCharacteristicAsync(_peripheral, ServiceUuid, NotifyCharacteristicUuid, OnReceivedData));
     }
 
     public void Shutdown()

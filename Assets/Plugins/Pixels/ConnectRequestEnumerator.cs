@@ -2,15 +2,15 @@ using System;
 
 namespace Systemic.Unity.BluetoothLE
 {
-    public class ConnectRequestEnumerator : RequestEnumerator
+    public sealed class ConnectRequestEnumerator : RequestEnumerator
     {
         DisconnectRequestEnumerator _disconnect;
         Action _onTimeoutDisconnect;
 
         public ConnectRequestEnumerator(
-            PeripheralHandle peripheral,
+            NativePeripheralHandle peripheral,
             float timeoutSec,
-            Action<PeripheralHandle, NativeRequestResultHandler> action,
+            Action<NativePeripheralHandle, NativeRequestResultHandler> action,
             Action onTimeoutDisconnect)
             : base(Operation.ConnectPeripheral, peripheral, timeoutSec, action)
         {

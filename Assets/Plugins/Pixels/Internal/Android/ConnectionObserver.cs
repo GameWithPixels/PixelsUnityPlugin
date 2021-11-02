@@ -4,9 +4,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
 	internal sealed class ConnectionObserver : AndroidJavaProxy
 	{
-		NativePeripheralConnectionEventHandler _connectionEventHandler;
+		NativeConnectionEventHandler _connectionEventHandler;
 
-		public ConnectionObserver(NativePeripheralConnectionEventHandler onConnectionEventHandler)
+		public ConnectionObserver(NativeConnectionEventHandler onConnectionEventHandler)
 			: base("no.nordicsemi.android.ble.observer.ConnectionObserver")
 			=> _connectionEventHandler = onConnectionEventHandler;
 

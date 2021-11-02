@@ -8,10 +8,10 @@ namespace Systemic.Unity.BluetoothLE
 
         public ValueRequestEnumerator(
             Operation operation,
-            PeripheralHandle peripheralHandle,
+            NativePeripheralHandle nativeHandle,
             float timeoutSec,
-            Action<PeripheralHandle, NativeValueRequestResultHandler<T>> action)
-            : base(operation, peripheralHandle, timeoutSec)
+            Action<NativePeripheralHandle, NativeValueRequestResultHandler<T>> action)
+            : base(operation, nativeHandle, timeoutSec)
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
 

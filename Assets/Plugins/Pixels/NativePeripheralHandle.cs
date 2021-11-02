@@ -7,9 +7,9 @@ namespace Systemic.Unity.BluetoothLE
     }
 
     // Readonly struct
-    public struct PeripheralHandle
+    public struct NativePeripheralHandle
     {
-        internal PeripheralHandle(INativePeripheral client) => NativePeripheral = client;
+        internal NativePeripheralHandle(INativePeripheral client) => NativePeripheral = client;
 
         internal INativePeripheral NativePeripheral { get; }
 

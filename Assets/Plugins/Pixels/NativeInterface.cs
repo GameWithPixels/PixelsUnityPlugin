@@ -5,104 +5,7 @@ using Systemic.Unity.BluetoothLE.Internal;
 
 namespace Systemic.Unity.BluetoothLE
 {
-    public enum BluetoothStatus
-    {
-        Disabled,
-        Enabled,
-    }
-
-    // Must match C++ enum Pixels::CoreBluetoothLE::ConnectionEvent and Objective-C PXBlePeripheralConnectionEvent
-    public enum ConnectionEvent
-    {
-        // Raised at the beginning of the connect sequence, will be followed either by Connected or FailedToConnect
-        Connecting,
-
-        // Raised once the peripheral is connected, at which point service discovery is triggered
-        Connected,
-
-        // Raised when the peripheral fails to connect, the reason of failure is also given
-        FailedToConnect,
-
-        // Raised after a Connected event, once the required services have been discovered
-        Ready,
-
-        // Raised at the beginning of a user initiated disconnect
-        Disconnecting,
-
-        // Raised when the peripheral is disconnected, the reason for the connection loss is also given
-        Disconnected,
-    }
-
-    // Must match C++ enum Pixels::CoreBluetoothLE::ConnectionEventReason and Objective-C PXBlePeripheralConnectionEventReason
-    public enum ConnectionEventReason
-    {
-        // The disconnect happened for an unknown reason
-        Unknown = -1,
-
-        // The disconnect was initiated by user
-        Success = 0,
-
-        // Connection attempt canceled by user
-        Canceled,
-
-        // Peripheral does not have all required services
-        NotSupported,
-
-        // Peripheral didn't responded in time
-        Timeout,
-
-        // Peripheral was disconnected while in "auto connect" mode
-        LinkLoss,
-
-        // The local device Bluetooth adapter is off
-        AdpaterOff,
-
-        // Disconnection was initiated by peripheral
-        Peripheral,
-    }
-
-    // Must match C++ enum Pixels::CoreBluetoothLE::BleRequestStatus
-    public enum RequestStatus
-    {
-        Success,
-        Error, // Generic error
-        InProgress,
-        Canceled,
-        Disconnected,
-        InvalidPeripheral,
-        InvalidCall,
-        InvalidParameters,
-        NotSupported,
-        ProtocolError,
-        AccessDenied,
-        AdpaterOff,
-        Timeout,
-    }
-
-    public delegate void NativeBluetoothEventHandler(BluetoothStatus status);
-    public delegate void NativePeripheralConnectionEventHandler(ConnectionEvent connectionEvent, ConnectionEventReason reason);
-    public delegate void NativePeripheralCreatedHandler(PeripheralHandle peripheralHandle);
-    public delegate void NativeRequestResultHandler(RequestStatus status);
-    public delegate void NativeValueRequestResultHandler<T>(T value, RequestStatus status);
-    public delegate void NativeValueChangedHandler(byte[] data, RequestStatus status);
-
-    [Flags]
-    public enum CharacteristicProperties : ulong
-    {
-        None = 0,
-        Broadcast = 0x001, // Characteristic is broadcastable
-        Read = 0x002, // Characteristic is readable
-        WriteWithoutResponse = 0x004, // Characteristic can be written without response
-        Write = 0x008, // Characteristic can be written
-        Notify = 0x010, // Characteristic supports notification
-        Indicate = 0x020, // Characteristic supports indication
-        SignedWrite = 0x040, // // Characteristic supports write with signature
-        ExtendedProperties = 0x080, // Characteristic has extended properties
-        NotifyEncryptionRequired = 0x100,
-        IndicateEncryptionRequired = 0x200,
-    }
-
-    public class NativeInterface
+    public static class NativeInterface
     {
         public const int MinMtu = 23;
         public const int MaxMtu = 517;
@@ -148,7 +51,7 @@ namespace Systemic.Unity.BluetoothLE
             _impl.StopScan();
         }
 
-        PeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativePeripheralConnectionEventHandler onConnectionEventChanged)
+        public static NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEventChanged)
         {
             if (bluetoothAddress == 0) throw new ArgumentException("Empty bluetooth address", nameof(bluetoothAddress));
             if (onConnectionEventChanged == null) throw new ArgumentNullException(nameof(onConnectionEventChanged));
@@ -158,7 +61,7 @@ namespace Systemic.Unity.BluetoothLE
             return _impl.CreatePeripheral(bluetoothAddress, onConnectionEventChanged);
         }
 
-        public static PeripheralHandle CreatePeripheral(ScannedPeripheral scannedPeripheral, NativePeripheralConnectionEventHandler onConnectionEvent)
+        public static NativePeripheralHandle CreatePeripheral(ScannedPeripheral scannedPeripheral, NativeConnectionEventHandler onConnectionEvent)
         {
             if (scannedPeripheral == null) throw new ArgumentNullException(nameof(scannedPeripheral));
             if (!((IScannedPeripheral)scannedPeripheral).IsValid) throw new ArgumentException("Invalid ScannedPeripheral", nameof(scannedPeripheral));
@@ -169,106 +72,106 @@ namespace Systemic.Unity.BluetoothLE
             return _impl.CreatePeripheral(scannedPeripheral, onConnectionEvent);
         }
 
-        public static void ReleasePeripheral(PeripheralHandle peripheral)
+        public static void ReleasePeripheral(NativePeripheralHandle nativePeripheralHandle)
         {
             SanityCheck();
 
-            if (peripheral.IsValid)
+            if (nativePeripheralHandle.IsValid)
             {
-                _impl.ReleasePeripheral(peripheral);
+                _impl.ReleasePeripheral(nativePeripheralHandle);
             }
         }
 
-        public static void ConnectPeripheral(PeripheralHandle peripheral, IEnumerable<Guid> requiredServices, bool autoConnect, NativeRequestResultHandler onResult)
+        public static void ConnectPeripheral(NativePeripheralHandle nativePeripheralHandle, IEnumerable<Guid> requiredServices, bool autoConnect, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
 
             SanityCheck();
 
-            _impl.ConnectPeripheral(peripheral, ToString(requiredServices), autoConnect, onResult);
+            _impl.ConnectPeripheral(nativePeripheralHandle, ToString(requiredServices), autoConnect, onResult);
         }
 
-        public static void DisconnectPeripheral(PeripheralHandle peripheral, NativeRequestResultHandler onResult)
+        public static void DisconnectPeripheral(NativePeripheralHandle nativePeripheralHandle, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
 
             SanityCheck();
 
-            _impl.DisconnectPeripheral(peripheral, onResult);
+            _impl.DisconnectPeripheral(nativePeripheralHandle, onResult);
         }
 
-        public static string GetPeripheralName(PeripheralHandle peripheral)
+        public static string GetPeripheralName(NativePeripheralHandle nativePeripheralHandle)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
 
             SanityCheck();
 
-            return _impl.GetPeripheralName(peripheral);
+            return _impl.GetPeripheralName(nativePeripheralHandle);
         }
 
-        public static int GetPeripheralMtu(PeripheralHandle peripheral)
+        public static int GetPeripheralMtu(NativePeripheralHandle nativePeripheralHandle)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
 
             SanityCheck();
 
-            return _impl.GetPeripheralMtu(peripheral);
+            return _impl.GetPeripheralMtu(nativePeripheralHandle);
         }
 
         // See MinMTU and MaxMTU, supported on Android only
-        public static void RequestPeripheralMtu(PeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public static void RequestPeripheralMtu(NativePeripheralHandle nativePeripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if ((mtu < MinMtu) || (mtu > MaxMtu)) throw new ArgumentException($"MTU must be between {MinMtu} and {MaxMtu}", nameof(mtu));
             if (onMtuResult == null) throw new ArgumentNullException(nameof(onMtuResult));
 
             SanityCheck();
 
-            _impl.RequestPeripheralMtu(peripheral, mtu, onMtuResult);
+            _impl.RequestPeripheralMtu(nativePeripheralHandle, mtu, onMtuResult);
         }
 
         // See MinMTU and MaxMTU, supported on Apple and Android
-        public static void ReadPeripheralRssi(PeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead)
+        public static void ReadPeripheralRssi(NativePeripheralHandle nativePeripheralHandle, NativeValueRequestResultHandler<int> onRssiRead)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onRssiRead == null) throw new ArgumentNullException(nameof(onRssiRead));
 
             SanityCheck();
 
-            _impl.ReadPeripheralRssi(peripheral, onRssiRead);
+            _impl.ReadPeripheralRssi(nativePeripheralHandle, onRssiRead);
         }
 
-        public static Guid[] GetPeripheralDiscoveredServices(PeripheralHandle peripheral)
+        public static Guid[] GetPeripheralDiscoveredServices(NativePeripheralHandle nativePeripheralHandle)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
 
-            return ToGuidArray(_impl.GetPeripheralDiscoveredServices(peripheral));
+            return ToGuidArray(_impl.GetPeripheralDiscoveredServices(nativePeripheralHandle));
         }
 
-        public static Guid[] GetPeripheralServiceCharacteristics(PeripheralHandle peripheral, Guid service)
+        public static Guid[] GetPeripheralServiceCharacteristics(NativePeripheralHandle peripheral, Guid service)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!peripheral.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(peripheral));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
 
             return ToGuidArray(_impl.GetPeripheralServiceCharacteristics(peripheral, service.ToString()));
         }
 
-        public static CharacteristicProperties GetCharacteristicProperties(PeripheralHandle peripheral, Guid service, Guid characteristic, uint instanceIndex)
+        public static CharacteristicProperties GetCharacteristicProperties(NativePeripheralHandle nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
             if (characteristic == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristic));
 
             SanityCheck();
 
-            return _impl.GetCharacteristicProperties(peripheral, service.ToString(), characteristic.ToString(), instanceIndex);
+            return _impl.GetCharacteristicProperties(nativePeripheralHandle, service.ToString(), characteristic.ToString(), instanceIndex);
         }
 
-        public static void ReadCharacteristic(PeripheralHandle peripheral, Guid service, Guid characteristic, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult)
+        public static void ReadCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
             if (characteristic == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristic));
             if (onValueChanged == null) throw new ArgumentNullException(nameof(onValueChanged));
@@ -276,12 +179,12 @@ namespace Systemic.Unity.BluetoothLE
 
             SanityCheck();
 
-            _impl.ReadCharacteristic(peripheral, service.ToString(), characteristic.ToString(), instanceIndex, onValueChanged, onResult);
+            _impl.ReadCharacteristic(nativePeripheralHandle, service.ToString(), characteristic.ToString(), instanceIndex, onValueChanged, onResult);
         }
 
-        public static void WriteCharacteristic(PeripheralHandle peripheral, Guid service, Guid characteristic, uint instanceIndex, byte[] data, bool withResponse, NativeRequestResultHandler onResult)
+        public static void WriteCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, byte[] data, bool withResponse, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
             if (characteristic == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristic));
             if (data == null) throw new ArgumentNullException(nameof(data));
@@ -290,12 +193,12 @@ namespace Systemic.Unity.BluetoothLE
 
             SanityCheck();
 
-            _impl.WriteCharacteristic(peripheral, service.ToString(), characteristic.ToString(), instanceIndex, data, withResponse, onResult);
+            _impl.WriteCharacteristic(nativePeripheralHandle, service.ToString(), characteristic.ToString(), instanceIndex, data, withResponse, onResult);
         }
 
-        public static void SubscribeCharacteristic(PeripheralHandle peripheral, Guid service, Guid characteristic, uint instanceIndex, NativeValueChangedHandler onValueChanged, NativeRequestResultHandler onResult)
+        public static void SubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
             if (characteristic == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristic));
             if (onValueChanged == null) throw new ArgumentNullException(nameof(onValueChanged));
@@ -303,22 +206,22 @@ namespace Systemic.Unity.BluetoothLE
 
             SanityCheck();
 
-            _impl.SubscribeCharacteristic(peripheral, service.ToString(), characteristic.ToString(), instanceIndex, onValueChanged, onResult);
+            _impl.SubscribeCharacteristic(nativePeripheralHandle, service.ToString(), characteristic.ToString(), instanceIndex, onValueChanged, onResult);
         }
 
-        public static void UnsubscribeCharacteristic(PeripheralHandle peripheral, Guid service, Guid characteristic, uint instanceIndex, NativeRequestResultHandler onResult)
+        public static void UnsubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, NativeRequestResultHandler onResult)
         {
-            if (!peripheral.IsValid) throw new ArgumentException("Invalid PeripheralHandle", nameof(peripheral));
+            if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (service == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(service));
             if (characteristic == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristic));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
 
             SanityCheck();
 
-            _impl.UnsubscribeCharacteristic(peripheral, service.ToString(), characteristic.ToString(), instanceIndex, onResult);
+            _impl.UnsubscribeCharacteristic(nativePeripheralHandle, service.ToString(), characteristic.ToString(), instanceIndex, onResult);
         }
 
-        static void SanityCheck()
+        private static void SanityCheck()
         {
             //TODO not implemented
             //if (!_impl.IsReady) throw new InvalidOperationException("Native Interface not ready");

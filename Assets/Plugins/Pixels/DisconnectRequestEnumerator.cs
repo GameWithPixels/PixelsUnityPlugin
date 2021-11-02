@@ -1,11 +1,11 @@
 
 namespace Systemic.Unity.BluetoothLE
 {
-    public class DisconnectRequestEnumerator : RequestEnumerator
+    public sealed class DisconnectRequestEnumerator : RequestEnumerator
     {
         bool _released;
 
-        public DisconnectRequestEnumerator(PeripheralHandle peripheral)
+        public DisconnectRequestEnumerator(NativePeripheralHandle peripheral)
             : base(Operation.DisconnectPeripheral, peripheral, 0)
         {
             if (Peripheral.IsValid)
