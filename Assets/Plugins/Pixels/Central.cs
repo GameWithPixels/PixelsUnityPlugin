@@ -9,11 +9,10 @@ namespace Systemic.Unity.BluetoothLE
     /// <summary>
     /// Static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.
     /// 
-    /// Accessing a Bluetooth Low Energy (BLE) peripheral is a two steps process:
-    /// 1. Scan for peripherals
-    /// 2. Connect to peripheral
+    /// Use the <see cref="ScanForPeripheralsWithServices"/> method to discover available BLE peripherals.
+    /// Then connect to a scanned peripheral with a call to <see cref="ConnectPeripheralAsync"/>
     ///
-    /// Once connected, the peripheral can be queried for its services and characteristics.
+    /// Once connected, the peripheral can be queried for its name, MTU, RSSI, services and characteristics.
     /// Characteristics can be read, written and subscribed to.
     ///
     /// Be sure to disconnect the peripheral once it is not needed anymore.
@@ -21,9 +20,9 @@ namespace Systemic.Unity.BluetoothLE
     /// This class is using <see cref="NativeInterface"/> to perform most of its operations.
     ///
     /// Calls from any other thread than the main thread will throw an exception.
-    /// </summary>
-    /// <remarks>
+    /// 
     /// Any method ending by Async returns an enumerator which is meant to be run as a coroutine.
+    /// 
     /// A <see cref="GameObject"/> named SystemicBleCentral is created upon calling <see cref="Initialize"/>
     /// and destroyed on calling <see cref="Shutdown"/>.
     /// </remarks>
@@ -159,6 +158,9 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Occurs when a peripheral is discovered or re-discovered.
+        /// Discovery happens each time <see cref="Central"/> receives a discovery packet
+        /// from a peripheral. This may happen at a frequency between several times per second
+        /// and every few seconds.
         /// </summary>
         public static event Action<ScannedPeripheral> PeripheralDiscovered;
 
@@ -196,13 +198,13 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Initializes the static class.
-        /// The <see cref="IsReady"/> property will be set to true once it is ready to scan
-        /// and connect to BLE peripherals.
+        /// The <see cref="IsReady"/> property is set to true once <see cref="Central"/> is ready
+        /// to scan for and connect to BLE peripherals.
         /// </summary>
         /// <returns>
         /// Whether or not the call succeeded.
-        /// - if <see cref="true"/> is returned, the static class might not be ready yet.
-        /// - if <see cref="false"/> is returned, there is probably something wrong with the platform specific native plugin.
+        /// - if <see cref="true"/> is returned, the static class might not be ready yet
+        /// - if <see cref="false"/> is returned, there is probably something wrong with the platform specific native plugin
         /// </returns>
         public static bool Initialize()
         {
@@ -230,8 +232,8 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Shutdowns the static class:
-        /// - any pending scan is stopped.
-        /// - all peripherals are disconnected and removed.
+        /// - any pending scan is stopped
+        /// - all peripherals are disconnected and removed
         /// </summary>
         public static void Shutdown()
         {
@@ -527,7 +529,7 @@ namespace Systemic.Unity.BluetoothLE
             EnsureRunningOnMainThread();
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
-            return new ValueRequestEnumerator<int>(Operation.ReadPeripheralRssi, nativeHandle, timeoutSec,
+            return new ValueRequestEnumerator<int>(RequestOperation.ReadPeripheralRssi, nativeHandle, timeoutSec,
                 (p, onResult) => NativeInterface.ReadPeripheralRssi(p, onResult));
         }
 
@@ -673,7 +675,7 @@ namespace Systemic.Unity.BluetoothLE
             EnsureRunningOnMainThread();
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
-            return new RequestEnumerator(Operation.WriteCharacteristic, nativeHandle, timeoutSec,
+            return new RequestEnumerator(RequestOperation.WriteCharacteristic, nativeHandle, timeoutSec,
                 (p, onResult) => NativeInterface.WriteCharacteristic(
                     p, serviceUuid, characteristicUuid, instanceIndex, data, withoutResponse, onResult));
         }
@@ -713,7 +715,7 @@ namespace Systemic.Unity.BluetoothLE
             EnsureRunningOnMainThread();
 
             var pinf = GetPeripheralInfo(peripheral);
-            return new RequestEnumerator(Operation.SubscribeCharacteristic, pinf.NativeHandle, timeoutSec,
+            return new RequestEnumerator(RequestOperation.SubscribeCharacteristic, pinf.NativeHandle, timeoutSec,
                 (p, onResult) => NativeInterface.SubscribeCharacteristic(
                     p, serviceUuid, characteristicUuid, instanceIndex,
                     onValueChanged: GetNativeValueChangedHandler(pinf, onValueChanged, onResult),
@@ -737,7 +739,7 @@ namespace Systemic.Unity.BluetoothLE
             EnsureRunningOnMainThread();
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
-            return new RequestEnumerator(Operation.UnsubscribeCharacteristic, nativeHandle, timeoutSec,
+            return new RequestEnumerator(RequestOperation.UnsubscribeCharacteristic, nativeHandle, timeoutSec,
                 (p, onResult) => NativeInterface.UnsubscribeCharacteristic(
                     p, serviceUuid, characteristicUuid, instanceIndex, onResult));
         }

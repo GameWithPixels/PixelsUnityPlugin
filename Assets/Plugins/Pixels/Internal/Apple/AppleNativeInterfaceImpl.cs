@@ -137,7 +137,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         static NativeBluetoothEventHandler _onBluetoothEvent;
         static DiscoveredPeripheralHandler _onDiscoveredPeripheral; // We can have only one scan at a time, so one handler
         static Dictionary<RequestIndex, NativeConnectionEventHandler> _onConnectionEventHandlers = new Dictionary<RequestIndex, NativeConnectionEventHandler>();
-        static Dictionary<RequestIndex, (Operation, NativeRequestResultHandler)> _onRequestStatusHandlers = new Dictionary<RequestIndex, (Operation, NativeRequestResultHandler)>();
+        static Dictionary<RequestIndex, (RequestOperation, NativeRequestResultHandler)> _onRequestStatusHandlers = new Dictionary<RequestIndex, (RequestOperation, NativeRequestResultHandler)>();
         static Dictionary<RequestIndex, NativeValueRequestResultHandler<int>> _onRssiReadHandlers = new Dictionary<RequestIndex, NativeValueRequestResultHandler<int>>();
         static Dictionary<RequestIndex, NativeValueRequestResultHandler<byte[]>> _onValueChangedHandlers = new Dictionary<RequestIndex, NativeValueRequestResultHandler<byte[]>>();
         static volatile RequestIndex _requestIndex;
@@ -205,11 +205,11 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 var err = (AppleBluetoothError)errorCode;
 
                 // Get C# callback
-                Operation op;
+                RequestOperation op;
                 NativeRequestResultHandler handler;
                 lock (_onConnectionEventHandlers)
                 {
-                    if (_onRequestStatusHandlers.TryGetValue(requestIndex, out (Operation, NativeRequestResultHandler) item))
+                    if (_onRequestStatusHandlers.TryGetValue(requestIndex, out (RequestOperation, NativeRequestResultHandler) item))
                     {
                         _onRequestStatusHandlers.Remove(requestIndex);
                     }
@@ -262,11 +262,11 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                     // Log success or error
                     if (err == AppleBluetoothError.Success)
                     {
-                        Debug.Log($"{Operation.ReadPeripheralRssi} ==> Request successful");
+                        Debug.Log($"{RequestOperation.ReadPeripheralRssi} ==> Request successful");
                     }
                     else
                     {
-                        Debug.LogError($"{Operation.ReadPeripheralRssi} ==> Request failed: {err} ({errorCode})");
+                        Debug.LogError($"{RequestOperation.ReadPeripheralRssi} ==> Request failed: {err} ({errorCode})");
                     }
 
                     // Notify user code
@@ -375,7 +375,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         //TODO on iOS connect waits indefinitely and autoConnect is ignored
         public void ConnectPeripheral(NativePeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
         {
-            var requestIndex = SetRequestHandler(Operation.ConnectPeripheral, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.ConnectPeripheral, onResult);
 
             sgBleConnectPeripheral(GetPeripheralId(peripheral), requiredServicesUuids, OnRequestStatus, requestIndex);
         }
@@ -383,7 +383,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         public void DisconnectPeripheral(NativePeripheralHandle peripheral, NativeRequestResultHandler onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
-            var requestIndex = SetRequestHandler(Operation.DisconnectPeripheral, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.DisconnectPeripheral, onResult);
 
             sgBleDisconnectPeripheral(pxPeripheral.PeripheralId, OnRequestStatus, requestIndex);
             pxPeripheral.ForgetAllValueHandlers();
@@ -433,7 +433,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
 
         public void ReadCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            var requestIndex = SetRequestHandler(Operation.ReadCharacteristic, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.ReadCharacteristic, onResult);
             lock (_onValueChangedHandlers)
             {
                 _onValueChangedHandlers.Add(requestIndex, onValueChanged);
@@ -444,7 +444,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
 
         public void WriteCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
         {
-            var requestIndex = SetRequestHandler(Operation.WriteCharacteristic, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.WriteCharacteristic, onResult);
 
             var ptr = Marshal.AllocHGlobal(data.Length);
             try
@@ -461,7 +461,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         public void SubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
-            var requestIndex = SetRequestHandler(Operation.SubscribeCharacteristic, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.SubscribeCharacteristic, onResult);
             lock (_onValueChangedHandlers)
             {
                 _onValueChangedHandlers.Add(requestIndex, onValueChanged);
@@ -474,7 +474,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         public void UnsubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheral.NativePeripheral;
-            var requestIndex = SetRequestHandler(Operation.UnsubscribeCharacteristic, onResult);
+            var requestIndex = SetRequestHandler(RequestOperation.UnsubscribeCharacteristic, onResult);
 
             sgBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, null, OnRequestStatus, requestIndex);
             requestIndex = pxPeripheral.GetAndRemoveValueChangedHandlerRequestIndex(serviceUuid, characteristicUuid, instanceIndex);
@@ -494,7 +494,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             return ((NativePxPeripheral)peripheral.NativePeripheral).PeripheralId;
         }
 
-        private RequestIndex SetRequestHandler(Operation operation, NativeRequestResultHandler onResult)
+        private RequestIndex SetRequestHandler(RequestOperation operation, NativeRequestResultHandler onResult)
         {
             var requestIndex = Interlocked.Increment(ref _requestIndex);
             lock (_onRequestStatusHandlers)
