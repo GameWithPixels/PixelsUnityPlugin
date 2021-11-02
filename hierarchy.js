@@ -21,8 +21,6 @@ var hierarchy =
     ] ],
     [ "IEnumerator", null, [
       [ "Systemic.Unity.BluetoothLE.RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", [
-        [ "Systemic.Unity.BluetoothLE.ConnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html", null ],
-        [ "Systemic.Unity.BluetoothLE.DisconnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html", null ],
         [ "Systemic.Unity.BluetoothLE.ValueRequestEnumerator< T >", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", null ]
       ] ]
     ] ],

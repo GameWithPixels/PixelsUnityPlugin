@@ -9,6 +9,7 @@ var searchData=
   ['connecting_12',['Connecting',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458',1,'Systemic::Unity::BluetoothLE']]],
   ['connectionevent_13',['ConnectionEvent',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6',1,'Systemic::Unity::BluetoothLE']]],
   ['connectioneventreason_14',['ConnectionEventReason',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053',1,'Systemic::Unity::BluetoothLE']]],
-  ['connectperipheralasync_15',['ConnectPeripheralAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abeb433e3dd13e6a7f4c11ee9abd39b6e',1,'Systemic::Unity::BluetoothLE::Central']]],
-  ['connectrequestenumerator_16',['ConnectRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]]
+  ['connectperipheral_15',['ConnectPeripheral',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa2a15429b783d026ecd131a9e6ac4de45',1,'Systemic::Unity::BluetoothLE']]],
+  ['connectperipheralasync_16',['ConnectPeripheralAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abeb433e3dd13e6a7f4c11ee9abd39b6e',1,'Systemic::Unity::BluetoothLE::Central']]],
+  ['current_17',['Current',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a65953bd0ee6462de0d8bd1056123a1db',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]]
 ];

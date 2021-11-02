@@ -2,8 +2,6 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
 [
     [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
     [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
-    [ "ConnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator" ],
-    [ "DisconnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator" ],
     [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
     [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
     [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],
@@ -45,15 +43,15 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
       [ "AdpaterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ac8afe2b6c8cbedd939017e05b4e86056", null ],
       [ "Peripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9", null ]
     ] ],
-    [ "Operation", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30", [
-      [ "ConnectPeripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a2a15429b783d026ecd131a9e6ac4de45", null ],
-      [ "DisconnectPeripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a6db3db9dbc8b1851a1937fa93b410b3d", null ],
-      [ "ReadPeripheralRssi", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30aae8fbaf52300b48042e9050ff4676d73", null ],
-      [ "RequestPeripheralMtu", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30ac5a0e45b17d31cd41ff74ee613d829ff", null ],
-      [ "ReadCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a7ddfeac4163c3e321c4467ac8f9867ad", null ],
-      [ "WriteCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a1e6cd86df3bc6c4806fed00c9e6d183b", null ],
-      [ "SubscribeCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a78dc36731b3e8da133c6c9fad39e604c", null ],
-      [ "UnsubscribeCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae379b2e7f77267618d999e2230ce6b30a962f6118e63b99bb8546e0dd7e38a0c5", null ]
+    [ "RequestOperation", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77ea", [
+      [ "ConnectPeripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa2a15429b783d026ecd131a9e6ac4de45", null ],
+      [ "DisconnectPeripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa6db3db9dbc8b1851a1937fa93b410b3d", null ],
+      [ "ReadPeripheralRssi", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaaae8fbaf52300b48042e9050ff4676d73", null ],
+      [ "RequestPeripheralMtu", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaac5a0e45b17d31cd41ff74ee613d829ff", null ],
+      [ "ReadCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa7ddfeac4163c3e321c4467ac8f9867ad", null ],
+      [ "WriteCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa1e6cd86df3bc6c4806fed00c9e6d183b", null ],
+      [ "SubscribeCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa78dc36731b3e8da133c6c9fad39e604c", null ],
+      [ "UnsubscribeCharacteristic", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa962f6118e63b99bb8546e0dd7e38a0c5", null ]
     ] ],
     [ "RequestStatus", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e", [
       [ "Success", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38", null ],

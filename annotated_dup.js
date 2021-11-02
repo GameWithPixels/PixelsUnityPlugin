@@ -22,8 +22,6 @@ var annotated_dup =
         [ "BluetoothLE", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html", [
           [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
           [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
-          [ "ConnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator" ],
-          [ "DisconnectRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator" ],
           [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
           [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
           [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],

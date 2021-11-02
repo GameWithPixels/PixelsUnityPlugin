@@ -55,7 +55,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_ble_common_8h_source.html",
-"interface_s_g_ble_peripheral.html#a07ac3ee9e03346e03854777e404e33de"
+"interface_s_g_ble_peripheral.html#a2e65f1bf44e44ef09e4e175f21ea8b7a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

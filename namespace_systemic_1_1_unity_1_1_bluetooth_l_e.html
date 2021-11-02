@@ -99,9 +99,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html">Central</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html">ConnectRequestEnumerator</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>ConnectRequestEnumerator</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html">DisconnectRequestEnumerator</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>DisconnectRequestEnumerator</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html">NativeInterface</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +110,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html">RequestEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><b>INativeDevice</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +121,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_string_extension.html">StringExtension</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html">ValueRequestEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral that should read a value. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -194,19 +196,20 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:add494924942857195b4d1f9d5a6e24fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard BLE values for characteristic properties.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb">More...</a><br /></td></tr>
 <tr class="separator:add494924942857195b4d1f9d5a6e24fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae379b2e7f77267618d999e2230ce6b30"><td class="memItemLeft" align="right" valign="top"><a id="ae379b2e7f77267618d999e2230ce6b30"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>Operation</b> { <br />
-&#160;&#160;<b>ConnectPeripheral</b>
-, <b>DisconnectPeripheral</b>
-, <b>ReadPeripheralRssi</b>
-, <b>RequestPeripheralMtu</b>
+<tr class="memitem:af7ad8d9a992e1dba7df0f151435d77ea"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77ea">RequestOperation</a> { <br />
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa2a15429b783d026ecd131a9e6ac4de45">ConnectPeripheral</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa6db3db9dbc8b1851a1937fa93b410b3d">DisconnectPeripheral</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaaae8fbaf52300b48042e9050ff4676d73">ReadPeripheralRssi</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaac5a0e45b17d31cd41ff74ee613d829ff">RequestPeripheralMtu</a>
 , <br />
-&#160;&#160;<b>ReadCharacteristic</b>
-, <b>WriteCharacteristic</b>
-, <b>SubscribeCharacteristic</b>
-, <b>UnsubscribeCharacteristic</b>
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa7ddfeac4163c3e321c4467ac8f9867ad">ReadCharacteristic</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa1e6cd86df3bc6c4806fed00c9e6d183b">WriteCharacteristic</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa78dc36731b3e8da133c6c9fad39e604c">SubscribeCharacteristic</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa962f6118e63b99bb8546e0dd7e38a0c5">UnsubscribeCharacteristic</a>
 <br />
  }</td></tr>
-<tr class="separator:ae379b2e7f77267618d999e2230ce6b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:af7ad8d9a992e1dba7df0f151435d77ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of asynchronous BLE operations handled though requests.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77ea">More...</a><br /></td></tr>
+<tr class="separator:af7ad8d9a992e1dba7df0f151435d77ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -377,6 +380,48 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a8adc4dbbd6eb7a31f29b3968470a0053ac8afe2b6c8cbedd939017e05b4e86056"></a>AdpaterOff&#160;</td><td class="fielddoc"><p>The local device Bluetooth adapter is off. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9"></a>Peripheral&#160;</td><td class="fielddoc"><p>Disconnection was initiated by peripheral. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="af7ad8d9a992e1dba7df0f151435d77ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ad8d9a992e1dba7df0f151435d77ea">&#9670;&nbsp;</a></span>RequestOperation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77ea">Systemic.Unity.BluetoothLE.RequestOperation</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of asynchronous BLE operations handled though requests. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa2a15429b783d026ecd131a9e6ac4de45"></a>ConnectPeripheral&#160;</td><td class="fielddoc"><p>Connect to peripheral. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa6db3db9dbc8b1851a1937fa93b410b3d"></a>DisconnectPeripheral&#160;</td><td class="fielddoc"><p>Disconnect from peripheral. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaaae8fbaf52300b48042e9050ff4676d73"></a>ReadPeripheralRssi&#160;</td><td class="fielddoc"><p>Read peripheral RSSI value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaac5a0e45b17d31cd41ff74ee613d829ff"></a>RequestPeripheralMtu&#160;</td><td class="fielddoc"><p>Request peripheral to change its MTU to a given value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa7ddfeac4163c3e321c4467ac8f9867ad"></a>ReadCharacteristic&#160;</td><td class="fielddoc"><p>Read a peripheral's characteristic value. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa1e6cd86df3bc6c4806fed00c9e6d183b"></a>WriteCharacteristic&#160;</td><td class="fielddoc"><p>Write to a peripheral's characteristic. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa78dc36731b3e8da133c6c9fad39e604c"></a>SubscribeCharacteristic&#160;</td><td class="fielddoc"><p>Subscribe to a peripheral's characteristic. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="af7ad8d9a992e1dba7df0f151435d77eaa962f6118e63b99bb8546e0dd7e38a0c5"></a>UnsubscribeCharacteristic&#160;</td><td class="fielddoc"><p>Unsubscribe from a peripheral's characteristic. </p>
 </td></tr>
 </table>
 

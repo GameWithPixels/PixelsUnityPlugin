@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['isready_184',['IsReady',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a09cb20d2c7b310711858dbd3ee449f5c',1,'Systemic::Unity::BluetoothLE::Central']]],
-  ['isscanning_185',['IsScanning',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a1f91909e58bb1a21921e8f4f3848baa4',1,'Systemic::Unity::BluetoothLE::Central']]]
+  ['error_211',['Error',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a33c44196f61862e2419c650618ad1c5e',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]]
 ];
