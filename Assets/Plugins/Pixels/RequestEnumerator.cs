@@ -49,7 +49,7 @@ namespace Systemic.Unity.BluetoothLE
         public RequestOperation Operation { get; }
 
         /// <summary>
-        /// Whether or not the request has finished.
+        /// Whether or not the request has finished (successfully or not).
         /// </summary>
         public bool IsDone => _status.HasValue;
 
@@ -92,12 +92,12 @@ namespace Systemic.Unity.BluetoothLE
         public object Current => null;
 
         /// <summary>
-        /// The peripheral for which the request is being made.
+        /// The peripheral for which the request was made.
         /// </summary>
         private protected NativePeripheralHandle Peripheral { get; }
 
         /// <summary>
-        /// Initializes the request with a given operation, peripheral, timeout value and
+        /// Initializes a request with a given operation, peripheral, timeout value and
         /// an action to invoke if the peripheral is valid.
         /// </summary>
         /// <param name="operation">The operation to run.</param>
@@ -127,7 +127,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Initializes the request with a given operation, peripheral and timeout value.
+        /// Initializes a request with a given operation, peripheral and timeout value.
         /// </summary>
         /// <param name="operation">The operation to run.</param>
         /// <param name="nativeHandle">The peripheral for which to run the operation.</param>
@@ -156,7 +156,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Continue processing the request.
+        /// Processes the request.
         /// </summary>
         /// <returns>Whether or not the request is still running.</returns>
         public virtual bool MoveNext()

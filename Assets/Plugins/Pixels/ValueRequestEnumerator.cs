@@ -3,10 +3,10 @@ using System;
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// Enumerator handling a request to a BLE peripheral that should read a value.
+    /// Enumerator handling a request for reading a value from a BLE peripheral.
     /// It is meant to be run as coroutine.
     /// </summary>
-    /// <typeparam name="T">Type of value read by the request.</typeparam>
+    /// <typeparam name="T">Type of the value to be returned by the request.</typeparam>
     public class ValueRequestEnumerator<T> : RequestEnumerator
     {
         /// <summary>

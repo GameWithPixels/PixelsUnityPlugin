@@ -496,7 +496,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Returns Maximum Transmission Unit (MTU) for the given peripheral.
+        /// Returns the Maximum Transmission Unit (MTU) for the given peripheral.
         /// 
         /// The MTU is the maximum length of a packet that can be send to the BLE peripheral.
         /// However the BLE protocol uses 3 bytes, so the maximum data size that can be given
