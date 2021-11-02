@@ -7,6 +7,7 @@ var classcom_1_1systemic_1_1bluetoothle_1_1_peripheral =
     [ "connect", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ab79e94eb147110d2a328b91ec4ad83ec", null ],
     [ "disconnect", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a17d567461823ab2c628aac68c16e0a3b", null ],
     [ "getCharacteristicProperties", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a5e68f77064922b85a0d52d18827e0cdd", null ],
+    [ "getDeviceFromAddress", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a42eed119a2b440177ac3567144f8856f", null ],
     [ "getDiscoveredServices", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a46fc6da80f3768ead0191962a0d0bc28", null ],
     [ "getMtu", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a444927643de138ab9e3efd61e5c5c26e", null ],
     [ "getName", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a9c98ffc7fc2d407bf8ec2b209db3630e", null ],

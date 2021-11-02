@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['disconnectrequestenumerator_36',['DisconnectRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]],
-  ['discoveredperipheral_37',['DiscoveredPeripheral',['../class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html',1,'Systemic::BluetoothLE']]]
+  ['central_96',['Central',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html',1,'Systemic::Unity::BluetoothLE']]],
+  ['characteristic_97',['Characteristic',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html',1,'Systemic::BluetoothLE']]],
+  ['connectrequestenumerator_98',['ConnectRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]]
 ];

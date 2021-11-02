@@ -1,9 +1,6 @@
 var namespace_systemic =
 [
     [ "BluetoothLE", null, [
-      [ "Internal", null, [
-        [ "isSubset", "_ble_common_8h.html#a4d43f9087bf2c3a69b04dfcc0b29eec0", null ]
-      ] ],
       [ "Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic" ],
       [ "ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data" ],
       [ "AdvertisingData", "class_systemic_1_1_bluetooth_l_e_1_1_advertising_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_advertising_data" ],
@@ -52,5 +49,5 @@ var namespace_systemic =
       [ "freeComBuffer", "_com_helper_8cpp.html#a87e9c46c85c04678d7f370898ea1ef45", null ]
     ] ],
     [ "Unity", "namespace_systemic_1_1_unity.html", "namespace_systemic_1_1_unity" ],
-    [ "Logger", "class_systemic_1_1_logger.html", null ]
+    [ "Logger", "class_systemic_1_1_logger.html", "class_systemic_1_1_logger" ]
 ];

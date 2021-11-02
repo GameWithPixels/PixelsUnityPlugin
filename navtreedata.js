@@ -25,8 +25,14 @@
 var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
+    [ "PixelsUnityPlugin", "index.html", null ],
     [ "Packages", "namespaces.html", [
-      [ "Packages", "namespaces.html", "namespaces_dup" ]
+      [ "Packages", "namespaces.html", "namespaces_dup" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -34,7 +40,10 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -45,8 +54,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_ble_common_8h.html#a4d43f9087bf2c3a69b04dfcc0b29eec0",
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e"
+"_ble_common_8h_source.html",
+"interface_s_g_ble_peripheral.html#a07ac3ee9e03346e03854777e404e33de"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

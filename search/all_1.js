@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['central_1',['Central',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html',1,'Systemic::Unity::BluetoothLE']]],
-  ['characteristic_2',['Characteristic',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html',1,'Systemic::BluetoothLE']]],
-  ['connectrequestenumerator_3',['ConnectRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]]
+  ['bleuuid_3',['BleUuid',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html',1,'Systemic::Unity::BluetoothLE']]],
+  ['bluetoothstatus_4',['BluetoothStatus',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9',1,'Systemic::Unity::BluetoothLE']]],
+  ['broadcast_5',['Broadcast',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fbabe55b6387170df0ca68f41225268e842',1,'Systemic::Unity::BluetoothLE']]]
 ];

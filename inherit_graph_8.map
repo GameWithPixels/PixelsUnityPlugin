@@ -1,7 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,97,105"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html" title=" " alt="" coords="145,71,312,112"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_connect_request_enumerator.html" title=" " alt="" coords="369,5,571,47"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_disconnect_request_enumerator.html" title=" " alt="" coords="360,71,580,112"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title=" " alt="" coords="361,136,579,177"/>
+<area shape="rect" id="node1" href="$struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html" title=" " alt="" coords="5,5,184,47"/>
 </map>
