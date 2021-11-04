@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['scannedperipherals_220',['ScannedPeripherals',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a4041dfa57b774e48b190f110389ba8ee',1,'Systemic::Unity::BluetoothLE::Central']]]
+  ['operation_248',['Operation',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#ae1455f89f599d741439015b54398a6d9',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]],
+  ['overflowservices_249',['OverflowServices',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8b39d6c83a8a1ce822498153285ab328',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]]
 ];

@@ -83,87 +83,780 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_unity_1_1_bluetooth
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic.Unity.BluetoothLE.NativeInterface Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a> programmer.  
+ <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a870bf275f6dbebad711a145186a3e49c"><td class="memItemLeft" align="right" valign="top"><a id="a870bf275f6dbebad711a145186a3e49c"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727">NativeBluetoothEventHandler</a> onBluetoothEvent)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Static class life cycle</div></td></tr>
+<tr class="memitem:a870bf275f6dbebad711a145186a3e49c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a870bf275f6dbebad711a145186a3e49c">Initialize</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727">NativeBluetoothEventHandler</a> onBluetoothEvent)</td></tr>
+<tr class="memdesc:a870bf275f6dbebad711a145186a3e49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the underlying platform native implementation.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a870bf275f6dbebad711a145186a3e49c">More...</a><br /></td></tr>
 <tr class="separator:a870bf275f6dbebad711a145186a3e49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e7a9c773949dd1d1955646458ed18c4"><td class="memItemLeft" align="right" valign="top"><a id="a8e7a9c773949dd1d1955646458ed18c4"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>Shutdown</b> ()</td></tr>
+<tr class="memitem:a8e7a9c773949dd1d1955646458ed18c4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a8e7a9c773949dd1d1955646458ed18c4">Shutdown</a> ()</td></tr>
+<tr class="memdesc:a8e7a9c773949dd1d1955646458ed18c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the underlying platform native implementation.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a8e7a9c773949dd1d1955646458ed18c4">More...</a><br /></td></tr>
 <tr class="separator:a8e7a9c773949dd1d1955646458ed18c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Peripherals scanning</div></td></tr>
 <tr class="memitem:a3f36fc51c81b4dd98c9b7e73f1adc404"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3f36fc51c81b4dd98c9b7e73f1adc404">StartScan</a> (IEnumerable&lt; Guid &gt; requiredServices, Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> &gt; onScannedPeripheral)</td></tr>
-<tr class="memdesc:a3f36fc51c81b4dd98c9b7e73f1adc404"><td class="mdescLeft">&#160;</td><td class="mdescRight">A new scan replaces any on-going scan  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3f36fc51c81b4dd98c9b7e73f1adc404">More...</a><br /></td></tr>
+<tr class="memdesc:a3f36fc51c81b4dd98c9b7e73f1adc404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start scanning for BLE peripherals. If there is already a scan running, it will be replaced by this one.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3f36fc51c81b4dd98c9b7e73f1adc404">More...</a><br /></td></tr>
 <tr class="separator:a3f36fc51c81b4dd98c9b7e73f1adc404"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a4fb124c3c42761610ba2489c36b698"><td class="memItemLeft" align="right" valign="top"><a id="a7a4fb124c3c42761610ba2489c36b698"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>StopScan</b> ()</td></tr>
+<tr class="memitem:a7a4fb124c3c42761610ba2489c36b698"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7a4fb124c3c42761610ba2489c36b698">StopScan</a> ()</td></tr>
+<tr class="memdesc:a7a4fb124c3c42761610ba2489c36b698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops any on-going BLE scan.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7a4fb124c3c42761610ba2489c36b698">More...</a><br /></td></tr>
 <tr class="separator:a7a4fb124c3c42761610ba2489c36b698"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46af60f161fa77536fd2266515144307"><td class="memItemLeft" align="right" valign="top"><a id="a46af60f161fa77536fd2266515144307"></a>
-static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CreatePeripheral</b> (ulong bluetoothAddress, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a> onConnectionEventChanged)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Peripherals life cycle</div></td></tr>
+<tr class="memitem:a46af60f161fa77536fd2266515144307"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a46af60f161fa77536fd2266515144307">CreatePeripheral</a> (ulong bluetoothAddress, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a> onConnectionEventChanged)</td></tr>
+<tr class="memdesc:a46af60f161fa77536fd2266515144307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to create an object for the BLE peripheral at the given address.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a46af60f161fa77536fd2266515144307">More...</a><br /></td></tr>
 <tr class="separator:a46af60f161fa77536fd2266515144307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a729611da0051116fd4da5c8358a01bee"><td class="memItemLeft" align="right" valign="top"><a id="a729611da0051116fd4da5c8358a01bee"></a>
-static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CreatePeripheral</b> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> scannedPeripheral, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a> onConnectionEvent)</td></tr>
+<tr class="memitem:a729611da0051116fd4da5c8358a01bee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a729611da0051116fd4da5c8358a01bee">CreatePeripheral</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> scannedPeripheral, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a> onConnectionEvent)</td></tr>
+<tr class="memdesc:a729611da0051116fd4da5c8358a01bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to create an object for the BLE peripheral associated with the given advertisement data passed with the <em>scannedPeripheral</em>  parameter.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a729611da0051116fd4da5c8358a01bee">More...</a><br /></td></tr>
 <tr class="separator:a729611da0051116fd4da5c8358a01bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11ec76e744bdb8e0b2d936a518d470ea"><td class="memItemLeft" align="right" valign="top"><a id="a11ec76e744bdb8e0b2d936a518d470ea"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ReleasePeripheral</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memitem:a11ec76e744bdb8e0b2d936a518d470ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a11ec76e744bdb8e0b2d936a518d470ea">ReleasePeripheral</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memdesc:a11ec76e744bdb8e0b2d936a518d470ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to release the underlying native object for the BLE peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a11ec76e744bdb8e0b2d936a518d470ea">More...</a><br /></td></tr>
 <tr class="separator:a11ec76e744bdb8e0b2d936a518d470ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8da1e1f33d9233f898d71611483ebbc"><td class="memItemLeft" align="right" valign="top"><a id="ac8da1e1f33d9233f898d71611483ebbc"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectPeripheral</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, IEnumerable&lt; Guid &gt; requiredServices, bool autoConnect, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Peripheral connection and disconnection</div></td></tr>
+<tr class="memitem:ac8da1e1f33d9233f898d71611483ebbc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ac8da1e1f33d9233f898d71611483ebbc">ConnectPeripheral</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, IEnumerable&lt; Guid &gt; requiredServices, bool autoConnect, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memdesc:ac8da1e1f33d9233f898d71611483ebbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to connect to the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ac8da1e1f33d9233f898d71611483ebbc">More...</a><br /></td></tr>
 <tr class="separator:ac8da1e1f33d9233f898d71611483ebbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab16ccba92aeda0e7fb4fde50daeef131"><td class="memItemLeft" align="right" valign="top"><a id="ab16ccba92aeda0e7fb4fde50daeef131"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>DisconnectPeripheral</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memitem:ab16ccba92aeda0e7fb4fde50daeef131"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab16ccba92aeda0e7fb4fde50daeef131">DisconnectPeripheral</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memdesc:ab16ccba92aeda0e7fb4fde50daeef131"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to disconnect the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab16ccba92aeda0e7fb4fde50daeef131">More...</a><br /></td></tr>
 <tr class="separator:ab16ccba92aeda0e7fb4fde50daeef131"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3eff81428b24b4d19e4988f3fb7fd6ec"><td class="memItemLeft" align="right" valign="top"><a id="a3eff81428b24b4d19e4988f3fb7fd6ec"></a>
-static string&#160;</td><td class="memItemRight" valign="bottom"><b>GetPeripheralName</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Peripheral operations</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Only valid once a peripheral is connected. </p>
+</div></td></tr>
+<tr class="memitem:a3eff81428b24b4d19e4988f3fb7fd6ec"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3eff81428b24b4d19e4988f3fb7fd6ec">GetPeripheralName</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memdesc:a3eff81428b24b4d19e4988f3fb7fd6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3eff81428b24b4d19e4988f3fb7fd6ec">More...</a><br /></td></tr>
 <tr class="separator:a3eff81428b24b4d19e4988f3fb7fd6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae871b31fb4f94a674cecabb9d3dce216"><td class="memItemLeft" align="right" valign="top"><a id="ae871b31fb4f94a674cecabb9d3dce216"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetPeripheralMtu</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memitem:ae871b31fb4f94a674cecabb9d3dce216"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae871b31fb4f94a674cecabb9d3dce216">GetPeripheralMtu</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memdesc:ae871b31fb4f94a674cecabb9d3dce216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the MTU for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae871b31fb4f94a674cecabb9d3dce216">More...</a><br /></td></tr>
 <tr class="separator:ae871b31fb4f94a674cecabb9d3dce216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09ef089f9763345278a4080e08cce89b"><td class="memItemLeft" align="right" valign="top"><a id="a09ef089f9763345278a4080e08cce89b"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>RequestPeripheralMtu</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, int mtu, NativeValueRequestResultHandler&lt; int &gt; onMtuResult)</td></tr>
+<tr class="memitem:a09ef089f9763345278a4080e08cce89b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a09ef089f9763345278a4080e08cce89b">RequestPeripheralMtu</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, int mtu, NativeValueRequestResultHandler&lt; int &gt; onMtuResult)</td></tr>
+<tr class="memdesc:a09ef089f9763345278a4080e08cce89b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Have the native implementation to request the given peripheral to change its MTU (Android only).  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a09ef089f9763345278a4080e08cce89b">More...</a><br /></td></tr>
 <tr class="separator:a09ef089f9763345278a4080e08cce89b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a473c2edf1ec8c991d063e318cec67a93"><td class="memItemLeft" align="right" valign="top"><a id="a473c2edf1ec8c991d063e318cec67a93"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPeripheralRssi</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, NativeValueRequestResultHandler&lt; int &gt; onRssiRead)</td></tr>
-<tr class="separator:a473c2edf1ec8c991d063e318cec67a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5728dbd4bacd4a9f7b50828f490fea7"><td class="memItemLeft" align="right" valign="top"><a id="ad5728dbd4bacd4a9f7b50828f490fea7"></a>
-static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><b>GetPeripheralDiscoveredServices</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memitem:a4500a621b2c5bf3b5cf965c7faeb6676"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a4500a621b2c5bf3b5cf965c7faeb6676">ReadPeripheralRssi</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, NativeValueRequestResultHandler&lt; int &gt; onRssiResult)</td></tr>
+<tr class="memdesc:a4500a621b2c5bf3b5cf965c7faeb6676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current RSSI for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a4500a621b2c5bf3b5cf965c7faeb6676">More...</a><br /></td></tr>
+<tr class="separator:a4500a621b2c5bf3b5cf965c7faeb6676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5728dbd4bacd4a9f7b50828f490fea7"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ad5728dbd4bacd4a9f7b50828f490fea7">GetPeripheralDiscoveredServices</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memdesc:ad5728dbd4bacd4a9f7b50828f490fea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered services for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ad5728dbd4bacd4a9f7b50828f490fea7">More...</a><br /></td></tr>
 <tr class="separator:ad5728dbd4bacd4a9f7b50828f490fea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4281b76aaaba1cf5b2080cd06b3ac49e"><td class="memItemLeft" align="right" valign="top"><a id="a4281b76aaaba1cf5b2080cd06b3ac49e"></a>
-static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><b>GetPeripheralServiceCharacteristics</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> peripheral, Guid service)</td></tr>
-<tr class="separator:a4281b76aaaba1cf5b2080cd06b3ac49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af984bf024d1deab03b115660878a0f4a"><td class="memItemLeft" align="right" valign="top"><a id="af984bf024d1deab03b115660878a0f4a"></a>
-static <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb">CharacteristicProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetCharacteristicProperties</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex)</td></tr>
-<tr class="separator:af984bf024d1deab03b115660878a0f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab38cf104301e8e95fdfb156cebf998e2"><td class="memItemLeft" align="right" valign="top"><a id="ab38cf104301e8e95fdfb156cebf998e2"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ReadCharacteristic</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, NativeValueRequestResultHandler&lt; byte[]&gt; onValueChanged, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
-<tr class="separator:ab38cf104301e8e95fdfb156cebf998e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8fe0dc2d4b44c27066ece4498a10bd6"><td class="memItemLeft" align="right" valign="top"><a id="ab8fe0dc2d4b44c27066ece4498a10bd6"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteCharacteristic</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, byte[] data, bool withResponse, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
-<tr class="separator:ab8fe0dc2d4b44c27066ece4498a10bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab44f4c7bf4742fc8375feaedeb831e97"><td class="memItemLeft" align="right" valign="top"><a id="ab44f4c7bf4742fc8375feaedeb831e97"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>SubscribeCharacteristic</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, NativeValueRequestResultHandler&lt; byte[]&gt; onValueChanged, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
-<tr class="separator:ab44f4c7bf4742fc8375feaedeb831e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d6c97ad37d756bc05ece4549c6e7fdc"><td class="memItemLeft" align="right" valign="top"><a id="a9d6c97ad37d756bc05ece4549c6e7fdc"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>UnsubscribeCharacteristic</b> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid service, Guid characteristic, uint instanceIndex, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
-<tr class="separator:a9d6c97ad37d756bc05ece4549c6e7fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961df7be29ad016886e8095ddd3677f4"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a961df7be29ad016886e8095ddd3677f4">GetPeripheralServiceCharacteristics</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid)</td></tr>
+<tr class="memdesc:a961df7be29ad016886e8095ddd3677f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered characteristics of the given peripheral's service.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a961df7be29ad016886e8095ddd3677f4">More...</a><br /></td></tr>
+<tr class="separator:a961df7be29ad016886e8095ddd3677f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c44bfdbaee6ad7b015205aa6d0262b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb">CharacteristicProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a96c44bfdbaee6ad7b015205aa6d0262b">GetCharacteristicProperties</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex)</td></tr>
+<tr class="memdesc:a96c44bfdbaee6ad7b015205aa6d0262b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the BLE properties of the specified service's characteristic for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a96c44bfdbaee6ad7b015205aa6d0262b">More...</a><br /></td></tr>
+<tr class="separator:a96c44bfdbaee6ad7b015205aa6d0262b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a983cabf682eecdebeba8ff1a58ae548a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a983cabf682eecdebeba8ff1a58ae548a">ReadCharacteristic</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler&lt; byte[]&gt; onResult)</td></tr>
+<tr class="memdesc:a983cabf682eecdebeba8ff1a58ae548a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to read the value of the specified service's characteristic for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a983cabf682eecdebeba8ff1a58ae548a">More...</a><br /></td></tr>
+<tr class="separator:a983cabf682eecdebeba8ff1a58ae548a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3386c8f52ee77ff6797c752dfcc98f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#afe3386c8f52ee77ff6797c752dfcc98f">WriteCharacteristic</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memdesc:afe3386c8f52ee77ff6797c752dfcc98f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to write to the specified service's characteristic for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#afe3386c8f52ee77ff6797c752dfcc98f">More...</a><br /></td></tr>
+<tr class="separator:afe3386c8f52ee77ff6797c752dfcc98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27052b8fb141f1c8cc052ed9b2035dc3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a27052b8fb141f1c8cc052ed9b2035dc3">SubscribeCharacteristic</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler&lt; byte[]&gt; onValueChanged, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memdesc:a27052b8fb141f1c8cc052ed9b2035dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to subscribe for value changes of the specified service's characteristic for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a27052b8fb141f1c8cc052ed9b2035dc3">More...</a><br /></td></tr>
+<tr class="separator:a27052b8fb141f1c8cc052ed9b2035dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0a893615c573e65892655a95a618a1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1">UnsubscribeCharacteristic</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> onResult)</td></tr>
+<tr class="memdesc:abc0a893615c573e65892655a95a618a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests the native implementation to unsubscribe from the specified service's characteristic for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1">More...</a><br /></td></tr>
+<tr class="separator:abc0a893615c573e65892655a95a618a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a6bd528295cca272faecb4c0cb37fc45d"><td class="memItemLeft" align="right" valign="top"><a id="a6bd528295cca272faecb4c0cb37fc45d"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>MinMtu</b> = 23</td></tr>
+<tr class="memitem:a6bd528295cca272faecb4c0cb37fc45d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a6bd528295cca272faecb4c0cb37fc45d">MinMtu</a> = 23</td></tr>
+<tr class="memdesc:a6bd528295cca272faecb4c0cb37fc45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lowest Maximum Transmission Unit (MTU) value allowed by the BLE standard.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a6bd528295cca272faecb4c0cb37fc45d">More...</a><br /></td></tr>
 <tr class="separator:a6bd528295cca272faecb4c0cb37fc45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43000de0bcf7df1fdf3a94427e0aa8c"><td class="memItemLeft" align="right" valign="top"><a id="ab43000de0bcf7df1fdf3a94427e0aa8c"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517</td></tr>
+<tr class="memitem:ab43000de0bcf7df1fdf3a94427e0aa8c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c">MaxMtu</a> = 517</td></tr>
+<tr class="memdesc:ab43000de0bcf7df1fdf3a94427e0aa8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The highest Maximum Transmission Unit (MTU) value allowed by the BLE standard.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c">More...</a><br /></td></tr>
 <tr class="separator:ab43000de0bcf7df1fdf3a94427e0aa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a> programmer. </p>
+<p>Each platform (Windows, iOS, Android) has specific APIs for managing Bluetooth Low Energy (BLE) peripherals and requires using their native language (respectively C++, Objective-C, Java) through <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a> plugins.</p>
+<p>This static class selects the appropriate native implementation at runtime based on the platform it is running on. It abstracts away the marshaling specificities of the different platforms.</p>
+<p>Each native implementation wraps the platform specific BLE APIs around a unified architecture so they can be used in a similar manner. However differences, sometimes subtle, will always exist between those implementations.</p>
+<p>See the <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a> class for a higher level access to BLE peripherals.</p>
+<p>In this context, the word "native" refers to the platform specific code and data for managing BLE peripherals. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac8da1e1f33d9233f898d71611483ebbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8da1e1f33d9233f898d71611483ebbc">&#9670;&nbsp;</a></span>ConnectPeripheral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.ConnectPeripheral </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IEnumerable&lt; Guid &gt;&#160;</td>
+          <td class="paramname"><em>requiredServices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>autoConnect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to connect to the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">requiredServices</td><td>List of services that the peripheral should support, may be empty or null.</td></tr>
+    <tr><td class="paramname">autoConnect</td><td>Whether the native implementation should attempt to automatically reconnect after an unexpected disconnection (i.e. not triggered by the software).</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a729611da0051116fd4da5c8358a01bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729611da0051116fd4da5c8358a01bee">&#9670;&nbsp;</a></span>CreatePeripheral() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> Systemic.Unity.BluetoothLE.NativeInterface.CreatePeripheral </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a>&#160;</td>
+          <td class="paramname"><em>scannedPeripheral</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a>&#160;</td>
+          <td class="paramname"><em>onConnectionEvent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to create an object for the BLE peripheral associated with the given advertisement data passed with the <em>scannedPeripheral</em>  parameter. </p>
+<p>This method doesn't initiate a connection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scannedPeripheral</td><td>Some advertisement data for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">onConnectionEvent</td><td>Invoked when the peripheral connection state changes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the native object for the BLE peripheral. Returns <code>null</code> if an object was already returned for this peripheral, and not yet released. </dd></dl>
+
+</div>
+</div>
+<a id="a46af60f161fa77536fd2266515144307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46af60f161fa77536fd2266515144307">&#9670;&nbsp;</a></span>CreatePeripheral() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> Systemic.Unity.BluetoothLE.NativeInterface.CreatePeripheral </td>
+          <td>(</td>
+          <td class="paramtype">ulong&#160;</td>
+          <td class="paramname"><em>bluetoothAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a>&#160;</td>
+          <td class="paramname"><em>onConnectionEventChanged</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to create an object for the BLE peripheral at the given address. </p>
+<p>This method doesn't initiate a connection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bluetoothAddress</td><td>The BLE peripheral address.</td></tr>
+    <tr><td class="paramname">onConnectionEventChanged</td><td>Invoked when the peripheral connection state changes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Handle to the native object for the BLE peripheral. Returns <code>null</code> if an object was already returned for this peripheral, and not yet released. </dd></dl>
+
+</div>
+</div>
+<a id="ab16ccba92aeda0e7fb4fde50daeef131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16ccba92aeda0e7fb4fde50daeef131">&#9670;&nbsp;</a></span>DisconnectPeripheral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.DisconnectPeripheral </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to disconnect the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96c44bfdbaee6ad7b015205aa6d0262b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96c44bfdbaee6ad7b015205aa6d0262b">&#9670;&nbsp;</a></span>GetCharacteristicProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb">CharacteristicProperties</a> Systemic.Unity.BluetoothLE.NativeInterface.GetCharacteristicProperties </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the BLE properties of the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>A characteristic UUID.</td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The BLE properties of a service's characteristic.</dd></dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="ad5728dbd4bacd4a9f7b50828f490fea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5728dbd4bacd4a9f7b50828f490fea7">&#9670;&nbsp;</a></span>GetPeripheralDiscoveredServices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Guid [] Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralDiscoveredServices </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the list of discovered services for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The list of discovered services.</dd></dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="ae871b31fb4f94a674cecabb9d3dce216"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae871b31fb4f94a674cecabb9d3dce216">&#9670;&nbsp;</a></span>GetPeripheralMtu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralMtu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the MTU for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The peripheral MTU.</dd></dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a3eff81428b24b4d19e4988f3fb7fd6ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eff81428b24b4d19e4988f3fb7fd6ec">&#9670;&nbsp;</a></span>GetPeripheralName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the name of the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The peripheral name.</dd></dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a961df7be29ad016886e8095ddd3677f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961df7be29ad016886e8095ddd3677f4">&#9670;&nbsp;</a></span>GetPeripheralServiceCharacteristics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Guid [] Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralServiceCharacteristics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the list of discovered characteristics of the given peripheral's service. </p>
+<p>The same characteristic may be listed several times according to the peripheral's configuration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The list of discovered characteristics of a service.</dd></dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a870bf275f6dbebad711a145186a3e49c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a870bf275f6dbebad711a145186a3e49c">&#9670;&nbsp;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Systemic.Unity.BluetoothLE.NativeInterface.Initialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727">NativeBluetoothEventHandler</a>&#160;</td>
+          <td class="paramname"><em>onBluetoothEvent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the underlying platform native implementation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onBluetoothEvent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a983cabf682eecdebeba8ff1a58ae548a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a983cabf682eecdebeba8ff1a58ae548a">&#9670;&nbsp;</a></span>ReadCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.ReadCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NativeValueRequestResultHandler&lt; byte[]&gt;&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to read the value of the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>A characteristic UUID.</td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not) and with the characteristic's current value on success.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a4500a621b2c5bf3b5cf965c7faeb6676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4500a621b2c5bf3b5cf965c7faeb6676">&#9670;&nbsp;</a></span>ReadPeripheralRssi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.ReadPeripheralRssi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NativeValueRequestResultHandler&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>onRssiResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads the current RSSI for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">onRssiResult</td><td>Invoked when the request has finished (successfully or not), with the current RSSI value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a11ec76e744bdb8e0b2d936a518d470ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11ec76e744bdb8e0b2d936a518d470ea">&#9670;&nbsp;</a></span>ReleasePeripheral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.ReleasePeripheral </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to release the underlying native object for the BLE peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a09ef089f9763345278a4080e08cce89b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ef089f9763345278a4080e08cce89b">&#9670;&nbsp;</a></span>RequestPeripheralMtu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.RequestPeripheralMtu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mtu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NativeValueRequestResultHandler&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>onMtuResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Have the native implementation to request the given peripheral to change its MTU (Android only). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">mtu</td><td>The requested MTU, see <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a6bd528295cca272faecb4c0cb37fc45d" title="The lowest Maximum Transmission Unit (MTU) value allowed by the BLE standard.">MinMtu</a> and <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c" title="The highest Maximum Transmission Unit (MTU) value allowed by the BLE standard.">MaxMtu</a> for the legal range of values.</td></tr>
+    <tr><td class="paramname">onMtuResult</td><td>Invoked when the request has finished (successfully or not), with the updated MTU value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="a8e7a9c773949dd1d1955646458ed18c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7a9c773949dd1d1955646458ed18c4">&#9670;&nbsp;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.Shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shuts down the underlying platform native implementation. </p>
+
+</div>
+</div>
 <a id="a3f36fc51c81b4dd98c9b7e73f1adc404"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f36fc51c81b4dd98c9b7e73f1adc404">&#9670;&nbsp;</a></span>StartScan()</h2>
 
@@ -198,13 +891,314 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517
 </table>
 </div><div class="memdoc">
 
-<p>A new scan replaces any on-going scan </p>
+<p>Start scanning for BLE peripherals. If there is already a scan running, it will be replaced by this one. </p>
+<p>Specifying one more service required for the peripherals will save battery on mobile devices.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">requiredServices</td><td>can be null</td></tr>
+    <tr><td class="paramname">requiredServices</td><td>List of services that the peripheral should advertise, may be empty or null.</td></tr>
+    <tr><td class="paramname">onScannedPeripheral</td><td>Called every time an advertisement packet with the required services is received.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7a4fb124c3c42761610ba2489c36b698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a4fb124c3c42761610ba2489c36b698">&#9670;&nbsp;</a></span>StopScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.StopScan </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stops any on-going BLE scan. </p>
+
+</div>
+</div>
+<a id="a27052b8fb141f1c8cc052ed9b2035dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27052b8fb141f1c8cc052ed9b2035dc3">&#9670;&nbsp;</a></span>SubscribeCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.SubscribeCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">NativeValueRequestResultHandler&lt; byte[]&gt;&#160;</td>
+          <td class="paramname"><em>onValueChanged</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to subscribe for value changes of the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>A characteristic UUID.</td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
+    <tr><td class="paramname">onValueChanged</td><td>The callback to be invoked when the characteristic value changes.</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="abc0a893615c573e65892655a95a618a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc0a893615c573e65892655a95a618a1">&#9670;&nbsp;</a></span>UnsubscribeCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.UnsubscribeCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to unsubscribe from the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>A characteristic UUID.</td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<a id="afe3386c8f52ee77ff6797c752dfcc98f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe3386c8f52ee77ff6797c752dfcc98f">&#9670;&nbsp;</a></span>WriteCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Systemic.Unity.BluetoothLE.NativeInterface.WriteCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
+          <td class="paramname"><em>nativePeripheralHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>withoutResponse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Requests the native implementation to write to the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
+    <tr><td class="paramname">serviceUuid</td><td>A service UUID.</td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>A characteristic UUID.</td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic.</td></tr>
+    <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond.</td></tr>
+    <tr><td class="paramname">onResult</td><td>Invoked when the request has finished (successfully or not).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The peripheral must be connected.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab43000de0bcf7df1fdf3a94427e0aa8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43000de0bcf7df1fdf3a94427e0aa8c">&#9670;&nbsp;</a></span>MaxMtu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Systemic.Unity.BluetoothLE.NativeInterface.MaxMtu = 517</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The highest Maximum Transmission Unit (MTU) value allowed by the BLE standard. </p>
+
+</div>
+</div>
+<a id="a6bd528295cca272faecb4c0cb37fc45d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bd528295cca272faecb4c0cb37fc45d">&#9670;&nbsp;</a></span>MinMtu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Systemic.Unity.BluetoothLE.NativeInterface.MinMtu = 23</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The lowest Maximum Transmission Unit (MTU) value allowed by the BLE standard. </p>
 
 </div>
 </div>

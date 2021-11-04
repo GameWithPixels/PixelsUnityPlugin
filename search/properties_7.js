@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_221',['Value',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#a31e594ba3ebc8f15cebae8b905e6d5c8',1,'Systemic::Unity::BluetoothLE::ValueRequestEnumerator']]]
+  ['peripheral_250',['Peripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#aa7bc4132c4e9e0ade90d0413703a0851',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]]
 ];

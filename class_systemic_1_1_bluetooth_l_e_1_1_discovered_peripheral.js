@@ -7,5 +7,6 @@ var class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral =
     [ "name", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#a12abb10ff7d9e2aefb53eb1c8da41c1f", null ],
     [ "rssi", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#aeceb05929a21be64681fe3fe727a22f6", null ],
     [ "services", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#a412f2845ecfc916461b9fc066c90aef2", null ],
-    [ "timestamp", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#a1c8061b599dc4dc34030bdc8b2d17edf", null ]
+    [ "timestamp", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#a1c8061b599dc4dc34030bdc8b2d17edf", null ],
+    [ "txPowerLevel", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html#af0159eb7ebc4ba291b31ef7986b0e5a0", null ]
 ];

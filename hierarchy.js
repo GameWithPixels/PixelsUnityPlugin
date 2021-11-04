@@ -50,7 +50,6 @@ var hierarchy =
     [ "Systemic::BluetoothLE::Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", null ],
     [ "com.systemic.bluetoothle.Scanner.ScannerCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html", null ],
     [ "Systemic::BluetoothLE::Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", null ],
-    [ "Systemic.Unity.BluetoothLE.StringExtension", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_string_extension.html", null ],
     [ "SuccessCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ]
