@@ -11,12 +11,15 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
         {
             public ulong BluetoothAddress { get; }
 
+            public string Name { get; }
+
             public bool IsValid => BluetoothAddress != 0;
 
-            public NativeScannedPeripheral(ulong bluetoothAddress) => BluetoothAddress = bluetoothAddress;
+            public NativeScannedPeripheral(ulong bluetoothAddress, string name)
+                => (BluetoothAddress, Name) = (bluetoothAddress, name);
         }
 
-        sealed class NativePeripheral : INativePeripheral
+        sealed class NativePeripheral : INativePeripheralHandleImpl
         {
             // Keep references to all callbacks so they are not reclaimed by the GC
             PeripheralConnectionEventHandler _peripheralConnectionStatusChanged;
@@ -191,12 +194,12 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             // Keep callback _onCentralStateUpdate
         }
 
-        public bool StartScan(string requiredServiceUuids, Action<ScannedPeripheral> onScannedPeripheral)
+        public bool StartScan(string requiredServiceUuids, Action<INativeDevice, NativeAdvertisementDataJson> onScannedPeripheral)
         {
             DiscoveredPeripheralHandler onDiscoveredPeripheral = jsonStr =>
             {
-                var adv = JsonUtility.FromJson<AdvertisementDataJson>(jsonStr);
-                onScannedPeripheral(new ScannedPeripheral(new NativeScannedPeripheral(adv.address), adv));
+                var adv = JsonUtility.FromJson<NativeAdvertisementDataJson>(jsonStr);
+                onScannedPeripheral(new NativeScannedPeripheral(adv.address, adv.name), adv);
             };
             // Starts a new scan if on is already in progress
             bool success = sgBleStartScan(requiredServiceUuids, onDiscoveredPeripheral);
@@ -214,7 +217,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             _onDiscoveredPeripheral = null;
         }
 
-        private NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, string debugName, NativeConnectionEventHandler onConnectionEvent)
+        private INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, string debugName, NativeConnectionEventHandler onConnectionEvent)
         {
             PeripheralConnectionEventHandler peripheralConnectionEventHandler = (ulong peripheralId, int connectionEvent, int reason) =>
             {
@@ -229,96 +232,97 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             };
 
             bool success = sgBleCreatePeripheral(bluetoothAddress, peripheralConnectionEventHandler);
-            return new NativePeripheralHandle(success ? new NativePeripheral(bluetoothAddress, debugName, peripheralConnectionEventHandler) : null);
+            return success ? new NativePeripheral(bluetoothAddress, debugName, peripheralConnectionEventHandler) : null;
         }
 
-        public NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
         {
             return CreatePeripheral(bluetoothAddress, bluetoothAddress.ToString(), onConnectionEvent);
         }
 
-        public NativePeripheralHandle CreatePeripheral(IScannedPeripheral scannedPeripheral, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventHandler onConnectionEvent)
         {
-            return CreatePeripheral(GetPeripheralAddress(scannedPeripheral), scannedPeripheral.Name, onConnectionEvent);
+            var p = (NativeScannedPeripheral)device;
+            return CreatePeripheral(p.BluetoothAddress, p.Name, onConnectionEvent);
         }
 
-        public void ReleasePeripheral(NativePeripheralHandle peripheral)
+        public void ReleasePeripheral(INativePeripheralHandleImpl peripheralHandle)
         {
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            var periph = (NativePeripheral)peripheralHandle;
             periph.Release();
-            sgBleReleasePeripheral(GetPeripheralAddress(peripheral));
+            sgBleReleasePeripheral(GetPeripheralAddress(peripheralHandle));
         }
 
-        public void ConnectPeripheral(NativePeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
         {
-            sgBleConnectPeripheral(GetPeripheralAddress(peripheral), requiredServicesUuids, autoConnect,
-                GetRequestStatusHandler(RequestOperation.ConnectPeripheral, peripheral, onResult));
+            sgBleConnectPeripheral(GetPeripheralAddress(peripheralHandle), requiredServicesUuids, autoConnect,
+                GetRequestStatusHandler(RequestOperation.ConnectPeripheral, peripheralHandle, onResult));
         }
 
-        public void DisconnectPeripheral(NativePeripheralHandle peripheral, NativeRequestResultHandler onResult)
+        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
         {
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
-            sgBleDisconnectPeripheral(GetPeripheralAddress(peripheral),
-                GetRequestStatusHandler(RequestOperation.DisconnectPeripheral, peripheral, onResult));
+            var periph = (NativePeripheral)peripheralHandle;
+            sgBleDisconnectPeripheral(GetPeripheralAddress(peripheralHandle),
+                GetRequestStatusHandler(RequestOperation.DisconnectPeripheral, peripheralHandle, onResult));
             //TODO use static C# callback that redirects to peripheral, we might still get a callback on a different thread...
             //periph.ForgetAllValueHandlers(); // We won't get such events anymore
         }
 
-        public string GetPeripheralName(NativePeripheralHandle peripheral)
+        public string GetPeripheralName(INativePeripheralHandleImpl peripheralHandle)
         {
-            return sgBleGetPeripheralName(GetPeripheralAddress(peripheral));
+            return sgBleGetPeripheralName(GetPeripheralAddress(peripheralHandle));
         }
 
-        public int GetPeripheralMtu(NativePeripheralHandle peripheral)
+        public int GetPeripheralMtu(INativePeripheralHandleImpl peripheralHandle)
         {
-            return sgBleGetPeripheralMtu(GetPeripheralAddress(peripheral));
+            return sgBleGetPeripheralMtu(GetPeripheralAddress(peripheralHandle));
         }
 
-        public void RequestPeripheralMtu(NativePeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
         {
             // No support for MTU request with WinRT Bluetooth, we just return the automatically negotiated MTU
-            onMtuResult(GetPeripheralMtu(peripheral), RequestStatus.NotSupported);
+            onMtuResult(GetPeripheralMtu(peripheralHandle), RequestStatus.NotSupported);
         }
 
-        public void ReadPeripheralRssi(NativePeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead)
+        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<int> onRssiRead)
         {
             // No support for reading RSSI of connected device with WinRT Bluetooth
             onRssiRead(int.MinValue, RequestStatus.NotSupported);
         }
 
-        public string GetPeripheralDiscoveredServices(NativePeripheralHandle peripheral)
+        public string GetPeripheralDiscoveredServices(INativePeripheralHandleImpl peripheralHandle)
         {
-            return sgBleGetPeripheralDiscoveredServices(GetPeripheralAddress(peripheral));
+            return sgBleGetPeripheralDiscoveredServices(GetPeripheralAddress(peripheralHandle));
         }
 
-        public string GetPeripheralServiceCharacteristics(NativePeripheralHandle peripheral, string serviceUuid)
+        public string GetPeripheralServiceCharacteristics(INativePeripheralHandleImpl peripheralHandle, string serviceUuid)
         {
-            return sgBleGetPeripheralServiceCharacteristics(GetPeripheralAddress(peripheral), serviceUuid);
+            return sgBleGetPeripheralServiceCharacteristics(GetPeripheralAddress(peripheralHandle), serviceUuid);
         }
 
-        public CharacteristicProperties GetCharacteristicProperties(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex)
+        public CharacteristicProperties GetCharacteristicProperties(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex)
         {
-            return (CharacteristicProperties)sgBleGetCharacteristicProperties(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex);
+            return (CharacteristicProperties)sgBleGetCharacteristicProperties(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex);
         }
 
-        public void ReadCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            var valueChangedHandler = GetValueChangedHandler(peripheral, onValueChanged);
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            var valueChangedHandler = GetValueChangedHandler(peripheralHandle, onValueChanged);
+            var periph = (NativePeripheral)peripheralHandle;
             periph.KeepValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
-            sgBleReadCharacteristicValue(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
-                GetRequestStatusHandler(RequestOperation.ReadCharacteristic, peripheral, onResult));
+            sgBleReadCharacteristicValue(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
+                GetRequestStatusHandler(RequestOperation.ReadCharacteristic, peripheralHandle, onResult));
             //TODO when to forget value changed handler?
         }
 
-        public void WriteCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
+        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
         {
             var ptr = Marshal.AllocHGlobal(data.Length);
             try
             {
                 Marshal.Copy(data, 0, ptr, data.Length);
-                sgBleWriteCharacteristicValue(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse,
-                    GetRequestStatusHandler(RequestOperation.WriteCharacteristic, peripheral, onResult));
+                sgBleWriteCharacteristicValue(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse,
+                    GetRequestStatusHandler(RequestOperation.WriteCharacteristic, peripheralHandle, onResult));
             }
             finally
             {
@@ -326,36 +330,31 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             }
         }
 
-        public void SubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            var valueChangedHandler = GetValueChangedHandler(peripheral, onValueChanged);
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            var valueChangedHandler = GetValueChangedHandler(peripheralHandle, onValueChanged);
+            var periph = (NativePeripheral)peripheralHandle;
             periph.KeepValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler);
-            sgBleSetNotifyCharacteristic(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
-                GetRequestStatusHandler(RequestOperation.SubscribeCharacteristic, peripheral, onResult));
+            sgBleSetNotifyCharacteristic(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, valueChangedHandler,
+                GetRequestStatusHandler(RequestOperation.SubscribeCharacteristic, peripheralHandle, onResult));
         }
 
-        public void UnsubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
+        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
         {
-            sgBleSetNotifyCharacteristic(GetPeripheralAddress(peripheral), serviceUuid, characteristicUuid, instanceIndex, null,
-                GetRequestStatusHandler(RequestOperation.UnsubscribeCharacteristic, peripheral, onResult));
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            sgBleSetNotifyCharacteristic(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, null,
+                GetRequestStatusHandler(RequestOperation.UnsubscribeCharacteristic, peripheralHandle, onResult));
+            var periph = (NativePeripheral)peripheralHandle;
             periph.ForgetValueChangedHandler(serviceUuid, characteristicUuid, instanceIndex);
         }
 
-        private ulong GetPeripheralAddress(IScannedPeripheral scannedPeripheral)
+        private ulong GetPeripheralAddress(INativePeripheralHandleImpl peripheralHandle)
         {
-            return ((NativeScannedPeripheral)scannedPeripheral.NativeDevice).BluetoothAddress;
+            return ((NativePeripheral)peripheralHandle).BluetoothAddress;
         }
 
-        private ulong GetPeripheralAddress(NativePeripheralHandle peripheral)
+        private RequestStatusHandler GetRequestStatusHandler(RequestOperation operation, INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
         {
-            return ((NativePeripheral)peripheral.NativePeripheral).BluetoothAddress;
-        }
-
-        private RequestStatusHandler GetRequestStatusHandler(RequestOperation operation, NativePeripheralHandle peripheral, NativeRequestResultHandler onResult)
-        {
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            var periph = (NativePeripheral)peripheralHandle;
             RequestStatusHandler onRequestStatus = null;
             onRequestStatus = errorCode =>
             {
@@ -386,9 +385,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return onRequestStatus;
         }
 
-        private ValueChangedHandler GetValueChangedHandler(NativePeripheralHandle peripheral, NativeValueRequestResultHandler<byte[]> onValueChanged)
+        private ValueChangedHandler GetValueChangedHandler(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<byte[]> onValueChanged)
         {
-            var periph = (NativePeripheral)peripheral.NativePeripheral;
+            var periph = (NativePeripheral)peripheralHandle;
             ValueChangedHandler valueChangedHandler = (IntPtr data, UIntPtr length, RequestStatus errorCode) =>
             {
                 try

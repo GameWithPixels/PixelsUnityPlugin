@@ -4,7 +4,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class ScannerCallback : AndroidJavaProxy
     {
-        public delegate void ScanResultHandler(AndroidJavaObject device, AdvertisementDataJson advertisementData);
+        public delegate void ScanResultHandler(AndroidJavaObject device, NativeAdvertisementDataJson advertisementData);
 
         ScanResultHandler _onScanResult;
 
@@ -16,7 +16,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         {
             Debug.Log($"==> onScanResult: {advertisementDataJson}");
 
-            _onScanResult?.Invoke(device, JsonUtility.FromJson<AdvertisementDataJson>(advertisementDataJson));
+            _onScanResult?.Invoke(device, JsonUtility.FromJson<NativeAdvertisementDataJson>(advertisementDataJson));
         }
 
         void onScanFailed(string error)

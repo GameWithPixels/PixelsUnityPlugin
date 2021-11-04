@@ -207,9 +207,10 @@ namespace
         str << "{\"systemId\":\"" << peripheral->address() << "\"";
         //str << ",\"timestamp\":\"" << peripheral->timestamp() << "\";
         str << ",\"address\":" << peripheral->address();
+        str << ",\"name\":\"" << winrt::to_string(peripheral->name()) << "\"";
         str << ",\"isConnectable\":\"" << (peripheral->isConnectable() ? "true" : "false") << "\"";
         str << ",\"rssi\":" << peripheral->rssi();
-        str << ",\"name\":\"" << winrt::to_string(peripheral->name()) << "\"";
+        str << ",\"txPowerLevel\":" << peripheral->txPowerLevel();
         if (!peripheral->services().empty())
         {
             str << ",\"services\":[";

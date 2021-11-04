@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// Static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.
+    /// A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.
     /// 
     /// Use the <see cref="ScanForPeripheralsWithServices"/> method to discover available BLE peripherals.
     /// Then connect to a scanned peripheral with a call to <see cref="ConnectPeripheralAsync"/>
@@ -17,7 +17,7 @@ namespace Systemic.Unity.BluetoothLE
     ///
     /// Be sure to disconnect the peripheral once it is not needed anymore.
     ///
-    /// This class is using <see cref="NativeInterface"/> to perform most of its operations.
+    /// This class leverages <see cref="NativeInterface"/> to perform most of its operations.
     ///
     /// Calls from any other thread than the main thread will throw an exception.
     /// 
@@ -143,7 +143,7 @@ namespace Systemic.Unity.BluetoothLE
         public const int RequestDefaultTimeout = 10;
 
         /// <summary>
-        /// Whether or not <see cref="Central"/> is ready for scanning and connecting to peripherals.
+        /// Indicates whether <see cref="Central"/> is ready for scanning and connecting to peripherals.
         /// Reasons for not being ready are:
         /// - <see cref="Initialize"/> hasn't been called, or <see cref="Shutdown"/> was called afterwards
         /// - initialization is still on-going
@@ -152,7 +152,7 @@ namespace Systemic.Unity.BluetoothLE
         public static bool IsReady { get; private set; }
 
         /// <summary>
-        /// Whether or not a scan is currently on-going.
+        /// Indicates whether a scan is currently on-going.
         /// </summary>
         public static bool IsScanning { get; private set; }
 
@@ -196,15 +196,18 @@ namespace Systemic.Unity.BluetoothLE
             }
         }
 
+        /*! \name Static class life cycle */
+        //! @{
+
         /// <summary>
         /// Initializes the static class.
-        /// The <see cref="IsReady"/> property is set to true once <see cref="Central"/> is ready
+        /// The <see cref="IsReady"/> property is set to <c>true</c> once <see cref="Central"/> is ready
         /// to scan for and connect to BLE peripherals.
         /// </summary>
         /// <returns>
-        /// Whether or not the call succeeded.
-        /// - if <see cref="true"/> is returned, the static class might not be ready yet
-        /// - if <see cref="false"/> is returned, there is probably something wrong with the platform specific native plugin
+        /// Indicates whether the call has succeeded.
+        /// - if <c>true</c> is returned, the static class might not be ready yet
+        /// - if <c>false</c> is returned, there is probably something wrong with the platform specific native plugin
         /// </returns>
         public static bool Initialize()
         {
@@ -250,12 +253,17 @@ namespace Systemic.Unity.BluetoothLE
             ScheduleDestroy();
         }
 
+        //! @}
+        /*! \name Peripherals scanning */
+        //! @{
+
         /// <summary>
         /// Starts a scan for BLE peripherals.
-        /// Giving one more service that the peripheral should advertise will save battery on mobile devices.
+        /// 
+        /// Specifying one more service required for the peripherals will save battery on mobile devices.
         /// </summary>
-        /// <param name="serviceUuids">List of required services that the peripheral should advertise, may be empty or null.</param>
-        /// <returns>Whether or not the call succeeded. It will fail if <see cref="IsReady"/> is <see cref="false"/>.</returns>
+        /// <param name="serviceUuids">List of services that the peripheral should advertise, may be empty or null.</param>
+        /// <returns>Indicates whether the call has succeeded. It will fail if <see cref="IsReady"/> is <c>false</c>.</returns>
         /// <remarks>If a scan is already in progress, it will be replaced by this one.</remarks>
         public static bool ScanForPeripheralsWithServices(IEnumerable<Guid> serviceUuids = null)
         {
@@ -304,7 +312,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Stops an on-going scan.
+        /// Stops any on-going BLE scan.
         /// </summary>
         public static void StopScan()
         {
@@ -316,6 +324,10 @@ namespace Systemic.Unity.BluetoothLE
             IsScanning = false;
         }
 
+        //! @}
+        /*! \name Peripheral connection and disconnection */
+        //! @{
+
         /// <summary>
         /// Asynchronously connects to a discovered peripheral.
         /// 
@@ -325,10 +337,21 @@ namespace Systemic.Unity.BluetoothLE
         /// - the connection didn't succeeded after the given timeout value
         /// - an error occurred while trying to connect
         ///
+        /// Once connected to the peripheral, <see cref="Central"/> sends a request to change the peripheral's MTU
+        /// to highest possible value. In the likely event that the peripheral doesn't support the requested MTU
+        /// because it's too high, it will nonetheless change its MTU to the highest value it can achieve.
+        ///
+        /// Once the MTU is changed, <see cref="Central"/> notifies the caller that the peripheral is ready to be used
+        /// by invoking the <paramref name="onConnectionEvent"/> handler with the second argument set to <c>true</c>.
+        ///
+        /// Upon a disconnection (whichever the cause), <see cref="Central"/> notifies the caller by invoking
+        /// the <paramref name="onConnectionEvent"/> handler with the second argument set to <c>false</c>.
+        ///
         /// Check <see cref="RequestEnumerator"/> members for more details.
         /// </summary>
         /// <param name="peripheral">Scanned peripheral to connect to.</param>
-        /// <param name="onConnectionEvent">Called each time the connection state changes.</param>
+        /// <param name="onConnectionEvent">Called each time the connection state changes, the peripheral is passed as
+        /// the first argument and the connection state as the second argument (<c>true</c> means connected).</param>
         /// <param name="timeoutSec">The timeout value, in seconds. The default is zero in which case the request will never timeout.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
@@ -462,7 +485,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Disconnects from a peripheral.
+        /// Disconnects a peripheral.
         /// </summary>
         /// <param name="peripheral">Scanned peripheral to disconnect from.</param>
         /// <returns>
@@ -480,13 +503,17 @@ namespace Systemic.Unity.BluetoothLE
             return new DisconnectRequestEnumerator(nativeHandle);
         }
 
+        //! @}
+        /*! \name Peripheral operations
+         *  Only valid once a peripheral is connected. */
+        //! @{
+
         /// <summary>
         /// Returns the name of the given peripheral.
-        /// 
-        /// Although the device should immediately disconnect, it may take a few frames to propagate the state change.
         /// </summary>
         /// <param name="peripheral">A connected peripheral.</param>
         /// <returns>The peripheral name.</returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static string GetPeripheralName(ScannedPeripheral peripheral)
         {
             EnsureRunningOnMainThread();
@@ -504,6 +531,7 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         /// <param name="peripheral">A connected peripheral.</param>
         /// <returns>The peripheral MTU.</returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static int GetPeripheralMtu(ScannedPeripheral peripheral)
         {
             //TODO check if MTU is 23 or 20 (and update comment if it's the later)
@@ -514,7 +542,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously reads the Received Signal Strength Indicator (RSSI) for the given peripheral.
+        /// Asynchronously reads the current Received Signal Strength Indicator (RSSI) for the given peripheral.
         /// 
         /// It gives an indication of the connection quality.
         /// </summary>
@@ -524,6 +552,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="ValueRequestEnumerator<>"/> properties to get the RSSI value and the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static ValueRequestEnumerator<int> ReadPeripheralRssi(ScannedPeripheral peripheral, float timeoutSec = RequestDefaultTimeout)
         {
             EnsureRunningOnMainThread();
@@ -538,6 +567,7 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         /// <param name="peripheral">A connected peripheral.</param>
         /// <returns>The list of discovered services.</returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static Guid[] GetPeripheralDiscoveredServices(ScannedPeripheral peripheral)
         {
             EnsureRunningOnMainThread();
@@ -554,6 +584,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="peripheral">A connected peripheral.</param>
         /// <param name="serviceUuid">A service UUID.</param>
         /// <returns>The list of discovered characteristics of a service.</returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static Guid[] GetPeripheralServiceCharacteristics(ScannedPeripheral peripheral, Guid serviceUuid)
         {
             EnsureRunningOnMainThread();
@@ -570,6 +601,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="characteristicUuid">A characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
         /// <returns>The BLE properties of a service's characteristic.</returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static CharacteristicProperties GetCharacteristicProperties(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex = 0)
         {
             EnsureRunningOnMainThread();
@@ -589,6 +621,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec = RequestDefaultTimeout)
         {
             return ReadCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, timeoutSec);
@@ -606,6 +639,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="ValueRequestEnumerator<>"/> properties to get the characteristic value and the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec = RequestDefaultTimeout)
         {
             EnsureRunningOnMainThread();
@@ -633,6 +667,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec = RequestDefaultTimeout)
         {
             return WriteCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, data, false, timeoutSec);
@@ -645,12 +680,13 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="serviceUuid">A service UUID.</param>
         /// <param name="characteristicUuid">A characteristic UUID.</param>
         /// <param name="data">The data to write to the characteristic.</param>
-        /// <param name="withoutResponse">Whether or not to wait for the peripheral to respond.</param>
+        /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse = false, float timeoutSec = RequestDefaultTimeout)
         {
             return WriteCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, data, withoutResponse, timeoutSec);
@@ -664,12 +700,13 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="characteristicUuid">A characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="data">The data to write to the characteristic.</param>
-        /// <param name="withoutResponse">Whether or not to wait for the peripheral to respond.</param>
+        /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse = false, float timeoutSec = RequestDefaultTimeout)
         {
             EnsureRunningOnMainThread();
@@ -692,6 +729,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, Action<byte[]> onValueChanged, float timeoutSec = RequestDefaultTimeout)
         {
             return SubscribeCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, onValueChanged, timeoutSec);
@@ -710,6 +748,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, Action<byte[]> onValueChanged, float timeoutSec = RequestDefaultTimeout)
         {
             EnsureRunningOnMainThread();
@@ -723,7 +762,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously unsubscribe from value changes of the specified service's characteristic for the given peripheral.
+        /// Asynchronously unsubscribe from the specified service's characteristic for the given peripheral.
         /// </summary>
         /// <param name="peripheral">A connected peripheral.</param>
         /// <param name="serviceUuid">A service UUID.</param>
@@ -734,6 +773,7 @@ namespace Systemic.Unity.BluetoothLE
         /// An enumerator meant to be run as a coroutine.
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
+        /// <remarks>The peripheral must be connected.</remarks>
         public static RequestEnumerator UnsubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex = 0, float timeoutSec = RequestDefaultTimeout)
         {
             EnsureRunningOnMainThread();
@@ -743,6 +783,8 @@ namespace Systemic.Unity.BluetoothLE
                 (p, onResult) => NativeInterface.UnsubscribeCharacteristic(
                     p, serviceUuid, characteristicUuid, instanceIndex, onResult));
         }
+
+        //! @}
 
         // Throws an exception if we are not running on the main thread
         private static void EnsureRunningOnMainThread()

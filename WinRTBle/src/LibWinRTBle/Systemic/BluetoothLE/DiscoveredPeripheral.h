@@ -67,6 +67,7 @@ namespace Systemic::BluetoothLE
         bluetooth_address_t _address{};
         bool _isConnectable{};
         int _rssi{};
+        int _txPowerLevel{};
         std::wstring _name{};
         std::vector<winrt::guid> _services{};
         std::vector<ManufacturerData> _manufacturerData{};
@@ -80,6 +81,8 @@ namespace Systemic::BluetoothLE
         bool isConnectable() const { return _isConnectable; }
 
         int rssi() const { return _rssi; }
+
+        int txPowerLevel() const { return _txPowerLevel; }
         
         const std::wstring& name() const { return _name; }
         
@@ -97,6 +100,7 @@ namespace Systemic::BluetoothLE
             bluetooth_address_t address,
             bool isConnectable,
             int rssi,
+            int txPowerLevel,
             const std::wstring& name,
             const std::vector<winrt::guid>& services,
             const std::vector<ManufacturerData>& manufacturerData,
@@ -106,6 +110,7 @@ namespace Systemic::BluetoothLE
             _address{ address },
             _isConnectable{ isConnectable },
             _rssi{ rssi },
+            _txPowerLevel{ txPowerLevel },
             _name{ name },
             _services{ services },
             _manufacturerData{ manufacturerData },
@@ -115,6 +120,7 @@ namespace Systemic::BluetoothLE
             const DateTime& timestamp,
             const DiscoveredPeripheral& peripheral,
             int rssi,
+            int txPowerLevel,
             std::wstring& name,
             const std::vector<winrt::guid>& services,
             const std::vector<ManufacturerData>& manufacturerData,
@@ -124,6 +130,7 @@ namespace Systemic::BluetoothLE
             _address{ peripheral.address() },
             _isConnectable{ peripheral.isConnectable() },
             _rssi{ rssi },
+            _txPowerLevel{ txPowerLevel },
             _name{ name.empty() ? peripheral._name : name },
             _services{ concat(peripheral._services, services) },
             _manufacturerData{ concat(peripheral._manufacturerData, manufacturerData) },

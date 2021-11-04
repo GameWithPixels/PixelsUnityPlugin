@@ -146,8 +146,12 @@ public final class Scanner
                     sb.append(address);
                     sb.append("\",\"name\":\"");
                     sb.append(device.getName());
+                    sb.append("\",\"isConnectable\":");
+                    sb.append(scanResult.isConnectable());
                     sb.append("\",\"rssi\":");
                     sb.append(scanResult.getRssi());
+                    sb.append("\",\"txPowerLevel\":");
+                    sb.append(scanResult.getTxPower());
 
                     sb.append(",\"services\":[");
 

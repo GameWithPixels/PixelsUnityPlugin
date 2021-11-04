@@ -180,6 +180,10 @@ NSString *advertisementDataToJsonString(const char *systemId, NSDictionary<NSStr
     {
         [jsonStr appendFormat:@"\"name\":\"%@\",", localName];
     }
+    if (isConnectable.boolValue)
+    {
+        [jsonStr appendString:@"\"isConnectable\":true,"];
+    }
     if (servicesData)
     {
         [jsonStr appendString:@"\"serviceData\":{"];
@@ -205,19 +209,15 @@ NSString *advertisementDataToJsonString(const char *systemId, NSDictionary<NSStr
         appendToJsonStr(jsonStr, overflowServiceUUIDs);
         [jsonStr appendString:@","];
     }
-    if (txPowerLevel)
-    {
-        [jsonStr appendFormat:@"\"txPowerLevel\":\"%@\",", txPowerLevel];
-    }
-    if (isConnectable.boolValue)
-    {
-        [jsonStr appendString:@"\"isConnectable\":true,"];
-    }
     if (solicitedServiceUUIDs)
     {
         [jsonStr appendString:@"\"solicitedServiceUUIDs\":"];
         appendToJsonStr(jsonStr, solicitedServiceUUIDs);
         [jsonStr appendString:@","];
+    }
+    if (txPowerLevel)
+    {
+        [jsonStr appendFormat:@"\"txPowerLevel\":\"%@\",", txPowerLevel];
     }
     [jsonStr appendFormat:@"\"rssi\":%@", RSSI];
     [jsonStr appendString:@"}"];

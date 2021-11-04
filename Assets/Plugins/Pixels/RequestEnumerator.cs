@@ -49,17 +49,17 @@ namespace Systemic.Unity.BluetoothLE
         public RequestOperation Operation { get; }
 
         /// <summary>
-        /// Whether or not the request has finished (successfully or not).
+        /// Indicates whether the request has finished (successfully or not).
         /// </summary>
         public bool IsDone => _status.HasValue;
 
         /// <summary>
-        /// Whether or not the request was successful.
+        /// Indicates whether the request was successful.
         /// </summary>
         public bool IsSuccess => _status.HasValue && (_status.Value == RequestStatus.Success);
 
         /// <summary>
-        /// Whether or not the request has timed-out.
+        ///Indicates whether the request has timed-out.
         /// </summary>
         public bool IsTimeout { get; private set; }
 
@@ -158,7 +158,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Processes the request.
         /// </summary>
-        /// <returns>Whether or not the request is still running.</returns>
+        /// <returns>Indicates whether the request is still running.</returns>
         public virtual bool MoveNext()
         {
             if ((!_status.HasValue) && (_timeout > 0))

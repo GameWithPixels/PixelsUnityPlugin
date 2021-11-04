@@ -79,7 +79,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
             public void Dispose() { JavaDevice = null; }
         }
 
-        sealed class NativePeripheral : INativePeripheral, IDisposable
+        sealed class NativePeripheral : INativePeripheralHandleImpl, IDisposable
         {
             public AndroidJavaObject JavaPeripheral { get; private set; }
 
@@ -111,10 +111,10 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         {
         }
 
-        public bool StartScan(string requiredServiceUuids, Action<ScannedPeripheral> onScannedPeripheral)
+        public bool StartScan(string requiredServiceUuids, Action<INativeDevice, NativeAdvertisementDataJson> onScannedPeripheral)
         {
             var callback = new ScannerCallback((device, scanResult)
-                => onScannedPeripheral(new ScannedPeripheral(new NativeBluetoothDevice(device), scanResult)));
+                => onScannedPeripheral(new NativeBluetoothDevice(device), scanResult));
                 //TODO try/catch?
 
             _scannerClass.CallStatic(
@@ -130,109 +130,98 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
             _scannerClass.CallStatic("stopScan");
         }
 
-        public NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
         {
             var device = _peripheralClass.CallStatic<AndroidJavaObject>(
                 "getDeviceFromAddress",
                 (long)bluetoothAddress);
-            if (device == null)
-            {
-                return new NativePeripheralHandle();
-            }
-            else
-            {
-                var client = new AndroidJavaObject(
+            return device == null ? null :
+                new NativePeripheral(new AndroidJavaObject(
                     PeripheralClassName,
                     device,
-                    new ConnectionObserver(onConnectionEvent));
-                return new NativePeripheralHandle(new NativePeripheral(client));
-            }
+                    new ConnectionObserver(onConnectionEvent)));
         }
 
-        public NativePeripheralHandle CreatePeripheral(IScannedPeripheral scannedPeripheral, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventHandler onConnectionEvent)
         {
-            AndroidJavaObject javaPeripheral = null;
-            var device = ((NativeBluetoothDevice)scannedPeripheral.NativeDevice)?.JavaDevice;
-            if (device != null)
-            {
-                javaPeripheral = new AndroidJavaObject(
+            var javaDevice = ((NativeBluetoothDevice)device)?.JavaDevice;
+            return javaDevice == null ? null :
+                new NativePeripheral(new AndroidJavaObject(
                     PeripheralClassName,
-                    device,
-                    new ConnectionObserver(onConnectionEvent));
-            }
-            return new NativePeripheralHandle(javaPeripheral == null ? null : new NativePeripheral(javaPeripheral));
+                    javaDevice,
+                    new ConnectionObserver(onConnectionEvent)));
         }
 
-        public void ReleasePeripheral(NativePeripheralHandle peripheral)
+        public void ReleasePeripheral(INativePeripheralHandleImpl peripheralHandle)
         {
-            ((NativePeripheral)peripheral.NativePeripheral).Dispose();
+            ((NativePeripheral)peripheralHandle).Dispose();
         }
 
-        public void ConnectPeripheral(NativePeripheralHandle peripheral, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "connect",
                 requiredServicesUuids,
                 autoConnect,
                 new RequestCallback(RequestOperation.ConnectPeripheral, onResult));
         }
 
-        public void DisconnectPeripheral(NativePeripheralHandle peripheral, NativeRequestResultHandler onResult)
+        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "disconnect",
                 new RequestCallback(RequestOperation.DisconnectPeripheral, onResult));
         }
 
-        public string GetPeripheralName(NativePeripheralHandle peripheral)
+        public string GetPeripheralName(INativePeripheralHandleImpl peripheralHandle)
         {
-            return GetJavaPeripheral(peripheral)?.Call<string>("getName");
+            return GetJavaPeripheral(peripheralHandle)?.Call<string>("getName");
         }
 
-        public int GetPeripheralMtu(NativePeripheralHandle peripheral)
+        public int GetPeripheralMtu(INativePeripheralHandleImpl peripheralHandle)
         {
-            return GetJavaPeripheral(peripheral)?.Call<int>("getMtu") ?? 0;
+            return GetJavaPeripheral(peripheralHandle)?.Call<int>("getMtu") ?? 0;
         }
 
-        public void RequestPeripheralMtu(NativePeripheralHandle peripheral, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
         {
-            GetJavaPeripheral(peripheral, status => onMtuResult(0, status))?.Call(
+            GetJavaPeripheral(peripheralHandle, status => onMtuResult(0, status))?.Call(
                 "requestMtu",
                 mtu,
                 new MtuRequestCallback(onMtuResult));
         }
 
-        public void ReadPeripheralRssi(NativePeripheralHandle peripheral, NativeValueRequestResultHandler<int> onRssiRead)
+        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<int> onRssiRead)
         {
-            GetJavaPeripheral(peripheral, status => onRssiRead(int.MinValue, status))?.Call(
+            GetJavaPeripheral(peripheralHandle, status => onRssiRead(int.MinValue, status))?.Call(
                 "readRssi",
                 new RssiRequestCallback(onRssiRead));
         }
 
-        public string GetPeripheralDiscoveredServices(NativePeripheralHandle peripheral)
+        public string GetPeripheralDiscoveredServices(INativePeripheralHandleImpl peripheralHandle)
         {
-            return GetJavaPeripheral(peripheral)?.Call<string>("getDiscoveredServices");
+            return GetJavaPeripheral(peripheralHandle)?.Call<string>("getDiscoveredServices");
         }
 
-        public string GetPeripheralServiceCharacteristics(NativePeripheralHandle peripheral, string serviceUuid)
+        public string GetPeripheralServiceCharacteristics(INativePeripheralHandleImpl peripheralHandle, string serviceUuid)
         {
-            return GetJavaPeripheral(peripheral)?.Call<string>(
+            return GetJavaPeripheral(peripheralHandle)?.Call<string>(
                 "getServiceCharacteristics",
                 serviceUuid);
         }
 
-        public CharacteristicProperties GetCharacteristicProperties(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex)
+        public CharacteristicProperties GetCharacteristicProperties(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex)
         {
-            return (CharacteristicProperties)GetJavaPeripheral(peripheral)?.Call<int>(
+            return (CharacteristicProperties)GetJavaPeripheral(peripheralHandle)?.Call<int>(
                 "getCharacteristicProperties",
                 serviceUuid,
                 characteristicUuid,
                 (int)instanceIndex);
         }
 
-        public void ReadCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "readCharacteristic",
                 serviceUuid,
                 characteristicUuid,
@@ -241,9 +230,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
                 new RequestCallback(RequestOperation.ReadCharacteristic, onResult));
         }
 
-        public void WriteCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
+        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "writeCharacteristic",
                 serviceUuid,
                 characteristicUuid,
@@ -254,9 +243,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         }
 
         // No notification with error on Android
-        public void SubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "subscribeCharacteristic",
                 serviceUuid,
                 characteristicUuid,
@@ -265,9 +254,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
                 new RequestCallback(RequestOperation.SubscribeCharacteristic, onResult));
         }
 
-        public void UnsubscribeCharacteristic(NativePeripheralHandle peripheral, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
+        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
         {
-            GetJavaPeripheral(peripheral, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "unsubscribeCharacteristic",
                 serviceUuid,
                 characteristicUuid,
@@ -275,9 +264,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
                 new RequestCallback(RequestOperation.UnsubscribeCharacteristic, onResult));
         }
 
-        AndroidJavaObject GetJavaPeripheral(NativePeripheralHandle peripheral, NativeRequestResultHandler onResult = null)
+        AndroidJavaObject GetJavaPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult = null)
         {
-            var javaPeripheral = ((NativePeripheral)peripheral.NativePeripheral).JavaPeripheral;
+            var javaPeripheral = ((NativePeripheral)peripheralHandle).JavaPeripheral;
             if (javaPeripheral == null)
             {
                 onResult?.Invoke(RequestStatus.InvalidPeripheral);

@@ -95,6 +95,12 @@ namespace Systemic::BluetoothLE
                 }
             }
 
+            int txPower = 0;
+            if (args.TransmitPowerLevelInDBm())
+            {
+                txPower = args.TransmitPowerLevelInDBm().GetInt16();
+            }
+
             switch (args.AdvertisementType())
             {
             case BluetoothLEAdvertisementType::ConnectableUndirected:
@@ -108,6 +114,7 @@ namespace Systemic::BluetoothLE
                         args.BluetoothAddress(),
                         args.IsConnectable(),
                         args.RawSignalStrengthInDBm(),
+                        txPower,
                         name,
                         services,
                         manufacturerData,
@@ -128,6 +135,7 @@ namespace Systemic::BluetoothLE
                             args.Timestamp(),
                             *it->second,
                             args.RawSignalStrengthInDBm(),
+                            txPower,
                             name,
                             services,
                             manufacturerData,
