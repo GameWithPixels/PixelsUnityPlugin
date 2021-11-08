@@ -10,11 +10,37 @@ import android.bluetooth.BluetoothDevice;
 
 import no.nordicsemi.android.support.v18.scanner.*;
 
+/**
+ * @brief Static class with methods for running a Bluetooth Low Energy (BLE) scan.
+ *
+ * @note This class was designed to work as a Unity plugin, and thus its methods take
+ * and return strings rather than ParcelUuid object for a simplified marshaling with
+ * the .NET platform.
+ *
+ * It relies on Nordic's Android-Scanner-Compat-Library library for most of the work.
+ * @see https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library
+ */
 public final class Scanner
 {
+    /**
+     * @brief Interface for scan results callbacks.
+     */
     public interface ScannerCallback
     {
+        /**
+         * @brief A callback invoked when advertisement data is received
+         *        from a Bluetooth device.
+         *
+         * @param device The Android BluetoothDevice which send the advertisement data.
+         * @param advertisementDataJson The Android BluetoothDevice which send the advertisement data.
+         */
         public void onScanResult(BluetoothDevice device, String advertisementDataJson);
+
+        /**
+         * @brief A callback invoked when the scan fails.
+         *
+         * @param error A string with the error that caused the scan to fail.
+         */
         public void onScanFailed(String error);
     }
 
@@ -22,7 +48,15 @@ public final class Scanner
     private static ScanCallback _scanCallback;
     private static Object _scanSync = new Object();
 
-    // requiredServicesUuids is a comma separated list of UUIDs, it can be null
+    /**
+     * @brief Starts scanning for BLE peripherals.
+     *
+     * If a scan is already running, it will be stopped before starting the new one.
+     *
+     * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
+     *                              should advertise, may be null or empty.
+     * @param callback The object implementing the scanner callbacks.
+     */
     public static void startScan(final String requiredServicesUuids, final ScannerCallback callback)
     {
         Log.v(TAG, "==> startScan");
@@ -32,11 +66,13 @@ public final class Scanner
             throw new IllegalArgumentException("callback is null");
         }
 
+        // Build scan settings
         ScanSettings settings = new ScanSettings.Builder()
             .setLegacy(false) // Default is true for compatibility with older apps, but we all type of advertisements, not just legacy
             .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY) // Default is low power which is good for long scans, in our use case we do short scans and we prefer having quick results
             .build(); // Other defaults are great for us
 
+        // Convert the comma separated list of UUIDs
         List<ScanFilter> filters = null;
         if (requiredServicesUuids != null)
         {
@@ -63,12 +99,15 @@ public final class Scanner
     	        BluetoothLeScannerCompat.getScanner().stopScan(_scanCallback);
             }
 
-            // Start scan
+            // Start scanning
             _scanCallback = createCallback(callback);
             BluetoothLeScannerCompat.getScanner().startScan(filters, settings, _scanCallback);
         }
     }
 
+    /**
+     * @brief Stops an on-going BLE scan.
+     */
 	public static void stopScan()
     {
         Log.v(TAG, "==> stopScan");
@@ -83,6 +122,9 @@ public final class Scanner
         }
     }
 
+    /**
+     * @brief Returns a ScanCallback instance that notify scan results to user code.
+     */
     private static ScanCallback createCallback(final ScannerCallback callback)
     {
         return new ScanCallback()
