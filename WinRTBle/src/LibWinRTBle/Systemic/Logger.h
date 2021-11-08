@@ -7,7 +7,7 @@
 #include <chrono>
 #include <iomanip>
 
-class Systemic::Logger
+class Systemic::Internal::Logger
 {
 public:
     static void Log(const std::string& str)

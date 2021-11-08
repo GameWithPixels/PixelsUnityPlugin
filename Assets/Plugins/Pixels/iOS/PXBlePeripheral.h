@@ -109,8 +109,7 @@ typedef void (^SGBleRequestCompletionHandler)(NSError *error);
 - (void)queueReadRssi:(void (^)(NSError *error))completionHandler;
 
 - (void)queueReadValueForCharacteristic:(CBCharacteristic *)characteristic
-                    valueChangedHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueChangedHandler
-                      completionHandler:(void (^)(NSError *error))completionHandler;
+                       valueReadHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueReadHandler;
 
 - (void)queueWriteValue:(NSData *)data
       forCharacteristic:(CBCharacteristic *)characteristic

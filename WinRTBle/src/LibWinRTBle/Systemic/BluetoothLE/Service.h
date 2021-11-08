@@ -4,15 +4,13 @@
 
 namespace Systemic::BluetoothLE
 {
-    using namespace winrt::Windows::Foundation;
-    using namespace winrt::Windows::Devices::Bluetooth;
-    using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-
     class Peripheral;
     class Characteristic;
 
     class Service
     {
+        using GattDeviceService = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService;
+
         std::weak_ptr<Peripheral> _peripheral;
         GattDeviceService _service{ nullptr };
         std::unordered_map<winrt::guid, std::vector<std::shared_ptr<Characteristic>>> _characteristics{};
@@ -32,7 +30,7 @@ namespace Systemic::BluetoothLE
         {
             return _peripheral.lock();
         }
-        
+
         std::shared_ptr<Peripheral> peripheral()
         {
             return _peripheral.lock();

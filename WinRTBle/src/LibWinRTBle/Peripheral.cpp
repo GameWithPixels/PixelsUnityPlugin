@@ -3,9 +3,8 @@
 #include "Systemic/BluetoothLE/Service.h"
 #include "Systemic/BluetoothLE/Characteristic.h"
 
-#include <chrono>
-using namespace std::chrono;
-using namespace ::winrt;
+using namespace winrt::Windows::Devices::Bluetooth;
+using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
 
 namespace Systemic::BluetoothLE
 {
@@ -47,6 +46,8 @@ namespace Systemic::BluetoothLE
         std::vector<winrt::guid> requiredServices /*= std::vector<winrt::guid>{}*/,
         bool maintainConnection /*= false*/)
     {
+        //TODO return error code
+
         size_t connectCounter = 0;
         {
             std::lock_guard lock{ _connectOpMtx };
@@ -74,7 +75,7 @@ namespace Systemic::BluetoothLE
         {
             // Move to background thread to avoid blocking itself on re-entrant calls
             // (i.e. when try to connect on getting a connection failure event from a previous connection attempt)
-            co_await resume_background();
+            co_await winrt::resume_background();
 
             // Notify "connecting" event
             notifyQueuedConnectionEvents();

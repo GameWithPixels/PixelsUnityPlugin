@@ -13,6 +13,8 @@
 using namespace Systemic;
 using namespace Systemic::BluetoothLE;
 
+// Always use lock to access the scanner
+static std::mutex _scannerMutex{};
 static std::shared_ptr<Scanner> _scanner;
 
 // Always use lock to access the map
@@ -145,7 +147,7 @@ namespace
         }
     }
 
-    void runForCharacteristicAsync(
+    BleRequestStatus runForCharacteristicAsync(
         bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
@@ -155,14 +157,22 @@ namespace
     {
         assert(actionFuture);
 
+        auto status = BleRequestStatus::Success;
+
         if (auto characteristic = findCharacteristic(address, serviceUuid, characteristicUuid, instanceIndex))
         {
             actionFuture(characteristic);
+            return BleRequestStatus::Success;
         }
-        else if (onRequestStatus)
+        else
         {
-            onRequestStatus(BleRequestStatus::InvalidParameters);
+            status = BleRequestStatus::InvalidParameters;
+            if (onRequestStatus)
+            {
+                onRequestStatus(status);
+            }
         }
+        return status;
     }
 
     std::vector<winrt::guid> toGuids(const char* uuids)
@@ -178,21 +188,6 @@ namespace
             }
         }
         return guids;
-    }
-
-    void notifyValueChange(ValueChangedCallback onValueChanged, const std::vector<std::uint8_t>& data)
-    {
-        if (onValueChanged)
-        {
-            if (data.empty())
-            {
-                onValueChanged(nullptr, 0, BleRequestStatus::Error);
-            }
-            else
-            {
-                onValueChanged(data.data(), data.size(), BleRequestStatus::Success);
-            }
-        }
     }
 
     std::string toStr(const winrt::guid& guid)
@@ -247,13 +242,12 @@ namespace
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
-bool sgBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback onCentralStateUpdate)
+bool sgBleInitialize(bool apartmentSingleThreaded, BluetoothStateUpdateCallback onBluetoothStateUpdate)
 {
     try
     {
         winrt::init_apartment(apartmentSingleThreaded ? winrt::apartment_type::single_threaded : winrt::apartment_type::multi_threaded);
-        onCentralStateUpdate(true); //TODO
+        onBluetoothStateUpdate(true); //TODO
         return true;
     }
     catch (const winrt::hresult_error&)
@@ -265,7 +259,10 @@ bool sgBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback on
 void sgBleShutdown()
 {
     // Destroy scanner instance
-    _scanner.reset();
+    {
+        std::lock_guard lock{ _scannerMutex };
+        _scanner.reset();
+    }
 
     // Destroy all peripherals
     {
@@ -302,6 +299,7 @@ bool sgBleStartScan(
 
     try
     {
+        std::lock_guard lock{ _scannerMutex };
         _scanner.reset(new Scanner(
             [onDiscoveredPeripheral](std::shared_ptr<DiscoveredPeripheral> p)
             {
@@ -319,13 +317,14 @@ bool sgBleStartScan(
 
 void sgBleStopScan()
 {
+    std::lock_guard lock{ _scannerMutex };
     _scanner.reset();
 }
 
 // discoverServicesUuids is a comma separated list of UUIDs, it can be null
 bool sgBleCreatePeripheral(
     bluetooth_address_t bluetoothAddress,
-    PeripheralConnectionStatusChangedCallback onPeripheralStatusChanged)
+    PeripheralConnectionEventCallback onPeripheralConnectionEvent)
 {
     if (!bluetoothAddress)
     {
@@ -342,10 +341,10 @@ bool sgBleCreatePeripheral(
 
     auto peripheral = std::make_shared<Peripheral>(
         bluetoothAddress,
-        [onPeripheralStatusChanged, bluetoothAddress](ConnectionEvent ev, ConnectionEventReason reason)
+        [onPeripheralConnectionEvent, bluetoothAddress](ConnectionEvent ev, ConnectionEventReason reason)
         {
             //TODO check valid peripheral
-            if (onPeripheralStatusChanged) onPeripheralStatusChanged(bluetoothAddress, ev, reason);
+            if (onPeripheralConnectionEvent) onPeripheralConnectionEvent(bluetoothAddress, ev, reason);
         }
     );
 
@@ -376,15 +375,15 @@ void sgBleReleasePeripheral(bluetooth_address_t address)
 void sgBleConnectPeripheral(
     bluetooth_address_t address,
     const char* requiredServicesUuids,
-    bool autoConnect,
+    bool autoReconnect,
     RequestStatusCallback onRequestStatus)
 {
     auto services = toGuids(requiredServicesUuids);
     runForPeripheralAsync(address, onRequestStatus,
-        [services, autoConnect, onRequestStatus](std::shared_ptr<Peripheral> p)->std::future<void>
+        [services, autoReconnect, onRequestStatus](std::shared_ptr<Peripheral> p)->std::future<void>
         {
             auto o = onRequestStatus;
-            auto result = co_await p->connectAsync(services, autoConnect);
+            auto result = co_await p->connectAsync(services, autoReconnect);
             if (o) o(result);
         }
     );
@@ -405,18 +404,18 @@ void sgBleDisconnectPeripheral(
 }
 
 //TODO return BleRequestStatus as out parameter
-int sgBleGetPeripheralMtu(bluetooth_address_t address)
-{
-    return runForPeripheral<int>(address, nullptr,
-        [](auto p) { return (int)p->mtu(); });
-}
-
-//TODO return BleRequestStatus as out parameter
 // caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
 const char* sgBleGetPeripheralName(bluetooth_address_t address)
 {
     return runForPeripheral<const char*>(address, nullptr,
         [](auto p) { return ComHelper::copyToComBuffer(p->name()); });
+}
+
+//TODO return BleRequestStatus as out parameter
+int sgBleGetPeripheralMtu(bluetooth_address_t address)
+{
+    return runForPeripheral<int>(address, nullptr,
+        [](auto p) { return (int)p->mtu(); });
 }
 
 // returns a comma separated list of UUIDs
@@ -472,17 +471,17 @@ const char* sgBleGetPeripheralServiceCharacteristics(
 }
 
 //TODO return BleRequestStatus as out parameter
-characteristic_property_t sgBleGetCharacteristicProperties(
+CharacteristicProperties sgBleGetCharacteristicProperties(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex)
 {
-    return runForCharacteristic<characteristic_property_t>(
+    return runForCharacteristic<CharacteristicProperties>(
         address, serviceUuid, characteristicUuid, instanceIndex, nullptr,
         [](auto c)
         {
-            return (characteristic_property_t)c->properties();
+            return c->properties();
         }
     );
 }
@@ -492,20 +491,31 @@ void sgBleReadCharacteristicValue(
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex,
-    ValueChangedCallback onValueChanged,
-    RequestStatusCallback onRequestStatus)
+    ValueReadCallback onValueRead)
 {
-    runForCharacteristicAsync(
-        address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
-        [onValueChanged, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
+    auto status = runForCharacteristicAsync(
+        address, serviceUuid, characteristicUuid, instanceIndex, nullptr,
+        [onValueRead](std::shared_ptr<Characteristic> c)->std::future<void>
         {
-            auto o = onRequestStatus;
-            auto v = onValueChanged;
+            auto v = onValueRead;
             auto data = co_await c->readValueAsync();
-            notifyValueChange(v, data);
-            if (o) o((!data.empty()) ? BleRequestStatus::Success : BleRequestStatus::Error);
+            if (v)
+            {
+                if (data.empty())
+                {
+                    v(nullptr, 0, BleRequestStatus::Error); //TODO more error codes
+                }
+                else
+                {
+                    v(data.data(), data.size(), BleRequestStatus::Success);
+                }
+            }
         }
     );
+    if (status != BleRequestStatus::Success)
+    {
+        onValueRead(nullptr, 0, status);
+    }
 }
 
 void sgBleWriteCharacteristicValue(
@@ -551,7 +561,7 @@ void sgBleSetNotifyCharacteristic(
                 result = co_await c->subscribeAsync(
                     [v](const std::vector<std::uint8_t>& data)
                     {
-                        notifyValueChange(v, data);
+                        v(data.empty() ? nullptr : data.data(), data.size());
                     });
             }
             else

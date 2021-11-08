@@ -4,9 +4,6 @@
 
 namespace Systemic::BluetoothLE
 {
-    using namespace winrt::Windows::Foundation;
-    using namespace winrt::Windows::Storage::Streams;
-
     class Scanner;
 
     class ManufacturerData
@@ -22,20 +19,12 @@ namespace Systemic::BluetoothLE
     private:
         friend Scanner;
 
-        ManufacturerData(uint16_t companyId, IBuffer data)
-            : _companyId{ companyId }, _data{ toVector(data) } {}
+        ManufacturerData(uint16_t companyId, winrt::Windows::Storage::Streams::IBuffer data)
+            : _companyId{ companyId }, _data{ Internal::dataBufferToVector(data) } {}
 
-        std::vector<uint8_t> toVector(IBuffer data)
-        {
-            std::vector<uint8_t> dst;
-            dst.resize(data.Length());
-            auto reader = DataReader::FromBuffer(data);
-            reader.ReadBytes(dst);
-            return dst;
-        }
     };
 
-    class AdvertisingData
+    class AdvertisementData
     {
         uint8_t _dataType{};
         std::vector<uint8_t> _data{};
@@ -48,21 +37,15 @@ namespace Systemic::BluetoothLE
     private:
         friend Scanner;
 
-        AdvertisingData(uint8_t dataType, IBuffer data)
-            : _dataType{ dataType }, _data{ toVector(data) } {}
-
-        std::vector<uint8_t> toVector(IBuffer data)
-        {
-            std::vector<uint8_t> dst;
-            dst.resize(data.Length());
-            auto reader = DataReader::FromBuffer(data);
-            reader.ReadBytes(dst);
-            return dst;
-        }
+        // Initializes a new instance of Advertisement Data from the advertisement data type and a WinRT data buffer
+        AdvertisementData(uint8_t dataType, winrt::Windows::Storage::Streams::IBuffer data)
+            : _dataType{ dataType }, _data{ Internal::dataBufferToVector(data) } {}
     };
 
     class DiscoveredPeripheral
     {
+        using DateTime = winrt::Windows::Foundation::DateTime;
+
         DateTime _timestamp{};
         bluetooth_address_t _address{};
         bool _isConnectable{};
@@ -71,11 +54,9 @@ namespace Systemic::BluetoothLE
         std::wstring _name{};
         std::vector<winrt::guid> _services{};
         std::vector<ManufacturerData> _manufacturerData{};
-        std::vector<AdvertisingData> _advertisingData{};
+        std::vector<AdvertisementData> _advertisingData{};
 
     public:
-        const DateTime& timestamp() const{ return _timestamp; }
-
         bluetooth_address_t address() const{ return _address; }
 
         bool isConnectable() const { return _isConnectable; }
@@ -83,14 +64,14 @@ namespace Systemic::BluetoothLE
         int rssi() const { return _rssi; }
 
         int txPowerLevel() const { return _txPowerLevel; }
-        
+
         const std::wstring& name() const { return _name; }
-        
+
         const std::vector<winrt::guid>& services() const { return _services; }
 
         const std::vector<ManufacturerData>& manufacturerData() const { return _manufacturerData; }
 
-        const std::vector<AdvertisingData>& advertisingData() const { return _advertisingData; }
+        const std::vector<AdvertisementData>& advertisingData() const { return _advertisingData; }
 
     private:
         friend Scanner;
@@ -104,7 +85,7 @@ namespace Systemic::BluetoothLE
             const std::wstring& name,
             const std::vector<winrt::guid>& services,
             const std::vector<ManufacturerData>& manufacturerData,
-            const std::vector<AdvertisingData>& advertisingData)
+            const std::vector<AdvertisementData>& advertisingData)
             :
             _timestamp{ timestamp },
             _address{ address },
@@ -124,7 +105,7 @@ namespace Systemic::BluetoothLE
             std::wstring& name,
             const std::vector<winrt::guid>& services,
             const std::vector<ManufacturerData>& manufacturerData,
-            const std::vector<AdvertisingData>& advertisingData)
+            const std::vector<AdvertisementData>& advertisingData)
             :
             _timestamp{ timestamp },
             _address{ peripheral.address() },

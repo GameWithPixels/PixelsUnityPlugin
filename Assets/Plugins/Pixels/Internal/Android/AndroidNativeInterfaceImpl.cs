@@ -68,6 +68,8 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
     internal sealed class AndroidNativeInterfaceImpl : INativeInterfaceImpl
     {
+        #region INativeDevice and INativePeripheralHandleImpl implementations
+
         sealed class NativeBluetoothDevice : INativeDevice, IDisposable
         {
             public AndroidJavaObject JavaDevice { get; private set; }
@@ -89,6 +91,8 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
             public void Dispose() { JavaPeripheral = null; }
         }
+
+        #endregion
 
         const string PeripheralClassName = "com.systemic.bluetoothle.Peripheral";
         readonly AndroidJavaClass _scannerClass = new AndroidJavaClass("com.systemic.bluetoothle.Scanner");
@@ -157,12 +161,12 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
             ((NativePeripheral)peripheralHandle).Dispose();
         }
 
-        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultHandler onResult)
         {
             GetJavaPeripheral(peripheralHandle, onResult)?.Call(
                 "connect",
                 requiredServicesUuids,
-                autoConnect,
+                autoReconnect,
                 new RequestCallback(RequestOperation.ConnectPeripheral, onResult));
         }
 
@@ -195,7 +199,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         {
             GetJavaPeripheral(peripheralHandle, status => onRssiRead(int.MinValue, status))?.Call(
                 "readRssi",
-                new RssiRequestCallback(onRssiRead));
+                new ReadRssiRequestCallback(onRssiRead));
         }
 
         public string GetPeripheralDiscoveredServices(INativePeripheralHandleImpl peripheralHandle)
@@ -219,15 +223,14 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
                 (int)instanceIndex);
         }
 
-        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueRead)
         {
-            GetJavaPeripheral(peripheralHandle, onResult)?.Call(
+            GetJavaPeripheral(peripheralHandle, err => onValueRead(null, err))?.Call(
                 "readCharacteristic",
                 serviceUuid,
                 characteristicUuid,
                 (int)instanceIndex,
-                new DataReceivedCallback(onValueChanged),
-                new RequestCallback(RequestOperation.ReadCharacteristic, onResult));
+                new ReadValueRequestCallback(onValueRead));
         }
 
         public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)

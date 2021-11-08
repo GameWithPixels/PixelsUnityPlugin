@@ -24,6 +24,9 @@
     <Filter Include="Source Files\Systemic\BluetoothLE">
       <UniqueIdentifier>{f16259c3-f3f4-4bbe-84b6-060fee6ba185}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Systemic\Internal">
+      <UniqueIdentifier>{403866ff-7318-4eaf-8e24-bc637e3bb6e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -36,9 +39,6 @@
       <Filter>Public Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Systemic\ComHelper.h">
-      <Filter>Header Files\Systemic</Filter>
-    </ClInclude>
-    <ClInclude Include="Systemic\Logger.h">
       <Filter>Header Files\Systemic</Filter>
     </ClInclude>
     <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h">
@@ -58,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Systemic\BluetoothLE\Characteristic.h">
       <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\Logger.h">
+      <Filter>Header Files\Systemic\Internal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

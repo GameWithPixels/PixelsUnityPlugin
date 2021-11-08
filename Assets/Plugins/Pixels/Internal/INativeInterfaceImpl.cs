@@ -44,7 +44,7 @@ namespace Systemic.Unity.BluetoothLE.Internal
 
         void ReleasePeripheral(INativePeripheralHandleImpl peripheralHandle);
 
-        void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoConnect, NativeRequestResultHandler onResult);
+        void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultHandler onResult);
 
         void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult);
 
@@ -62,7 +62,7 @@ namespace Systemic.Unity.BluetoothLE.Internal
 
         CharacteristicProperties GetCharacteristicProperties(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex);
 
-        void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult);
+        void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueRead);
 
         void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult);
 

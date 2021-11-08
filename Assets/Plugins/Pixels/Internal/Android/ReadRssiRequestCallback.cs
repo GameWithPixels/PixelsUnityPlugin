@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
-    internal sealed class RssiRequestCallback : AndroidJavaProxy
+    internal sealed class ReadRssiRequestCallback : AndroidJavaProxy
     {
         NativeValueRequestResultHandler<int> _onRssiRead;
 
-        public RssiRequestCallback(NativeValueRequestResultHandler<int> onRssiRead)
+        public ReadRssiRequestCallback(NativeValueRequestResultHandler<int> onRssiRead)
             : base("com.systemic.bluetoothle.Peripheral$RssiRequestCallback")
             => _onRssiRead = onRssiRead;
 

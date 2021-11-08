@@ -50,19 +50,19 @@ static NSString *getRequestTypeString(SGBleRequestType type)
 
 @end
 
-static NSError *invalidCallError = [NSError errorWithDomain:pxBleGetErrorDomain()
+static NSError *invalidCallError = [NSError errorWithDomain:sgBleGetErrorDomain()
                                                        code:SGBlePeripheralRequestErrorErrorInvalidCall
                                                    userInfo:@{ NSLocalizedDescriptionKey: @"Invalid call" }];
 
-static NSError *disconnectedError = [NSError errorWithDomain:pxBleGetErrorDomain()
+static NSError *disconnectedError = [NSError errorWithDomain:sgBleGetErrorDomain()
                                                         code:SGBlePeripheralRequestErrorErrorDisconnected
                                                     userInfo:@{ NSLocalizedDescriptionKey: @"Disconnected" }];
 
-static NSError *invalidParametersError = [NSError errorWithDomain:pxBleGetErrorDomain()
+static NSError *invalidParametersError = [NSError errorWithDomain:sgBleGetErrorDomain()
                                                              code:SGBlePeripheralRequestErrorErrorInvalidParameters
                                                          userInfo:@{ NSLocalizedDescriptionKey: @"Invalid parameters" }];
 
-static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
+static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
                                                     code:SGBlePeripheralRequestErrorErrorCanceled
                                                 userInfo:@{ NSLocalizedDescriptionKey: @"Canceled" }];
 
@@ -102,7 +102,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
             return nil;
         }
         
-        _queue = pxBleGetSerialQueue();
+        _queue = sgBleGetSerialQueue();
         _centralDelegate = centralManagerDelegate;
         _peripheral = peripheral;
         _peripheral.delegate = self;
@@ -256,8 +256,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
 }
 
 - (void)queueReadValueForCharacteristic:(CBCharacteristic *)characteristic
-                    valueChangedHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueChangedHandler
-                      completionHandler:(void (^)(NSError *error))completionHandler
+                    valueReadHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueReadHandler
 {
     NSLog(@">> queueReadValueForCharacteristic");
     
@@ -269,7 +268,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
         }
         
         NSLog(@">> ReadValueForCharacteristic");
-        [self->_valueChangedHandlers setObject:valueChangedHandler forKey:characteristic];
+        //TODO [self->_valueChangedHandlers setObject:valueChangedHandler forKey:characteristic];
         [self->_peripheral readValueForCharacteristic:characteristic];
         return (NSError *)nil;
     };
@@ -314,6 +313,7 @@ static NSError *canceledError = [NSError errorWithDomain:pxBleGetErrorDomain()
     NSLog(@">> queueSetNotifyValueForCharacteristic");
     
     SGBleRequestExecuteHandler block = ^{
+        //TODO fail if already subscribed
         if (!characteristic || !valueChangedHandler)
         {
             NSLog(@">> SetNotifyValueForCharacteristic -> invalid call");

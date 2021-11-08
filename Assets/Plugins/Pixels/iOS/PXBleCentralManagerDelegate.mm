@@ -37,7 +37,7 @@
     {
         _startScanSync = [NSObject new];
         _stateUpdateHandler = stateUpdateHandler;
-        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:pxBleGetSerialQueue()];
+        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:sgBleGetSerialQueue()];
         _peripherals = [NSMutableDictionary<NSUUID *,CBPeripheral *> new];
         _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, SGBlePeripheralConnectionEventHandler> new];
     }

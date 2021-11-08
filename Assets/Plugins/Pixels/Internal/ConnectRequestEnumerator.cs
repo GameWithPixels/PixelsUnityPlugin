@@ -3,7 +3,7 @@ using System;
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// Enumerator handling a BLE connect request.
+    /// Enumerator handling a BLE connection request.
     /// </summary>
     internal sealed class ConnectRequestEnumerator : RequestEnumerator
     {

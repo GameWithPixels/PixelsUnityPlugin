@@ -15,7 +15,7 @@ namespace Systemic.Unity.BluetoothLE
         public T Value { get; private set; }
 
         /// <summary>
-        /// Initializes a request with a given operation, peripheral, timeout value and
+        /// Initializes a value request enumerator with a given operation, peripheral, timeout value and
         /// an action to invoke if the peripheral is valid.
         /// </summary>
         /// <param name="operation">The operation to run.</param>

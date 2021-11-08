@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-NSErrorDomain pxBleGetErrorDomain();
+NSErrorDomain sgBleGetErrorDomain();
 
-dispatch_queue_t pxBleGetSerialQueue();
+dispatch_queue_t sgBleGetSerialQueue();

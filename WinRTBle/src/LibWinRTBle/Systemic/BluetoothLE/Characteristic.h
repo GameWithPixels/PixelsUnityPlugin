@@ -4,15 +4,13 @@
 
 namespace Systemic::BluetoothLE
 {
-    using namespace winrt::Windows::Foundation;
-    using namespace winrt::Windows::Devices::Bluetooth;
-    using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-    using namespace winrt::Windows::Storage::Streams;
-
     class Peripheral;
 
     class Characteristic
     {
+        using GattCharacteristic = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic;
+        using GattValueChangedEventArgs = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs;
+
         GattCharacteristic _characteristic{ nullptr };
         std::function<void(const std::vector<std::uint8_t>&)> _onValueChanged{};
         winrt::event_token _valueChangedToken{};
@@ -29,37 +27,40 @@ namespace Systemic::BluetoothLE
             return _characteristic.Uuid();
         }
 
-        GattCharacteristicProperties properties() const
+        CharacteristicProperties properties() const
         {
-            return _characteristic.CharacteristicProperties();
+            return (CharacteristicProperties)_characteristic.CharacteristicProperties();
         }
 
         bool canWrite() const
         {
-            return (properties() & GattCharacteristicProperties::Write) == GattCharacteristicProperties::Write;
+            return (properties() & CharacteristicProperties::Write) == CharacteristicProperties::Write;
         }
 
         bool canRead() const
         {
-            return (properties() & GattCharacteristicProperties::Read) == GattCharacteristicProperties::Read;
+            return (properties() & CharacteristicProperties::Read) == CharacteristicProperties::Read;
         }
 
         bool canNotify() const
         {
-            return (properties() & GattCharacteristicProperties::Notify) == GattCharacteristicProperties::Notify;
+            return (properties() & CharacteristicProperties::Notify) == CharacteristicProperties::Notify;
         }
 
-        //TODO return error code
         std::future<std::vector<std::uint8_t>> readValueAsync()
         {
+            //TODO return error code
             auto result = co_await _characteristic.ReadValueAsync();
             co_return toVector(result.Value());
         }
 
-        //TODO use std::span
         // Buffer may be empty but not null
         std::future<BleRequestStatus> writeAsync(const std::vector<std::uint8_t>& value, bool withoutResponse = false)
         {
+            //TODO use std::span
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+            using namespace winrt::Windows::Storage::Streams;
+
             //InMemoryRandomAccessStream stream;
             DataWriter dataWriter{}; // { stream };
             dataWriter.ByteOrder(ByteOrder::LittleEndian);
@@ -73,6 +74,8 @@ namespace Systemic::BluetoothLE
 
         std::future<BleRequestStatus> subscribeAsync(std::function<void(const std::vector<std::uint8_t>&)> onValueChanged)
         {
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+
             if (!onValueChanged) co_return BleRequestStatus::InvalidParameters;
             if (!canNotify()) co_return BleRequestStatus::NotSupported;
 
@@ -94,6 +97,8 @@ namespace Systemic::BluetoothLE
 
         std::future<BleRequestStatus> unsubscribeAsync()
         {
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+
             {
                 std::lock_guard lock{ _subscribeMtx };
                 if (!_onValueChanged)
@@ -132,8 +137,10 @@ namespace Systemic::BluetoothLE
             if (_onValueChanged) _onValueChanged(toVector(args.CharacteristicValue()));
         }
 
-        static std::vector<std::uint8_t> toVector(IBuffer buffer)
+        static std::vector<std::uint8_t> toVector(winrt::Windows::Storage::Streams::IBuffer buffer)
         {
+            using namespace winrt::Windows::Storage::Streams;
+
             std::vector<std::uint8_t> bytes{};
             bytes.resize(buffer.Length());
             auto dataReader = DataReader::FromBuffer(buffer);

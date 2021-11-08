@@ -5,14 +5,13 @@
 
 namespace Systemic::BluetoothLE
 {
-    using namespace winrt::Windows::Foundation;
-    using namespace winrt::Windows::Devices::Bluetooth;
-    using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-
     class Service;
 
     class Peripheral : public std::enable_shared_from_this<Peripheral>
     {
+        using BluetoothLEDevice = winrt::Windows::Devices::Bluetooth::BluetoothLEDevice;
+        using GattSession = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession;
+
         const bluetooth_address_t _address{};
         const std::function<void(ConnectionEvent, ConnectionEventReason)> _onConnectionEvent{};
         BluetoothLEDevice _device{ nullptr };
@@ -33,6 +32,8 @@ namespace Systemic::BluetoothLE
 
         bool isConnected() const
         {
+            using namespace winrt::Windows::Devices::Bluetooth;
+
             auto dev = safeGetDevice();
             return dev ? (dev.ConnectionStatus() == BluetoothConnectionStatus::Connected) : false;
         }
@@ -59,7 +60,12 @@ namespace Systemic::BluetoothLE
             return dev ? dev.Name().data() : nullptr;
         }
 
-        uint16_t mtu() const { auto s = _session; return s ? s.MaxPduSize() : 0; }
+        uint16_t mtu() const
+        {
+            //TODO is the lock needed?
+            std::lock_guard lock{ _connectOpMtx };
+            return _session ? _session.MaxPduSize() : 0;
+        }
 
         void copyDiscoveredServices(std::vector<std::shared_ptr<Service>>& outServices)
         {
@@ -78,7 +84,6 @@ namespace Systemic::BluetoothLE
             _connectionEventsQueue.reserve(16);
         }
 
-        //TODO return error code
         std::future<BleRequestStatus> connectAsync(
             std::vector<winrt::guid> requiredServices = std::vector<winrt::guid>{},
             bool maintainConnection = false);
@@ -104,10 +109,9 @@ namespace Systemic::BluetoothLE
     private:
         BluetoothLEDevice safeGetDevice() const
         {
+            //TODO is the lock needed?
             std::lock_guard lock{ _connectOpMtx };
-            {
-                return _device;
-            }
+            return _device;
         }
 
         // Take the lock and release device and session, be sure to call notifyQueuedConnectionEvents() afterwards
@@ -131,8 +135,10 @@ namespace Systemic::BluetoothLE
             }
         }
 
-        void onDeviceConnectionStatusChanged(BluetoothLEDevice device, IInspectable __)
+        void onDeviceConnectionStatusChanged(BluetoothLEDevice device, winrt::Windows::Foundation::IInspectable __)
         {
+            using namespace winrt::Windows::Devices::Bluetooth;
+
             if (device.ConnectionStatus() == BluetoothConnectionStatus::Disconnected)
             {
                 auto reason = (_session != nullptr) && (_session.MaintainConnection()) ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout;

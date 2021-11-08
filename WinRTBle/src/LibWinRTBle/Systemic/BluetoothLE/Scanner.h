@@ -5,14 +5,14 @@
 
 namespace Systemic::BluetoothLE
 {
-    using namespace winrt::Windows::Foundation;
-    using namespace winrt::Windows::Devices::Bluetooth;
-    using namespace winrt::Windows::Devices::Bluetooth::Advertisement;
-
     class DiscoveredPeripheral;
 
     class Scanner final
     {
+        using BluetoothLEAdvertisementWatcher = winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher;
+        using BluetoothLEAdvertisementReceivedEventArgs = winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs;
+        using BluetoothLEAdvertisementWatcherStoppedEventArgs = winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs;
+
         BluetoothLEAdvertisementWatcher _watcher{ nullptr };
         std::vector<winrt::guid> _requestedServices{};
         std::map<bluetooth_address_t, std::shared_ptr<DiscoveredPeripheral>> _peripherals{};
@@ -30,6 +30,8 @@ namespace Systemic::BluetoothLE
             _requestedServices{ services },
             _onPeripheralDiscovered{ peripheralDiscovered }
         {
+            using namespace winrt::Windows::Devices::Bluetooth::Advertisement;
+
             _watcher.AllowExtendedAdvertisements(true);
             _watcher.ScanningMode(BluetoothLEScanningMode::Active);
 
@@ -55,10 +57,12 @@ namespace Systemic::BluetoothLE
             BluetoothLEAdvertisementWatcher const& _watcher,
             BluetoothLEAdvertisementReceivedEventArgs const& args)
         {
+            using namespace winrt::Windows::Devices::Bluetooth::Advertisement;
+
             std::wstring name{};
             std::vector<winrt::guid> services{};
             std::vector<ManufacturerData> manufacturerData{};
-            std::vector<AdvertisingData> advertisingData{};
+            std::vector<AdvertisementData> advertisingData{};
 
             auto advertisement = args.Advertisement();
             if (advertisement)
@@ -90,7 +94,7 @@ namespace Systemic::BluetoothLE
                     for (const auto& adv : advDataList)
                     {
                         auto size = adv.Data().Length();
-                        advertisingData.emplace_back(AdvertisingData{ adv.DataType(), adv.Data() });
+                        advertisingData.emplace_back(AdvertisementData{ adv.DataType(), adv.Data() });
                     }
                 }
             }

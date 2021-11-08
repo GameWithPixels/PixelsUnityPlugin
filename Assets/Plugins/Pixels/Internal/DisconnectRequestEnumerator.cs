@@ -2,7 +2,7 @@
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// Enumerator handling a BLE disconnect request.
+    /// Enumerator handling a BLE disconnection request.
     /// </summary>
     internal sealed class DisconnectRequestEnumerator : RequestEnumerator
     {

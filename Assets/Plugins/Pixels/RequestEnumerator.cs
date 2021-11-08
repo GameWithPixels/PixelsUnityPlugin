@@ -97,7 +97,7 @@ namespace Systemic.Unity.BluetoothLE
         private protected NativePeripheralHandle Peripheral { get; }
 
         /// <summary>
-        /// Initializes a request with a given operation, peripheral, timeout value and
+        /// Initializes a request enumerator with a given operation, peripheral, timeout value and
         /// an action to invoke if the peripheral is valid.
         /// </summary>
         /// <param name="operation">The operation to run.</param>

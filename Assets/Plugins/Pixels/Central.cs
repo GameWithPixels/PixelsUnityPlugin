@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Collection of classes for a simplified access to Bluetooth Low Energy peripherals from Unity.
+/// </summary>
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.
+    /// A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy
+    /// (BLE) peripherals.
     /// 
     /// Use the <see cref="ScanForPeripheralsWithServices"/> method to discover available BLE peripherals.
     /// Then connect to a scanned peripheral with a call to <see cref="ConnectPeripheralAsync"/>
@@ -234,9 +238,9 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Shutdowns the static class:
-        /// - any pending scan is stopped
-        /// - all peripherals are disconnected and removed
+        /// Shutdowns the static class.
+        ///
+        /// Scanning is stopped and all peripherals are disconnected and removed.
         /// </summary>
         public static void Shutdown()
         {
@@ -259,10 +263,12 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Starts a scan for BLE peripherals.
-        /// 
+        ///
+        /// If a scan is already running, it will be updated to filter with the given <see cref="serviceUuids"/>.
+        ///
         /// Specifying one more service required for the peripherals will save battery on mobile devices.
         /// </summary>
-        /// <param name="serviceUuids">List of services that the peripheral should advertise, may be empty or null.</param>
+        /// <param name="serviceUuids">List of services that the peripheral should advertise, may be null or empty.</param>
         /// <returns>Indicates whether the call has succeeded. It will fail if <see cref="IsReady"/> is <c>false</c>.</returns>
         /// <remarks>If a scan is already in progress, it will be replaced by this one.</remarks>
         public static bool ScanForPeripheralsWithServices(IEnumerable<Guid> serviceUuids = null)
@@ -312,7 +318,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Stops any on-going BLE scan.
+        /// Stops an on-going BLE scan.
         /// </summary>
         public static void StopScan()
         {
@@ -337,9 +343,8 @@ namespace Systemic.Unity.BluetoothLE
         /// - the connection didn't succeeded after the given timeout value
         /// - an error occurred while trying to connect
         ///
-        /// Once connected to the peripheral, <see cref="Central"/> sends a request to change the peripheral's MTU
-        /// to highest possible value. In the likely event that the peripheral doesn't support the requested MTU
-        /// because it's too high, it will nonetheless change its MTU to the highest value it can achieve.
+        /// Once connected to the peripheral, <see cref="Central"/> sends a request to change the peripheral's
+        /// Maximum Transmission Unit (MTU) to the highest supported value.
         ///
         /// Once the MTU is changed, <see cref="Central"/> notifies the caller that the peripheral is ready to be used
         /// by invoking the <paramref name="onConnectionEvent"/> handler with the second argument set to <c>true</c>.
@@ -511,7 +516,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Returns the name of the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
         /// <returns>The peripheral name.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
         public static string GetPeripheralName(ScannedPeripheral peripheral)
@@ -529,7 +534,7 @@ namespace Systemic.Unity.BluetoothLE
         /// However the BLE protocol uses 3 bytes, so the maximum data size that can be given
         /// to <see cref="WriteCharacteristicAsync"/> is 3 bytes less than the MTU.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
         /// <returns>The peripheral MTU.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
         public static int GetPeripheralMtu(ScannedPeripheral peripheral)
@@ -546,7 +551,7 @@ namespace Systemic.Unity.BluetoothLE
         /// 
         /// It gives an indication of the connection quality.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
@@ -565,7 +570,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Returns the list of discovered services for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
         /// <returns>The list of discovered services.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
         public static Guid[] GetPeripheralDiscoveredServices(ScannedPeripheral peripheral)
@@ -581,8 +586,8 @@ namespace Systemic.Unity.BluetoothLE
         /// 
         /// The same characteristic may be listed several times according to the peripheral's configuration.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID for which to retrieve the characteristics.</param>
         /// <returns>The list of discovered characteristics of a service.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
         public static Guid[] GetPeripheralServiceCharacteristics(ScannedPeripheral peripheral, Guid serviceUuid)
@@ -596,10 +601,10 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Returns the BLE properties of the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
-        /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
+        /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, otherwise zero.</param>
         /// <returns>The BLE properties of a service's characteristic.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
         public static CharacteristicProperties GetCharacteristicProperties(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex = 0)
@@ -613,9 +618,9 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Asynchronously reads the value of the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
@@ -630,9 +635,9 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Asynchronously reads the value of a service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
@@ -655,12 +660,12 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously write to the specified service's characteristic for the given peripheral
-        /// and wait for the peripheral to respond.
+        /// Asynchronously writes to the specified service's characteristic for the given peripheral
+        /// and waits for the peripheral to respond.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="data">The data to write to the characteristic.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
@@ -674,11 +679,11 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously write to the specified service's characteristic for the given peripheral.
+        /// Asynchronously writes to the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="data">The data to write to the characteristic.</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
@@ -693,11 +698,11 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously write to the specified service's characteristic for the given peripheral.
+        /// Asynchronously writes to the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="data">The data to write to the characteristic.</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
@@ -718,11 +723,13 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Asynchronously subscribe for value changes of the specified service's characteristic for the given peripheral.
+        /// Asynchronously subscribes for value changes of the specified service's characteristic for the given peripheral.
+        ///
+        /// The call will fail if the characteristic doesn't support notification or if it is already subscribed.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="onValueChanged">The callback to be invoked when the characteristic value changes.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
@@ -738,9 +745,9 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Asynchronously subscribe for value changes of the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="onValueChanged">The callback to be invoked when the characteristic value changes.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
@@ -764,9 +771,9 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Asynchronously unsubscribe from the specified service's characteristic for the given peripheral.
         /// </summary>
-        /// <param name="peripheral">A connected peripheral.</param>
-        /// <param name="serviceUuid">A service UUID.</param>
-        /// <param name="characteristicUuid">A characteristic UUID.</param>
+        /// <param name="peripheral">The connected peripheral.</param>
+        /// <param name="serviceUuid">The service UUID.</param>
+        /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>

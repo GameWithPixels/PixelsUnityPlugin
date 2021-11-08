@@ -15,6 +15,54 @@ namespace Systemic.Unity.BluetoothLE
     }
 
     /// <summary>
+    /// Peripheral requests statuses.
+    /// </summary>
+    /// <remarks>
+    /// Matches C++ enum Systemic::BluetoothLE::BleRequestStatus.
+    /// </remarks>
+    public enum RequestStatus
+    {
+        /// The request completed successfully.
+        Success,
+
+        /// The request completed with a non-specific error.
+        Error,
+
+        /// The request is still in progress.
+        InProgress,
+
+        /// The request was canceled.
+        Canceled,
+
+        /// The request was aborted because the peripheral got disconnected.
+        Disconnected,
+
+        /// The request did not run because the given peripheral is not valid.
+        InvalidPeripheral,
+
+        /// The request did not run because the operation is not valid or permitted.
+        InvalidCall,
+
+        /// The request did not run because some of its parameters are invalid.
+        InvalidParameters,
+
+        /// The request failed because of the operation is not supported by the peripheral.
+        NotSupported,
+
+        /// The request failed because of BLE protocol error.
+        ProtocolError,
+
+        /// The request failed because it was denied access.
+        AccessDenied,
+
+        /// The request failed because the Bluetooth radio is off.
+        AdpaterOff,
+
+        /// The request did not succeed after the timeout period.
+        Timeout,
+    }
+
+    /// <summary>
     /// Peripheral connection events.
     /// </summary>
     /// <remarks>
@@ -72,54 +120,6 @@ namespace Systemic.Unity.BluetoothLE
 
         /// Disconnection was initiated by peripheral.
         Peripheral,
-    }
-
-    /// <summary>
-    /// Peripheral requests statuses.
-    /// </summary>
-    /// <remarks>
-    /// Matches C++ enum Systemic::BleRequestStatus.
-    /// </remarks>
-    public enum RequestStatus
-    {
-        /// The request completed successfully.
-        Success,
-
-        /// The request completed with a non-specific error.
-        Error,
-
-        /// The request is still in progress.
-        InProgress,
-
-        /// The request was canceled.
-        Canceled,
-
-        /// The request was aborted because the peripheral got disconnected.
-        Disconnected,
-
-        /// The request did not run because the given peripheral is not valid.
-        InvalidPeripheral,
-
-        /// The request did not run because the operation is not valid or permitted.
-        InvalidCall,
-
-        /// The request did not run because some of its parameters are invalid.
-        InvalidParameters,
-
-        /// The request failed because of the operation is not supported by the peripheral.
-        NotSupported,
-
-        /// The request failed because of BLE protocol error.
-        ProtocolError,
-
-        /// The request failed because it was denied access.
-        AccessDenied,
-
-        /// The request failed because the Bluetooth radio is off.
-        AdpaterOff,
-
-        /// The request did not succeed after the timeout period.
-        Timeout,
     }
 
     /// <summary>

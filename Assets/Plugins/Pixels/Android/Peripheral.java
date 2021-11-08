@@ -25,7 +25,8 @@ public class Peripheral
 
 	public interface RequestCallback extends SuccessCallback, FailCallback, InvalidRequestCallback {}
 	public interface MtuRequestCallback extends MtuCallback, FailCallback, InvalidRequestCallback {}
-	public interface RssiRequestCallback extends RssiCallback, FailCallback, InvalidRequestCallback {}
+	public interface ReadRssiRequestCallback extends RssiCallback, FailCallback, InvalidRequestCallback {}
+	public interface ReadValueRequestCallback extends RssiCallback, FailCallback, InvalidRequestCallback {}
 
     //public enum ConnectionStatus
     //{ 
@@ -206,7 +207,7 @@ public class Peripheral
         _client.setConnectionObserver(connectionObserver);
     }
 
-    public void connect(final String requiredServicesUuids, final boolean autoConnect, final RequestCallback callback)
+    public void connect(final String requiredServicesUuids, final boolean autoReconnect, final RequestCallback requestCallback)
     {
         Log.v(TAG, "==> connect");
 
@@ -236,11 +237,11 @@ public class Peripheral
         _client.connect(_device)
             .useAutoConnect(autoConnect)
             .timeout(0) // Actually Android will timeout after 30s
-            .done(callback).fail(callback).invalid(callback)
+            .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
-    public void disconnect(final RequestCallback callback)
+    public void disconnect(final RequestCallback requestCallback)
     {
         Log.v(TAG, "==> disconnect");
 
@@ -251,14 +252,14 @@ public class Peripheral
         if (_client.getConnectionState() != BluetoothProfile.STATE_DISCONNECTING)
         {
             _client.disconnect()
-                .done(callback).fail(callback).invalid(callback)
+                .done(requestCallback).fail(requestCallback).invalid(requestCallback)
                 .enqueue();
         }
-        else if (callback != null)
+        else if (requestCallback != null)
         {
             //TODO this will happen if device was connecting, we should return a success once disconnected!
             // Immediately Notify invalid request
-            callback.onInvalidRequest();
+            requestCallback.onInvalidRequest();
         }
     }
 
@@ -276,21 +277,21 @@ public class Peripheral
         return _client.getMtu();
     }
 
-    public void requestMtu(int mtu, final MtuRequestCallback callback)
+    public void requestMtu(int mtu, final MtuRequestCallback mtuChangedCallback)
     {
         Log.v(TAG, "==> requestMtu " + mtu);
 
         _client.requestMtu(mtu)
-            .with(callback).fail(callback).invalid(callback)
+            .with(mtuChangedCallback).fail(mtuChangedCallback).invalid(mtuChangedCallback)
             .enqueue();
     }
 
-    public void readRssi(final RssiRequestCallback callback)
+    public void readRssi(final ReadRssiRequestCallback rssiReadCallback)
     {
         Log.v(TAG, "==> readRssi");
 
         _client.readRssi()
-            .with(callback).fail(callback).invalid(callback)
+            .with(rssiReadCallback).fail(rssiReadCallback).invalid(rssiReadCallback)
             .enqueue();
     }
 
@@ -351,19 +352,19 @@ public class Peripheral
         return characteristic == null ? 0 : characteristic.getProperties();
     }
 
-    public void readCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback dataReceivedCallback, final RequestCallback callback)
+    public void readCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final ReadValueRequestCallback requestCallback)
     {
         Log.v(TAG, "==> readCharacteristic " + characteristicUuid);
 
         BluetoothGattCharacteristic characteristic = getCharacteristic(serviceUuid, characteristicUuid, instanceIndex);
 
         _client.readCharacteristic(characteristic)
-            .with(dataReceivedCallback)
-            .done(callback).fail(callback).invalid(callback)
+            .with(requestCallback)
+            .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
-    public void writeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final byte[] data, boolean withoutResponse, final RequestCallback callback)
+    public void writeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final byte[] data, boolean withoutResponse, final RequestCallback requestCallback)
     {
         Log.v(TAG, "==> writeCharacteristic " + characteristicUuid);
 
@@ -371,26 +372,26 @@ public class Peripheral
         int writeType = withoutResponse ? BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE : BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 
         _client.writeCharacteristic(characteristic, data, writeType)
-            .done(callback).fail(callback).invalid(callback)
+            .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
-    public void subscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback dataReceivedCallback, final RequestCallback callback)
+    public void subscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback valueChangedCallback, final RequestCallback requestCallback)
     {
         Log.v(TAG, "==> subscribeCharacteristic" + characteristicUuid);
 
         BluetoothGattCharacteristic characteristic = getCharacteristic(serviceUuid, characteristicUuid, instanceIndex);
 
         // Subscribe to notifications
-        _client.setNotificationCallback(characteristic).with(dataReceivedCallback);
+        _client.setNotificationCallback(characteristic).with(valueChangedCallback);
 
         // And turn them on
         _client.enableNotifications(characteristic)
-            .done(callback).fail(callback).invalid(callback)
+            .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
-    public void unsubscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final RequestCallback callback)
+    public void unsubscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final RequestCallback requestCallback)
     {
         Log.v(TAG, "==> unsubscribeCharacteristic" + characteristicUuid);
 
@@ -401,7 +402,7 @@ public class Peripheral
 
         // And turn them of
         _client.disableNotifications(characteristic)
-            .done(callback).fail(callback).invalid(callback)
+            .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
