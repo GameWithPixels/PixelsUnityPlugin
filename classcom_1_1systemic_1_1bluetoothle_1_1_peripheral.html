@@ -84,74 +84,661 @@ $(document).ready(function(){initNavTree('classcom_1_1systemic_1_1bluetoothle_1_
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">com.systemic.bluetoothle.Peripheral Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a Bluetooth Low Energy (BLE) peripheral.  
+ <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html">MtuRequestCallback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for MTU change request callbacks.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html">ReadRssiRequestCallback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for RSSI reading request callbacks.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html">ReadValueRequestCallback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for characteristic value reading request callbacks.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_rssi_request_callback.html">RssiRequestCallback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for most BLE request callbacks.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1240317751aaac6fcf0198dad7b28e49"><td class="memItemLeft" align="right" valign="top"><a id="a1240317751aaac6fcf0198dad7b28e49"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Peripheral</b> (final BluetoothDevice device, final ConnectionObserver connectionObserver)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructor</div></td></tr>
+<tr class="memitem:a1240317751aaac6fcf0198dad7b28e49"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1240317751aaac6fcf0198dad7b28e49">Peripheral</a> (final BluetoothDevice device, final ConnectionObserver connectionObserver)</td></tr>
+<tr class="memdesc:a1240317751aaac6fcf0198dad7b28e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a peripheral for the given Bluetooth device and with a connection observer.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1240317751aaac6fcf0198dad7b28e49">More...</a><br /></td></tr>
 <tr class="separator:a1240317751aaac6fcf0198dad7b28e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab79e94eb147110d2a328b91ec4ad83ec"><td class="memItemLeft" align="right" valign="top"><a id="ab79e94eb147110d2a328b91ec4ad83ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (final String requiredServicesUuids, final boolean autoConnect, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:ab79e94eb147110d2a328b91ec4ad83ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17d567461823ab2c628aac68c16e0a3b"><td class="memItemLeft" align="right" valign="top"><a id="a17d567461823ab2c628aac68c16e0a3b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> (final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:a17d567461823ab2c628aac68c16e0a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c98ffc7fc2d407bf8ec2b209db3630e"><td class="memItemLeft" align="right" valign="top"><a id="a9c98ffc7fc2d407bf8ec2b209db3630e"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Connection and disconnection</div></td></tr>
+<tr class="memitem:ac05a7060117e2e25871edf551ef2a0ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac05a7060117e2e25871edf551ef2a0ce">connect</a> (final String requiredServicesUuids, final boolean autoReconnect, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
+<tr class="memdesc:ac05a7060117e2e25871edf551ef2a0ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the BLE peripheral.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac05a7060117e2e25871edf551ef2a0ce">More...</a><br /></td></tr>
+<tr class="separator:ac05a7060117e2e25871edf551ef2a0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94708aeb9ae19b07a3d214734c388b99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a94708aeb9ae19b07a3d214734c388b99">disconnect</a> (final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
+<tr class="memdesc:a94708aeb9ae19b07a3d214734c388b99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immediately disconnects the given peripheral.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a94708aeb9ae19b07a3d214734c388b99">More...</a><br /></td></tr>
+<tr class="separator:a94708aeb9ae19b07a3d214734c388b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Peripheral operations</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Valid only for connected peripherals. </p>
+</div></td></tr>
+<tr class="memitem:a9c98ffc7fc2d407bf8ec2b209db3630e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a9c98ffc7fc2d407bf8ec2b209db3630e">getName</a> ()</td></tr>
+<tr class="memdesc:a9c98ffc7fc2d407bf8ec2b209db3630e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the peripheral.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a9c98ffc7fc2d407bf8ec2b209db3630e">More...</a><br /></td></tr>
 <tr class="separator:a9c98ffc7fc2d407bf8ec2b209db3630e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a444927643de138ab9e3efd61e5c5c26e"><td class="memItemLeft" align="right" valign="top"><a id="a444927643de138ab9e3efd61e5c5c26e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getMtu</b> ()</td></tr>
+<tr class="memitem:a444927643de138ab9e3efd61e5c5c26e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a444927643de138ab9e3efd61e5c5c26e">getMtu</a> ()</td></tr>
+<tr class="memdesc:a444927643de138ab9e3efd61e5c5c26e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Maximum Transmission Unit (MTU).  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a444927643de138ab9e3efd61e5c5c26e">More...</a><br /></td></tr>
 <tr class="separator:a444927643de138ab9e3efd61e5c5c26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15448874f9b0b2fbc37d3663b6d3932e"><td class="memItemLeft" align="right" valign="top"><a id="a15448874f9b0b2fbc37d3663b6d3932e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>requestMtu</b> (int mtu, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html">MtuRequestCallback</a> callback)</td></tr>
-<tr class="separator:a15448874f9b0b2fbc37d3663b6d3932e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecfa90894dab5dd26e71f79468b3fd04"><td class="memItemLeft" align="right" valign="top"><a id="aecfa90894dab5dd26e71f79468b3fd04"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>readRssi</b> (final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_rssi_request_callback.html">RssiRequestCallback</a> callback)</td></tr>
-<tr class="separator:aecfa90894dab5dd26e71f79468b3fd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46fc6da80f3768ead0191962a0d0bc28"><td class="memItemLeft" align="right" valign="top"><a id="a46fc6da80f3768ead0191962a0d0bc28"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getDiscoveredServices</b> ()</td></tr>
+<tr class="memitem:a3aa53471a8b72d03ac55dc08e340e0f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a3aa53471a8b72d03ac55dc08e340e0f5">requestMtu</a> (int mtu, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html">MtuRequestCallback</a> mtuChangedCallback)</td></tr>
+<tr class="memdesc:a3aa53471a8b72d03ac55dc08e340e0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request the peripheral to change its MTU to the given value.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a3aa53471a8b72d03ac55dc08e340e0f5">More...</a><br /></td></tr>
+<tr class="separator:a3aa53471a8b72d03ac55dc08e340e0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88b3b940d46d8c4e03dd723b809f33c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ad88b3b940d46d8c4e03dd723b809f33c">readRssi</a> (final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html">ReadRssiRequestCallback</a> rssiReadCallback)</td></tr>
+<tr class="memdesc:ad88b3b940d46d8c4e03dd723b809f33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current Received Signal Strength Indicator (RSSI).  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ad88b3b940d46d8c4e03dd723b809f33c">More...</a><br /></td></tr>
+<tr class="separator:ad88b3b940d46d8c4e03dd723b809f33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46fc6da80f3768ead0191962a0d0bc28"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a46fc6da80f3768ead0191962a0d0bc28">getDiscoveredServices</a> ()</td></tr>
+<tr class="memdesc:a46fc6da80f3768ead0191962a0d0bc28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered services.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a46fc6da80f3768ead0191962a0d0bc28">More...</a><br /></td></tr>
 <tr class="separator:a46fc6da80f3768ead0191962a0d0bc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbbfc5006284732b13762c3db7d85d29"><td class="memItemLeft" align="right" valign="top"><a id="acbbfc5006284732b13762c3db7d85d29"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>getServiceCharacteristics</b> (final String serviceUuid)</td></tr>
+<tr class="memitem:acbbfc5006284732b13762c3db7d85d29"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#acbbfc5006284732b13762c3db7d85d29">getServiceCharacteristics</a> (final String serviceUuid)</td></tr>
+<tr class="memdesc:acbbfc5006284732b13762c3db7d85d29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered characteristics for the given service.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#acbbfc5006284732b13762c3db7d85d29">More...</a><br /></td></tr>
 <tr class="separator:acbbfc5006284732b13762c3db7d85d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e68f77064922b85a0d52d18827e0cdd"><td class="memItemLeft" align="right" valign="top"><a id="a5e68f77064922b85a0d52d18827e0cdd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCharacteristicProperties</b> (final String serviceUuid, final String characteristicUuid, final int instanceIndex)</td></tr>
+<tr class="memitem:a5e68f77064922b85a0d52d18827e0cdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a5e68f77064922b85a0d52d18827e0cdd">getCharacteristicProperties</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex)</td></tr>
+<tr class="memdesc:a5e68f77064922b85a0d52d18827e0cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the standard BLE properties of the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a5e68f77064922b85a0d52d18827e0cdd">More...</a><br /></td></tr>
 <tr class="separator:a5e68f77064922b85a0d52d18827e0cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d6ddd58f2d5abb9883d49c392c89742"><td class="memItemLeft" align="right" valign="top"><a id="a6d6ddd58f2d5abb9883d49c392c89742"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>readCharacteristic</b> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback dataReceivedCallback, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:a6d6ddd58f2d5abb9883d49c392c89742"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60ffaf4557568cb8d14490e562c0b3e2"><td class="memItemLeft" align="right" valign="top"><a id="a60ffaf4557568cb8d14490e562c0b3e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>writeCharacteristic</b> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final byte[] data, boolean withoutResponse, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:a60ffaf4557568cb8d14490e562c0b3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac894f35c47b51dfbe195dfac1061e977"><td class="memItemLeft" align="right" valign="top"><a id="ac894f35c47b51dfbe195dfac1061e977"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>subscribeCharacteristic</b> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback dataReceivedCallback, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:ac894f35c47b51dfbe195dfac1061e977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295212af409412ae84f1d1a338f02e0c"><td class="memItemLeft" align="right" valign="top"><a id="a295212af409412ae84f1d1a338f02e0c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unsubscribeCharacteristic</b> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> callback)</td></tr>
-<tr class="separator:a295212af409412ae84f1d1a338f02e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca22ffddf9b9f6c0ac46585d2ea0bd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0">readCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html">ReadValueRequestCallback</a> valueReadCallback)</td></tr>
+<tr class="memdesc:a1ca22ffddf9b9f6c0ac46585d2ea0bd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0">More...</a><br /></td></tr>
+<tr class="separator:a1ca22ffddf9b9f6c0ac46585d2ea0bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ca4e6bc7ff8997f935ef6f1b67f440"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#aa5ca4e6bc7ff8997f935ef6f1b67f440">writeCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final byte[] data, boolean withoutResponse, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
+<tr class="memdesc:aa5ca4e6bc7ff8997f935ef6f1b67f440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to write to the specified service's characteristic for the given peripheral.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#aa5ca4e6bc7ff8997f935ef6f1b67f440">More...</a><br /></td></tr>
+<tr class="separator:aa5ca4e6bc7ff8997f935ef6f1b67f440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac37b830d8eb67b2720c9fc75cd6652c2">subscribeCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback valueChangedCallback, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
+<tr class="memdesc:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes for value changes of the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac37b830d8eb67b2720c9fc75cd6652c2">More...</a><br /></td></tr>
+<tr class="separator:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15911acde11d4e9818b008ae0de07d12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12">unsubscribeCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
+<tr class="memdesc:a15911acde11d4e9818b008ae0de07d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribes from the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12">More...</a><br /></td></tr>
+<tr class="separator:a15911acde11d4e9818b008ae0de07d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a42eed119a2b440177ac3567144f8856f"><td class="memItemLeft" align="right" valign="top"><a id="a42eed119a2b440177ac3567144f8856f"></a>
-static BluetoothDevice&#160;</td><td class="memItemRight" valign="bottom"><b>getDeviceFromAddress</b> (final long address)</td></tr>
-<tr class="separator:a42eed119a2b440177ac3567144f8856f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e350899ce5d460b13d1cdfe34b1219b"><td class="memItemLeft" align="right" valign="top">static BluetoothDevice&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a8e350899ce5d460b13d1cdfe34b1219b">getDeviceFromAddress</a> (final long bluetoothAddress)</td></tr>
+<tr class="memdesc:a8e350899ce5d460b13d1cdfe34b1219b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the BluetoothDevice object for the given Bluetooth address.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a8e350899ce5d460b13d1cdfe34b1219b">More...</a><br /></td></tr>
+<tr class="separator:a8e350899ce5d460b13d1cdfe34b1219b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a Bluetooth Low Energy (BLE) peripheral. </p>
+<dl class="section note"><dt>Note</dt><dd>This class was designed to work as a Unity plugin, and thus its methods take and return strings rather than ParcelUuid object for a simplified marshaling with the .NET platform.</dd></dl>
+<p>Implements the most common BLE operations such as reading the peripheral name, MTU, RSSI, listing services and characteristics. As well as reading, writing and subscribing to characteristics.</p>
+<p>A new instance takes an Android BluetoothDevice which can be retrieved either from its Bluetooth address or from a scan using the <a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html" title="Static class with methods for running a Bluetooth Low Energy (BLE) scan.">Scanner</a> class.</p>
+<p>It relies on Nordic's Android-BLE-Library library for most of the work. </p><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/NordicSemiconductor/Android-BLE-Library">https://github.com/NordicSemiconductor/Android-BLE-Library</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1240317751aaac6fcf0198dad7b28e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1240317751aaac6fcf0198dad7b28e49">&#9670;&nbsp;</a></span>Peripheral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">com.systemic.bluetoothle.Peripheral.Peripheral </td>
+          <td>(</td>
+          <td class="paramtype">final BluetoothDevice&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final ConnectionObserver&#160;</td>
+          <td class="paramname"><em>connectionObserver</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a peripheral for the given Bluetooth device and with a connection observer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>The Android Bluetooth device object. </td></tr>
+    <tr><td class="paramname">connectionObserver</td><td>The connection observer to use for notifying connection events. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac05a7060117e2e25871edf551ef2a0ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac05a7060117e2e25871edf551ef2a0ce">&#9670;&nbsp;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.connect </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>requiredServicesUuids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final boolean&#160;</td>
+          <td class="paramname"><em>autoReconnect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a>&#160;</td>
+          <td class="paramname"><em>requestCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connects to the BLE peripheral. </p>
+<p>This request timeouts after 30 seconds.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should support, may be null or empty. </td></tr>
+    <tr><td class="paramname">autoReconnect</td><td>Whether to automatically reconnect after an unexpected disconnection (i.e. not triggered by a call to <a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a94708aeb9ae19b07a3d214734c388b99" title="Immediately disconnects the given peripheral.">disconnect()</a>). </td></tr>
+    <tr><td class="paramname">requestCallback</td><td>The object implementing the request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a94708aeb9ae19b07a3d214734c388b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94708aeb9ae19b07a3d214734c388b99">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.disconnect </td>
+          <td>(</td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a>&#160;</td>
+          <td class="paramname"><em>requestCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Immediately disconnects the given peripheral. </p>
+<p>Any on-going request will either failed or be canceled, including connection requests. Any pending request is dropped.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestCallback</td><td>The object implementing the request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e68f77064922b85a0d52d18827e0cdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e68f77064922b85a0d52d18827e0cdd">&#9670;&nbsp;</a></span>getCharacteristicProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.systemic.bluetoothle.Peripheral.getCharacteristicProperties </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final int&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the standard BLE properties of the specified service's characteristic. </p>
+<dl class="section see"><dt>See also</dt><dd><a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#PROPERTY_BROADCAST">https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#PROPERTY_BROADCAST</a>, PROPERTY_READ, PROPERTY_NOTIFY, etc.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The standard BLE properties of a service's characteristic, or zero if the call failed. </dd></dl>
+
+</div>
+</div>
+<a id="a8e350899ce5d460b13d1cdfe34b1219b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e350899ce5d460b13d1cdfe34b1219b">&#9670;&nbsp;</a></span>getDeviceFromAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static BluetoothDevice com.systemic.bluetoothle.Peripheral.getDeviceFromAddress </td>
+          <td>(</td>
+          <td class="paramtype">final long&#160;</td>
+          <td class="paramname"><em>bluetoothAddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the BluetoothDevice object for the given Bluetooth address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bluetoothAddress</td><td>The address of a Bluetooth device. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A BluetoothDevice or null if there is none for the given address. </dd></dl>
+
+</div>
+</div>
+<a id="a46fc6da80f3768ead0191962a0d0bc28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46fc6da80f3768ead0191962a0d0bc28">&#9670;&nbsp;</a></span>getDiscoveredServices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.systemic.bluetoothle.Peripheral.getDiscoveredServices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the list of discovered services. </p>
+<dl class="section return"><dt>Returns</dt><dd>A comma separated list of services UUIDs, or null if the call failed. </dd></dl>
+
+</div>
+</div>
+<a id="a444927643de138ab9e3efd61e5c5c26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a444927643de138ab9e3efd61e5c5c26e">&#9670;&nbsp;</a></span>getMtu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int com.systemic.bluetoothle.Peripheral.getMtu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the Maximum Transmission Unit (MTU). </p>
+<dl class="section return"><dt>Returns</dt><dd>The MTU, or zero if the call failed. </dd></dl>
+
+</div>
+</div>
+<a id="a9c98ffc7fc2d407bf8ec2b209db3630e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c98ffc7fc2d407bf8ec2b209db3630e">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.systemic.bluetoothle.Peripheral.getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of the peripheral. </p>
+<dl class="section return"><dt>Returns</dt><dd>The name, or null if the call failed. </dd></dl>
+
+</div>
+</div>
+<a id="acbbfc5006284732b13762c3db7d85d29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbbfc5006284732b13762c3db7d85d29">&#9670;&nbsp;</a></span>getServiceCharacteristics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.systemic.bluetoothle.Peripheral.getServiceCharacteristics </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the list of discovered characteristics for the given service. </p>
+<p>The same characteristic may be listed several times according to the peripheral's configuration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID for which to retrieve the characteristics. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A comma separated list of characteristics UUIDs, or null if the call failed. </dd></dl>
+
+</div>
+</div>
+<a id="a1ca22ffddf9b9f6c0ac46585d2ea0bd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca22ffddf9b9f6c0ac46585d2ea0bd0">&#9670;&nbsp;</a></span>readCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.readCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final int&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html">ReadValueRequestCallback</a>&#160;</td>
+          <td class="paramname"><em>valueReadCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a request to read the value of the specified service's characteristic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
+    <tr><td class="paramname">valueReadCallback</td><td>The object implementing the read value request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad88b3b940d46d8c4e03dd723b809f33c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88b3b940d46d8c4e03dd723b809f33c">&#9670;&nbsp;</a></span>readRssi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.readRssi </td>
+          <td>(</td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html">ReadRssiRequestCallback</a>&#160;</td>
+          <td class="paramname"><em>rssiReadCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the current Received Signal Strength Indicator (RSSI). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rssiReadCallback</td><td>The object implementing the read RSSI request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3aa53471a8b72d03ac55dc08e340e0f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa53471a8b72d03ac55dc08e340e0f5">&#9670;&nbsp;</a></span>requestMtu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.requestMtu </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mtu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html">MtuRequestCallback</a>&#160;</td>
+          <td class="paramname"><em>mtuChangedCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Request the peripheral to change its MTU to the given value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mtu</td><td>The requested MTU, must be between 23 and 517 included. </td></tr>
+    <tr><td class="paramname">mtuChangedCallback</td><td>The object implementing the MTU request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac37b830d8eb67b2720c9fc75cd6652c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac37b830d8eb67b2720c9fc75cd6652c2">&#9670;&nbsp;</a></span>subscribeCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.subscribeCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final int&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final DataReceivedCallback&#160;</td>
+          <td class="paramname"><em>valueChangedCallback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a>&#160;</td>
+          <td class="paramname"><em>requestCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribes for value changes of the specified service's characteristic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
+    <tr><td class="paramname">valueChangedCallback</td><td>The object implementing the callback for characteristic's value changes. </td></tr>
+    <tr><td class="paramname">requestCallback</td><td>The object implementing the request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a15911acde11d4e9818b008ae0de07d12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15911acde11d4e9818b008ae0de07d12">&#9670;&nbsp;</a></span>unsubscribeCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.unsubscribeCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final int&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a>&#160;</td>
+          <td class="paramname"><em>requestCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unsubscribes from the specified service's characteristic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
+    <tr><td class="paramname">requestCallback</td><td>The object implementing the request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5ca4e6bc7ff8997f935ef6f1b67f440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ca4e6bc7ff8997f935ef6f1b67f440">&#9670;&nbsp;</a></span>writeCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Peripheral.writeCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>serviceUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>characteristicUuid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final int&#160;</td>
+          <td class="paramname"><em>instanceIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final byte[]&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>withoutResponse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a>&#160;</td>
+          <td class="paramname"><em>requestCallback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a request to write to the specified service's characteristic for the given peripheral. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
+    <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
+    <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic. </td></tr>
+    <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
+    <tr><td class="paramname">requestCallback</td><td>The object implementing the request callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Plugins/Pixels/Android/Peripheral.java</li>
 </ul>
@@ -160,7 +747,7 @@ static BluetoothDevice&#160;</td><td class="memItemRight" valign="bottom"><b>get
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><b>bluetoothle</b></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html">Peripheral</a></li>
+    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><a class="el" href="namespacecom_1_1systemic_1_1bluetoothle.html">bluetoothle</a></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html">Peripheral</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

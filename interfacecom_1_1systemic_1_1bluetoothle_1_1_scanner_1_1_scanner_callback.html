@@ -89,16 +89,85 @@ $(document).ready(function(){initNavTree('interfacecom_1_1systemic_1_1bluetoothl
 <div class="title">com.systemic.bluetoothle.Scanner.ScannerCallback Interface Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for scan results callbacks.  
+ <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aed5e987fbf4822a9ac277ac53e7c78cb"><td class="memItemLeft" align="right" valign="top"><a id="aed5e987fbf4822a9ac277ac53e7c78cb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onScanResult</b> (BluetoothDevice device, String advertisementDataJson)</td></tr>
+<tr class="memitem:aed5e987fbf4822a9ac277ac53e7c78cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#aed5e987fbf4822a9ac277ac53e7c78cb">onScanResult</a> (BluetoothDevice device, String advertisementDataJson)</td></tr>
+<tr class="memdesc:aed5e987fbf4822a9ac277ac53e7c78cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A callback invoked when advertisement data is received from a Bluetooth device.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#aed5e987fbf4822a9ac277ac53e7c78cb">More...</a><br /></td></tr>
 <tr class="separator:aed5e987fbf4822a9ac277ac53e7c78cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a042ce4cd9210baac1d9f4f2d377886c4"><td class="memItemLeft" align="right" valign="top"><a id="a042ce4cd9210baac1d9f4f2d377886c4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>onScanFailed</b> (String error)</td></tr>
+<tr class="memitem:a042ce4cd9210baac1d9f4f2d377886c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#a042ce4cd9210baac1d9f4f2d377886c4">onScanFailed</a> (String error)</td></tr>
+<tr class="memdesc:a042ce4cd9210baac1d9f4f2d377886c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A callback invoked when the scan fails.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#a042ce4cd9210baac1d9f4f2d377886c4">More...</a><br /></td></tr>
 <tr class="separator:a042ce4cd9210baac1d9f4f2d377886c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for scan results callbacks. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a042ce4cd9210baac1d9f4f2d377886c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a042ce4cd9210baac1d9f4f2d377886c4">&#9670;&nbsp;</a></span>onScanFailed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Scanner.ScannerCallback.onScanFailed </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A callback invoked when the scan fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>A string with the error that caused the scan to fail. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aed5e987fbf4822a9ac277ac53e7c78cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed5e987fbf4822a9ac277ac53e7c78cb">&#9670;&nbsp;</a></span>onScanResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.systemic.bluetoothle.Scanner.ScannerCallback.onScanResult </td>
+          <td>(</td>
+          <td class="paramtype">BluetoothDevice&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>advertisementDataJson</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A callback invoked when advertisement data is received from a Bluetooth device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>The Android BluetoothDevice which send the advertisement data. </td></tr>
+    <tr><td class="paramname">advertisementDataJson</td><td>The Android BluetoothDevice which send the advertisement data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this interface was generated from the following file:<ul>
 <li>Assets/Plugins/Pixels/Android/Scanner.java</li>
 </ul>
@@ -107,7 +176,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>onScanFailed</b> (Str
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><b>bluetoothle</b></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html">Scanner</a></li><li class="navelem"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a></li>
+    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><a class="el" href="namespacecom_1_1systemic_1_1bluetoothle.html">bluetoothle</a></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html">Scanner</a></li><li class="navelem"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -31,7 +31,9 @@ var NAVTREE =
       [ "Package Functions", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -47,7 +49,12 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Typedefs", "globals_type.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -55,7 +62,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "",
-"interface_s_g_ble_peripheral.html#a12f2a3eaba126e0f2938e9f9be27bd3e"
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a7eaf64c111074df2b100d0b47009804d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

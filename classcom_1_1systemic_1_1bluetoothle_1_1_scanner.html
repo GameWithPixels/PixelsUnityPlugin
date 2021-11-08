@@ -90,21 +90,77 @@ $(document).ready(function(){initNavTree('classcom_1_1systemic_1_1bluetoothle_1_
 <div class="title">com.systemic.bluetoothle.Scanner Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Static class with methods for running a Bluetooth Low Energy (BLE) scan.  
+ <a href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for scan results callbacks.  <a href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5f9a9f761f757809fa03693552213066"><td class="memItemLeft" align="right" valign="top"><a id="a5f9a9f761f757809fa03693552213066"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>startScan</b> (final String requiredServicesUuids, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a> callback)</td></tr>
+<tr class="memitem:a5f9a9f761f757809fa03693552213066"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">startScan</a> (final String requiredServicesUuids, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a> callback)</td></tr>
+<tr class="memdesc:a5f9a9f761f757809fa03693552213066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">More...</a><br /></td></tr>
 <tr class="separator:a5f9a9f761f757809fa03693552213066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d2ad7045c60766825997ef0af0fe00b"><td class="memItemLeft" align="right" valign="top"><a id="a5d2ad7045c60766825997ef0af0fe00b"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> ()</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5d2ad7045c60766825997ef0af0fe00b">stopScan</a> ()</td></tr>
+<tr class="memdesc:a5d2ad7045c60766825997ef0af0fe00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops an on-going BLE scan. <br /></td></tr>
 <tr class="separator:a5d2ad7045c60766825997ef0af0fe00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Static class with methods for running a Bluetooth Low Energy (BLE) scan. </p>
+<dl class="section note"><dt>Note</dt><dd>This class was designed to work as a Unity plugin, and thus its methods take and return strings rather than ParcelUuid object for a simplified marshaling with the .NET platform.</dd></dl>
+<p>It relies on Nordic's Android-Scanner-Compat-Library library for most of the work. </p><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library">https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5f9a9f761f757809fa03693552213066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f9a9f761f757809fa03693552213066">&#9670;&nbsp;</a></span>startScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void com.systemic.bluetoothle.Scanner.startScan </td>
+          <td>(</td>
+          <td class="paramtype">final String&#160;</td>
+          <td class="paramname"><em>requiredServicesUuids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a>&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Starts scanning for BLE peripherals. </p>
+<p>If a scan is already running, it will be stopped before starting the new one.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should advertise, may be null or empty. </td></tr>
+    <tr><td class="paramname">callback</td><td>The object implementing the scanner callbacks. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Plugins/Pixels/Android/Scanner.java</li>
 </ul>
@@ -113,7 +169,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> (
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><b>bluetoothle</b></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html">Scanner</a></li>
+    <li class="navelem"><b>com</b></li><li class="navelem"><b>systemic</b></li><li class="navelem"><a class="el" href="namespacecom_1_1systemic_1_1bluetoothle.html">bluetoothle</a></li><li class="navelem"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html">Scanner</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -1,4 +1,13 @@
 var searchData=
 [
-  ['tofulluuid_180',['ToFullUuid',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html#ac92a0ecea5de928083913af866ea5186',1,'Systemic::Unity::BluetoothLE::BleUuid']]]
+  ['readcharacteristic_238',['ReadCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7dc291462687ad1e70bcd656e83d0928',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['readcharacteristic_239',['readCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['readcharacteristicasync_240',['ReadCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aab0893bf3c0a28cf5aae6b0e51f1f13c',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec=RequestDefaultTimeout)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ab8ea82900f05dc7373751cc7fa162556',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec=RequestDefaultTimeout)']]],
+  ['readperipheralrssi_241',['ReadPeripheralRssi',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aea0a4ca9036f6fbc22184f704f8dcc1d',1,'Systemic.Unity.BluetoothLE.Central.ReadPeripheralRssi()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a4500a621b2c5bf3b5cf965c7faeb6676',1,'Systemic.Unity.BluetoothLE.NativeInterface.ReadPeripheralRssi()']]],
+  ['readrssi_242',['readRssi',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ad88b3b940d46d8c4e03dd723b809f33c',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['releaseperipheral_243',['ReleasePeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a11ec76e744bdb8e0b2d936a518d470ea',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['requestenumerator_244',['RequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#ae4157407175e7e3903320a64503fcb9f',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]],
+  ['requestmtu_245',['requestMtu',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a3aa53471a8b72d03ac55dc08e340e0f5',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['requestperipheralmtu_246',['RequestPeripheralMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a09ef089f9763345278a4080e08cce89b',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['reset_247',['Reset',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a20a7bbf9d07f7aa999161d51d1e757b9',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]]
 ];

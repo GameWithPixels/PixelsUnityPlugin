@@ -1,6 +1,6 @@
 var class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface =
 [
-    [ "ConnectPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ac8da1e1f33d9233f898d71611483ebbc", null ],
+    [ "ConnectPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a8650a602ae68f7ca89b959b74a370c19", null ],
     [ "CreatePeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a729611da0051116fd4da5c8358a01bee", null ],
     [ "CreatePeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a46af60f161fa77536fd2266515144307", null ],
     [ "DisconnectPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab16ccba92aeda0e7fb4fde50daeef131", null ],
@@ -10,7 +10,7 @@ var class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface =
     [ "GetPeripheralName", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3eff81428b24b4d19e4988f3fb7fd6ec", null ],
     [ "GetPeripheralServiceCharacteristics", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a961df7be29ad016886e8095ddd3677f4", null ],
     [ "Initialize", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a870bf275f6dbebad711a145186a3e49c", null ],
-    [ "ReadCharacteristic", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a983cabf682eecdebeba8ff1a58ae548a", null ],
+    [ "ReadCharacteristic", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7dc291462687ad1e70bcd656e83d0928", null ],
     [ "ReadPeripheralRssi", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a4500a621b2c5bf3b5cf965c7faeb6676", null ],
     [ "ReleasePeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a11ec76e744bdb8e0b2d936a518d470ea", null ],
     [ "RequestPeripheralMtu", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a09ef089f9763345278a4080e08cce89b", null ],

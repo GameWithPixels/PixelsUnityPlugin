@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_bluet
 <div class="title">Systemic.Unity.BluetoothLE Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Collection of classes for a simplified access to Bluetooth Low Energy peripherals from <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a>.  
+<a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -97,13 +100,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for Bluetooth UUIDs  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html">Central</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy peripherals.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>ConnectRequestEnumerator</b></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a BLE connect request. <br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a BLE connection request. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>DisconnectRequestEnumerator</b></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a BLE disconnect request. <br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a BLE disconnection request. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque and read only class storing the native peripheral handle as used by the platform specific INativeInterfaceImpl implementation.  <a href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#details">More...</a><br /></td></tr>
@@ -128,6 +131,27 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a3b6f42efe9864fdc76ec45fe0cd3f0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth radio status.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9">More...</a><br /></td></tr>
 <tr class="separator:a3b6f42efe9864fdc76ec45fe0cd3f0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48491fac62d06c124431209f5b41b1e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> { <br />
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38">Success</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea12d868c18cb29bf58f02b504be9033fd">InProgress</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea0e22fe7d45f8e5632a4abf369b24e29c">Canceled</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaef70e46fd3bbc21e3e1f0b6815e750c0">Disconnected</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacb5b058dcaf924529ae9081437ee8d9b">InvalidPeripheral</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac70654dc1c17be663b82adc9c5a1ee89">InvalidCall</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea16eda536c5a9f951aa496fa52f400fd5">InvalidParameters</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea9ed2d871602556951e39f3cebd08d6cb">NotSupported</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaca3da8f495e4e628912a7798655da6c2">ProtocolError</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacbcc0759909213e7cdba1f0cbf253126">AccessDenied</a>
+, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac8afe2b6c8cbedd939017e05b4e86056">AdpaterOff</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac85a251cc457840f1e032f1b733e9398">Timeout</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:aa48491fac62d06c124431209f5b41b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral requests statuses.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">More...</a><br /></td></tr>
+<tr class="separator:aa48491fac62d06c124431209f5b41b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adba39c6638265898a3f769e9b2686fe6"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6">ConnectionEvent</a> { <br />
 &#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458">Connecting</a>
 , <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6a2ec0d16e4ca169baedb9b2d50ec5c6d7">Connected</a>
@@ -154,27 +178,6 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a8adc4dbbd6eb7a31f29b3968470a0053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event reasons.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053">More...</a><br /></td></tr>
 <tr class="separator:a8adc4dbbd6eb7a31f29b3968470a0053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa48491fac62d06c124431209f5b41b1e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> { <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38">Success</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea12d868c18cb29bf58f02b504be9033fd">InProgress</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea0e22fe7d45f8e5632a4abf369b24e29c">Canceled</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaef70e46fd3bbc21e3e1f0b6815e750c0">Disconnected</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacb5b058dcaf924529ae9081437ee8d9b">InvalidPeripheral</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac70654dc1c17be663b82adc9c5a1ee89">InvalidCall</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea16eda536c5a9f951aa496fa52f400fd5">InvalidParameters</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea9ed2d871602556951e39f3cebd08d6cb">NotSupported</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaca3da8f495e4e628912a7798655da6c2">ProtocolError</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacbcc0759909213e7cdba1f0cbf253126">AccessDenied</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac8afe2b6c8cbedd939017e05b4e86056">AdpaterOff</a>
-, <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac85a251cc457840f1e032f1b733e9398">Timeout</a>
-<br />
- }</td></tr>
-<tr class="memdesc:aa48491fac62d06c124431209f5b41b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral requests statuses.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">More...</a><br /></td></tr>
-<tr class="separator:aa48491fac62d06c124431209f5b41b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add494924942857195b4d1f9d5a6e24fb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb">CharacteristicProperties</a> : ulong { <br />
 &#160;&#160;<b>None</b> = 0
 , <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fbabe55b6387170df0ca68f41225268e842">Broadcast</a> = 0x001
@@ -223,7 +226,9 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9de6bf4222af1249e2ff8525f201b94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for returning a value and a status.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a9de6bf4222af1249e2ff8525f201b94f">More...</a><br /></td></tr>
 <tr class="separator:a9de6bf4222af1249e2ff8525f201b94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Collection of classes for a simplified access to Bluetooth Low Energy peripherals from <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a>. </p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a3b6f42efe9864fdc76ec45fe0cd3f0c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b6f42efe9864fdc76ec45fe0cd3f0c9">&#9670;&nbsp;</a></span>BluetoothStatus</h2>
 
@@ -321,7 +326,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Peripheral connection events. </p>
-<p>Matches C++ enum Systemic::BluetoothLE::ConnectionEvent and Objective-C PXBlePeripheralConnectionEvent. </p>
+<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31" title="Peripheral connection events.">Systemic::BluetoothLE::ConnectionEvent</a> and Objective-C PXBlePeripheralConnectionEvent. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458"></a>Connecting&#160;</td><td class="fielddoc"><p>Raised at the beginning of the connect sequence, will be followed either by Connected or FailedToConnect. </p>
 </td></tr>
@@ -360,7 +365,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Peripheral connection event reasons. </p>
-<p>Matches C++ enum Systemic::BluetoothLE::ConnectionEventReason and Objective-C PXBlePeripheralConnectionEventReason. </p>
+<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6" title="Peripheral connection event reasons.">Systemic::BluetoothLE::ConnectionEventReason</a> and Objective-C PXBlePeripheralConnectionEventReason. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8adc4dbbd6eb7a31f29b3968470a0053a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>The disconnect happened for an unknown reason. </p>
 </td></tr>
@@ -445,7 +450,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Peripheral requests statuses. </p>
-<p>Matches C++ enum Systemic::BleRequestStatus. </p>
+<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449" title="Peripheral requests statuses.">Systemic::BluetoothLE::BleRequestStatus</a>. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38"></a>Success&#160;</td><td class="fielddoc"><p>The request completed successfully. </p>
 </td></tr>

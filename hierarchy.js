@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "Systemic::BluetoothLE::AdvertisingData", "class_systemic_1_1_bluetooth_l_e_1_1_advertising_data.html", null ],
+    [ "Systemic::BluetoothLE::AdvertisementData", "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html", null ],
     [ "Systemic.Unity.BluetoothLE.BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", null ],
     [ "<CBCentralManagerDelegate>", null, [
       [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", null ]
@@ -16,8 +16,9 @@ var hierarchy =
     ] ],
     [ "FailCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.MtuRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html", null ],
-      [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ],
-      [ "com.systemic.bluetoothle.Peripheral.RssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_rssi_request_callback.html", null ]
+      [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ],
+      [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ],
+      [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],
     [ "IEnumerator", null, [
       [ "Systemic.Unity.BluetoothLE.RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", [
@@ -26,10 +27,10 @@ var hierarchy =
     ] ],
     [ "InvalidRequestCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.MtuRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html", null ],
-      [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ],
-      [ "com.systemic.bluetoothle.Peripheral.RssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_rssi_request_callback.html", null ]
+      [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ],
+      [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ],
+      [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],
-    [ "Systemic::Logger", "class_systemic_1_1_logger.html", null ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
     [ "MtuCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.MtuRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html", null ]
@@ -43,7 +44,8 @@ var hierarchy =
     ] ],
     [ "com.systemic.bluetoothle.Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", null ],
     [ "RssiCallback", null, [
-      [ "com.systemic.bluetoothle.Peripheral.RssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_rssi_request_callback.html", null ]
+      [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ],
+      [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
     ] ],
     [ "Systemic.Unity.BluetoothLE.ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", null ],
     [ "com.systemic.bluetoothle.Scanner", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html", null ],

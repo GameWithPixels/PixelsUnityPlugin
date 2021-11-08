@@ -7,7 +7,7 @@ var interface_s_g_ble_peripheral =
     [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral.html#ad3d02e8c13d1ddf68d24b3c5393bc40b", null ],
     [ "queueDisconnect:", "interface_s_g_ble_peripheral.html#a3990cb4503452b3c77f7b5ef9a83cd31", null ],
     [ "queueReadRssi:", "interface_s_g_ble_peripheral.html#ad8ee3977c2bd518a7894e924f5481bbd", null ],
-    [ "queueReadValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral.html#a50b012a5854dc12865fdca6371c04c68", null ],
+    [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral.html#ae321bff8b3cfdc75dac9aa5cb258b9b6", null ],
     [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a", null ],
     [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral.html#a773c50ea682f7091bee1c58a3b1a366f", null ],
     [ "rssi", "interface_s_g_ble_peripheral.html#ae8d2ea53e910c00fd1d3f288e516f3e2", null ],
