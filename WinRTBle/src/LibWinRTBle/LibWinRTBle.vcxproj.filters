@@ -53,13 +53,13 @@
     <ClInclude Include="Systemic\BluetoothLE\Service.h">
       <Filter>Header Files\Systemic\BluetoothLE</Filter>
     </ClInclude>
-    <ClInclude Include="Systemic\BluetoothLE\BleCommon.h">
-      <Filter>Header Files\Systemic\BluetoothLE</Filter>
-    </ClInclude>
     <ClInclude Include="Systemic\BluetoothLE\Characteristic.h">
       <Filter>Header Files\Systemic\BluetoothLE</Filter>
     </ClInclude>
-    <ClInclude Include="Systemic\Logger.h">
+    <ClInclude Include="Systemic\Internal\Logger.h">
+      <Filter>Header Files\Systemic\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Systemic\Internal\Utils.h">
       <Filter>Header Files\Systemic\Internal</Filter>
     </ClInclude>
   </ItemGroup>

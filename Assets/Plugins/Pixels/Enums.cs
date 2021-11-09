@@ -66,11 +66,11 @@ namespace Systemic.Unity.BluetoothLE
     /// Peripheral connection events.
     /// </summary>
     /// <remarks>
-    /// Matches C++ enum Systemic::BluetoothLE::ConnectionEvent and Objective-C PXBlePeripheralConnectionEvent.
+    /// Matches C++ enum Systemic::BluetoothLE::ConnectionEvent and Objective-C SGBleConnectionEvent.
     /// </remarks>
     public enum ConnectionEvent
     {
-        /// Raised at the beginning of the connect sequence, will be followed either by Connected or FailedToConnect.
+        /// Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect.
         Connecting,
 
         /// Raised once the peripheral is connected, at which point service discovery is triggered.
@@ -85,7 +85,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Raised at the beginning of a user initiated disconnect.
         Disconnecting,
 
-        /// Raised when the peripheral is disconnected, the reason for the connection loss is also given.
+        /// Raised when the peripheral is disconnected, the reason for the disconnection is also given.
         Disconnected,
     }
 
@@ -93,7 +93,7 @@ namespace Systemic.Unity.BluetoothLE
     /// Peripheral connection event reasons.
     /// </summary>
     /// <remarks>
-    /// Matches C++ enum Systemic::BluetoothLE::ConnectionEventReason and Objective-C PXBlePeripheralConnectionEventReason.
+    /// Matches C++ enum Systemic::BluetoothLE::ConnectionEventReason and Objective-C SGBleConnectionEventReason.
     /// </remarks>
     public enum ConnectionEventReason
     {

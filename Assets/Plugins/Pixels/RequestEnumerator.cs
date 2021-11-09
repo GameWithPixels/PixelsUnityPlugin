@@ -44,12 +44,12 @@ namespace Systemic.Unity.BluetoothLE
         RequestStatus? _status;
 
         /// <summary>
-        /// Returns the operation being requested.
+        /// Gets the operation being requested.
         /// </summary>
         public RequestOperation Operation { get; }
 
         /// <summary>
-        /// Indicates whether the request has finished (successfully or not).
+        /// Indicates whether the request has completed (successfully or not).
         /// </summary>
         public bool IsDone => _status.HasValue;
 
@@ -59,17 +59,17 @@ namespace Systemic.Unity.BluetoothLE
         public bool IsSuccess => _status.HasValue && (_status.Value == RequestStatus.Success);
 
         /// <summary>
-        ///Indicates whether the request has timed-out.
+        /// Indicates whether the request has timed-out.
         /// </summary>
         public bool IsTimeout { get; private set; }
 
         /// <summary>
-        /// Returns the request current status.
+        /// Gets the request current status.
         /// </summary>
         public RequestStatus RequestStatus => _status.HasValue ? _status.Value : RequestStatus.InProgress;
 
         /// <summary>
-        /// Returns the request status as a string.
+        /// Gets the request status as a string.
         /// </summary>
         public string Error => RequestStatus switch
         {
@@ -87,12 +87,12 @@ namespace Systemic.Unity.BluetoothLE
         };
 
         /// <summary>
-        /// The current object, always null.
+        /// Gets the current object, always null.
         /// </summary>
         public object Current => null;
 
         /// <summary>
-        /// The peripheral for which the request was made.
+        /// Gets the peripheral for which the request was made.
         /// </summary>
         private protected NativePeripheralHandle Peripheral { get; }
 

@@ -10,7 +10,7 @@ namespace Systemic.Unity.BluetoothLE
     public class ValueRequestEnumerator<T> : RequestEnumerator
     {
         /// <summary>
-        /// Value read by the request, only valid if <see cref="RequestEnumerator.IsSuccess"/> is true.
+        /// Gets the value retrieved by the request, only valid if <see cref="RequestEnumerator.IsSuccess"/> is true.
         /// </summary>
         public T Value { get; private set; }
 

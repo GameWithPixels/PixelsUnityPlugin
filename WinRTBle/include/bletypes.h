@@ -1,6 +1,6 @@
 /**
  * @file
- * @brief Some types used across the Systemic BLE library.
+ * @brief Some types used across the Systemic::BluetoothLE library.
  */
 
 #pragma once
@@ -57,7 +57,7 @@ namespace Systemic::BluetoothLE
     /// Peripheral connection events.
     enum class ConnectionEvent
     {
-        /// Raised at the beginning of the connect sequence, will be followed either by Connected or FailedToConnect.
+        /// Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect.
         Connecting,
 
         /// Raised once the peripheral is connected, at which point service discovery is triggered.
@@ -72,7 +72,7 @@ namespace Systemic::BluetoothLE
         /// Raised at the beginning of a user initiated disconnect.
         Disconnecting,
 
-        /// Raised when the peripheral is disconnected, the reason for the connection loss is also given.
+        /// Raised when the peripheral is disconnected, the reason for the disconnection is also given.
         Disconnected,
     };
 

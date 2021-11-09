@@ -11,8 +11,10 @@ namespace Systemic.Unity.BluetoothLE
     ///
     /// This data usually holds the peripheral name and advertised services.
     /// The exact contents may vary depending on the platform.
-    /// This is a read only class.
     /// </summary>
+    /// <remarks>
+    /// This is a read only class.
+    /// </remarks>
     public class ScannedPeripheral
     {
         /// <summary>
@@ -41,22 +43,22 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// The underlying native device.
+        /// Gets the underlying native device.
         /// </summary>
         internal INativeDevice NativeDevice { get; }
 
         /// <summary>
-        /// A unique id assigned to the peripheral (platform dependent).
+        /// Gets the unique id assigned to the peripheral (platform dependent).
         /// </summary>
         public string SystemId { get; }
 
         /// <summary>
-        /// The peripheral bluetooth address (not available on iOS).
+        /// Gets the bluetooth address of the peripheral (not available on iOS).
         /// </summary>
         public ulong BluetoothAddress { get; }
 
         /// <summary>
-        /// The peripheral's name.
+        /// Gets the name of the peripheral.
         /// </summary>
         public string Name { get; }
 
@@ -66,37 +68,37 @@ namespace Systemic.Unity.BluetoothLE
         public bool IsConnectable { get; }
 
         /// <summary>
-        /// The Received Signal Strength Indicator (RSSI) for the peripheral when this advertisement data was received.
+        /// Gets the Received Signal Strength Indicator (RSSI) for the peripheral when this advertisement data was received.
         /// </summary>
         public int Rssi { get; }
 
         /// <summary>
-        /// The received transmit power of the advertisement.
+        /// Gets the received transmit power of the advertisement.
         /// </summary>
         public int TxPowerLevel { get; }
 
         /// <summary>
-        /// The manufacturer data of the peripheral.
+        /// Gets the manufacturer data of the peripheral.
         /// </summary>
         public IReadOnlyList<byte> ManufacturerData { get; }
 
         /// <summary>
-        /// The service-specific advertisement data (iOS only).
+        /// Gets the service-specific advertisement data (iOS only).
         /// </summary>
         public IReadOnlyDictionary<string, byte[]> ServicesData { get; }
 
         /// <summary>
-        /// The list of services advertised by the peripheral.
+        /// Gets the list of services advertised by the peripheral.
         /// </summary>
         public IReadOnlyList<Guid> Services { get; }
 
         /// <summary>
-        /// An array of UUIDs found in the overflow area of the advertisement data (iOS only).
+        /// Gets an array of the UUIDs found in the overflow area of the advertisement data (iOS only).
         /// </summary>
         public IReadOnlyList<Guid> OverflowServices { get; }
 
         /// <summary>
-        /// An array of solicited service UUIDs (iOS only).
+        /// Gets an array of the solicited service UUIDs (iOS only).
         /// </summary>
         public IReadOnlyList<Guid> SolicitedServices { get; }
 

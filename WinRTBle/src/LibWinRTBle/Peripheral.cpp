@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Systemic/Internal/Utils.h"
 #include "Systemic/BluetoothLE/Peripheral.h"
 #include "Systemic/BluetoothLE/Service.h"
 #include "Systemic/BluetoothLE/Characteristic.h"
@@ -10,7 +11,8 @@ namespace Systemic::BluetoothLE
 {
     namespace
     {
-        static inline ConnectionEventReason toReason(GattCommunicationStatus gattStatus)
+        // Converts a WinRT GattCommunicationStatus to a ConnectionEventReason
+        inline ConnectionEventReason toReason(GattCommunicationStatus gattStatus)
         {
             switch (gattStatus)
             {
@@ -24,7 +26,8 @@ namespace Systemic::BluetoothLE
             }
         }
 
-        static inline BleRequestStatus toRequestStatus(ConnectionEventReason reason)
+        // Converts a ConnectionEventReason to a BleRequestStatus
+        inline BleRequestStatus toRequestStatus(ConnectionEventReason reason)
         {
             switch (reason)
             {

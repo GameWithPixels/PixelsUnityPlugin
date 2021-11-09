@@ -138,7 +138,7 @@ namespace
 
         if (auto peripheral = findPeripheral(address))
         {
-            // Run future (which will continue on another thread)
+            // Run the future (which continues on another thread)
             actionFuture(peripheral);
         }
         else if (onRequestStatus)

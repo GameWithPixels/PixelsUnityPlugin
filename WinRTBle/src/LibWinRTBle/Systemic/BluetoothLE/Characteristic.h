@@ -1,120 +1,51 @@
+/**
+ * @file
+ * @brief Definition of the Characteristic class.
+ */
+
 #pragma once
 
-#include "BleCommon.h"
+// Common BLE types
+#include "../../../include/bletypes.h"
+#include "../Internal/Utils.h"
 
 namespace Systemic::BluetoothLE
 {
     class Peripheral;
 
+    /**
+     * @brief Represents a service's characteristic of a Bluetooth Low Energy (BLE) peripheral.
+     *
+     * A characteristic may be queried for its properties, and its underlying value may be read and/or
+     * written depending on the characteristic's capabilities.
+     * A characteristic with the notifiable property may be subscribed to get notified when its value changes.
+     *
+     * Those operations are asynchronous and return a std::future.
+     *
+     * The Characteristic class internally stores a WinRT's \c GattCharacteristic object.
+     */
     class Characteristic
     {
         using GattCharacteristic = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic;
         using GattValueChangedEventArgs = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs;
 
+        // Characteristic
         GattCharacteristic _characteristic{ nullptr };
+
+        // The user callback for value changes
         std::function<void(const std::vector<std::uint8_t>&)> _onValueChanged{};
+
+        // Value change
         winrt::event_token _valueChangedToken{};
         std::recursive_mutex _subscribeMtx{};
 
     public:
-        std::uint16_t handle() const
-        {
-            return _characteristic.AttributeHandle();
-        }
+        //! \name Destructor
+        //! @{
 
-        winrt::guid uuid() const
-        {
-            return _characteristic.Uuid();
-        }
-
-        CharacteristicProperties properties() const
-        {
-            return (CharacteristicProperties)_characteristic.CharacteristicProperties();
-        }
-
-        bool canWrite() const
-        {
-            return (properties() & CharacteristicProperties::Write) == CharacteristicProperties::Write;
-        }
-
-        bool canRead() const
-        {
-            return (properties() & CharacteristicProperties::Read) == CharacteristicProperties::Read;
-        }
-
-        bool canNotify() const
-        {
-            return (properties() & CharacteristicProperties::Notify) == CharacteristicProperties::Notify;
-        }
-
-        std::future<std::vector<std::uint8_t>> readValueAsync()
-        {
-            //TODO return error code
-            auto result = co_await _characteristic.ReadValueAsync();
-            co_return toVector(result.Value());
-        }
-
-        // Buffer may be empty but not null
-        std::future<BleRequestStatus> writeAsync(const std::vector<std::uint8_t>& value, bool withoutResponse = false)
-        {
-            //TODO use std::span
-            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-            using namespace winrt::Windows::Storage::Streams;
-
-            //InMemoryRandomAccessStream stream;
-            DataWriter dataWriter{}; // { stream };
-            dataWriter.ByteOrder(ByteOrder::LittleEndian);
-            dataWriter.WriteBytes(value);
-
-            auto options = withoutResponse ? GattWriteOption::WriteWithoutResponse : GattWriteOption::WriteWithResponse;
-            auto result = co_await _characteristic.WriteValueAsync(dataWriter.DetachBuffer(), options);
-
-            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
-        }
-
-        std::future<BleRequestStatus> subscribeAsync(std::function<void(const std::vector<std::uint8_t>&)> onValueChanged)
-        {
-            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-
-            if (!onValueChanged) co_return BleRequestStatus::InvalidParameters;
-            if (!canNotify()) co_return BleRequestStatus::NotSupported;
-
-            {
-                std::lock_guard lock{ _subscribeMtx };
-                if (_onValueChanged != nullptr)
-                {
-                    co_return BleRequestStatus::InvalidCall;
-                }
-                _onValueChanged = onValueChanged;
-                _valueChangedToken = _characteristic.ValueChanged({ this, &Characteristic::onValueChanged });
-            }
-
-            auto result = co_await _characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
-                GattClientCharacteristicConfigurationDescriptorValue::Notify);
-
-            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
-        }
-
-        std::future<BleRequestStatus> unsubscribeAsync()
-        {
-            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
-
-            {
-                std::lock_guard lock{ _subscribeMtx };
-                if (!_onValueChanged)
-                {
-                    co_return BleRequestStatus::Success;
-                }
-                _onValueChanged = nullptr;
-            }
-
-            _characteristic.ValueChanged(_valueChangedToken);
-            auto result = co_await _characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
-                GattClientCharacteristicConfigurationDescriptorValue::None);
-
-            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
-        }
-
+        /**
+         * @brief Destroys the Characteristic instance.
+         */
         ~Characteristic()
         {
             if (_characteristic)
@@ -124,28 +55,189 @@ namespace Systemic::BluetoothLE
             }
         }
 
+        //! @}
+        //! @name Getters
+        //! @{
+
+        /**
+         * @brief Gets the 16 bits handle of the BLE characteristic.
+         *
+         * @return The 16 bits handle of the characteristic.
+         */
+        std::uint16_t handle() const
+        {
+            return _characteristic.AttributeHandle();
+        }
+
+        /**
+         * @brief Gets the UUID of the characteristic.
+         *
+         * @return The UUID of the characteristic.
+         */
+        winrt::guid uuid() const
+        {
+            return _characteristic.Uuid();
+        }
+
+        /**
+         * @brief Gets the standard BLE properties of the characteristic.
+         *
+         * @return The properties of the characteristic. 
+         */
+        CharacteristicProperties properties() const
+        {
+            return (CharacteristicProperties)_characteristic.CharacteristicProperties();
+        }
+
+        /**
+         * @brief Indicates whether the characteristic can be written.
+         *
+         * @return Whether the characteristic can be written.
+         */
+        bool canWrite() const
+        {
+            return properties() & CharacteristicProperties::Write;
+        }
+
+        /**
+         * @brief Indicates whether the characteristic can be read.
+         *
+         * @return Whether the characteristic can be read.
+         */
+        bool canRead() const
+        {
+            return properties() & CharacteristicProperties::Read;
+        }
+
+        /**
+         * @brief Indicates whether the characteristic can notify its value changes.
+         *
+         * @return Whether the characteristic can notify.
+         */
+        bool canNotify() const
+        {
+            return properties() & CharacteristicProperties::Notify;
+        }
+
+        //! @}
+        //! @name Characteristic operations
+        //! @{
+
+        /**
+         * @brief Reads the value from the characteristic.
+         *
+         * @return A future with the read value as a vector of bytes.
+         */
+        std::future<std::vector<std::uint8_t>> readValueAsync()
+        {
+            //TODO return error code
+
+            // Read from characteristic
+            auto result = co_await _characteristic.ReadValueAsync();
+            co_return Internal::dataBufferToBytesVector(result.Value());
+        }
+
+        /**
+         * @brief Writes the given data to the value of the characteristic.
+         *
+         * @param data The data to write to the characteristic.
+         * @param withoutResponse Whether to wait for the peripheral to respond.
+         * @return A future with the resulting request status.
+         */
+        std::future<BleRequestStatus> writeAsync(const std::vector<std::uint8_t>& data, bool withoutResponse = false)
+        {
+            //TODO use std::span, test with empty buffer
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+
+            // Write to characteristic
+            auto options = withoutResponse ? GattWriteOption::WriteWithoutResponse : GattWriteOption::WriteWithResponse;
+            auto result = co_await _characteristic.WriteValueAsync(Internal::bytesVectorToDataBuffer(data), options);
+
+            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
+        }
+
+        /**
+         * @brief Subscribes for value changes of the characteristic.
+         *
+         * @param onValueChanged Called when the value of the characteristic changes.
+         * @return A future with the resulting request status.
+         */
+        std::future<BleRequestStatus> subscribeAsync(std::function<void(const std::vector<std::uint8_t>&)> onValueChanged)
+        {
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+
+            // Check parameters
+            if (!onValueChanged) co_return BleRequestStatus::InvalidParameters;
+            if (!canNotify()) co_return BleRequestStatus::NotSupported;
+
+            {
+                std::lock_guard lock{ _subscribeMtx };
+
+                // Check if already subscribed
+                if (_onValueChanged != nullptr)
+                {
+                    co_return BleRequestStatus::InvalidCall;
+                }
+
+                // Store the callback and subscribe
+                _onValueChanged = onValueChanged;
+                _valueChangedToken = _characteristic.ValueChanged({ this, &Characteristic::onValueChanged });
+            }
+
+            // Update characteristic configuration
+            auto result = co_await _characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
+                GattClientCharacteristicConfigurationDescriptorValue::Notify);
+
+            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
+        }
+
+        /**
+         * @brief Unsubscribes from value changes of the characteristic.
+         *
+         * @return A future with the resulting request status.
+         */
+        std::future<BleRequestStatus> unsubscribeAsync()
+        {
+            using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
+
+            {
+                // Check if subscribed
+                std::lock_guard lock{ _subscribeMtx };
+                if (!_onValueChanged)
+                {
+                    co_return BleRequestStatus::Success;
+                }
+
+                // Forget the callback
+                _onValueChanged = nullptr;
+            }
+
+            // Unsubscribe
+            _characteristic.ValueChanged(_valueChangedToken);
+
+            // Update characteristic configuration
+            auto result = co_await _characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
+                GattClientCharacteristicConfigurationDescriptorValue::None);
+
+            co_return result == GattCommunicationStatus::Success ? BleRequestStatus::Success : BleRequestStatus::Error;
+        }
+
     private:
         friend Peripheral;
 
+        // Initialize a new instance with a GattCharacteristic object
         Characteristic(GattCharacteristic characteristic)
             : _characteristic{ characteristic }
         {
         }
 
+        // Called when subscribed to the characteristic and its value changes
         void onValueChanged(GattCharacteristic _, GattValueChangedEventArgs args)
         {
-            if (_onValueChanged) _onValueChanged(toVector(args.CharacteristicValue()));
-        }
-
-        static std::vector<std::uint8_t> toVector(winrt::Windows::Storage::Streams::IBuffer buffer)
-        {
-            using namespace winrt::Windows::Storage::Streams;
-
-            std::vector<std::uint8_t> bytes{};
-            bytes.resize(buffer.Length());
-            auto dataReader = DataReader::FromBuffer(buffer);
-            dataReader.ReadBytes(bytes);
-            return bytes;
+            if (_onValueChanged)
+            {
+                _onValueChanged(Internal::dataBufferToBytesVector(args.CharacteristicValue()));
+            }
         }
     };
 }

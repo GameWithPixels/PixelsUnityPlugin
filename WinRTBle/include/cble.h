@@ -41,27 +41,27 @@ using CharacteristicProperties = Systemic::BluetoothLE::CharacteristicProperties
 /// Type for the index of a characteristic instance in a service.
 using characteristic_index_t = std::uint32_t;
 
-/// Callback notifying a change of the host device Bluetooth state, for example radio turned on or off.
+/// Callback notifying of a change of the host device Bluetooth state, for example radio turned on or off.
 typedef void (*BluetoothStateUpdateCallback)(bool available);
 
-/// Callback notifying the discovery of a BLE peripheral, with its advertisement data as a JSON string.
+/// Callback notifying of the discovery of a BLE peripheral, with its advertisement data as a JSON string.
 typedef void (*DiscoveredPeripheralCallback)(const char* advertisementDataJson);
 
-/// Callback notifying the status of a BLE request.
+/// Callback notifying of the status of a BLE request.
 typedef void (*RequestStatusCallback)(BleRequestStatus status);
 
-/// Callback notifying a change of a peripheral connection state, with the reason for the change.
+/// Callback notifying of a change connection state of a peripheral, with the reason for the change.
 typedef void (*PeripheralConnectionEventCallback)(bluetooth_address_t address, ConnectionEvent connectionEvent, ConnectionEventReason reason);
 
-/// Callback notifying the current value of a peripheral's characteristic.
+/// Callback notifying of the value read from a peripheral's characteristic.
 typedef void (*ValueReadCallback)(const void* _data, size_t length, BleRequestStatus status);
 
-/// Callback notifying a value change for a peripheral's characteristic.
+/// Callback notifying of a value change for a peripheral's characteristic.
 typedef void (*ValueChangedCallback)(const void* _data, size_t length);
 
 extern "C"
 {
-    /*! \name Library life cycle */
+    //! \name Library life cycle
     //! @{
 
     /**
@@ -84,13 +84,13 @@ extern "C"
     void sgBleShutdown();
 
     //! @}
-    /*! \name Peripherals scanning */
+    //! \name Peripherals scanning
     //! @{
 
     /**
-     * @brief Start scanning for BLE peripherals.
+     * @brief Starts scanning for BLE peripherals advertising the given list of services.
      *
-     * If a scan is already running, it will be updated to run with the new parameters.
+     * If a scan is already running, it is updated to run with the new parameters.
      * 
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should advertise, may be null or empty.
@@ -112,7 +112,7 @@ extern "C"
     void sgBleStopScan();
 
     //! @}
-    /*! \name Peripherals life cycle */
+    //! \name Peripherals life cycle
     //! @{
 
     /**
@@ -121,7 +121,7 @@ extern "C"
      * The underlying object is not returned, instead the peripheral must be referenced by
      * its Bluetooth address. Call sgBleReleasePeripheral() to destroy the object.
      *
-     * Usually a scan is run first to discover available peripherals and retrieve their advertisement data.
+     * Usually a scan is run first to discover available peripherals through their advertisement data.
      * But if the BLE address is know in advance, the peripheral may be created without scanning for it.
      *
      * @param address The Bluetooth address of the peripheral.
@@ -143,7 +143,7 @@ extern "C"
     void sgBleReleasePeripheral(bluetooth_address_t address);
 
     //! @}
-    /*! \name Peripheral connection and disconnection */
+    //! \name Peripheral connection and disconnection
     //! @{
 
     /**
@@ -158,7 +158,7 @@ extern "C"
      *                              should support, may be null or empty.
      * @param autoReconnect Whether to automatically reconnect after an unexpected disconnection
      *                      (i.e. not triggered by a call to sgBleDisconnectPeripheral()).
-     * @param onRequestStatus Called when the request has finished (successfully or not).
+     * @param onRequestStatus Called when the request has completed (successfully or not).
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
     void sgBleConnectPeripheral(bluetooth_address_t address,
@@ -169,10 +169,10 @@ extern "C"
     /**
      * @brief Immediately disconnects the given peripheral.
      *
-     * Any on-going request will either failed or be canceled, including connection requests.
+     * As a consequence, any on-going request either fails or is canceled, including connection requests.
      *
      * @param address The Bluetooth address of the peripheral.
-     * @param onRequestStatus Called when the request has finished (successfully or not).
+     * @param onRequestStatus Called when the request has completed (successfully or not).
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
     void sgBleDisconnectPeripheral(
@@ -180,8 +180,8 @@ extern "C"
         RequestStatusCallback onRequestStatus);
 
     //! @}
-    /*! \name Peripheral operations
-     *  Valid only for connected peripherals. */
+    //! \name Peripheral operations
+    //! Valid only for connected peripherals.
     //! @{
 
     /**
@@ -205,6 +205,11 @@ extern "C"
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
     int sgBleGetPeripheralMtu(bluetooth_address_t address);
+
+    //! @}
+    //! \name Services operations
+    //! Valid only for connected peripherals.
+    //! @{
 
     /**
      * @brief Returns the list of discovered services for the given peripheral.
@@ -237,6 +242,11 @@ extern "C"
         bluetooth_address_t address,
         const char* serviceUuid);
 
+    //! @}
+    //! \name Characteristics operations
+    //! Valid only for connected peripherals.
+    //! @{
+
     /**
      * @brief Returns the standard BLE properties of the specified service's characteristic
      *        for the given peripheral.
@@ -259,14 +269,14 @@ extern "C"
      * @brief Sends a request to read the value of the specified service's characteristic
      *        for the given peripheral.
      *
-     * The call will fail if the characteristic is not readable.
+     * The call fails if the characteristic is not readable.
      * 
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param onValueRead Called when the request has finished (successfully or not)
+     * @param onValueRead Called when the request has completed (successfully or not)
      *                    and with the data read from the characteristic.
      * @return
      */
@@ -282,7 +292,7 @@ extern "C"
      * @brief Sends a request to write to the specified service's characteristic
      *        for the given peripheral.
      *
-     * The call will fail if the characteristic is not writable.
+     * The call fails if the characteristic is not writable.
      *
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
@@ -292,7 +302,7 @@ extern "C"
      * @param data A pointer to the data to write to the characteristic.
      * @param length The size in bytes of the data.
      * @param withoutResponse Whether to wait for the peripheral to respond.
-     * @param onRequestStatus Called when the request has finished (successfully or not).
+     * @param onRequestStatus Called when the request has completed (successfully or not).
      * @return
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
@@ -310,19 +320,18 @@ extern "C"
      * @brief Subscribes or unsubscribes for value changes of the specified service's characteristic
      *        for the given peripheral.
      *
-     * The call will fail if the characteristic doesn't support notification
-     * or if it is already subscribed.
+     * The call fails if the characteristic doesn't support notification or if it is already subscribed.
      * 
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param onValueChanged Called when the characteristic value changes.
+     * @param onValueChanged Called when the value of the characteristic changes.
      *                       Pass null to unsubscribe. <br>
      *                       The callback must stay valid until the characteristic is unsubscribed
      *                       or the peripheral is released.
-     * @param onRequestStatus Called when the request has finished (successfully or not).
+     * @param onRequestStatus Called when the request has completed (successfully or not).
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
     void sgBleSetNotifyCharacteristic(
@@ -334,7 +343,7 @@ extern "C"
         RequestStatusCallback onRequestStatus);
 
     //! @}
-    /*! \name Miscellaneous */
+    //! \name Miscellaneous
     //! @{
 
     /**

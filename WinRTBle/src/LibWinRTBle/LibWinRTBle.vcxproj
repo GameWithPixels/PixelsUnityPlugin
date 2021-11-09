@@ -161,14 +161,14 @@
     <ClInclude Include="..\..\include\bletypes.h" />
     <ClInclude Include="..\..\include\cble.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Systemic\BluetoothLE\BleCommon.h" />
     <ClInclude Include="Systemic\BluetoothLE\Characteristic.h" />
     <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h" />
     <ClInclude Include="Systemic\BluetoothLE\Peripheral.h" />
     <ClInclude Include="Systemic\BluetoothLE\Scanner.h" />
     <ClInclude Include="Systemic\BluetoothLE\Service.h" />
     <ClInclude Include="Systemic\ComHelper.h" />
-    <ClInclude Include="Systemic\Logger.h" />
+    <ClInclude Include="Systemic\Internal\Utils.h" />
+    <ClInclude Include="Systemic\Internal\Logger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cble.cpp" />

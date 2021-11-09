@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Definition of the Logger internal class.
+ */
+
 #pragma once
 
 #include <fstream>

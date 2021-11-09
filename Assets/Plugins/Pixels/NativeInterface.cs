@@ -65,7 +65,7 @@ namespace Systemic.Unity.BluetoothLE
 #endif
         #endregion
 
-        // Indicate if we are successfully initialized
+        // Indicates whether we are successfully initialized
         static bool _isInitialized;
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         public const int MaxMtu = 517;
 
-        /*! \name Static class life cycle */
+        //! \name Static class life cycle
         //! @{
 
         /// <summary>
@@ -105,15 +105,15 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         //! @}
-        /*! \name Peripherals scanning */
+        //! \name Peripherals scanning
         //! @{
 
         /// <summary>
-        /// Start scanning for BLE peripherals.
+        /// Starts scanning for BLE peripherals advertising the given list of services.
         ///
-        /// If a scan is already running, it will be updated to run with the new parameters.
+        /// If a scan is already running, it is updated with the new parameters.
         ///
-        /// Specifying one more service required for the peripherals will save battery on mobile devices.
+        /// Specifying one more service required for the peripherals saves battery on mobile devices.
         /// </summary>
         /// <param name="requiredServices">List of services that the peripheral should advertise, may be null or empty.</param>
         /// <param name="onScannedPeripheral">Invoked every time an advertisement packet with the required services is received.</param>
@@ -137,7 +137,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         //! @}
-        /*! \name Peripherals life cycle */
+        //! \name Peripherals life cycle
         //! @{
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         //! @}
-        /*! \name Peripheral connection and disconnection */
+        //! \name Peripheral connection and disconnection
         //! @{
 
         /// <summary>
@@ -211,11 +211,11 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="requiredServices">List of services that the peripheral should support, may be null or empty.</param>
         /// <param name="autoReconnect">Whether the native implementation should attempt to automatically reconnect
         /// after an unexpected disconnection (i.e. not triggered by a call to <see cref="DisconnectPeripheral"/>).</param>
-        /// <param name="onResult">Invoked when the request has finished (successfully or not).</param>
+        /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>
         /// The exact behavior may vary between platforms.
-        /// Windows and Android implementations will time out after a short delay (8 and 30 seconds respectively)
-        /// whereas iOS will never time out.
+        /// Windows and Android implementations time out after a short delay (8 and 30 seconds respectively)
+        /// whereas iOS never times out.
         /// </remarks>
         public static void ConnectPeripheral(NativePeripheralHandle nativePeripheralHandle, IEnumerable<Guid> requiredServices, bool autoReconnect, NativeRequestResultHandler onResult)
         {
@@ -235,7 +235,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Requests the native implementation to disconnect the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
-        /// <param name="onResult">Invoked when the request has finished (successfully or not).</param>
+        /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         public static void DisconnectPeripheral(NativePeripheralHandle nativePeripheralHandle, NativeRequestResultHandler onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
@@ -247,12 +247,12 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         //! @}
-        /*! \name Peripheral operations
-         *  Valid only for connected peripherals. */
+        //! \name Peripheral operations
+        //! Valid only for connected peripherals.
         //! @{
 
         /// <summary>
-        /// Returns the name of the given peripheral.
+        /// Gets the name of the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <returns>The peripheral name.</returns>
@@ -267,7 +267,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Returns the Maximum Transmission Unit (MTU) for the given peripheral.
+        /// Gets the Maximum Transmission Unit (MTU) for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <returns>The peripheral MTU.</returns>
@@ -282,12 +282,11 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Have the native implementation to request the given peripheral to change its MTU to the given value
-        /// (Android only).
+        /// Request the given peripheral to change its MTU to the given value (Android only).
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="mtu">The requested MTU, see <see cref="MinMtu"/> and <see cref="MaxMtu"/> for the legal range of values.</param>
-        /// <param name="onMtuResult">Invoked when the request has finished (successfully or not), with the updated MTU value.</param>
+        /// <param name="onMtuResult">Invoked when the request has completed (successfully or not), with the updated MTU value.</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void RequestPeripheralMtu(NativePeripheralHandle nativePeripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
         {
@@ -301,10 +300,10 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Reads the current Received Signal Strength Indicator (RSSI) of the given peripheral.
+        /// Request to read the Received Signal Strength Indicator (RSSI) of the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
-        /// <param name="onRssiResult">Invoked when the request has finished (successfully or not), with the current RSSI value.</param>
+        /// <param name="onRssiResult">Invoked when the request has completed (successfully or not), with the read RSSI value.</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void ReadPeripheralRssi(NativePeripheralHandle nativePeripheralHandle, NativeValueRequestResultHandler<int> onRssiResult)
         {
@@ -316,8 +315,13 @@ namespace Systemic.Unity.BluetoothLE
             _impl.ReadPeripheralRssi(nativePeripheralHandle.NativePeripheral, onRssiResult);
         }
 
+        //! @}
+        //! \name Services operations
+        //! Valid only for connected peripherals.
+        //! @{
+
         /// <summary>
-        /// Returns the list of discovered services for the given peripheral.
+        /// Gets the list of discovered services for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <returns>The list of discovered services.</returns>
@@ -331,7 +335,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Returns the list of discovered characteristics for the given peripheral's service.
+        /// Gets the list of discovered characteristics for the given peripheral's service.
         /// 
         /// The same characteristic may be listed several times according to the peripheral's configuration.
         /// </summary>
@@ -348,8 +352,13 @@ namespace Systemic.Unity.BluetoothLE
                 _impl.GetPeripheralServiceCharacteristics(nativePeripheralHandle.NativePeripheral, serviceUuid.ToString()));
         }
 
+        //! @}
+        //! \name Characteristics operations
+        //! Valid only for connected peripherals.
+        //! @{
+
         /// <summary>
-        /// Returns the standard BLE properties of the specified service's characteristic for the given peripheral.
+        /// Gets the standard BLE properties of the specified service's characteristic for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
@@ -373,13 +382,13 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Requests the native implementation to read the value of the specified service's characteristic for the given peripheral.
+        /// Requests to read the value of the specified service's characteristic for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
-        /// <param name="onValueReadResult">Invoked when the request has finished (successfully or not) and with the characteristic's current value on success.</param>
+        /// <param name="onValueReadResult">Invoked when the request has completed (successfully or not) and with the characteristic's read value on success.</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void ReadCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueReadResult)
         {
@@ -394,7 +403,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Requests the native implementation to write to the specified service's characteristic for the given peripheral.
+        /// Requests to write to the specified service's characteristic for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
@@ -402,7 +411,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
         /// <param name="data">The data to write to the characteristic.</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
-        /// <param name="onResult">Invoked when the request has finished (successfully or not).</param>
+        /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void WriteCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
         {
@@ -426,16 +435,16 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Requests the native implementation to subscribe for value changes of the specified service's characteristic for the given peripheral.
+        /// Requests to subscribe for value changes of the specified service's characteristic for the given peripheral.
         ///
-        /// The call will fail if the characteristic doesn't support notification or if it is already subscribed.
+        /// The call fails if the characteristic doesn't support notification or if it is already subscribed.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
-        /// <param name="onValueChanged">The callback to be invoked when the characteristic value changes.</param>
-        /// <param name="onResult">Invoked when the request has finished (successfully or not).</param>
+        /// <param name="onValueChanged">Invoked when the value of the characteristic changes.</param>
+        /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void SubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
         {
@@ -457,13 +466,13 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         /// <summary>
-        /// Requests the native implementation to unsubscribe from the specified service's characteristic for the given peripheral.
+        /// Requests to unsubscribe from the specified service's characteristic for the given peripheral.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
-        /// <param name="onResult">Invoked when the request has finished (successfully or not).</param>
+        /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void UnsubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
         {

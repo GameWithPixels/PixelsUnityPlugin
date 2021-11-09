@@ -10,9 +10,11 @@ namespace Systemic::ComHelper
 {
     const char* copyToComBuffer(const char* str)
     {
+        // Get string length
         int strLen = str ? lstrlenA(str) : 0;
         if (strLen == 0)
         {
+            // We got an empty string, return a buffer with just a null terminator
             char* utf8Str = (char*)::CoTaskMemAlloc(1);
             if (utf8Str)
             {
@@ -22,7 +24,10 @@ namespace Systemic::ComHelper
         }
         else
         {
-            ++strLen; // To include null-terminating character that we want copied in the utf8 string
+            // Take the null terminator in account
+            ++strLen;
+
+            // Allocate a COM buffer
             char* utf8Str = (char*)::CoTaskMemAlloc(strLen);
             if (utf8Str)
             {
@@ -34,9 +39,11 @@ namespace Systemic::ComHelper
 
     const char* copyToComBuffer(const wchar_t* str)
     {
+        // Get string length
         int strLen = str ? lstrlenW(str) : 0;
         if (strLen == 0)
         {
+            // We got an empty string, return a buffer with just a null terminator
             char* utf8Str = (char*)::CoTaskMemAlloc(1);
             if (utf8Str)
             {
@@ -46,11 +53,16 @@ namespace Systemic::ComHelper
         }
         else
         {
-            ++strLen; // To include null-terminating character that we want copied in the utf8 string
+            // Take the null terminator in account
+            ++strLen;
+
+            // Allocate a COM buffer
             int utf8Len = WideCharToMultiByte(CP_UTF8, 0, str, strLen, 0, 0, NULL, NULL);
             char* utf8Str = (char*)::CoTaskMemAlloc(utf8Len);
+
             if (utf8Str)
             {
+                // Copy and convert the string to UTF-8
                 if (!WideCharToMultiByte(CP_UTF8, 0, str, strLen, utf8Str, utf8Len, NULL, NULL))
                 {
                     utf8Str[0] = '\0';
