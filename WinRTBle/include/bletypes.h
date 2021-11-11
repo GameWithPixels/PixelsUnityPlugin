@@ -110,8 +110,8 @@ namespace Systemic::BluetoothLE
         Peripheral,
     };
 
-    /// Standard BLE values for characteristic properties.
-    enum class CharacteristicProperties
+    /// Standard BLE values for characteristic properties, those are flags that can be combined.
+    enum CharacteristicProperties
     {
         None = 0,
 

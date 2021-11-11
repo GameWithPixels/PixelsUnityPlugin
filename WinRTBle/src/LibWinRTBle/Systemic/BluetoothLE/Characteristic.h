@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include <type_traits> // underlying_type
+
 // Common BLE types
 #include "../../../include/bletypes.h"
 #include "../Internal/Utils.h"
@@ -83,10 +85,12 @@ namespace Systemic::BluetoothLE
          * @brief Gets the standard BLE properties of the characteristic.
          *
          * @return The properties of the characteristic. 
+         *         See CharacteristicProperties for the different values (it may be a combination of them).
          */
-        CharacteristicProperties properties() const
+        std::underlying_type<CharacteristicProperties>::type properties() const
         {
-            return (CharacteristicProperties)_characteristic.CharacteristicProperties();
+            return static_cast<std::underlying_type<CharacteristicProperties>::type>(
+                _characteristic.CharacteristicProperties());
         }
 
         /**

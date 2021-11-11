@@ -471,17 +471,17 @@ const char* sgBleGetPeripheralServiceCharacteristics(
 }
 
 //TODO return BleRequestStatus as out parameter
-CharacteristicProperties sgBleGetCharacteristicProperties(
+int sgBleGetCharacteristicProperties(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
     characteristic_index_t instanceIndex)
 {
-    return runForCharacteristic<CharacteristicProperties>(
+    return runForCharacteristic<int>(
         address, serviceUuid, characteristicUuid, instanceIndex, nullptr,
         [](auto c)
         {
-            return c->properties();
+            return static_cast<int>(c->properties());
         }
     );
 }

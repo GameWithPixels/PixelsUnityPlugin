@@ -257,9 +257,10 @@ extern "C"
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
      * @return The standard BLE properties of a service's characteristic, or zero if the call failed.
+     *         See CharacteristicProperties for the different values (it may be a combination of them).
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
-    CharacteristicProperties sgBleGetCharacteristicProperties(
+    int sgBleGetCharacteristicProperties(
         bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
