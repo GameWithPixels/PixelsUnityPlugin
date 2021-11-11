@@ -4,7 +4,7 @@
  */
 
 #import "SGBleCentralManagerDelegate.h"
-#import "SGBlePeripheral.h"
+#import "SGBlePeripheralQueue.h"
 #import "SGBleTypes.h"
 #import "SGBleUtils.h"
 
@@ -254,7 +254,7 @@ inline NSString *advertisementDataToJsonString(const char *systemId, NSDictionar
 
 SGBleCentralManagerDelegate *getCentral();
 
-NSMutableDictionary<CBPeripheral *, SGBlePeripheral *> *getPeripherals();
+NSMutableDictionary<CBPeripheral *, SGBlePeripheralQueue *> *getPeripherals();
 
 inline const char *getPeripheralId(CBPeripheral *peripheral)
 {
@@ -272,19 +272,19 @@ inline CBPeripheral *getCBPeripheral(peripheral_id_t peripheralId)
     return peripheral;
 }
 
-inline const char *getPeripheralId(SGBlePeripheral *peripheral)
+inline const char *getPeripheralId(SGBlePeripheralQueue *peripheral)
 {
-    return [[peripheral.identifier UUIDString] UTF8String];
+    return [[peripheral.peripheral.identifier UUIDString] UTF8String];
 }
 
-inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId)
+inline SGBlePeripheralQueue *getSGBlePeripheralQueue(peripheral_id_t peripheralId)
 {
     return [getPeripherals() objectForKey:getCBPeripheral(peripheralId)];
 }
 
-inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, RequestStatusCallback onRequestStatus, request_index_t requestIndex)
+inline SGBlePeripheralQueue *getSGBlePeripheralQueue(peripheral_id_t peripheralId, RequestStatusCallback onRequestStatus, request_index_t requestIndex)
 {
-    SGBlePeripheral *sgPeripheral = getSGBlePeripheral(peripheralId);
+    SGBlePeripheralQueue *sgPeripheral = getSGBlePeripheralQueue(peripheralId);
     if (!sgPeripheral && onRequestStatus)
     {
         onRequestStatus(requestIndex, invalidPeripheralIdErrorCode);
@@ -292,9 +292,9 @@ inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, Request
     return sgPeripheral;
 }
 
-inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, RssiReadCallback onRssiRead, request_index_t requestIndex)
+inline SGBlePeripheralQueue *getSGBlePeripheralQueue(peripheral_id_t peripheralId, RssiReadCallback onRssiRead, request_index_t requestIndex)
 {
-    SGBlePeripheral *sgPeripheral = getSGBlePeripheral(peripheralId);
+    SGBlePeripheralQueue *sgPeripheral = getSGBlePeripheralQueue(peripheralId);
     if (!sgPeripheral && onRssiRead)
     {
         onRssiRead(std::numeric_limits<int>::min(), requestIndex, invalidPeripheralIdErrorCode);
@@ -302,9 +302,9 @@ inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, RssiRea
     return sgPeripheral;
 }
 
-inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, ValueReadCallback onValueRead, request_index_t requestIndex)
+inline SGBlePeripheralQueue *getSGBlePeripheralQueue(peripheral_id_t peripheralId, ValueReadCallback onValueRead, request_index_t requestIndex)
 {
-    SGBlePeripheral *sgPeripheral = getSGBlePeripheral(peripheralId);
+    SGBlePeripheralQueue *sgPeripheral = getSGBlePeripheralQueue(peripheralId);
     if (!sgPeripheral && onValueRead)
     {
         onValueRead(requestIndex, nullptr, 0, invalidPeripheralIdErrorCode);

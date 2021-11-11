@@ -30,33 +30,41 @@
  * 
  * @ingroup Apple_Objective-C
  */
-@interface SGBlePeripheral : NSObject<CBPeripheralDelegate>
-//TODO rename to SGBlePeripheralQueue, remove identifier, expose _peripheral
+@interface SGBlePeripheralQueue : NSObject<CBPeripheralDelegate>
 //! @cond
 {
     dispatch_queue_t _queue; // Run all peripheral requests
     SGBleCentralManagerDelegate *_centralDelegate;
     CBPeripheral *_peripheral;
+    
+    // Connection
     void (^_connectionEventHandler)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason);
     NSArray<CBUUID *> *_requiredServices;
     NSUInteger _discoveringServicesCounter;
     SGBleConnectionEventReason _disconnectReason;
+    
+    // Last RSSI
     int _rssi;
+
+    // Requests
     SGBleRequest *_runningRequest; // Accessed only from queue
     NSMutableArray<SGBleRequest *> *_pendingRequests; // Always synchronize access to this list
+
+    // Read notifications
+    void (^_valueReadHandler)(CBCharacteristic *characteristic, NSError *error);
     NSMapTable<CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)> *_valueChangedHandlers;
 }
 
 // Property getters
-- (NSUUID *)identifier;
+- (CBPeripheral *)peripheral;
 - (bool)isConnected;
 - (int)rssi;
 //! @endcond
 
 /**
- * @brief Gets the UUID assigned by the system for the peripheral (may change over long periods of time).
+ * @brief Gets the CBPeripheral object for this peripheral.
  */
-@property(nonatomic, readonly, getter=systemId) NSUUID *identifier;
+@property(readonly, getter=peripheral) CBPeripheral *peripheral;
 
 /**
  * @brief Indicates whether the peripheral is connected.
@@ -130,6 +138,8 @@
 /**
  * @brief Queues a request to read the value of the specified service's characteristic.
  *
+ * The call fails if the characteristic is not readable.
+ *
  * @param characteristic The CBCharacteristic object.
  * @param valueReadHandler The handler for notifying of the read value and the request status.
  */
@@ -138,6 +148,8 @@
 
 /**
  * @brief Queues a request to write the value of specified service's characteristic.
+ *
+ * The call fails if the characteristic is not writable.
  *
  * @param data The data to write.
  * @param characteristic The CBCharacteristic object.
@@ -151,6 +163,9 @@
 
 /**
  * @brief Queues a request to enable or disable notifications for the specified service's characteristic.
+ *
+ * Replaces a previously registered value change handler.
+ * The call fails if the characteristic doesn't support notifications.
  *
  * @param characteristic The CBCharacteristic object.
  * @param valueChangedHandler The handler for notifying of the characteristic's value changes.

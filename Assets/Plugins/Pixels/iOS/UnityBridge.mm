@@ -13,15 +13,15 @@ namespace internal
     // Our central manager instance
     static SGBleCentralManagerDelegate *_central = nil;
 
-    // Maps a CBPeripheral to a SGBlePeripheral
-    static NSMutableDictionary<CBPeripheral *, SGBlePeripheral *> *_peripherals = nil;
+    // Maps a CBPeripheral to a SGBlePeripheralQueue
+    static NSMutableDictionary<CBPeripheral *, SGBlePeripheralQueue *> *_peripherals = nil;
 
     SGBleCentralManagerDelegate *getCentral()
     {
         return _central;
     }
 
-    NSMutableDictionary<CBPeripheral *, SGBlePeripheral *> *getPeripherals()
+    NSMutableDictionary<CBPeripheral *, SGBlePeripheralQueue *> *getPeripherals()
     {
         return _peripherals;
     }
@@ -37,7 +37,7 @@ extern "C"
 
 /**
  * @brief Initializes the library for accessing BLE peripherals.
- * 
+ *
  * @param onBluetoothEvent Called when the host device Bluetooth state changes.
  * @return Whether the initialization was successful.
  */
@@ -46,7 +46,7 @@ bool sgBleInitialize(BluetoothStateUpdateCallback onBluetoothEvent)
     if (!_peripherals)
     {
         // Allocate just once
-        _peripherals = [NSMutableDictionary<CBPeripheral *, SGBlePeripheral *> new];
+        _peripherals = [NSMutableDictionary<CBPeripheral *, SGBlePeripheralQueue *> new];
     }
     if (!_central)
     {
@@ -82,7 +82,7 @@ void sgBleShutdown()
  * @brief Starts scanning for BLE peripherals advertising the given list of services.
  *
  * If a scan is already running, it is updated to run with the new parameters.
- * 
+ *
  * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
  *                              should advertise, may be null or empty.
  * @param allowDuplicates If <c>false</c>, let the system coalesces multiple discoveries of the same peripheral
@@ -137,7 +137,7 @@ void sgBleStopScan()
  * The later includes the peripheral system id, a UUID assigned by the system.
  *
  * @note The the peripheral system id may change over long period of time.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param onPeripheralConnectionEvent Called when the peripheral connection state changes. <br>
  *                                    The callback must stay valid until the peripheral is released.
@@ -148,7 +148,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
                            PeripheralConnectionEventCallback onPeripheralConnectionEvent,
                            request_index_t requestIndex)
 {
-    if (getSGBlePeripheral(peripheralId))
+    if (getSGBlePeripheralQueue(peripheralId))
     {
         // Already created
         return false;
@@ -162,7 +162,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
     }
     
     // Creates our peripheral object
-    SGBlePeripheral *sgPeripheral = [[SGBlePeripheral alloc] initWithPeripheral:cbPeripheral
+    SGBlePeripheralQueue *sgPeripheral = [[SGBlePeripheralQueue alloc] initWithPeripheral:cbPeripheral
                                                          centralManagerDelegate:_central
                                                          connectionEventHandler:^(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason){
         //TODO check valid peripheral
@@ -183,7 +183,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
 
 /**
  * @brief Releases the Peripheral object associated with the given peripheral id.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  */
 void sgBleReleasePeripheral(peripheral_id_t peripheralId)
@@ -212,14 +212,14 @@ void sgBleConnectPeripheral(peripheral_id_t peripheralId,
                             RequestStatusCallback onRequestStatus,
                             request_index_t requestIndex)
 {
-    SGBlePeripheral *sgPeripheral = getSGBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+    SGBlePeripheralQueue *sgPeripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
     [sgPeripheral queueConnectWithServices:toCBUUIDArray(requiredServicesUuids)
                          completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
 }
 
 /**
  * @brief Disconnects the given peripheral.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param onRequestStatus Called when the request has completed (successfully or not).
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
@@ -228,7 +228,7 @@ void sgBleDisconnectPeripheral(peripheral_id_t peripheralId,
                                RequestStatusCallback onRequestStatus,
                                request_index_t requestIndex)
 {
-    SGBlePeripheral *peripheral = getSGBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+    SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
     [peripheral cancelQueue];
     [peripheral queueDisconnect:toCompletionHandler(onRequestStatus, requestIndex)];
 }
@@ -240,7 +240,7 @@ void sgBleDisconnectPeripheral(peripheral_id_t peripheralId,
 
 /**
  * @brief Gets the name of the given peripheral.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return The name of the peripheral, or null if the call failed.
  *
@@ -255,7 +255,7 @@ const char* sgBleGetPeripheralName(peripheral_id_t peripheralId)
 
 /**
  * @brief Gets the Maximum Transmission Unit (MTU) for the given peripheral.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return The MTU of the peripheral, or zero if the call failed. 
  */
@@ -270,7 +270,7 @@ int sgBleGetPeripheralMtu(peripheral_id_t peripheralId)
 
 /**
  * @brief Reads the Received Signal Strength Indicator (RSSI) of the given peripheral.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param onRssiRead Called with the read RSSI.
  * @param requestIndex The index of this request, passed back when calling @p onRssiRead.
@@ -279,7 +279,7 @@ void sgBleReadPeripheralRssi(peripheral_id_t peripheralId,
                              RssiReadCallback onRssiRead,
                              request_index_t requestIndex)
 {
-    SGBlePeripheral *peripheral = getSGBlePeripheral(peripheralId, onRssiRead, requestIndex);
+    SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRssiRead, requestIndex);
     [peripheral queueReadRssi:^(NSError *error) {
         if (onRssiRead)
             onRssiRead(requestIndex, error ? std::numeric_limits<int>::min() : peripheral.rssi, toErrorCode(error));
@@ -293,7 +293,7 @@ void sgBleReadPeripheralRssi(peripheral_id_t peripheralId,
 
 /**
  * @brief Gets the list of discovered services for the given peripheral.
- * 
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return A comma separated list of services UUIDs, or null if the call failed.
  *
@@ -333,7 +333,7 @@ const char *sgBleGetPeripheralServiceCharacteristics(peripheral_id_t peripheralI
 /**
  * @brief Gets the standard BLE properties of the specified service's characteristic
  *        for the given peripheral.
- * 
+ *
  * @see https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc
  *
  * @param peripheralId The UUID assigned by the system for the peripheral.
@@ -355,7 +355,7 @@ characteristic_property_t sgBleGetCharacteristicProperties(peripheral_id_t perip
 /**
  * @brief Sends a request to read the value of the specified service's characteristic
  *        for the given peripheral.
- * 
+ *
  * The call fails if the characteristic is not readable.
  *
  * @param peripheralId The UUID assigned by the system for the peripheral.
@@ -374,7 +374,7 @@ void sgBleReadCharacteristicValue(peripheral_id_t peripheralId,
                                   ValueReadCallback onValueRead,
                                   request_index_t requestIndex)
 {
-    SGBlePeripheral *peripheral = getSGBlePeripheral(peripheralId, onValueRead, requestIndex);
+    SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onValueRead, requestIndex);
     [peripheral queueReadValueForCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                             valueReadHandler:toValueReadHandler(onValueRead, requestIndex)];
 }
@@ -382,7 +382,7 @@ void sgBleReadCharacteristicValue(peripheral_id_t peripheralId,
 /**
  * @brief Sends a request to write to the specified service's characteristic
  *        for the given peripheral.
- * 
+ *
  * The call fails if the characteristic is not writable.
  *
  * @param peripheralId The UUID assigned by the system for the peripheral.
@@ -408,7 +408,7 @@ void sgBleWriteCharacteristicValue(peripheral_id_t peripheralId,
 {
     if (data && length)
     {
-        SGBlePeripheral *peripheral = getSGBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+        SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
         [peripheral queueWriteValue:[NSData dataWithBytes:data length:length]
                   forCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                                type:withoutResponse ? CBCharacteristicWriteWithoutResponse : CBCharacteristicWriteWithResponse
@@ -420,9 +420,9 @@ void sgBleWriteCharacteristicValue(peripheral_id_t peripheralId,
  * @brief Subscribes or unsubscribes for value changes of the specified service's characteristic
  *        for the given peripheral.
  *
- * The call fails if the characteristic doesn't support notification
- * or if it is already subscribed.
- * 
+ * Replaces a previously registered value change handler for the same characteristic.
+ * The call fails if the characteristic doesn't support notifications.
+ *
  * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID.
  * @param characteristicUuid The characteristic UUID.
@@ -443,7 +443,7 @@ void sgBleSetNotifyCharacteristic(peripheral_id_t peripheralId,
                                   RequestStatusCallback onRequestStatus,
                                   request_index_t requestIndex)
 {
-    SGBlePeripheral *peripheral = getSGBlePeripheral(peripheralId, onRequestStatus, requestIndex);
+    SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
     [peripheral queueSetNotifyValueForCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                                  valueChangedHandler:toValueReadHandler(onValueChanged, requestIndex)
                                    completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];

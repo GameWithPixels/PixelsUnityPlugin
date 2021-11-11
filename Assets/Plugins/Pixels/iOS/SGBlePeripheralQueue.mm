@@ -1,4 +1,4 @@
-#import "SGBlePeripheral.h"
+#import "SGBlePeripheralQueue.h"
 #import "SGBleUtils.h"
 
 typedef NS_ENUM(NSInteger, SGBlePeripheralRequestError)
@@ -25,15 +25,15 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
                                                     code:SGBlePeripheralRequestErrorCanceled
                                                 userInfo:@{ NSLocalizedDescriptionKey: @"Canceled" }];
 
-@implementation SGBlePeripheral
+@implementation SGBlePeripheralQueue
 
 //
 // Getters
 //
 
-- (NSUUID *)identifier
+- (CBPeripheral *)peripheral
 {
-    return _peripheral.identifier;
+    return _peripheral;
 }
 
 - (bool)isConnected
@@ -69,13 +69,13 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
         _pendingRequests = [NSMutableArray<SGBleRequest *> new];
         _valueChangedHandlers = [NSMapTable<CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)> strongToStrongObjectsMapTable];
         
-        __weak SGBlePeripheral *weakSelf = self;
+        __weak SGBlePeripheralQueue *weakSelf = self;
         SGBleConnectionEventHandler handler =
         ^(CBPeripheral *peripheral, SGBleConnectionEvent connectionEvent, NSError *error)
         {
             // Be sure to not use self directly (or implictly by referencing a property)
             // otherwise it creates a strong reference to itself and prevents the instance's deallocation
-            SGBlePeripheral *strongSelf = weakSelf;
+            SGBlePeripheralQueue *strongSelf = weakSelf;
             if (strongSelf)
             {
                 bool connecting = strongSelf->_runningRequest.type == SGBleRequestTypeConnect;
@@ -105,6 +105,11 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
                     case SGBleConnectionEventDisconnected:
                     {
                         NSLog(@">> PeripheralConnectionEvent => disconnected with error %@", error);
+                        
+                        // Some cleanup
+                        strongSelf->_valueReadHandler = nil;
+                        [strongSelf->_valueChangedHandlers removeAllObjects];
+                        
                         SGBleConnectionEventReason reason = strongSelf->_disconnectReason;
                         if (reason != SGBleConnectionEventReasonSuccess)
                         {
@@ -227,7 +232,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
         }
         
         NSLog(@">> ReadValueForCharacteristic");
-        //TODO [self->_valueChangedHandlers setObject:valueChangedHandler forKey:characteristic];
+        self->_valueReadHandler = valueReadHandler;
         [self->_peripheral readValueForCharacteristic:characteristic];
         return (NSError *)nil;
     };
@@ -367,7 +372,11 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
 
     @synchronized (_pendingRequests)
     {
-        if ((!_runningRequest) && (_pendingRequests.count > 0))
+        if (_runningRequest)
+        {
+            NSLog(@">> Already running a request with type %@", [SGBleRequest requestTypeToString:request.type]);
+        }
+        if (_pendingRequests.count > 0)
         {
             NSLog(@">> runNextRequest size=%lu", (unsigned long)_pendingRequests.count);
             
@@ -408,6 +417,12 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
 // Should always be called on the queue
 - (void)qReportRequestResult:(NSError *)error forRequestType:(SGBleRequestType)requestType
 {
+    [self qReportRequestResult:error forRequestType:requestType customNotifier:nil];
+}
+
+// Should always be called on the queue
+- (void)qReportRequestResult:(NSError *)error forRequestType:(SGBleRequestType)requestType customNotifier:(void(^)(NSError *))customNotifier
+{
     SGBleRequest *request = nil;
     
     @synchronized (_pendingRequests)
@@ -420,14 +435,19 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
     {
         NSLog(@">> Notifying result for request of type %@, with error: %@",
               [SGBleRequest requestTypeToString:request.type], error);
-        [request notifyResult:error];
+        if (customNotifier)
+        {
+            customNotifier(error);
+        }
+        else
+        {
+            [request notifyResult:error];
+        }
     }
     else if (requestType)
     {
         NSLog(@">> Got result for request of type %@ while running request of type %@, with error: %@",
-              [SGBleRequest requestTypeToString:requestType],
-              [SGBleRequest requestTypeToString:request.type],
-              error);
+              [SGBleRequest requestTypeToString:requestType], [SGBleRequest requestTypeToString:request.type], error);
     }
     
     [self qRunNextRequest];
@@ -515,10 +535,23 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSLog(@">> peripheral:didUpdateValueForCharacteristic:error => %@", error);
-    void (^handler)(CBCharacteristic *characteristic, NSError *error) = [_valueChangedHandlers objectForKey:characteristic];
-    if (handler)
+    
+    if (_valueReadHandler)
     {
-        handler(characteristic, error);
+        // The value read handler is meant to be used just once
+        void (^valueReadHandler)(CBCharacteristic *characteristic, NSError *error) = _valueReadHandler;
+        _valueReadHandler = nil;
+
+        // And report result using the handler
+        [self qReportRequestResult:error forRequestType:SGBleRequestTypeReadValue customNotifier:^(NSError *error) {
+            valueReadHandler(characteristic, error);
+        }];
+    }
+    
+    void (^notifyHandler)(CBCharacteristic *characteristic, NSError *error) = [_valueChangedHandlers objectForKey:characteristic];
+    if (notifyHandler)
+    {
+        notifyHandler(characteristic, error);
     }
 }
 

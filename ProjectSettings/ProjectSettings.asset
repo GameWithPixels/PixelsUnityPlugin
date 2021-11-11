@@ -154,7 +154,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.SystemicGames.PixelsUnityPlugin
-    Standalone: com.DefaultCompany.PixelsUnityPlugin
+    Standalone: com.SystemicGames.PixelsUnityPlugin
     iPhone: com.SystemicGames.PixelsUnityPlugin
   buildNumber:
     Standalone: 0
@@ -449,7 +449,7 @@ PlayerSettings:
   cameraUsageDescription: 
   locationUsageDescription: 
   microphoneUsageDescription: 
-  bluetoothUsageDescription: Connect to Pixels dice
+  bluetoothUsageDescription: Uses Bluetooth to communicate with Pixel dices.
   switchNMETAOverride: 
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144
