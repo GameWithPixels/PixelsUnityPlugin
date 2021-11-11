@@ -203,7 +203,7 @@ namespace
         //str << ",\"timestamp\":\"" << peripheral->timestamp() << "\";
         str << ",\"address\":" << peripheral->address();
         str << ",\"name\":\"" << winrt::to_string(peripheral->name()) << "\"";
-        str << ",\"isConnectable\":\"" << (peripheral->isConnectable() ? "true" : "false") << "\"";
+        str << ",\"isConnectable\":" << (peripheral->isConnectable() ? "true" : "false");
         str << ",\"rssi\":" << peripheral->rssi();
         str << ",\"txPowerLevel\":" << peripheral->txPowerLevel();
         if (!peripheral->services().empty())

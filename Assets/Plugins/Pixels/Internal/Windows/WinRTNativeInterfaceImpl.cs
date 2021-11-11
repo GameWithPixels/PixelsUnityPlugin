@@ -207,8 +207,15 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
         {
             DiscoveredPeripheralHandler onDiscoveredPeripheral = jsonStr =>
             {
-                var adv = JsonUtility.FromJson<NativeAdvertisementDataJson>(jsonStr);
-                onScannedPeripheral(new NativeScannedPeripheral(adv.address, adv.name), adv);
+                try
+                {
+                    var adv = JsonUtility.FromJson<NativeAdvertisementDataJson>(jsonStr);
+                    onScannedPeripheral(new NativeScannedPeripheral(adv.address, adv.name), adv);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             };
             // Starts a new scan if on is already in progress
             bool success = sgBleStartScan(requiredServiceUuids, onDiscoveredPeripheral);

@@ -36,7 +36,7 @@ namespace Systemic.Unity.BluetoothLE
             Rssi = advertisementData.rssi;
             TxPowerLevel = advertisementData.txPowerLevel;
             ManufacturerData = Array.AsReadOnly((advertisementData.manufacturerData ?? Array.Empty<byte>()).ToArray());
-            ServicesData = new ReadOnlyDictionary<string, byte[]>(Clone(advertisementData.servicesData));
+            ServicesData = new ReadOnlyDictionary<string, byte[]>(CloneDictionary(advertisementData.servicesData));
             Services = Array.AsReadOnly(ToGuidArray(advertisementData.services));
             OverflowServices = Array.AsReadOnly(ToGuidArray(advertisementData.overflowServiceUUIDs));
             SolicitedServices = Array.AsReadOnly(ToGuidArray(advertisementData.solicitedServiceUUIDs));
@@ -109,9 +109,9 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         // Duplicates the given dictionary and its contents
-        private static IDictionary<string, byte[]> Clone(IDictionary<string, byte[]> servicesData)
+        private static IDictionary<string, byte[]> CloneDictionary(IDictionary<string, byte[]> servicesData)
         {
-            var clone = new Dictionary<string, byte[]>(servicesData.Count);
+            var clone = new Dictionary<string, byte[]>(servicesData?.Count ?? 0);
             if (servicesData != null)
             {
                 foreach (var kv in servicesData)

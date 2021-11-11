@@ -232,7 +232,7 @@ namespace Systemic.Unity.BluetoothLE
         {
             EnsureRunningOnMainThread();
 
-            Debug.Log("[BLE] Initializing...");
+            Debug.Log("[BLE] Initializing");
 
             CreateBehaviour();
 
