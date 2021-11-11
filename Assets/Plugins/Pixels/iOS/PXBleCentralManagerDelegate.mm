@@ -1,5 +1,5 @@
 #import "SGBleCentralManagerDelegate.h"
-
+#import "SGBleUtils.h"
 
 @implementation SGBleCentralManagerDelegate
 
@@ -39,7 +39,7 @@
         _stateUpdateHandler = stateUpdateHandler;
         _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:sgBleGetSerialQueue()];
         _peripherals = [NSMutableDictionary<NSUUID *,CBPeripheral *> new];
-        _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, SGBlePeripheralConnectionEventHandler> new];
+        _peripheralsConnectionEventHandlers = [NSMutableDictionary<CBPeripheral *, SGBleConnectionEventHandler> new];
     }
     return self;
 }
@@ -65,7 +65,7 @@
     }
 }
 
-- (void)setConnectionEventHandler:(SGBlePeripheralConnectionEventHandler)peripheralConnectionEventHandler
+- (void)setConnectionEventHandler:(SGBleConnectionEventHandler)peripheralConnectionEventHandler
                     forPeripheral:(CBPeripheral *)peripheral
 {
     @synchronized (_peripheralsConnectionEventHandlers)
@@ -79,10 +79,10 @@
 //
 
 - (void)raiseConnectionEventForPeripheral:(CBPeripheral *)peripheral
-                          connectionEvent:(SGBlePeripheralConnectionEvent)connectionEvent
+                          connectionEvent:(SGBleConnectionEvent)connectionEvent
                                     error:(NSError *)error
 {
-    SGBlePeripheralConnectionEventHandler handler;
+    SGBleConnectionEventHandler handler;
     @synchronized (_peripheralsConnectionEventHandlers)
     {
         handler = _peripheralsConnectionEventHandlers[peripheral];
@@ -124,17 +124,17 @@
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventConnected error:nil];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBleConnectionEventConnected error:nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventDisconnected error:error];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBleConnectionEventDisconnected error:error];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBlePeripheralConnectionEventFailedToConnect error:error];
+    [self raiseConnectionEventForPeripheral:peripheral connectionEvent:SGBleConnectionEventFailedToConnect error:error];
 }
 
 // - (void)centralManager:(CBCentralManager *)central connectionEventDidOccur:(CBConnectionEvent)event forPeripheral:(CBPeripheral *)peripheral

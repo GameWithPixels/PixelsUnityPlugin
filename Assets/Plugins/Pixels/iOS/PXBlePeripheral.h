@@ -1,125 +1,173 @@
+/**
+ * @file
+ * @brief Definition of the SGBlePeripheral class.
+ */
+//TODO rename file to SGBlePeripheral.h
+
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "SGBleCentralManagerDelegate.h"
-#import "BleUtils.h"
+#import "SGBleTypes.h"
 
-
-typedef NS_ENUM(NSInteger, SGBlePeripheralConnectionEventReason)
-{
-    SGBlePeripheralConnectionEventReasonUnknown = -1,
-    SGBlePeripheralConnectionEventReasonSuccess = 0,
-    SGBlePeripheralConnectionEventReasonCanceled,
-    SGBlePeripheralConnectionEventReasonNotSupported,
-    SGBlePeripheralConnectionEventReasonTimeout,
-    SGBlePeripheralConnectionEventReasonLinkLoss,
-    SGBlePeripheralConnectionEventReasonAdpaterOff,
-};
-
-typedef NS_ENUM(NSInteger, SGBlePeripheralRequestErrorError)
-{
-    SGBlePeripheralRequestErrorErrorDisconnected,
-    SGBlePeripheralRequestErrorErrorInvalidCall,
-    SGBlePeripheralRequestErrorErrorInvalidParameters,
-    SGBlePeripheralRequestErrorErrorCanceled,
-};
-
-// We can't find any reliable information about the thread safety of CoreBluetooth APIs
-// so we're going to assume that CBCentralManager, CBPeripheral, CBCharacteristic and CBDescriptor
-// achieve any required synchronization with the given queue
-// When no queue is given to the central manager, it defaults to the main thread serial queue.
-// We create a serial queue as well so we don't have to worry about synchronization when we use
-// the queue ourselves (and obviously CoreBluetooth works well with a serial queue).
-// We're not concerned about performance by using a serial queue as Bluetooth LE operations
-// are "low" frequency by design anyways.
-
-typedef NS_ENUM(NSInteger, SGBleRequestType)
-{
-    SGBleRequestTypeUnknown = 0,
-    SGBleRequestTypeConnect,
-    SGBleRequestTypeDisconnect,
-    SGBleRequestTypeReadRssi,
-    SGBleRequestTypeReadValue,
-    SGBleRequestTypeWriteValue,
-    SGBleRequestTypeSetNotifyValue,
-};
-
-typedef NSError *(^SGBleRequestExecuteHandler)();
-typedef void (^SGBleRequestCompletionHandler)(NSError *error);
-
-@interface SGBleRequest : NSObject
-{
-    SGBleRequestType _type;
-    SGBleRequestExecuteHandler _executeHandler;
-    SGBleRequestCompletionHandler _completionHandler;
-}
-
-@property(readonly, getter=type) SGBleRequestType type;
-- (SGBleRequestType)type;
-
-// executeHandler returns an error if it has failed immediatly
-// completionHandler can be nil
-- (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(SGBleRequestExecuteHandler)executeHandler  completionHandler:(SGBleRequestCompletionHandler)completionHandler;
-
-- (NSError *)execute;
-
-- (void)notifyResult:(NSError *)error;
-
-@end
-
-// This queues BLE operations (requests)
-// The connect request will wait indefinitely until the connection is made, and will block
-// any further request until connection. To cancel a blocking connection call cancelQueue().
-// A request keep a strong reference to the instance so the later won't be de-allocated until the queue is empty.
-// On being de-allocated, instance will cancel connection to peripheral
-// Handlers (such as request completion handler) are called on the shared BLE queue,
-// user code for those handlers should return as quickly as possible to avoid blocking/delaying any other BLE event.
+/**
+ * @brief Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform
+ *        operations on a Bluetooth Low Energy (BLE) peripheral.
+ *
+ * The connection request has no time out and waits until the peripheral is connected.
+ * Any subsequent request is therefore blocked until the connection is successful.
+ *
+ * Call cancelQueue() to cancel all pending operations.
+ *
+ * Handlers (such as request completion handlers) are called on the shared BLE queue,
+ * user code for those handlers should return as quickly as possible to avoid delaying
+ * any further BLE event or operation.
+ *
+ * On being de-allocated, the instance cancels the connection to peripheral.
+ *
+ * @note A request keep a strong reference to the instance so the later won't be de-allocated
+ *       until the queue is empty.
+ * 
+ * @ingroup Apple_Objective-C
+ */
 @interface SGBlePeripheral : NSObject<CBPeripheralDelegate>
+//TODO rename to SGBlePeripheralQueue, remove identifier, expose _peripheral
+//! @cond
 {
     dispatch_queue_t _queue; // Run all peripheral requests
     SGBleCentralManagerDelegate *_centralDelegate;
     CBPeripheral *_peripheral;
-    void (^_connectionEventHandler)(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason);
+    void (^_connectionEventHandler)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason);
     NSArray<CBUUID *> *_requiredServices;
     NSUInteger _discoveringServicesCounter;
-    SGBlePeripheralConnectionEventReason _disconnectReason;
+    SGBleConnectionEventReason _disconnectReason;
     int _rssi;
     SGBleRequest *_runningRequest; // Accessed only from queue
     NSMutableArray<SGBleRequest *> *_pendingRequests; // Always synchronize access to this list
     NSMapTable<CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)> *_valueChangedHandlers;
 }
 
-@property(nonatomic, readonly, getter=systemId) NSUUID *identifier;
+// Property getters
 - (NSUUID *)identifier;
-
-@property(readonly, getter=isConnected) bool isConnected;
 - (bool)isConnected;
-
-@property(readonly, getter=rssi) int rssi;
 - (int)rssi;
+//! @endcond
 
+/**
+ * @brief Gets the UUID assigned by the system for the peripheral (may change over long periods of time).
+ */
+@property(nonatomic, readonly, getter=systemId) NSUUID *identifier;
+
+/**
+ * @brief Indicates whether the peripheral is connected.
+ */
+@property(readonly, getter=isConnected) bool isConnected;
+
+/**
+ * @brief Gets the last read value of the Received Signal Strength Indicator (RSSI).
+ */
+@property(readonly, getter=rssi) int rssi;
+
+//! \name Initialization
+//! @{
+
+/**
+ * @brief Initializes a peripheral for the given CBPeripheral object,
+ *        with a central manager delegate and a connection event handler.
+ *
+ * @param peripheral The CBPeripheral object for the BLE peripheral.
+ * @param centralManagerDelegate The instance of SGBleCentralManagerDelegate that discovered the peripheral.
+ * @param connectionEventHandler The handler for notifying of changes of the connection status of the peripheral.
+ * @return The initialized SGBlePeripheral instance.
+ */
 - (instancetype)initWithPeripheral:(CBPeripheral *)peripheral
             centralManagerDelegate:(SGBleCentralManagerDelegate *)centralManagerDelegate
-    connectionStatusChangedHandler:(void (^)(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason))connectionEventHandler;
+            connectionEventHandler:(void (^)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason))connectionEventHandler;
 
+//! @}
+//! \name Connection and disconnection
+//! @{
+
+/**
+ * @brief Queues a request to connect to the peripheral.
+ *
+ * This request has not time out and waits until the peripheral is connected.
+ * Call cancelQueue() to cancel all pending operations.
+ *
+ * @param services List of services UUIDs that the peripheral should support, may be null or empty.
+ * @param completionHandler The handler for notifying of the request result.
+ */
 - (void)queueConnectWithServices:(NSArray<CBUUID *> *)services
                completionHandler:(void (^)(NSError *error))completionHandler;
 
+/**
+ * @brief Queues a request to disconnect the peripheral.
+ *
+ * @note The request being queued, it is processed only when previous requests have completed.
+ *       For an immediate disconnection first call cancelQueue().
+ *
+ * @param completionHandler The handler for notifying of the request result.
+ */
 - (void)queueDisconnect:(void (^)(NSError *error))completionHandler;
 
+//! @}
+//! \name Peripheral operations
+//! Valid only for connected peripherals.
+//! @{
+
+/**
+ * @brief Queues a request to read the Received Signal Strength Indicator (RSSI).
+ *
+ * @param completionHandler The handler for notifying of the read RSSI and the request status..
+ */
 - (void)queueReadRssi:(void (^)(NSError *error))completionHandler;
 
+//! @}
+//! \name Characteristic operations
+//! Valid only for connected peripherals.
+//! @{
+
+/**
+ * @brief Queues a request to read the value of the specified service's characteristic.
+ *
+ * @param characteristic The CBCharacteristic object.
+ * @param valueReadHandler The handler for notifying of the read value and the request status.
+ */
 - (void)queueReadValueForCharacteristic:(CBCharacteristic *)characteristic
                        valueReadHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueReadHandler;
 
+/**
+ * @brief Queues a request to write the value of specified service's characteristic.
+ *
+ * @param data The data to write.
+ * @param characteristic The CBCharacteristic object.
+ * @param type The write type to perform.
+ * @param completionHandler The handler for notifying of the request result.
+ */
 - (void)queueWriteValue:(NSData *)data
       forCharacteristic:(CBCharacteristic *)characteristic
                    type:(CBCharacteristicWriteType)type
       completionHandler:(void (^)(NSError *error))completionHandler;
 
+/**
+ * @brief Queues a request to enable or disable notifications for the specified service's characteristic.
+ *
+ * @param characteristic The CBCharacteristic object.
+ * @param valueChangedHandler The handler for notifying of the characteristic's value changes.
+ * @param completionHandler The handler for notifying of the request result.
+ */
 - (void)queueSetNotifyValueForCharacteristic:(CBCharacteristic *)characteristic
                          valueChangedHandler:(void (^)(CBCharacteristic *characteristic, NSError *error))valueChangedHandler
                            completionHandler:(void (^)(NSError *error))completionHandler;
 
+//! @}
+//! \name Queue management.
+//! @{
+
+/**
+ * @brief Clear the queue of pending request and cancel the running request.
+ */
 - (void)cancelQueue;
+
+//! @}
 
 @end

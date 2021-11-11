@@ -1,10 +1,11 @@
 /**
  * @file
- * @brief This file exists only to be included by UnityBridge.mm
+ * @brief This file exists only to be included in UnityBridge.mm
  */
 
 #import "SGBleCentralManagerDelegate.h"
 #import "SGBlePeripheral.h"
+#import "SGBleTypes.h"
 
 #include <cstdint>
 #include <cstring>
@@ -23,22 +24,22 @@ using characteristic_index_t = std::uint32_t;
 /// Type for the standard BLE properties of characteristics.
 using characteristic_property_t = std::uint64_t;
 
-/// Callback notifying a change of the host device Bluetooth state, for example radio turned on or off.
+/// Callback notifying of a change of the host device Bluetooth state, for example radio turned on or off.
 typedef void (*BluetoothStateUpdateCallback)(bool available);
 
-/// Callback notifying the discovery of a BLE peripheral, with its advertisement data as a JSON string.
+/// Callback notifying of the discovery of a BLE peripheral, with its advertisement data as a JSON string.
 typedef void (*DiscoveredPeripheralCallback)(const char *advertisementDataJson);
 
-/// Callback notifying the status of a BLE request.
+/// Callback notifying of the status of a BLE request.
 typedef void (*RequestStatusCallback)(request_index_t requestIndex, int errorCode);
 
-/// Callback notifying a change of a peripheral connection state, with the reason for the change.
+/// Callback notifying of a change of a peripheral connection state, with the reason for the change.
 typedef void (*PeripheralConnectionEventCallback)(request_index_t requestIndex, peripheral_id_t peripheralId, int connectionEvent, int reason);
 
-/// Callback notifying the current RSSI value of a peripheral.
+/// Callback notifying of the RSSI value read from a peripheral.
 typedef void (*RssiReadCallback)(request_index_t requestIndex, int rssi, int errorCode);
 
-/// Callback notifying the current value of a peripheral's characteristic.
+/// Callback notifying of the value read from a peripheral's characteristic.
 typedef void (*ValueReadCallback)(request_index_t requestIndex, const void *data, size_t length, int errorCode);
 
 namespace internal
@@ -243,7 +244,7 @@ inline NSString *advertisementDataToJsonString(const char *systemId, NSDictionar
     }
     if (txPowerLevel)
     {
-        [jsonStr appendFormat:@"\"txPowerLevel\":\"%@\",", txPowerLevel];
+        [jsonStr appendFormat:@"\"txPowerLevel\":%@,", txPowerLevel];
     }
     [jsonStr appendFormat:@"\"rssi\":%@", RSSI];
     [jsonStr appendString:@"}"];

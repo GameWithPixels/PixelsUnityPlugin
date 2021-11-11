@@ -32,7 +32,7 @@ using namespace internal;
 extern "C"
 {
 
-/*! \name Library life cycle */
+//! \name Library life cycle
 //! @{
 
 /**
@@ -75,17 +75,17 @@ void sgBleShutdown()
 }
 
 //! @}
-/*! \name Peripherals scanning */
+//! \name Peripherals scanning
 //! @{
 
 /**
- * @brief Starts scanning for BLE peripherals.
+ * @brief Starts scanning for BLE peripherals advertising the given list of services.
  *
- * If a scan is already running, it will be updated to run with the new parameters.
+ * If a scan is already running, it is updated to run with the new parameters.
  * 
  * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
  *                              should advertise, may be null or empty.
- * @param allowDuplicates If <c>false</c>, let the OS coalesces multiple discoveries of the same peripheral
+ * @param allowDuplicates If <c>false</c>, let the system coalesces multiple discoveries of the same peripheral
                           into a single discovery event which preserves battery life. <br>
                           If <c>true</c>, generates a discovery event each time it receives an advertising
                           packet from the peripheral
@@ -108,7 +108,7 @@ bool sgBleStartScan(const char *requiredServicesUuids,
         onDiscoveredPeripheral([advertisementDataToJsonString(getPeripheralId(peripheral), advertisementData, RSSI) UTF8String]);
     };
     
-    // If already scanning, it will update the previous scan
+    // If already scanning, update the existing scan
     [_central.centralManager scanForPeripheralsWithServices:toCBUUIDArray(requiredServicesUuids)
                                                     options:allowDuplicates ? @{ CBCentralManagerScanOptionAllowDuplicatesKey: @YES } : nil];
     
@@ -124,7 +124,7 @@ void sgBleStopScan()
 }
 
 //! @}
-/*! \name Peripherals life cycle */
+//! \name Peripherals life cycle
 //! @{
 
 /**
@@ -133,13 +133,12 @@ void sgBleStopScan()
  * The underlying object is not returned, instead the peripheral must be referenced by
  * its peripheral id. Call sgBleReleasePeripheral() to destroy the object.
  *
- * A scan must first be run to discover available BLE peripherals and retrieve their
- * advertisement data.
- * The later includes the peripheral system id, a UUID assigned by the OS.
+ * A scan must first be run to discover available BLE peripherals through their advertisement data.
+ * The later includes the peripheral system id, a UUID assigned by the system.
  *
  * @note The the peripheral system id may change over long period of time.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param onPeripheralConnectionEvent Called when the peripheral connection state changes. <br>
  *                                    The callback must stay valid until the peripheral is released.
  * @param requestIndex The index of this request, passed back when calling @p onPeripheralConnectionEvent.
@@ -165,7 +164,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
     // Creates our peripheral object
     SGBlePeripheral *sgPeripheral = [[SGBlePeripheral alloc] initWithPeripheral:cbPeripheral
                                                          centralManagerDelegate:_central
-                                                 connectionStatusChangedHandler:^(SGBlePeripheralConnectionEvent connectionEvent, SGBlePeripheralConnectionEventReason reason){
+                                                         connectionEventHandler:^(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason){
         //TODO check valid peripheral
         if (onPeripheralConnectionEvent)
             onPeripheralConnectionEvent(requestIndex,
@@ -185,7 +184,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
 /**
  * @brief Releases the Peripheral object associated with the given peripheral id.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  */
 void sgBleReleasePeripheral(peripheral_id_t peripheralId)
 {
@@ -194,7 +193,7 @@ void sgBleReleasePeripheral(peripheral_id_t peripheralId)
 }
 
 //! @}
-/*! \name Peripheral connection and disconnection */
+//! \name Peripheral connection and disconnection
 //! @{
 
 /**
@@ -202,10 +201,10 @@ void sgBleReleasePeripheral(peripheral_id_t peripheralId)
  *
  * This request never timeouts.
  *
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
  *                              should support, may be null or empty.
- * @param onRequestStatus Called when the request has finished (successfully or not).
+ * @param onRequestStatus Called when the request has completed (successfully or not).
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
  */
 void sgBleConnectPeripheral(peripheral_id_t peripheralId,
@@ -221,8 +220,8 @@ void sgBleConnectPeripheral(peripheral_id_t peripheralId,
 /**
  * @brief Disconnects the given peripheral.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
- * @param onRequestStatus Called when the request has finished (successfully or not).
+ * @param peripheralId The UUID assigned by the system for the peripheral.
+ * @param onRequestStatus Called when the request has completed (successfully or not).
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
  */
 void sgBleDisconnectPeripheral(peripheral_id_t peripheralId,
@@ -235,15 +234,14 @@ void sgBleDisconnectPeripheral(peripheral_id_t peripheralId,
 }
 
 //! @}
-/*! \name Peripheral operations
-    *  Valid only for connected peripherals. */
+//! \name Peripheral operations
+//! Valid only for connected peripherals.
 //! @{
 
-// caller should free string (Unity marshaling takes care of it)
 /**
- * @brief Returns the name of the given peripheral.
+ * @brief Gets the name of the given peripheral.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return The name of the peripheral, or null if the call failed.
  *
  * @remark The caller should free the returned string with a call to free(). <br>
@@ -256,9 +254,9 @@ const char* sgBleGetPeripheralName(peripheral_id_t peripheralId)
 }
 
 /**
- * @brief Returns the Maximum Transmission Unit (MTU) for the given peripheral.
+ * @brief Gets the Maximum Transmission Unit (MTU) for the given peripheral.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return The MTU of the peripheral, or zero if the call failed. 
  */
 int sgBleGetPeripheralMtu(peripheral_id_t peripheralId)
@@ -271,10 +269,10 @@ int sgBleGetPeripheralMtu(peripheral_id_t peripheralId)
 }
 
 /**
- * @brief Reads the current Received Signal Strength Indicator (RSSI) of the given peripheral.
+ * @brief Reads the Received Signal Strength Indicator (RSSI) of the given peripheral.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
- * @param onRssiRead Called with the current RSSI.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
+ * @param onRssiRead Called with the read RSSI.
  * @param requestIndex The index of this request, passed back when calling @p onRssiRead.
  */
 void sgBleReadPeripheralRssi(peripheral_id_t peripheralId,
@@ -288,10 +286,15 @@ void sgBleReadPeripheralRssi(peripheral_id_t peripheralId,
     }];
 }
 
+//! @}
+//! \name Services operations
+//! Valid only for ready peripherals.
+//! @{
+
 /**
- * @brief Returns the list of discovered services for the given peripheral.
+ * @brief Gets the list of discovered services for the given peripheral.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @return A comma separated list of services UUIDs, or null if the call failed.
  *
  * @remark The caller should free the returned string with a call to free(). <br>
@@ -304,11 +307,11 @@ const char *sgBleGetPeripheralDiscoveredServices(peripheral_id_t peripheralId)
 }
 
 /**
- * @brief Returns the list of discovered characteristics for the given peripheral's service.
+ * @brief Gets the list of discovered characteristics for the given peripheral's service.
  *
  * The same characteristic may be listed several times according to the peripheral's configuration.
  *
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID for which to retrieve the characteristics.
  * @return A comma separated list of characteristics UUIDs, or null if the call failed.
  *
@@ -322,13 +325,18 @@ const char *sgBleGetPeripheralServiceCharacteristics(peripheral_id_t peripheralI
     return allocateCStr(toUuidsString(service.characteristics));
 }
 
+//! @}
+//! \name Characteristics operations
+//! Valid only for connected peripherals.
+//! @{
+
 /**
- * @brief Returns the standard BLE properties of the specified service's characteristic
+ * @brief Gets the standard BLE properties of the specified service's characteristic
  *        for the given peripheral.
  * 
  * @see https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc
  *
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID.
  * @param characteristicUuid The characteristic UUID.
  * @param instanceIndex The instance index of the characteristic if listed more than once
@@ -348,14 +356,14 @@ characteristic_property_t sgBleGetCharacteristicProperties(peripheral_id_t perip
  * @brief Sends a request to read the value of the specified service's characteristic
  *        for the given peripheral.
  * 
- * The call will fail if the characteristic is not readable.
+ * The call fails if the characteristic is not readable.
  *
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID.
  * @param characteristicUuid The characteristic UUID.
  * @param instanceIndex The instance index of the characteristic if listed more than once
  *                      for the service, otherwise zero.
- * @param onValueRead Called when the request has finished (successfully or not)
+ * @param onValueRead Called when the request has completed (successfully or not)
  *                    and with the data read from the characteristic.
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
  */
@@ -375,9 +383,9 @@ void sgBleReadCharacteristicValue(peripheral_id_t peripheralId,
  * @brief Sends a request to write to the specified service's characteristic
  *        for the given peripheral.
  * 
- * The call will fail if the characteristic is not writable.
+ * The call fails if the characteristic is not writable.
  *
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID.
  * @param characteristicUuid The characteristic UUID.
  * @param instanceIndex The instance index of the characteristic if listed more than once
@@ -385,7 +393,7 @@ void sgBleReadCharacteristicValue(peripheral_id_t peripheralId,
  * @param data A pointer to the data to write to the characteristic.
  * @param length The size in bytes of the data.
  * @param withoutResponse Whether to wait for the peripheral to respond.
- * @param onRequestStatus Called when the request has finished (successfully or not).
+ * @param onRequestStatus Called when the request has completed (successfully or not).
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
  */
 void sgBleWriteCharacteristicValue(peripheral_id_t peripheralId,
@@ -412,19 +420,19 @@ void sgBleWriteCharacteristicValue(peripheral_id_t peripheralId,
  * @brief Subscribes or unsubscribes for value changes of the specified service's characteristic
  *        for the given peripheral.
  *
- * The call will fail if the characteristic doesn't support notification
+ * The call fails if the characteristic doesn't support notification
  * or if it is already subscribed.
  * 
- * @param peripheralId The UUID assigned by the OS for the peripheral.
+ * @param peripheralId The UUID assigned by the system for the peripheral.
  * @param serviceUuid The service UUID.
  * @param characteristicUuid The characteristic UUID.
  * @param instanceIndex The instance index of the characteristic if listed more than once
  *                      for the service, otherwise zero.
- * @param onValueChanged Called when the characteristic value changes.
+ * @param onValueChanged Called when the value of the characteristic changes.
  *                       Pass null to unsubscribe. <br>
  *                       The callback must stay valid until the characteristic is unsubscribed
  *                       or the peripheral is released.
- * @param onRequestStatus Called when the request has finished (successfully or not).
+ * @param onRequestStatus Called when the request has completed (successfully or not).
  * @param requestIndex The index of this request, passed back when calling @p onRequestStatus.
  */
 void sgBleSetNotifyCharacteristic(peripheral_id_t peripheralId,

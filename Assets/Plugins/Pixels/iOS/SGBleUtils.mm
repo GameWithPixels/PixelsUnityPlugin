@@ -1,11 +1,11 @@
-#import "BleUtils.h"
+#import "SGBleUtils.h"
 
 NSErrorDomain sgBleGetErrorDomain()
 {
-    static NSErrorDomain pxBleErrorDomain = [NSString stringWithFormat:@"%@.pxBLE.errorDomain", [[NSBundle mainBundle] bundleIdentifier]];
-    return pxBleErrorDomain;;
+    static NSErrorDomain pxBleErrorDomain =
+        [NSString stringWithFormat:@"%@.pxBLE.errorDomain", [[NSBundle mainBundle] bundleIdentifier]];
+    return pxBleErrorDomain;
 }
-
 
 dispatch_queue_t sgBleGetSerialQueue()
 {
