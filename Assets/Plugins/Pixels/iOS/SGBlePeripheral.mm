@@ -220,7 +220,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
     NSLog(@">> queueReadValueForCharacteristic");
     
     SGBleRequestExecuteHandler block = ^{
-        if (!characteristic || !valueChangedHandler)
+        if (!characteristic || !valueReadHandler)
         {
             NSLog(@">> ReadValueForCharacteristic -> invalid call");
             return invalidParametersError;
@@ -234,7 +234,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
 
     [self queueRequest:SGBleRequestTypeReadValue
         executeHandler:block
-     completionHandler:completionHandler];
+     completionHandler:nil];
 }
 
 - (void)queueWriteValue:(NSData *)data
@@ -307,7 +307,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
             SGBleRequestType requestType = _runningRequest.type;
 
             // Cancel the running request
-            NSLog(@">> Queue canceled while running request of type %@", [SGBleRequest getRequestTypeString:requestType]);
+            NSLog(@">> Queue canceled while running request of type %@", [SGBleRequest requestTypeToString:requestType]);
             [self qReportRequestResult:canceledError forRequestType:requestType];
         
             // If were trying to connect, cancel connection immediately
@@ -419,14 +419,14 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
     if (request.type == requestType)
     {
         NSLog(@">> Notifying result for request of type %@, with error: %@",
-              [SGBleRequest getRequestTypeString:request.type], error);
+              [SGBleRequest requestTypeToString:request.type], error);
         [request notifyResult:error];
     }
     else if (requestType)
     {
         NSLog(@">> Got result for request of type %@ while running request of type %@, with error: %@",
-              [SGBleRequest getRequestTypeString:requestType],
-              [SGBleRequest getRequestTypeString:request.type],
+              [SGBleRequest requestTypeToString:requestType],
+              [SGBleRequest requestTypeToString:request.type],
               error);
     }
     

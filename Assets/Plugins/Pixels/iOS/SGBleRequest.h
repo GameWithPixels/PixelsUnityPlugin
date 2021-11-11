@@ -46,7 +46,7 @@ typedef void (^SGBleRequestCompletionHandler)(NSError *error);
 
 - (void)notifyResult:(NSError *)error;
 
-+ (NSString *)getRequestTypeString(SGBleRequestType type);
++ (NSString *)requestTypeToString:(SGBleRequestType)typeSGBleRequest;
 
 @end
 

@@ -8,6 +8,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "SGBleCentralManagerDelegate.h"
 #import "SGBleTypes.h"
+#import "SGBleRequest.h"
 
 /**
  * @brief Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform

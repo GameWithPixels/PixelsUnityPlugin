@@ -33,7 +33,7 @@
     _completionHandler(error);
 }
 
-+ (NSString *)getRequestTypeString(SGBleRequestType type)
++ (NSString *)requestTypeToString:(SGBleRequestType)type
 {
     switch (type)
     {

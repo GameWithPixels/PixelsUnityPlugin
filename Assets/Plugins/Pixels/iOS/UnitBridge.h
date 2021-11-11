@@ -6,6 +6,7 @@
 #import "SGBleCentralManagerDelegate.h"
 #import "SGBlePeripheral.h"
 #import "SGBleTypes.h"
+#import "SGBleUtils.h"
 
 #include <cstdint>
 #include <cstring>
@@ -48,12 +49,12 @@ namespace internal
 typedef void (^CompletionHandler)(NSError *error);
 typedef void (^ValueReadHandler)(CBCharacteristic *characteristic, NSError *error);
 
+static const int otherErrorsMask = 0x80000000;
+static const int unexpectedError = otherErrorsMask;
+static const int invalidPeripheralIdErrorCode = otherErrorsMask | 1;
+
 inline int toErrorCode(NSError *error)
 {
-    static const int otherErrorsMask = 0x80000000;
-    static const int unexpectedError = otherErrorsMask;
-    static const int invalidPeripheralIdErrorCode = otherErrorsMask | 1;
-
     if (!error)
     {
         return 0;
@@ -306,7 +307,7 @@ inline SGBlePeripheral *getSGBlePeripheral(peripheral_id_t peripheralId, ValueRe
     SGBlePeripheral *sgPeripheral = getSGBlePeripheral(peripheralId);
     if (!sgPeripheral && onValueRead)
     {
-        onValueRead(nullptr, requestIndex, invalidPeripheralIdErrorCode);
+        onValueRead(requestIndex, nullptr, 0, invalidPeripheralIdErrorCode);
     }
     return sgPeripheral;
 }
@@ -352,4 +353,4 @@ inline CBCharacteristic *getCharacteristic(peripheral_id_t peripheralId, const c
     return nil;
 }
 
-}
+} // namespace internal
