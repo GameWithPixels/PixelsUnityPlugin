@@ -8,6 +8,8 @@ package com.systemic.bluetoothle;
 
 //! \defgroup Android_Java
 //! @brief Android package for simplified access to Bluetooth Low Energy peripherals.
+//!
+//! @see com.systemic.bluetoothle namespace.
 
 import java.util.ArrayList;
 import java.util.List;

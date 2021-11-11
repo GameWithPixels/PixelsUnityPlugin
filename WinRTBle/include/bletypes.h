@@ -5,8 +5,10 @@
 
 #pragma once
 
- //! \defgroup WinRT_Cpp
- //! @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+//! \defgroup WinRT_Cpp
+//! @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+//!
+//! @see Systemic::BluetoothLE namespace.
 
 /**
  * @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
