@@ -447,9 +447,9 @@ PlayerSettings:
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
   cameraUsageDescription: 
-  locationUsageDescription: Connect to Pixels dice
+  locationUsageDescription: 
   microphoneUsageDescription: 
-  bluetoothUsageDescription: 
+  bluetoothUsageDescription: Connect to Pixels dice
   switchNMETAOverride: 
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144

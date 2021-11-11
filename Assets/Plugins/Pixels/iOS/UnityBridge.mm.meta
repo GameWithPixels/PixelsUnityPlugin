@@ -67,7 +67,7 @@ PluginImporter:
         AddToEmbeddedBinaries: false
         CPU: AnyCPU
         CompileFlags: 
-        FrameworkDependencies: 
+        FrameworkDependencies: CoreFoundation;CoreBluetooth;
   userData: 
   assetBundleName: 
   assetBundleVariant: 
