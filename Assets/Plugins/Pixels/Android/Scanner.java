@@ -28,7 +28,7 @@ public final class Scanner
     public interface ScannerCallback
     {
         /**
-         * @brief A callback invoked when advertisement data is received
+         * @brief A callback invoked when an advertisement packet is received
          *        from a Bluetooth device.
          *
          * @param device The Android BluetoothDevice which send the advertisement data.
@@ -49,13 +49,13 @@ public final class Scanner
     private static Object _scanSync = new Object();
 
     /**
-     * @brief Starts scanning for BLE peripherals.
+     * @brief Starts scanning for BLE peripherals advertising the given list of services.
      *
-     * If a scan is already running, it will be stopped before starting the new one.
+     * If a scan is already running, it is stopped before starting the new one.
      *
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should advertise, may be null or empty.
-     * @param callback The object implementing the scanner callbacks.
+     * @param callback The callback for notifying of the scan results (called for each advertisement packet).
      */
     public static void startScan(final String requiredServicesUuids, final ScannerCallback callback)
     {
@@ -123,7 +123,7 @@ public final class Scanner
     }
 
     /**
-     * @brief Returns a ScanCallback instance that notify scan results to user code.
+     * @brief Gets a ScanCallback instance that notify scan results to user code.
      */
     private static ScanCallback createCallback(final ScannerCallback callback)
     {
@@ -184,15 +184,15 @@ public final class Scanner
                     StringBuilder sb = new StringBuilder();
                     sb.append("{\"systemId\":\"");
                     sb.append(device.hashCode());
-                    sb.append("\",\"address\":\"");
+                    sb.append("\",\"address\":");
                     sb.append(address);
-                    sb.append("\",\"name\":\"");
+                    sb.append(",\"name\":\"");
                     sb.append(device.getName());
                     sb.append("\",\"isConnectable\":");
                     sb.append(scanResult.isConnectable());
-                    sb.append("\",\"rssi\":");
+                    sb.append(",\"rssi\":");
                     sb.append(scanResult.getRssi());
-                    sb.append("\",\"txPowerLevel\":");
+                    sb.append(",\"txPowerLevel\":");
                     sb.append(scanResult.getTxPower());
 
                     sb.append(",\"services\":[");

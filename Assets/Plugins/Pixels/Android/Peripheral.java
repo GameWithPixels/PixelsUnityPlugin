@@ -1,12 +1,13 @@
 /**
- * \package com.systemic.bluetoothle
- * \brief Android package for simplified access to Bluetooth Low Energy peripherals.
+ * @package com.systemic.bluetoothle
+ * @brief Android package for simplified access to Bluetooth Low Energy peripherals.
  *
- * Contents:
- * - Peripheral class
- * - Scanner class
+ * @ingroup Android_Java
  */
- package com.systemic.bluetoothle;
+package com.systemic.bluetoothle;
+
+//! \defgroup Android_Java
+//! @brief Android package for simplified access to Bluetooth Low Energy peripherals.
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +34,21 @@ import com.unity3d.player.UnityPlayer;
  * and return strings rather than ParcelUuid object for a simplified marshaling with
  * the .NET platform.
  *
- * Implements the most common BLE operations such as reading the peripheral name,
- * MTU, RSSI, listing services and characteristics. As well as  reading, writing
- * and subscribing to characteristics.
+ * The most common BLE operations are supported, such as reading the peripheral name,
+ * MTU, RSSI, listing services and characteristics.
+ * It has support for getting characteristics properties and when applicable
+ * reading and writing their value, as well as subscribing for value changes.
  *
- * A new instance takes an Android BluetoothDevice which can be retrieved either
- * from its Bluetooth address or from a scan using the Scanner class. 
+ * Several of those operations are asynchronous and take a RequestCallback object as
+ * a parameter. The appropriate method is called on this object when the request has
+ * completed (successfully or not).
+ *
+ * Once created, a peripheral must be connected before most its methods may be used.
+ * and it must be ready before accessing the services.
+ * The peripheral becomes ready once all the required services have been discovered.
+ *
+ * A specific Service may be retrieved with getDiscoveredService().
+ * A service contains characteristics for which data may be read or written.
  *
  * It relies on Nordic's Android-BLE-Library library for most of the work.
  * @see https://github.com/NordicSemiconductor/Android-BLE-Library
@@ -58,14 +68,14 @@ public class Peripheral
 	public interface MtuRequestCallback extends MtuCallback, FailCallback, InvalidRequestCallback {}
 
     /**
-     * @brief Interface for RSSI reading request callbacks.
+     * @brief Interface for RSSI read request callbacks.
      */
 	public interface ReadRssiRequestCallback extends RssiCallback, FailCallback, InvalidRequestCallback {}
 
     /**
-     * @brief Interface for characteristic value reading request callbacks.
+     * @brief Interface for characteristic's value read request callbacks.
      */
-	public interface ReadValueRequestCallback extends RssiCallback, FailCallback, InvalidRequestCallback {}
+	public interface ReadValueRequestCallback extends DataReceivedCallback, FailCallback, InvalidRequestCallback {}
 
     //public enum ConnectionStatus
     //{ 
@@ -228,7 +238,7 @@ public class Peripheral
     private UUID[] _requiredServices;
 
     /**
-     * @brief Returns the BluetoothDevice object for the given Bluetooth address.
+     * @brief Gets the BluetoothDevice object for the given Bluetooth address.
      *
      * @param bluetoothAddress The address of a Bluetooth device.
      * @return A BluetoothDevice or null if there is none for the given address.
@@ -253,15 +263,18 @@ public class Peripheral
         return bluetoothManager.getAdapter().getRemoteDevice(sb.toString());
     }
 
-    /*! \name Constructor */
+    //! \name Constructor
     //! @{
 
     /**
-     * @brief Initializes a peripheral for the given Bluetooth device
+     * @brief Initializes a peripheral for the given Android BluetoothDevice object
      *        and with a connection observer.
      *
-     * @param device The Android Bluetooth device object.
-     * @param connectionObserver The connection observer to use for notifying connection events.
+     * BluetoothDevice may be retrieved either with from a scan using the Scanner class
+     * or with their Bluetooth address using the getDeviceFromAddress() static method.
+     *
+     * @param device The Android Bluetooth device object for the BLE peripheral.
+     * @param connectionObserver The callback for notifying of changes of the connection status of the peripheral.
      */
     public Peripheral(final BluetoothDevice device, final ConnectionObserver connectionObserver)
     {
@@ -275,15 +288,15 @@ public class Peripheral
         _device = device;
 
         // Create client manager
-        _client = new ClientManager();
+        _client = new ClientManager(connectionObserver);
     }
 
     //! @}
-    /*! \name Connection and disconnection */
+    //! \name Connection and disconnection
     //! @{
 
     /**
-     * @brief Connects to the BLE peripheral.
+     * @brief Queues a request to connect to the peripheral.
      *
      * This request timeouts after 30 seconds.
      *
@@ -291,7 +304,7 @@ public class Peripheral
      *                              should support, may be null or empty.
      * @param autoReconnect Whether to automatically reconnect after an unexpected disconnection
      *                      (i.e. not triggered by a call to disconnect()).
-     * @param requestCallback The object implementing the request callbacks.
+     * @param requestCallback The callback for notifying of the request result.
      */
     public void connect(final String requiredServicesUuids, final boolean autoReconnect, final RequestCallback requestCallback)
     {
@@ -324,19 +337,19 @@ public class Peripheral
 
         // Connect
         _client.connect(_device)
-            .useAutoConnect(autoConnect)
-            .timeout(0) // Actually it will timeout after 30s
+            .useAutoConnect(autoReconnect)
+            .timeout(0) // Actually it times out after 30s
             .done(requestCallback).fail(requestCallback).invalid(requestCallback)
             .enqueue();
     }
 
     /**
-     * @brief Immediately disconnects the given peripheral.
+     * @brief Immediately disconnects the peripheral.
      *
-     * Any on-going request will either failed or be canceled, including connection requests.
+     * As a consequence any on-going request either fails or is canceled, including connection requests.
      * Any pending request is dropped.
      *
-     * @param requestCallback The object implementing the request callbacks.
+     * @param requestCallback The callback for notifying of the request result.
      */
     public void disconnect(final RequestCallback requestCallback)
     {
@@ -345,7 +358,7 @@ public class Peripheral
         // Cancel all on-going operations so the disconnect can happen immediately
         _client.cancelOperations();
 
-        // Disconnect (request will be ignored we are disconnecting)
+        // Disconnect (the request is ignored if we are disconnecting)
         if (_client.getConnectionState() != BluetoothProfile.STATE_DISCONNECTING)
         {
             _client.disconnect()
@@ -361,12 +374,11 @@ public class Peripheral
     }
 
     //! @}
-    /*! \name Peripheral operations
-     *  Valid only for connected peripherals. */
+    //! \name Getters valid even when not connected
     //! @{
 
     /**
-     * @brief Returns the name of the peripheral.
+     * @brief Gets the name of the peripheral.
      *
      * @return The name, or null if the call failed.
      */
@@ -378,7 +390,37 @@ public class Peripheral
     }
 
     /**
-     * @brief Returns the Maximum Transmission Unit (MTU).
+     * @brief Indicates whether the peripheral is connected.
+     *
+     * Services may not have been discovered yet.
+     *
+     * @return Whether the peripheral is connected.
+     */
+    public boolean isConnected()
+    {
+        return _client.isConnected();
+    }
+
+    /**
+     * @brief Indicates whether the peripheral is ready.
+     *
+     * The peripheral is ready once it has successfully connected and
+     * discovered the required services.
+     *
+     * @return Whether the peripheral is ready.
+     */
+    public boolean isReady()
+    {
+        return _client.isReady();
+    }
+
+    //! @}
+    //! \name Peripheral operations
+    //! Valid only for connected peripherals.
+    //! @{
+
+    /**
+     * @brief Gets the Maximum Transmission Unit (MTU).
      *
      * @return The MTU, or zero if the call failed.
      */
@@ -390,10 +432,10 @@ public class Peripheral
     }
 
     /**
-     * @brief Request the peripheral to change its MTU to the given value.
+     * @brief Queues a request for the peripheral to change its MTU to the given value.
      *
      * @param mtu The requested MTU, must be between 23 and 517 included.
-     * @param mtuChangedCallback The object implementing the MTU request callbacks.
+     * @param mtuChangedCallback The callback for notifying of the MTU request result.
      */
     public void requestMtu(int mtu, final MtuRequestCallback mtuChangedCallback)
     {
@@ -405,9 +447,9 @@ public class Peripheral
     }
 
     /**
-     * @brief Reads the current Received Signal Strength Indicator (RSSI).
+     * @brief Queues a request to read the Received Signal Strength Indicator (RSSI).
      *
-     * @param rssiReadCallback The object implementing the read RSSI request callbacks.
+     * @param rssiReadCallback The callback for notifying of the read RSSI and the request status.
      */
     public void readRssi(final ReadRssiRequestCallback rssiReadCallback)
     {
@@ -418,8 +460,13 @@ public class Peripheral
             .enqueue();
     }
 
+    //! @}
+    //! \name Services operations
+    //! Valid only for ready peripherals.
+    //! @{
+
     /**
-     * @brief Returns the list of discovered services.
+     * @brief Gets the list of discovered services.
      *
      * @return A comma separated list of services UUIDs, or null if the call failed.
      */
@@ -447,7 +494,7 @@ public class Peripheral
     }
 
     /**
-     * @brief Returns the list of discovered characteristics for the given service.
+     * @brief Gets the list of discovered characteristics for the given service.
      *
      * The same characteristic may be listed several times according to the peripheral's configuration.
      *
@@ -479,8 +526,13 @@ public class Peripheral
         return null;
     }
 
+    //! @}
+    //! \name Characteristic operations
+    //! Valid only for peripherals in ready state.
+    //! @{
+
     /**
-     * @brief Returns the standard BLE properties of the specified service's characteristic.
+     * @brief Gets the standard BLE properties of the specified service's characteristic.
      *
      * @see https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#PROPERTY_BROADCAST,
      * PROPERTY_READ, PROPERTY_NOTIFY, etc.
@@ -502,13 +554,13 @@ public class Peripheral
     }
 
     /**
-     * @brief Sends a request to read the value of the specified service's characteristic.
+     * @brief Queues a request to read the value of the specified service's characteristic.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param valueReadCallback The object implementing the read value request callbacks.
+     * @param valueReadCallback The callback for notifying of the read value and the request status.
      */
     public void readCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final ReadValueRequestCallback valueReadCallback)
     {
@@ -520,14 +572,12 @@ public class Peripheral
 
         // Send the read request
         _client.readCharacteristic(characteristic)
-            .with(valueReadCallback)
-            .done(valueReadCallback).fail(valueReadCallback).invalid(valueReadCallback)
+            .with(valueReadCallback).fail(valueReadCallback).invalid(valueReadCallback)
             .enqueue();
     }
 
     /**
-     * @brief Sends a request to write to the specified service's characteristic
-     *        for the given peripheral.
+     * @brief Queues a request to write the value of specified service's characteristic.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
@@ -535,7 +585,7 @@ public class Peripheral
      *                      for the service, otherwise zero.
      * @param data The data to write to the characteristic.
      * @param withoutResponse Whether to wait for the peripheral to respond.
-     * @param requestCallback The object implementing the request callbacks.
+     * @param requestCallback The callback for notifying of the request result.
      */
     public void writeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final byte[] data, boolean withoutResponse, final RequestCallback requestCallback)
     {
@@ -555,14 +605,14 @@ public class Peripheral
     }
 
     /**
-     * @brief Subscribes for value changes of the specified service's characteristic.
+     * @brief Queues a request to subscribes for value changes of the specified service's characteristic.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param valueChangedCallback The object implementing the callback for characteristic's value changes.
-     * @param requestCallback The object implementing the request callbacks.
+     * @param valueChangedCallback The callback for notifying of the characteristic's value changes.
+     * @param requestCallback The callback for notifying of the request result.
      */
     public void subscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback valueChangedCallback, final RequestCallback requestCallback)
     {
@@ -583,13 +633,13 @@ public class Peripheral
     }
 
     /**
-     * @brief Unsubscribes from the specified service's characteristic.
+     * @brief Queues a request to unsubscribe from the specified service's characteristic.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param requestCallback The object implementing the request callbacks.
+     * @param requestCallback The callback for notifying of the request result.
      */
     public void unsubscribeCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex, final RequestCallback requestCallback)
     {
@@ -611,7 +661,7 @@ public class Peripheral
     //! @}
 
     /**
-     * @brief Returns the Android gatt service object for the given service UUID.
+     * @brief Gets the Android gatt service object for the given service UUID.
      */
     private BluetoothGattService getService(final String serviceUuid)
     {
@@ -619,7 +669,7 @@ public class Peripheral
     }
 
     /**
-     * @brief Returns the Android gatt characteristic object for the given characteristic UUID.
+     * @brief Gets the Android gatt characteristic object for the given characteristic UUID.
      */
     private BluetoothGattCharacteristic getCharacteristic(final String serviceUuid, final String characteristicUuid, final int instanceIndex)
     {

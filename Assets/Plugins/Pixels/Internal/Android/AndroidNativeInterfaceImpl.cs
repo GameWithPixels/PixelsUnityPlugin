@@ -58,9 +58,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         REASON_SUCCESS = 0,             // The disconnection was initiated by the user
         REASON_TERMINATE_LOCAL_HOST = 1,// The local device initiated disconnection
         REASON_TERMINATE_PEER_USER = 2, // The remote device initiated graceful disconnection
-        REASON_LINK_LOSS = 3,           // This reason will only be reported when autoConnect=true,
+        REASON_LINK_LOSS = 3,           // This reason is only reported when autoConnect=true,
                                         // and connection to the device was lost for any reason other than graceful disconnection initiated by peer user,
-                                        // Android will try to reconnect automatically
+                                        // In this case Android tries to reconnect automatically
         REASON_NOT_SUPPORTED = 4,       // The device does not have required services
         REASON_CANCELLED = 5,           // Connection attempt was canceled
         REASON_TIMEOUT = 10,            // The connection timed out
