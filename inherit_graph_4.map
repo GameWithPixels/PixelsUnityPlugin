@@ -1,8 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,204,32"/>
-<area shape="rect" id="node2" href="$interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (..." alt="" coords="252,5,455,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="22,107,187,133"/>
-<area shape="rect" id="node4" href="$interface_s_g_ble_peripheral.html" title="Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform operations on a Blue..." alt="" coords="294,107,413,133"/>
-<area shape="rect" id="node5" title=" " alt="" coords="65,56,144,83"/>
-<area shape="rect" id="node6" href="$interface_s_g_ble_request.html" title=" " alt="" coords="299,56,407,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node2" href="$class_configure_plist.html" title="Post process build step that adds required NSBluetoothAlwaysUsageDescription entry to Info...." alt="" coords="165,5,268,32"/>
 </map>

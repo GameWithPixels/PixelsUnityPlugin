@@ -10,18 +10,18 @@ var group___apple___objective__c =
       [ "peripheralDiscoveryHandler", "interface_s_g_ble_central_manager_delegate.html#a1b850ef9c7e9a982ec6567bcfdd9c830", null ],
       [ "peripherals", "interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5", null ]
     ] ],
-    [ "SGBlePeripheral", "interface_s_g_ble_peripheral.html", [
-      [ "cancelQueue", "interface_s_g_ble_peripheral.html#a48223a85a31f38db8d1f87bfdbe87f06", null ],
-      [ "initWithPeripheral:centralManagerDelegate:connectionEventHandler:", "interface_s_g_ble_peripheral.html#a180b6a6d517204d23a9448c2554536f6", null ],
-      [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral.html#ad3d02e8c13d1ddf68d24b3c5393bc40b", null ],
-      [ "queueDisconnect:", "interface_s_g_ble_peripheral.html#a3990cb4503452b3c77f7b5ef9a83cd31", null ],
-      [ "queueReadRssi:", "interface_s_g_ble_peripheral.html#ad8ee3977c2bd518a7894e924f5481bbd", null ],
-      [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral.html#ae321bff8b3cfdc75dac9aa5cb258b9b6", null ],
-      [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a", null ],
-      [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral.html#a773c50ea682f7091bee1c58a3b1a366f", null ],
-      [ "identifier", "interface_s_g_ble_peripheral.html#a7cc7a643e783d61a5981598fede77809", null ],
-      [ "isConnected", "interface_s_g_ble_peripheral.html#a2e65f1bf44e44ef09e4e175f21ea8b7a", null ],
-      [ "rssi", "interface_s_g_ble_peripheral.html#a8903b2ffd6d462044e0c2bd80ea2d3de", null ]
+    [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", [
+      [ "cancelQueue", "interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7", null ],
+      [ "initWithPeripheral:centralManagerDelegate:connectionEventHandler:", "interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6", null ],
+      [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318", null ],
+      [ "queueDisconnect:", "interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b", null ],
+      [ "queueReadRssi:", "interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01", null ],
+      [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5", null ],
+      [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6", null ],
+      [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d", null ],
+      [ "isConnected", "interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35", null ],
+      [ "peripheral", "interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa", null ],
+      [ "rssi", "interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b", null ]
     ] ],
     [ "SGBleConnectionEventHandler", "group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6", null ],
     [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd", [

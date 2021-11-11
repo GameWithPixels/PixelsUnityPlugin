@@ -6,7 +6,7 @@ var hierarchy =
       [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", null ]
     ] ],
     [ "<CBPeripheralDelegate>", null, [
-      [ "SGBlePeripheral", "interface_s_g_ble_peripheral.html", null ]
+      [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", null ]
     ] ],
     [ "Systemic.Unity.BluetoothLE.Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", null ],
     [ "Systemic::BluetoothLE::Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", null ],
@@ -35,6 +35,9 @@ var hierarchy =
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
+    [ "MonoBehaviour", null, [
+      [ "ConfigurePlist", "class_configure_plist.html", null ]
+    ] ],
     [ "MtuCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.MtuRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html", null ]
     ] ],
@@ -42,7 +45,7 @@ var hierarchy =
     [ "Systemic.Unity.BluetoothLE.NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", null ],
     [ "NSObject", null, [
       [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", null ],
-      [ "SGBlePeripheral", "interface_s_g_ble_peripheral.html", null ],
+      [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", null ],
       [ "SGBleRequest", "interface_s_g_ble_request.html", null ]
     ] ],
     [ "com.systemic.bluetoothle.Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", null ],

@@ -99,8 +99,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a> protocol. Keeps a lit of discovered Bluetooth Low Energy (BLE) peripherals and notifies of peripherals connection events.  <a href="interface_s_g_ble_central_manager_delegate.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_peripheral.html">SGBlePeripheral</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  <a href="interface_s_g_ble_peripheral.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -146,7 +146,7 @@ Enumerations</h2></td></tr>
 <p>Collection of Objective-C classes that provide a simplified access to Bluetooth Low Energy peripherals. </p>
 <p>The <a class="el" href="namespace_systemic.html">Systemic</a> BluetoohLE library for Apple device provides classes for scanning Bluetooth Low Energy (BLE) peripherals, connecting to and communicating with them. Those classes are entirely based on the Apple's Core Bluetooth framework and are here to provide a simplified access to BLE peripherals.</p>
 <p><a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a>: implementation of the <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...">SGBleCentralManagerDelegate</a> protocol that stores and notifies of discovered peripherals, notifies of host device Bluetooth state changes and of peripherals connection events.</p>
-<p><a class="el" href="interface_s_g_ble_peripheral.html" title="Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform operations on a Blue...">SGBlePeripheral</a>: implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol that queues BLE operations to perform on a peripheral.</p>
+<p>SGBlePeripheral: implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol that queues BLE operations to perform on a peripheral.</p>
 <p>SGBleConnectionEvent Enumeration of peripheral connection events.</p>
 <p>SGBleConnectionEventReason Enumeration of peripheral connection event reasons. </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>

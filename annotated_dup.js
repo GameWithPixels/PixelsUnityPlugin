@@ -30,7 +30,8 @@ var annotated_dup =
         ] ]
       ] ]
     ] ],
+    [ "ConfigurePlist", "class_configure_plist.html", "class_configure_plist" ],
     [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", "interface_s_g_ble_central_manager_delegate" ],
-    [ "SGBlePeripheral", "interface_s_g_ble_peripheral.html", "interface_s_g_ble_peripheral" ],
+    [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", "interface_s_g_ble_peripheral_queue" ],
     [ "SGBleRequest", "interface_s_g_ble_request.html", "interface_s_g_ble_request" ]
 ];

@@ -1,0 +1,6 @@
+<map id="Assets/Plugins/Pixels/iOS/SGBleRequest.h" name="Assets/Plugins/Pixels/iOS/SGBleRequest.h">
+<area shape="rect" id="node1" title="Internal types for representing a BLE request." alt="" coords="29,5,178,47"/>
+<area shape="rect" id="node2" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheral class." alt="" coords="5,95,201,136"/>
+<area shape="rect" id="node3" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="29,184,178,225"/>
+<area shape="rect" id="node4" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="29,273,178,315"/>
+</map>

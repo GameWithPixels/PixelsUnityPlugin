@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>cancelQueue
-: <a class="el" href="interface_s_g_ble_peripheral.html#a48223a85a31f38db8d1f87bfdbe87f06">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7">SGBlePeripheralQueue</a>
 </li>
 <li>canNotify()
 : <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad8d1b0d9e43a088d4f185af441a2e121">Systemic::BluetoothLE::Characteristic</a>
@@ -117,6 +117,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>centralManager
 : <a class="el" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">SGBleCentralManagerDelegate</a>
+</li>
+<li>ChangeXcodePlist()
+: <a class="el" href="class_configure_plist.html#a3ad5b66d7c45eecf917d5637817c6a7c">ConfigurePlist</a>
 </li>
 <li>clearPeripherals
 : <a class="el" href="interface_s_g_ble_central_manager_delegate.html#aa93bf7d3373eb28ddc76ff6b8dbfa8a4">SGBleCentralManagerDelegate</a>
@@ -248,15 +251,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>identifier
-: <a class="el" href="interface_s_g_ble_peripheral.html#a7cc7a643e783d61a5981598fede77809">SGBlePeripheral</a>
-</li>
 <li>Initialize()
 : <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abb5992244660d58e7f1930d4c56976b6">Systemic.Unity.BluetoothLE.Central</a>
 , <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a870bf275f6dbebad711a145186a3e49c">Systemic.Unity.BluetoothLE.NativeInterface</a>
 </li>
 <li>initWithPeripheral:centralManagerDelegate:connectionEventHandler:
-: <a class="el" href="interface_s_g_ble_peripheral.html#a180b6a6d517204d23a9448c2554536f6">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">SGBlePeripheralQueue</a>
 </li>
 <li>initWithStateUpdateHandler:
 : <a class="el" href="interface_s_g_ble_central_manager_delegate.html#aebf051d3a3146ac4467365eadcf86fba">SGBleCentralManagerDelegate</a>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>isConnected()
 : <a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a10ab2ced7ffbb160b75a3827d09ea9f2">com.systemic.bluetoothle.Peripheral</a>
-, <a class="el" href="interface_s_g_ble_peripheral.html#a2e65f1bf44e44ef09e4e175f21ea8b7a">SGBlePeripheral</a>
+, <a class="el" href="interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35">SGBlePeripheralQueue</a>
 , <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">Systemic::BluetoothLE::Peripheral</a>
 </li>
 <li>IsDone
@@ -354,7 +354,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>Peripheral()
 : <a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1240317751aaac6fcf0198dad7b28e49">com.systemic.bluetoothle.Peripheral</a>
-, <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#aa7bc4132c4e9e0ade90d0413703a0851">Systemic.Unity.BluetoothLE.RequestEnumerator</a>
+</li>
+<li>peripheral
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">SGBlePeripheralQueue</a>
+</li>
+<li>Peripheral
+: <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#aa7bc4132c4e9e0ade90d0413703a0851">Systemic.Unity.BluetoothLE.RequestEnumerator</a>
 , <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#adfd61354bd107be6e1d0c1b450b3c403">Systemic::BluetoothLE::Peripheral</a>
 </li>
 <li>peripheral()
@@ -380,22 +385,22 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_q"></a>- q -</h3><ul>
 <li>queueConnectWithServices:completionHandler:
-: <a class="el" href="interface_s_g_ble_peripheral.html#ad3d02e8c13d1ddf68d24b3c5393bc40b">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318">SGBlePeripheralQueue</a>
 </li>
 <li>queueDisconnect:
-: <a class="el" href="interface_s_g_ble_peripheral.html#a3990cb4503452b3c77f7b5ef9a83cd31">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b">SGBlePeripheralQueue</a>
 </li>
 <li>queueReadRssi:
-: <a class="el" href="interface_s_g_ble_peripheral.html#ad8ee3977c2bd518a7894e924f5481bbd">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01">SGBlePeripheralQueue</a>
 </li>
 <li>queueReadValueForCharacteristic:valueReadHandler:
-: <a class="el" href="interface_s_g_ble_peripheral.html#ae321bff8b3cfdc75dac9aa5cb258b9b6">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5">SGBlePeripheralQueue</a>
 </li>
 <li>queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:
-: <a class="el" href="interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6">SGBlePeripheralQueue</a>
 </li>
 <li>queueWriteValue:forCharacteristic:type:completionHandler:
-: <a class="el" href="interface_s_g_ble_peripheral.html#a773c50ea682f7091bee1c58a3b1a366f">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d">SGBlePeripheralQueue</a>
 </li>
 </ul>
 
@@ -442,7 +447,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a20a7bbf9d07f7aa999161d51d1e757b9">Systemic.Unity.BluetoothLE.RequestEnumerator</a>
 </li>
 <li>rssi
-: <a class="el" href="interface_s_g_ble_peripheral.html#a8903b2ffd6d462044e0c2bd80ea2d3de">SGBlePeripheral</a>
+: <a class="el" href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">SGBlePeripheralQueue</a>
 </li>
 <li>Rssi
 : <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a59af00de5b9974d87c02002e59360b65">Systemic.Unity.BluetoothLE.ScannedPeripheral</a>

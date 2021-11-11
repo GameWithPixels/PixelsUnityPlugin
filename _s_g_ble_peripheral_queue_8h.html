@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Pixels Plugin for Unity: Assets/Plugins/Pixels/iOS/PXBlePeripheral.h File Reference</title>
+<title>Pixels Plugin for Unity: Assets/Plugins/Pixels/iOS/SGBlePeripheralQueue.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_p_x_ble_peripheral_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_s_g_ble_peripheral_queue_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,45 +85,57 @@ $(document).ready(function(){initNavTree('_p_x_ble_peripheral_8h.html',''); init
   <div class="summary">
 <a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">PXBlePeripheral.h File Reference</div>  </div>
+<div class="title">SGBlePeripheralQueue.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Definition of the <a class="el" href="interface_s_g_ble_peripheral.html" title="Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform operations on a Blue...">SGBlePeripheral</a> class.  
+<p>Definition of the SGBlePeripheral class.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#import &lt;Foundation/Foundation.h&gt;</code><br />
 <code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</code><br />
-<code>#import &quot;SGBleCentralManagerDelegate.h&quot;</code><br />
+<code>#import &quot;<a class="el" href="_s_g_ble_central_manager_delegate_8h_source.html">SGBleCentralManagerDelegate.h</a>&quot;</code><br />
 <code>#import &quot;<a class="el" href="_s_g_ble_types_8h_source.html">SGBleTypes.h</a>&quot;</code><br />
+<code>#import &quot;<a class="el" href="_s_g_ble_request_8h_source.html">SGBleRequest.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for PXBlePeripheral.h:</div>
+Include dependency graph for SGBlePeripheralQueue.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="_p_x_ble_peripheral_8h__incl.png" border="0" usemap="#a_assets_2_plugins_2_pixels_2i_o_s_2_p_x_ble_peripheral_8h" alt=""/></div>
-<map name="a_assets_2_plugins_2_pixels_2i_o_s_2_p_x_ble_peripheral_8h" id="a_assets_2_plugins_2_pixels_2i_o_s_2_p_x_ble_peripheral_8h">
-<area shape="rect" title="Definition of the SGBlePeripheral class." alt="" coords="164,5,321,47"/>
-<area shape="rect" title=" " alt="" coords="183,169,347,196"/>
-<area shape="rect" title=" " alt="" coords="28,95,228,121"/>
-<area shape="rect" title=" " alt="" coords="251,95,463,121"/>
-<area shape="rect" href="_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="487,95,593,121"/>
+<div class="center"><img src="_s_g_ble_peripheral_queue_8h__incl.png" border="0" usemap="#a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8h" alt=""/></div>
+<map name="a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8h" id="a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8h">
+<area shape="rect" title="Definition of the SGBlePeripheral class." alt="" coords="118,5,314,47"/>
+<area shape="rect" title=" " alt="" coords="231,244,395,271"/>
+<area shape="rect" title=" " alt="" coords="31,169,231,196"/>
+<area shape="rect" href="_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="110,95,322,121"/>
+<area shape="rect" href="_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="306,169,411,196"/>
+<area shape="rect" href="_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="397,95,515,121"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="_s_g_ble_peripheral_queue_8h__dep__incl.png" border="0" usemap="#a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8hdep" alt=""/></div>
+<map name="a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8hdep" id="a_assets_2_plugins_2_pixels_2i_o_s_2_s_g_ble_peripheral_queue_8hdep">
+<area shape="rect" title="Definition of the SGBlePeripheral class." alt="" coords="5,5,201,47"/>
+<area shape="rect" href="_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="29,95,178,136"/>
+<area shape="rect" href="_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="29,184,178,225"/>
 </map>
 </div>
 </div>
-<p><a href="_p_x_ble_peripheral_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_s_g_ble_peripheral_queue_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_peripheral.html">SGBlePeripheral</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  <a href="interface_s_g_ble_peripheral.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Definition of the <a class="el" href="interface_s_g_ble_peripheral.html" title="Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform operations on a Blue...">SGBlePeripheral</a> class. </p>
+<div class="textblock"><p>Definition of the SGBlePeripheral class. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_c0005b12c1c6ae1cb8e9754bcab8bc3c.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b332abd94be6810422e67916f135d47b.html">Pixels</a></li><li class="navelem"><a class="el" href="dir_9895434332778208c03de8c35d2c418e.html">iOS</a></li><li class="navelem"><a class="el" href="_p_x_ble_peripheral_8h.html">PXBlePeripheral.h</a></li>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_c0005b12c1c6ae1cb8e9754bcab8bc3c.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b332abd94be6810422e67916f135d47b.html">Pixels</a></li><li class="navelem"><a class="el" href="dir_9895434332778208c03de8c35d2c418e.html">iOS</a></li><li class="navelem"><a class="el" href="_s_g_ble_peripheral_queue_8h.html">SGBlePeripheralQueue.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -1,0 +1,6 @@
+<map id="Assets/Plugins/Pixels/iOS/SGBleCentralManagerDelegate.h" name="Assets/Plugins/Pixels/iOS/SGBleCentralManagerDelegate.h">
+<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="50,5,293,47"/>
+<area shape="rect" id="node2" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheral class." alt="" coords="5,95,201,136"/>
+<area shape="rect" id="node3" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="97,184,246,225"/>
+<area shape="rect" id="node4" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="97,273,246,315"/>
+</map>

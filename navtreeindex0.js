@@ -1,9 +1,9 @@
 var NAVTREEINDEX0 =
 {
-"":[2,0,0],
-"":[2,0,0,0],
 "_characteristic_8h.html":[4,0,1,1,0,0,0,0],
 "_characteristic_8h_source.html":[4,0,1,1,0,0,0,0],
+"":[2,0,0],
+"":[2,0,0,0],
 "_com_helper_8h.html":[4,0,1,1,0,0,2],
 "_com_helper_8h.html#a4aa95c08028b4c98fc5be86831df76ff":[4,0,1,1,0,0,2,0],
 "_com_helper_8h.html#a87e9c46c85c04678d7f370898ea1ef45":[4,0,1,1,0,0,2,2],
@@ -13,12 +13,12 @@ var NAVTREEINDEX0 =
 "_discovered_peripheral_8h_source.html":[4,0,1,1,0,0,0,1],
 "_logger_8h.html":[4,0,1,1,0,0,1,0],
 "_logger_8h_source.html":[4,0,1,1,0,0,1,0],
-"_p_x_ble_central_manager_delegate_8h.html":[4,0,0,0,0,0,0],
-"_p_x_ble_central_manager_delegate_8h_source.html":[4,0,0,0,0,0,0],
-"_p_x_ble_peripheral_8h.html":[4,0,0,0,0,0,1],
-"_p_x_ble_peripheral_8h_source.html":[4,0,0,0,0,0,1],
 "_peripheral_8h.html":[4,0,1,1,0,0,0,2],
 "_peripheral_8h_source.html":[4,0,1,1,0,0,0,2],
+"_s_g_ble_central_manager_delegate_8h.html":[4,0,0,0,0,0,0],
+"_s_g_ble_central_manager_delegate_8h_source.html":[4,0,0,0,0,0,0],
+"_s_g_ble_peripheral_queue_8h.html":[4,0,0,0,0,0,1],
+"_s_g_ble_peripheral_queue_8h_source.html":[4,0,0,0,0,0,1],
 "_s_g_ble_request_8h.html":[4,0,0,0,0,0,2],
 "_s_g_ble_request_8h.html#a52bad8f94223fed49a02b9c60b6b2afb":[4,0,0,0,0,0,2,2],
 "_s_g_ble_request_8h.html#a9c854b44e91a64cc5d54bd3534802f4f":[4,0,0,0,0,0,2,1],
@@ -142,6 +142,8 @@ var NAVTREEINDEX0 =
 "cble_8h.html#af24b1c88d262d190de702852f3ac7cf3":[4,0,1,0,1,3],
 "cble_8h.html#af7f6136f1fed78e5038a8550db49dc9b":[4,0,1,0,1,6],
 "cble_8h_source.html":[4,0,1,0,1],
+"class_configure_plist.html":[3,0,2],
+"class_configure_plist.html#a3ad5b66d7c45eecf917d5637817c6a7c":[3,0,2,0],
 "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html":[3,0,1,0,2],
 "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#a7fe7bbdb86decc5f432459f22edcddfb":[3,0,1,0,2,0],
 "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#aa65974f044063fad444a965bfe47e475":[3,0,1,0,2,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c":[3,0,1,1,0,3,20],
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1":[3,0,1,1,0,3,18],
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ad5728dbd4bacd4a9f7b50828f490fea7":[3,0,1,1,0,3,5],
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae871b31fb4f94a674cecabb9d3dce216":[3,0,1,1,0,3,6],
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#afe3386c8f52ee77ff6797c752dfcc98f":[3,0,1,1,0,3,19],
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html":[3,0,1,1,0,4]
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae871b31fb4f94a674cecabb9d3dce216":[3,0,1,1,0,3,6]
 };

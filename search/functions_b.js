@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['queueconnectwithservices_3acompletionhandler_3a_377',['queueConnectWithServices:completionHandler:',['../interface_s_g_ble_peripheral.html#ad3d02e8c13d1ddf68d24b3c5393bc40b',1,'SGBlePeripheral']]],
-  ['queuedisconnect_3a_378',['queueDisconnect:',['../interface_s_g_ble_peripheral.html#a3990cb4503452b3c77f7b5ef9a83cd31',1,'SGBlePeripheral']]],
-  ['queuereadrssi_3a_379',['queueReadRssi:',['../interface_s_g_ble_peripheral.html#ad8ee3977c2bd518a7894e924f5481bbd',1,'SGBlePeripheral']]],
-  ['queuereadvalueforcharacteristic_3avaluereadhandler_3a_380',['queueReadValueForCharacteristic:valueReadHandler:',['../interface_s_g_ble_peripheral.html#ae321bff8b3cfdc75dac9aa5cb258b9b6',1,'SGBlePeripheral']]],
-  ['queuesetnotifyvalueforcharacteristic_3avaluechangedhandler_3acompletionhandler_3a_381',['queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:',['../interface_s_g_ble_peripheral.html#a0f125e4d3ce68588f7b6624f9a01552a',1,'SGBlePeripheral']]],
-  ['queuewritevalue_3aforcharacteristic_3atype_3acompletionhandler_3a_382',['queueWriteValue:forCharacteristic:type:completionHandler:',['../interface_s_g_ble_peripheral.html#a773c50ea682f7091bee1c58a3b1a366f',1,'SGBlePeripheral']]]
+  ['queueconnectwithservices_3acompletionhandler_3a_382',['queueConnectWithServices:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318',1,'SGBlePeripheralQueue']]],
+  ['queuedisconnect_3a_383',['queueDisconnect:',['../interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b',1,'SGBlePeripheralQueue']]],
+  ['queuereadrssi_3a_384',['queueReadRssi:',['../interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01',1,'SGBlePeripheralQueue']]],
+  ['queuereadvalueforcharacteristic_3avaluereadhandler_3a_385',['queueReadValueForCharacteristic:valueReadHandler:',['../interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5',1,'SGBlePeripheralQueue']]],
+  ['queuesetnotifyvalueforcharacteristic_3avaluechangedhandler_3acompletionhandler_3a_386',['queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6',1,'SGBlePeripheralQueue']]],
+  ['queuewritevalue_3aforcharacteristic_3atype_3acompletionhandler_3a_387',['queueWriteValue:forCharacteristic:type:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d',1,'SGBlePeripheralQueue']]]
 ];
