@@ -4,9 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//! \defgroup Unity_CSharp
+//! @brief Collection of C# classes for the Unity game engine that provide a simplified access to
+//!        Bluetooth Low Energy peripherals.
+
 /// <summary>
-/// Collection of classes for a simplified access to Bluetooth Low Energy peripherals from Unity.
+/// Collection of C# classes for the Unity game engine.
 /// </summary>
+namespace Systemic.Unity { }
+
+/// <summary>
+/// Collection of C# classes for the Unity game engine that provide a simplified access to Bluetooth
+/// Low Energy peripherals.
+/// 
+/// Native plugins are used to access native Bluetooh APIs specific to each supported plateform:
+/// Windows 10 and above, iOS and Android.
+/// </summary>
+//! @ingroup Unity_CSharp
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>

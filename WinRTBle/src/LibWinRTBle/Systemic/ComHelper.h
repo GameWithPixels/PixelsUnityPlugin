@@ -1,12 +1,12 @@
 /**
  * @file
- * @brief Helper methods for COM string marshaling.
+ * @brief C helper methods for COM strings.
  */
 
 #pragma once
 
 /**
- * @brief Helper methods for COM string marshaling.
+ * @brief Helper methods for COM strings.
  */
 namespace Systemic::ComHelper
 {

@@ -5,7 +5,13 @@
 
 #pragma once
 
-/// Collection of classes for a simplified access to Bluetooth Low Energy peripherals.
+ //! \defgroup WinRT_Cpp
+ //! @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+
+/**
+ * @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+ * @ingroup WinRT_Cpp
+ */
 namespace Systemic::BluetoothLE
 {
     /// Type for a Bluetooth address.
@@ -105,7 +111,7 @@ namespace Systemic::BluetoothLE
     };
 
     /// Standard BLE values for characteristic properties.
-    enum CharacteristicProperties
+    enum class CharacteristicProperties
     {
         None = 0,
 
