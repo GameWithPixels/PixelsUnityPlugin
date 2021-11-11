@@ -83,46 +83,289 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_c
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic::BluetoothLE::Characteristic Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a service's characteristic of a Bluetooth Low Energy (BLE) peripheral.  
+ <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_characteristic_8h_source.html">Characteristic.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8651679bca3c07e75a1967b6e215b399"><td class="memItemLeft" align="right" valign="top"><a id="a8651679bca3c07e75a1967b6e215b399"></a>
-std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> () const</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destructor</div></td></tr>
+<tr class="memitem:ac51093f2840ccdcd8bd0344f4bd23aea"><td class="memItemLeft" align="right" valign="top"><a id="ac51093f2840ccdcd8bd0344f4bd23aea"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ac51093f2840ccdcd8bd0344f4bd23aea">~Characteristic</a> ()</td></tr>
+<tr class="memdesc:ac51093f2840ccdcd8bd0344f4bd23aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instance. <br /></td></tr>
+<tr class="separator:ac51093f2840ccdcd8bd0344f4bd23aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Getters</div></td></tr>
+<tr class="memitem:a8651679bca3c07e75a1967b6e215b399"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a8651679bca3c07e75a1967b6e215b399">handle</a> () const</td></tr>
+<tr class="memdesc:a8651679bca3c07e75a1967b6e215b399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the 16 bits handle of the BLE characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a8651679bca3c07e75a1967b6e215b399">More...</a><br /></td></tr>
 <tr class="separator:a8651679bca3c07e75a1967b6e215b399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23f0e97d6f4de6c666fde374f0b28a66"><td class="memItemLeft" align="right" valign="top"><a id="a23f0e97d6f4de6c666fde374f0b28a66"></a>
-winrt::guid&#160;</td><td class="memItemRight" valign="bottom"><b>uuid</b> () const</td></tr>
+<tr class="memitem:a23f0e97d6f4de6c666fde374f0b28a66"><td class="memItemLeft" align="right" valign="top">winrt::guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66">uuid</a> () const</td></tr>
+<tr class="memdesc:a23f0e97d6f4de6c666fde374f0b28a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the UUID of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66">More...</a><br /></td></tr>
 <tr class="separator:a23f0e97d6f4de6c666fde374f0b28a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13724f7420f02776330be4d3e34e3838"><td class="memItemLeft" align="right" valign="top"><a id="a13724f7420f02776330be4d3e34e3838"></a>
-<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1">CharacteristicProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><b>properties</b> () const</td></tr>
-<tr class="separator:a13724f7420f02776330be4d3e34e3838"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c3ae19535ebab9bf93577cead476ae"><td class="memItemLeft" align="right" valign="top"><a id="ad6c3ae19535ebab9bf93577cead476ae"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canWrite</b> () const</td></tr>
+<tr class="memitem:aab7856a4bad586c8e35e41d68718cb83"><td class="memItemLeft" align="right" valign="top">std::underlying_type&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1">CharacteristicProperties</a> &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#aab7856a4bad586c8e35e41d68718cb83">properties</a> () const</td></tr>
+<tr class="memdesc:aab7856a4bad586c8e35e41d68718cb83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the standard BLE properties of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#aab7856a4bad586c8e35e41d68718cb83">More...</a><br /></td></tr>
+<tr class="separator:aab7856a4bad586c8e35e41d68718cb83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c3ae19535ebab9bf93577cead476ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad6c3ae19535ebab9bf93577cead476ae">canWrite</a> () const</td></tr>
+<tr class="memdesc:ad6c3ae19535ebab9bf93577cead476ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the characteristic can be written.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad6c3ae19535ebab9bf93577cead476ae">More...</a><br /></td></tr>
 <tr class="separator:ad6c3ae19535ebab9bf93577cead476ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a75a21a14334352867788c3031cdce9"><td class="memItemLeft" align="right" valign="top"><a id="a3a75a21a14334352867788c3031cdce9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRead</b> () const</td></tr>
+<tr class="memitem:a3a75a21a14334352867788c3031cdce9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a3a75a21a14334352867788c3031cdce9">canRead</a> () const</td></tr>
+<tr class="memdesc:a3a75a21a14334352867788c3031cdce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the characteristic can be read.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a3a75a21a14334352867788c3031cdce9">More...</a><br /></td></tr>
 <tr class="separator:a3a75a21a14334352867788c3031cdce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8d1b0d9e43a088d4f185af441a2e121"><td class="memItemLeft" align="right" valign="top"><a id="ad8d1b0d9e43a088d4f185af441a2e121"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canNotify</b> () const</td></tr>
+<tr class="memitem:ad8d1b0d9e43a088d4f185af441a2e121"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad8d1b0d9e43a088d4f185af441a2e121">canNotify</a> () const</td></tr>
+<tr class="memdesc:ad8d1b0d9e43a088d4f185af441a2e121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the characteristic can notify its value changes.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad8d1b0d9e43a088d4f185af441a2e121">More...</a><br /></td></tr>
 <tr class="separator:ad8d1b0d9e43a088d4f185af441a2e121"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbea6bc0efd13de35129d44fb5f27a8c"><td class="memItemLeft" align="right" valign="top"><a id="abbea6bc0efd13de35129d44fb5f27a8c"></a>
-std::future&lt; std::vector&lt; std::uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>readValueAsync</b> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Characteristic operations</h2></td></tr>
+<tr class="memitem:abbea6bc0efd13de35129d44fb5f27a8c"><td class="memItemLeft" align="right" valign="top">std::future&lt; std::vector&lt; std::uint8_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#abbea6bc0efd13de35129d44fb5f27a8c">readValueAsync</a> ()</td></tr>
+<tr class="memdesc:abbea6bc0efd13de35129d44fb5f27a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the value from the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#abbea6bc0efd13de35129d44fb5f27a8c">More...</a><br /></td></tr>
 <tr class="separator:abbea6bc0efd13de35129d44fb5f27a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a063ce4e663a2d4269d296c8d1265ee09"><td class="memItemLeft" align="right" valign="top"><a id="a063ce4e663a2d4269d296c8d1265ee09"></a>
-std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>writeAsync</b> (const std::vector&lt; std::uint8_t &gt; &amp;value, bool withoutResponse=false)</td></tr>
-<tr class="separator:a063ce4e663a2d4269d296c8d1265ee09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f4e15f2ea20fe40db01cb4d154fd832"><td class="memItemLeft" align="right" valign="top"><a id="a2f4e15f2ea20fe40db01cb4d154fd832"></a>
-std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>subscribeAsync</b> (std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt; onValueChanged)</td></tr>
+<tr class="memitem:ad02491ce4be521f0871cbc9d3cbf1f40"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad02491ce4be521f0871cbc9d3cbf1f40">writeAsync</a> (const std::vector&lt; std::uint8_t &gt; &amp;data, bool withoutResponse=false)</td></tr>
+<tr class="memdesc:ad02491ce4be521f0871cbc9d3cbf1f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the given data to the value of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad02491ce4be521f0871cbc9d3cbf1f40">More...</a><br /></td></tr>
+<tr class="separator:ad02491ce4be521f0871cbc9d3cbf1f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4e15f2ea20fe40db01cb4d154fd832"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a2f4e15f2ea20fe40db01cb4d154fd832">subscribeAsync</a> (std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt; onValueChanged)</td></tr>
+<tr class="memdesc:a2f4e15f2ea20fe40db01cb4d154fd832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes for value changes of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a2f4e15f2ea20fe40db01cb4d154fd832">More...</a><br /></td></tr>
 <tr class="separator:a2f4e15f2ea20fe40db01cb4d154fd832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fcc168cd65a80ed15088e32007cc661"><td class="memItemLeft" align="right" valign="top"><a id="a0fcc168cd65a80ed15088e32007cc661"></a>
-std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>unsubscribeAsync</b> ()</td></tr>
+<tr class="memitem:a0fcc168cd65a80ed15088e32007cc661"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661">unsubscribeAsync</a> ()</td></tr>
+<tr class="memdesc:a0fcc168cd65a80ed15088e32007cc661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribes from value changes of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661">More...</a><br /></td></tr>
 <tr class="separator:a0fcc168cd65a80ed15088e32007cc661"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a service's characteristic of a Bluetooth Low Energy (BLE) peripheral. </p>
+<p>A characteristic may be queried for its properties, and its underlying value may be read and/or written depending on the characteristic's capabilities. A characteristic with the notifiable property may be subscribed to get notified when its value changes.</p>
+<p>Those operations are asynchronous and return a std::future.</p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> class internally stores a WinRT's <code>GattCharacteristic</code> object. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad8d1b0d9e43a088d4f185af441a2e121"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8d1b0d9e43a088d4f185af441a2e121">&#9670;&nbsp;</a></span>canNotify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic::BluetoothLE::Characteristic::canNotify </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the characteristic can notify its value changes. </p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the characteristic can notify. </dd></dl>
+
+</div>
+</div>
+<a id="a3a75a21a14334352867788c3031cdce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a75a21a14334352867788c3031cdce9">&#9670;&nbsp;</a></span>canRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic::BluetoothLE::Characteristic::canRead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the characteristic can be read. </p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the characteristic can be read. </dd></dl>
+
+</div>
+</div>
+<a id="ad6c3ae19535ebab9bf93577cead476ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c3ae19535ebab9bf93577cead476ae">&#9670;&nbsp;</a></span>canWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic::BluetoothLE::Characteristic::canWrite </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the characteristic can be written. </p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the characteristic can be written. </dd></dl>
+
+</div>
+</div>
+<a id="a8651679bca3c07e75a1967b6e215b399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8651679bca3c07e75a1967b6e215b399">&#9670;&nbsp;</a></span>handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint16_t Systemic::BluetoothLE::Characteristic::handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the 16 bits handle of the BLE characteristic. </p>
+<dl class="section return"><dt>Returns</dt><dd>The 16 bits handle of the characteristic. </dd></dl>
+
+</div>
+</div>
+<a id="aab7856a4bad586c8e35e41d68718cb83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7856a4bad586c8e35e41d68718cb83">&#9670;&nbsp;</a></span>properties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::underlying_type&lt;<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1">CharacteristicProperties</a>&gt;::type Systemic::BluetoothLE::Characteristic::properties </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the standard BLE properties of the characteristic. </p>
+<dl class="section return"><dt>Returns</dt><dd>The properties of the characteristic. See CharacteristicProperties for the different values (it may be a combination of them). </dd></dl>
+
+</div>
+</div>
+<a id="abbea6bc0efd13de35129d44fb5f27a8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbea6bc0efd13de35129d44fb5f27a8c">&#9670;&nbsp;</a></span>readValueAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt;std::vector&lt;std::uint8_t&gt; &gt; Systemic::BluetoothLE::Characteristic::readValueAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the value from the characteristic. </p>
+<dl class="section return"><dt>Returns</dt><dd>A future with the read value as a vector of bytes. </dd></dl>
+
+</div>
+</div>
+<a id="a2f4e15f2ea20fe40db01cb4d154fd832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4e15f2ea20fe40db01cb4d154fd832">&#9670;&nbsp;</a></span>subscribeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt;<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a>&gt; Systemic::BluetoothLE::Characteristic::subscribeAsync </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>onValueChanged</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribes for value changes of the characteristic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onValueChanged</td><td>Called when the value of the characteristic changes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A future with the resulting request status. </dd></dl>
+
+</div>
+</div>
+<a id="a0fcc168cd65a80ed15088e32007cc661"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fcc168cd65a80ed15088e32007cc661">&#9670;&nbsp;</a></span>unsubscribeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt;<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a>&gt; Systemic::BluetoothLE::Characteristic::unsubscribeAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unsubscribes from value changes of the characteristic. </p>
+<dl class="section return"><dt>Returns</dt><dd>A future with the resulting request status. </dd></dl>
+
+</div>
+</div>
+<a id="a23f0e97d6f4de6c666fde374f0b28a66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23f0e97d6f4de6c666fde374f0b28a66">&#9670;&nbsp;</a></span>uuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">winrt::guid Systemic::BluetoothLE::Characteristic::uuid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the UUID of the characteristic. </p>
+<dl class="section return"><dt>Returns</dt><dd>The UUID of the characteristic. </dd></dl>
+
+</div>
+</div>
+<a id="ad02491ce4be521f0871cbc9d3cbf1f40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad02491ce4be521f0871cbc9d3cbf1f40">&#9670;&nbsp;</a></span>writeAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt;<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a>&gt; Systemic::BluetoothLE::Characteristic::writeAsync </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>withoutResponse</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes the given data to the value of the characteristic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic. </td></tr>
+    <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A future with the resulting request status. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/<a class="el" href="_characteristic_8h_source.html">Characteristic.h</a></li>
 </ul>

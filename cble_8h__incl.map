@@ -1,5 +1,5 @@
 <map id="WinRTBle/include/cble.h" name="WinRTBle/include/cble.h">
 <area shape="rect" id="node1" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,5,168,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="9,80,71,107"/>
-<area shape="rect" id="node3" href="$bletypes_8h.html" title="Some types used across the Systemic BLE library." alt="" coords="95,80,175,107"/>
+<area shape="rect" id="node3" href="$bletypes_8h.html" title="Some types used across the Systemic::BluetoothLE library." alt="" coords="95,80,175,107"/>
 </map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['valuechangedcallback_301',['ValueChangedCallback',['../cble_8h.html#ad95cf23155ddde12445a46c0e4b7c09f',1,'cble.h']]],
-  ['valuereadcallback_302',['ValueReadCallback',['../_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1',1,'ValueReadCallback():&#160;UnitBridge.h'],['../cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce',1,'ValueReadCallback():&#160;cble.h']]]
+  ['sgbleconnectioneventhandler_461',['SGBleConnectionEventHandler',['../group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6',1,'SGBleTypes.h']]],
+  ['sgbleperipheraldiscoveryhandler_462',['SGBlePeripheralDiscoveryHandler',['../group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd',1,'SGBleTypes.h']]]
 ];

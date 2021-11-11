@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_bluet
 </div><!--header-->
 <div class="contents">
 
-<p>Collection of classes for a simplified access to Bluetooth Low Energy peripherals from <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a>.  
+<p>Collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> game engine that provide a simplified access to Bluetooth Low Energy peripherals.  
 <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -112,7 +112,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque and read only class storing the native peripheral handle as used by the platform specific INativeInterfaceImpl implementation.  <a href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html">NativeInterface</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a> programmer.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> programmer.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html">RequestEnumerator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#details">More...</a><br /></td></tr>
@@ -227,7 +227,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9de6bf4222af1249e2ff8525f201b94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Collection of classes for a simplified access to Bluetooth Low Energy peripherals from <a class="el" href="namespace_systemic_1_1_unity.html">Unity</a>. </p>
+<div class="textblock"><p>Collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> game engine that provide a simplified access to Bluetooth Low Energy peripherals. </p>
+<p>Native plugins are used to access native Bluetooh APIs specific to each supported plateform: Windows 10 and above, iOS and Android.</p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a3b6f42efe9864fdc76ec45fe0cd3f0c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b6f42efe9864fdc76ec45fe0cd3f0c9">&#9670;&nbsp;</a></span>BluetoothStatus</h2>
@@ -326,9 +327,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Peripheral connection events. </p>
-<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31" title="Peripheral connection events.">Systemic::BluetoothLE::ConnectionEvent</a> and Objective-C PXBlePeripheralConnectionEvent. </p>
+<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31" title="Peripheral connection events.">Systemic::BluetoothLE::ConnectionEvent</a> and Objective-C SGBleConnectionEvent. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458"></a>Connecting&#160;</td><td class="fielddoc"><p>Raised at the beginning of the connect sequence, will be followed either by Connected or FailedToConnect. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458"></a>Connecting&#160;</td><td class="fielddoc"><p>Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6a2ec0d16e4ca169baedb9b2d50ec5c6d7"></a>Connected&#160;</td><td class="fielddoc"><p>Raised once the peripheral is connected, at which point service discovery is triggered. </p>
 </td></tr>
@@ -338,7 +339,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6a10b0501000c144cb2a7424bd45e1bcde"></a>Disconnecting&#160;</td><td class="fielddoc"><p>Raised at the beginning of a user initiated disconnect. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6aef70e46fd3bbc21e3e1f0b6815e750c0"></a>Disconnected&#160;</td><td class="fielddoc"><p>Raised when the peripheral is disconnected, the reason for the connection loss is also given. </p>
+<tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6aef70e46fd3bbc21e3e1f0b6815e750c0"></a>Disconnected&#160;</td><td class="fielddoc"><p>Raised when the peripheral is disconnected, the reason for the disconnection is also given. </p>
 </td></tr>
 </table>
 
@@ -365,7 +366,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Peripheral connection event reasons. </p>
-<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6" title="Peripheral connection event reasons.">Systemic::BluetoothLE::ConnectionEventReason</a> and Objective-C PXBlePeripheralConnectionEventReason. </p>
+<p>Matches C++ enum <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6" title="Peripheral connection event reasons.">Systemic::BluetoothLE::ConnectionEventReason</a> and Objective-C SGBleConnectionEventReason. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8adc4dbbd6eb7a31f29b3968470a0053a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>The disconnect happened for an unknown reason. </p>
 </td></tr>

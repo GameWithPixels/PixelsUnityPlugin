@@ -84,19 +84,23 @@ $(document).ready(function(){initNavTree('interface_s_g_ble_central_manager_dele
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Instance Methods</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="interface_s_g_ble_central_manager_delegate-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">SGBleCentralManagerDelegate Class Reference</div>  </div>
+<div class="title">SGBleCentralManagerDelegate Class Reference<div class="ingroups"><a class="el" href="group___apple___objective-_c.html">Apple_Objective-C</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of <a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a> protocol. Keeps a lit of discovered Bluetooth Low Energy (BLE) peripherals and notifies of peripherals connection events.  
+ <a href="interface_s_g_ble_central_manager_delegate.html#details">More...</a></p>
+
+<p><code>#import &lt;<a class="el" href="_p_x_ble_central_manager_delegate_8h_source.html">PXBleCentralManagerDelegate.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SGBleCentralManagerDelegate:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_s_g_ble_central_manager_delegate__inherit__graph.png" border="0" usemap="#a_s_g_ble_central_manager_delegate_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_g_ble_central_manager_delegate_inherit__map" id="a_s_g_ble_central_manager_delegate_inherit__map">
-<area shape="rect" title=" " alt="" coords="25,80,227,107"/>
+<area shape="rect" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (..." alt="" coords="25,80,227,107"/>
 <area shape="rect" title=" " alt="" coords="5,5,84,32"/>
 <area shape="rect" title=" " alt="" coords="108,5,307,32"/>
 </map>
@@ -104,61 +108,137 @@ Inheritance diagram for SGBleCentralManagerDelegate:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a43c38ed73233957759dcd7d6f6993e85"><td class="memItemLeft" align="right" valign="top"><a id="a43c38ed73233957759dcd7d6f6993e85"></a>
-(CBCentralManager *)&#160;</td><td class="memItemRight" valign="bottom">- <b>centralManager</b></td></tr>
-<tr class="separator:a43c38ed73233957759dcd7d6f6993e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d8e6ef2f84b1c764dac528255e5f22f"><td class="memItemLeft" align="right" valign="top"><a id="a5d8e6ef2f84b1c764dac528255e5f22f"></a>
-(NSArray&lt; CBPeripheral * &gt; *)&#160;</td><td class="memItemRight" valign="bottom">- <b>peripherals</b></td></tr>
-<tr class="separator:a5d8e6ef2f84b1c764dac528255e5f22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7c0dc720cdfffc362fff2030da9c5c6"><td class="memItemLeft" align="right" valign="top"><a id="ac7c0dc720cdfffc362fff2030da9c5c6"></a>
-(bool)&#160;</td><td class="memItemRight" valign="bottom">- <b>isBluetoothOn</b></td></tr>
-<tr class="separator:ac7c0dc720cdfffc362fff2030da9c5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf051d3a3146ac4467365eadcf86fba"><td class="memItemLeft" align="right" valign="top"><a id="aebf051d3a3146ac4467365eadcf86fba"></a>
-(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <b>initWithStateUpdateHandler:</b></td></tr>
+<tr class="memitem:aebf051d3a3146ac4467365eadcf86fba"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_central_manager_delegate.html#aebf051d3a3146ac4467365eadcf86fba">initWithStateUpdateHandler:</a></td></tr>
+<tr class="memdesc:aebf051d3a3146ac4467365eadcf86fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an instance with a Bluetooth state update handler.  <a href="interface_s_g_ble_central_manager_delegate.html#aebf051d3a3146ac4467365eadcf86fba">More...</a><br /></td></tr>
 <tr class="separator:aebf051d3a3146ac4467365eadcf86fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa93bf7d3373eb28ddc76ff6b8dbfa8a4"><td class="memItemLeft" align="right" valign="top"><a id="aa93bf7d3373eb28ddc76ff6b8dbfa8a4"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>clearPeripherals</b></td></tr>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_central_manager_delegate.html#aa93bf7d3373eb28ddc76ff6b8dbfa8a4">clearPeripherals</a></td></tr>
+<tr class="memdesc:aa93bf7d3373eb28ddc76ff6b8dbfa8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the list of discovered peripherals. <br /></td></tr>
 <tr class="separator:aa93bf7d3373eb28ddc76ff6b8dbfa8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061b77a0e0f212cc22198abc2965d295"><td class="memItemLeft" align="right" valign="top"><a id="a061b77a0e0f212cc22198abc2965d295"></a>
-(CBPeripheral *)&#160;</td><td class="memItemRight" valign="bottom">- <b>peripheralForIdentifier:</b></td></tr>
+<tr class="memitem:a061b77a0e0f212cc22198abc2965d295"><td class="memItemLeft" align="right" valign="top">(CBPeripheral *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_central_manager_delegate.html#a061b77a0e0f212cc22198abc2965d295">peripheralForIdentifier:</a></td></tr>
+<tr class="memdesc:a061b77a0e0f212cc22198abc2965d295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the discovered CBPeripheral for the given UUID.  <a href="interface_s_g_ble_central_manager_delegate.html#a061b77a0e0f212cc22198abc2965d295">More...</a><br /></td></tr>
 <tr class="separator:a061b77a0e0f212cc22198abc2965d295"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b6ac120d13859565e1d5b17e617d120"><td class="memItemLeft" align="right" valign="top"><a id="a3b6ac120d13859565e1d5b17e617d120"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>setConnectionEventHandler:forPeripheral:</b></td></tr>
-<tr class="separator:a3b6ac120d13859565e1d5b17e617d120"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a1f152a0d5ee9b849cef50a4fc64f8126"><td class="memItemLeft" align="right" valign="top"><a id="a1f152a0d5ee9b849cef50a4fc64f8126"></a>
-NSObject *&#160;</td><td class="memItemRight" valign="bottom"><b>_startScanSync</b></td></tr>
-<tr class="separator:a1f152a0d5ee9b849cef50a4fc64f8126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a871e417e78e6b06d2ba91e4c823baeb9"><td class="memItemLeft" align="right" valign="top"><a id="a871e417e78e6b06d2ba91e4c823baeb9"></a>
-void(^&#160;</td><td class="memItemRight" valign="bottom"><b>_stateUpdateHandler</b> )(CBManagerState state)</td></tr>
-<tr class="separator:a871e417e78e6b06d2ba91e4c823baeb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a462b11e0b20f34260a0398e691d97c5e"><td class="memItemLeft" align="right" valign="top"><a id="a462b11e0b20f34260a0398e691d97c5e"></a>
-CBCentralManager *&#160;</td><td class="memItemRight" valign="bottom"><b>_centralManager</b></td></tr>
-<tr class="separator:a462b11e0b20f34260a0398e691d97c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6291fc8e42279dc18e656f321952b61f"><td class="memItemLeft" align="right" valign="top"><a id="a6291fc8e42279dc18e656f321952b61f"></a>
-NSMutableDictionary&lt; NSUUID *, CBPeripheral * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>_peripherals</b></td></tr>
-<tr class="separator:a6291fc8e42279dc18e656f321952b61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b0b1c56385f72aa497025c936f0502c"><td class="memItemLeft" align="right" valign="top"><a id="a7b0b1c56385f72aa497025c936f0502c"></a>
-NSMutableDictionary&lt; CBPeripheral *, SGBlePeripheralConnectionEventHandler &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>_peripheralsConnectionEventHandlers</b></td></tr>
-<tr class="separator:a7b0b1c56385f72aa497025c936f0502c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77cb474294a0bb1171c1ec1efb05bc15"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_central_manager_delegate.html#a77cb474294a0bb1171c1ec1efb05bc15">setConnectionEventHandler:forPeripheral:</a></td></tr>
+<tr class="memdesc:a77cb474294a0bb1171c1ec1efb05bc15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the handler for notifying of the given peripheral's connection events.  <a href="interface_s_g_ble_central_manager_delegate.html#a77cb474294a0bb1171c1ec1efb05bc15">More...</a><br /></td></tr>
+<tr class="separator:a77cb474294a0bb1171c1ec1efb05bc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:acb768dc4f13c71dffac2d43fef148d7d"><td class="memItemLeft" align="right" valign="top"><a id="acb768dc4f13c71dffac2d43fef148d7d"></a>
-CBCentralManager *&#160;</td><td class="memItemRight" valign="bottom"><b>centralManager</b></td></tr>
+CBCentralManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">centralManager</a></td></tr>
+<tr class="memdesc:acb768dc4f13c71dffac2d43fef148d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the central manager associated with this instance. <br /></td></tr>
 <tr class="separator:acb768dc4f13c71dffac2d43fef148d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b850ef9c7e9a982ec6567bcfdd9c830"><td class="memItemLeft" align="right" valign="top"><a id="a1b850ef9c7e9a982ec6567bcfdd9c830"></a>
-SGBlePeripheralDiscoveryHandler&#160;</td><td class="memItemRight" valign="bottom"><b>peripheralDiscoveryHandler</b></td></tr>
+<a class="el" href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html#a1b850ef9c7e9a982ec6567bcfdd9c830">peripheralDiscoveryHandler</a></td></tr>
+<tr class="memdesc:a1b850ef9c7e9a982ec6567bcfdd9c830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or set the handler for notifying of discovered peripherals. <br /></td></tr>
 <tr class="separator:a1b850ef9c7e9a982ec6567bcfdd9c830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a772237c71b7bffe478488a1a47676df5"><td class="memItemLeft" align="right" valign="top"><a id="a772237c71b7bffe478488a1a47676df5"></a>
-NSArray&lt; CBPeripheral * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>peripherals</b></td></tr>
+NSArray&lt; CBPeripheral * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">peripherals</a></td></tr>
+<tr class="memdesc:a772237c71b7bffe478488a1a47676df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered peripherals. <br /></td></tr>
 <tr class="separator:a772237c71b7bffe478488a1a47676df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af51b0acad2c4cd30206338d8414139dd"><td class="memItemLeft" align="right" valign="top"><a id="af51b0acad2c4cd30206338d8414139dd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isBluetoothOn</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">isBluetoothOn</a></td></tr>
+<tr class="memdesc:af51b0acad2c4cd30206338d8414139dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the host device Bluetooth radio is turned on and accessible. <br /></td></tr>
 <tr class="separator:af51b0acad2c4cd30206338d8414139dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of <a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a> protocol. Keeps a lit of discovered Bluetooth Low Energy (BLE) peripherals and notifies of peripherals connection events. </p>
+<p>Upon <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...">SGBleCentralManagerDelegate</a> initialization, an instance of this class creates a CBCentralManager object and set itself as the manager's delegate.</p>
+<p>For convenience, it stores discovered peripherals, offers notifications for when the host device Bluetooth state changes and for peripherals connection events. </p>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a id="aebf051d3a3146ac4467365eadcf86fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf051d3a3146ac4467365eadcf86fba">&#9670;&nbsp;</a></span>initWithStateUpdateHandler:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) initWithStateUpdateHandler: </td>
+          <td></td>
+          <td class="paramtype">(void(^)(CBManagerState state))&#160;</td>
+          <td class="paramname"><em>stateUpdateHandler</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes an instance with a Bluetooth state update handler. </p>
+<p>Creates a CBCentralManager object and set itself as the manager's delegate. The manager is available through the centralManager property.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stateUpdateHandler</td><td>The handler for notifying of the host device Bluetooth state changes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The initialized <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...">SGBleCentralManagerDelegate</a> instance. </dd></dl>
+
+</div>
+</div>
+<a id="a061b77a0e0f212cc22198abc2965d295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a061b77a0e0f212cc22198abc2965d295">&#9670;&nbsp;</a></span>peripheralForIdentifier:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (CBPeripheral *) peripheralForIdentifier: </td>
+          <td></td>
+          <td class="paramtype">(NSUUID *)&#160;</td>
+          <td class="paramname"><em>identifier</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the discovered CBPeripheral for the given UUID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifier</td><td>The UUID assigned by the system to a BLE peripheral. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The CBPeripheral for the given UUID. </dd></dl>
+
+</div>
+</div>
+<a id="a77cb474294a0bb1171c1ec1efb05bc15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77cb474294a0bb1171c1ec1efb05bc15">&#9670;&nbsp;</a></span>setConnectionEventHandler:forPeripheral:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) setConnectionEventHandler: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6">SGBleConnectionEventHandler</a>)&#160;</td>
+          <td class="paramname"><em>peripheralConnectionEventHandler</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">forPeripheral:</td>
+          <td></td>
+          <td class="paramtype">(CBPeripheral *)&#160;</td>
+          <td class="paramname"><em>peripheral</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the handler for notifying of the given peripheral's connection events. </p>
+<p>Replace any handler previously set for this peripheral.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">peripheralConnectionEventHandler</td><td>The handler for notifying connection events. </td></tr>
+    <tr><td class="paramname">peripheral</td><td>The peripheral to watch for connection events. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Assets/Plugins/Pixels/iOS/<a class="el" href="_p_x_ble_central_manager_delegate_8h_source.html">PXBleCentralManagerDelegate.h</a></li>
 <li>Assets/Plugins/Pixels/iOS/PXBleCentralManagerDelegate.mm</li>

@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
     [ "PixelsUnityPlugin", "index.html", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -53,7 +54,8 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Typedefs", "globals_type.html", null ]
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerator", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]
@@ -62,7 +64,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a7eaf64c111074df2b100d0b47009804d"
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a0c2d4e3e554826dcde47e391aa5de396",
+"pch_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

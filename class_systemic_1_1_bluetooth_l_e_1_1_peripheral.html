@@ -83,61 +83,357 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_p
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic::BluetoothLE::Peripheral Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a Bluetooth Low Energy (BLE) peripheral.  
+ <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_peripheral_8h_source.html">Peripheral.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Systemic::BluetoothLE::Peripheral:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_systemic_1_1_bluetooth_l_e_1_1_peripheral__inherit__graph.png" border="0" usemap="#a_systemic_1_1_bluetooth_l_e_1_1_peripheral_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_systemic_1_1_bluetooth_l_e_1_1_peripheral_inherit__map" id="a_systemic_1_1_bluetooth_l_e_1_1_peripheral_inherit__map">
-<area shape="rect" title=" " alt="" coords="10,95,163,136"/>
+<area shape="rect" title="Represents a Bluetooth Low Energy (BLE) peripheral." alt="" coords="10,95,163,136"/>
 <area shape="rect" title=" " alt="" coords="5,5,168,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dc4944d05cdaf6e5538ff994e7c3edc"><td class="memItemLeft" align="right" valign="top"><a id="a9dc4944d05cdaf6e5538ff994e7c3edc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasDevice</b> () const</td></tr>
-<tr class="separator:a9dc4944d05cdaf6e5538ff994e7c3edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a578a3fae6a1b6c7762a3af0a33fe856f"><td class="memItemLeft" align="right" valign="top"><a id="a578a3fae6a1b6c7762a3af0a33fe856f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isConnected</b> () const</td></tr>
-<tr class="separator:a578a3fae6a1b6c7762a3af0a33fe856f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaefaf95ef932e3782cc9e78dbb10077d"><td class="memItemLeft" align="right" valign="top"><a id="aaefaf95ef932e3782cc9e78dbb10077d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isReady</b> () const</td></tr>
-<tr class="separator:aaefaf95ef932e3782cc9e78dbb10077d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadfc64f111572d79cf7636f5ba6ec65f"><td class="memItemLeft" align="right" valign="top"><a id="aadfc64f111572d79cf7636f5ba6ec65f"></a>
-const wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><b>deviceId</b> () const</td></tr>
-<tr class="separator:aadfc64f111572d79cf7636f5ba6ec65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a047893bcd38ccdfbd8d727fc3e754518"><td class="memItemLeft" align="right" valign="top"><a id="a047893bcd38ccdfbd8d727fc3e754518"></a>
-<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> () const</td></tr>
-<tr class="separator:a047893bcd38ccdfbd8d727fc3e754518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac117d374c9e3ea7ec9f0013bc3bcbd43"><td class="memItemLeft" align="right" valign="top"><a id="ac117d374c9e3ea7ec9f0013bc3bcbd43"></a>
-const wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
-<tr class="separator:ac117d374c9e3ea7ec9f0013bc3bcbd43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa49e1cdfad677998171c6dca9b4cabcc"><td class="memItemLeft" align="right" valign="top"><a id="aa49e1cdfad677998171c6dca9b4cabcc"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>mtu</b> () const</td></tr>
-<tr class="separator:aa49e1cdfad677998171c6dca9b4cabcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a240ac8009f4a454e744c7aab23df30c7"><td class="memItemLeft" align="right" valign="top"><a id="a240ac8009f4a454e744c7aab23df30c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>copyDiscoveredServices</b> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a> &gt;&gt; &amp;outServices)</td></tr>
-<tr class="separator:a240ac8009f4a454e744c7aab23df30c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfd61354bd107be6e1d0c1b450b3c403"><td class="memItemLeft" align="right" valign="top"><a id="adfd61354bd107be6e1d0c1b450b3c403"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Peripheral</b> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> bluetoothAddress, std::function&lt; void(<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt; onConnectionEvent)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Constructor and destructor</div></td></tr>
+<tr class="memitem:adfd61354bd107be6e1d0c1b450b3c403"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#adfd61354bd107be6e1d0c1b450b3c403">Peripheral</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> bluetoothAddress, std::function&lt; void(<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt; onConnectionEvent)</td></tr>
+<tr class="memdesc:adfd61354bd107be6e1d0c1b450b3c403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral.">Peripheral</a> with the given Bluetooth address and a callback for notifying of the peripheral connection events.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#adfd61354bd107be6e1d0c1b450b3c403">More...</a><br /></td></tr>
 <tr class="separator:adfd61354bd107be6e1d0c1b450b3c403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae9187d70e9d755df5d5fa66cbdaca9"><td class="memItemLeft" align="right" valign="top"><a id="a6ae9187d70e9d755df5d5fa66cbdaca9"></a>
-std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>connectAsync</b> (std::vector&lt; winrt::guid &gt; requiredServices=std::vector&lt; winrt::guid &gt;{}, bool maintainConnection=false)</td></tr>
+<tr class="memitem:afac92a7222095bfa982685ba9f690327"><td class="memItemLeft" align="right" valign="top"><a id="afac92a7222095bfa982685ba9f690327"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">~Peripheral</a> ()</td></tr>
+<tr class="memdesc:afac92a7222095bfa982685ba9f690327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects and destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral.">Peripheral</a> instance. <br /></td></tr>
+<tr class="separator:afac92a7222095bfa982685ba9f690327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Connection and disconnection</div></td></tr>
+<tr class="memitem:a6ae9187d70e9d755df5d5fa66cbdaca9"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">connectAsync</a> (std::vector&lt; winrt::guid &gt; requiredServices=std::vector&lt; winrt::guid &gt;{}, bool maintainConnection=false)</td></tr>
+<tr class="memdesc:a6ae9187d70e9d755df5d5fa66cbdaca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the BLE peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">More...</a><br /></td></tr>
 <tr class="separator:a6ae9187d70e9d755df5d5fa66cbdaca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa52326834f832e720b50f503f507f920"><td class="memItemLeft" align="right" valign="top"><a id="aa52326834f832e720b50f503f507f920"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
+<tr class="memitem:aa52326834f832e720b50f503f507f920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">disconnect</a> ()</td></tr>
+<tr class="memdesc:aa52326834f832e720b50f503f507f920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immediately disconnects the peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">More...</a><br /></td></tr>
 <tr class="separator:aa52326834f832e720b50f503f507f920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27709966a483ffab6ce6ba06e443a53e"><td class="memItemLeft" align="right" valign="top"><a id="a27709966a483ffab6ce6ba06e443a53e"></a>
-std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getDiscoveredService</b> (const winrt::guid &amp;uuid)</td></tr>
-<tr class="separator:a27709966a483ffab6ce6ba06e443a53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Getters</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Always valid. </p>
+</div></td></tr>
+<tr class="memitem:a047893bcd38ccdfbd8d727fc3e754518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">address</a> () const</td></tr>
+<tr class="memdesc:a047893bcd38ccdfbd8d727fc3e754518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Bluetooth address of the peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">More...</a><br /></td></tr>
+<tr class="separator:a047893bcd38ccdfbd8d727fc3e754518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a578a3fae6a1b6c7762a3af0a33fe856f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">isConnected</a> () const</td></tr>
+<tr class="memdesc:a578a3fae6a1b6c7762a3af0a33fe856f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the peripheral is connected.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">More...</a><br /></td></tr>
+<tr class="separator:a578a3fae6a1b6c7762a3af0a33fe856f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefaf95ef932e3782cc9e78dbb10077d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">isReady</a> () const</td></tr>
+<tr class="memdesc:aaefaf95ef932e3782cc9e78dbb10077d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the peripheral is ready.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">More...</a><br /></td></tr>
+<tr class="separator:aaefaf95ef932e3782cc9e78dbb10077d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Connected getters</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Valid only for connected peripherals. </p>
+</div></td></tr>
+<tr class="memitem:aadfc64f111572d79cf7636f5ba6ec65f"><td class="memItemLeft" align="right" valign="top">const wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aadfc64f111572d79cf7636f5ba6ec65f">deviceId</a> () const</td></tr>
+<tr class="memdesc:aadfc64f111572d79cf7636f5ba6ec65f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the device id assigned by the system for the peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aadfc64f111572d79cf7636f5ba6ec65f">More...</a><br /></td></tr>
+<tr class="separator:aadfc64f111572d79cf7636f5ba6ec65f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac117d374c9e3ea7ec9f0013bc3bcbd43"><td class="memItemLeft" align="right" valign="top">const wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ac117d374c9e3ea7ec9f0013bc3bcbd43">name</a> () const</td></tr>
+<tr class="memdesc:ac117d374c9e3ea7ec9f0013bc3bcbd43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ac117d374c9e3ea7ec9f0013bc3bcbd43">More...</a><br /></td></tr>
+<tr class="separator:ac117d374c9e3ea7ec9f0013bc3bcbd43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa49e1cdfad677998171c6dca9b4cabcc"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">mtu</a> () const</td></tr>
+<tr class="memdesc:aa49e1cdfad677998171c6dca9b4cabcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Maximum Transmission Unit (MTU).  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">More...</a><br /></td></tr>
+<tr class="separator:aa49e1cdfad677998171c6dca9b4cabcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Services access</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Valid only for peripherals in ready state. </p>
+</div></td></tr>
+<tr class="memitem:a34470259b5139ce9cddbb01896cbb09e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a34470259b5139ce9cddbb01896cbb09e">getDiscoveredService</a> (const winrt::guid &amp;uuid) const</td></tr>
+<tr class="memdesc:a34470259b5139ce9cddbb01896cbb09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> instance with the given UUID.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a34470259b5139ce9cddbb01896cbb09e">More...</a><br /></td></tr>
+<tr class="separator:a34470259b5139ce9cddbb01896cbb09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab253d12f92fc8d9cda2eb2180a25db09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ab253d12f92fc8d9cda2eb2180a25db09">copyDiscoveredServices</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a> &gt;&gt; &amp;outServices) const</td></tr>
+<tr class="memdesc:ab253d12f92fc8d9cda2eb2180a25db09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the discovered services to the given std::vector.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ab253d12f92fc8d9cda2eb2180a25db09">More...</a><br /></td></tr>
+<tr class="separator:ab253d12f92fc8d9cda2eb2180a25db09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a Bluetooth Low Energy (BLE) peripheral. </p>
+<p>The most common BLE operations are supported, such as reading the peripheral name, MTU, RSSI, listing services and characteristics.</p>
+<p>Once created, a peripheral must be connected before most its methods may be used, and it must be ready before accessing the services. The peripheral becomes ready once all the required services have been discovered.</p>
+<p>The connection method <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9" title="Connects to the BLE peripheral.">connectAsync()</a> is asynchronous and returns a std::future.</p>
+<p>A specific <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> may be retrieved by its UUID with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a34470259b5139ce9cddbb01896cbb09e" title="Gets the Service instance with the given UUID.">getDiscoveredService()</a>. A service contains characteristics for which data may be read or written.</p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral.">Peripheral</a> class internally stores a WinRT's <code>BluetoothLEDevice</code> and <code>GattSession</code> objects. </p><dl class="section see"><dt>See also</dt><dd><a href="https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.bluetoothledevice">https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.bluetoothledevice</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="adfd61354bd107be6e1d0c1b450b3c403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfd61354bd107be6e1d0c1b450b3c403">&#9670;&nbsp;</a></span>Peripheral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Systemic::BluetoothLE::Peripheral::Peripheral </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td>
+          <td class="paramname"><em>bluetoothAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt;&#160;</td>
+          <td class="paramname"><em>onConnectionEvent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral.">Peripheral</a> with the given Bluetooth address and a callback for notifying of the peripheral connection events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bluetoothAddress</td><td>The Bluetooth address of the BLE peripheral. </td></tr>
+    <tr><td class="paramname">onConnectionEvent</td><td>Called when the connection status of the peripheral changes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a047893bcd38ccdfbd8d727fc3e754518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a047893bcd38ccdfbd8d727fc3e754518">&#9670;&nbsp;</a></span>address()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> Systemic::BluetoothLE::Peripheral::address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the Bluetooth address of the peripheral. </p>
+<dl class="section return"><dt>Returns</dt><dd>The Bluetooth address of the peripheral. </dd></dl>
+
+</div>
+</div>
+<a id="a6ae9187d70e9d755df5d5fa66cbdaca9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae9187d70e9d755df5d5fa66cbdaca9">&#9670;&nbsp;</a></span>connectAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt; Systemic::BluetoothLE::Peripheral::connectAsync </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; winrt::guid &gt;&#160;</td>
+          <td class="paramname"><em>requiredServices</em> = <code>std::vector&lt;winrt::guid&gt;{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>maintainConnection</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connects to the BLE peripheral. </p>
+<p>This request timeouts after 7 to 8 seconds, as of Windows 10 21H1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requiredServices</td><td>List of services UUIDs that the peripheral should support, may be empty. </td></tr>
+    <tr><td class="paramname">maintainConnection</td><td>Whether to automatically reconnect after an unexpected disconnection (i.e. not triggered by a call to <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920" title="Immediately disconnects the peripheral.">disconnect()</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A future with the resulting request status. </dd></dl>
+
+</div>
+</div>
+<a id="ab253d12f92fc8d9cda2eb2180a25db09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab253d12f92fc8d9cda2eb2180a25db09">&#9670;&nbsp;</a></span>copyDiscoveredServices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic::BluetoothLE::Peripheral::copyDiscoveredServices </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>outServices</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the discovered services to the given std::vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outServices</td><td>The std::vector to which the discovered services are copied (appended). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aadfc64f111572d79cf7636f5ba6ec65f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadfc64f111572d79cf7636f5ba6ec65f">&#9670;&nbsp;</a></span>deviceId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const wchar_t* Systemic::BluetoothLE::Peripheral::deviceId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the device id assigned by the system for the peripheral. </p>
+<dl class="section return"><dt>Returns</dt><dd>The device id assigned by the system. </dd></dl>
+
+</div>
+</div>
+<a id="aa52326834f832e720b50f503f507f920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa52326834f832e720b50f503f507f920">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic::BluetoothLE::Peripheral::disconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Immediately disconnects the peripheral. </p>
+<p>As a consequence, any on-going request either fails or is canceled, including connection requests. </p>
+
+</div>
+</div>
+<a id="a34470259b5139ce9cddbb01896cbb09e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34470259b5139ce9cddbb01896cbb09e">&#9670;&nbsp;</a></span>getDiscoveredService()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a>&gt; Systemic::BluetoothLE::Peripheral::getDiscoveredService </td>
+          <td>(</td>
+          <td class="paramtype">const winrt::guid &amp;&#160;</td>
+          <td class="paramname"><em>uuid</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> instance with the given UUID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uuid</td><td>The UUID of the service. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> instance. </dd></dl>
+
+</div>
+</div>
+<a id="a578a3fae6a1b6c7762a3af0a33fe856f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a578a3fae6a1b6c7762a3af0a33fe856f">&#9670;&nbsp;</a></span>isConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic::BluetoothLE::Peripheral::isConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the peripheral is connected. </p>
+<p>Services may not have been discovered yet.</p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the peripheral is connected. </dd></dl>
+
+</div>
+</div>
+<a id="aaefaf95ef932e3782cc9e78dbb10077d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefaf95ef932e3782cc9e78dbb10077d">&#9670;&nbsp;</a></span>isReady()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic::BluetoothLE::Peripheral::isReady </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the peripheral is ready. </p>
+<p>The peripheral is ready once it has successfully connected and discovered the required services.</p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the peripheral is ready. </dd></dl>
+
+</div>
+</div>
+<a id="aa49e1cdfad677998171c6dca9b4cabcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49e1cdfad677998171c6dca9b4cabcc">&#9670;&nbsp;</a></span>mtu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Systemic::BluetoothLE::Peripheral::mtu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the Maximum Transmission Unit (MTU). </p>
+<dl class="section return"><dt>Returns</dt><dd>The MTU, or zero if it doesn't have a valid device. </dd></dl>
+
+</div>
+</div>
+<a id="ac117d374c9e3ea7ec9f0013bc3bcbd43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac117d374c9e3ea7ec9f0013bc3bcbd43">&#9670;&nbsp;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const wchar_t* Systemic::BluetoothLE::Peripheral::name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the name of the peripheral. </p>
+<dl class="section return"><dt>Returns</dt><dd>The name of the peripheral, or null if it doesn't have a valid device. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/<a class="el" href="_peripheral_8h_source.html">Peripheral.h</a></li>
 <li>WinRTBle/src/LibWinRTBle/Peripheral.cpp</li>

@@ -1,9 +1,11 @@
 <map id="Assets/Plugins/Pixels/iOS/UnityBridge.mm" name="Assets/Plugins/Pixels/iOS/UnityBridge.mm">
-<area shape="rect" id="node1" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="350,5,499,47"/>
-<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included by UnityBridge.mm." alt="" coords="378,95,471,121"/>
+<area shape="rect" id="node1" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="426,5,575,47"/>
+<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="454,95,547,121"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,169,217,196"/>
 <area shape="rect" id="node4" title=" " alt="" coords="242,169,370,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="394,169,455,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="479,169,541,196"/>
-<area shape="rect" id="node7" title=" " alt="" coords="565,169,618,196"/>
+<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="395,169,500,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="525,169,586,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="610,169,671,196"/>
+<area shape="rect" id="node9" title=" " alt="" coords="695,169,749,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="365,244,529,271"/>
 </map>

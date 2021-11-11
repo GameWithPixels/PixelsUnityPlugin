@@ -83,37 +83,214 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_s
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_systemic_1_1_bluetooth_l_e_1_1_service-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic::BluetoothLE::Service Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.  
+ <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_service_8h_source.html">Service.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac2937c882d8455e31b8ee95322c14e3e"><td class="memItemLeft" align="right" valign="top"><a id="ac2937c882d8455e31b8ee95322c14e3e"></a>
-std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> () const</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Destructor</div></td></tr>
+<tr class="memitem:a343de7e7efb7cb17ddb846b17e53fb44"><td class="memItemLeft" align="right" valign="top"><a id="a343de7e7efb7cb17ddb846b17e53fb44"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a343de7e7efb7cb17ddb846b17e53fb44">~Service</a> ()</td></tr>
+<tr class="memdesc:a343de7e7efb7cb17ddb846b17e53fb44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes and destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> instance. <br /></td></tr>
+<tr class="separator:a343de7e7efb7cb17ddb846b17e53fb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Getters</div></td></tr>
+<tr class="memitem:ac2937c882d8455e31b8ee95322c14e3e"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#ac2937c882d8455e31b8ee95322c14e3e">handle</a> () const</td></tr>
+<tr class="memdesc:ac2937c882d8455e31b8ee95322c14e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the 16 bits handle of the BLE service.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#ac2937c882d8455e31b8ee95322c14e3e">More...</a><br /></td></tr>
 <tr class="separator:ac2937c882d8455e31b8ee95322c14e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a23c3a0a98870d008834e068490a35c"><td class="memItemLeft" align="right" valign="top"><a id="a5a23c3a0a98870d008834e068490a35c"></a>
-winrt::guid&#160;</td><td class="memItemRight" valign="bottom"><b>uuid</b> () const</td></tr>
+<tr class="memitem:a5a23c3a0a98870d008834e068490a35c"><td class="memItemLeft" align="right" valign="top">winrt::guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c">uuid</a> () const</td></tr>
+<tr class="memdesc:a5a23c3a0a98870d008834e068490a35c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the UUID of the service.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c">More...</a><br /></td></tr>
 <tr class="separator:a5a23c3a0a98870d008834e068490a35c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f9446e501d0a9de3a4599cc4e0d599b"><td class="memItemLeft" align="right" valign="top"><a id="a8f9446e501d0a9de3a4599cc4e0d599b"></a>
-std::shared_ptr&lt; const <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>peripheral</b> () const</td></tr>
+<tr class="memitem:a8f9446e501d0a9de3a4599cc4e0d599b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; const <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a8f9446e501d0a9de3a4599cc4e0d599b">peripheral</a> () const</td></tr>
+<tr class="memdesc:a8f9446e501d0a9de3a4599cc4e0d599b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the peripheral to which the service belongs.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a8f9446e501d0a9de3a4599cc4e0d599b">More...</a><br /></td></tr>
 <tr class="separator:a8f9446e501d0a9de3a4599cc4e0d599b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3308e5b439ae90df35d1495e79ecb9d"><td class="memItemLeft" align="right" valign="top"><a id="af3308e5b439ae90df35d1495e79ecb9d"></a>
-std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>peripheral</b> ()</td></tr>
+<tr class="memitem:af3308e5b439ae90df35d1495e79ecb9d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#af3308e5b439ae90df35d1495e79ecb9d">peripheral</a> ()</td></tr>
+<tr class="memdesc:af3308e5b439ae90df35d1495e79ecb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the peripheral to which the service belongs.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#af3308e5b439ae90df35d1495e79ecb9d">More...</a><br /></td></tr>
 <tr class="separator:af3308e5b439ae90df35d1495e79ecb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67233e62ec82718978f539417b481ed5"><td class="memItemLeft" align="right" valign="top"><a id="a67233e62ec82718978f539417b481ed5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>copyCharacteristics</b> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt;&gt; &amp;outCharacteristics)</td></tr>
-<tr class="separator:a67233e62ec82718978f539417b481ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd265122f89c929597ab0b9be8baef25"><td class="memItemLeft" align="right" valign="top"><a id="abd265122f89c929597ab0b9be8baef25"></a>
-std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCharacteristic</b> (const winrt::guid &amp;uuid)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Characteristics access</div></td></tr>
+<tr class="memitem:abd265122f89c929597ab0b9be8baef25"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#abd265122f89c929597ab0b9be8baef25">getCharacteristic</a> (const winrt::guid &amp;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c">uuid</a>)</td></tr>
+<tr class="memdesc:abd265122f89c929597ab0b9be8baef25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the first <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instance with the given UUID.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#abd265122f89c929597ab0b9be8baef25">More...</a><br /></td></tr>
 <tr class="separator:abd265122f89c929597ab0b9be8baef25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a092ff003868e7a6c2f06b040ab3b1c3b"><td class="memItemLeft" align="right" valign="top"><a id="a092ff003868e7a6c2f06b040ab3b1c3b"></a>
-const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCharacteristics</b> (const winrt::guid &amp;uuid)</td></tr>
+<tr class="memitem:a092ff003868e7a6c2f06b040ab3b1c3b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a092ff003868e7a6c2f06b040ab3b1c3b">getCharacteristics</a> (const winrt::guid &amp;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c">uuid</a>)</td></tr>
+<tr class="memdesc:a092ff003868e7a6c2f06b040ab3b1c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the all the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instances with the given UUID.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a092ff003868e7a6c2f06b040ab3b1c3b">More...</a><br /></td></tr>
 <tr class="separator:a092ff003868e7a6c2f06b040ab3b1c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67233e62ec82718978f539417b481ed5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a67233e62ec82718978f539417b481ed5">copyCharacteristics</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt;&gt; &amp;outCharacteristics)</td></tr>
+<tr class="memdesc:a67233e62ec82718978f539417b481ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the discovered characteristics to the given std::vector.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#a67233e62ec82718978f539417b481ed5">More...</a><br /></td></tr>
+<tr class="separator:a67233e62ec82718978f539417b481ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a primary service on a Bluetooth Low Energy (BLE) peripheral. </p>
+<p>A specific <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> may be retrieved by its UUID with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#abd265122f89c929597ab0b9be8baef25" title="Gets the first Characteristic instance with the given UUID.">getCharacteristic()</a>.</p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> class internally stores a WinRT's <code>GattDeviceService</code> object. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a67233e62ec82718978f539417b481ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67233e62ec82718978f539417b481ed5">&#9670;&nbsp;</a></span>copyCharacteristics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic::BluetoothLE::Service::copyCharacteristics </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>outCharacteristics</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the discovered characteristics to the given std::vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outCharacteristics</td><td>A std::vector to which the discovered characteristics are copied (appended). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd265122f89c929597ab0b9be8baef25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd265122f89c929597ab0b9be8baef25">&#9670;&nbsp;</a></span>getCharacteristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a>&gt; Systemic::BluetoothLE::Service::getCharacteristic </td>
+          <td>(</td>
+          <td class="paramtype">const winrt::guid &amp;&#160;</td>
+          <td class="paramname"><em>uuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the first <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instance with the given UUID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uuid</td><td>The UUID of the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instance. </dd></dl>
+
+</div>
+</div>
+<a id="a092ff003868e7a6c2f06b040ab3b1c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a092ff003868e7a6c2f06b040ab3b1c3b">&#9670;&nbsp;</a></span>getCharacteristics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::shared_ptr&lt;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html">Characteristic</a>&gt; &gt; Systemic::BluetoothLE::Service::getCharacteristics </td>
+          <td>(</td>
+          <td class="paramtype">const winrt::guid &amp;&#160;</td>
+          <td class="paramname"><em>uuid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the all the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instances with the given UUID. </p>
+<p>Characteristics are always returned in the same order.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uuid</td><td>The UUID of the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> instances. </dd></dl>
+
+</div>
+</div>
+<a id="ac2937c882d8455e31b8ee95322c14e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2937c882d8455e31b8ee95322c14e3e">&#9670;&nbsp;</a></span>handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint16_t Systemic::BluetoothLE::Service::handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the 16 bits handle of the BLE service. </p>
+<dl class="section return"><dt>Returns</dt><dd>The 16 bits handle of the service. </dd></dl>
+
+</div>
+</div>
+<a id="af3308e5b439ae90df35d1495e79ecb9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3308e5b439ae90df35d1495e79ecb9d">&#9670;&nbsp;</a></span>peripheral() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a>&gt; Systemic::BluetoothLE::Service::peripheral </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the peripheral to which the service belongs. </p>
+<dl class="section return"><dt>Returns</dt><dd>The peripheral for the service. </dd></dl>
+
+</div>
+</div>
+<a id="a8f9446e501d0a9de3a4599cc4e0d599b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9446e501d0a9de3a4599cc4e0d599b">&#9670;&nbsp;</a></span>peripheral() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;const <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a>&gt; Systemic::BluetoothLE::Service::peripheral </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the peripheral to which the service belongs. </p>
+<dl class="section return"><dt>Returns</dt><dd>The peripheral for the service. </dd></dl>
+
+</div>
+</div>
+<a id="a5a23c3a0a98870d008834e068490a35c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a23c3a0a98870d008834e068490a35c">&#9670;&nbsp;</a></span>uuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">winrt::guid Systemic::BluetoothLE::Service::uuid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the UUID of the service. </p>
+<dl class="section return"><dt>Returns</dt><dd>The UUID of the service. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/<a class="el" href="_service_8h_source.html">Service.h</a></li>
 </ul>

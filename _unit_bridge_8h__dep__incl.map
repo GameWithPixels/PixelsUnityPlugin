@@ -1,4 +1,4 @@
 <map id="Assets/Plugins/Pixels/iOS/UnitBridge.h" name="Assets/Plugins/Pixels/iOS/UnitBridge.h">
-<area shape="rect" id="node1" title="This file exists only to be included by UnityBridge.mm." alt="" coords="5,5,155,47"/>
+<area shape="rect" id="node1" title="This file exists only to be included in UnityBridge.mm." alt="" coords="5,5,155,47"/>
 <area shape="rect" id="node2" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,95,155,136"/>
 </map>

@@ -1,6 +1,7 @@
 var interface_s_g_ble_request =
 [
     [ "execute", "interface_s_g_ble_request.html#a30b72514b75ec994b08fb55cffcd3fde", null ],
+    [ "getRequestTypeString", "interface_s_g_ble_request.html#aa7c55ccf4d5bca03f1e5f9d46ba43983", null ],
     [ "initWithRequestType:executeHandler:completionHandler:", "interface_s_g_ble_request.html#a03c9497b76856972a7250d35ce2602a4", null ],
     [ "notifyResult:", "interface_s_g_ble_request.html#a03f3226508f114d1e9495025cc61897e", null ],
     [ "type", "interface_s_g_ble_request.html#afd952687df3a8bf4f3ed8a2cd3462477", null ],

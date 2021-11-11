@@ -89,13 +89,95 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_s
 <div class="title">Systemic::BluetoothLE::Scanner Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements scanning of Bluetooth Low Energy (BLE) peripherals.  
+ <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_scanner_8h_source.html">Scanner.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acb0abb756756b7a249d9442278488143"><td class="memItemLeft" align="right" valign="top"><a id="acb0abb756756b7a249d9442278488143"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Scanner</b> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html">DiscoveredPeripheral</a> &gt;)&gt; peripheralDiscovered, std::vector&lt; winrt::guid &gt; services=std::vector&lt; winrt::guid &gt;{}, std::function&lt; void()&gt; scanStopped=nullptr)</td></tr>
-<tr class="separator:acb0abb756756b7a249d9442278488143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cba1329e65c3ead59d63a0932a041d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a7cba1329e65c3ead59d63a0932a041d4">Scanner</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html">DiscoveredPeripheral</a> &gt;)&gt; peripheralDiscovered, std::vector&lt; winrt::guid &gt; services=std::vector&lt; winrt::guid &gt;{})</td></tr>
+<tr class="memdesc:a7cba1329e65c3ead59d63a0932a041d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> and immediately starts scanning for BLE peripherals.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a7cba1329e65c3ead59d63a0932a041d4">More...</a><br /></td></tr>
+<tr class="separator:a7cba1329e65c3ead59d63a0932a041d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1032a0793532ff34f0732cf61699b443"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a1032a0793532ff34f0732cf61699b443">copyDiscoveredPeripherals</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html">DiscoveredPeripheral</a> &gt;&gt; &amp;outDiscoveredPeripherals)</td></tr>
+<tr class="memdesc:a1032a0793532ff34f0732cf61699b443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the discovered peripherals to the given std::vector.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a1032a0793532ff34f0732cf61699b443">More...</a><br /></td></tr>
+<tr class="separator:a1032a0793532ff34f0732cf61699b443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c77959596f4c101fbcd1de7aceceb31"><td class="memItemLeft" align="right" valign="top"><a id="a0c77959596f4c101fbcd1de7aceceb31"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a0c77959596f4c101fbcd1de7aceceb31">~Scanner</a> ()</td></tr>
+<tr class="memdesc:a0c77959596f4c101fbcd1de7aceceb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the scan and destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> instance. <br /></td></tr>
+<tr class="separator:a0c77959596f4c101fbcd1de7aceceb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements scanning of Bluetooth Low Energy (BLE) peripherals. </p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> class internally stores a WinRT's <code>BluetoothLEAdvertisementWatcher</code> object. </p><dl class="section see"><dt>See also</dt><dd><a href="https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher">https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7cba1329e65c3ead59d63a0932a041d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cba1329e65c3ead59d63a0932a041d4">&#9670;&nbsp;</a></span>Scanner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Systemic::BluetoothLE::Scanner::Scanner </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html">DiscoveredPeripheral</a> &gt;)&gt;&#160;</td>
+          <td class="paramname"><em>peripheralDiscovered</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; winrt::guid &gt;&#160;</td>
+          <td class="paramname"><em>services</em> = <code>std::vector&lt;winrt::guid&gt;{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> and immediately starts scanning for BLE peripherals. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">peripheralDiscovered</td><td>Called for each received advertisement packet. <br  />
+ When receiving a scan response, the advertisement data is combined with the data from the last <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html" title="Holds the information from advertisement packet(s) received from a peripheral.">DiscoveredPeripheral</a> instance created for the same peripheral before being passed to this callback. </td></tr>
+    <tr><td class="paramname">services</td><td>List of services UUIDs that the peripheral should advertise, may be empty. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1032a0793532ff34f0732cf61699b443"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1032a0793532ff34f0732cf61699b443">&#9670;&nbsp;</a></span>copyDiscoveredPeripherals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic::BluetoothLE::Scanner::copyDiscoveredPeripherals </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html">DiscoveredPeripheral</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>outDiscoveredPeripherals</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy the discovered peripherals to the given std::vector. </p>
+<p>Peripherals are copied in no particular order, which may vary from one call to another.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outDiscoveredPeripherals</td><td>A std::vector to which the discovered peripherals are copied (appended). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/<a class="el" href="_scanner_8h_source.html">Scanner.h</a></li>
 </ul>

@@ -15,7 +15,7 @@ var cble_8h =
     [ "sgBleConnectPeripheral", "cble_8h.html#a039f65950ed38c12b659f18e4a301c21", null ],
     [ "sgBleCreatePeripheral", "cble_8h.html#a895601a27ceb5b7e74ecc459b3750448", null ],
     [ "sgBleDisconnectPeripheral", "cble_8h.html#ae463cb9d5a0654335df6414d1f19121e", null ],
-    [ "sgBleGetCharacteristicProperties", "cble_8h.html#aec6bb4b39fede3d0e22c0f48fd311d17", null ],
+    [ "sgBleGetCharacteristicProperties", "cble_8h.html#a91d3413c2c17656b3eee6ddc95e4db26", null ],
     [ "sgBleGetPeripheralDiscoveredServices", "cble_8h.html#ae03e8feca86a981e0a3950acd65fe8c1", null ],
     [ "sgBleGetPeripheralMtu", "cble_8h.html#a576c6f3ca318da3e0f0cb11170b15545", null ],
     [ "sgBleGetPeripheralName", "cble_8h.html#ab8cdb7318ddd40a74cf48f4da9c5a78b", null ],

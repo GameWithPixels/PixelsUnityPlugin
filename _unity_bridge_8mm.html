@@ -95,13 +95,15 @@ Include dependency graph for UnityBridge.mm:</div>
 <div class="dyncontent">
 <div class="center"><img src="_unity_bridge_8mm__incl.png" border="0" usemap="#a_assets_2_plugins_2_pixels_2i_o_s_2_unity_bridge_8mm" alt=""/></div>
 <map name="a_assets_2_plugins_2_pixels_2i_o_s_2_unity_bridge_8mm" id="a_assets_2_plugins_2_pixels_2i_o_s_2_unity_bridge_8mm">
-<area shape="rect" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="350,5,499,47"/>
-<area shape="rect" href="_unit_bridge_8h.html" title="This file exists only to be included by UnityBridge.mm." alt="" coords="378,95,471,121"/>
+<area shape="rect" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="426,5,575,47"/>
+<area shape="rect" href="_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="454,95,547,121"/>
 <area shape="rect" title=" " alt="" coords="5,169,217,196"/>
 <area shape="rect" title=" " alt="" coords="242,169,370,196"/>
-<area shape="rect" title=" " alt="" coords="394,169,455,196"/>
-<area shape="rect" title=" " alt="" coords="479,169,541,196"/>
-<area shape="rect" title=" " alt="" coords="565,169,618,196"/>
+<area shape="rect" href="_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="395,169,500,196"/>
+<area shape="rect" title=" " alt="" coords="525,169,586,196"/>
+<area shape="rect" title=" " alt="" coords="610,169,671,196"/>
+<area shape="rect" title=" " alt="" coords="695,169,749,196"/>
+<area shape="rect" title=" " alt="" coords="365,244,529,271"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -116,7 +118,7 @@ Functions</h2></td></tr>
 <tr class="separator:aec51364ffaa0ef8838c1a8dc2ec6ac3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripherals scanning</div></td></tr>
 <tr class="memitem:a5cc1ed930419a499cdac49fafafe874b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">sgBleStartScan</a> (const char *requiredServicesUuids, bool allowDuplicates, <a class="el" href="cble_8h.html#a8887223622b67037e485059865c20461">DiscoveredPeripheralCallback</a> onDiscoveredPeripheral)</td></tr>
-<tr class="memdesc:a5cc1ed930419a499cdac49fafafe874b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals.  <a href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">More...</a><br /></td></tr>
+<tr class="memdesc:a5cc1ed930419a499cdac49fafafe874b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals advertising the given list of services.  <a href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">More...</a><br /></td></tr>
 <tr class="separator:a5cc1ed930419a499cdac49fafafe874b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabaa08ebedf2b39063535411582a75a7"><td class="memItemLeft" align="right" valign="top"><a id="aabaa08ebedf2b39063535411582a75a7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aabaa08ebedf2b39063535411582a75a7">sgBleStopScan</a> ()</td></tr>
@@ -140,22 +142,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 <tr><td colspan="2"><div class="groupText"><p>Valid only for connected peripherals. </p>
 </div></td></tr>
 <tr class="memitem:ac5cb82164109d95bf0eac3777c423446"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ac5cb82164109d95bf0eac3777c423446">sgBleGetPeripheralName</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
-<tr class="memdesc:ac5cb82164109d95bf0eac3777c423446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the given peripheral.  <a href="_unity_bridge_8mm.html#ac5cb82164109d95bf0eac3777c423446">More...</a><br /></td></tr>
+<tr class="memdesc:ac5cb82164109d95bf0eac3777c423446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the given peripheral.  <a href="_unity_bridge_8mm.html#ac5cb82164109d95bf0eac3777c423446">More...</a><br /></td></tr>
 <tr class="separator:ac5cb82164109d95bf0eac3777c423446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a993485ec781ac8b1a22aff0c500cd14d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">sgBleGetPeripheralMtu</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
-<tr class="memdesc:a993485ec781ac8b1a22aff0c500cd14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Maximum Transmission Unit (MTU) for the given peripheral.  <a href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">More...</a><br /></td></tr>
+<tr class="memdesc:a993485ec781ac8b1a22aff0c500cd14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Maximum Transmission Unit (MTU) for the given peripheral.  <a href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">More...</a><br /></td></tr>
 <tr class="separator:a993485ec781ac8b1a22aff0c500cd14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a789be6df0a962dfcac661ee103369923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">sgBleReadPeripheralRssi</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unit_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3">RssiReadCallback</a> onRssiRead, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
-<tr class="memdesc:a789be6df0a962dfcac661ee103369923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current Received Signal Strength Indicator (RSSI) of the given peripheral.  <a href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">More...</a><br /></td></tr>
+<tr class="memdesc:a789be6df0a962dfcac661ee103369923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the Received Signal Strength Indicator (RSSI) of the given peripheral.  <a href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">More...</a><br /></td></tr>
 <tr class="separator:a789be6df0a962dfcac661ee103369923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Services operations</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Valid only for ready peripherals. </p>
+</div></td></tr>
 <tr class="memitem:ae479248323b1fdb1846193b034b3c147"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ae479248323b1fdb1846193b034b3c147">sgBleGetPeripheralDiscoveredServices</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
-<tr class="memdesc:ae479248323b1fdb1846193b034b3c147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered services for the given peripheral.  <a href="_unity_bridge_8mm.html#ae479248323b1fdb1846193b034b3c147">More...</a><br /></td></tr>
+<tr class="memdesc:ae479248323b1fdb1846193b034b3c147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="_unity_bridge_8mm.html#ae479248323b1fdb1846193b034b3c147">More...</a><br /></td></tr>
 <tr class="separator:ae479248323b1fdb1846193b034b3c147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4909457251728a3765ec5ea0c94d893f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a4909457251728a3765ec5ea0c94d893f">sgBleGetPeripheralServiceCharacteristics</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid)</td></tr>
-<tr class="memdesc:a4909457251728a3765ec5ea0c94d893f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered characteristics for the given peripheral's service.  <a href="_unity_bridge_8mm.html#a4909457251728a3765ec5ea0c94d893f">More...</a><br /></td></tr>
+<tr class="memdesc:a4909457251728a3765ec5ea0c94d893f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics for the given peripheral's service.  <a href="_unity_bridge_8mm.html#a4909457251728a3765ec5ea0c94d893f">More...</a><br /></td></tr>
 <tr class="separator:a4909457251728a3765ec5ea0c94d893f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Characteristics operations</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Valid only for connected peripherals. </p>
+</div></td></tr>
 <tr class="memitem:a7ded91db47b80d9fba8181cd988c5fe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_unit_bridge_8h.html#abf1f941521787487872caf8c51565b28">characteristic_property_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">sgBleGetCharacteristicProperties</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex)</td></tr>
-<tr class="memdesc:a7ded91db47b80d9fba8181cd988c5fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the standard BLE properties of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">More...</a><br /></td></tr>
+<tr class="memdesc:a7ded91db47b80d9fba8181cd988c5fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the standard BLE properties of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">More...</a><br /></td></tr>
 <tr class="separator:a7ded91db47b80d9fba8181cd988c5fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38b976fe969c3b771779799deb9944b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a38b976fe969c3b771779799deb9944b0">sgBleReadCharacteristicValue</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce">ValueReadCallback</a> onValueRead, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a38b976fe969c3b771779799deb9944b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a38b976fe969c3b771779799deb9944b0">More...</a><br /></td></tr>
@@ -213,9 +221,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 <p>This request never timeouts.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should support, may be null or empty. </td></tr>
-    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has finished (successfully or not). </td></tr>
+    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has completed (successfully or not). </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRequestStatus</code>. </td></tr>
   </table>
   </dd>
@@ -257,11 +265,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 
 <p>Creates a Peripheral for the BLE peripheral with the given Bluetooth address. </p>
 <p>The underlying object is not returned, instead the peripheral must be referenced by its peripheral id. Call <a class="el" href="_unity_bridge_8mm.html#aee85385f9aba0bece5e129674dbabeef" title="Releases the Peripheral object associated with the given peripheral id.">sgBleReleasePeripheral()</a> to destroy the object.</p>
-<p>A scan must first be run to discover available BLE peripherals and retrieve their advertisement data. The later includes the peripheral system id, a UUID assigned by the OS.</p>
+<p>A scan must first be run to discover available BLE peripherals through their advertisement data. The later includes the peripheral system id, a UUID assigned by the system.</p>
 <dl class="section note"><dt>Note</dt><dd>The the peripheral system id may change over long period of time.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">onPeripheralConnectionEvent</td><td>Called when the peripheral connection state changes. <br  />
  The callback must stay valid until the peripheral is released. </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onPeripheralConnectionEvent</code>. </td></tr>
@@ -307,8 +315,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 <p>Disconnects the given peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
-    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has finished (successfully or not). </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
+    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has completed (successfully or not). </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRequestStatus</code>. </td></tr>
   </table>
   </dd>
@@ -354,11 +362,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Returns the standard BLE properties of the specified service's characteristic for the given peripheral. </p>
+<p>Gets the standard BLE properties of the specified service's characteristic for the given peripheral. </p>
 <dl class="section see"><dt>See also</dt><dd><a href="https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc">https://developer.apple.com/documentation/corebluetooth/cbcharacteristicproperties?language=objc</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
@@ -385,10 +393,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Returns the list of discovered services for the given peripheral. </p>
+<p>Gets the list of discovered services for the given peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
   </table>
   </dd>
 </dl>
@@ -414,10 +422,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Returns the Maximum Transmission Unit (MTU) for the given peripheral. </p>
+<p>Gets the Maximum Transmission Unit (MTU) for the given peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
   </table>
   </dd>
 </dl>
@@ -441,10 +449,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Returns the name of the given peripheral. </p>
+<p>Gets the name of the given peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
   </table>
   </dd>
 </dl>
@@ -480,11 +488,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Returns the list of discovered characteristics for the given peripheral's service. </p>
+<p>Gets the list of discovered characteristics for the given peripheral's service. </p>
 <p>The same characteristic may be listed several times according to the peripheral's configuration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID for which to retrieve the characteristics. </td></tr>
   </table>
   </dd>
@@ -573,14 +581,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 </div><div class="memdoc">
 
 <p>Sends a request to read the value of the specified service's characteristic for the given peripheral. </p>
-<p>The call will fail if the characteristic is not readable.</p>
+<p>The call fails if the characteristic is not readable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
-    <tr><td class="paramname">onValueRead</td><td>Called when the request has finished (successfully or not) and with the data read from the characteristic. </td></tr>
+    <tr><td class="paramname">onValueRead</td><td>Called when the request has completed (successfully or not) and with the data read from the characteristic. </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRequestStatus</code>. </td></tr>
   </table>
   </dd>
@@ -620,11 +628,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Reads the current Received Signal Strength Indicator (RSSI) of the given peripheral. </p>
+<p>Reads the Received Signal Strength Indicator (RSSI) of the given peripheral. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
-    <tr><td class="paramname">onRssiRead</td><td>Called with the current RSSI. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
+    <tr><td class="paramname">onRssiRead</td><td>Called with the read RSSI. </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRssiRead</code>. </td></tr>
   </table>
   </dd>
@@ -651,7 +659,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 <p>Releases the Peripheral object associated with the given peripheral id. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
   </table>
   </dd>
 </dl>
@@ -715,16 +723,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 </div><div class="memdoc">
 
 <p>Subscribes or unsubscribes for value changes of the specified service's characteristic for the given peripheral. </p>
-<p>The call will fail if the characteristic doesn't support notification or if it is already subscribed.</p>
+<p>The call fails if the characteristic doesn't support notification or if it is already subscribed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
-    <tr><td class="paramname">onValueChanged</td><td>Called when the characteristic value changes. Pass null to unsubscribe. <br  />
+    <tr><td class="paramname">onValueChanged</td><td>Called when the value of the characteristic changes. Pass null to unsubscribe. <br  />
  The callback must stay valid until the characteristic is unsubscribed or the peripheral is released. </td></tr>
-    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has finished (successfully or not). </td></tr>
+    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has completed (successfully or not). </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRequestStatus</code>. </td></tr>
   </table>
   </dd>
@@ -784,12 +792,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
       </table>
 </div><div class="memdoc">
 
-<p>Starts scanning for BLE peripherals. </p>
-<p>If a scan is already running, it will be updated to run with the new parameters.</p>
+<p>Starts scanning for BLE peripherals advertising the given list of services. </p>
+<p>If a scan is already running, it is updated to run with the new parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should advertise, may be null or empty. </td></tr>
-    <tr><td class="paramname">allowDuplicates</td><td>If <code>false</code>, let the OS coalesces multiple discoveries of the same peripheral into a single discovery event which preserves battery life. <br  />
+    <tr><td class="paramname">allowDuplicates</td><td>If <code>false</code>, let the system coalesces multiple discoveries of the same peripheral into a single discovery event which preserves battery life. <br  />
  If <code>true</code>, generates a discovery event each time it receives an advertising packet from the peripheral </td></tr>
     <tr><td class="paramname">onDiscoveredPeripheral</td><td>Called every time an advertisement packet with the required services is received. <br  />
  The advertisement data is passed as a JSON string. The callback must stay valid until the scan is stopped. </td></tr>
@@ -869,17 +877,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
 </div><div class="memdoc">
 
 <p>Sends a request to write to the specified service's characteristic for the given peripheral. </p>
-<p>The call will fail if the characteristic is not writable.</p>
+<p>The call fails if the characteristic is not writable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the OS for the peripheral. </td></tr>
+    <tr><td class="paramname">peripheralId</td><td>The UUID assigned by the system for the peripheral. </td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
     <tr><td class="paramname">data</td><td>A pointer to the data to write to the characteristic. </td></tr>
     <tr><td class="paramname">length</td><td>The size in bytes of the data. </td></tr>
     <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
-    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has finished (successfully or not). </td></tr>
+    <tr><td class="paramname">onRequestStatus</td><td>Called when the request has completed (successfully or not). </td></tr>
     <tr><td class="paramname">requestIndex</td><td>The index of this request, passed back when calling <code>onRequestStatus</code>. </td></tr>
   </table>
   </dd>

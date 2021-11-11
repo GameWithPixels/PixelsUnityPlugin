@@ -103,7 +103,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5f9a9f761f757809fa03693552213066"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">startScan</a> (final String requiredServicesUuids, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a> callback)</td></tr>
-<tr class="memdesc:a5f9a9f761f757809fa03693552213066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">More...</a><br /></td></tr>
+<tr class="memdesc:a5f9a9f761f757809fa03693552213066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals advertising the given list of services.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">More...</a><br /></td></tr>
 <tr class="separator:a5f9a9f761f757809fa03693552213066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d2ad7045c60766825997ef0af0fe00b"><td class="memItemLeft" align="right" valign="top"><a id="a5d2ad7045c60766825997ef0af0fe00b"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5d2ad7045c60766825997ef0af0fe00b">stopScan</a> ()</td></tr>
@@ -149,12 +149,12 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </table>
 </div><div class="memdoc">
 
-<p>Starts scanning for BLE peripherals. </p>
-<p>If a scan is already running, it will be stopped before starting the new one.</p>
+<p>Starts scanning for BLE peripherals advertising the given list of services. </p>
+<p>If a scan is already running, it is stopped before starting the new one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should advertise, may be null or empty. </td></tr>
-    <tr><td class="paramname">callback</td><td>The object implementing the scanner callbacks. </td></tr>
+    <tr><td class="paramname">callback</td><td>The callback for notifying of the scan results (called for each advertisement packet). </td></tr>
   </table>
   </dd>
 </dl>

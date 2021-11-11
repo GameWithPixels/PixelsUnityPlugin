@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initialize_229',['Initialize',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abb5992244660d58e7f1930d4c56976b6',1,'Systemic.Unity.BluetoothLE.Central.Initialize()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a870bf275f6dbebad711a145186a3e49c',1,'Systemic.Unity.BluetoothLE.NativeInterface.Initialize()']]]
+  ['freecombuffer_341',['freeComBuffer',['../namespace_systemic_1_1_com_helper.html#a87e9c46c85c04678d7f370898ea1ef45',1,'Systemic::ComHelper']]]
 ];
