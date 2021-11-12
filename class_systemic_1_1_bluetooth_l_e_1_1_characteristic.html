@@ -257,6 +257,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reads the value from the characteristic. </p>
+<p>The call fails if the characteristic is not readable.</p>
 <dl class="section return"><dt>Returns</dt><dd>A future with the read value as a vector of bytes. </dd></dl>
 
 </div>
@@ -278,6 +279,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Subscribes for value changes of the characteristic. </p>
+<p>Replaces a previously registered value change callback. The call fails if the characteristic doesn't support notifications.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">onValueChanged</td><td>Called when the value of the characteristic changes. </td></tr>
@@ -355,9 +357,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Writes the given data to the value of the characteristic. </p>
+<p>The call fails if the characteristic is not writable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>The data to write to the characteristic. </td></tr>
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic (may be empty). </td></tr>
     <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
   </table>
   </dd>

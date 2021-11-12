@@ -887,7 +887,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_uni
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
-    <tr><td class="paramname">data</td><td>A pointer to the data to write to the characteristic. </td></tr>
+    <tr><td class="paramname">data</td><td>A pointer to the data to write to the characteristic (may be null if length is zero). </td></tr>
     <tr><td class="paramname">length</td><td>The size in bytes of the data. </td></tr>
     <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
     <tr><td class="paramname">onRequestStatus</td><td>Called when the request has completed (successfully or not). </td></tr>

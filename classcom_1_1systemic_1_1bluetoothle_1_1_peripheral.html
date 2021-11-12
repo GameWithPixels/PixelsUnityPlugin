@@ -166,7 +166,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa5ca4e6bc7ff8997f935ef6f1b67f440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to write the value of specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#aa5ca4e6bc7ff8997f935ef6f1b67f440">More...</a><br /></td></tr>
 <tr class="separator:aa5ca4e6bc7ff8997f935ef6f1b67f440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac37b830d8eb67b2720c9fc75cd6652c2">subscribeCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final DataReceivedCallback valueChangedCallback, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
-<tr class="memdesc:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to subscribes for value changes of the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac37b830d8eb67b2720c9fc75cd6652c2">More...</a><br /></td></tr>
+<tr class="memdesc:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to subscribe for value changes of the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac37b830d8eb67b2720c9fc75cd6652c2">More...</a><br /></td></tr>
 <tr class="separator:ac37b830d8eb67b2720c9fc75cd6652c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15911acde11d4e9818b008ae0de07d12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12">unsubscribeCharacteristic</a> (final String serviceUuid, final String characteristicUuid, final int instanceIndex, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html">RequestCallback</a> requestCallback)</td></tr>
 <tr class="memdesc:a15911acde11d4e9818b008ae0de07d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to unsubscribe from the specified service's characteristic.  <a href="classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12">More...</a><br /></td></tr>
@@ -548,6 +548,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Queues a request to read the value of the specified service's characteristic. </p>
+<p>The call fails if the characteristic is not readable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
@@ -667,7 +668,8 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Queues a request to subscribes for value changes of the specified service's characteristic. </p>
+<p>Queues a request to subscribe for value changes of the specified service's characteristic. </p>
+<p>Replaces a previously registered value change callback for the same characteristic. The call fails if the characteristic doesn't support notifications.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
@@ -783,12 +785,13 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Queues a request to write the value of specified service's characteristic. </p>
+<p>The call fails if the characteristic is not writable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">serviceUuid</td><td>The service UUID. </td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID. </td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, otherwise zero. </td></tr>
-    <tr><td class="paramname">data</td><td>The data to write to the characteristic. </td></tr>
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic (may be empty but not null). </td></tr>
     <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond. </td></tr>
     <tr><td class="paramname">requestCallback</td><td>The callback for notifying of the request result. </td></tr>
   </table>

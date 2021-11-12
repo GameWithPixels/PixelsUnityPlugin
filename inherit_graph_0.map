@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral." alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,117,108"/>
+<area shape="rect" id="node2" href="$class_ble_console.html" title=" " alt="" coords="173,5,261,32"/>
+<area shape="rect" id="node3" href="$class_ble_controller.html" title=" " alt="" coords="169,56,265,83"/>
+<area shape="rect" id="node4" href="$class_configure_plist.html" title="Post process build step that adds required NSBluetoothAlwaysUsageDescription entry to Info...." alt="" coords="165,107,268,133"/>
+<area shape="rect" id="node5" href="$class_u_i_console.html" title=" " alt="" coords="175,157,258,184"/>
 </map>

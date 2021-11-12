@@ -1,5 +1,6 @@
 var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
 [
+    [ "Test", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test.html", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test" ],
     [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
     [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
     [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
@@ -39,7 +40,7 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
       [ "NotSupported", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a9ed2d871602556951e39f3cebd08d6cb", null ],
       [ "Timeout", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ac85a251cc457840f1e032f1b733e9398", null ],
       [ "LinkLoss", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a01389a4e54d8c078414891e86dd7742d", null ],
-      [ "AdpaterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ac8afe2b6c8cbedd939017e05b4e86056", null ],
+      [ "AdapterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ab34780231f9c8a6db0787f4b10335637", null ],
       [ "Peripheral", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9", null ]
     ] ],
     [ "RequestOperation", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77ea", [
@@ -64,7 +65,7 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
       [ "NotSupported", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea9ed2d871602556951e39f3cebd08d6cb", null ],
       [ "ProtocolError", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaca3da8f495e4e628912a7798655da6c2", null ],
       [ "AccessDenied", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacbcc0759909213e7cdba1f0cbf253126", null ],
-      [ "AdpaterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac8afe2b6c8cbedd939017e05b4e86056", null ],
+      [ "AdapterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eab34780231f9c8a6db0787f4b10335637", null ],
       [ "Timeout", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac85a251cc457840f1e032f1b733e9398", null ]
     ] ],
     [ "NativeBluetoothEventHandler", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727", null ],

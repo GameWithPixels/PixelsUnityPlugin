@@ -95,51 +95,55 @@ $(document).ready(function(){initNavTree('_logger_8h_source.html',''); initResiz
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span>Systemic::Internal::Logger</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> Log(<span class="keyword">const</span> std::string&amp; str)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> std::ofstream myfile(<span class="stringliteral">&quot;C:\\Users\\obasi\\Documents\\dev\\systemic\\log.txt&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        std::ostringstream ss;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        time_in_HH_MM_SS_MMM(ss);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; str &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        myfile &lt;&lt; ss.str();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        myfile.flush();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> time_in_HH_MM_SS_MMM(std::ostream&amp; out)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">using namespace </span>std::chrono;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// get current time</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">auto</span> now = system_clock::now();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// get number of milliseconds for the current second</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// (remainder after division into seconds)</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">auto</span> ms = duration_cast&lt;milliseconds&gt;(now.time_since_epoch()) % 1000;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// convert to std::time_t in order to convert to std::tm (broken time)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">auto</span> timer = system_clock::to_time_t(now);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// convert to broken time</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::tm bt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ::localtime_s(&amp;bt, &amp;timer);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// save default formatting</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::ios init(<span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        init.copyfmt(out);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        out &lt;&lt; std::put_time(&amp;bt, <span class="stringliteral">&quot;%H:%M:%S&quot;</span>); <span class="comment">// HH:MM:SS</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        out &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(3) &lt;&lt; ms.count() &lt;&lt; std::setw(3);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// restore default formatting</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        out.copyfmt(init);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>Systemic::Internal</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">class </span>Logger</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> Log(<span class="keyword">const</span> std::string&amp; str)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">static</span> std::ofstream myfile(std::filesystem::temp_directory_path().append(<span class="stringliteral">&quot;systemic_log.txt&quot;</span>).native());</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            std::ostringstream ss;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            time_in_HH_MM_SS_MMM(ss);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ss &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; str &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            myfile &lt;&lt; ss.str();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            myfile.flush();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> time_in_HH_MM_SS_MMM(std::ostream&amp; out)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// get current time</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">auto</span> now = system_clock::now();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="comment">// get number of milliseconds for the current second</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// (remainder after division into seconds)</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">auto</span> ms = duration_cast&lt;milliseconds&gt;(now.time_since_epoch()) % 1000;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">// convert to std::time_t in order to convert to std::tm (broken time)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">auto</span> timer = system_clock::to_time_t(now);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">// convert to broken time</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            std::tm bt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ::localtime_s(&amp;bt, &amp;timer);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">// save default formatting</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            std::ios init(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            init.copyfmt(out);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            out &lt;&lt; std::put_time(&amp;bt, <span class="stringliteral">&quot;%H:%M:%S&quot;</span>); <span class="comment">// HH:MM:SS</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            out &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(3) &lt;&lt; ms.count() &lt;&lt; std::setw(3);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">// restore default formatting</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            out.copyfmt(init);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    };</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

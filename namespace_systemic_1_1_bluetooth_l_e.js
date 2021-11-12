@@ -20,7 +20,7 @@ var namespace_systemic_1_1_bluetooth_l_e =
       [ "NotSupported", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a9ed2d871602556951e39f3cebd08d6cb", null ],
       [ "ProtocolError", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449aca3da8f495e4e628912a7798655da6c2", null ],
       [ "AccessDenied", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449acbcc0759909213e7cdba1f0cbf253126", null ],
-      [ "AdpaterOff", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449ac8afe2b6c8cbedd939017e05b4e86056", null ],
+      [ "AdapterOff", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449ab34780231f9c8a6db0787f4b10335637", null ],
       [ "Timeout", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449ac85a251cc457840f1e032f1b733e9398", null ]
     ] ],
     [ "CharacteristicProperties", "namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1", [

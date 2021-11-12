@@ -690,6 +690,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to read the value of the specified service's characteristic for the given peripheral. </p>
+<p>The call fails if the characteristic is not readable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
@@ -999,7 +1000,7 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to subscribe for value changes of the specified service's characteristic for the given peripheral. </p>
-<p>The call fails if the characteristic doesn't support notification or if it is already subscribed.</p>
+<p>Replaces a previously registered value change handler for the same characteristic. The call fails if the characteristic doesn't support notifications.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
@@ -1147,13 +1148,14 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to write to the specified service's characteristic for the given peripheral. </p>
+<p>The call fails if the characteristic is not writable.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nativePeripheralHandle</td><td>Handle to the native object for the BLE peripheral.</td></tr>
     <tr><td class="paramname">serviceUuid</td><td>The service UUID.</td></tr>
     <tr><td class="paramname">characteristicUuid</td><td>The characteristic UUID.</td></tr>
     <tr><td class="paramname">instanceIndex</td><td>The instance index of the characteristic if listed more than once for the service, default is zero.</td></tr>
-    <tr><td class="paramname">data</td><td>The data to write to the characteristic.</td></tr>
+    <tr><td class="paramname">data</td><td>The data to write to the characteristic (may be empty).</td></tr>
     <tr><td class="paramname">withoutResponse</td><td>Whether to wait for the peripheral to respond.</td></tr>
     <tr><td class="paramname">onResult</td><td>Invoked when the request has completed (successfully or not).</td></tr>
   </table>

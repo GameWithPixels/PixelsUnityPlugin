@@ -37,6 +37,6 @@ var group___apple___objective__c =
       [ "SGBleConnectionEventReasonNotSupported", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a70a5b369e1950d5840b7b53e0a8761c0", null ],
       [ "SGBleConnectionEventReasonTimeout", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04afcd8119d12c1d314431c71a91b394cb7", null ],
       [ "SGBleConnectionEventReasonLinkLoss", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a2ef464fec9871252d620bc01d2acc154", null ],
-      [ "SGBleConnectionEventReasonAdpaterOff", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a37d44c9e93543a5c8874865e8dcd90b5", null ]
+      [ "SGBleConnectionEventReasonAdapterOff", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a13ce53c963b9ba520d3d6943193b830b", null ]
     ] ]
 ];
