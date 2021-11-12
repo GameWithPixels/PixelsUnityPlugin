@@ -55,15 +55,16 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
     internal enum AndroidConnectionEventReason
     {
         REASON_UNKNOWN = -1,
-        REASON_SUCCESS = 0,             // The disconnection was initiated by the user
-        REASON_TERMINATE_LOCAL_HOST = 1,// The local device initiated disconnection
-        REASON_TERMINATE_PEER_USER = 2, // The remote device initiated graceful disconnection
+        REASON_SUCCESS = 0,             // Disconnection was initiated by the user
+        REASON_TERMINATE_LOCAL_HOST = 1,// Host device initiated disconnection
+        REASON_TERMINATE_PEER_USER = 2, // Remote device initiated graceful disconnection
         REASON_LINK_LOSS = 3,           // This reason is only reported when autoConnect=true,
-                                        // and connection to the device was lost for any reason other than graceful disconnection initiated by peer user,
-                                        // In this case Android tries to reconnect automatically
-        REASON_NOT_SUPPORTED = 4,       // The device does not have required services
+                                        // and connection to the device was lost for any reason other than
+                                        // graceful disconnection initiated by peer user,
+                                        // in this case Android tries to reconnect automatically
+        REASON_NOT_SUPPORTED = 4,       // Device doesn't have the required services
         REASON_CANCELLED = 5,           // Connection attempt was canceled
-        REASON_TIMEOUT = 10,            // The connection timed out
+        REASON_TIMEOUT = 10,            // Connection timed out
     }
 
     internal sealed class AndroidNativeInterfaceImpl : INativeInterfaceImpl
@@ -296,7 +297,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
                 (int)AndroidRequestStatus.REASON_TIMEOUT => RequestStatus.Timeout,
                 //(int)AndroidRequestStatus.REASON_VALIDATION => RequestStatus.Error,
                 (int)AndroidRequestStatus.REASON_CANCELLED => RequestStatus.Canceled,
-                (int)AndroidRequestStatus.REASON_BLUETOOTH_DISABLED => RequestStatus.AdpaterOff,
+                (int)AndroidRequestStatus.REASON_BLUETOOTH_DISABLED => RequestStatus.AdapterOff,
                 (int)AndroidRequestStatus.REASON_REQUEST_INVALID => RequestStatus.InvalidCall,
                 _ => RequestStatus.Error
             };
@@ -307,7 +308,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
             return androidReason switch
             {
                 (int)AndroidConnectionEventReason.REASON_SUCCESS => ConnectionEventReason.Success,
-                (int)AndroidConnectionEventReason.REASON_TERMINATE_LOCAL_HOST => ConnectionEventReason.AdpaterOff,
+                (int)AndroidConnectionEventReason.REASON_TERMINATE_LOCAL_HOST => ConnectionEventReason.AdapterOff,
                 (int)AndroidConnectionEventReason.REASON_TERMINATE_PEER_USER => ConnectionEventReason.Peripheral,
                 (int)AndroidConnectionEventReason.REASON_LINK_LOSS => ConnectionEventReason.LinkLoss,
                 (int)AndroidConnectionEventReason.REASON_NOT_SUPPORTED => ConnectionEventReason.NotSupported,

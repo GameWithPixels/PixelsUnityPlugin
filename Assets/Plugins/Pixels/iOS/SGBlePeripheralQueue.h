@@ -151,7 +151,7 @@
  *
  * The call fails if the characteristic is not writable.
  *
- * @param data The data to write.
+ * @param data The data to write (may be empty but not nil).
  * @param characteristic The CBCharacteristic object.
  * @param type The write type to perform.
  * @param completionHandler The handler for notifying of the request result.

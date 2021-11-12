@@ -227,7 +227,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
     SGBleRequestExecuteHandler block = ^{
         if (!characteristic || !valueReadHandler)
         {
-            NSLog(@">> ReadValueForCharacteristic -> invalid call");
+            NSLog(@">> ReadValueForCharacteristic -> invalid parameters");
             return invalidParametersError;
         }
         
@@ -250,9 +250,9 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
     NSLog(@">> queueWriteValue");
     
     SGBleRequestExecuteHandler block = ^{
-        if (!characteristic)
+        if (!characteristic || !data)
         {
-            NSLog(@">> WriteValue -> invalid call");
+            NSLog(@">> WriteValue -> invalid parameters");
             return invalidParametersError;
         }
         
@@ -280,7 +280,7 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
         //TODO fail if already subscribed
         if (!characteristic || !valueChangedHandler)
         {
-            NSLog(@">> SetNotifyValueForCharacteristic -> invalid call");
+            NSLog(@">> SetNotifyValueForCharacteristic -> invalid parameters");
             return invalidParametersError;
         }
         

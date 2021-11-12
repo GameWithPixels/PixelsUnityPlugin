@@ -309,13 +309,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 if (handler != null)
                 {
                     // Notify user code
-                    byte[] array = null;
-                    if (data != IntPtr.Zero)
-                    {
-                        array = new byte[(int)length];
-                        Marshal.Copy(data, array, 0, array.Length);
-                    }
-                    handler(array, ToRequestStatus(errorCode));
+                    handler(UnmanagedBuffer.ToArray(data, length), ToRequestStatus(errorCode));
                 }
                 else
                 {
@@ -462,15 +456,14 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         {
             var requestIndex = SetRequestHandler(RequestOperation.WriteCharacteristic, onResult);
 
-            var ptr = Marshal.AllocHGlobal(data.Length);
+            var (ptr, length) = UnmanagedBuffer.AllocUnmanagedBuffer(data);
             try
             {
-                Marshal.Copy(data, 0, ptr, data.Length);
-                sgBleWriteCharacteristicValue(GetPeripheralId(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse, OnRequestStatus, requestIndex);
+                sgBleWriteCharacteristicValue(GetPeripheralId(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)length, withoutResponse, OnRequestStatus, requestIndex);
             }
             finally
             {
-                Marshal.FreeHGlobal(ptr);
+                UnmanagedBuffer.FreeUnmanagedBuffer(ptr);
             }
         }
 

@@ -56,7 +56,8 @@ typedef NS_ENUM(NSInteger, SGBleConnectionEvent)
  * @brief Peripheral connection events reasons.
  * @ingroup Apple_Objective-C
  */
-typedef NS_ENUM(NSInteger, SGBleConnectionEventReason) {
+typedef NS_ENUM(NSInteger, SGBleConnectionEventReason)
+{
     /// The disconnect happened for an unknown reason.
     SGBleConnectionEventReasonUnknown = -1,
 
@@ -66,7 +67,7 @@ typedef NS_ENUM(NSInteger, SGBleConnectionEventReason) {
     /// Connection attempt canceled by user.
     SGBleConnectionEventReasonCanceled,
 
-    /// Peripheral does not have all required services.
+    /// Peripheral doesn't have all required services.
     SGBleConnectionEventReasonNotSupported,
 
     /// Peripheral didn't responded in time.
@@ -76,7 +77,7 @@ typedef NS_ENUM(NSInteger, SGBleConnectionEventReason) {
     SGBleConnectionEventReasonLinkLoss,
 
     /// The local device Bluetooth adapter is off.
-    SGBleConnectionEventReasonAdpaterOff,
+    SGBleConnectionEventReasonAdapterOff,
 };
 
 /**

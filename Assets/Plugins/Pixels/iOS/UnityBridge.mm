@@ -390,7 +390,7 @@ void sgBleReadCharacteristicValue(peripheral_id_t peripheralId,
  * @param characteristicUuid The characteristic UUID.
  * @param instanceIndex The instance index of the characteristic if listed more than once
  *                      for the service, otherwise zero.
- * @param data A pointer to the data to write to the characteristic.
+ * @param data A pointer to the data to write to the characteristic (may be null if length is zero).
  * @param length The size in bytes of the data.
  * @param withoutResponse Whether to wait for the peripheral to respond.
  * @param onRequestStatus Called when the request has completed (successfully or not).
@@ -406,13 +406,17 @@ void sgBleWriteCharacteristicValue(peripheral_id_t peripheralId,
                                    RequestStatusCallback onRequestStatus,
                                    request_index_t requestIndex)
 {
-    if (data && length)
+    if (data)
     {
         SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
         [peripheral queueWriteValue:[NSData dataWithBytes:data length:length]
                   forCharacteristic:getCharacteristic(peripheralId, serviceUuid, characteristicUuid, instanceIndex)
                                type:withoutResponse ? CBCharacteristicWriteWithoutResponse : CBCharacteristicWriteWithResponse
                   completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
+    }
+    else if (onRequestStatus)
+    {
+        onRequestStatus(requestIndex, invalidParametersError);
     }
 }
 

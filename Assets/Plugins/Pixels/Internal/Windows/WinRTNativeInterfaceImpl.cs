@@ -331,16 +331,15 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
 
         public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
         {
-            var ptr = Marshal.AllocHGlobal(data.Length);
+            var (ptr, length) = UnmanagedBuffer.AllocUnmanagedBuffer(data);
             try
             {
-                Marshal.Copy(data, 0, ptr, data.Length);
-                sgBleWriteCharacteristicValue(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)data.Length, withoutResponse,
+                sgBleWriteCharacteristicValue(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, ptr, (UIntPtr)length, withoutResponse,
                     GetRequestStatusHandler(RequestOperation.WriteCharacteristic, peripheralHandle, onResult));
             }
             finally
             {
-                Marshal.FreeHGlobal(ptr);
+                UnmanagedBuffer.FreeUnmanagedBuffer(ptr);
             }
         }
 
@@ -406,12 +405,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             {
                 try
                 {
-                    var array = new byte[(int)length];
-                    if (data != IntPtr.Zero)
-                    {
-                        Marshal.Copy(data, array, 0, array.Length);
-                    }
-                    onValueRead(array, status);
+                    onValueRead(UnmanagedBuffer.ToArray(data, length), status);
                 }
                 catch (Exception e)
                 {
@@ -429,12 +423,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             {
                 try
                 {
-                    byte[] array = null;
-                    if (data != IntPtr.Zero)
-                    {
-                        array = new byte[(int)length];
-                        Marshal.Copy(data, array, 0, array.Length);
-                    }
+                    var array = UnmanagedBuffer.ToArray(data, length);
                     onValueChanged(array, array != null ? RequestStatus.Success : RequestStatus.Error);
                 }
                 catch (Exception e)

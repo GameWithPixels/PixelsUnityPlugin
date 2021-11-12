@@ -589,7 +589,7 @@ public class Peripheral
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param data The data to write to the characteristic.
+     * @param data The data to write to the characteristic (may be empty but not null).
      * @param withoutResponse Whether to wait for the peripheral to respond.
      * @param requestCallback The callback for notifying of the request result.
      */

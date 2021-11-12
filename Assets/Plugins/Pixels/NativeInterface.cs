@@ -383,6 +383,8 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Requests to read the value of the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not readable.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
@@ -404,12 +406,14 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Requests to write to the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not writable.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
-        /// <param name="data">The data to write to the characteristic.</param>
+        /// <param name="data">The data to write to the characteristic (may be empty).</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
@@ -419,7 +423,6 @@ namespace Systemic.Unity.BluetoothLE
             if (serviceUuid == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(serviceUuid));
             if (characteristicUuid == Guid.Empty) throw new ArgumentException("Empty characteristic UUID", nameof(characteristicUuid));
             if (data == null) throw new ArgumentNullException(nameof(data));
-            if (data.Length == 0) throw new ArgumentException("Empty data set", nameof(data));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
 
             SanityCheck();

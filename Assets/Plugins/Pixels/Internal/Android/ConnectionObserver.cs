@@ -23,7 +23,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 		}
 
 		/// <summary>
-		/// Called when the device has been connected. This does not mean that the application may start
+		/// Called when the device has been connected. This doesn't mean that the application may start
 		/// communication. Service discovery is handled automatically after this call.
 		/// </summary>
 		/// <param name="device">The device that got connected.</param>

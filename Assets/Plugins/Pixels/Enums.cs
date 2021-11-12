@@ -56,7 +56,7 @@ namespace Systemic.Unity.BluetoothLE
         AccessDenied,
 
         /// The request failed because the Bluetooth radio is off.
-        AdpaterOff,
+        AdapterOff,
 
         /// The request did not succeed after the timeout period.
         Timeout,
@@ -106,7 +106,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Connection attempt canceled by user.
         Canceled,
 
-        /// Peripheral does not have all required services.
+        /// Peripheral doesn't have all required services.
         NotSupported,
 
         /// Peripheral didn't responded in time.
@@ -116,7 +116,7 @@ namespace Systemic.Unity.BluetoothLE
         LinkLoss,
 
         /// The local device Bluetooth adapter is off.
-        AdpaterOff,
+        AdapterOff,
 
         /// Disconnection was initiated by peripheral.
         Peripheral,

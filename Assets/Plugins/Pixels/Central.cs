@@ -661,6 +661,8 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Asynchronously reads the value of the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not readable.
         /// </summary>
         /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
@@ -678,6 +680,8 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Asynchronously reads the value of the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not readable.
         /// </summary>
         /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
@@ -704,11 +708,13 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Asynchronously writes to the specified service's characteristic for the given peripheral
         /// and waits for the peripheral to respond.
+        /// 
+        /// The call fails if the characteristic is not writable.
         /// </summary>
         /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
-        /// <param name="data">The data to write to the characteristic.</param>
+        /// <param name="data">The data to write to the characteristic (may be empty).</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
@@ -722,11 +728,13 @@ namespace Systemic.Unity.BluetoothLE
 
         /// <summary>
         /// Asynchronously writes to the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not writable.
         /// </summary>
         /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
-        /// <param name="data">The data to write to the characteristic.</param>
+        /// <param name="data">The data to write to the characteristic (may be empty).</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
@@ -734,19 +742,21 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse = false, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse, float timeoutSec = RequestDefaultTimeout)
         {
             return WriteCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, data, withoutResponse, timeoutSec);
         }
 
         /// <summary>
         /// Asynchronously writes to the specified service's characteristic for the given peripheral.
+        /// 
+        /// The call fails if the characteristic is not writable.
         /// </summary>
         /// <param name="peripheral">The connected peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
-        /// <param name="data">The data to write to the characteristic.</param>
+        /// <param name="data">The data to write to the characteristic (may be empty).</param>
         /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
