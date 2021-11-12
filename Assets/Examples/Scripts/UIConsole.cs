@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIConsole : MonoBehaviour
 {
     public Text LogText;
-    public bool StartHidden;
 
     void OnEnable()
     {
@@ -26,10 +25,5 @@ public class UIConsole : MonoBehaviour
     void Start()
     {
         LogText.text = "";
-
-        if (StartHidden)
-        {
-            gameObject.SetActive(false);
-        }
     }
 }
