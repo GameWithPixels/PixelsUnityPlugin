@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using Systemic.Unity.BluetoothLE;
+using Systemic.Unity.Pixel;
 using UnityEngine;
 
 public class BleConsole: MonoBehaviour
@@ -37,7 +38,7 @@ public class BleConsole: MonoBehaviour
 
         Debug.Log("Scanning for Pixels...");
 
-        Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
+        Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
 
         while (Central.ScannedPeripherals.Length == 0)
         {
@@ -52,7 +53,7 @@ public class BleConsole: MonoBehaviour
         // Connect
         //
 
-        var peripheral = Central.ScannedPeripherals.First(p => p.Services.Contains(PixelUuids.ServiceUuid));
+        var peripheral = Central.ScannedPeripherals.First(p => p.Services.Contains(BleUuids.ServiceUuid));
 
         Debug.Log($"Connecting to Pixel named {peripheral.Name}...");
 
@@ -75,12 +76,12 @@ public class BleConsole: MonoBehaviour
         Debug.Log(" * MTU: " + Central.GetPeripheralMtu(peripheral));
 
         // Enumerate characteristics (we could also directly retrieve them by their UUID)
-        var characteristics = Central.GetPeripheralServiceCharacteristics(peripheral, PixelUuids.ServiceUuid);
+        var characteristics = Central.GetPeripheralServiceCharacteristics(peripheral, BleUuids.ServiceUuid);
         Guid notifyCharacteristicUuid, writeCharacteristicUuid;
         for (int i = 0; i < characteristics.Length; ++i)
         {
             var uuid = characteristics[i];
-            var props = Central.GetCharacteristicProperties(peripheral, PixelUuids.ServiceUuid, uuid);
+            var props = Central.GetCharacteristicProperties(peripheral, BleUuids.ServiceUuid, uuid);
             Debug.Log($" * Characteristic #{i} properties: " + props);
 
             if ((props & CharacteristicProperties.Notify) != 0)
@@ -93,8 +94,8 @@ public class BleConsole: MonoBehaviour
             }
         }
 
-        Debug.Assert(notifyCharacteristicUuid == PixelUuids.NotifyCharacteristicUuid);
-        Debug.Assert(writeCharacteristicUuid == PixelUuids.WriteCharacteristicUuid);
+        Debug.Assert(notifyCharacteristicUuid == BleUuids.NotifyCharacteristicUuid);
+        Debug.Assert(writeCharacteristicUuid == BleUuids.WriteCharacteristicUuid);
 
         //
         // Send messages
@@ -107,24 +108,24 @@ public class BleConsole: MonoBehaviour
         }
 
         yield return Central.SubscribeCharacteristicAsync(
-            peripheral, PixelUuids.ServiceUuid, notifyCharacteristicUuid, OnReceivedData);
+            peripheral, BleUuids.ServiceUuid, notifyCharacteristicUuid, OnReceivedData);
         Debug.Log("Subscribed to characteristic");
 
-        IEnumerator SendMessageAsync(PixelMessageType messageType)
+        IEnumerator SendMessageAsync(MessageType messageType)
         {
             Debug.Log("Sending message: " + messageType);
             yield return Central.WriteCharacteristicAsync(
-                peripheral, PixelUuids.ServiceUuid, writeCharacteristicUuid, new byte[] { (byte)messageType });
+                peripheral, BleUuids.ServiceUuid, writeCharacteristicUuid, new byte[] { (byte)messageType });
         }
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.WhoAreYou);
+        yield return SendMessageAsync(MessageType.WhoAreYou);
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.RequestRollState);
+        yield return SendMessageAsync(MessageType.RequestRollState);
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.RequestRssi);
+        yield return SendMessageAsync(MessageType.RequestRssi);
 
         yield return new WaitForSecondsRealtime(2);
         Debug.Log("Disconnecting...");

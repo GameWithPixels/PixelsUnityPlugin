@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Linq;
 using Systemic.Unity.BluetoothLE;
+using Systemic.Unity.Pixel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -85,7 +86,7 @@ public class BleController : MonoBehaviour
 
     public void StartScan()
     {
-        Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
+        Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
     }
 
     public void StopScan()
@@ -109,9 +110,9 @@ public class BleController : MonoBehaviour
 
         Debug.Log("Name: " + Central.GetPeripheralName(_peripheral));
         Debug.Log("Services: " + string.Join(", ", Central.GetPeripheralDiscoveredServices(_peripheral).Select(g => g.ToString())));
-        Debug.Log("Characteristics: " + string.Join(", ", Central.GetPeripheralServiceCharacteristics(_peripheral, PixelUuids.ServiceUuid).Select(g => g.ToString())));
-        Debug.Log("Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid));
-        Debug.Log("Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid));
+        Debug.Log("Characteristics: " + string.Join(", ", Central.GetPeripheralServiceCharacteristics(_peripheral, BleUuids.ServiceUuid).Select(g => g.ToString())));
+        Debug.Log("Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid));
+        Debug.Log("Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, BleUuids.ServiceUuid, BleUuids.WriteCharacteristicUuid));
 
         StartCoroutine(ReadRssiAsync());
     }
@@ -133,19 +134,19 @@ public class BleController : MonoBehaviour
 
     public void SendWhoAreYou()
     {
-        StartCoroutine(SendMessageAsync(PixelMessageType.WhoAreYou));
+        StartCoroutine(SendMessageAsync(MessageType.WhoAreYou));
     }
 
     public void SendWhoAreYouWithoutResponse()
     {
-        StartCoroutine(SendMessageAsync(PixelMessageType.WhoAreYou, withoutResponse: true));
+        StartCoroutine(SendMessageAsync(MessageType.WhoAreYou, withoutResponse: true));
     }
 
     public void SendWhoAreYouX20()
     {
         for (int i = 0; i < 20; ++i)
         {
-            StartCoroutine(SendMessageAsync(PixelMessageType.WhoAreYou));
+            StartCoroutine(SendMessageAsync(MessageType.WhoAreYou));
         }
     }
 
@@ -161,7 +162,7 @@ public class BleController : MonoBehaviour
 
     IEnumerator ConnectAsync()
     {
-        var p = Central.ScannedPeripherals.First(p => p.Services.Contains(PixelUuids.ServiceUuid));
+        var p = Central.ScannedPeripherals.First(p => p.Services.Contains(BleUuids.ServiceUuid));
         var request = Central.ConnectPeripheralAsync(
             p, (_, connected) =>
             {
@@ -198,19 +199,19 @@ public class BleController : MonoBehaviour
 
     IEnumerator SubscribeAsync()
     {
-        yield return Central.SubscribeCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid, OnReceivedData);
+        yield return Central.SubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid, OnReceivedData);
         Debug.Log("Subscribed to characteristic");
     }
 
     IEnumerator UnsubscribeAsync()
     {
-        yield return Central.UnsubscribeCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid);
+        yield return Central.UnsubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
         Debug.Log("Unsubscribed from characteristic");
     }
 
     IEnumerator ReadValueAsync()
     {
-        var request = Central.ReadCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid);
+        var request = Central.ReadCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
         yield return request;
         if (request.IsSuccess)
         {
@@ -223,10 +224,10 @@ public class BleController : MonoBehaviour
         }
     }
 
-    IEnumerator SendMessageAsync(PixelMessageType messageType, bool withoutResponse = false)
+    IEnumerator SendMessageAsync(MessageType messageType, bool withoutResponse = false)
     {
         Debug.Log("Sending message: " + messageType);
-        yield return Central.WriteCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid, new byte[] { (byte)messageType }, withoutResponse: withoutResponse);
+        yield return Central.WriteCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.WriteCharacteristicUuid, new byte[] { (byte)messageType }, withoutResponse: withoutResponse);
     }
 
     void OnReceivedData(byte[] data)
@@ -242,15 +243,15 @@ public class BleController : MonoBehaviour
         if (msg?.Length > 0)
         {
             string str;
-            switch ((PixelMessageType)msg[0])
+            switch ((MessageType)msg[0])
             {
-                case PixelMessageType.IAmADie:
+                case MessageType.IAmADie:
                     str = $"Welcome message => face count:{msg[1]}";
                     break;
-                case PixelMessageType.RollState:
-                    str = $"Roll state => {(PixelRollState)msg[1]}, face:{1 + msg[2]}";
+                case MessageType.RollState:
+                    str = $"Roll state => {(RollState)msg[1]}, face:{1 + msg[2]}";
                     break;
-                case PixelMessageType.Rssi:
+                case MessageType.Rssi:
                     str = $"RSSI => {(((uint)msg[1]) << 8) + msg[2]}";
                     break;
                 default:
@@ -272,7 +273,7 @@ public class BleController : MonoBehaviour
 
         Debug.Log("Scanning for Pixels...");
 
-        Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
+        Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
 
         //yield return new WaitForSecondsRealtime(5);
 
@@ -291,7 +292,7 @@ public class BleController : MonoBehaviour
 
         Debug.Log($"Connecting to Pixel...");
 
-        var p = Central.ScannedPeripherals.First(p => p.Services.Contains(PixelUuids.ServiceUuid));
+        var p = Central.ScannedPeripherals.First(p => p.Services.Contains(BleUuids.ServiceUuid));
         var request = Central.ConnectPeripheralAsync(
             p, (_, connected) => Debug.Log(connected ? "Connected!" : "Failed to connect!"));
         yield return request;
@@ -311,8 +312,8 @@ public class BleController : MonoBehaviour
         Debug.Log("Pixel info:");
         Debug.Log(" * Name: " + p.Name);
         Debug.Log(" * MTU: " + Central.GetPeripheralMtu(_peripheral));
-        Debug.Log(" * Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid));
-        Debug.Log(" * Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid));
+        Debug.Log(" * Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid));
+        Debug.Log(" * Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, BleUuids.ServiceUuid, BleUuids.WriteCharacteristicUuid));
 
         //
         // Send messages
@@ -321,12 +322,12 @@ public class BleController : MonoBehaviour
         yield return SubscribeAsync();
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.WhoAreYou);
+        yield return SendMessageAsync(MessageType.WhoAreYou);
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.RequestRollState);
+        yield return SendMessageAsync(MessageType.RequestRollState);
 
         yield return new WaitForSecondsRealtime(2);
-        yield return SendMessageAsync(PixelMessageType.RequestRssi);
+        yield return SendMessageAsync(MessageType.RequestRssi);
     }
 }

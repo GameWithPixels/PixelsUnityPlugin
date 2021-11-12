@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.aflog": "log",
+        "limits": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "cwchar": "cpp",
+        "initializer_list": "cpp",
+        "xstddef": "cpp",
+        "xtr1common": "cpp"
+    }
+}
