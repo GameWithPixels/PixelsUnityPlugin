@@ -66,7 +66,7 @@ extern "C"
 
     /**
      * @brief Initializes the library for accessing BLE peripherals.
-     * 
+     *
      * @param apartmentSingleThreaded Whether to initialize COM apartment as single thread
      *                                or multi-threaded
      * @param onBluetoothEvent Called when the host device Bluetooth state changes.
@@ -91,7 +91,7 @@ extern "C"
      * @brief Starts scanning for BLE peripherals advertising the given list of services.
      *
      * If a scan is already running, it is updated to run with the new parameters.
-     * 
+     *
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should advertise, may be null or empty.
      * @param onDiscoveredPeripheral Called every time an advertisement packet with the required
@@ -152,7 +152,7 @@ extern "C"
      * This request timeouts after 7 to 8 seconds, as of Windows 10 21H1.
      *
      * @note sgBleCreatePeripheral() must be called first.
-     * 
+     *
      * @param address The Bluetooth address of the peripheral.
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should support, may be null or empty.
@@ -186,7 +186,7 @@ extern "C"
 
     /**
      * @brief Returns the name of the given peripheral.
-     * 
+     *
      * @param address The Bluetooth address of a connected peripheral.
      * @return The name of the peripheral, or null if the call failed.
      *
@@ -199,7 +199,7 @@ extern "C"
 
     /**
      * @brief Returns the Maximum Transmission Unit (MTU) for the given peripheral.
-     * 
+     *
      * @param address The Bluetooth address of a connected peripheral.
      * @return The MTU of the peripheral, or zero if the call failed.
      */
@@ -232,7 +232,7 @@ extern "C"
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID for which to retrieve the characteristics.
      * @return A comma separated list of characteristics UUIDs, or null if the call failed.
-     * 
+     *
      * @remark The caller should free the returned string with either a call to sgBleFreeString()
      *         or CoTaskMemFree(). <br>
      *         .NET marshaling automatically takes care of it.
@@ -250,7 +250,7 @@ extern "C"
     /**
      * @brief Returns the standard BLE properties of the specified service's characteristic
      *        for the given peripheral.
-     * 
+     *
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
@@ -271,7 +271,7 @@ extern "C"
      *        for the given peripheral.
      *
      * The call fails if the characteristic is not readable.
-     * 
+     *
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
@@ -300,7 +300,7 @@ extern "C"
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
      *                      for the service, otherwise zero.
-     * @param data A pointer to the data to write to the characteristic.
+     * @param data A pointer to the data to write to the characteristic (may be null if length is zero).
      * @param length The size in bytes of the data.
      * @param withoutResponse Whether to wait for the peripheral to respond.
      * @param onRequestStatus Called when the request has completed (successfully or not).
@@ -312,7 +312,7 @@ extern "C"
         const char* serviceUuid,
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
-        const void* data, //TODO what if null or empty => doc
+        const void* data,
         const size_t length,
         bool withoutResponse,
         RequestStatusCallback onRequestStatus);
@@ -321,8 +321,9 @@ extern "C"
      * @brief Subscribes or unsubscribes for value changes of the specified service's characteristic
      *        for the given peripheral.
      *
-     * The call fails if the characteristic doesn't support notification or if it is already subscribed.
-     * 
+     * Replaces a previously registered value change callback for the same characteristic.
+     * The call fails if the characteristic doesn't support notifications.
+     *
      * @param address The Bluetooth address of a connected peripheral.
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
@@ -351,7 +352,7 @@ extern "C"
      * @brief Deallocates a string returned by any of the sgBle* methods.
      *
      * Unity's marshaling handles the deallocation automatically.
-     * 
+     *
      * @param str A c-string pointer returned by any of the sgBle* methods.
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */

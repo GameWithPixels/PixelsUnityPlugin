@@ -218,7 +218,7 @@ namespace Systemic::BluetoothLE
                     //TODO check if BLE adapter is enabled
                     //if (!bleApdater.isOn())
                     //{
-                    //    reason = ConnectionEventReason::AdpaterOff;
+                    //    reason = ConnectionEventReason::AdapterOff;
                     //}
 
                     result = toRequestStatus(reason);

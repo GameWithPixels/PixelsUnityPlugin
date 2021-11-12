@@ -528,17 +528,24 @@ void sgBleWriteCharacteristicValue(
     bool withoutResponse,
     RequestStatusCallback onRequestStatus)
 {
-    auto ptr = (std::uint8_t*)data;
-    std::vector<std::uint8_t> value{ ptr, ptr + length };
-    runForCharacteristicAsync(
-        address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
-        [value, withoutResponse, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
-        {
-            auto o = onRequestStatus;
-            auto result = co_await c->writeAsync(value, withoutResponse);
-            if (o) o(result);
-        }
-    );
+    if (data || (length == 0))
+    {
+        auto ptr = (std::uint8_t*)data;
+        std::vector<std::uint8_t> value{ ptr, ptr + length };
+        runForCharacteristicAsync(
+            address, serviceUuid, characteristicUuid, instanceIndex, onRequestStatus,
+            [value, withoutResponse, onRequestStatus](std::shared_ptr<Characteristic> c)->std::future<void>
+            {
+                auto o = onRequestStatus;
+                auto result = co_await c->writeAsync(value, withoutResponse);
+                if (o) o(result);
+            }
+        );
+    }
+    else if (onRequestStatus)
+    {
+        onRequestStatus(BleRequestStatus::InvalidParameters);
+    }
 }
 
 void sgBleSetNotifyCharacteristic(

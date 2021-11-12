@@ -130,6 +130,8 @@ namespace Systemic::BluetoothLE
         /**
          * @brief Reads the value from the characteristic.
          *
+         * The call fails if the characteristic is not readable.
+         *
          * @return A future with the read value as a vector of bytes.
          */
         std::future<std::vector<std::uint8_t>> readValueAsync()
@@ -144,7 +146,9 @@ namespace Systemic::BluetoothLE
         /**
          * @brief Writes the given data to the value of the characteristic.
          *
-         * @param data The data to write to the characteristic.
+         * The call fails if the characteristic is not writable.
+         *
+         * @param data The data to write to the characteristic (may be empty).
          * @param withoutResponse Whether to wait for the peripheral to respond.
          * @return A future with the resulting request status.
          */
@@ -163,6 +167,9 @@ namespace Systemic::BluetoothLE
         /**
          * @brief Subscribes for value changes of the characteristic.
          *
+         * Replaces a previously registered value change callback.
+         * The call fails if the characteristic doesn't support notifications.
+         *
          * @param onValueChanged Called when the value of the characteristic changes.
          * @return A future with the resulting request status.
          */
@@ -177,15 +184,12 @@ namespace Systemic::BluetoothLE
             {
                 std::lock_guard lock{ _subscribeMtx };
 
-                // Check if already subscribed
-                if (_onValueChanged != nullptr)
-                {
-                    co_return BleRequestStatus::InvalidCall;
-                }
-
                 // Store the callback and subscribe
                 _onValueChanged = onValueChanged;
-                _valueChangedToken = _characteristic.ValueChanged({ this, &Characteristic::onValueChanged });
+                if (!_valueChangedToken)
+                {
+                    _valueChangedToken = _characteristic.ValueChanged({ this, &Characteristic::onValueChanged });
+                }
             }
 
             // Update characteristic configuration
@@ -218,6 +222,7 @@ namespace Systemic::BluetoothLE
 
             // Unsubscribe
             _characteristic.ValueChanged(_valueChangedToken);
+            _valueChangedToken = winrt::event_token{};
 
             // Update characteristic configuration
             auto result = co_await _characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
@@ -238,9 +243,16 @@ namespace Systemic::BluetoothLE
         // Called when subscribed to the characteristic and its value changes
         void onValueChanged(GattCharacteristic _, GattValueChangedEventArgs args)
         {
-            if (_onValueChanged)
+            // Safely get the callback
+            std::function<void(const std::vector<std::uint8_t>&)> callback{};
             {
-                _onValueChanged(Internal::dataBufferToBytesVector(args.CharacteristicValue()));
+                std::lock_guard lock{ _subscribeMtx };
+                callback = _onValueChanged;
+            }
+
+            if (callback)
+            {
+                callback(Internal::dataBufferToBytesVector(args.CharacteristicValue()));
             }
         }
     };

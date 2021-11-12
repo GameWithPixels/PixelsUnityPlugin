@@ -56,7 +56,7 @@ namespace Systemic::BluetoothLE
         AccessDenied,
 
         /// The request failed because the Bluetooth radio is off.
-        AdpaterOff, //TODO
+        AdapterOff, //TODO
 
         /// The request did not succeed after the timeout period.
         Timeout,
@@ -96,7 +96,7 @@ namespace Systemic::BluetoothLE
         /// Connection attempt canceled by user.
         Canceled,
 
-        /// Peripheral does not have all required services.
+        /// Peripheral doesn't have all required services.
         NotSupported,
 
         /// Peripheral didn't responded in time.
