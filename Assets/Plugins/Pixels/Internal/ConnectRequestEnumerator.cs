@@ -1,6 +1,6 @@
 using System;
 
-namespace Systemic.Unity.BluetoothLE
+namespace Systemic.Unity.BluetoothLE.Internal
 {
     /// <summary>
     /// Enumerator handling a BLE connection request.

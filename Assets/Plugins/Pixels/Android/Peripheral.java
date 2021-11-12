@@ -558,6 +558,8 @@ public class Peripheral
     /**
      * @brief Queues a request to read the value of the specified service's characteristic.
      *
+     * The call fails if the characteristic is not readable.
+     *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
      * @param instanceIndex The instance index of the characteristic if listed more than once
@@ -580,6 +582,8 @@ public class Peripheral
 
     /**
      * @brief Queues a request to write the value of specified service's characteristic.
+     *
+     * The call fails if the characteristic is not writable.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.
@@ -607,7 +611,10 @@ public class Peripheral
     }
 
     /**
-     * @brief Queues a request to subscribes for value changes of the specified service's characteristic.
+     * @brief Queues a request to subscribe for value changes of the specified service's characteristic.
+     *
+     * Replaces a previously registered value change callback for the same characteristic.
+     * The call fails if the characteristic doesn't support notifications.
      *
      * @param serviceUuid The service UUID.
      * @param characteristicUuid The characteristic UUID.

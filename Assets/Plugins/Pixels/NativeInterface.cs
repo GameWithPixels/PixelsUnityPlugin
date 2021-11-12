@@ -399,7 +399,7 @@ namespace Systemic.Unity.BluetoothLE
 
             SanityCheck();
 
-            //TODO _impl.ReadCharacteristic(nativePeripheralHandle.NativePeripheral, serviceUuid.ToString(), characteristicUuid.ToString(), instanceIndex, onValueChanged, onResult);
+            _impl.ReadCharacteristic(nativePeripheralHandle.NativePeripheral, serviceUuid.ToString(), characteristicUuid.ToString(), instanceIndex, onValueReadResult);
         }
 
         /// <summary>
@@ -437,7 +437,8 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// Requests to subscribe for value changes of the specified service's characteristic for the given peripheral.
         ///
-        /// The call fails if the characteristic doesn't support notification or if it is already subscribed.
+        /// Replaces a previously registered value change handler for the same characteristic.
+        /// The call fails if the characteristic doesn't support notifications.
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="serviceUuid">The service UUID.</param>
