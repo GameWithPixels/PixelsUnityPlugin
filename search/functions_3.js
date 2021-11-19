@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['freecombuffer_358',['freeComBuffer',['../namespace_systemic_1_1_com_helper.html#a87e9c46c85c04678d7f370898ea1ef45',1,'Systemic::ComHelper']]]
+  ['execute_365',['execute',['../interface_s_g_ble_request.html#a30b72514b75ec994b08fb55cffcd3fde',1,'SGBleRequest']]]
 ];

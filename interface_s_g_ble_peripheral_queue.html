@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('interface_s_g_ble_peripheral_queue.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  
+<p>Implementation of the <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">CBPeripheralDelegate</a> protocol. Queues up operations to be performed with a Bluetooth Low Energy (BLE) <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>, run them sequentially and notify of their outcome.  
  <a href="interface_s_g_ble_peripheral_queue.html#details">More...</a></p>
 
 <p><code>#import &lt;<a class="el" href="_s_g_ble_peripheral_queue_8h_source.html">SGBlePeripheralQueue.h</a>&gt;</code></p>
@@ -99,7 +99,7 @@ Inheritance diagram for SGBlePeripheralQueue:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_s_g_ble_peripheral_queue__inherit__graph.png" border="0" usemap="#a_s_g_ble_peripheral_queue_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_g_ble_peripheral_queue_inherit__map" id="a_s_g_ble_peripheral_queue_inherit__map">
-<area shape="rect" title="Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform operations on a Blue..." alt="" coords="40,80,196,107"/>
+<area shape="rect" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue..." alt="" coords="40,80,196,107"/>
 <area shape="rect" title=" " alt="" coords="5,5,84,32"/>
 <area shape="rect" title=" " alt="" coords="109,5,274,32"/>
 </map>
@@ -109,7 +109,7 @@ Inheritance diagram for SGBlePeripheralQueue:</div>
 Instance Methods</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Initialization</div></td></tr>
 <tr class="memitem:a29ea776e83a8868246bbf65d72ce68c6"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">initWithPeripheral:centralManagerDelegate:connectionEventHandler:</a></td></tr>
-<tr class="memdesc:a29ea776e83a8868246bbf65d72ce68c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a peripheral for the given CBPeripheral object, with a central manager delegate and a connection event handler.  <a href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">More...</a><br /></td></tr>
+<tr class="memdesc:a29ea776e83a8868246bbf65d72ce68c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a> instance for the given CBPeripheral object, with a central manager delegate and a connection event handler.  <a href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">More...</a><br /></td></tr>
 <tr class="separator:a29ea776e83a8868246bbf65d72ce68c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Connection and disconnection</div></td></tr>
 <tr class="memitem:affd377e8dea6ea8d2ab04c862c683318"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318">queueConnectWithServices:completionHandler:</a></td></tr>
@@ -158,9 +158,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
 <tr class="separator:a7f8766b8a19cb02eada08c082fb5660b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral. </p>
+<div class="textblock"><p>Implementation of the <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">CBPeripheralDelegate</a> protocol. Queues up operations to be performed with a Bluetooth Low Energy (BLE) <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>, run them sequentially and notify of their outcome. </p>
+<p>The next queued operation (a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> instance) is run only once the current one completes (whether successfully or not).</p>
 <p>The connection request has no time out and waits until the peripheral is connected. Any subsequent request is therefore blocked until the connection is successful.</p>
-<p>Call <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7" title="Clear the queue of pending request and cancel the running request.">cancelQueue (SGBlePeripheralQueue)</a> to cancel all pending operations.</p>
+<p>Call <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7" title="Clear the queue of pending request and cancel the running request.">cancelQueue (SGBlePeripheralQueue)</a> to cancel all pending operations, including an on-going connection.</p>
 <p>Handlers (such as request completion handlers) are called on the shared BLE queue, user code for those handlers should return as quickly as possible to avoid delaying any further BLE event or operation.</p>
 <p>On being de-allocated, the instance cancels the connection to peripheral.</p>
 <dl class="section note"><dt>Note</dt><dd>A request keep a strong reference to the instance so the later won't be de-allocated until the queue is empty. </dd></dl>
@@ -197,11 +198,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inter
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a peripheral for the given CBPeripheral object, with a central manager delegate and a connection event handler. </p>
+<p>Initializes a <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a> instance for the given CBPeripheral object, with a central manager delegate and a connection event handler. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The CBPeripheral object for the BLE peripheral. </td></tr>
-    <tr><td class="paramname">centralManagerDelegate</td><td>The instance of <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...">SGBleCentralManagerDelegate</a> that discovered the peripheral. </td></tr>
+    <tr><td class="paramname">centralManagerDelegate</td><td>The instance of <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...">SGBleCentralManagerDelegate</a> that discovered the peripheral. </td></tr>
     <tr><td class="paramname">connectionEventHandler</td><td>The handler for notifying of changes of the connection status of the peripheral. </td></tr>
   </table>
   </dd>

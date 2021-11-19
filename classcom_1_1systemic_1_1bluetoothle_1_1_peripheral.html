@@ -180,7 +180,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a Bluetooth Low Energy (BLE) peripheral. </p>
-<dl class="section note"><dt>Note</dt><dd>This class was designed to work as a Unity plugin, and thus its methods take and return strings rather than ParcelUuid object for a simplified marshaling with the .NET platform.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This class was designed to work in a Unity plugin and its marshaling mechanism, and as such its methods uses strings for the services and characteristics UUIDs rather than ParcelUuid objects.</dd></dl>
 <p>The most common BLE operations are supported, such as reading the peripheral name, MTU, RSSI, listing services and characteristics. It has support for getting characteristics properties and when applicable reading and writing their value, as well as subscribing for value changes.</p>
 <p>Several of those operations are asynchronous and take a <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html" title="Interface for most BLE request callbacks.">RequestCallback</a> object as a parameter. The appropriate method is called on this object when the request has completed (successfully or not).</p>
 <p>Once created, a peripheral must be connected before most its methods may be used. and it must be ready before accessing the services. The peripheral becomes ready once all the required services have been discovered.</p>

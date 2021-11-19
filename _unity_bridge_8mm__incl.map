@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="593,95,686,121"/>
 <area shape="rect" id="node3" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="340,244,552,271"/>
 <area shape="rect" id="node6" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="587,319,692,345"/>
-<area shape="rect" id="node7" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheral class." alt="" coords="265,169,432,196"/>
+<area shape="rect" id="node7" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="265,169,432,196"/>
 <area shape="rect" id="node9" href="$_s_g_ble_utils_8h.html" title="A few internal functions." alt="" coords="5,244,103,271"/>
 <area shape="rect" id="node10" title=" " alt="" coords="677,169,738,196"/>
 <area shape="rect" id="node11" title=" " alt="" coords="762,169,823,196"/>

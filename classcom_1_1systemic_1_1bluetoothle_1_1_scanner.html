@@ -112,7 +112,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Static class with methods for running a Bluetooth Low Energy (BLE) scan. </p>
-<dl class="section note"><dt>Note</dt><dd>This class was designed to work as a Unity plugin, and thus its methods take and return strings rather than ParcelUuid object for a simplified marshaling with the .NET platform.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This class was designed to work in a Unity plugin and its marshaling mechanism, and as such the advertisement data returned by a scan is passed as JSON string rather than a complex object.</dd></dl>
 <p>It relies on Nordic's Android-Scanner-Compat-Library library for most of the work. </p><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library">https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5f9a9f761f757809fa03693552213066"></a>

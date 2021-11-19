@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['unsubscribeasync_448',['unsubscribeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661',1,'Systemic::BluetoothLE::Characteristic']]],
-  ['unsubscribecharacteristic_449',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['unsubscribecharacteristic_450',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
-  ['unsubscribecharacteristicasync_451',['UnsubscribeCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abb596fd7d0e95344e70b50ff2c0727f2',1,'Systemic::Unity::BluetoothLE::Central']]],
-  ['uuid_452',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]]
+  ['timestamp_456',['timestamp',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#aa49e8dfcee40fea96b3517ca7d56bce0',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['tofulluuid_457',['ToFullUuid',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html#ac92a0ecea5de928083913af866ea5186',1,'Systemic::Unity::BluetoothLE::BleUuid']]],
+  ['txpowerlevel_458',['txPowerLevel',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a1447ebf7e2063a6368a8488e8cf84afb',1,'Systemic::BluetoothLE::ScannedPeripheral']]]
 ];

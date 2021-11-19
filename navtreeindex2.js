@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6ae7d31fc0602fb2ede144d18cdffd816b":[2,0,1,2,0,10,3],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6aef70e46fd3bbc21e3e1f0b6815e750c0":[2,0,1,2,0,10,5],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6af6b5c5c8c76b65f34f7c4f5fba2c08e2":[2,0,1,2,0,10,2],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fb":[2,0,1,2,0,9],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fba092f0404ca02a919d6d9c317a64c228d":[2,0,1,2,0,9,6],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fba1129c0e4d43f2d121652a7302712cff6":[2,0,1,2,0,9,4],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fba1c9a9c57e537861dbf629774edab16be":[2,0,1,2,0,9,3],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fba676e689023b501f786646263dc2870eb":[2,0,1,2,0,9,9],
@@ -103,5 +108,7 @@ var NAVTREEINDEX2 =
 "pch_8h_source.html":[4,0,1,1,0,1],
 "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html":[3,0,1,1,0,3],
 "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#acbe153b33a05ab6e9d30c5a6131535eb":[3,0,1,1,0,3,1],
-"struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#aed2ed350871c6594cf6ff3d9127fb418":[3,0,1,1,0,3,0]
+"struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#aed2ed350871c6594cf6ff3d9127fb418":[3,0,1,1,0,3,0],
+"":[2,0,0],
+"":[2,0,0,0]
 };

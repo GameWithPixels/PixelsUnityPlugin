@@ -85,62 +85,102 @@ $(document).ready(function(){initNavTree('interface_s_g_ble_request.html',''); i
   <div class="summary">
 <a href="#pub-methods">Instance Methods</a> &#124;
 <a href="#pub-static-methods">Class Methods</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="interface_s_g_ble_request-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">SGBleRequest Class Reference</div>  </div>
+<div class="title">SGBleRequest Class Reference<div class="ingroups"><a class="el" href="group___apple___objective-_c.html">Apple_Objective-C</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Internal type, represents a Bluetooth operation to be performed on a <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>. Used by <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a>.  
+ <a href="interface_s_g_ble_request.html#details">More...</a></p>
+
+<p><code>#import &lt;<a class="el" href="_s_g_ble_request_8h_source.html">SGBleRequest.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SGBleRequest:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_s_g_ble_request__inherit__graph.png" border="0" usemap="#a_s_g_ble_request_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_s_g_ble_request_inherit__map" id="a_s_g_ble_request_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,113,107"/>
+<area shape="rect" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe..." alt="" coords="5,80,113,107"/>
 <area shape="rect" title=" " alt="" coords="20,5,99,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:afd952687df3a8bf4f3ed8a2cd3462477"><td class="memItemLeft" align="right" valign="top"><a id="afd952687df3a8bf4f3ed8a2cd3462477"></a>
-(SGBleRequestType)&#160;</td><td class="memItemRight" valign="bottom">- <b>type</b></td></tr>
-<tr class="separator:afd952687df3a8bf4f3ed8a2cd3462477"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03c9497b76856972a7250d35ce2602a4"><td class="memItemLeft" align="right" valign="top"><a id="a03c9497b76856972a7250d35ce2602a4"></a>
-(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <b>initWithRequestType:executeHandler:completionHandler:</b></td></tr>
+<tr class="memitem:a03c9497b76856972a7250d35ce2602a4"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_request.html#a03c9497b76856972a7250d35ce2602a4">initWithRequestType:executeHandler:completionHandler:</a></td></tr>
+<tr class="memdesc:a03c9497b76856972a7250d35ce2602a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> instance with a specific Bluetooth operation to run.  <a href="interface_s_g_ble_request.html#a03c9497b76856972a7250d35ce2602a4">More...</a><br /></td></tr>
 <tr class="separator:a03c9497b76856972a7250d35ce2602a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30b72514b75ec994b08fb55cffcd3fde"><td class="memItemLeft" align="right" valign="top"><a id="a30b72514b75ec994b08fb55cffcd3fde"></a>
-(NSError *)&#160;</td><td class="memItemRight" valign="bottom">- <b>execute</b></td></tr>
+(NSError *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_request.html#a30b72514b75ec994b08fb55cffcd3fde">execute</a></td></tr>
+<tr class="memdesc:a30b72514b75ec994b08fb55cffcd3fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the associated request. <br /></td></tr>
 <tr class="separator:a30b72514b75ec994b08fb55cffcd3fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03f3226508f114d1e9495025cc61897e"><td class="memItemLeft" align="right" valign="top"><a id="a03f3226508f114d1e9495025cc61897e"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>notifyResult:</b></td></tr>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_request.html#a03f3226508f114d1e9495025cc61897e">notifyResult:</a></td></tr>
+<tr class="memdesc:a03f3226508f114d1e9495025cc61897e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the execution block to notify this instance of the request outcome. <br /></td></tr>
 <tr class="separator:a03f3226508f114d1e9495025cc61897e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
 <tr class="memitem:a66f43c95ed12a4ded19f6ff055150b42"><td class="memItemLeft" align="right" valign="top"><a id="a66f43c95ed12a4ded19f6ff055150b42"></a>
-(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <b>requestTypeToString:</b></td></tr>
+(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_s_g_ble_request.html#a66f43c95ed12a4ded19f6ff055150b42">requestTypeToString:</a></td></tr>
+<tr class="memdesc:a66f43c95ed12a4ded19f6ff055150b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the string version of a SGBleRequestType value. <br /></td></tr>
 <tr class="separator:a66f43c95ed12a4ded19f6ff055150b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a0185b027ba9e846332d7136967f5c0cf"><td class="memItemLeft" align="right" valign="top"><a id="a0185b027ba9e846332d7136967f5c0cf"></a>
-SGBleRequestType&#160;</td><td class="memItemRight" valign="bottom"><b>_type</b></td></tr>
-<tr class="separator:a0185b027ba9e846332d7136967f5c0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ee931e127a762911ebb9cb462637f0"><td class="memItemLeft" align="right" valign="top"><a id="a94ee931e127a762911ebb9cb462637f0"></a>
-SGBleRequestExecuteHandler&#160;</td><td class="memItemRight" valign="bottom"><b>_executeHandler</b></td></tr>
-<tr class="separator:a94ee931e127a762911ebb9cb462637f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3176fbdf6dd937e26d1e13df44f3f39"><td class="memItemLeft" align="right" valign="top"><a id="af3176fbdf6dd937e26d1e13df44f3f39"></a>
-SGBleRequestCompletionHandler&#160;</td><td class="memItemRight" valign="bottom"><b>_completionHandler</b></td></tr>
-<tr class="separator:af3176fbdf6dd937e26d1e13df44f3f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:af4ae5924d7b0ce5c2ff259780f37079e"><td class="memItemLeft" align="right" valign="top"><a id="af4ae5924d7b0ce5c2ff259780f37079e"></a>
-SGBleRequestType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+SGBleRequestType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e">type</a></td></tr>
+<tr class="memdesc:af4ae5924d7b0ce5c2ff259780f37079e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of request associated with this instance. <br /></td></tr>
 <tr class="separator:af4ae5924d7b0ce5c2ff259780f37079e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Internal type, represents a Bluetooth operation to be performed on a <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>. Used by <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a>. </p>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a id="a03c9497b76856972a7250d35ce2602a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03c9497b76856972a7250d35ce2602a4">&#9670;&nbsp;</a></span>initWithRequestType:executeHandler:completionHandler:</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) initWithRequestType: </td>
+          <td></td>
+          <td class="paramtype">(SGBleRequestType)&#160;</td>
+          <td class="paramname"><em>requestType</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">executeHandler:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group___apple___objective-_c.html#ga52bad8f94223fed49a02b9c60b6b2afb">SGBleRequestExecuteHandler</a>)&#160;</td>
+          <td class="paramname"><em>executeHandler</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">completionHandler:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a>)&#160;</td>
+          <td class="paramname"><em>completionHandler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> instance with a specific Bluetooth operation to run. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestType</td><td>The type of request associated with this instance. </td></tr>
+    <tr><td class="paramname">executeHandler</td><td>The operation to run, returns an error if it has failed to be run. </td></tr>
+    <tr><td class="paramname">completionHandler</td><td>Called when the operation has completed (successfully or not), may be nil. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Assets/Plugins/Pixels/iOS/<a class="el" href="_s_g_ble_request_8h_source.html">SGBleRequest.h</a></li>
 <li>Assets/Plugins/Pixels/iOS/SGBleRequest.mm</li>

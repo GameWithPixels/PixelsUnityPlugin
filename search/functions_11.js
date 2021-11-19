@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['_7echaracteristic_457',['~Characteristic',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ac51093f2840ccdcd8bd0344f4bd23aea',1,'Systemic::BluetoothLE::Characteristic']]],
-  ['_7eperipheral_458',['~Peripheral',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327',1,'Systemic::BluetoothLE::Peripheral']]],
-  ['_7escanner_459',['~Scanner',['../class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a0c77959596f4c101fbcd1de7aceceb31',1,'Systemic::BluetoothLE::Scanner']]],
-  ['_7eservice_460',['~Service',['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a343de7e7efb7cb17ddb846b17e53fb44',1,'Systemic::BluetoothLE::Service']]]
+  ['writeasync_464',['writeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad02491ce4be521f0871cbc9d3cbf1f40',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['writecharacteristic_465',['writeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#aa5ca4e6bc7ff8997f935ef6f1b67f440',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['writecharacteristic_466',['WriteCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#afe3386c8f52ee77ff6797c752dfcc98f',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['writecharacteristicasync_467',['WriteCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#af2ea6540c98e39b17ab596311fde099a',1,'Systemic.Unity.BluetoothLE.Central.WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec=DefaultRequestTimeout)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#afc4c7c6ca990e3984fecab011a7c127e',1,'Systemic.Unity.BluetoothLE.Central.WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse, float timeoutSec=DefaultRequestTimeout)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ab1c176df49364f6f541df35c12e62d28',1,'Systemic.Unity.BluetoothLE.Central.WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse=false, float timeoutSec=DefaultRequestTimeout)']]]
 ];

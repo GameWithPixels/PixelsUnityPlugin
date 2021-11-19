@@ -11,10 +11,10 @@ var annotated_dup =
     [ "Systemic", "namespace_systemic.html", [
       [ "BluetoothLE", "namespace_systemic_1_1_bluetooth_l_e.html", [
         [ "Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic" ],
+        [ "Peripheral", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral" ],
         [ "ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data" ],
         [ "AdvertisementData", "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data" ],
-        [ "DiscoveredPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral" ],
-        [ "Peripheral", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral" ],
+        [ "ScannedPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
         [ "Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanner" ],
         [ "Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", "class_systemic_1_1_bluetooth_l_e_1_1_service" ]
       ] ],

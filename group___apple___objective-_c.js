@@ -23,8 +23,17 @@ var group___apple___objective__c =
       [ "peripheral", "interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa", null ],
       [ "rssi", "interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b", null ]
     ] ],
+    [ "SGBleRequest", "interface_s_g_ble_request.html", [
+      [ "execute", "interface_s_g_ble_request.html#a30b72514b75ec994b08fb55cffcd3fde", null ],
+      [ "initWithRequestType:executeHandler:completionHandler:", "interface_s_g_ble_request.html#a03c9497b76856972a7250d35ce2602a4", null ],
+      [ "notifyResult:", "interface_s_g_ble_request.html#a03f3226508f114d1e9495025cc61897e", null ],
+      [ "requestTypeToString:", "interface_s_g_ble_request.html#a66f43c95ed12a4ded19f6ff055150b42", null ],
+      [ "type", "interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e", null ]
+    ] ],
     [ "SGBleConnectionEventHandler", "group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6", null ],
-    [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd", [
+    [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd", null ],
+    [ "SGBleRequestCompletionHandler", "group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f", null ],
+    [ "SGBleRequestExecuteHandler", "group___apple___objective-_c.html#ga52bad8f94223fed49a02b9c60b6b2afb", [
       [ "SGBleConnectionEventConnecting", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a673eb38d75dfd0ed1ecebbc9ccd8517c", null ],
       [ "SGBleConnectionEventConnected", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5aae6c83567c94e9ff792cdf428c62678e", null ],
       [ "SGBleConnectionEventFailedToConnect", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a916e62d0298a5715f0fa50e3730a8491", null ],

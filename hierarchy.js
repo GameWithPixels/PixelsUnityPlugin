@@ -15,7 +15,6 @@ var hierarchy =
     [ "DataReceivedCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
     ] ],
-    [ "Systemic::BluetoothLE::DiscoveredPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html", null ],
     [ "std::enable_shared_from_this", null, [
       [ "Systemic::BluetoothLE::Peripheral", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html", null ]
     ] ],
@@ -57,6 +56,7 @@ var hierarchy =
     [ "RssiCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ]
     ] ],
+    [ "Systemic::BluetoothLE::ScannedPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", null ],
     [ "Systemic.Unity.BluetoothLE.ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", null ],
     [ "com.systemic.bluetoothle.Scanner", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html", null ],
     [ "Systemic::BluetoothLE::Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", null ],

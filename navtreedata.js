@@ -25,7 +25,19 @@
 var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
-    [ "PixelsUnityPlugin", "index.html", null ],
+    [ "PixelsUnityPlugin", "index.html", [
+      [ "Overview", "index.html#autotoc_md1", [
+        [ "NativeInterface", "index.html#autotoc_md2", null ],
+        [ "Central", "index.html#autotoc_md3", null ],
+        [ "Pixel", "index.html#autotoc_md4", null ]
+      ] ],
+      [ "Architecture", "index.html#autotoc_md5", [
+        [ "Main classes", "index.html#autotoc_md6", null ],
+        [ "Execution flow between plugins and C# code", "index.html#autotoc_md7", null ],
+        [ "Basic sequence of BLE operations", "index.html#autotoc_md8", null ]
+      ] ],
+      [ "Native Plugins", "index.html#autotoc_md9", null ]
+    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
@@ -63,9 +75,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a46af60f161fa77536fd2266515144307",
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fba1129c0e4d43f2d121652a7302712cff6"
+"_characteristic_8h.html",
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7dc291462687ad1e70bcd656e83d0928",
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6ae7d31fc0602fb2ede144d18cdffd816b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

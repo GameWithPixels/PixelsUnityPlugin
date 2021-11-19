@@ -91,20 +91,31 @@ $(document).ready(function(){initNavTree('group___apple___objective-_c.html','')
 </div><!--header-->
 <div class="contents">
 
-<p>Collection of Objective-C classes that provide a simplified access to Bluetooth Low Energy peripherals.  
+<p>A collection of Objective-C classes that provides a simplified access to Bluetooth Low Energy peripherals.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a> protocol. Keeps a lit of discovered Bluetooth Low Energy (BLE) peripherals and notifies of peripherals connection events.  <a href="interface_s_g_ble_central_manager_delegate.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanagerdelegate">CBCentralManagerDelegate</a> protocol. Stores and notifies of discovered Bluetooth Low Energy (BLE) peripherals, also notifies of peripherals connection events and of the host device Bluetooth radio state changes.  <a href="interface_s_g_ble_central_manager_delegate.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol. Works as a queue to perform operations on a Bluetooth Low Energy (BLE) peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">CBPeripheralDelegate</a> protocol. Queues up operations to be performed with a Bluetooth Low Energy (BLE) <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>, run them sequentially and notify of their outcome.  <a href="interface_s_g_ble_peripheral_queue.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_s_g_ble_request.html">SGBleRequest</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, represents a Bluetooth operation to be performed on a <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>. Used by <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a>.  <a href="interface_s_g_ble_request.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ga52bad8f94223fed49a02b9c60b6b2afb"><td class="memItemLeft" align="right" valign="top"><a id="ga52bad8f94223fed49a02b9c60b6b2afb"></a>
+typedef NSError *(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___apple___objective-_c.html#ga52bad8f94223fed49a02b9c60b6b2afb">SGBleRequestExecuteHandler</a>) ()</td></tr>
+<tr class="memdesc:ga52bad8f94223fed49a02b9c60b6b2afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, runs the Bluetooth operation associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
+<tr class="separator:ga52bad8f94223fed49a02b9c60b6b2afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="memItemLeft" align="right" valign="top"><a id="ga9c854b44e91a64cc5d54bd3534802f4f"></a>
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a>) (NSError *error)</td></tr>
+<tr class="memdesc:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, completion handler for operations associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
+<tr class="separator:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga662b4b1ab3054584449b801ddb83d3fd"><td class="memItemLeft" align="right" valign="top"><a id="ga662b4b1ab3054584449b801ddb83d3fd"></a>
 typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a>) (CBPeripheral *peripheral, NSDictionary&lt; NSString *, id &gt; *advertisementData, NSNumber *RSSI)</td></tr>
 <tr class="memdesc:ga662b4b1ab3054584449b801ddb83d3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral discovery handler. <br /></td></tr>
@@ -116,6 +127,19 @@ typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memItemLeft" align="right" valign="top"><a id="gadf764cbdea00d65edcd07bb9953ad2b7"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<b>SGBleRequestTypeUnknown</b> = 0
+, <b>SGBleRequestTypeConnect</b>
+, <b>SGBleRequestTypeDisconnect</b>
+, <b>SGBleRequestTypeReadRssi</b>
+, <br />
+&#160;&#160;<b>SGBleRequestTypeReadValue</b>
+, <b>SGBleRequestTypeWriteValue</b>
+, <b>SGBleRequestTypeSetNotifyValue</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, list the Bluetooth operations supported by <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a>. <br /></td></tr>
+<tr class="separator:gadf764cbdea00d65edcd07bb9953ad2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga99fb83031ce9923c84392b4e92f956b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<a class="el" href="group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a673eb38d75dfd0ed1ecebbc9ccd8517c">SGBleConnectionEventConnecting</a>
 , <a class="el" href="group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5aae6c83567c94e9ff792cdf428c62678e">SGBleConnectionEventConnected</a>
@@ -143,13 +167,17 @@ Enumerations</h2></td></tr>
 <tr class="separator:gabc6126af1d45847bc59afa0aa3216b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Collection of Objective-C classes that provide a simplified access to Bluetooth Low Energy peripherals. </p>
-<p>The <a class="el" href="namespace_systemic.html">Systemic</a> BluetoohLE library for Apple device provides classes for scanning Bluetooth Low Energy (BLE) peripherals, connecting to and communicating with them. Those classes are entirely based on the Apple's Core Bluetooth framework and are here to provide a simplified access to BLE peripherals.</p>
-<p><a class="el" href="class_c_b_central_manager_delegate-p.html">CBCentralManagerDelegate</a>: implementation of the <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...">SGBleCentralManagerDelegate</a> protocol that stores and notifies of discovered peripherals, notifies of host device Bluetooth state changes and of peripherals connection events.</p>
-<p>SGBlePeripheral: implementation of the <a class="el" href="class_c_b_peripheral_delegate-p.html">CBPeripheralDelegate</a> protocol that queues BLE operations to perform on a peripheral.</p>
-<p>SGBleConnectionEvent Enumeration of peripheral connection events.</p>
-<p>SGBleConnectionEventReason Enumeration of peripheral connection event reasons. </p>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
+<p>A collection of Objective-C classes that provides a simplified access to Bluetooth Low Energy peripherals. </p>
+<dl class="section note"><dt>Note</dt><dd>Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.</dd></dl>
+<p>The <a class="el" href="namespace_systemic.html">Systemic</a> BluetoohLE library for Apple devices provides classes for scanning Bluetooth Low Energy (BLE) peripherals, connecting to and communicating with them. Those classes are based on the Apple's Core Bluetooth framework.</p>
+<p>The <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...">SGBleCentralManagerDelegate</a> class implements the Apple <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanagerdelegate">CBCentralManagerDelegate</a> protocol. It stores and notifies of discovered BLE peripherals, also notifies of peripherals connection events and of the host device Bluetooth radio state changes.</p>
+<p>The <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a> class implements the Apple <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">CBPeripheralDelegate</a> protocol. It queues BLE operations to be performed with a BLE <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>, run them sequentially and notify of their outcome. The next request is run one the current one completes (whether successfully or not).</p>
+<p>This library also includes a set of C functions to be called from Unity for acessing Bluetooth devices.</p>
+<div class="image">
+<object type="image/svg+xml" data="native-apple.svg" style="pointer-events: none;"></object>
+<div class="caption">
+Classes diagram</div></div>
+ <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga99fb83031ce9923c84392b4e92f956b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga99fb83031ce9923c84392b4e92f956b5">&#9670;&nbsp;</a></span>anonymous enum</h2>
 

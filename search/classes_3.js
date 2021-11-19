@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['discoveredperipheral_290',['DiscoveredPeripheral',['../class_systemic_1_1_bluetooth_l_e_1_1_discovered_peripheral.html',1,'Systemic::BluetoothLE']]]
+  ['manufacturerdata_298',['ManufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE']]],
+  ['mturequestcallback_299',['MtuRequestCallback',['../interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html',1,'com::systemic::bluetoothle::Peripheral']]]
 ];

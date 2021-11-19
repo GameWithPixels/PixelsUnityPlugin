@@ -87,51 +87,49 @@ $(document).ready(function(){initNavTree('_s_g_ble_central_manager_delegate_8h_s
 </div><!--header-->
 <div class="contents">
 <a href="_s_g_ble_central_manager_delegate_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//TODO rename file to SGBleCentralManagerDelegate</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_types_8h.html">SGBleTypes.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html">   23</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> : NSObject&lt;CBCentralManagerDelegate&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    NSObject *_startScanSync;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    void (^_stateUpdateHandler)(CBManagerState state);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    CBCentralManager *_centralManager;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    NSMutableDictionary&lt;NSUUID *,CBPeripheral *&gt; *_peripherals;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    NSMutableDictionary&lt;CBPeripheral *, SGBleConnectionEventHandler&gt; *_peripheralsConnectionEventHandlers;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// Property getters</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;- (CBCentralManager *)centralManager;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- (NSArray&lt;CBPeripheral *&gt; *)peripherals;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;- (bool)isBluetoothOn;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">   42</a></span>&#160;<span class="keyword">@property</span>(readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">centralManager</a>) CBCentralManager *centralManager;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#a1b850ef9c7e9a982ec6567bcfdd9c830">   47</a></span>&#160;<span class="keyword">@property</span>(strong) <a class="code" href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a> peripheralDiscoveryHandler;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">   52</a></span>&#160;<span class="keyword">@property</span>(readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">peripherals</a>) NSArray&lt;CBPeripheral *&gt; *peripherals;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">   57</a></span>&#160;<span class="keyword">@property</span>(nonatomic, readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">isBluetoothOn</a>) <span class="keywordtype">bool</span> isBluetoothOn;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;- (instancetype)initWithStateUpdateHandler:(<span class="keywordtype">void</span> (^)(CBManagerState state))stateUpdateHandler;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;- (void)clearPeripherals;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;- (CBPeripheral *)peripheralForIdentifier:(NSUUID *)identifier;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;- (void)setConnectionEventHandler:(<a class="code" href="group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6">SGBleConnectionEventHandler</a>)peripheralConnectionEventHandler</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    forPeripheral:(CBPeripheral *)peripheral;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_types_8h.html">SGBleTypes.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html">   24</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> : NSObject&lt;CBCentralManagerDelegate&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    NSObject *_startScanSync;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    void (^_stateUpdateHandler)(CBManagerState state);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    CBCentralManager *_centralManager;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    NSMutableDictionary&lt;NSUUID *,CBPeripheral *&gt; *_peripherals;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    NSMutableDictionary&lt;CBPeripheral *, SGBleConnectionEventHandler&gt; *_peripheralsConnectionEventHandlers;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// Property getters</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;- (CBCentralManager *)centralManager;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;- (NSArray&lt;CBPeripheral *&gt; *)peripherals;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;- (bool)isBluetoothOn;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">   43</a></span>&#160;<span class="keyword">@property</span>(readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">centralManager</a>) CBCentralManager *centralManager;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#a1b850ef9c7e9a982ec6567bcfdd9c830">   48</a></span>&#160;<span class="keyword">@property</span>(strong) <a class="code" href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a> peripheralDiscoveryHandler;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">   53</a></span>&#160;<span class="keyword">@property</span>(readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">peripherals</a>) NSArray&lt;CBPeripheral *&gt; *peripherals;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">   58</a></span>&#160;<span class="keyword">@property</span>(nonatomic, readonly, getter=<a class="code" href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">isBluetoothOn</a>) <span class="keywordtype">bool</span> isBluetoothOn;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;- (instancetype)initWithStateUpdateHandler:(<span class="keywordtype">void</span> (^)(CBManagerState state))stateUpdateHandler;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;- (void)clearPeripherals;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;- (CBPeripheral *)peripheralForIdentifier:(NSUUID *)identifier;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;- (void)setConnectionEventHandler:(<a class="code" href="group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6">SGBleConnectionEventHandler</a>)peripheralConnectionEventHandler</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    forPeripheral:(CBPeripheral *)peripheral;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="a_s_g_ble_types_8h_html"><div class="ttname"><a href="_s_g_ble_types_8h.html">SGBleTypes.h</a></div><div class="ttdoc">Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations.</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga662b4b1ab3054584449b801ddb83d3fd"><div class="ttname"><a href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a></div><div class="ttdeci">void(^ SGBlePeripheralDiscoveryHandler)(CBPeripheral *peripheral, NSDictionary&lt; NSString *, id &gt; *advertisementData, NSNumber *RSSI)</div><div class="ttdoc">Peripheral discovery handler.</div><div class="ttdef"><b>Definition:</b> SGBleTypes.h:87</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_gae5d9676c0c2204f460acd039b6da9ba6"><div class="ttname"><a href="group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6">SGBleConnectionEventHandler</a></div><div class="ttdeci">void(^ SGBleConnectionEventHandler)(CBPeripheral *peripheral, SGBleConnectionEvent connectionEvent, NSError *error)</div><div class="ttdoc">Peripheral connection event handler.</div><div class="ttdef"><b>Definition:</b> SGBleTypes.h:93</div></div>
-<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></div><div class="ttdoc">Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered Bluetooth Low Energy (...</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:23</div></div>
-<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_a772237c71b7bffe478488a1a47676df5"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">SGBleCentralManagerDelegate::peripherals</a></div><div class="ttdeci">NSArray&lt; CBPeripheral * &gt; * peripherals</div><div class="ttdoc">Gets the list of discovered peripherals.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:52</div></div>
-<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_acb768dc4f13c71dffac2d43fef148d7d"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">SGBleCentralManagerDelegate::centralManager</a></div><div class="ttdeci">CBCentralManager * centralManager</div><div class="ttdoc">Gets the central manager associated with this instance.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:42</div></div>
-<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_af51b0acad2c4cd30206338d8414139dd"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">SGBleCentralManagerDelegate::isBluetoothOn</a></div><div class="ttdeci">bool isBluetoothOn</div><div class="ttdoc">Indicates whether the host device Bluetooth radio is turned on and accessible.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:57</div></div>
+<div class="ttc" id="agroup___apple___objective-_c_html_ga662b4b1ab3054584449b801ddb83d3fd"><div class="ttname"><a href="group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd">SGBlePeripheralDiscoveryHandler</a></div><div class="ttdeci">void(^ SGBlePeripheralDiscoveryHandler)(CBPeripheral *peripheral, NSDictionary&lt; NSString *, id &gt; *advertisementData, NSNumber *RSSI)</div><div class="ttdoc">Peripheral discovery handler.</div><div class="ttdef"><b>Definition:</b> SGBleTypes.h:97</div></div>
+<div class="ttc" id="agroup___apple___objective-_c_html_gae5d9676c0c2204f460acd039b6da9ba6"><div class="ttname"><a href="group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6">SGBleConnectionEventHandler</a></div><div class="ttdeci">void(^ SGBleConnectionEventHandler)(CBPeripheral *peripheral, SGBleConnectionEvent connectionEvent, NSError *error)</div><div class="ttdoc">Peripheral connection event handler.</div><div class="ttdef"><b>Definition:</b> SGBleTypes.h:103</div></div>
+<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></div><div class="ttdoc">Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:24</div></div>
+<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_a772237c71b7bffe478488a1a47676df5"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5">SGBleCentralManagerDelegate::peripherals</a></div><div class="ttdeci">NSArray&lt; CBPeripheral * &gt; * peripherals</div><div class="ttdoc">Gets the list of discovered peripherals.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:53</div></div>
+<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_acb768dc4f13c71dffac2d43fef148d7d"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d">SGBleCentralManagerDelegate::centralManager</a></div><div class="ttdeci">CBCentralManager * centralManager</div><div class="ttdoc">Gets the central manager associated with this instance.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:43</div></div>
+<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html_af51b0acad2c4cd30206338d8414139dd"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd">SGBleCentralManagerDelegate::isBluetoothOn</a></div><div class="ttdeci">bool isBluetoothOn</div><div class="ttdoc">Indicates whether the host device Bluetooth radio is turned on and accessible.</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:58</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
