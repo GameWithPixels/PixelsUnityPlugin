@@ -13,9 +13,9 @@ import no.nordicsemi.android.support.v18.scanner.*;
 /**
  * @brief Static class with methods for running a Bluetooth Low Energy (BLE) scan.
  *
- * @note This class was designed to work as a Unity plugin, and thus its methods take
- * and return strings rather than ParcelUuid object for a simplified marshaling with
- * the .NET platform.
+ * @note This class was designed to work in a Unity plugin and its marshaling
+ *       mechanism, and as such the advertisement data returned by a scan is passed
+ *       as JSON string rather than a complex object.
  *
  * It relies on Nordic's Android-Scanner-Compat-Library library for most of the work.
  * @see https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library

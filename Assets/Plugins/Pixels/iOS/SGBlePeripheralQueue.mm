@@ -61,6 +61,14 @@ static NSError *canceledError = [NSError errorWithDomain:sgBleGetErrorDomain()
             return nil;
         }
         
+        // We can't find any reliable information about the thread safety of CoreBluetooth APIs
+        // so we're going to assume that CBCentralManager, CBPeripheral, CBCharacteristic and CBDescriptor
+        // achieve any required synchronization with the given queue.
+        // When no queue is given to the central manager, it defaults to the main thread serial queue.
+        // We create a serial queue as well so we don't have to worry about synchronization when we use
+        // the queue ourselves (and obviously CoreBluetooth works well with a serial queue).
+        // We're not concerned about performance by using a serial queue as Bluetooth LE operations
+        // are "low" frequency by design anyways.
         _queue = sgBleGetSerialQueue();
         _centralDelegate = centralManagerDelegate;
         _peripheral = peripheral;

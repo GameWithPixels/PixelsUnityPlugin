@@ -8,6 +8,10 @@
 //! \defgroup WinRT_Cpp
 //! @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
 //!
+//! @note Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
+//!
+//! @image html native-winrt.svg "Classes diagram"
+//!
 //! @see Systemic::BluetoothLE namespace.
 
 /**

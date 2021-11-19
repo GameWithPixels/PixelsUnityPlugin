@@ -5,24 +5,34 @@
 
 /**
  * @defgroup Apple_Objective-C
- * @brief Collection of Objective-C classes that provide a simplified access to Bluetooth
- *        Low Energy peripherals.
+ * @brief A collection of Objective-C classes that provides a simplified access to
+ *        Bluetooth Low Energy peripherals.
  *
- * The Systemic BluetoohLE library for Apple device provides classes for scanning
+ * @note Some knowledge with Bluetooth Low Energy semantics is recommended for reading
+ *       this documentation.
+ *
+ * The Systemic BluetoohLE library for Apple devices provides classes for scanning
  * Bluetooth Low Energy (BLE) peripherals, connecting to and communicating with them.
- * Those classes are entirely based on the Apple's Core Bluetooth framework and
- * are here to provide a simplified access to BLE peripherals.
+ * Those classes are based on the Apple's Core Bluetooth framework.
  * 
- * CBCentralManagerDelegate: implementation of the SGBleCentralManagerDelegate protocol
- * that stores and notifies of discovered peripherals, notifies of host device Bluetooth
- * state changes and of peripherals connection events.
+ * The SGBleCentralManagerDelegate class implements the Apple
+ * <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanagerdelegate">
+ * CBCentralManagerDelegate</a> protocol.
+ * It stores and notifies of discovered BLE peripherals, also notifies of peripherals
+ * connection events and of the host device Bluetooth radio state changes.
  * 
- * SGBlePeripheral: implementation of the CBPeripheralDelegate protocol that queues BLE
- *                  operations to perform on a peripheral.
+ * The SGBlePeripheralQueue class implements the Apple
+ * <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">
+ * CBPeripheralDelegate</a> protocol.
+ * It queues BLE operations to be performed with a BLE
+ * <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">
+ * peripheral</a>, run them sequentially and notify of their outcome.
+ * The next request is run one the current one completes (whether successfully or not).
  *
- * SGBleConnectionEvent Enumeration of peripheral connection events.
+ * This library also includes a set of C functions to be called from Unity for acessing
+ * Bluetooth devices.
  *
- * SGBleConnectionEventReason Enumeration of peripheral connection event reasons.
+ * @image html native-apple.svg "Classes diagram"
  */
 
 #import <Foundation/Foundation.h>

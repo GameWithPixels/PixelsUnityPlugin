@@ -5,8 +5,8 @@ using System.Linq;
 using UnityEngine;
 
 //! \defgroup Unity_CSharp
-//! @brief Collection of C# classes for the Unity game engine that provide a simplified access to
-//!        Bluetooth Low Energy peripherals.
+//! @brief A collection of C# classes for the Unity game engine that provides a simplified access
+//!        to Bluetooth Low Energy peripherals.
 //!
 //! @see Systemic.Unity.BluetoothLE namespace.
 
@@ -16,36 +16,66 @@ using UnityEngine;
 namespace Systemic.Unity { }
 
 /// <summary>
-/// Collection of C# classes for the Unity game engine that provide a simplified access to Bluetooth
+/// A collection of C# classes for the Unity game engine that provides a simplified access to Bluetooth
 /// Low Energy peripherals.
 /// 
 /// Unity plugins are used to access native Bluetooth APIs specific to each supported platform:
 /// Windows 10 and above, iOS and Android.
+///
+/// The most useful class for Unity developers is <see cref="Central"/>.
 /// </summary>
+/// <remarks>
+/// Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
+/// </remarks>
 //! @ingroup Unity_CSharp
 namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
-    /// A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy
-    /// (BLE) peripherals.
+    /// A static class with methods for discovering, connecting to, and interacting with Bluetooth
+    /// Low Energy (BLE) peripherals.
     /// 
     /// Use the <see cref="ScanForPeripheralsWithServices"/> method to discover available BLE peripherals.
-    /// Then connect to a scanned peripheral with a call to <see cref="ConnectPeripheralAsync"/>
-    ///
+    /// Then connect to a scanned peripheral with a call to <see cref="ConnectPeripheralAsync"/>.
     /// Once connected, the peripheral can be queried for its name, MTU, RSSI, services and characteristics.
     /// Characteristics can be read, written and subscribed to.
     ///
-    /// Be sure to disconnect the peripheral once it is not needed anymore.
+    /// - Be sure to disconnect the peripheral once it is not needed anymore.
+    /// - Calls from any thread other than the main thread throw an exception.
+    /// - Any method ending by Async returns an enumerator which is meant to be run as a coroutine.
+    /// - A <see cref="GameObject"/> named SystemicBleCentral is created upon calling <see cref="Initialize"/>
+    /// and destroyed on calling <see cref="Shutdown"/>.
     ///
     /// This class leverages <see cref="NativeInterface"/> to perform most of its operations.
-    ///
-    /// Calls from any thread other than the main thread throw an exception.
-    /// 
-    /// Any method ending by Async returns an enumerator which is meant to be run as a coroutine.
-    /// 
-    /// A <see cref="GameObject"/> named SystemicBleCentral is created upon calling <see cref="Initialize"/>
-    /// and destroyed on calling <see cref="Shutdown"/>.
     /// </remarks>
+    /// <example>
+    /// Here is a simplified example for scanning, connecting and sending a message to a peripheral.
+    /// @code{.cs}
+    /// // Scan for all peripherals (it's best to specify which services are required)
+    /// Central.ScanForPeripheralsWithServices();
+    ///
+    /// // Wait until we get at least one peripheral
+    /// yield return new WaitUntil(() => Central.ScannedPeripherals.Length > 0);
+    ///
+    /// // Stop scanning (saves battery life on mobile devices)
+    /// Central.StopScan();
+    ///
+    /// // Select first peripheral
+    /// var peripheral = Central.ScannedPeripherals[0];
+    ///
+    /// // And attempt to connect to it
+    /// var request = Central.ConnectPeripheralAsync(peripheral, (_, connected)
+    ///     => Debug.Log(connected ? "Connected!" : "Not connected!"));
+    /// yield return request;
+    ///
+    /// // Check result
+    /// if (request.IsSuccess)
+    /// {
+    ///     // And send some data
+    ///     yield return Central.WriteCharacteristicAsync(
+    ///         peripheral, aServiceUuid, aCharacteristicUuid, anArrayOfBytes);
+    /// }
+    /// @endcode
+    /// </example>
     public static class Central
     {
         #region MonoBehaviour
@@ -165,7 +195,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <summary>
         /// The default timeout value (in seconds) for requests send to a BLE peripheral.
         /// </summary>
-        public const int RequestDefaultTimeout = 10;
+        public const int DefaultRequestTimeout = 10;
 
         /// <summary>
         /// Indicates whether <see cref="Central"/> is ready for scanning and connecting to peripherals.
@@ -591,7 +621,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="ValueRequestEnumerator<>"/> properties to get the RSSI value and the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static ValueRequestEnumerator<int> ReadPeripheralRssi(ScannedPeripheral peripheral, float timeoutSec = RequestDefaultTimeout)
+        public static ValueRequestEnumerator<int> ReadPeripheralRssi(ScannedPeripheral peripheral, float timeoutSec = DefaultRequestTimeout)
         {
             EnsureRunningOnMainThread();
 
@@ -673,7 +703,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec = RequestDefaultTimeout)
+        public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec = DefaultRequestTimeout)
         {
             return ReadCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, timeoutSec);
         }
@@ -693,7 +723,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="ValueRequestEnumerator<>"/> properties to get the characteristic's value and the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec = RequestDefaultTimeout)
+        public static ValueRequestEnumerator<byte[]> ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec = DefaultRequestTimeout)
         {
             EnsureRunningOnMainThread();
 
@@ -721,7 +751,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec = DefaultRequestTimeout)
         {
             return WriteCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, data, false, timeoutSec);
         }
@@ -742,7 +772,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, bool withoutResponse, float timeoutSec = DefaultRequestTimeout)
         {
             return WriteCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, data, withoutResponse, timeoutSec);
         }
@@ -764,7 +794,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse = false, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse = false, float timeoutSec = DefaultRequestTimeout)
         {
             EnsureRunningOnMainThread();
 
@@ -791,7 +821,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, Action<byte[]> onValueChanged, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, Action<byte[]> onValueChanged, float timeoutSec = DefaultRequestTimeout)
         {
             return SubscribeCharacteristicAsync(peripheral, serviceUuid, characteristicUuid, 0, onValueChanged, timeoutSec);
         }
@@ -810,7 +840,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, Action<byte[]> onValueChanged, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator SubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, Action<byte[]> onValueChanged, float timeoutSec = DefaultRequestTimeout)
         {
             EnsureRunningOnMainThread();
 
@@ -836,7 +866,7 @@ namespace Systemic.Unity.BluetoothLE
         /// See <see cref="RequestEnumerator"/> properties to get the request status.
         /// </returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static RequestEnumerator UnsubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex = 0, float timeoutSec = RequestDefaultTimeout)
+        public static RequestEnumerator UnsubscribeCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex = 0, float timeoutSec = DefaultRequestTimeout)
         {
             EnsureRunningOnMainThread();
 

@@ -1,8 +1,7 @@
 /**
  * @file
- * @brief Definition of the SGBlePeripheral class.
+ * @brief Definition of the SGBlePeripheralQueue class.
  */
-//TODO rename file to SGBlePeripheral.h
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
@@ -11,13 +10,20 @@
 #import "SGBleRequest.h"
 
 /**
- * @brief Implementation of the CBPeripheralDelegate protocol. Works as a queue to perform
- *        operations on a Bluetooth Low Energy (BLE) peripheral.
+ * @brief Implementation of the
+ *        <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">
+ *        CBPeripheralDelegate</a> protocol. Queues up operations to
+ *        be performed with a Bluetooth Low Energy (BLE)
+ *        <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">
+ *        peripheral</a>, run them sequentially and notify of their outcome.
+ *
+ * The next queued operation (a SGBleRequest instance) is run only once the current one
+ * completes (whether successfully or not).
  *
  * The connection request has no time out and waits until the peripheral is connected.
  * Any subsequent request is therefore blocked until the connection is successful.
  *
- * Call cancelQueue() to cancel all pending operations.
+ * Call cancelQueue() to cancel all pending operations, including an on-going connection.
  *
  * Handlers (such as request completion handlers) are called on the shared BLE queue,
  * user code for those handlers should return as quickly as possible to avoid delaying
@@ -80,7 +86,7 @@
 //! @{
 
 /**
- * @brief Initializes a peripheral for the given CBPeripheral object,
+ * @brief Initializes a SGBlePeripheralQueue instance for the given CBPeripheral object,
  *        with a central manager delegate and a connection event handler.
  *
  * @param peripheral The CBPeripheral object for the BLE peripheral.

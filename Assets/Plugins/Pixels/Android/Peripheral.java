@@ -1,14 +1,33 @@
 /**
  * @package com.systemic.bluetoothle
- * @brief Android package for simplified access to Bluetooth Low Energy peripherals.
+ * @brief An Android Java package that provides a simplified access to Bluetooth
+ *        Low Energy peripherals.
+ *
+ * @note Some knowledge with Bluetooth Low Energy semantics is recommended for
+ *       reading this documentation.
+ *
+ * The Scanner class is used for discovering available Bluetooth peripherals.
+ * The latter are identified by an Android
+ * <a href="https://developer.android.com/reference/android/bluetooth/BluetoothDevice">
+ * BluetoothDevice</a> object.
+ * The <a href="https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library">
+ * BluetoothLeScannerCompat</a> class from Nordic is used to perform the scanning.
+ *
+ * The Peripheral class allows for connecting to Bluetooth Low Energy peripherals
+ * and perform operations with them. Most of those operations are asynchronous
+ * and queued using Nordic's BleManager class from their Android-BLE-Library
+ * <a href="https://github.com/NordicSemiconductor/Android-BLE-Library">package</a>.
+ *
+ * @image html native-android.svg "Classes diagram"
  *
  * @ingroup Android_Java
  */
 package com.systemic.bluetoothle;
 
 //! \defgroup Android_Java
-//! @brief Android package for simplified access to Bluetooth Low Energy peripherals.
-//!
+//! @brief An Android Java package that provides a simplified access to Bluetooth
+//!        Low Energy peripherals.
+//! 
 //! @see com.systemic.bluetoothle namespace.
 
 import java.util.ArrayList;
@@ -32,9 +51,9 @@ import com.unity3d.player.UnityPlayer;
 /**
  * @brief Represents a Bluetooth Low Energy (BLE) peripheral.
  *
- * @note This class was designed to work as a Unity plugin, and thus its methods take
- * and return strings rather than ParcelUuid object for a simplified marshaling with
- * the .NET platform.
+ * @note This class was designed to work in a Unity plugin and its marshaling
+ *       mechanism, and as such its methods uses strings for the services and
+ *       characteristics UUIDs rather than ParcelUuid objects.
  *
  * The most common BLE operations are supported, such as reading the peripheral name,
  * MTU, RSSI, listing services and characteristics.

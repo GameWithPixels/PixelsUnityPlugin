@@ -2,21 +2,22 @@
  * @file
  * @brief Definition of the SGBleCentralManagerDelegate class.
  */
-//TODO rename file to SGBleCentralManagerDelegate
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "SGBleTypes.h"
 
 /**
- * @brief Implementation of CBCentralManagerDelegate protocol. Keeps a lit of discovered
- *        Bluetooth Low Energy (BLE) peripherals and notifies of peripherals connection events.
+ * @brief Implementation of
+ *        <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanagerdelegate">
+ *        CBCentralManagerDelegate</a> protocol.
+ *        Stores and notifies of discovered Bluetooth Low Energy (BLE) peripherals, also notifies
+ *        of peripherals connection events and of the host device Bluetooth radio state changes.
  *
- * Upon SGBleCentralManagerDelegate initialization, an instance of this class creates
- * a CBCentralManager object and set itself as the manager's delegate.
- *
- * For convenience, it stores discovered peripherals, offers notifications for when the
- * host device Bluetooth state changes and for peripherals connection events.
+ * Upon SGBleCentralManagerDelegate initialization, an instance of this class creates a
+ * <a href="https://developer.apple.com/documentation/corebluetooth/cbcentralmanager">
+ * CBCentralManager</a> object and set itself as the manager's delegate. The central manager
+ * is available through the centralManager property.
  *
  * @ingroup Apple_Objective-C
  */
@@ -57,7 +58,7 @@
 @property(nonatomic, readonly, getter=isBluetoothOn) bool isBluetoothOn;
 
 /**
- * @brief Initializes an instance with a Bluetooth state update handler.
+ * @brief Initializes a SGBleCentralManagerDelegate instance with a Bluetooth state update handler.
  *
  * Creates a CBCentralManager object and set itself as the manager's delegate.
  * The manager is available through the centralManager property.

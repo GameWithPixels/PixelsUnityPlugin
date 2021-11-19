@@ -57,8 +57,8 @@ public class BleConsole: MonoBehaviour
 
         Debug.Log($"Connecting to Pixel named {peripheral.Name}...");
 
-        var request = Central.ConnectPeripheralAsync(
-            peripheral, (_, connected) => Debug.Log(connected ? "Connected!" : "Not connected!"));
+        var request = Central.ConnectPeripheralAsync(peripheral, (_, connected)
+            => Debug.Log(connected ? "Connected!" : "Not connected!"));
         yield return request;
 
         if (!request.IsSuccess)

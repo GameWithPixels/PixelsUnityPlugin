@@ -5,15 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
-// We can't find any reliable information about the thread safety of CoreBluetooth APIs
-// so we're going to assume that CBCentralManager, CBPeripheral, CBCharacteristic and CBDescriptor
-// achieve any required synchronization with the given queue
-// When no queue is given to the central manager, it defaults to the main thread serial queue.
-// We create a serial queue as well so we don't have to worry about synchronization when we use
-// the queue ourselves (and obviously CoreBluetooth works well with a serial queue).
-// We're not concerned about performance by using a serial queue as Bluetooth LE operations
-// are "low" frequency by design anyways.
-
+/**
+ * @brief Internal type, list the Bluetooth operations supported by SGBleRequest.
+ * @ingroup Apple_Objective-C
+ */
 typedef NS_ENUM(NSInteger, SGBleRequestType)
 {
     SGBleRequestTypeUnknown = 0,
@@ -25,29 +20,63 @@ typedef NS_ENUM(NSInteger, SGBleRequestType)
     SGBleRequestTypeSetNotifyValue,
 };
 
+/**
+ * @brief Internal type, runs the Bluetooth operation associated with a SGBleRequest object.
+ * @ingroup Apple_Objective-C
+ */
 typedef NSError * (^SGBleRequestExecuteHandler)();
+
+/**
+ * @brief Internal type, completion handler for operations associated with a SGBleRequest object.
+ * @ingroup Apple_Objective-C
+ */
 typedef void (^SGBleRequestCompletionHandler)(NSError *error);
 
+/**
+ * @brief Internal type, represents a Bluetooth operation to be performed on a
+ *        <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">
+ *        peripheral</a>. Used by SGBlePeripheralQueue.
+ * @ingroup Apple_Objective-C
+ */
 @interface SGBleRequest : NSObject
+//! @cond
 {
     SGBleRequestType _type;
     SGBleRequestExecuteHandler _executeHandler;
     SGBleRequestCompletionHandler _completionHandler;
 }
 
-@property(readonly, getter=type) SGBleRequestType type;
+// Property getters
 - (SGBleRequestType)type;
+//! @endcond
 
-// executeHandler returns an error if it has failed immediately
-// completionHandler can be nil
+/**
+ * @brief Gets the type of request associated with this instance.
+ */
+@property(readonly, getter=type) SGBleRequestType type;
+
+/**
+ * @brief Initializes a SGBleRequest instance with a specific Bluetooth operation to run.
+ * 
+ * @param requestType The type of request associated with this instance.
+ * @param executeHandler The operation to run, returns an error if it has failed to be run.
+ * @param completionHandler Called when the operation has completed (successfully or not), may be nil.
+ */
 - (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(SGBleRequestExecuteHandler)executeHandler completionHandler:(SGBleRequestCompletionHandler)completionHandler;
 
+/**
+ * @brief Execute the associated request.
+ */
 - (NSError *)execute;
 
+/**
+ * @brief Called by the execution block to notify this instance of the request outcome.
+ */
 - (void)notifyResult:(NSError *)error;
 
+/**
+ * @brief Gets the string version of a SGBleRequestType value.
+ */
 + (NSString *)requestTypeToString:(SGBleRequestType)typeSGBleRequest;
 
 @end
-
-//! @endcond
