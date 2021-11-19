@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "../../include/cble.h"
 #include "Systemic/BluetoothLE/Scanner.h"
-#include "Systemic/BluetoothLE/DiscoveredPeripheral.h"
+#include "Systemic/BluetoothLE/ScannedPeripheral.h"
 #include "Systemic/BluetoothLE/Peripheral.h"
 #include "Systemic/BluetoothLE/Service.h"
 #include "Systemic/BluetoothLE/Characteristic.h"
@@ -196,7 +196,7 @@ namespace
         return s.substr(1, s.size() - 2);
     }
 
-    std::string toJsonStr(const std::shared_ptr<DiscoveredPeripheral>& peripheral)
+    std::string toJsonStr(const std::shared_ptr<ScannedPeripheral>& peripheral)
     {
         std::stringstream str{};
         str << "{\"systemId\":\"" << peripheral->address() << "\"";
@@ -301,7 +301,7 @@ bool sgBleStartScan(
     {
         std::lock_guard lock{ _scannerMutex };
         _scanner.reset(new Scanner(
-            [onDiscoveredPeripheral](std::shared_ptr<DiscoveredPeripheral> p)
+            [onDiscoveredPeripheral](std::shared_ptr<ScannedPeripheral> p)
             {
                 onDiscoveredPeripheral(toJsonStr(p).data());
             },

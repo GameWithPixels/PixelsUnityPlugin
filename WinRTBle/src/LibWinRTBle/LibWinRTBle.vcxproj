@@ -162,7 +162,7 @@
     <ClInclude Include="..\..\include\cble.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Systemic\BluetoothLE\Characteristic.h" />
-    <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h" />
+    <ClInclude Include="Systemic\BluetoothLE\ScannedPeripheral.h" />
     <ClInclude Include="Systemic\BluetoothLE\Peripheral.h" />
     <ClInclude Include="Systemic\BluetoothLE\Scanner.h" />
     <ClInclude Include="Systemic\BluetoothLE\Service.h" />

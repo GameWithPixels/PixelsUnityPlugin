@@ -92,7 +92,7 @@ namespace Systemic::BluetoothLE
      * 
      * @note This is a read only class.
      */
-    class DiscoveredPeripheral
+    class ScannedPeripheral
     {
         using DateTime = winrt::Windows::Foundation::DateTime;
 
@@ -201,7 +201,7 @@ namespace Systemic::BluetoothLE
     private:
         friend Scanner;
 
-        DiscoveredPeripheral(
+        ScannedPeripheral(
             const DateTime& timestamp,
             bluetooth_address_t address,
             const std::wstring& name,
@@ -222,9 +222,9 @@ namespace Systemic::BluetoothLE
             _manufacturerData{ manufacturerData },
             _advertisingData{ advertisingData } {}
 
-        DiscoveredPeripheral(
+        ScannedPeripheral(
             const DateTime& timestamp,
-            const DiscoveredPeripheral& peripheral,
+            const ScannedPeripheral& peripheral,
             std::wstring& name,
             int rssi,
             int txPowerLevel,

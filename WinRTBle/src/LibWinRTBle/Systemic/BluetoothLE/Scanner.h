@@ -10,11 +10,11 @@
 // Common BLE types
 #include "../../../include/bletypes.h"
 #include "../Internal/Utils.h"
-#include "DiscoveredPeripheral.h"
+#include "ScannedPeripheral.h"
 
 namespace Systemic::BluetoothLE
 {
-    class DiscoveredPeripheral;
+    class ScannedPeripheral;
 
     /**
      * @brief Implements scanning of Bluetooth Low Energy (BLE) peripherals.
@@ -38,10 +38,10 @@ namespace Systemic::BluetoothLE
 
         // Discovered peripherals
         std::mutex _peripheralsMtx{};
-        std::map<bluetooth_address_t, std::shared_ptr<DiscoveredPeripheral>> _peripherals{};
+        std::map<bluetooth_address_t, std::shared_ptr<ScannedPeripheral>> _peripherals{};
 
         // User callback for discovered peripherals
-        std::function<void(std::shared_ptr<DiscoveredPeripheral>)> _onPeripheralDiscovered{};
+        std::function<void(std::shared_ptr<ScannedPeripheral>)> _onPeripheralDiscovered{};
 
     public:
         /**
@@ -55,7 +55,7 @@ namespace Systemic::BluetoothLE
          * @param services List of services UUIDs that the peripheral should advertise, may be empty.
          */
         Scanner(
-            std::function<void(std::shared_ptr<DiscoveredPeripheral>)> peripheralDiscovered,
+            std::function<void(std::shared_ptr<ScannedPeripheral>)> peripheralDiscovered,
             std::vector<winrt::guid> services = std::vector<winrt::guid>{})
             :
             _watcher{},
@@ -85,7 +85,7 @@ namespace Systemic::BluetoothLE
          *
          * @param outDiscoveredPeripherals A std::vector to which the discovered peripherals are copied (appended).
          */
-        void copyDiscoveredPeripherals(std::vector<std::shared_ptr<DiscoveredPeripheral>>& outDiscoveredPeripherals)
+        void copyDiscoveredPeripherals(std::vector<std::shared_ptr<ScannedPeripheral>>& outDiscoveredPeripherals)
         {
             std::lock_guard lock{ _peripheralsMtx };
             outDiscoveredPeripherals.reserve(outDiscoveredPeripherals.size() + _peripherals.size());
@@ -179,8 +179,8 @@ namespace Systemic::BluetoothLE
             case BluetoothLEAdvertisementType::NonConnectableUndirected:
             {
                 // We got a fresh advertisement packet, create a new DiscoveredPeripheral
-                std::shared_ptr<DiscoveredPeripheral> peripheral{
-                    new DiscoveredPeripheral(
+                std::shared_ptr<ScannedPeripheral> peripheral{
+                    new ScannedPeripheral(
                         args.Timestamp(),
                         args.BluetoothAddress(),
                         name,
@@ -201,7 +201,7 @@ namespace Systemic::BluetoothLE
 
             case BluetoothLEAdvertisementType::ScanResponse:
             {
-                std::shared_ptr<DiscoveredPeripheral> updatedPeripheral{};
+                std::shared_ptr<ScannedPeripheral> updatedPeripheral{};
                 {
                     std::lock_guard lock{ _peripheralsMtx };
                     auto it = _peripherals.find(args.BluetoothAddress());
@@ -210,7 +210,7 @@ namespace Systemic::BluetoothLE
                         // We got an advertisement packet in response to a scan request send after receiving
                         // an initial advertisement packet, update the existing DiscoveredPeripheral
                         updatedPeripheral.reset(
-                            new DiscoveredPeripheral(
+                            new ScannedPeripheral(
                                 args.Timestamp(),
                                 *it->second,
                                 name,
@@ -233,7 +233,7 @@ namespace Systemic::BluetoothLE
         }
 
         // Notify user code if peripheral advertise required services
-        void notify(const std::shared_ptr<DiscoveredPeripheral>& peripheral)
+        void notify(const std::shared_ptr<ScannedPeripheral>& peripheral)
         {
             if (_onPeripheralDiscovered &&
                 (_requestedServices.empty() || Internal::isSubset(_requestedServices, peripheral->services())))

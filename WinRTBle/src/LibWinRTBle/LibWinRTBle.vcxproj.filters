@@ -41,7 +41,7 @@
     <ClInclude Include="Systemic\ComHelper.h">
       <Filter>Header Files\Systemic</Filter>
     </ClInclude>
-    <ClInclude Include="Systemic\BluetoothLE\DiscoveredPeripheral.h">
+    <ClInclude Include="Systemic\BluetoothLE\ScannedPeripheral.h">
       <Filter>Header Files\Systemic\BluetoothLE</Filter>
     </ClInclude>
     <ClInclude Include="Systemic\BluetoothLE\Peripheral.h">
