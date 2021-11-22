@@ -2,7 +2,7 @@ var hierarchy =
 [
     [ "Systemic::BluetoothLE::AdvertisementData", "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html", null ],
     [ "Systemic.Unity.BluetoothLE.BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", null ],
-    [ "Systemic.Unity.Pixel.BleUuids", "class_systemic_1_1_unity_1_1_pixel_1_1_ble_uuids.html", null ],
+    [ "Systemic.Unity.Pixels.BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", null ],
     [ "<CBCentralManagerDelegate>", null, [
       [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", null ]
     ] ],
@@ -10,7 +10,6 @@ var hierarchy =
       [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", null ]
     ] ],
     [ "Systemic.Unity.BluetoothLE.Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", null ],
-    [ "Systemic.Unity.BluetoothLE.Test.CentralTest", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test_1_1_central_test.html", null ],
     [ "Systemic::BluetoothLE::Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", null ],
     [ "DataReceivedCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
@@ -37,10 +36,10 @@ var hierarchy =
     ] ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
     [ "MonoBehaviour", null, [
-      [ "BleConsole", "class_ble_console.html", null ],
-      [ "BleController", "class_ble_controller.html", null ],
       [ "ConfigurePlist", "class_configure_plist.html", null ],
-      [ "UIConsole", "class_u_i_console.html", null ]
+      [ "Systemic.Unity.Examples.PixelConsole", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html", null ],
+      [ "Systemic.Unity.Examples.PixelController", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html", null ],
+      [ "Systemic.Unity.Examples.UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", null ]
     ] ],
     [ "MtuCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.MtuRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_mtu_request_callback.html", null ]
@@ -53,6 +52,7 @@ var hierarchy =
       [ "SGBleRequest", "interface_s_g_ble_request.html", null ]
     ] ],
     [ "com.systemic.bluetoothle.Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", null ],
+    [ "Systemic.Unity.Pixels.Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", null ],
     [ "RssiCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ]
     ] ],

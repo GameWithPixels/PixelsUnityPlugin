@@ -1,4 +1,4 @@
-<map id="Assets/Plugins/Pixels/iOS/SGBleTypes.h" name="Assets/Plugins/Pixels/iOS/SGBleTypes.h">
-<area shape="rect" id="node1" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="13,5,162,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,169,121"/>
+<map id="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleTypes.h" name="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleTypes.h">
+<area shape="rect" id="node1" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="29,95,193,121"/>
 </map>

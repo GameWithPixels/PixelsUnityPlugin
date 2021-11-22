@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uiconsole_314',['UIConsole',['../class_u_i_console.html',1,'']]]
+  ['uilogtotext_328',['UILogToText',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html',1,'Systemic::Unity::Examples']]]
 ];

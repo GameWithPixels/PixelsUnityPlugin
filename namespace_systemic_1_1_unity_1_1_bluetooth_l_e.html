@@ -83,7 +83,6 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_bluet
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -92,7 +91,7 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_bluet
 </div><!--header-->
 <div class="contents">
 
-<p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> game engine that provides a simplified access to Bluetooth Low Energy peripherals.  
+<p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> game engine that provides a simplified access to Bluetooth Low Energy peripherals.  
 <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -107,7 +106,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque and read only class storing the native peripheral handle as used by the platform specific INativeInterfaceImpl implementation.  <a href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html">NativeInterface</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> programmer.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> programmer.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html">RequestEnumerator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#details">More...</a><br /></td></tr>
@@ -222,9 +221,11 @@ Functions</h2></td></tr>
 <tr class="separator:a9de6bf4222af1249e2ff8525f201b94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> game engine that provides a simplified access to Bluetooth Low Energy peripherals. </p>
-<p><a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> plugins are used to access native Bluetooth APIs specific to each supported platform: Windows 10 and above, iOS and Android.</p>
-<p>The most useful class for <a class="el" href="namespace_systemic_1_1_unity.html" title="Collection of C# classes for the Unity game engine.">Unity</a> developers is <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a>.</p>
+<div class="textblock"><p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> game engine that provides a simplified access to Bluetooth Low Energy peripherals. </p>
+<p><a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> plugins are used to access native Bluetooth APIs specific to each supported platform: Windows 10 and above, iOS and Android.</p>
+<p>The most useful class for <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> developers to access a Bluetooth peripheral is <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a>.</p>
+<p>For communicating specifically with Pixel dices see <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Dedicated access to Pixels dice. Available soon.">Systemic.Unity.Pixels.Pixel</a>.</p>
+<p>For <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a>.</p>
 <p>Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a3b6f42efe9864fdc76ec45fe0cd3f0c9"></a>

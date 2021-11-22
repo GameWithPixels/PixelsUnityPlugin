@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html" title="Interface for scan results callbacks." alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,97,117,124"/>
+<area shape="rect" id="node2" href="$class_configure_plist.html" title="Post process build step that adds required NSBluetoothAlwaysUsageDescription entry to Info...." alt="" coords="199,5,302,32"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html" title="Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,..." alt="" coords="165,57,336,98"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html" title="Demonstrates various Bluetooth operations on Pixels dice. One may scan for Pixels,..." alt="" coords="165,122,336,163"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html" title="Gets the log messages and copy them to a UI.Text object." alt="" coords="165,187,336,229"/>
 </map>

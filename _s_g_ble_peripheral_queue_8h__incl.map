@@ -1,8 +1,8 @@
-<map id="Assets/Plugins/Pixels/iOS/SGBlePeripheralQueue.h" name="Assets/Plugins/Pixels/iOS/SGBlePeripheralQueue.h">
-<area shape="rect" id="node1" title="Definition of the SGBlePeripheralQueue class." alt="" coords="118,5,314,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="231,244,395,271"/>
-<area shape="rect" id="node3" title=" " alt="" coords="31,169,231,196"/>
-<area shape="rect" id="node4" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="110,95,322,121"/>
-<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="306,169,411,196"/>
-<area shape="rect" id="node6" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="397,95,515,121"/>
+<map id="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBlePeripheralQueue.h" name="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBlePeripheralQueue.h">
+<area shape="rect" id="node1" title="Definition of the SGBlePeripheralQueue class." alt="" coords="105,5,327,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="231,259,395,285"/>
+<area shape="rect" id="node3" title=" " alt="" coords="31,184,231,211"/>
+<area shape="rect" id="node4" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="110,109,322,136"/>
+<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="306,184,411,211"/>
+<area shape="rect" id="node6" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="397,109,515,136"/>
 </map>

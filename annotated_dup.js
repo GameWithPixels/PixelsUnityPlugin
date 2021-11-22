@@ -20,9 +20,6 @@ var annotated_dup =
       ] ],
       [ "Unity", "namespace_systemic_1_1_unity.html", [
         [ "BluetoothLE", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html", [
-          [ "Test", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test.html", [
-            [ "CentralTest", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test_1_1_central_test.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_test_1_1_central_test" ]
-          ] ],
           [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
           [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
           [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
@@ -31,16 +28,19 @@ var annotated_dup =
           [ "ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
           [ "ValueRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator" ]
         ] ],
-        [ "Pixel", "namespace_systemic_1_1_unity_1_1_pixel.html", [
-          [ "BleUuids", "class_systemic_1_1_unity_1_1_pixel_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixel_1_1_ble_uuids" ]
+        [ "Examples", "namespace_systemic_1_1_unity_1_1_examples.html", [
+          [ "PixelConsole", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html", null ],
+          [ "PixelController", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller" ],
+          [ "UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text" ]
+        ] ],
+        [ "Pixels", "namespace_systemic_1_1_unity_1_1_pixels.html", [
+          [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", null ],
+          [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ]
         ] ]
       ] ]
     ] ],
-    [ "BleConsole", "class_ble_console.html", null ],
-    [ "BleController", "class_ble_controller.html", "class_ble_controller" ],
     [ "ConfigurePlist", "class_configure_plist.html", "class_configure_plist" ],
     [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", "interface_s_g_ble_central_manager_delegate" ],
     [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", "interface_s_g_ble_peripheral_queue" ],
-    [ "SGBleRequest", "interface_s_g_ble_request.html", "interface_s_g_ble_request" ],
-    [ "UIConsole", "class_u_i_console.html", "class_u_i_console" ]
+    [ "SGBleRequest", "interface_s_g_ble_request.html", "interface_s_g_ble_request" ]
 ];

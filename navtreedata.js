@@ -26,17 +26,22 @@ var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
     [ "PixelsUnityPlugin", "index.html", [
-      [ "Overview", "index.html#autotoc_md1", [
-        [ "NativeInterface", "index.html#autotoc_md2", null ],
-        [ "Central", "index.html#autotoc_md3", null ],
-        [ "Pixel", "index.html#autotoc_md4", null ]
+      [ "Overview", "index.html#autotoc_md1", null ],
+      [ "Unity classes", "index.html#autotoc_md2", [
+        [ "NativeInterface", "index.html#autotoc_md3", null ],
+        [ "Central", "index.html#autotoc_md4", null ],
+        [ "Pixel", "index.html#autotoc_md5", null ]
       ] ],
-      [ "Architecture", "index.html#autotoc_md5", [
-        [ "Main classes", "index.html#autotoc_md6", null ],
-        [ "Execution flow between plugins and C# code", "index.html#autotoc_md7", null ],
-        [ "Basic sequence of BLE operations", "index.html#autotoc_md8", null ]
+      [ "Subscribing to events", "index.html#autotoc_md6", null ],
+      [ "Examples", "index.html#autotoc_md7", [
+        [ "Console Application", "index.html#autotoc_md8", null ],
+        [ "Test Pad Application", "index.html#autotoc_md9", null ]
       ] ],
-      [ "Native Plugins", "index.html#autotoc_md9", null ]
+      [ "Architecture", "index.html#autotoc_md10", [
+        [ "Main classes", "index.html#autotoc_md11", null ],
+        [ "Execution flow between plugins and C# code", "index.html#autotoc_md12", null ],
+        [ "Native Plugins", "index.html#autotoc_md13", null ]
+      ] ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Packages", "namespaces.html", [
@@ -75,9 +80,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_characteristic_8h.html",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7dc291462687ad1e70bcd656e83d0928",
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6ae7d31fc0602fb2ede144d18cdffd816b"
+"",
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a0c2d4e3e554826dcde47e391aa5de396",
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6a10b0501000c144cb2a7424bd45e1bcde"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

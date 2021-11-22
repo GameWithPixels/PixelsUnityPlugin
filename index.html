@@ -86,60 +86,83 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">PixelsUnityPlugin </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> This is the Pixels plugin for Unity, a Unity asset that enables communications between Pixels and your device dice using Bluetooth Low Energy.</p>
-<p>The following platforms are currently supported: Windows 10 and above, iOS and Android.</p>
-<p>The development is done using Unity 2020.3. It should work just as well on all Unity version since 2018. Please open a ticket in GitHub if you're having issues.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> This is the Pixels plugin for Unity, a Unity Asset that enables communications between Pixels and a smartphone or a computer through Bluetooth Low Energy.</p>
+<p>The following platforms are currently supported: Windows 10 version 1709 (Fall Creators Update) and above, iOS and Android.</p>
+<p>The development of this plugin is made using Unity 2020.3. It should work just as well on all Unity version since 2018. Please open a ticket in GitHub if you're having any issue.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
-<p>Bluetooth access is not available within Unity so this asset is relying on native plugins to get a direct access to the specific Bluetooth APIs for each supported platform.</p>
-<p>The Unity implementation is documented below while the plugins are described in the <a href="#native-plugins">dedicated</a> section.</p>
-<p>On the managed side, there are two main classes available to the Unity programmer.</p>
-<p>Interacting with Bluetooth Low Energy devices (usually referred to as peripherals) happens in two steps. First there is scanning which discovers available peripherals in the vicinity, and second there is the connection.</p>
-<p>One connected to a peripheral, the software may start to discover its capabilities and exchange data back and forth. A major pain point when working with wireless devices is that they may get disconnected at any moment, for a host of reasons (the peripheral was moved out of reach, it ran out of battery, interferences prevented the flow of communication to get through properly, etc.).</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
-NativeInterface</h2>
-<p>The raw functionality of the native plugins is exposed through the <em>NativeInterface</em> static class. Callbacks from the native implementation such as for scanning, connection events or requests responses may run on any thread.</p>
-<p>User code also has to manage the lifetime of native resources. And finally available features and behavior will vary depending on the platform it's running on.</p>
+<p>Bluetooth access is not available in Unity so our implementation is relying on native plugins (also included) to get a direct access to the Bluetooth Low Energy APIs for each supported platform.</p>
+<p>Accessing a Bluetooth Low Energy devices (usually referred to as peripherals) happens in two steps. First there is scanning which discovers available peripherals in the vicinity, and second there is a connection attempt.</p>
+<p>One connected to a peripheral, the software may start to query for its capabilities and exchange data back and forth with the peripheral. When developing software connecting to Bluetooth devices such as Pixels dice, the code need to account for disconnection events that may happen at any moment and for a variety of reasons : the peripheral was moved out of reach, it ran out of battery, interferences prevented the flow of communication to get through properly, etc.</p>
+<p>This library aims to provide different levels of abstraction layers to Bluetooth Low Energy peripherals from Unity. The highest level of abstraction layer offers a simplified access to the most useful Pixels features whereas the lowest level layer enables direct access to the Bluetooth Low Energy protocol.</p>
+<p>The main classes available from Unity are introduced below. For more details about their implementation or the native plugins, please refer to the Doxygen generated code <a href="modules.html">documentation</a>. Following Doxygen semantics, the documentation is divided in "modules":</p><ul>
+<li>The Unity C# code</li>
+<li>The WinRT DLL plugin in C++</li>
+<li>The iOS plugin in Objective-C</li>
+<li>The Android plugin in Java</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Unity classes</h1>
+<p>This section introduces the main classes available from Unity.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-Central</h2>
-<p>On the other hand, the <em>Central</em> static class wraps <em>NativeInterface</em> with a design tailored towards Unity. All Bluetooth requests return a Unity coroutine. Connection and scanning events are managed by the class and are notified to the user code on the main thread during the frame update.</p>
-<p>Native resources are also managed by this class and it tries to make the behavior as consistent as possible across the different platforms.</p>
+NativeInterface</h2>
+<p>The raw functionality of the native plugins is exposed through the <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html"><em>NativeInterface</em></a> static class. Callbacks from the native implementation such as for scanning, connection events or requests responses may run on any thread. Also user code also has to manage the lifetime of native resources. Available features and behavior may vary depending on the platform or device it's running on.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
+Central</h2>
+<p>On the other hand, the <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> static class wraps <em>NativeInterface</em> with a design tailored for Unity. All asynchronous Bluetooth requests return a Unity coroutine that can be yielded. Connection and scanning events are managed by the class and are notified to the user code on the main thread during frame updates.</p>
+<p>Native resources are also managed by <em>Central</em> and it tries to account for differences between the different platforms.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Pixel</h2>
-<p>While those classes allow for a generic access to Bluetooth Low Energy peripherals, we will soon add new classes dedicated to the communications with Pixels dice.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<p>While the above classes offer a generic access to Bluetooth Low Energy peripherals, we will soon add new classes dedicated to working with Pixels dice and that take care of dealing with the Bluetooth communications technical details.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Subscribing to events</h1>
+<p>When dealing with Bluetooth Low Energy (BLE) peripherals and specifically Pixels, one may want to subscribe to events for being notified of a state change (like a die being rolled).</p>
+<p>The chart below shows the workflow of subscribing to Pixels events and reading them.</p>
+<p><img src="subscription-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connection Events Workflow"/></p>
+<p>The software must scan for peripherals to identify which one to connect to. A Pixel dice advertise specific BLE services and thus can be easily filtered out during a scan.</p>
+<p>Once a die is found, the software may connect to it. Upon success it can subscribe to the characteristic (a BLE communication channel) that notifies of rolling dice events.</p>
+<p>It may also write to another characteristic to send messages to the die and, for example, request its current state (like which face is up).</p>
+<p>When the die is rolled (or upon other events), the characteristic value (its data) is changed to reflect that even. Thanks to the subscription, the software is notified of this change and can process the event accordingly.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Examples</h1>
+<p>Example scenes for Unity are located in the <code>Assets/Systemic/Examples</code> folder.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Console Application</h2>
+<p>This application outputs the console logs onto the screen.</p>
+<p>It demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it, sending messages and getting notifications.</p>
+<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html">PixelConsole</a> class documentation.</p>
+<p><img src="console-app.png" alt="" class="inline" title="Console Application Screenshot"/></p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Test Pad Application</h2>
+<p>This application let the user trigger various Bluetooth operations on Pixels dice.</p>
+<p>One may scan for Pixels, connect to one, retrieve information from and send messages to it.</p>
+<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html">PixelController</a> class documentation.</p>
+<p><img src="test-pad-app.png" alt="" class="inline" title="Test Pad Application Screenshot"/></p>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Architecture</h1>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<p>This part of the documentation covers in more technical details how the structure of the Unity Asset.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Main classes</h2>
-<p>Native plugins have each a different way of binding with Unity C# code.</p>
-<p>Windows and iOS plugins must expose C functions that are manually bound to C# static methods. Together those C functions form an API which was developed specifically to be used from Unity. They respectively make use of the C++ and Objective-C classes of the plugins</p>
+<p>The native plugins have each a different way of binding with Unity C# code.</p>
+<p>Windows and iOS plugins must expose C functions that are manually bound to C# static methods. Together those C functions form an API which was developed specifically to be used from Unity. They make use of the C++ and Objective-C classes of their respective plugins</p>
 <p>For Android plugins, Unity offers C# proxy classes that automatically bind to Java classes, so there is no need to build a specific API for Unity.</p>
-<p>Each native plugin has a C# {<em>PlatformName</em>}NativeInterfaceImpl class counterpart in Unity. They handle all the requirements for achieving proper code and data marshaling (which is the exchange of data and code flow between plugins and Unity) for their platform.</p>
-<p>The <em>NativeInterface</em> static class exposes a single interface to the Unity developer. It instantiates the correct {<em>PlatformName</em>}NativeInterfaceImpl at runtime and simply forwards calls to it.</p>
-<p>Bluetooth scanning results are returned in JSON format by the plugins. The Unity JSON library is used for parsing the JSON data into a <em>NativeAdvertisementDataJson</em> instance, which content is then stored in a <em>ScannedPeripheral</em> instance.</p>
+<p>Each native plugin has a C# {<em>PlatformName</em>}NativeInterfaceImpl class counterpart in Unity. They handle all the requirements for achieving proper code and data marshaling (which is the exchange of execution flow and data between plugins and Unity) for their platform.</p>
+<p>The <em>NativeInterface</em> static class gives a single entry point to the Unity developer regardless of the platform. It instantiates the correct {<em>PlatformName</em>}NativeInterfaceImpl at runtime and simply forwards calls to it.</p>
+<p>Bluetooth scanning results are returned in JSON format by the plugins. The Unity JSON library is used for parsing the data into a <em>NativeAdvertisementDataJson</em> instance, which content is then stored in a <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html"><em>ScannedPeripheral</em></a> instance.</p>
 <p>The later represents a Bluetooth Low Energy (BLE) peripheral that was scanned at a certain point in time. It must be used by the software to identify a specific peripheral when trying to connect to one, whether using the <em>NativeInterface</em> or the <em>Central</em> classes.</p>
 <p>The chart below shows those different layers:</p>
-<p><img src="general-architecture.svg" alt="" style="pointer-events: none;" class="inline" title="General architecture"/></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<p><img src="general-architecture.svg" alt="" style="pointer-events: none;" class="inline" title="General Architecture"/></p>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Execution flow between plugins and C# code</h2>
 <p>The chart below presents the execution flow of code when connecting to a peripheral.</p>
-<p><img src="connect-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connect workflow"/></p>
+<p><img src="connect-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connect Workflow"/></p>
 <p>The connect method of <em>Central</em> (or <em>NativeInterface</em>) is called by the software. It takes an instance of a <em>ScannedPeripheral</em> as an argument. The call is then forwarded to the appropriate {<em>PlatformName</em>}NativeInterfaceImpl instance which handles the technical details of marshaling it to the native plugin.</p>
 <p>When running on Windows or iOS, the C connect function is called through marshaling, which in turn retrieves the correct C++ <em>Peripheral</em> or Objective-C <em><a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a></em> instance and calls its connect method.</p>
 <p>When running on Android, the Java <em>Peripheral</em> class is directly retrieved in C# and its connect method is invoked from Unity.</p>
 <p>Connecting to a peripheral and most other BLE requests are asynchronous. While such calls return almost immediately, the Operating System continues processing the request on a background thread and runs a callback to notify of its outcome.</p>
 <p>Such callbacks are then processed by the native code and forwarded back to the C# code through marshalling. Finally the proper C# handler is then invoked with the request result.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-Basic sequence of BLE operations</h2>
-<p>When dealing with BLE peripherals and specifically Pixels, one may want to subscribe to events to get notified of a state change (like a die being rolled).</p>
-<p>The chart below shows the different steps to achieve that.</p>
-<p><img src="connection-events-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connection events workflow"/></p>
-<p>The software must scan for peripherals to identify which one to connect to. A Pixel dice advertise specific BLE services and thus can be easily filtered out during a scan.</p>
-<p>Once a die is found, the software may connect to it. Upon success it can subscribe to the characteristic (a BLE communication channel) that notifies of rolling dice events.</p>
-<p>It may also write to another characteristic to send messages to the die.</p>
-<p>When the die is rolled (or upon other events), the characteristic value (its data) is changed to reflect that even. The software being subscribed to it, it is then notified of this change and can process the event.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
-Native Plugins</h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Native Plugins</h2>
 <p>Each native plugin implements classes that offer a simplified access to the Bluetooth Low Energy features. Those classes are designed to be as consistent as possible across the different platforms while still staying true to their platform specific APIs and coding style.</p>
 <p>This makes it possible to both have a similar workflow for the different platforms while still retaining access to some of their unique features.</p>
 <p>See the <a href="modules.html">Modules</a> documentation to get a more in depth description of the <a href="group___win_r_t___cpp.html">Windows</a>, <a href="group___apple___objective-_c.html">iOS</a> and <a href="group___android___java.html">Android</a> native implementations. </p>
