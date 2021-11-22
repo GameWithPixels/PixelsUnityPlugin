@@ -168,7 +168,7 @@ namespace Systemic::BluetoothLE
             int txPower = 0;
             if (args.TransmitPowerLevelInDBm())
             {
-                txPower = args.TransmitPowerLevelInDBm().GetInt16();
+                txPower = args.TransmitPowerLevelInDBm().Value();
             }
 
             switch (args.AdvertisementType())

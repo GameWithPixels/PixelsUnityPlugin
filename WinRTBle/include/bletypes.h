@@ -6,7 +6,7 @@
 #pragma once
 
 //! \defgroup WinRT_Cpp
-//! @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+//! @brief A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals.
 //!
 //! @note Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
 //!
@@ -15,7 +15,13 @@
 //! @see Systemic::BluetoothLE namespace.
 
 /**
- * @brief Collection of C++ classes that provide a simplified access to Bluetooth Low Energy peripherals.
+ * @brief A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals.
+ *
+ * WinRT APIs are used to access Bluetooth. It allows communicating with devices without needing
+ * to first add them in Windows' Bluetooth devices manager.
+ *
+ * Requires at least Windows 10 version 1709 (Fall Creators Update).
+ *
  * @ingroup WinRT_Cpp
  */
 namespace Systemic::BluetoothLE

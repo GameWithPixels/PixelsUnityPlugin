@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Systemic.Unity.Pixel;
+using Systemic.Unity.Pixels;
 using UnityEngine;
 using UnityEngine.TestTools;
 

@@ -7,11 +7,15 @@ using UnityEngine;
 //! \defgroup Unity_CSharp
 //! @brief A collection of C# classes for the Unity game engine that provides a simplified access
 //!        to Bluetooth Low Energy peripherals.
-//!
-//! @see Systemic.Unity.BluetoothLE namespace.
 
 /// <summary>
-/// Collection of C# classes for the Unity game engine.
+/// Systemic Games base namespace.
+/// </summary>
+namespace Systemic { }
+
+/// <summary>
+/// A collection of C# classes for the Unity game engine provided by Systemic Games.
+/// This open source package is available on GitHub at https://github.com/GameWithPixels/PixelsUnityPlugin.
 /// </summary>
 namespace Systemic.Unity { }
 
@@ -22,7 +26,11 @@ namespace Systemic.Unity { }
 /// Unity plugins are used to access native Bluetooth APIs specific to each supported platform:
 /// Windows 10 and above, iOS and Android.
 ///
-/// The most useful class for Unity developers is <see cref="Central"/>.
+/// The most useful class for Unity developers to access a Bluetooth peripheral is <see cref="Central"/>.
+///
+/// For communicating specifically with Pixel dices see <see cref="Systemic.Unity.Pixels.Pixel"/>.
+///
+/// For  <see cref="Central"/>.
 /// </summary>
 /// <remarks>
 /// Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
@@ -182,6 +190,7 @@ namespace Systemic.Unity.BluetoothLE
         // Keeps a bunch of information about a known peripheral
         class PeripheralInfo
         {
+            public string Name => ScannedPeripheral?.Name;
             public ScannedPeripheral ScannedPeripheral;
             public NativePeripheralHandle NativeHandle;
             public Guid[] RequiredServices;
@@ -407,7 +416,8 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         /// <param name="peripheral">Scanned peripheral to connect to.</param>
         /// <param name="onConnectionEvent">Called each time the connection state changes, the peripheral is passed as
-        /// the first argument and the connection state as the second argument (<c>true</c> means connected).</param>
+        ///                                 the first argument and the connection state as the second argument
+        ///                                 (<c>true</c> means connected).</param>
         /// <param name="timeoutSec">The timeout value, in seconds.
         /// The default is zero in which case the request never times out.</param>
         /// <returns>
@@ -432,7 +442,7 @@ namespace Systemic.Unity.BluetoothLE
                 pinf.NativeHandle = NativeInterface.CreatePeripheral(peripheral,
                     (connectionEvent, reason) => EnqueuePeripheralAction(pinf, () =>
                     {
-                        Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] " +
+                        Debug.Log($"[BLE:{pinf.Name}] " +
                             $"Connection event `{connectionEvent}`{(reason == ConnectionEventReason.Success ? "" : $" with reason `{reason}`")}, " +
                             $"state was `{pinf.State}`");
                         OnPeripheralConnectionEvent(pinf, connectionEvent, reason);
@@ -441,11 +451,11 @@ namespace Systemic.Unity.BluetoothLE
                 // Check that the above call worked
                 if (pinf.NativeHandle.IsValid)
                 {
-                    Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Native peripheral created");
+                    Debug.Log($"[BLE:{pinf.Name}] Native peripheral created");
                 }
                 else
                 {
-                    Debug.LogError($"[BLE:{pinf.ScannedPeripheral.Name}] Failed to create native peripheral");
+                    Debug.LogError($"[BLE:{pinf.Name}] Failed to create native peripheral");
                 }
             }
 
@@ -455,7 +465,7 @@ namespace Systemic.Unity.BluetoothLE
                 {
                     Debug.Assert(pinf.NativeHandle.IsValid); // Already checked by RequestEnumerator
 
-                    Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Connecting with timeout of {timeoutSec}s...");
+                    Debug.Log($"[BLE:{pinf.Name}] Connecting with timeout of {timeoutSec}s...");
                     pinf.ConnectionEvent = onConnectionEvent;
                     Connect(pinf, onResult);
 
@@ -469,14 +479,14 @@ namespace Systemic.Unity.BluetoothLE
                             false, //TODO autoConnect
                             status => EnqueuePeripheralAction(pinf, () =>
                             {
-                                Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Connect result is `{status}`");
+                                Debug.Log($"[BLE:{pinf.Name}] Connect result is `{status}`");
 
                                 if (pinf.NativeHandle.IsValid
                                     && ((status == RequestStatus.Timeout) || (status == RequestStatus.AccessDenied)))
                                 {
                                     // Try again on timeout or access denied (which might happen
                                     // if the peripheral got turned off or out of range if the middle of the connection process)
-                                    Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Re-connecting...");
+                                    Debug.Log($"[BLE:{pinf.Name}] Re-connecting...");
                                     Connect(pinf, onResult);
                                 }
                                 else
@@ -487,7 +497,7 @@ namespace Systemic.Unity.BluetoothLE
                             }));
                     }
                 },
-                () => Debug.LogWarning($"[BLE:{pinf.ScannedPeripheral.Name}] Connection timeout, canceling..."));
+                () => Debug.LogWarning($"[BLE:{pinf.Name}] Connection timeout, canceling..."));
 
             // Connection event callback
             static void OnPeripheralConnectionEvent(PeripheralInfo pinf, ConnectionEvent connectionEvent, ConnectionEventReason reason)
@@ -509,45 +519,61 @@ namespace Systemic.Unity.BluetoothLE
 
                 if (ready)
                 {
-                    //Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Peripheral ready, setting MTU");
+                    //Debug.Log($"[BLE:{pinf.Name}] Peripheral ready, setting MTU");
 
-                    if (pinf.NativeHandle.IsValid)
+                    if (pinf.NativeHandle.IsValid && (NativeInterface.GetPeripheralMtu(pinf.NativeHandle) == 21))
                     {
                         // Change MTU to maximum (note: MTU can only be set once)
                         NativeInterface.RequestPeripheralMtu(pinf.NativeHandle, NativeInterface.MaxMtu,
                             (mtu, status) => EnqueuePeripheralAction(pinf, () =>
                             {
-                                Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] MTU {(status == RequestStatus.Success ? "changed to" : "kept at")} {mtu} bytes");
+                                Debug.Log($"[BLE:{pinf.Name}] MTU {(status == RequestStatus.Success ? "changed to" : "kept at")} {mtu} bytes");
                                 if ((status != RequestStatus.Success) && (status != RequestStatus.NotSupported))
                                 {
-                                    Debug.LogError($"[BLE:{pinf.ScannedPeripheral.Name}] Failed to change MTU, result is `{status}`");
+                                    Debug.LogError($"[BLE:{pinf.Name}] Failed to change MTU, result is `{status}`");
                                 }
 
-                                if (pinf.NativeHandle.IsValid)
-                                {
-                                    // We're done and ready
-                                    Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Ready");
-
-                                    // Update state
-                                    Debug.Assert(pinf.State == PeripheralState.Connecting);
-                                    pinf.State = PeripheralState.Ready;
-
-                                    // Notify
-                                    pinf.ConnectionEvent?.Invoke(pinf.ScannedPeripheral, true);
-                                }
+                                SetReady(pinf);
                             }));
+                    }
+                    else
+                    {
+                        SetReady(pinf);
                     }
                 }
                 else if (pinf.State != PeripheralState.Disconnected)
                 {
                     // We got disconnected
-                    Debug.Log($"[BLE:{pinf.ScannedPeripheral.Name}] Disconnected");
+                    Debug.Log($"[BLE:{pinf.Name}] Disconnected");
 
                     // Update state
                     pinf.State = PeripheralState.Disconnected;
 
                     // Notify
                     pinf.ConnectionEvent?.Invoke(pinf.ScannedPeripheral, false);
+                }
+            }
+
+            static void SetReady(PeripheralInfo pinf)
+            {
+                if (pinf.NativeHandle.IsValid && (pinf.State == PeripheralState.Connecting))
+                {
+                    // We're done and ready
+                    Debug.Log($"[BLE:{pinf.Name}] Ready");
+
+                    // Update state
+                    pinf.State = PeripheralState.Ready;
+
+                    // Notify
+                    pinf.ConnectionEvent?.Invoke(pinf.ScannedPeripheral, true);
+                }
+                else if (pinf.NativeHandle.IsValid)
+                {
+                    Debug.LogWarning($"[BLE:{pinf.Name}] Connection cancelled before being ready");
+                }
+                else
+                {
+                    Debug.LogWarning($"[BLE:{pinf.Name}] Peripheral became invalid before being ready");
                 }
             }
         }
@@ -765,7 +791,8 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="serviceUuid">The service UUID.</param>
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="data">The data to write to the characteristic (may be empty).</param>
-        /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
+        /// <param name="withoutResponse">Whether to wait for the peripheral to respond that it has received the data.
+        ///                               It's usually best to request a response.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.
@@ -787,7 +814,8 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service.</param>
         /// <param name="data">The data to write to the characteristic (may be empty).</param>
-        /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
+        /// <param name="withoutResponse">Whether to wait for the peripheral to respond that it has received the data.
+        ///                               It's usually best to request a response.</param>
         /// <param name="timeoutSec">The maximum allowed time for the request, in seconds.</param>
         /// <returns>
         /// An enumerator meant to be run as a coroutine.

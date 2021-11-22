@@ -210,7 +210,8 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="requiredServices">List of services that the peripheral should support, may be null or empty.</param>
         /// <param name="autoReconnect">Whether the native implementation should attempt to automatically reconnect
-        /// after an unexpected disconnection (i.e. not triggered by a call to <see cref="DisconnectPeripheral"/>).</param>
+        ///                             after an unexpected disconnection (i.e. not triggered by a call
+        ///                             to <see cref="DisconnectPeripheral"/>).</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>
         /// The exact behavior may vary between platforms.
@@ -414,7 +415,8 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="characteristicUuid">The characteristic UUID.</param>
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
         /// <param name="data">The data to write to the characteristic (may be empty).</param>
-        /// <param name="withoutResponse">Whether to wait for the peripheral to respond.</param>
+        /// <param name="withoutResponse">Whether to wait for the peripheral to respond that it has received the data.
+        ///                               It's usually best to request a response.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
         public static void WriteCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)

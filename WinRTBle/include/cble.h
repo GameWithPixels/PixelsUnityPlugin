@@ -1,10 +1,11 @@
 /**
  * @file
- * @brief C library for discovering, connecting to, and interacting with Bluetooth Low Energy
+ * @brief A C library for discovering, connecting to, and interacting with Bluetooth Low Energy
  * (BLE) peripherals on Windows 10 and above.
  *
- * WinRT is used to access bluetooth and allows accessing devices without needing to first
- * add them in Windows' Bluetooth devices manager.
+ * WinRT APIs are used to access Bluetooth. It allows communicating with devices without needing
+ * to first add them in Windows' Bluetooth devices manager.
+ *
  * Requires at least Windows 10 version 1709 (Fall Creators Update).
  *
  * Those functions are thread safe.
