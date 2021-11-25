@@ -7,23 +7,23 @@ namespace Systemic.Unity.Pixels.Behaviors
     /// </summary>
     public enum ConditionType : byte
     {
-        //![SkipEnumValue]
+        //TODO [SkipEnumValue]
         Unknown = 0,
-        //![Name("Die wakes up / sleeps")]
+        //TODO [Name("Pixel wakes up / sleeps")]
         HelloGoodbye,
-        //![Name("Die is picked up")]
+        //TODO [Name("Pixel is picked up")]
         Handling,
-        //![Name("Die is rolling")]
+        //TODO [Name("Pixel is rolling")]
         Rolling,
-        //![Name("Die roll is...")]
+        //TODO [Name("Pixel roll is...")]
         FaceCompare,
-        //![Name("Die is crooked")]
+        //TODO [Name("Pixel is crooked")]
         Crooked,
-        //![Name("Bluetooth Event...")]
+        //TODO [Name("Bluetooth Event...")]
         ConnectionState,
-        //![Name("Battery Event...")]
+        //TODO [Name("Battery Event...")]
         BatteryState,
-        //![Name("Die is idle for...")]
+        //TODO [Name("Pixel is idle for...")]
         Idle,
     };
 
@@ -32,12 +32,12 @@ namespace Systemic.Unity.Pixels.Behaviors
     /// type of the condition and fetch the condition parameters correctly.
     /// </summary>
 	public interface ICondition
-	{
-		ConditionType type { get; set; }
+    {
+        ConditionType type { get; set; }
     };
 
     /// <summary>
-    /// Condition that triggers when the die is being handled
+    /// Condition that triggers when the Pixel is being handled
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
@@ -50,7 +50,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     };
 
     /// <summary>
-    /// Condition that triggers when the die is being handled
+    /// Condition that triggers when the Pixel is being handled
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
@@ -64,7 +64,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     };
 
     /// <summary>
-    /// Condition that triggers when the die is being rolled
+    /// Condition that triggers when the Pixel is being rolled
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
@@ -77,7 +77,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     };
 
     /// <summary>
-    /// Condition that triggers when the die has landed by is crooked
+    /// Condition that triggers when the Pixel has landed by is crooked
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
@@ -103,7 +103,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     };
 
     /// <summary>
-    /// Condition that triggers when the die has landed on a face
+    /// Condition that triggers when the Pixel has landed on a face
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]

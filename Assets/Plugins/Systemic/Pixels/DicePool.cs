@@ -8,30 +8,23 @@ using Peripheral = Systemic.Unity.BluetoothLE.ScannedPeripheral;
 
 namespace Systemic.Unity.Pixels
 {
-    public interface IPersistentEditDiceList
+    public interface IPersistentEditPixelsList
     {
-        IEditDie AddNewDie(Die die);
-        //var editDie = AppDataSet.Instance.AddNewDie(poolDie);
+        IEditPixel AddNewPixel(Pixel pixel);
+        //var editPixel = AppDataSet.Instance.AddNewDie(pixel);
         //AppDataSet.Instance.SaveData();
 
-        void DeleteDie(IEditDie editDie);
-        //AppDataSet.Instance.DeleteDie(editDie);
+        void RemovePixel(IEditPixel editPixel);
+        //AppDataSet.Instance.DeleteDie(editPixel);
         //AppDataSet.Instance.SaveData();
 
-        List<IEditDie> GetDiceList();
+        IEditPixel[] GetEditPixels();
         //AppDataSet.Instance.dice
     }
 
     public interface IDialogBox
     {
-        bool ShowDialogBox(string title, string message, string okMessage = "Ok", string cancelMessage = null, System.Action<bool> closeAction = null);
-    }
-
-    public interface IProgrammingBox
-    {
-        bool ShowProgrammingBox(string description);
-        bool UpdateProgrammingBox(float percent, string description = null);
-        void HideProgrammingBox();
+        bool Show(string title, string message, string okMessage = "Ok", string cancelMessage = null, System.Action<bool> closeAction = null);
     }
 
     public interface IAudioPlayer
@@ -39,9 +32,12 @@ namespace Systemic.Unity.Pixels
         void PlayAudioClip(uint clipId);
     }
 
+    public delegate void PixelOperationResultHandler<T>(T result, string error);
+    public delegate void PixelOperationProgressHandler(Pixel pixel, float progress); // Value between 0 and 1
+
     public sealed partial class DicePool : MonoBehaviour
     {
-        readonly List<PoolDie> _pool = new List<PoolDie>();
+        readonly List<BlePixel> _pool = new List<BlePixel>();
 
         [SerializeField]
         IPersistentEditDiceList _editDiceList = null;
@@ -58,13 +54,15 @@ namespace Systemic.Unity.Pixels
         [SerializeField]
         float _scanTimeout = 5.0f;
 
+        public const string ConnectTimeoutErrorMessage = "Timeout trying to connect, Pixel may be out of range or turned off";
+
         public static DicePool Instance { get; private set; }
 
         public float ConnectionTimeout => _connectionTimeout;
 
         public float ScanTimeout => _scanTimeout;
 
-        public Die[] scannedDice => _pool.ToArray();
+        public Pixel[] ScannedPixels => _pool.ToArray();
 
         #region Scanning
 
@@ -74,10 +72,10 @@ namespace Systemic.Unity.Pixels
         int _scanRequestCount = 0;
 
         /// <summary>
-        /// Start scanning for new and existing dice, filling our lists in the process from
+        /// Start scanning for new and existing Pixels, filling our lists in the process from
         /// events triggered by Central.
         /// </sumary>
-        public void BeginScanForDice()
+        public void ScanForPixels()
         {
             _scanRequestCount++;
             if (_scanRequestCount == 1)
@@ -94,7 +92,7 @@ namespace Systemic.Unity.Pixels
         /// <summary>
         /// Stops the current scan 
         /// </sumary>
-        public void StopScanForDice()
+        public void StopScanForPixels()
         {
             if (_scanRequestCount == 0)
             {
@@ -116,197 +114,199 @@ namespace Systemic.Unity.Pixels
         {
             Debug.Log("Clearing scan list");
 
-            var diceCopy = new List<PoolDie>(_pool);
-            foreach (var poolDie in diceCopy)
+            var pixelsCopy = new List<BlePixel>(_pool);
+            foreach (var pixel in pixelsCopy)
             {
-                if (poolDie.connectionState == DieConnectionState.Available)
+                if (pixel.connectionState == PixelConnectionState.Available)
                 {
-                    DestroyDie(poolDie);
+                    DestroyPixel(pixel);
                 }
             }
         }
 
         /// <summary>
-        /// Called by Central when a new die is discovered!
+        /// Called by Central when a new Pixel is discovered!
         /// </sumary>
         void OnPeripheralDiscovered(Peripheral peripheral)
         {
-            Debug.Log($"Discovered dice {peripheral.Name}");
+            Debug.Log($"Discovered Pixel {peripheral.Name}");
 
-            // If the die exists, tell it that it's advertising now
+            // If the Pixel die exists, tell it that it's advertising now
             // otherwise create it (and tell it that its advertising :)
-            var poolDie = _pool.FirstOrDefault(d => peripheral.SystemId == d.SystemId);
-            if (poolDie == null)
+            var pixel = _pool.FirstOrDefault(d => peripheral.SystemId == d.SystemId);
+            if (pixel == null)
             {
-                // Never seen this die before
+                // Never seen this Pixel before
                 var dieObj = new GameObject(name);
                 dieObj.transform.SetParent(transform);
 
-                poolDie = dieObj.AddComponent<PoolDie>();
-                poolDie.DisconnectedUnexpectedly += () => DestroyDie(poolDie);
-                poolDie.NotifyUserReceived += (_, cancel, text, ackCallback) => _dialogBox.ShowDialogBox("Message from " + name, text, "Ok", cancel ? "Cancel" : null, ackCallback);
-                poolDie.PlayAudioClipReceived += (_, clipId) => _audioPlayer.PlayAudioClip(clipId);
+                pixel = dieObj.AddComponent<BlePixel>();
+                pixel.DisconnectedUnexpectedly += () => DestroyPixel(pixel);
+                pixel.NotifyUserReceived += (_, cancel, text, ackCallback) => _dialogBox.Show("Message from " + name, text, "Ok", cancel ? "Cancel" : null, ackCallback);
+                pixel.PlayAudioClipReceived += (_, clipId) => _audioPlayer.PlayAudioClip(clipId);
 
-                _pool.Add(poolDie);
+                _pool.Add(pixel);
             }
 
-            poolDie.Setup(peripheral);
+            pixel.Setup(peripheral);
 
-            var editDie = _editDice.Keys.FirstOrDefault(d => d.systemId == poolDie.SystemId);
-            if (editDie != null)
+            var editPixel = _editPixels.Keys.FirstOrDefault(d => d.systemId == pixel.SystemId);
+            if (editPixel != null)
             {
-                SetDieForEditDie(editDie, poolDie);
-                Debug.Log($"Pairing discovered Die: {poolDie.SystemId} - {poolDie.name}");
+                SetDieForEditDie(editPixel, pixel);
+                Debug.Log($"Pairing discovered Pixel: {pixel.SystemId} - {pixel.name}");
             }
             else
             {
-                Debug.Log($"Discovered Die is unpaired: {poolDie.SystemId} - {poolDie.name}");
+                Debug.Log($"Discovered Pixel is unpaired: {pixel.SystemId} - {pixel.name}");
             }
 
-            if (poolDie.connectionState != DieConnectionState.Available)
+            if (pixel.connectionState != PixelConnectionState.Available)
             {
                 // All other are errors
-                Debug.LogError($"Discovered Die {poolDie.name} in invalid state: {poolDie.connectionState}");
-                //TODO poolDie.SetConnectionState(DieConnectionState.Available);
+                Debug.LogError($"Discovered Pixel {pixel.name} in invalid state: {pixel.connectionState}");
+                //TODO pixel.SetConnectionState(DieConnectionState.Available);
             }
 
-            onDieDiscovered?.Invoke(poolDie);
+            PixelDiscovered?.Invoke(pixel);
         }
 
         #endregion
 
-        #region Die management
+        #region BLE Pixel management
 
-        Dictionary<IEditDie, PoolDie> _editDice = new Dictionary<IEditDie, PoolDie>();
-        Dictionary<IEditDie, PoolDie> _editDiceToDestroy = new Dictionary<IEditDie, PoolDie>();
+        Dictionary<IEditPixel, BlePixel> _editPixels = new Dictionary<IEditPixel, BlePixel>();
+        Dictionary<IEditPixel, BlePixel> _editPixelsToDestroy = new Dictionary<IEditPixel, BlePixel>();
 
-        public IEnumerable<IEditDie> allDice => _editDice.Keys.ToArray();
+        public IEnumerable<IEditPixel> allEditPixels => _editPixels.Keys.ToArray();
 
-        public delegate void DieDiscoveredHandler(Die die);
-        public static event DieDiscoveredHandler onDieDiscovered;
+        public delegate void PixelDiscoveredHandler(Pixel pixel);
+        public static event PixelDiscoveredHandler PixelDiscovered;
 
-        public delegate void DieEventHandler(IEditDie editDie);
-        public static event DieEventHandler onDieAdded;
-        public static event DieEventHandler onWillRemoveDie;
+        public delegate void EditPixelEventHandler(IEditPixel editPixel);
+        public static event EditPixelEventHandler EditPixelAdded;
+        public static event EditPixelEventHandler RemovingEditPixel;
 
-        public static event DieEventHandler onDieFound; // onDieConnected;
-        public static event DieEventHandler onDieWillBeLost; // onDieDisconnected;
+        public static event EditPixelEventHandler PixelConnected;
+        public static event EditPixelEventHandler PixelDisconnected;
 
-        public void ResetDiceErrors()
+        public void ResetErrors()
         {
-            foreach (var die in _pool)
+            foreach (var pixel in _pool)
             {
-                die.ResetLastError();
+                pixel.ResetLastError();
             }
         }
 
-        public Coroutine AddDiscoveredDice(List<Die> discoveredDice, IProgrammingBox programmingBox)
+        public Coroutine AddDiscoveredPixel(Pixel discoveredPixel, PixelOperationProgressHandler onProgress = null)
         {
+            return AddDiscoveredPixels(new[] { discoveredPixel }, onProgress);
+        }
+
+        public Coroutine AddDiscoveredPixels(IEnumerable<Pixel> discoveredPixels, PixelOperationProgressHandler onProgress = null)
+        {
+            if (discoveredPixels == null) throw new System.ArgumentNullException(nameof(discoveredPixels));
+
+            var pixelsList = discoveredPixels.ToArray();
             return StartCoroutine(AddDiscoveredDiceCr());
 
             IEnumerator AddDiscoveredDiceCr()
             {
-                programmingBox.ShowProgrammingBox("Adding Dice to the Dice Bag");
-
-                try
+                for (int i = 0; i < pixelsList.Length; ++i)
                 {
-                    for (int i = 0; i < discoveredDice.Count; ++i)
+                    var pixel = pixelsList[i] as BlePixel;
+                    if ((pixel == null) || (!_pool.Contains(pixel)))
                     {
-                        var die = discoveredDice[i];
-
-                        var poolDie = die as PoolDie;
-                        if ((poolDie == null) || (!_pool.Contains(die)))
-                        {
-                            Debug.LogError("Attempting to add unknown die " + die.name);
-                            continue;
-                        }
-
-                        programmingBox.UpdateProgrammingBox((float)(i + 1) / discoveredDice.Count, $"Adding {poolDie.name} to the pool");
-
-                        // Here we wait a couple frames to give the programming box a chance to show up
-                        // on PC at least the attempt to connect can freeze the app
-                        yield return null;
-                        yield return null;
-
-                        IEditDie AddNewDie()
-                        {
-                            // Add a new entry in the dataset
-                            var editDie = _editDiceList.AddNewDie(poolDie);
-
-                            // And in our map
-                            _editDice.Add(editDie, null);
-                            onDieAdded?.Invoke(editDie);
-                            SetDieForEditDie(editDie, poolDie);
-
-                            return editDie;
-                        }
-
-                        if (!string.IsNullOrEmpty(poolDie.systemId))
-                        {
-                            AddNewDie();
-                        }
-                        else
-                        {
-                            Debug.LogError($"Die {poolDie.name} doesn't have a system id");
-                        }
+                        Debug.LogError("Attempting to add unknown Pixel " + pixel.name);
+                        continue;
                     }
-                }
-                finally
-                {
-                    programmingBox.HideProgrammingBox();
+
+                    onProgress?.Invoke(pixel, (float)(i + 1) / pixelsList.Length);
+
+                    // Here we wait a couple frames to give the programming box a chance to show up
+                    // on PC at least the attempt to connect can freeze the app
+                    yield return null;
+                    yield return null;
+
+                    IEditPixel AddNewDie()
+                    {
+                        // Add a new entry in the dataset
+                        var editPixel = _editPixelsList.AddNewPixel(pixel);
+
+                        // And in our map
+                        _editPixels.Add(editPixel, null);
+                        EditPixelAdded?.Invoke(editPixel);
+                        SetDieForEditDie(editPixel, pixel);
+
+                        return editPixel;
+                    }
+
+                    if (!string.IsNullOrEmpty(pixel.systemId))
+                    {
+                        AddNewDie();
+                    }
+                    else
+                    {
+                        Debug.LogError($"Pixel {pixel.name} doesn't have a system id");
+                    }
                 }
             }
         }
 
-        public Coroutine ConnectDice(IEnumerable<IEditDie> diceList, System.Func<bool> requestCancelFunc, System.Action<IEditDie, bool, string> dieReadyCallback = null)
+        public Coroutine ConnectPixel(IEditPixel editPixel, System.Func<bool> requestCancelFunc, System.Action<IEditPixel, bool, string> pixelReadyCallback = null)
         {
-            if (diceList == null) throw new System.ArgumentNullException(nameof(diceList));
+            return ConnectPixels(new IEditPixel[] { editPixel }, requestCancelFunc, pixelReadyCallback);
+        }
+
+        public Coroutine ConnectPixels(IEnumerable<IEditPixel> editPixels, System.Func<bool> requestCancelFunc, System.Action<IEditPixel, bool, string> pixelReadyCallback = null)
+        {
+            if (editPixels == null) throw new System.ArgumentNullException(nameof(editPixels));
             if (requestCancelFunc == null) throw new System.ArgumentNullException(nameof(requestCancelFunc));
 
-            var dice = diceList.ToArray();
-            if (!dice.All(d => _editDice.ContainsKey(d)))
+            var editPixelsList = editPixels.ToArray();
+            if (!editPixelsList.All(d => _editPixels.ContainsKey(d)))
             {
-                Debug.LogError("some dice not valid");
+                Debug.LogError("Some Edit Pixel are not valid");
                 return null;
             }
             else
             {
-                return StartCoroutine(ConnectDiceListCr());
+                return StartCoroutine(ConnectPixelsCr());
 
-                IEnumerator ConnectDiceListCr()
+                IEnumerator ConnectPixelsCr()
                 {
                     // requestCancelFunc() only need to return true once to cancel the operation
                     bool isCancelled = false;
                     bool UpdateIsCancelledOrTimeout() => isCancelled |= requestCancelFunc();
 
-                    if (dice.Any(ed => GetPoolDie(ed) == null))
+                    if (editPixelsList.Any(ed => GetBlePixel(ed) == null))
                     {
-                        BeginScanForDice();
+                        ScanForPixels();
 
-                        Debug.Log($"Scanning for dice {string.Join(", ", dice.Select(d => d.name))} with timeout of {ScanTimeout}s");
+                        Debug.Log($"Scanning for Pixel {string.Join(", ", editPixelsList.Select(d => d.name))} with timeout of {ScanTimeout}s");
 
-                        // Wait for all dice to be scanned, or timeout
+                        // Wait for all Pixels to be scanned, or timeout
                         float scanTimeout = Time.realtimeSinceStartup + ScanTimeout;
-                        yield return new WaitUntil(() => dice.All(ed => GetPoolDie(ed) != null) || (Time.realtimeSinceStartup > scanTimeout) || UpdateIsCancelledOrTimeout());
+                        yield return new WaitUntil(() => editPixelsList.All(ed => GetBlePixel(ed) != null) || (Time.realtimeSinceStartup > scanTimeout) || UpdateIsCancelledOrTimeout());
 
-                        StopScanForDice();
+                        StopScanForPixels();
                     }
 
-                    // Array of error message for each dice connect attempt
+                    // Array of error message for each Pixel connection attempt
                     // - if null: still connecting
                     // - if empty string: successfully connected
-                    var results = new string[dice.Length];
-                    for (int i = 0; i < dice.Length; ++i)
+                    var results = new string[editPixelsList.Length];
+                    for (int i = 0; i < editPixelsList.Length; ++i)
                     {
-                        var editDie = dice[i];
-                        var poolDie = GetPoolDie(editDie);
-                        if (poolDie != null)
+                        var editPixel = editPixelsList[i];
+                        var pixel = GetBlePixel(editPixel);
+                        if (pixel != null)
                         {
-                            Debug.Assert(_pool.Contains(poolDie));
+                            Debug.Assert(_pool.Contains(pixel));
 
-                            // We found the die, try to connect
+                            // We found the Pixel die, try to connect
                             int index = i; // Capture the current value of i
-                            poolDie.Connect((_, res, error) => results[index] = res ? "" : error);
+                            pixel.Connect((_, res, error) => results[index] = res ? "" : error);
                         }
                         else
                         {
@@ -314,58 +314,58 @@ namespace Systemic.Unity.Pixels
                         }
                     }
 
-                    // Wait for all dice to connect
+                    // Wait for all Pixels to connect
                     yield return new WaitUntil(() => results.All(msg => msg != null) || UpdateIsCancelledOrTimeout());
 
                     if (isCancelled)
                     {
-                        // Disconnect any die that just successfully connected or that is still connecting
-                        for (int i = 0; i < dice.Length; ++i)
+                        // Disconnect any Pixel die that just successfully connected or that is still connecting
+                        for (int i = 0; i < editPixelsList.Length; ++i)
                         {
                             if (string.IsNullOrEmpty(results[i]))
                             {
-                                var poolDie = GetPoolDie(dice[i]);
-                                poolDie?.Disconnect();
+                                var pixel = GetBlePixel(editPixelsList[i]);
+                                pixel?.Disconnect();
                             }
-                            dieReadyCallback?.Invoke(dice[i], false, "Connection to Die canceled by application");
+                            pixelReadyCallback?.Invoke(editPixelsList[i], false, "Connection to Pixel canceled by application");
                         }
                     }
-                    else if (dieReadyCallback != null)
+                    else if (pixelReadyCallback != null)
                     {
                         // Report connection result(s)
-                        for (int i = 0; i < dice.Length; ++i)
+                        for (int i = 0; i < editPixelsList.Length; ++i)
                         {
                             bool connected = results[i] == "";
-                            dieReadyCallback.Invoke(dice[i], connected, connected ? null : results[i]);
+                            pixelReadyCallback.Invoke(editPixelsList[i], connected, connected ? null : results[i]);
                         }
                     }
                 }
             }
         }
 
-        public Coroutine DisconnectDie(IEditDie editDie, bool forceDisconnect = false)
+        public Coroutine DisconnectPixel(IEditPixel editPixel, bool forceDisconnect = false)
         {
-            return StartCoroutine(DisconnectDieCr());
+            return StartCoroutine(DisconnectPixelCr());
 
-            IEnumerator DisconnectDieCr()
+            IEnumerator DisconnectPixelCr()
             {
-                if (!_editDice.ContainsKey(editDie))
+                if (!_editPixels.ContainsKey(editPixel))
                 {
-                    Debug.LogError($"Trying to disconnect unknown edit die {editDie.name}");
+                    Debug.LogError($"Trying to disconnect unknown Edit Pixel {editPixel.name}");
                 }
                 else
                 {
-                    var poolDie = GetPoolDie(editDie);
-                    if (poolDie != null)
+                    var pixel = GetBlePixel(editPixel);
+                    if (pixel != null)
                     {
-                        if (!_pool.Contains(poolDie))
+                        if (!_pool.Contains(pixel))
                         {
-                            Debug.LogError($"Trying attempting to disconnect unknown pool die {editDie.name}");
+                            Debug.LogError($"Trying attempting to disconnect unknown Pixel {editPixel.name}");
                         }
                         else
                         {
                             bool? res = null;
-                            poolDie.Disconnect((d, r, s) => res = r, forceDisconnect);
+                            pixel.Disconnect((d, r, s) => res = r, forceDisconnect);
 
                             yield return new WaitUntil(() => res.HasValue);
                         }
@@ -374,75 +374,75 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public void ForgetDie(IEditDie editDie)
+        public void ForgetDie(IEditPixel editPixel)
         {
-            if (!_editDice.ContainsKey(editDie))
+            if (!_editPixels.ContainsKey(editPixel))
             {
-                Debug.LogError($"Trying to forget unknown edit die {editDie.name}");
+                Debug.LogError($"Trying to forget unknown Edit Pixel {editPixel.name}");
             }
             else
             {
-                onWillRemoveDie?.Invoke(editDie);
+                RemovingEditPixel?.Invoke(editPixel);
 
-                var poolDie = GetPoolDie(editDie);
-                if (poolDie != null)
+                var pixel = GetBlePixel(editPixel);
+                if (pixel != null)
                 {
-                    Debug.Assert(_pool.Contains(poolDie));
+                    Debug.Assert(_pool.Contains(pixel));
 
-                    _editDiceToDestroy.Add(editDie, poolDie);
-                    if (poolDie.isConnectingOrReady)
+                    _editPixelsToDestroy.Add(editPixel, pixel);
+                    if (pixel.isConnectingOrReady)
                     {
-                        poolDie.Disconnect((d, r, s) => DestroyDie(poolDie), forceDisconnect: true);
+                        pixel.Disconnect((d, r, s) => DestroyPixel(pixel), forceDisconnect: true);
                     }
                 }
 
-                _editDiceList.DeleteDie(editDie);
-                _editDice.Remove(editDie);
+                _editPixelsList.RemovePixel(editPixel);
+                _editPixels.Remove(editPixel);
             }
         }
 
-        PoolDie GetPoolDie(IEditDie editDie)
+        BlePixel GetBlePixel(IEditPixel editPixel)
         {
-            if (!_editDice.TryGetValue(editDie, out PoolDie die))
+            if (!_editPixels.TryGetValue(editPixel, out BlePixel pixel))
             {
-                _editDiceToDestroy.TryGetValue(editDie, out die);
+                _editPixelsToDestroy.TryGetValue(editPixel, out pixel);
             }
-            return die;
+            return pixel;
         }
 
-        void SetDieForEditDie(IEditDie editDie, PoolDie poolDie)
+        void SetDieForEditDie(IEditPixel editPixel, BlePixel pixel)
         {
-            if (poolDie != GetPoolDie(editDie))
+            if (pixel != GetBlePixel(editPixel))
             {
-                Debug.Assert((poolDie == null) || _pool.Contains(poolDie));
-                if (poolDie == null)
+                Debug.Assert((pixel == null) || _pool.Contains(pixel));
+                if (pixel == null)
                 {
-                    onDieWillBeLost?.Invoke(editDie);
+                    PixelDisconnected?.Invoke(editPixel);
                 }
-                if (_editDice.ContainsKey(editDie))
+                if (_editPixels.ContainsKey(editPixel))
                 {
-                    _editDice[editDie] = poolDie;
+                    _editPixels[editPixel] = pixel;
                 }
                 else
                 {
-                    Debug.Assert(poolDie == null);
+                    Debug.Assert(pixel == null);
                 }
-                if (poolDie != null)
+                if (pixel != null)
                 {
-                    onDieFound?.Invoke(editDie);
+                    PixelConnected?.Invoke(editPixel);
                 }
             }
         }
 
         /// <summary>
-        /// Cleanly destroys a die, disconnecting if necessary and triggering events in the process
+        /// Cleanly destroys a Pixel die, disconnecting if necessary and triggering events in the process
         /// Does not remove it from the list though
         /// </sumary>
-        void DestroyDie(PoolDie poolDie)
+        void DestroyPixel(BlePixel pixel)
         {
-            SetDieForEditDie(_editDice.FirstOrDefault(kv => kv.Value == poolDie).Key, null);
-            GameObject.Destroy(poolDie.gameObject);
-            _pool.Remove(poolDie);
+            SetDieForEditDie(_editPixels.FirstOrDefault(kv => kv.Value == pixel).Key, null);
+            GameObject.Destroy(pixel.gameObject);
+            _pool.Remove(pixel);
         }
 
         #endregion
@@ -452,7 +452,7 @@ namespace Systemic.Unity.Pixels
         void OnEnable()
         {
             // Safeguard
-            if (Instance != this)
+            if ((Instance != null) && (Instance != this))
             {
                 Debug.LogError($"A second instance of {typeof(DicePool)} got spawned, now destroying it");
                 Destroy(this);
@@ -470,37 +470,37 @@ namespace Systemic.Unity.Pixels
             Central.Initialize(); //TODO handle error + user message
 
             // Load our pool from JSON!
-            var dice = _editDiceList.GetDiceList();
-            if (dice != null)
+            var editPixelList = _editPixelsList.GetEditPixels();
+            if (editPixelList != null)
             {
-                foreach (var editDie in dice)
+                foreach (var editPixel in editPixelList)
                 {
-                    // Create a disconnected die
-                    _editDice.Add(editDie, null);
-                    onDieAdded?.Invoke(editDie);
+                    // Create a disconnected Pixel die
+                    _editPixels.Add(editPixel, null);
+                    EditPixelAdded?.Invoke(editPixel);
                 }
             }
         }
 
         void Update()
         {
-            List<PoolDie> destroyNow = null;
-            foreach (var kv in _editDiceToDestroy)
+            List<BlePixel> destroyNow = null;
+            foreach (var kv in _editPixelsToDestroy)
             {
                 if (!kv.Value.isConnectingOrReady)
                 {
                     if (destroyNow == null)
                     {
-                        destroyNow = new List<PoolDie>();
+                        destroyNow = new List<BlePixel>();
                     }
                     destroyNow.Add(kv.Value);
                 }
             }
             if (destroyNow != null)
             {
-                foreach (var poolDie in destroyNow)
+                foreach (var pixel in destroyNow)
                 {
-                    DestroyDie(poolDie);
+                    DestroyPixel(pixel);
                 }
             }
         }

@@ -41,8 +41,10 @@ namespace Systemic.Unity.Pixels.Animations
 
             // Fill the return arrays
             int currentCount = 0;
-            for (int i = 0; i < 20; ++i) { // <-- should come from somewhere!
-                if ((ledMask & (1 << i)) != 0) {
+            for (int i = 0; i < 20; ++i)
+            { // <-- should come from somewhere!
+                if ((ledMask & (1 << i)) != 0)
+                {
                     retIndices[currentCount] = i;
                     retColors[currentCount] = mcolor;
                     currentCount++;
@@ -59,18 +61,24 @@ namespace Systemic.Unity.Pixels.Animations
         {
             // Find the first keyframe
             int nextIndex = 0;
-            while (nextIndex < keyFrameCount && getKeyframe(bits, (ushort)nextIndex).time() < time) {
+            while (nextIndex < keyFrameCount && getKeyframe(bits, (ushort)nextIndex).time() < time)
+            {
                 nextIndex++;
             }
 
             byte intensity = 0;
-            if (nextIndex == 0) {
+            if (nextIndex == 0)
+            {
                 // The first keyframe is already after the requested time, clamp to first value
                 intensity = getKeyframe(bits, (ushort)nextIndex).intensity();
-            } else if (nextIndex == keyFrameCount) {
+            }
+            else if (nextIndex == keyFrameCount)
+            {
                 // The last keyframe is still before the requested time, clamp to the last value
-                intensity = getKeyframe(bits, (ushort)(nextIndex- 1)).intensity();
-            } else {
+                intensity = getKeyframe(bits, (ushort)(nextIndex - 1)).intensity();
+            }
+            else
+            {
                 // Grab the prev and next keyframes
                 var nextKeyframe = getKeyframe(bits, (ushort)nextIndex);
                 ushort nextKeyframeTime = nextKeyframe.time();
@@ -94,8 +102,10 @@ namespace Systemic.Unity.Pixels.Animations
         {
             // Fill the return arrays
             int currentCount = 0;
-            for (int i = 0; i < 20; ++i) { // <-- 20 should come from somewhere...
-                if ((ledMask & (1 << i)) != 0) {
+            for (int i = 0; i < 20; ++i)
+            { // <-- 20 should come from somewhere...
+                if ((ledMask & (1 << i)) != 0)
+                {
                     retIndices[currentCount] = i;
                     currentCount++;
                 }
@@ -111,23 +121,23 @@ namespace Systemic.Unity.Pixels.Animations
 
     }
 
-	/// <summary>
-	/// A keyframe-based animation with a gradient applied over
-	/// size: 8 bytes (+ actual track and keyframe data)
-	/// </summary>
+    /// <summary>
+    /// A keyframe-based animation with a gradient applied over
+    /// size: 8 bytes (+ actual track and keyframe data)
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
-	public class AnimationGradientPattern
-		: IAnimation
-	{
-		public AnimationType type { get; set; } = AnimationType.GradientPattern;
-		public byte padding_type { get; set; } // to keep duration 16-bit aligned
-		public ushort duration { get; set; } // in ms
+    public class AnimationGradientPattern
+        : IAnimation
+    {
+        public AnimationType type { get; set; } = AnimationType.GradientPattern;
+        public byte padding_type { get; set; } // to keep duration 16-bit aligned
+        public ushort duration { get; set; } // in ms
 
         public ushort speedMultiplier256; // A multiplier to the duration, scaled to 256
-		public ushort tracksOffset; // offset into a global buffer of tracks
-		public ushort trackCount;
-		public ushort gradientTrackOffset;
+        public ushort tracksOffset; // offset into a global buffer of tracks
+        public ushort trackCount;
+        public ushort gradientTrackOffset;
         public byte overrideWithFace;
         public byte overrideWithFacePadding;
 
@@ -135,14 +145,14 @@ namespace Systemic.Unity.Pixels.Animations
         {
             return new AnimationInstanceGradientPattern(this, bits);
         }
-	};
+    };
 
-	/// <summary>
-	/// Keyframe-based animation instance data
-	/// </summary>
-	public class AnimationInstanceGradientPattern
-		: AnimationInstance
-	{
+    /// <summary>
+    /// Keyframe-based animation instance data
+    /// </summary>
+    public class AnimationInstanceGradientPattern
+        : AnimationInstance
+    {
         uint rgb = 0;
 
         public AnimationInstanceGradientPattern(AnimationGradientPattern preset, DataSet.AnimationBits bits)
@@ -150,7 +160,7 @@ namespace Systemic.Unity.Pixels.Animations
         {
         }
 
-		public override void start(int _startTime, byte _remapFace, bool _loop)
+        public override void start(int _startTime, byte _remapFace, bool _loop)
         {
             base.start(_startTime, _remapFace, _loop);
             var preset = getPreset();
@@ -166,7 +176,7 @@ namespace Systemic.Unity.Pixels.Animations
         /// </summary>
 		public override int updateLEDs(int ms, int[] retIndices, uint[] retColors)
         {
-    		int time = ms - startTime;
+            int time = ms - startTime;
             var preset = getPreset();
 
             // Figure out the color from the gradient
@@ -197,15 +207,15 @@ namespace Systemic.Unity.Pixels.Animations
                 int count = track.evaluate(animationBits, gradientColor, trackTime, indices, colors);
                 for (int j = 0; j < count; ++j)
                 {
-                    retIndices[totalCount+j] = indices[j];
-                    retColors[totalCount+j] = colors[j];
+                    retIndices[totalCount + j] = indices[j];
+                    retColors[totalCount + j] = colors[j];
                 }
                 totalCount += count;
             }
             return totalCount;
         }
 
-		public override int stop(int[] retIndices)
+        public override int stop(int[] retIndices)
         {
             var preset = getPreset();
             // Each track will append its led indices and colors into the return array
@@ -215,20 +225,20 @@ namespace Systemic.Unity.Pixels.Animations
             var indices = new int[20];
             for (int i = 0; i < preset.trackCount; ++i)
             {
-                var track = animationBits.getRGBTrack((ushort)(preset.tracksOffset + i)); 
+                var track = animationBits.getRGBTrack((ushort)(preset.tracksOffset + i));
                 int count = track.extractLEDIndices(indices);
                 for (int j = 0; j < count; ++j)
                 {
-                    retIndices[totalCount+j] = indices[j];
+                    retIndices[totalCount + j] = indices[j];
                 }
                 totalCount += count;
             }
             return totalCount;
         }
 
-		public AnimationGradientPattern getPreset()
+        public AnimationGradientPattern getPreset()
         {
             return (AnimationGradientPattern)animationPreset;
         }
-	};
+    };
 }

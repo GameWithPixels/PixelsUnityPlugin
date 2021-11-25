@@ -14,7 +14,7 @@ namespace Systemic.Unity.Pixels.Animations
     [System.Serializable]
     public struct RGBKeyframe
     {
-		public ushort timeAndColor;
+        public ushort timeAndColor;
 
         public ushort time()
         {
@@ -58,7 +58,7 @@ namespace Systemic.Unity.Pixels.Animations
     [System.Serializable]
     public struct Keyframe
     {
-		public ushort timeAndIntensity;
+        public ushort timeAndIntensity;
 
         public ushort time()
         {

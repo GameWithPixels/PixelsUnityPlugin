@@ -266,19 +266,29 @@ namespace Systemic.Unity.Examples
 
         IEnumerator SubscribeAsync()
         {
-            yield return Central.SubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid, OnReceivedData);
+            yield return Central.SubscribeCharacteristicAsync(
+                _peripheral,
+                BleUuids.ServiceUuid,
+                BleUuids.NotifyCharacteristicUuid,
+                OnReceivedData);
             Debug.Log("Subscribed to characteristic");
         }
 
         IEnumerator UnsubscribeAsync()
         {
-            yield return Central.UnsubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
+            yield return Central.UnsubscribeCharacteristicAsync(
+                _peripheral,
+                BleUuids.ServiceUuid,
+                BleUuids.NotifyCharacteristicUuid);
             Debug.Log("Unsubscribed from characteristic");
         }
 
         IEnumerator ReadValueAsync()
         {
-            var request = Central.ReadCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
+            var request = Central.ReadCharacteristicAsync(
+                _peripheral,
+                BleUuids.ServiceUuid,
+                BleUuids.NotifyCharacteristicUuid);
             yield return request;
             if (request.IsSuccess)
             {
@@ -294,7 +304,12 @@ namespace Systemic.Unity.Examples
         IEnumerator SendMessageAsync(MessageType messageType, bool withoutResponse = false)
         {
             Debug.Log("Sending message: " + messageType);
-            yield return Central.WriteCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.WriteCharacteristicUuid, new byte[] { (byte)messageType }, withoutResponse: withoutResponse);
+            yield return Central.WriteCharacteristicAsync(
+                _peripheral,
+                BleUuids.ServiceUuid,
+                BleUuids.WriteCharacteristicUuid,
+                new byte[] { (byte)messageType },
+                withoutResponse: withoutResponse);
         }
 
         void OnReceivedData(byte[] data)
@@ -316,7 +331,7 @@ namespace Systemic.Unity.Examples
                 _lastValueText.text = (MessageType)msg[0] switch
                 {
                     MessageType.IAmADie => $"Welcome message => face count:{msg[1]}",
-                    MessageType.RollState => $"Roll state => {(RollState)msg[1]}, face:{1 + msg[2]}",
+                    MessageType.RollState => $"Roll state => {(PixelRollState)msg[1]}, face:{1 + msg[2]}",
                     MessageType.Rssi => $"RSSI => {(((uint)msg[1]) << 8) + msg[2]}",
                     _ => $"Message => {string.Join(" ", msg.Select(b => b.ToString("X2")))}",
                 };

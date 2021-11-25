@@ -7,32 +7,32 @@ using UnityEngine;
 
 namespace Systemic.Unity.Pixels
 {
-    partial class Die
+    partial class Pixel
     {
         protected string SafeName => this != null ? name : "(destroyed)";
 
-        public IEnumerator UploadBulkDataAsync(byte[] bytes, DieOperationResultHandler<bool> onResult = null, DieOperationProgressHandler onProgress = null)
+        public IEnumerator UploadBulkDataAsync(byte[] bytes, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
             short remainingSize = (short)bytes.Length;
-            Debug.Log($"Die {name}: Sending {remainingSize} bytes of bulk data");
-            onProgress?.Invoke(0);
+            Debug.Log($"Pixel {name}: Sending {remainingSize} bytes of bulk data");
+            onProgress?.Invoke(this, 0);
 
             // Send setup message
-            IOperationEnumerator sendMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageBulkSetup, DieMessageBulkSetupAck>(this, new DieMessageBulkSetup { size = remainingSize });
+            IOperationEnumerator sendMsg = new SendMessageAndWaitForResponseEnumerator<BulkSetup, BulkSetupAck>(this, new BulkSetup { size = remainingSize });
             yield return sendMsg;
 
             if (sendMsg.IsSuccess)
             {
-                Debug.Log($"Die {name}: die is ready, sending data");
+                Debug.Log($"Pixel {name}: ready for sending data");
 
                 // Then transfer data
                 ushort offset = 0;
                 while (remainingSize > 0)
                 {
-                    var data = new DieMessageBulkData()
+                    var data = new BulkData()
                     {
                         offset = offset,
                         size = (byte)Mathf.Min(remainingSize, PixelMessageMarshaling.maxDataSize),
@@ -41,7 +41,7 @@ namespace Systemic.Unity.Pixels
 
                     System.Array.Copy(bytes, offset, data.data, 0, data.size);
 
-                    //Debug.Log($"Die {name}: sending Bulk Data (offset: 0x" + data.offset.ToString("X") + ", length: " + data.size + ")");
+                    //Debug.Log($"Pixel {name}: sending Bulk Data (offset: 0x" + data.offset.ToString("X") + ", length: " + data.size + ")");
                     //StringBuilder hexdumpBuilder = new StringBuilder();
                     //for (int i = 0; i < data.data.Length; ++i)
                     //{
@@ -53,14 +53,14 @@ namespace Systemic.Unity.Pixels
                     //}
                     //Debug.Log(hexdumpBuilder.ToString());
 
-                    sendMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageBulkData, DieMessageBulkDataAck>(this, data);
+                    sendMsg = new SendMessageAndWaitForResponseEnumerator<BulkData, BulkDataAck>(this, data);
                     yield return sendMsg;
 
                     if (sendMsg.IsSuccess)
                     {
                         remainingSize -= data.size;
                         offset += data.size;
-                        onProgress?.Invoke((float)offset / bytes.Length);
+                        onProgress?.Invoke(this, (float)offset / bytes.Length);
                     }
                     else
                     {
@@ -71,24 +71,24 @@ namespace Systemic.Unity.Pixels
 
             if (sendMsg.IsSuccess)
             {
-                Debug.Log($"Die {name}: finished sending bulk data");
+                Debug.Log($"Pixel {name}: finished sending bulk data");
                 onResult?.Invoke(true, null);
             }
             else
             {
-                Debug.LogError($"Die {name}: failed to upload data, {sendMsg.Error}");
+                Debug.LogError($"Pixel {name}: failed to upload data, {sendMsg.Error}");
                 onResult?.Invoke(false, sendMsg.Error);
             }
         }
 
-        public IEnumerator DownloadBulkDataAsync(DieOperationResultHandler<byte[]> onResult = null, DieOperationProgressHandler onProgress = null)
+        public IEnumerator DownloadBulkDataAsync(PixelOperationResultHandler<byte[]> onResult = null, PixelOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
             // Wait for setup message
             short size = 0;
-            var waitForMsg = new WaitForMessageEnumerator<DieMessageBulkSetup>(this);
+            var waitForMsg = new WaitForMessageEnumerator<BulkSetup>(this);
             yield return waitForMsg;
 
             byte[] buffer = null;
@@ -107,29 +107,29 @@ namespace Systemic.Unity.Pixels
                 {
                     timeout = Time.realtimeSinceStartup + AckMessageTimeout;
 
-                    var bulkMsg = (DieMessageBulkData)msg;
+                    var bulkMsg = (BulkData)msg;
                     if ((bulkMsg.offset + bulkMsg.size) < buffer.Length)
                     {
                         System.Array.Copy(bulkMsg.data, 0, buffer, bulkMsg.offset, bulkMsg.size);
 
                         // Sum data receive before sending any other message
                         totalDataReceived += bulkMsg.size;
-                        onProgress?.Invoke((float)totalDataReceived / bulkMsg.size);
+                        onProgress?.Invoke(this, (float)totalDataReceived / bulkMsg.size);
 
                         // Send acknowledgment (no need to do it synchronously)
-                        PostMessage(new DieMessageBulkDataAck { offset = totalDataReceived });
+                        PostMessage(new BulkDataAck { offset = totalDataReceived });
                     }
                     else
                     {
-                        Debug.LogError($"Die {name}: got bulk data from die that is too big");
+                        Debug.LogError($"Pixel {name}: received bulk data that is too big");
                     }
                 }
 
                 AddMessageHandler(MessageType.BulkData, bulkReceived);
                 try
                 {
-                    // Send acknowledgment to the die, so it may transfer bulk data immediately
-                    PostMessage(new DieMessageBulkSetupAck());
+                    // Send acknowledgment to the Pixel die, so it may transfer bulk data immediately
+                    PostMessage(new BulkSetupAck());
 
                     // Wait for all the bulk data to be received
                     yield return new WaitUntil(() => (totalDataReceived == size) || (timeout > Time.realtimeSinceStartup));
@@ -143,7 +143,7 @@ namespace Systemic.Unity.Pixels
                 if (totalDataReceived == size)
                 {
                     Debug.Assert(error == null);
-                    Debug.Log($"Die {name}: done downloading bulk data");
+                    Debug.Log($"Pixel {name}: done downloading bulk data");
                 }
                 else
                 {
@@ -161,18 +161,18 @@ namespace Systemic.Unity.Pixels
             }
             else
             {
-                Debug.LogError($"Die {name}: error downloading bulk data, {error}");
+                Debug.LogError($"Pixel {name}: error downloading bulk data, {error}");
                 onResult?.Invoke(null, error);
             }
         }
 
-        public IEnumerator UploadDataSetAsync(DataSet set, DieOperationResultHandler<bool> onResult = null, DieOperationProgressHandler onProgress = null)
+        public IEnumerator UploadDataSetAsync(DataSet set, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
-            // Prepare the die
-            var prepareDie = new DieMessageTransferAnimSet
+            // Prepare the Pixel
+            var prepareDie = new TransferAnimationSet
             {
                 paletteSize = set.animationBits.getPaletteSize(),
                 rgbKeyFrameCount = set.animationBits.getRGBKeyframeCount(),
@@ -202,7 +202,7 @@ namespace Systemic.Unity.Pixels
             //Debug.Log(builder.ToString());
             //Debug.Log("Animation Data size: " + set.ComputeDataSetDataSize());
 
-            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageTransferAnimSet, DieMessageTransferAnimSetAck>(this, prepareDie);
+            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<TransferAnimationSet, TransferAnimationSetAck>(this, prepareDie);
             yield return waitForMsg;
 
             string error = null;
@@ -224,8 +224,8 @@ namespace Systemic.Unity.Pixels
 
                     // Upload data
                     var hash = DataSet.ComputeHash(setData);
-                    Debug.Log($"Die {name}: die is ready to receive dataset, byte array should be: {set.ComputeDataSetDataSize()} bytes and hash 0x{hash:X8}");
-                    yield return InternalUploadDataSetAsync(MessageType.TransferAnimSetFinished, setData, err => error = err, onProgress);
+                    Debug.Log($"Pixel {name}: ready to receive dataset, byte array should be: {set.ComputeDataSetDataSize()} bytes and hash 0x{hash:X8}");
+                    yield return InternalUploadDataSetAsync(MessageType.TransferAnimationSetFinished, setData, err => error = err, onProgress);
                 }
                 else
                 {
@@ -243,18 +243,18 @@ namespace Systemic.Unity.Pixels
             }
             else
             {
-                Debug.LogError($"Die {name}: failed to upload data set, {error}");
+                Debug.LogError($"Pixel {name}: failed to upload data set, {error}");
                 onResult?.Invoke(false, error);
             }
         }
 
-        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, DieOperationResultHandler<bool> onResult = null, DieOperationProgressHandler onProgress = null)
+        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
-            // Prepare the die
-            var prepareDie = new DieMessageTransferTestAnimSet
+            // Prepare the Pixel
+            var prepareDie = new TransferTestAnimationSet
             {
                 paletteSize = testAnimSet.animationBits.getPaletteSize(),
                 rgbKeyFrameCount = testAnimSet.animationBits.getRGBKeyframeCount(),
@@ -274,7 +274,7 @@ namespace Systemic.Unity.Pixels
             // Debug.Log("rgb tracks: " + prepareDie.rgbTrackCount + " * " + Marshal.SizeOf<Animations.RGBTrack>());
             // Debug.Log("keyframes: " + prepareDie.keyFrameCount + " * " + Marshal.SizeOf<Animations.Keyframe>());
             // Debug.Log("tracks: " + prepareDie.trackCount + " * " + Marshal.SizeOf<Animations.Track>());
-            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageTransferTestAnimSet, DieMessageTransferTestAnimSetAck>(this, prepareDie);
+            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<TransferTestAnimationSet, TransferTestAnimationSetAck>(this, prepareDie);
             yield return waitForMsg;
 
             string error = null;
@@ -282,13 +282,13 @@ namespace Systemic.Unity.Pixels
             {
                 switch (waitForMsg.Message.ackType)
                 {
-                    case TransferTestAnimSetAckType.Download:
+                    case TransferTestAnimationSetAckType.Download:
                         // Upload data
-                        Debug.Log($"Die {name}: die is ready to receive test dataset, byte array should be: {setData.Length} bytes and hash 0x{hash:X8}");
-                        yield return InternalUploadDataSetAsync(MessageType.TransferTestAnimSetFinished, setData, err => error = err, onProgress);
+                        Debug.Log($"Pixel {name}: ready to receive test dataset, byte array should be: {setData.Length} bytes and hash 0x{hash:X8}");
+                        yield return InternalUploadDataSetAsync(MessageType.TransferTestAnimationSetFinished, setData, err => error = err, onProgress);
                         break;
 
-                    case TransferTestAnimSetAckType.UpToDate:
+                    case TransferTestAnimationSetAckType.UpToDate:
                         // Nothing to do
                         Debug.Assert(error == null);
                         break;
@@ -309,12 +309,12 @@ namespace Systemic.Unity.Pixels
             }
             else
             {
-                Debug.LogError($"Die {name}: failed to play test animation, {error}");
+                Debug.LogError($"Pixel {name}: failed to play test animation, {error}");
                 onResult?.Invoke(false, error);
             }
         }
 
-        private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, DieOperationProgressHandler onProgress = null)
+        private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, PixelOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
@@ -332,19 +332,19 @@ namespace Systemic.Unity.Pixels
 
                 if (success)
                 {
-                    // We're done sending data, wait for the die to say its finished programming it!
-                    Debug.Log($"Die {name}: done sending dataset, waiting for die to finish programming");
+                    // We're done sending data, wait for the Pixel to say its finished programming it!
+                    Debug.Log($"Pixel {name}: done sending dataset, waiting for Pixel to finish programming");
                     float timeout = Time.realtimeSinceStartup + AckMessageTimeout;
                     yield return new WaitUntil(() => programmingFinished || (Time.realtimeSinceStartup > timeout));
 
                     if (programmingFinished)
                     {
                         Debug.Assert(error == null);
-                        Debug.Log($"Die {name}: programming done");
+                        Debug.Log($"Pixel {name}: programming done");
                     }
                     else
                     {
-                        error = "Timeout waiting on die to confirm programming";
+                        error = "Timeout waiting on Pixel to confirm programming";
                     }
                 }
             }
@@ -358,13 +358,13 @@ namespace Systemic.Unity.Pixels
 
         //public IEnumerator UploadSettingsAsync(DieSettings settings, DieOperationResultHandler<bool> onResult = null, DieOperationProgressHandler onProgress = null)
         //{
-        //    // Prepare the die
+        //    // Prepare the Pixel
         //    var waitForMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageTransferSettings, DieMessageTransferSettingsAck>(this);
         //    yield return waitForMsg;
 
         //    if (waitForMsg.IsSuccess)
         //    {
-        //        // Die is ready, perform bulk transfer of the settings
+        //        // Pixel is ready, perform bulk transfer of the settings
         //        byte[] settingsBytes = DieSettings.ToByteArray(settings);
         //        yield return UploadBulkDataAsync(settingsBytes, onResult, onProgress);
         //    }
@@ -376,7 +376,7 @@ namespace Systemic.Unity.Pixels
 
         //public IEnumerator DownloadSettingsAsync(DieOperationResultHandler<DieSettings> onResult = null, DieOperationProgressHandler onProgress = null)
         //{
-        //    // Request the settings from the die
+        //    // Request the settings from the Pixel die
         //    var waitForMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestSettings, DieMessageTransferSettings>(this);
         //    yield return waitForMsg;
 

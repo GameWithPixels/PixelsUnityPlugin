@@ -21,24 +21,24 @@ namespace Systemic.Unity.Pixels.Messages
                 switch (type)
                 {
                     case MessageType.RollState:
-                        ret = FromByteArray<DieMessageRollState>(data);
+                        ret = FromByteArray<RollState>(data);
                         break;
                     case MessageType.WhoAreYou:
-                        ret = FromByteArray<DieMessageWhoAreYou>(data);
+                        ret = FromByteArray<WhoAreYou>(data);
                         break;
                     case MessageType.IAmADie:
                         {
-                            var baseData = new byte[Marshal.SizeOf<DieMessageIAmADieMarshalledData>()];
+                            var baseData = new byte[Marshal.SizeOf<IAmADieMarshaledData>()];
                             if (data.Length > baseData.Length)
                             {
                                 System.Array.Copy(data, baseData, baseData.Length);
-                                var baseMsg = FromByteArray<DieMessageIAmADieMarshalledData>(baseData);
+                                var baseMsg = FromByteArray<IAmADieMarshaledData>(baseData);
                                 if (baseMsg != null)
                                 {
                                     var strData = new byte[data.Length - baseData.Length - 1]; // It's ok if size is zero
                                     System.Array.Copy(data, baseData.Length, strData, 0, strData.Length);
                                     var str = Encoding.UTF8.GetString(strData);
-                                    ret = new DieMessageIAmADie
+                                    ret = new IAmADie
                                     {
                                         faceCount = baseMsg.faceCount,
                                         designAndColor = baseMsg.designAndColor,
@@ -53,158 +53,158 @@ namespace Systemic.Unity.Pixels.Messages
                         }
                         break;
                     case MessageType.Telemetry:
-                        ret = FromByteArray<DieMessageAcc>(data);
+                        ret = FromByteArray<AccelerationState>(data);
                         break;
                     case MessageType.BulkSetup:
-                        ret = FromByteArray<DieMessageBulkSetup>(data);
+                        ret = FromByteArray<BulkSetup>(data);
                         break;
                     case MessageType.BulkData:
-                        ret = FromByteArray<DieMessageBulkData>(data);
+                        ret = FromByteArray<BulkData>(data);
                         break;
                     case MessageType.BulkSetupAck:
-                        ret = FromByteArray<DieMessageBulkSetupAck>(data);
+                        ret = FromByteArray<BulkSetupAck>(data);
                         break;
                     case MessageType.BulkDataAck:
-                        ret = FromByteArray<DieMessageBulkDataAck>(data);
+                        ret = FromByteArray<BulkDataAck>(data);
                         break;
-                    case MessageType.TransferAnimSet:
-                        ret = FromByteArray<DieMessageTransferAnimSet>(data);
+                    case MessageType.TransferAnimationSet:
+                        ret = FromByteArray<TransferAnimationSet>(data);
                         break;
-                    case MessageType.TransferAnimSetAck:
-                        ret = FromByteArray<DieMessageTransferAnimSetAck>(data);
+                    case MessageType.TransferAnimationSetAck:
+                        ret = FromByteArray<TransferAnimationSetAck>(data);
                         break;
-                    case MessageType.TransferAnimSetFinished:
-                        ret = FromByteArray<DieMessageTransferAnimSetFinished>(data);
+                    case MessageType.TransferAnimationSetFinished:
+                        ret = FromByteArray<TransferAnimationSetFinished>(data);
                         break;
-                    case MessageType.TransferTestAnimSet:
-                        ret = FromByteArray<DieMessageTransferTestAnimSet>(data);
+                    case MessageType.TransferTestAnimationSet:
+                        ret = FromByteArray<TransferTestAnimationSet>(data);
                         break;
-                    case MessageType.TransferTestAnimSetAck:
-                        ret = FromByteArray<DieMessageTransferTestAnimSetAck>(data);
+                    case MessageType.TransferTestAnimationSetAck:
+                        ret = FromByteArray<TransferTestAnimationSetAck>(data);
                         break;
-                    case MessageType.TransferTestAnimSetFinished:
-                        ret = FromByteArray<DieMessageTransferTestAnimSetFinished>(data);
+                    case MessageType.TransferTestAnimationSetFinished:
+                        ret = FromByteArray<TransferTestAnimationSetFinished>(data);
                         break;
                     case MessageType.TransferSettings:
-                        ret = FromByteArray<DieMessageTransferSettings>(data);
+                        ret = FromByteArray<TransferSettings>(data);
                         break;
                     case MessageType.TransferSettingsAck:
-                        ret = FromByteArray<DieMessageTransferSettingsAck>(data);
+                        ret = FromByteArray<TransferSettingsAck>(data);
                         break;
                     case MessageType.TransferSettingsFinished:
-                        ret = FromByteArray<DieMessageTransferSettingsFinished>(data);
+                        ret = FromByteArray<TransferSettingsFinished>(data);
                         break;
                     case MessageType.DebugLog:
-                        ret = FromByteArray<DieMessageDebugLog>(data);
+                        ret = FromByteArray<DebugLog>(data);
                         break;
-                    case MessageType.PlayAnim:
-                        ret = FromByteArray<DieMessagePlayAnim>(data);
+                    case MessageType.PlayAnimation:
+                        ret = FromByteArray<PlayAnimation>(data);
                         break;
-                    case MessageType.PlayAnimEvent:
-                        ret = FromByteArray<DieMessagePlayAnimEvent>(data);
+                    case MessageType.PlayAnimationEvent:
+                        ret = FromByteArray<PlayAnimationEvent>(data);
                         break;
                     case MessageType.PlaySound:
-                        ret = FromByteArray<DieMessagePlaySound>(data);
+                        ret = FromByteArray<PlaySound>(data);
                         break;
-                    case MessageType.StopAnim:
-                        ret = FromByteArray<DieMessageStopAnim>(data);
+                    case MessageType.StopAnimation:
+                        ret = FromByteArray<StopAnimation>(data);
                         break;
                     case MessageType.RequestRollState:
-                        ret = FromByteArray<DieMessageRequestState>(data);
+                        ret = FromByteArray<RequestState>(data);
                         break;
-                    case MessageType.RequestAnimSet:
-                        ret = FromByteArray<DieMessageRequestAnimSet>(data);
+                    case MessageType.RequestAnimationSet:
+                        ret = FromByteArray<RequestAnimationSet>(data);
                         break;
                     case MessageType.RequestSettings:
-                        ret = FromByteArray<DieMessageRequestSettings>(data);
+                        ret = FromByteArray<RequestSettings>(data);
                         break;
                     case MessageType.RequestTelemetry:
-                        ret = FromByteArray<DieMessageRequestTelemetry>(data);
+                        ret = FromByteArray<RequestTelemetry>(data);
                         break;
-                    case MessageType.FlashFinished:
-                        ret = FromByteArray<DieMessageFlashFinished>(data);
+                    case MessageType.BlinkFinished:
+                        ret = FromByteArray<BlinkFinished>(data);
                         break;
-                    case MessageType.ProgramDefaultAnimSetFinished:
-                        ret = FromByteArray<DieMessageProgramDefaultAnimSetFinished>(data);
+                    case MessageType.ProgramDefaultAnimationSetFinished:
+                        ret = FromByteArray<ProgramDefaultAnimSetFinished>(data);
                         break;
-                    case MessageType.DefaultAnimSetColor:
-                        ret = FromByteArray<DieMessageDefaultAnimSetColor>(data);
+                    case MessageType.DefaultAnimationSetColor:
+                        ret = FromByteArray<DefaultAnimationSetColor>(data);
                         break;
                     case MessageType.BatteryLevel:
 #if PLATFORM_ANDROID
                         var modifiedData = new byte[13];
                         modifiedData[0] = data[0];
                         System.Array.Copy(data, 1, modifiedData, 4, 9);
-                        ret = FromByteArray<DieMessageBatteryLevel>(modifiedData);
+                        ret = FromByteArray<BatteryLevel>(modifiedData);
 #else
                         ret = FromByteArray<DieMessageBatteryLevel>(data);
 #endif
                         break;
                     case MessageType.RequestBatteryLevel:
-                        ret = FromByteArray<DieMessageRequestBatteryLevel>(data);
+                        ret = FromByteArray<RequestBatteryLevel>(data);
                         break;
                     case MessageType.RequestRssi:
-                        ret = FromByteArray<DieMessageRequestRssi>(data);
+                        ret = FromByteArray<RequestRssi>(data);
                         break;
                     case MessageType.Rssi:
-                        ret = FromByteArray<DieMessageRssi>(data);
+                        ret = FromByteArray<Rssi>(data);
                         break;
                     case MessageType.Calibrate:
-                        ret = FromByteArray<DieMessageCalibrate>(data);
+                        ret = FromByteArray<Calibrate>(data);
                         break;
                     case MessageType.CalibrateFace:
-                        ret = FromByteArray<DieMessageCalibrateFace>(data);
+                        ret = FromByteArray<CalibrateFace>(data);
                         break;
                     case MessageType.NotifyUser:
-                        ret = FromByteArray<DieMessageNotifyUser>(data);
+                        ret = FromByteArray<NotifyUser>(data);
                         break;
                     case MessageType.NotifyUserAck:
-                        ret = FromByteArray<DieMessageNotifyUserAck>(data);
+                        ret = FromByteArray<NotifyUserAck>(data);
                         break;
                     case MessageType.TestHardware:
-                        ret = FromByteArray<DieMessageTestHardware>(data);
+                        ret = FromByteArray<TestHardware>(data);
                         break;
                     case MessageType.SetStandardState:
-                        ret = FromByteArray<DieMessageSetStandardState>(data);
+                        ret = FromByteArray<SetStandardState>(data);
                         break;
-                    case MessageType.SetLEDAnimState:
-                        ret = FromByteArray<DieMessageSetLEDAnimState>(data);
+                    case MessageType.SetLEDAnimationState:
+                        ret = FromByteArray<SetLEDAnimState>(data);
                         break;
                     case MessageType.SetBattleState:
-                        ret = FromByteArray<DieMessageSetBattleState>(data);
+                        ret = FromByteArray<SetBattleState>(data);
                         break;
                     case MessageType.ProgramDefaultParameters:
-                        ret = FromByteArray<DieMessageProgramDefaultParameters>(data);
+                        ret = FromByteArray<ProgramDefaultParameters>(data);
                         break;
                     case MessageType.ProgramDefaultParametersFinished:
-                        ret = FromByteArray<DieMessageProgramDefaultParametersFinished>(data);
+                        ret = FromByteArray<ProgramDefaultParametersFinished>(data);
                         break;
                     case MessageType.AttractMode:
-                        ret = FromByteArray<DieMessageAttractMode>(data);
+                        ret = FromByteArray<AttractMode>(data);
                         break;
                     case MessageType.PrintNormals:
-                        ret = FromByteArray<DieMessagePrintNormals>(data);
+                        ret = FromByteArray<PrintNormals>(data);
                         break;
                     case MessageType.SetDesignAndColor:
-                        ret = FromByteArray<DieMessageSetDesignAndColor>(data);
+                        ret = FromByteArray<SetDesignAndColor>(data);
                         break;
                     case MessageType.SetDesignAndColorAck:
-                        ret = FromByteArray<DieMessageSetDesignAndColorAck>(data);
+                        ret = FromByteArray<SetDesignAndColorAck>(data);
                         break;
                     case MessageType.SetCurrentBehavior:
-                        ret = FromByteArray<DieMessageSetCurrentBehavior>(data);
+                        ret = FromByteArray<SetCurrentBehavior>(data);
                         break;
                     case MessageType.SetCurrentBehaviorAck:
-                        ret = FromByteArray<DieMessageSetCurrentBehaviorAck>(data);
+                        ret = FromByteArray<SetCurrentBehaviorAck>(data);
                         break;
                     case MessageType.SetName:
-                        ret = FromByteArray<DieMessageSetName>(data);
+                        ret = FromByteArray<SetName>(data);
                         break;
                     case MessageType.SetNameAck:
-                        ret = FromByteArray<DieMessageSetNameAck>(data);
+                        ret = FromByteArray<SetNameAck>(data);
                         break;
-                    case MessageType.DebugAnimController:
-                        ret = FromByteArray<DieMessageDebugAnimController>(data);
+                    case MessageType.DebugAnimationController:
+                        ret = FromByteArray<DebugAnimationController>(data);
                         break;
                     default:
                         throw new System.Exception("Unhandled DieMessage type " + type.ToString() + " for marshaling");

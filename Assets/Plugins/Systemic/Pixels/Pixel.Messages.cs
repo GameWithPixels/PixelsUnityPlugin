@@ -4,10 +4,7 @@ using UnityEngine;
 
 namespace Systemic.Unity.Pixels
 {
-    public delegate void DieOperationResultHandler<T>(T result, string error);
-    public delegate void DieOperationProgressHandler(float progress); // Value between 0 and 1
-
-    partial class Die
+    partial class Pixel
     {
         public const float AckMessageTimeout = 5;
 
@@ -47,7 +44,7 @@ namespace Systemic.Unity.Pixels
         {
             EnsureRunningOnMainThread();
 
-            Debug.Log($"Die {SafeName}: Posting message of type {message.GetType()}");
+            Debug.Log($"Pixel {SafeName}: Posting message of type {message.GetType()}");
 
             StartCoroutine(WriteDataAsync(PixelMessageMarshaling.ToByteArray(message)));
         }
@@ -56,12 +53,12 @@ namespace Systemic.Unity.Pixels
 
         public void PlayAnimation(int animationIndex)
         {
-            PostMessage(new DieMessagePlayAnim() { index = (byte)animationIndex });
+            PostMessage(new PlayAnimation() { index = (byte)animationIndex });
         }
 
         public void PlayAnimation(int animationIndex, int remapFace, bool loop)
         {
-            PostMessage(new DieMessagePlayAnim()
+            PostMessage(new PlayAnimation()
             {
                 index = (byte)animationIndex,
                 remapFace = (byte)remapFace,
@@ -71,7 +68,7 @@ namespace Systemic.Unity.Pixels
 
         public void StopAnimation(int animationIndex, int remapIndex)
         {
-            PostMessage(new DieMessageStopAnim()
+            PostMessage(new StopAnimation()
             {
                 index = (byte)animationIndex,
                 remapFace = (byte)remapIndex,
@@ -80,41 +77,41 @@ namespace Systemic.Unity.Pixels
 
         public void StartAttractMode()
         {
-            PostMessage(new DieMessageAttractMode());
+            PostMessage(new AttractMode());
         }
 
-        public IEnumerator GetDieStateAsync(DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator GetDieStateAsync(PixelOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestState, DieMessageRollState>(this);
+            var op = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator GetDieInfoAsync(DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator GetDieInfoAsync(PixelOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageWhoAreYou, DieMessageIAmADie>(this);
+            var op = new SendMessageAndWaitForResponseEnumerator<WhoAreYou, IAmADie>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
         public void RequestTelemetry(bool on)
         {
-            PostMessage(new DieMessageRequestTelemetry() { telemetry = on ? (byte)1 : (byte)0 });
+            PostMessage(new RequestTelemetry() { telemetry = on ? (byte)1 : (byte)0 });
         }
 
         public void RequestBulkData()
         {
-            PostMessage(new DieMessageTestBulkSend());
+            PostMessage(new TestBulkSend());
         }
 
         public void PrepareBulkData()
         {
-            PostMessage(new DieMessageTestBulkReceive());
+            PostMessage(new TestBulkReceive());
         }
 
         public void SetLEDsToRandomColor()
         {
-            var msg = new DieMessageSetAllLEDsToColor();
+            var msg = new SetAllLEDsToColor();
             uint r = (byte)Random.Range(0, 256);
             uint g = (byte)Random.Range(0, 256);
             uint b = (byte)Random.Range(0, 256);
@@ -125,15 +122,15 @@ namespace Systemic.Unity.Pixels
         public void SetLEDsToColor(Color color)
         {
             Color32 color32 = color;
-            PostMessage(new DieMessageSetAllLEDsToColor
+            PostMessage(new SetAllLEDsToColor
             {
                 color = (uint)((color32.r << 16) + (color32.g << 8) + color32.b)
             });
         }
 
-        public IEnumerator UpdateBatteryLevelAsync(DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator UpdateBatteryLevelAsync(PixelOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndProcessResponseWithValue<DieMessageRequestBatteryLevel, DieMessageBatteryLevel, float>(this,
+            var op = new SendMessageAndProcessResponseWithValue<RequestBatteryLevel, BatteryLevel, float>(this,
                 lvlMsg =>
                 {
                     batteryLevel = lvlMsg.level;
@@ -145,9 +142,9 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator UpdateRssiAsync(DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator UpdateRssiAsync(PixelOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndProcessResponseWithValue<DieMessageRequestRssi, DieMessageRssi, int>(this,
+            var op = new SendMessageAndProcessResponseWithValue<RequestRssi, Rssi, int>(this,
                 rssiMsg =>
                 {
                     rssi = rssiMsg.rssi;
@@ -158,10 +155,10 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator SetCurrentDesignAndColorAsync(DieDesignAndColor design, DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator SetCurrentDesignAndColorAsync(PixelDesignAndColor design, PixelOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndProcessResponseEnumerator<DieMessageSetDesignAndColor, DieMessageRssi>(this,
-                new DieMessageSetDesignAndColor() { designAndColor = design },
+            var op = new SendMessageAndProcessResponseEnumerator<SetDesignAndColor, Rssi>(this,
+                new SetDesignAndColor() { designAndColor = design },
                 _ =>
                 {
                     designAndColor = design;
@@ -171,72 +168,72 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator RenameDieAsync(string newName, DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator RenameDieAsync(string newName, PixelOperationResultHandler<bool> onResult = null)
         {
-            Debug.Log($"Die {SafeName}: Renaming to " + newName);
+            Debug.Log($"Pixel {SafeName}: Renaming to " + newName);
 
             byte[] nameBytes = System.Text.Encoding.UTF8.GetBytes(newName + "\0");
             byte[] nameByte10 = new byte[10]; // 10 is the declared size in DieMessageSetName. There is probably a better way to do this...
             System.Array.Copy(nameBytes, nameByte10, nameBytes.Length);
 
-            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageSetName, DieMessageSetNameAck>(this, new DieMessageSetName { name = nameByte10 });
+            var op = new SendMessageAndWaitForResponseEnumerator<SetName, SetNameAck>(this, new SetName { name = nameByte10 });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator BlinkAsync(Color color, int count, DieOperationResultHandler<bool> onResult = null)
+        public IEnumerator BlinkAsync(Color color, int count, PixelOperationResultHandler<bool> onResult = null)
         {
             Color32 color32 = color;
-            var msg = new DieMessageFlash
+            var msg = new Blink
             {
                 color = (uint)((color32.r << 16) + (color32.g << 8) + color32.b),
                 flashCount = (byte)count,
             };
-            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageFlash, DieMessageFlashFinished>(this, msg);
+            var op = new SendMessageAndWaitForResponseEnumerator<Blink, BlinkFinished>(this, msg);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
         public void StartHardwareTest()
         {
-            PostMessage(new DieMessageTestHardware());
+            PostMessage(new TestHardware());
         }
 
         public void StartCalibration()
         {
-            PostMessage(new DieMessageCalibrate());
+            PostMessage(new Calibrate());
         }
 
         public void CalibrateFace(int face)
         {
-            PostMessage(new DieMessageCalibrateFace() { face = (byte)face });
+            PostMessage(new CalibrateFace() { face = (byte)face });
         }
 
         public void SetStandardMode()
         {
-            PostMessage(new DieMessageSetStandardState());
+            PostMessage(new SetStandardState());
         }
 
         public void SetLEDAnimatorMode()
         {
-            PostMessage(new DieMessageSetLEDAnimState());
+            PostMessage(new SetLEDAnimState());
         }
 
         public void SetBattleMode()
         {
-            PostMessage(new DieMessageSetBattleState());
+            PostMessage(new SetBattleState());
         }
 
         public void DebugAnimController()
         {
-            PostMessage(new DieMessageDebugAnimController());
+            PostMessage(new DebugAnimationController());
         }
 
         public IEnumerator PrintNormalsAsync()
         {
             for (int i = 0; i < 20; ++i)
             {
-                var msg = new DieMessagePrintNormals { face = (byte)i };
+                var msg = new PrintNormals { face = (byte)i };
                 PostMessage(msg);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -244,21 +241,21 @@ namespace Systemic.Unity.Pixels
 
         public void ResetParams()
         {
-            PostMessage(new DieMessageProgramDefaultParameters());
+            PostMessage(new ProgramDefaultParameters());
         }
 
         #region MessageHandlers
 
         void OnIAmADieMessage(IPixelMessage message)
         {
-            var idMsg = (DieMessageIAmADie)message;
+            var idMsg = (IAmADie)message;
             bool appearanceChanged = faceCount != idMsg.faceCount || designAndColor != idMsg.designAndColor;
             faceCount = idMsg.faceCount;
             designAndColor = idMsg.designAndColor;
             dataSetHash = idMsg.dataSetHash;
             flashSize = idMsg.flashSize;
             firmwareVersionId = idMsg.versionInfo;
-            Debug.Log($"Die {SafeName}: {flashSize} bytes available for data, current dataset hash {dataSetHash:X08}, firmware version is {firmwareVersionId}");
+            Debug.Log($"Pixel {SafeName}: {flashSize} bytes available for data, current dataset hash {dataSetHash:X08}, firmware version is {firmwareVersionId}");
             if (appearanceChanged)
             {
                 AppearanceChanged?.Invoke(this, faceCount, designAndColor);
@@ -268,10 +265,10 @@ namespace Systemic.Unity.Pixels
         void OnRollStateMessage(IPixelMessage message)
         {
             // Handle the message
-            var stateMsg = (DieMessageRollState)message;
-            Debug.Log($"Die {SafeName}: State is {stateMsg.state}, {stateMsg.face}");
+            var stateMsg = (RollState)message;
+            Debug.Log($"Pixel {SafeName}: State is {stateMsg.state}, {stateMsg.face}");
 
-            var newState = (DieRollState)stateMsg.state;
+            var newState = (PixelRollState)stateMsg.state;
             var newFace = stateMsg.face;
             if (newState != state || newFace != face)
             {
@@ -290,32 +287,32 @@ namespace Systemic.Unity.Pixels
             if (_TelemetryReceived != null)
             {
                 // Notify anyone who cares
-                var telem = (DieMessageAcc)message;
+                var telem = (AccelerationState)message;
                 _TelemetryReceived.Invoke(this, telem.data);
             }
         }
 
         void OnDebugLogMessage(IPixelMessage message)
         {
-            var dlm = (DieMessageDebugLog)message;
+            var dlm = (DebugLog)message;
             string text = System.Text.Encoding.UTF8.GetString(dlm.data, 0, dlm.data.Length);
-            Debug.Log($"Die {SafeName}: {text}");
+            Debug.Log($"Pixel {SafeName}: {text}");
         }
 
         void OnNotifyUserMessage(IPixelMessage message)
         {
-            var notifyUserMsg = (DieMessageNotifyUser)message;
+            var notifyUserMsg = (NotifyUser)message;
             //bool ok = notifyUserMsg.ok != 0;
             bool cancel = notifyUserMsg.cancel != 0;
             //float timeout = notifyUserMsg.timeout_s;
             string text = System.Text.Encoding.UTF8.GetString(notifyUserMsg.data, 0, notifyUserMsg.data.Length);
             NotifyUserReceived(this, cancel, text,
-                res => PostMessage(new DieMessageNotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
+                res => PostMessage(new NotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
         }
 
         void OnPlayAudioClip(IPixelMessage message)
         {
-            var playClipMessage = (DieMessagePlaySound)message;
+            var playClipMessage = (PlaySound)message;
             PlayAudioClipReceived?.Invoke(this, (uint)playClipMessage.clipId);
         }
 

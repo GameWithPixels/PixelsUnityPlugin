@@ -7,11 +7,11 @@ namespace Systemic.Unity.Pixels.Behaviors
     /// </summary>
     public enum ActionType : byte
     {
-		//![SkipEnumValue]
+        //TODO [SkipEnumValue]
         Unknown = 0,
-        //![Name("Trigger Pattern")]
+        //TODO [Name("Trigger Pattern")]
         PlayAnimation,
-        //![Name("Play Audio Clip")]
+        //TODO [Name("Play Audio Clip")]
         PlayAudioClip,
     };
 
@@ -21,7 +21,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     /// </summary>
     public interface IAction
     {
-        ActionType type {get; set; }
+        ActionType type { get; set; }
     };
 
     /// <summary>

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Systemic.Unity.Pixels
 {
-    partial class Die
+    partial class Pixel
     {
         protected interface IOperationEnumerator : IEnumerator
         {
@@ -36,16 +36,16 @@ namespace Systemic.Unity.Pixels
 
             public object Current => null;
 
-            protected Die Die { get; }
+            protected Pixel Pixel { get; }
 
             protected bool IsDisposed { get; private set; }
 
-            public WaitForMessageEnumerator(Die die, float timeoutSec = AckMessageTimeout)
+            public WaitForMessageEnumerator(Pixel pixel, float timeoutSec = AckMessageTimeout)
             {
                 if (timeoutSec <= 0) throw new System.ArgumentException("Timeout value must be greater than zero", nameof(timeoutSec));
-                if (die == null) throw new System.ArgumentNullException(nameof(die));
+                if (pixel == null) throw new System.ArgumentNullException(nameof(pixel));
 
-                Die = die;
+                Pixel = pixel;
                 _timeout = Time.realtimeSinceStartup + timeoutSec;
                 _msgType = PixelMessageMarshaling.GetMessageType<T>();
             }
@@ -58,7 +58,7 @@ namespace Systemic.Unity.Pixels
                 if (!_isStarted)
                 {
                     _isStarted = true;
-                    Die.AddMessageHandler(_msgType, OnMessage);
+                    Pixel.AddMessageHandler(_msgType, OnMessage);
                 }
 
                 if ((!IsSuccess) && (_timeout > 0) && (Error == null))
@@ -75,7 +75,7 @@ namespace Systemic.Unity.Pixels
                 if (done)
                 {
                     // Unsubscribe from message notifications
-                    Die.RemoveMessageHandler(_msgType, OnMessage);
+                    Pixel.RemoveMessageHandler(_msgType, OnMessage);
 
                     if (IsSuccess)
                     {
@@ -104,7 +104,7 @@ namespace Systemic.Unity.Pixels
             {
                 Debug.Assert(msg is T);
                 Message = (T)msg;
-                Die.RemoveMessageHandler(_msgType, OnMessage);
+                Pixel.RemoveMessageHandler(_msgType, OnMessage);
             }
         }
 
@@ -115,17 +115,17 @@ namespace Systemic.Unity.Pixels
             IOperationEnumerator _sendMessage;
             readonly System.Type _msgType;
 
-            public SendMessageAndWaitForResponseEnumerator(Die die, TMsg message, float timeoutSec = AckMessageTimeout)
-                : base(die, timeoutSec)
+            public SendMessageAndWaitForResponseEnumerator(Pixel pixel, TMsg message, float timeoutSec = AckMessageTimeout)
+                : base(pixel, timeoutSec)
             {
                 if (message == null) throw new System.ArgumentNullException(nameof(message));
 
                 _msgType = message.GetType();
-                _sendMessage = Die.WriteDataAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
+                _sendMessage = Pixel.WriteDataAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
             }
 
-            public SendMessageAndWaitForResponseEnumerator(Die die, float timeoutSec = AckMessageTimeout)
-                : this(die, new TMsg(), timeoutSec)
+            public SendMessageAndWaitForResponseEnumerator(Pixel pixel, float timeoutSec = AckMessageTimeout)
+                : this(pixel, new TMsg(), timeoutSec)
             {
             }
 
@@ -161,14 +161,14 @@ namespace Systemic.Unity.Pixels
         {
             System.Action<TResp> _onResponse;
 
-            public SendMessageAndProcessResponseEnumerator(Die die, TMsg message, System.Action<TResp> onResponse, float timeoutSec = AckMessageTimeout)
-               : base(die, message, timeoutSec)
+            public SendMessageAndProcessResponseEnumerator(Pixel pixel, TMsg message, System.Action<TResp> onResponse, float timeoutSec = AckMessageTimeout)
+               : base(pixel, message, timeoutSec)
             {
                 _onResponse = onResponse ?? throw new System.ArgumentNullException(nameof(onResponse));
             }
 
-            public SendMessageAndProcessResponseEnumerator(Die die, System.Action<TResp> onResponse, float timeoutSec = AckMessageTimeout)
-               : this(die, new TMsg(), onResponse, timeoutSec)
+            public SendMessageAndProcessResponseEnumerator(Pixel pixel, System.Action<TResp> onResponse, float timeoutSec = AckMessageTimeout)
+               : this(pixel, new TMsg(), onResponse, timeoutSec)
             {
             }
 
@@ -191,14 +191,14 @@ namespace Systemic.Unity.Pixels
 
             public TValue Value { get; private set; }
 
-            public SendMessageAndProcessResponseWithValue(Die die, TMsg message, System.Func<TResp, TValue> onResponse, float timeoutSec = AckMessageTimeout)
-               : base(die, message, timeoutSec)
+            public SendMessageAndProcessResponseWithValue(Pixel pixel, TMsg message, System.Func<TResp, TValue> onResponse, float timeoutSec = AckMessageTimeout)
+               : base(pixel, message, timeoutSec)
             {
                 _onResponse = onResponse ?? throw new System.ArgumentNullException(nameof(onResponse)); ;
             }
 
-            public SendMessageAndProcessResponseWithValue(Die die, System.Func<TResp, TValue> onResponse, float timeoutSec = AckMessageTimeout)
-                : this(die, new TMsg(), onResponse, timeoutSec)
+            public SendMessageAndProcessResponseWithValue(Pixel pixel, System.Func<TResp, TValue> onResponse, float timeoutSec = AckMessageTimeout)
+                : this(pixel, new TMsg(), onResponse, timeoutSec)
             {
             }
 

@@ -11,9 +11,7 @@ namespace Systemic.Unity.Pixels
 {
     partial class DicePool
     {
-        public const string ConnectTimeoutErrorMessage = "Timeout trying to connect, Die may be out of range or turned off";
-
-        sealed class PoolDie : Die
+        sealed class BlePixel : Pixel
         {
             /// <summary>
             /// This data structure mirrors the data in firmware/bluetooth/bluetooth_stack.cpp
@@ -21,15 +19,15 @@ namespace Systemic.Unity.Pixels
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             struct PixelAdvertisingData
             {
-                // Die type identification
-                public DieDesignAndColor designAndColor; // Physical look, also only 8 bits
+                // Pixel type identification
+                public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
                 public byte faceCount; // Which kind of dice this is
 
                 // Device ID
                 public uint deviceId;
 
                 // Current state
-                public DieRollState rollState; // Indicates whether the dice is being shaken
+                public PixelRollState rollState; // Indicates whether the dice is being shaken
                 public byte currentFace; // Which face is currently up
                 public byte batteryLevel; // 0 -> 255
             };
@@ -44,10 +42,10 @@ namespace Systemic.Unity.Pixels
             ConnectionResultHandler _onConnectionResult;
             ConnectionResultHandler _onDisconnectionResult;
 
-            public delegate void ConnectionResultHandler(Die die, bool success, string error);
+            public delegate void ConnectionResultHandler(Pixel pixel, bool success, string error);
 
             /// <summary>
-            /// Event triggered when die got disconnected for other reasons than a call to Disconnect().
+            /// Event triggered when a Pixel got disconnected for other reasons than a call to Disconnect().
             /// Most likely the BLE device was turned off or got out of range.
             /// </summary>
             public event System.Action DisconnectedUnexpectedly;
@@ -62,12 +60,12 @@ namespace Systemic.Unity.Pixels
 
                 if (_peripheral == null)
                 {
-                    Debug.Assert(connectionState == DieConnectionState.Invalid);
-                    connectionState = DieConnectionState.Available;
+                    Debug.Assert(connectionState == PixelConnectionState.Invalid);
+                    connectionState = PixelConnectionState.Available;
                 }
                 else if (_peripheral.SystemId != peripheral.SystemId)
                 {
-                    throw new System.InvalidOperationException("Trying to assign another peripheral to Die");
+                    throw new System.InvalidOperationException("Trying to assign another peripheral to Pixel");
                 }
 
                 _peripheral = peripheral;
@@ -85,7 +83,7 @@ namespace Systemic.Unity.Pixels
                         var advData = Marshal.PtrToStructure<PixelAdvertisingData>(ptr);
                         Marshal.FreeHGlobal(ptr);
 
-                        // Update die data
+                        // Update Pixel data
                         bool appearanceChanged = faceCount != advData.faceCount || designAndColor != advData.designAndColor;
                         bool rollStateChanged = state != advData.rollState || face != advData.currentFace;
                         faceCount = advData.faceCount;
@@ -109,7 +107,7 @@ namespace Systemic.Unity.Pixels
                     }
                     else
                     {
-                        Debug.LogError($"Die {name}: incorrect advertising data length {_peripheral.ManufacturerData.Count}, expected: {size}");
+                        Debug.LogError($"Pixel {name}: incorrect advertising data length {_peripheral.ManufacturerData.Count}, expected: {size}");
                     }
                 }
             }
@@ -118,7 +116,7 @@ namespace Systemic.Unity.Pixels
             {
                 EnsureRunningOnMainThread();
 
-                lastError = DieLastError.None;
+                lastError = PixelLastError.None;
             }
 
             public void Connect(ConnectionResultHandler onConnectionResult = null)
@@ -128,29 +126,29 @@ namespace Systemic.Unity.Pixels
                 void IncrementConnectCount()
                 {
                     ++_connectionCount;
-                    Debug.Log($"Die {SafeName}: Connecting, counter={_connectionCount}");
+                    Debug.Log($"Pixel {SafeName}: Connecting, counter={_connectionCount}");
                 }
 
                 switch (connectionState)
                 {
                     default:
-                        string error = $"Invalid die state {connectionState} while attempting to connect";
-                        Debug.LogError($"Die {SafeName}: {error}");
+                        string error = $"Invalid Pixel state {connectionState} while attempting to connect";
+                        Debug.LogError($"Pixel {SafeName}: {error}");
                         onConnectionResult?.Invoke(this, false, error);
                         break;
-                    case DieConnectionState.Available:
+                    case PixelConnectionState.Available:
                         IncrementConnectCount();
                         Debug.Assert(_connectionCount == 1);
                         this._onConnectionResult += onConnectionResult;
                         DoConnect();
                         break;
-                    case DieConnectionState.Connecting:
-                    case DieConnectionState.Identifying:
+                    case PixelConnectionState.Connecting:
+                    case PixelConnectionState.Identifying:
                         // Already in the process of connecting, just add the callback and wait
                         IncrementConnectCount();
                         this._onConnectionResult += onConnectionResult;
                         break;
-                    case DieConnectionState.Ready:
+                    case PixelConnectionState.Ready:
                         // Trigger the callback immediately
                         IncrementConnectCount();
                         onConnectionResult?.Invoke(this, true, null);
@@ -165,16 +163,16 @@ namespace Systemic.Unity.Pixels
                 switch (connectionState)
                 {
                     default:
-                        // Die not connected
+                        // Pixel not connected
                         onDisconnectionResult?.Invoke(this, true, null);
                         break;
-                    case DieConnectionState.Ready:
-                    case DieConnectionState.Connecting:
-                    case DieConnectionState.Identifying:
+                    case PixelConnectionState.Ready:
+                    case PixelConnectionState.Connecting:
+                    case PixelConnectionState.Identifying:
                         Debug.Assert(_connectionCount > 0);
                         _connectionCount = forceDisconnect ? 0 : Mathf.Max(0, _connectionCount - 1);
 
-                        Debug.Log($"Die {SafeName}: Disconnecting, counter={_connectionCount}, forceDisconnect={forceDisconnect}");
+                        Debug.Log($"Pixel {SafeName}: Disconnecting, counter={_connectionCount}, forceDisconnect={forceDisconnect}");
 
                         if (_connectionCount == 0)
                         {
@@ -193,15 +191,15 @@ namespace Systemic.Unity.Pixels
 
             void DoConnect()
             {
-                Debug.Assert(connectionState == DieConnectionState.Available);
-                if (connectionState == DieConnectionState.Available)
+                Debug.Assert(connectionState == PixelConnectionState.Available);
+                if (connectionState == PixelConnectionState.Available)
                 {
-                    connectionState = DieConnectionState.Connecting;
+                    connectionState = PixelConnectionState.Connecting;
                     StartCoroutine(ConnectAsync());
 
                     IEnumerator ConnectAsync()
                     {
-                        Debug.Log($"Die {SafeName}: Connecting...");
+                        Debug.Log($"Pixel {SafeName}: Connecting...");
                         Systemic.Unity.BluetoothLE.RequestEnumerator connectRequest = null;
                         connectRequest = Central.ConnectPeripheralAsync(
                             _peripheral,
@@ -213,13 +211,13 @@ namespace Systemic.Unity.Pixels
                         yield return connectRequest;
                         string lastRequestError = connectRequest.Error;
 
-                        bool canceled = connectionState != DieConnectionState.Connecting;
+                        bool canceled = connectionState != PixelConnectionState.Connecting;
                         if (!canceled)
                         {
                             string error = null;
                             if (connectRequest.IsSuccess)
                             {
-                                // Now connected to die, get characteristics and subscribe before switching to Identifying state
+                                // Now connected to a Pixel, get characteristics and subscribe before switching to Identifying state
                                 var pixelService = BleUuids.ServiceUuid;
                                 var subscribeCharacteristic = BleUuids.NotifyCharacteristicUuid;
                                 var writeCharacteristic = BleUuids.WriteCharacteristicUuid;
@@ -263,7 +261,7 @@ namespace Systemic.Unity.Pixels
                             }
 
                             // Check that we are still in the connecting state
-                            canceled = connectionState != DieConnectionState.Connecting;
+                            canceled = connectionState != PixelConnectionState.Connecting;
                             if ((!canceled) && (error == null))
                             {
                                 // Move on to identification
@@ -274,7 +272,7 @@ namespace Systemic.Unity.Pixels
                                 });
 
                                 // Check connection state
-                                canceled = connectionState != DieConnectionState.Identifying;
+                                canceled = connectionState != PixelConnectionState.Identifying;
                                 //TODO we need a counter, in case another connect is already going on
                             }
 
@@ -282,8 +280,8 @@ namespace Systemic.Unity.Pixels
                             {
                                 if (error == null)
                                 {
-                                    // Die is finally ready, awesome!
-                                    connectionState = DieConnectionState.Ready;
+                                    // Pixel is finally ready, awesome!
+                                    connectionState = PixelConnectionState.Ready;
 
                                     // Notify success
                                     NotifyConnectionResult();
@@ -293,8 +291,8 @@ namespace Systemic.Unity.Pixels
                                     // Trigger callback
                                     NotifyConnectionResult(error);
 
-                                    // Updating info didn't work, disconnect the die
-                                    DoDisconnect(DieLastError.ConnectionError);
+                                    // Updating info didn't work, disconnect the Pixel die
+                                    DoDisconnect(PixelLastError.ConnectionError);
                                 }
                             }
                         }
@@ -302,31 +300,31 @@ namespace Systemic.Unity.Pixels
                         if (canceled)
                         {
                             // Wrong state => we got canceled, just abort without notifying
-                            Debug.LogWarning($"Die {SafeName}: connect sequence interrupted, last request error is: {lastRequestError}");
+                            Debug.LogWarning($"Pixel {SafeName}: connect sequence interrupted, last request error is: {lastRequestError}");
                         }
                     }
                 }
 
                 IEnumerator DoIdentifyAsync(System.Action<IOperationEnumerator> onResult)
                 {
-                    Debug.Assert(connectionState == DieConnectionState.Connecting);
+                    Debug.Assert(connectionState == PixelConnectionState.Connecting);
 
-                    // We're going to identify the die
-                    connectionState = DieConnectionState.Identifying;
+                    // We're going to identify the Pixel
+                    connectionState = PixelConnectionState.Identifying;
 
                     // Reset error
-                    SetLastError(DieLastError.None);
+                    SetLastError(PixelLastError.None);
 
-                    // Ask the die who it is!
-                    var request = new SendMessageAndWaitForResponseEnumerator<DieMessageWhoAreYou, DieMessageIAmADie>(this) as IOperationEnumerator;
+                    // Ask the Pixel who it is!
+                    var request = new SendMessageAndWaitForResponseEnumerator<WhoAreYou, IAmADie>(this) as IOperationEnumerator;
                     yield return request;
 
                     // Continue identification if we are still in the identify state
-                    if (request.IsSuccess && (connectionState == DieConnectionState.Identifying))
+                    if (request.IsSuccess && (connectionState == PixelConnectionState.Identifying))
                     {
-                        // Get the die initial state
+                        // Get the Pixel initial state
                         Debug.LogWarning($"Sending State");
-                        request = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestState, DieMessageRollState>(this);
+                        request = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
                         yield return request;
                     }
 
@@ -338,11 +336,11 @@ namespace Systemic.Unity.Pixels
                 {
                     Debug.Assert(_peripheral.SystemId == p.SystemId);
 
-                    Debug.Log($"Die {SafeName}: {(connected ? "Connected" : "Disconnected")}");
+                    Debug.Log($"Pixel {SafeName}: {(connected ? "Connected" : "Disconnected")}");
 
-                    if ((!connected) && (connectionState != DieConnectionState.Disconnecting))
+                    if ((!connected) && (connectionState != PixelConnectionState.Disconnecting))
                     {
-                        if ((connectionState == DieConnectionState.Connecting) || (connectionState == DieConnectionState.Identifying))
+                        if ((connectionState == PixelConnectionState.Connecting) || (connectionState == PixelConnectionState.Identifying))
                         {
                             NotifyConnectionResult("Disconnected unexpectedly");
                         }
@@ -354,8 +352,8 @@ namespace Systemic.Unity.Pixels
                         // Reset connection count
                         _connectionCount = 0;
 
-                        connectionState = DieConnectionState.Available;
-                        SetLastError(DieLastError.Disconnected);
+                        connectionState = PixelConnectionState.Available;
+                        SetLastError(PixelLastError.Disconnected);
 
                         DisconnectedUnexpectedly?.Invoke();
                     }
@@ -365,11 +363,11 @@ namespace Systemic.Unity.Pixels
                 {
                     Debug.Assert(data != null);
 
-                    // Process the message coming from the actual die!
+                    // Process the message coming from the actual Pixel die!
                     var message = PixelMessageMarshaling.FromByteArray(data);
                     if (message != null)
                     {
-                        Debug.Log($"Die {SafeName}: Received message of type {message.GetType()}");
+                        Debug.Log($"Pixel {SafeName}: Received message of type {message.GetType()}");
 
                         if (messageDelegates.TryGetValue(message.type, out MessageReceivedEvent del))
                         {
@@ -383,7 +381,7 @@ namespace Systemic.Unity.Pixels
             {
                 if (error != null)
                 {
-                    Debug.LogError($"Die {SafeName}: {error}");
+                    Debug.LogError($"Pixel {SafeName}: {error}");
                 }
 
                 var callbackCopy = _onConnectionResult;
@@ -392,11 +390,11 @@ namespace Systemic.Unity.Pixels
             }
 
             /// <summary>
-            /// Disconnects a die, doesn't remove it from the pool though
+            /// Disconnects a Pixel, doesn't remove it from the pool though
             /// </sumary>
-            void DoDisconnect(DieLastError error = DieLastError.None)
+            void DoDisconnect(PixelLastError error = PixelLastError.None)
             {
-                if (error != DieLastError.None)
+                if (error != PixelLastError.None)
                 {
                     // We're disconnecting because of an error
                     SetLastError(error);
@@ -406,16 +404,16 @@ namespace Systemic.Unity.Pixels
                 if (isConnectingOrReady)
                 {
                     _connectionCount = 0;
-                    connectionState = DieConnectionState.Disconnecting;
+                    connectionState = PixelConnectionState.Disconnecting;
                     StartCoroutine(DisconnectAsync());
 
                     IEnumerator DisconnectAsync()
                     {
-                        Debug.Log($"Die {SafeName}: Disconnecting...");
+                        Debug.Log($"Pixel {SafeName}: Disconnecting...");
                         yield return Central.DisconnectPeripheralAsync(_peripheral);
 
                         Debug.Assert(_connectionCount == 0);
-                        connectionState = DieConnectionState.Available;
+                        connectionState = PixelConnectionState.Available;
 
                         var callbackCopy = _onDisconnectionResult;
                         _onDisconnectionResult = null;
@@ -424,10 +422,10 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            void SetLastError(DieLastError newError)
+            void SetLastError(PixelLastError newError)
             {
                 lastError = newError;
-                if (lastError != DieLastError.None)
+                if (lastError != PixelLastError.None)
                 {
                     GotError?.Invoke(this, newError);
                 }
@@ -469,7 +467,7 @@ namespace Systemic.Unity.Pixels
             {
                 EnsureRunningOnMainThread();
 
-                Debug.Log($"Die {SafeName}: Sending message {(MessageType)bytes?.FirstOrDefault()}");
+                Debug.Log($"Pixel {SafeName}: Sending message {(MessageType)bytes?.FirstOrDefault()}");
 
                 return new WriteDataEnumerator(_peripheral, bytes, timeout);
 
@@ -483,9 +481,9 @@ namespace Systemic.Unity.Pixels
 
                 bool disconnect = isConnectingOrReady;
                 _connectionCount = 0;
-                connectionState = DieConnectionState.Invalid;
+                connectionState = PixelConnectionState.Invalid;
 
-                Debug.Log($"Die {name}: destroyed (was connecting or connected: {disconnect})");
+                Debug.Log($"Pixel {name}: destroyed (was connecting or connected: {disconnect})");
 
                 if (disconnect)
                 {

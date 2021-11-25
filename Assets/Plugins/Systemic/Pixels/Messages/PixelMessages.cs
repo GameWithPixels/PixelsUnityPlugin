@@ -8,20 +8,18 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageWhoAreYou
-        : IPixelMessage
+    public class WhoAreYou : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.WhoAreYou;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageIAmADieMarshalledData
-        : IPixelMessage
+    public class IAmADieMarshaledData : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.IAmADie;
 
         public byte faceCount; // Which kind of dice this is
-        public DieDesignAndColor designAndColor; // Physical look
+        public PixelDesignAndColor designAndColor; // Physical look
         public byte padding;
         public uint dataSetHash;
         public uint deviceId; // A unique identifier
@@ -29,23 +27,21 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageIAmADie : DieMessageIAmADieMarshalledData
+    public class IAmADie : IAmADieMarshaledData
     {
         public string versionInfo; // Firmware version string, i.e. "10_05_21", variable size
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRollState
-        : IPixelMessage
+    public class RollState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RollState;
-        public DieRollState state;
+        public PixelRollState state;
         public byte face;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageAcc
-        : IPixelMessage
+    public class AccelerationState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.Telemetry;
 
@@ -53,23 +49,20 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageBulkSetup
-        : IPixelMessage
+    public class BulkSetup : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.BulkSetup;
         public short size;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageBulkSetupAck
-        : IPixelMessage
+    public class BulkSetupAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.BulkSetupAck;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageBulkData
-        : IPixelMessage
+    public class BulkData : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.BulkData;
         public byte size;
@@ -79,18 +72,16 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageBulkDataAck
-        : IPixelMessage
+    public class BulkDataAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.BulkDataAck;
         public ushort offset;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferAnimSet
-        : IPixelMessage
+    public class TransferAnimationSet : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferAnimSet;
+        public MessageType type { get; set; } = MessageType.TransferAnimationSet;
         public ushort paletteSize;
         public ushort rgbKeyFrameCount;
         public ushort rgbTrackCount;
@@ -106,25 +97,22 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferAnimSetAck
-        : IPixelMessage
+    public class TransferAnimationSetAck : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferAnimSetAck;
+        public MessageType type { get; set; } = MessageType.TransferAnimationSetAck;
         public byte result;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferAnimSetFinished
-        : IPixelMessage
+    public class TransferAnimationSetFinished : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferAnimSetFinished;
+        public MessageType type { get; set; } = MessageType.TransferAnimationSetFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferTestAnimSet
-        : IPixelMessage
+    public class TransferTestAnimationSet : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimSet;
+        public MessageType type { get; set; } = MessageType.TransferTestAnimationSet;
 
         public ushort paletteSize;
         public ushort rgbKeyFrameCount;
@@ -135,7 +123,7 @@ namespace Systemic.Unity.Pixels.Messages
         public uint hash;
     }
 
-    public enum TransferTestAnimSetAckType : byte
+    public enum TransferTestAnimationSetAckType : byte
     {
         Download = 0,
         UpToDate,
@@ -143,30 +131,26 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferTestAnimSetAck
-        : IPixelMessage
+    public class TransferTestAnimationSetAck : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimSetAck;
-        public TransferTestAnimSetAckType ackType;
+        public MessageType type { get; set; } = MessageType.TransferTestAnimationSetAck;
+        public TransferTestAnimationSetAckType ackType;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferTestAnimSetFinished
-        : IPixelMessage
+    public class TransferTestAnimationSetFinished : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimSetFinished;
+        public MessageType type { get; set; } = MessageType.TransferTestAnimationSetFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestAnimSet
-        : IPixelMessage
+    public class RequestAnimationSet : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.RequestAnimSet;
+        public MessageType type { get; set; } = MessageType.RequestAnimationSet;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferSettings
-        : IPixelMessage
+    public class TransferSettings : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TransferSettings;
         public byte count;
@@ -174,38 +158,32 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferSettingsAck
-        : IPixelMessage
+    public class TransferSettingsAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TransferSettingsAck;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTransferSettingsFinished
-        : IPixelMessage
+    public class TransferSettingsFinished : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TransferSettingsFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestSettings
-        : IPixelMessage
+    public class RequestSettings : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RequestSettings;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestTelemetry
-        : IPixelMessage
+    public class RequestTelemetry : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RequestTelemetry;
         public byte telemetry;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageDebugLog
-        : IPixelMessage
+    public class DebugLog : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.DebugLog;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = PixelMessageMarshaling.maxDataSize)]
@@ -213,124 +191,112 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessagePlayAnim
-        : IPixelMessage
+    public class PlayAnimation : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.PlayAnim;
+        public MessageType type { get; set; } = MessageType.PlayAnimation;
         public byte index;
         public byte remapFace;
         public byte loop;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessagePlayAnimEvent
-        : IPixelMessage
+    public class PlayAnimationEvent : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.PlayAnimEvent;
+        public MessageType type { get; set; } = MessageType.PlayAnimationEvent;
         public byte evt;
         public byte remapFace;
         public byte loop;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageStopAnim
-        : IPixelMessage
+    public class StopAnimation : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.StopAnim;
+        public MessageType type { get; set; } = MessageType.StopAnimation;
         public byte index;
         public byte remapFace;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessagePlaySound
-        : IPixelMessage
+    public class PlaySound : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.PlaySound;
         public ushort clipId;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestState
-        : IPixelMessage
+    public class RequestState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RequestRollState;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageProgramDefaultAnimSet
-        : IPixelMessage
+    public class ProgramDefaultAnimationSet : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.ProgramDefaultAnimSet;
+        public MessageType type { get; set; } = MessageType.ProgramDefaultAnimationSet;
         public uint color;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageProgramDefaultAnimSetFinished
-        : IPixelMessage
+    public class ProgramDefaultAnimSetFinished : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.ProgramDefaultAnimSetFinished;
+        public MessageType type { get; set; } = MessageType.ProgramDefaultAnimationSetFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageFlash
-        : IPixelMessage
+    public class Blink : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.Flash;
+        public MessageType type { get; set; } = MessageType.Blink;
         public byte flashCount;
         public uint color;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageFlashFinished
-        : IPixelMessage
+    public class BlinkFinished : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.FlashFinished;
+        public MessageType type { get; set; } = MessageType.BlinkFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestDefaultAnimSetColor
-        : IPixelMessage
+    public class RequestDefaultAnimationSetColor : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.RequestDefaultAnimSetColor;
+        public MessageType type { get; set; } = MessageType.RequestDefaultAnimationSetColor;
     }
 
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageDefaultAnimSetColor
-        : IPixelMessage
+    public class DefaultAnimationSetColor : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.DefaultAnimSetColor;
+        public MessageType type { get; set; } = MessageType.DefaultAnimationSetColor;
         public uint color;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTestBulkSend
-        : IPixelMessage
+    public class TestBulkSend : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TestBulkSend;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTestBulkReceive
-        : IPixelMessage
+    public class TestBulkReceive : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TestBulkReceive;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetAllLEDsToColor
-    : IPixelMessage
+    public class SetAllLEDsToColor : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetAllLEDsToColor;
         public uint color;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageBatteryLevel
-    : IPixelMessage
+    public class RequestBatteryLevel : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.RequestBatteryLevel;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class BatteryLevel : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.BatteryLevel;
 #if PLATFORM_ANDROID
@@ -343,45 +309,33 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestBatteryLevel
-    : IPixelMessage
+    public class RequestRssi : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.RequestBatteryLevel;
+        public MessageType type { get; set; } = MessageType.RequestRssi;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRssi
-    : IPixelMessage
+    public class Rssi : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.Rssi;
         public short rssi;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageRequestRssi
-    : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.RequestRssi;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageCalibrate
-    : IPixelMessage
+    public class Calibrate : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.Calibrate;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageCalibrateFace
-    : IPixelMessage
+    public class CalibrateFace : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.CalibrateFace;
         public byte face;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageNotifyUser
-    : IPixelMessage
+    public class NotifyUser : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.NotifyUser;
         public byte timeout_s;
@@ -392,103 +346,89 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageNotifyUserAck
-    : IPixelMessage
+    public class NotifyUserAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.NotifyUserAck;
         public byte okCancel; // Boolean
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageTestHardware
-    : IPixelMessage
+    public class TestHardware : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.TestHardware;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetStandardState
-    : IPixelMessage
+    public class SetStandardState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetStandardState;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetLEDAnimState
-    : IPixelMessage
+    public class SetLEDAnimState : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.SetLEDAnimState;
+        public MessageType type { get; set; } = MessageType.SetLEDAnimationState;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetBattleState
-    : IPixelMessage
+    public class SetBattleState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetBattleState;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageProgramDefaultParameters
-    : IPixelMessage
+    public class ProgramDefaultParameters : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.ProgramDefaultParameters;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageProgramDefaultParametersFinished
-    : IPixelMessage
+    public class ProgramDefaultParametersFinished : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.ProgramDefaultParametersFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageAttractMode
-    : IPixelMessage
+    public class AttractMode : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.AttractMode;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessagePrintNormals
-    : IPixelMessage
+    public class PrintNormals : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.PrintNormals;
         public byte face;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetDesignAndColor
-    : IPixelMessage
+    public class SetDesignAndColor : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetDesignAndColor;
-        public DieDesignAndColor designAndColor;
+        public PixelDesignAndColor designAndColor;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetDesignAndColorAck
-    : IPixelMessage
+    public class SetDesignAndColorAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetDesignAndColorAck;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetCurrentBehavior
-    : IPixelMessage
+    public class SetCurrentBehavior : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetCurrentBehavior;
         public byte currentBehaviorIndex;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetCurrentBehaviorAck
-    : IPixelMessage
+    public class SetCurrentBehaviorAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetCurrentBehaviorAck;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetName
-    : IPixelMessage
+    public class SetName : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetName;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
@@ -496,19 +436,15 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageSetNameAck
-    : IPixelMessage
+    public class SetNameAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetNameAck;
     }
 
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class DieMessageDebugAnimController
-    : IPixelMessage
+    public class DebugAnimationController : IPixelMessage
     {
-        public MessageType type { get; set; } = MessageType.DebugAnimController;
+        public MessageType type { get; set; } = MessageType.DebugAnimationController;
     }
-    
 }
 

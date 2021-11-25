@@ -1,7 +1,7 @@
 
 namespace Systemic.Unity.Pixels
 {
-    public class IEditDie
+    public class IEditPixel
     {
         public string name { get; }
         //public ulong deviceId { get; }
