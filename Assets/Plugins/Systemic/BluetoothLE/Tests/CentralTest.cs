@@ -1,9 +1,9 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using Systemic.Unity.Pixels;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 using UnityEngine.TestTools;
 

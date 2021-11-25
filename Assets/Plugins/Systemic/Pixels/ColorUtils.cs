@@ -1,83 +1,85 @@
 ﻿using UnityEngine;
 
-class ColorUtils
+namespace Systemic.Unity.Pixels
 {
-    public static uint toColor(byte red, byte green, byte blue)
+    class ColorUtils
     {
-        return (uint)red << 16 | (uint)green << 8 | (uint)blue;
-    }
-
-    public static byte getRed(uint color)
-    {
-        return (byte)((color >> 16) & 0xFF);
-    }
-
-    public static byte getGreen(uint color)
-    {
-        return (byte)((color >> 8) & 0xFF);
-    }
-
-    public static byte getBlue(uint color)
-    {
-        return (byte)((color) & 0xFF);
-    }
-
-    public static uint addColors(uint a, uint b)
-    {
-        byte red = (byte)Mathf.Max(getRed(a), getRed(b));
-        byte green = (byte)Mathf.Max(getGreen(a), getGreen(b));
-        byte blue = (byte)Mathf.Max(getBlue(a), getBlue(b));
-        return toColor(red, green, blue);
-    }
-
-    public static uint interpolateColors(uint color1, int time1, uint color2, int time2, int time)
-    {
-        // To stick to integer math, we'll scale the values
-        int scaler = 1024;
-        int scaledPercent = (time - time1) * scaler / (time2 - time1);
-        int scaledRed = getRed(color1) * (scaler - scaledPercent) + getRed(color2) * scaledPercent;
-        int scaledGreen = getGreen(color1) * (scaler - scaledPercent) + getGreen(color2) * scaledPercent;
-        int scaledBlue = getBlue(color1) * (scaler - scaledPercent) + getBlue(color2) * scaledPercent;
-        return toColor((byte)(scaledRed / scaler), (byte)(scaledGreen / scaler), (byte)(scaledBlue / scaler));
-    }
-
-    public static byte interpolateIntensity(byte intensity1, int time1, byte intensity2, int time2, int time)
-    {
-        int scaler = 1024;
-        int scaledPercent = (time - time1) * scaler / (time2 - time1);
-        return (byte)((intensity1 * (scaler - scaledPercent) + intensity2 * scaledPercent) / scaler);
-    }
-
-    public static uint modulateColor(uint color, byte intensity)
-    {
-        int red = getRed(color) * intensity / 255;
-        int green = getGreen(color) * intensity / 255;
-        int blue = getBlue(color) * intensity / 255;
-        return toColor((byte)red, (byte)green, (byte)blue);
-    }
-
-    // Input a value 0 to 255 to get a color value.
-    // The colors are a transition r - g - b - back to r.
-    public static uint rainbowWheel(byte WheelPos, byte intensity)
-    {
-        if (WheelPos < 85)
+        public static uint toColor(byte red, byte green, byte blue)
         {
-            return toColor((byte)(WheelPos * 3 * intensity / 255), (byte)((255 - WheelPos * 3) * intensity / 255), 0);
+            return (uint)red << 16 | (uint)green << 8 | (uint)blue;
         }
-        else if (WheelPos < 170)
-        {
-            WheelPos -= 85;
-            return toColor((byte)((255 - WheelPos * 3) * intensity / 255), 0, (byte)(WheelPos * 3 * intensity / 255));
-        }
-        else
-        {
-            WheelPos -= 170;
-            return toColor(0, (byte)(WheelPos * 3 * intensity / 255), (byte)((255 - WheelPos * 3) * intensity / 255));
-        }
-    }
 
-    static readonly byte[] _gammaTable =
-    {
+        public static byte getRed(uint color)
+        {
+            return (byte)((color >> 16) & 0xFF);
+        }
+
+        public static byte getGreen(uint color)
+        {
+            return (byte)((color >> 8) & 0xFF);
+        }
+
+        public static byte getBlue(uint color)
+        {
+            return (byte)((color) & 0xFF);
+        }
+
+        public static uint addColors(uint a, uint b)
+        {
+            byte red = (byte)Mathf.Max(getRed(a), getRed(b));
+            byte green = (byte)Mathf.Max(getGreen(a), getGreen(b));
+            byte blue = (byte)Mathf.Max(getBlue(a), getBlue(b));
+            return toColor(red, green, blue);
+        }
+
+        public static uint interpolateColors(uint color1, int time1, uint color2, int time2, int time)
+        {
+            // To stick to integer math, we'll scale the values
+            int scaler = 1024;
+            int scaledPercent = (time - time1) * scaler / (time2 - time1);
+            int scaledRed = getRed(color1) * (scaler - scaledPercent) + getRed(color2) * scaledPercent;
+            int scaledGreen = getGreen(color1) * (scaler - scaledPercent) + getGreen(color2) * scaledPercent;
+            int scaledBlue = getBlue(color1) * (scaler - scaledPercent) + getBlue(color2) * scaledPercent;
+            return toColor((byte)(scaledRed / scaler), (byte)(scaledGreen / scaler), (byte)(scaledBlue / scaler));
+        }
+
+        public static byte interpolateIntensity(byte intensity1, int time1, byte intensity2, int time2, int time)
+        {
+            int scaler = 1024;
+            int scaledPercent = (time - time1) * scaler / (time2 - time1);
+            return (byte)((intensity1 * (scaler - scaledPercent) + intensity2 * scaledPercent) / scaler);
+        }
+
+        public static uint modulateColor(uint color, byte intensity)
+        {
+            int red = getRed(color) * intensity / 255;
+            int green = getGreen(color) * intensity / 255;
+            int blue = getBlue(color) * intensity / 255;
+            return toColor((byte)red, (byte)green, (byte)blue);
+        }
+
+        // Input a value 0 to 255 to get a color value.
+        // The colors are a transition r - g - b - back to r.
+        public static uint rainbowWheel(byte WheelPos, byte intensity)
+        {
+            if (WheelPos < 85)
+            {
+                return toColor((byte)(WheelPos * 3 * intensity / 255), (byte)((255 - WheelPos * 3) * intensity / 255), 0);
+            }
+            else if (WheelPos < 170)
+            {
+                WheelPos -= 85;
+                return toColor((byte)((255 - WheelPos * 3) * intensity / 255), 0, (byte)(WheelPos * 3 * intensity / 255));
+            }
+            else
+            {
+                WheelPos -= 170;
+                return toColor(0, (byte)(WheelPos * 3 * intensity / 255), (byte)((255 - WheelPos * 3) * intensity / 255));
+            }
+        }
+
+        static readonly byte[] _gammaTable =
+        {
           0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
           0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
           1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,
@@ -96,8 +98,8 @@ class ColorUtils
         213,215,218,221,223,226,229,232,235,237,240,243,246,249,252,255,
     };
 
-    static byte[] ReverseGammaTable =
-    {
+        static byte[] ReverseGammaTable =
+        {
         0, 70, 80, 87, 92, 97, 101, 105, 108, 112, 114, 117, 119, 122, 124, 126,
         128, 130, 132, 134, 135, 137, 138, 140, 141, 143, 144, 146, 147, 148, 149,
         151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165,
@@ -117,37 +119,38 @@ class ColorUtils
         251, 251, 252, 252, 252, 252, 253, 253, 253, 253, 254, 254, 254, 254, 255,
     };
 
-    public static byte gamma8(byte x)
-    {
-        return _gammaTable[x]; // 0-255 in, 0-255 out
-    }
+        public static byte gamma8(byte x)
+        {
+            return _gammaTable[x]; // 0-255 in, 0-255 out
+        }
 
-    public static Color32 gamma(Color32 color)
-    {
-        byte r = gamma8(color.r);
-        byte g = gamma8(color.g);
-        byte b = gamma8(color.b);
-        return new Color32(r, g, b, 255);
-    }
+        public static Color32 gamma(Color32 color)
+        {
+            byte r = gamma8(color.r);
+            byte g = gamma8(color.g);
+            byte b = gamma8(color.b);
+            return new Color32(r, g, b, 255);
+        }
 
-    public static uint gamma(uint color)
-    {
-        byte r = gamma8(getRed(color));
-        byte g = gamma8(getGreen(color));
-        byte b = gamma8(getBlue(color));
-        return toColor(r, g, b);
-    }
+        public static uint gamma(uint color)
+        {
+            byte r = gamma8(getRed(color));
+            byte g = gamma8(getGreen(color));
+            byte b = gamma8(getBlue(color));
+            return toColor(r, g, b);
+        }
 
-    public static byte reverseGamma8(byte x)
-    {
-        return ReverseGammaTable[x]; // 0-255 in, 0-255 out
-    }
+        public static byte reverseGamma8(byte x)
+        {
+            return ReverseGammaTable[x]; // 0-255 in, 0-255 out
+        }
 
-    public static Color32 reverseGamma(Color32 color)
-    {
-        byte r = reverseGamma8(color.r);
-        byte g = reverseGamma8(color.g);
-        byte b = reverseGamma8(color.b);
-        return new Color32(r, g, b, 255);
+        public static Color32 reverseGamma(Color32 color)
+        {
+            byte r = reverseGamma8(color.r);
+            byte g = reverseGamma8(color.g);
+            byte b = reverseGamma8(color.b);
+            return new Color32(r, g, b, 255);
+        }
     }
 }

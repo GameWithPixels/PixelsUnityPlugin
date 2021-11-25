@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.InteropServices;
 using System.Linq;
+using System.Runtime.InteropServices;
+using Systemic.Unity.Pixels.Messages;
+using Systemic.Unity.Pixels.Animations;
+using UnityEngine;
 
-namespace Dice
+namespace Systemic.Unity.Pixels
 {
     partial class Die
     {
@@ -34,8 +35,8 @@ namespace Dice
                     var data = new DieMessageBulkData()
                     {
                         offset = offset,
-                        size = (byte)Mathf.Min(remainingSize, DieMessages.maxDataSize),
-                        data = new byte[DieMessages.maxDataSize],
+                        size = (byte)Mathf.Min(remainingSize, PixelMessageMarshaling.maxDataSize),
+                        data = new byte[PixelMessageMarshaling.maxDataSize],
                     };
 
                     System.Array.Copy(bytes, offset, data.data, 0, data.size);
@@ -102,7 +103,7 @@ namespace Dice
                 ushort totalDataReceived = 0;
 
                 // Setup bulk receive handler
-                void bulkReceived(IDieMessage msg)
+                void bulkReceived(IPixelMessage msg)
                 {
                     timeout = Time.realtimeSinceStartup + AckMessageTimeout;
 
@@ -124,7 +125,7 @@ namespace Dice
                     }
                 }
 
-                AddMessageHandler(DieMessageType.BulkData, bulkReceived);
+                AddMessageHandler(MessageType.BulkData, bulkReceived);
                 try
                 {
                     // Send acknowledgment to the die, so it may transfer bulk data immediately
@@ -136,7 +137,7 @@ namespace Dice
                 finally
                 {
                     // We're done
-                    RemoveMessageHandler(DieMessageType.BulkData, bulkReceived);
+                    RemoveMessageHandler(MessageType.BulkData, bulkReceived);
                 }
 
                 if (totalDataReceived == size)
@@ -224,7 +225,7 @@ namespace Dice
                     // Upload data
                     var hash = DataSet.ComputeHash(setData);
                     Debug.Log($"Die {name}: die is ready to receive dataset, byte array should be: {set.ComputeDataSetDataSize()} bytes and hash 0x{hash:X8}");
-                    yield return InternalUploadDataSetAsync(DieMessageType.TransferAnimSetFinished, setData, err => error = err, onProgress);
+                    yield return InternalUploadDataSetAsync(MessageType.TransferAnimSetFinished, setData, err => error = err, onProgress);
                 }
                 else
                 {
@@ -284,7 +285,7 @@ namespace Dice
                     case TransferTestAnimSetAckType.Download:
                         // Upload data
                         Debug.Log($"Die {name}: die is ready to receive test dataset, byte array should be: {setData.Length} bytes and hash 0x{hash:X8}");
-                        yield return InternalUploadDataSetAsync(DieMessageType.TransferTestAnimSetFinished, setData, err => error = err, onProgress);
+                        yield return InternalUploadDataSetAsync(MessageType.TransferTestAnimSetFinished, setData, err => error = err, onProgress);
                         break;
 
                     case TransferTestAnimSetAckType.UpToDate:
@@ -313,13 +314,13 @@ namespace Dice
             }
         }
 
-        private IEnumerator InternalUploadDataSetAsync(DieMessageType transferDataFinished, byte[] data, System.Action<string> onResult, DieOperationProgressHandler onProgress = null)
+        private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, DieOperationProgressHandler onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
             bool programmingFinished = false;
-            void ProgrammingFinishedCallback(IDieMessage finishedMsg) => programmingFinished = true;
+            void ProgrammingFinishedCallback(IPixelMessage finishedMsg) => programmingFinished = true;
 
             AddMessageHandler(transferDataFinished, ProgrammingFinishedCallback);
 

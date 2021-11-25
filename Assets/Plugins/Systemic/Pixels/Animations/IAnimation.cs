@@ -1,5 +1,5 @@
 ﻿
-namespace Animations
+namespace Systemic.Unity.Pixels.Animations
 {
 	/// <summary>
 	/// Defines the types of Animation Presets we have/support

@@ -1,8 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
-namespace Dice
+/// <summary>
+/// A collection of C# classes for the Unity game engine that enables communications with Pixels dice.
+/// </summary>
+//! @ingroup Unity_CSharp
+namespace Systemic.Unity.Pixels
 {
     public enum DieDesignAndColor : byte
     {
@@ -152,20 +156,20 @@ namespace Dice
         public PlayAudioClipReceivedEvent PlayAudioClipReceived;
 
         // Internal delegate per message type
-        protected delegate void MessageReceivedEvent(IDieMessage msg);
-        protected Dictionary<DieMessageType, MessageReceivedEvent> messageDelegates;
+        protected delegate void MessageReceivedEvent(IPixelMessage msg);
+        protected Dictionary<MessageType, MessageReceivedEvent> messageDelegates;
 
         void Awake()
         {
-            messageDelegates = new Dictionary<DieMessageType, MessageReceivedEvent>();
+            messageDelegates = new Dictionary<MessageType, MessageReceivedEvent>();
 
             // Setup delegates for face and telemetry
-            messageDelegates.Add(DieMessageType.IAmADie, OnIAmADieMessage);
-            messageDelegates.Add(DieMessageType.State, OnStateMessage);
-            messageDelegates.Add(DieMessageType.Telemetry, OnTelemetryMessage);
-            messageDelegates.Add(DieMessageType.DebugLog, OnDebugLogMessage);
-            messageDelegates.Add(DieMessageType.NotifyUser, OnNotifyUserMessage);
-            messageDelegates.Add(DieMessageType.PlaySound, OnPlayAudioClip);
+            messageDelegates.Add(MessageType.IAmADie, OnIAmADieMessage);
+            messageDelegates.Add(MessageType.RollState, OnRollStateMessage);
+            messageDelegates.Add(MessageType.Telemetry, OnTelemetryMessage);
+            messageDelegates.Add(MessageType.DebugLog, OnDebugLogMessage);
+            messageDelegates.Add(MessageType.NotifyUser, OnNotifyUserMessage);
+            messageDelegates.Add(MessageType.PlaySound, OnPlayAudioClip);
         }
 
         protected abstract IOperationEnumerator WriteDataAsync(byte[] bytes, float timeout = 0);

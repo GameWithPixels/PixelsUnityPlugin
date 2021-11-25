@@ -1,5 +1,5 @@
 
-namespace Dice
+namespace Systemic.Unity.Pixels
 {
     public class IEditDie
     {

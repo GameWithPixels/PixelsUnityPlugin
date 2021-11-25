@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Runtime.InteropServices;
 using UnityEngine;
-using System.Runtime.InteropServices;
 
-namespace Animations
+namespace Systemic.Unity.Pixels.Animations
 {
     /// <summary>
     /// An animation track is essentially an animation curve for a specific LED.

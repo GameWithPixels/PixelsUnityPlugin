@@ -1,7 +1,8 @@
 ﻿using System.Collections;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
-namespace Dice
+namespace Systemic.Unity.Pixels
 {
     partial class Die
     {
@@ -17,9 +18,9 @@ namespace Dice
         }
 
         protected class WaitForMessageEnumerator<T> : IOperationEnumerator
-            where T : IDieMessage, new()
+            where T : IPixelMessage, new()
         {
-            readonly DieMessageType _msgType;
+            readonly MessageType _msgType;
             readonly float _timeout;
             bool _isStarted;
 
@@ -46,7 +47,7 @@ namespace Dice
 
                 Die = die;
                 _timeout = Time.realtimeSinceStartup + timeoutSec;
-                _msgType = DieMessages.GetMessageType<T>();
+                _msgType = PixelMessageMarshaling.GetMessageType<T>();
             }
 
             public virtual bool MoveNext()
@@ -99,7 +100,7 @@ namespace Dice
                 // Not supported
             }
 
-            void OnMessage(IDieMessage msg)
+            void OnMessage(IPixelMessage msg)
             {
                 Debug.Assert(msg is T);
                 Message = (T)msg;
@@ -108,8 +109,8 @@ namespace Dice
         }
 
         protected class SendMessageAndWaitForResponseEnumerator<TMsg, TResp> : WaitForMessageEnumerator<TResp>
-            where TMsg : IDieMessage, new()
-            where TResp : IDieMessage, new()
+            where TMsg : IPixelMessage, new()
+            where TResp : IPixelMessage, new()
         {
             IOperationEnumerator _sendMessage;
             readonly System.Type _msgType;
@@ -120,7 +121,7 @@ namespace Dice
                 if (message == null) throw new System.ArgumentNullException(nameof(message));
 
                 _msgType = message.GetType();
-                _sendMessage = Die.WriteDataAsync(DieMessages.ToByteArray(message), timeoutSec);
+                _sendMessage = Die.WriteDataAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
             }
 
             public SendMessageAndWaitForResponseEnumerator(Die die, float timeoutSec = AckMessageTimeout)
@@ -155,8 +156,8 @@ namespace Dice
         }
 
         class SendMessageAndProcessResponseEnumerator<TMsg, TResp> : SendMessageAndWaitForResponseEnumerator<TMsg, TResp>
-            where TMsg : IDieMessage, new()
-            where TResp : IDieMessage, new()
+            where TMsg : IPixelMessage, new()
+            where TResp : IPixelMessage, new()
         {
             System.Action<TResp> _onResponse;
 
@@ -183,8 +184,8 @@ namespace Dice
         }
 
         class SendMessageAndProcessResponseWithValue<TMsg, TResp, TValue> : SendMessageAndWaitForResponseEnumerator<TMsg, TResp>
-            where TMsg : IDieMessage, new()
-            where TResp : IDieMessage, new()
+            where TMsg : IPixelMessage, new()
+            where TResp : IPixelMessage, new()
         {
             System.Func<TResp, TValue> _onResponse;
 

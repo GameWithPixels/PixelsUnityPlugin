@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
-namespace Behaviors
+namespace Systemic.Unity.Pixels.Behaviors
 {
     /// <summary>
     /// The different types of action we support. Yes, yes, it's only one right now :)

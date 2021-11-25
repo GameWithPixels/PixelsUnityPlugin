@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using Systemic.Unity.BluetoothLE;
 using Systemic.Unity.Pixels;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
 /// <summary>
@@ -15,7 +16,7 @@ namespace Systemic.Unity.Examples
     /// Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,
     /// sending messages and getting notifications.
     /// </summary>
-    public class PixelConsole : MonoBehaviour
+    public class BleConsole : MonoBehaviour
     {
         void OnEnable()
         {

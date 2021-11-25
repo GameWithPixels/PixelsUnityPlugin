@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using Systemic.Unity.BluetoothLE;
 using Systemic.Unity.Pixels;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ namespace Systemic.Unity.Examples
     /// (for example, the "write" button is not available when the application is not
     /// connected to a Pixel die).
     /// </summary>
-    public class PixelController : MonoBehaviour
+    public class BleController : MonoBehaviour
     {
         [Tooltip("Status, displayed on top")]
         [SerializeField]

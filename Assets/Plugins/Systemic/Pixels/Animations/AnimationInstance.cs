@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Animations
+﻿
+namespace Systemic.Unity.Pixels.Animations
 {
-	/// <summary>
-	/// Animation instance data, refers to an animation preset but stores the instance data and
-	/// (derived classes) implements logic for displaying the animation.
-	/// </summary>
-	public abstract class AnimationInstance
+    /// <summary>
+    /// Animation instance data, refers to an animation preset but stores the instance data and
+    /// (derived classes) implements logic for displaying the animation.
+    /// </summary>
+    public abstract class AnimationInstance
 	{
 		public IAnimation animationPreset;
 		public DataSet.AnimationBits animationBits;

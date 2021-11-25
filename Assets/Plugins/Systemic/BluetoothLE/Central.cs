@@ -182,6 +182,7 @@ namespace Systemic.Unity.BluetoothLE
 
         #endregion
 
+        // Internal peripheral states
         enum PeripheralState
         {
             Disconnected, Connecting, Ready, Disconnecting,

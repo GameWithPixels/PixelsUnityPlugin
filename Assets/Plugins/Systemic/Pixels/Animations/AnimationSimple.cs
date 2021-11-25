@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
-namespace Animations
+namespace Systemic.Unity.Pixels.Animations
 {
-	/// <summary>
-	/// Procedural on off animation
-	/// </summary>
+    /// <summary>
+    /// Procedural on off animation
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
 	public class AnimationSimple

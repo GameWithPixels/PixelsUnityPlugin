@@ -11,7 +11,7 @@ namespace Systemic.Unity.Examples
     public class UILogToText : MonoBehaviour
     {
         /// <summary>
-        /// All log messages are copied to this text.
+        /// All log messages are copied to this UI text object.
         /// </summary>
         public Text LogText;
 

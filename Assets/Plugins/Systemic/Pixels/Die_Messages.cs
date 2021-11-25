@@ -1,22 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
-namespace Dice
+namespace Systemic.Unity.Pixels
 {
     public delegate void DieOperationResultHandler<T>(T result, string error);
     public delegate void DieOperationProgressHandler(float progress); // Value between 0 and 1
-
-    public interface IDialogBox
-    {
-        bool ShowDialogBox(string title, string message, string okMessage = "Ok", string cancelMessage = null, System.Action<bool> closeAction = null);
-    }
-
-    public interface IAudioPlayer
-    {
-        void PlayAudioClip(uint clipId);
-    }
-
 
     partial class Die
     {
@@ -24,7 +13,7 @@ namespace Dice
 
         #region Message Infrastructure
 
-        void AddMessageHandler(DieMessageType msgType, MessageReceivedEvent newDel)
+        void AddMessageHandler(MessageType msgType, MessageReceivedEvent newDel)
         {
             if (messageDelegates.TryGetValue(msgType, out MessageReceivedEvent del))
             {
@@ -37,7 +26,7 @@ namespace Dice
             }
         }
 
-        void RemoveMessageHandler(DieMessageType msgType, MessageReceivedEvent newDel)
+        void RemoveMessageHandler(MessageType msgType, MessageReceivedEvent newDel)
         {
             if (messageDelegates.TryGetValue(msgType, out MessageReceivedEvent del))
             {
@@ -54,13 +43,13 @@ namespace Dice
         }
 
         void PostMessage<T>(T message)
-            where T : IDieMessage
+            where T : IPixelMessage
         {
             EnsureRunningOnMainThread();
 
             Debug.Log($"Die {SafeName}: Posting message of type {message.GetType()}");
 
-            StartCoroutine(WriteDataAsync(DieMessages.ToByteArray(message)));
+            StartCoroutine(WriteDataAsync(PixelMessageMarshaling.ToByteArray(message)));
         }
 
         #endregion
@@ -96,7 +85,7 @@ namespace Dice
 
         public IEnumerator GetDieStateAsync(DieOperationResultHandler<bool> onResult = null)
         {
-            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestState, DieMessageState>(this);
+            var op = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestState, DieMessageRollState>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
@@ -260,7 +249,7 @@ namespace Dice
 
         #region MessageHandlers
 
-        void OnIAmADieMessage(IDieMessage message)
+        void OnIAmADieMessage(IPixelMessage message)
         {
             var idMsg = (DieMessageIAmADie)message;
             bool appearanceChanged = faceCount != idMsg.faceCount || designAndColor != idMsg.designAndColor;
@@ -276,10 +265,10 @@ namespace Dice
             }
         }
 
-        void OnStateMessage(IDieMessage message)
+        void OnRollStateMessage(IPixelMessage message)
         {
             // Handle the message
-            var stateMsg = (DieMessageState)message;
+            var stateMsg = (DieMessageRollState)message;
             Debug.Log($"Die {SafeName}: State is {stateMsg.state}, {stateMsg.face}");
 
             var newState = (DieRollState)stateMsg.state;
@@ -294,7 +283,7 @@ namespace Dice
             }
         }
 
-        void OnTelemetryMessage(IDieMessage message)
+        void OnTelemetryMessage(IPixelMessage message)
         {
             // Don't bother doing anything with the message if we don't have
             // anybody interested in telemetry data.
@@ -306,14 +295,14 @@ namespace Dice
             }
         }
 
-        void OnDebugLogMessage(IDieMessage message)
+        void OnDebugLogMessage(IPixelMessage message)
         {
             var dlm = (DieMessageDebugLog)message;
             string text = System.Text.Encoding.UTF8.GetString(dlm.data, 0, dlm.data.Length);
             Debug.Log($"Die {SafeName}: {text}");
         }
 
-        void OnNotifyUserMessage(IDieMessage message)
+        void OnNotifyUserMessage(IPixelMessage message)
         {
             var notifyUserMsg = (DieMessageNotifyUser)message;
             //bool ok = notifyUserMsg.ok != 0;
@@ -324,7 +313,7 @@ namespace Dice
                 res => PostMessage(new DieMessageNotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
         }
 
-        void OnPlayAudioClip(IDieMessage message)
+        void OnPlayAudioClip(IPixelMessage message)
         {
             var playClipMessage = (DieMessagePlaySound)message;
             PlayAudioClipReceived?.Invoke(this, (uint)playClipMessage.clipId);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-namespace Behaviors
+namespace Systemic.Unity.Pixels.Behaviors
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]
