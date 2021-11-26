@@ -14,19 +14,19 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
         void onRequestCompleted(AndroidJavaObject device)
         {
-            Debug.Log($"{_operation} ==> onRequestCompleted");
+            Debug.Log($"[BLE] {_operation} ==> onRequestCompleted");
             _onResult?.Invoke(0); //RequestStatus.GATT_SUCCESS
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError($"{_operation} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            Debug.LogError($"[BLE] {_operation} ==> onRequestFailed: {(AndroidRequestStatus)status}");
             _onResult?.Invoke(AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError($"{_operation} ==> onInvalidRequest");
+            Debug.LogError($"[BLE] {_operation} ==> onInvalidRequest");
             _onResult?.Invoke(RequestStatus.InvalidCall);
         }
     }

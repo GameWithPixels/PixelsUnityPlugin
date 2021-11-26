@@ -39,10 +39,12 @@ namespace Systemic.Unity.Pixels
             int _connectionCount;
 
             // Connection internal events
-            ConnectionResultHandler _onConnectionResult;
-            ConnectionResultHandler _onDisconnectionResult;
+            PixelConnectResultHandler _onConnectionResult;
+            PixelConnectResultHandler _onDisconnectionResult;
 
-            public delegate void ConnectionResultHandler(Pixel pixel, bool success, string error);
+            public bool isConnectingOrReady => (connectionState == PixelConnectionState.Connecting)
+                    || (connectionState == PixelConnectionState.Identifying)
+                    || (connectionState == PixelConnectionState.Ready);
 
             /// <summary>
             /// Event triggered when a Pixel got disconnected for other reasons than a call to Disconnect().
@@ -85,10 +87,10 @@ namespace Systemic.Unity.Pixels
 
                         // Update Pixel data
                         bool appearanceChanged = faceCount != advData.faceCount || designAndColor != advData.designAndColor;
-                        bool rollStateChanged = state != advData.rollState || face != advData.currentFace;
+                        bool rollStateChanged = rollState != advData.rollState || face != advData.currentFace;
                         faceCount = advData.faceCount;
                         designAndColor = advData.designAndColor;
-                        state = advData.rollState;
+                        rollState = advData.rollState;
                         face = advData.currentFace;
                         batteryLevel = advData.batteryLevel / 255f;
                         rssi = _peripheral.Rssi;
@@ -101,7 +103,7 @@ namespace Systemic.Unity.Pixels
                         }
                         if (rollStateChanged)
                         {
-                            StateChanged?.Invoke(this, state, face);
+                            StateChanged?.Invoke(this, rollState, face);
                         }
                         RssiChanged?.Invoke(this, rssi);
                     }
@@ -119,7 +121,7 @@ namespace Systemic.Unity.Pixels
                 lastError = PixelLastError.None;
             }
 
-            public void Connect(ConnectionResultHandler onConnectionResult = null)
+            public void Connect(float connectionTimeout, PixelConnectResultHandler onConnectionResult = null)
             {
                 EnsureRunningOnMainThread();
 
@@ -132,21 +134,21 @@ namespace Systemic.Unity.Pixels
                 switch (connectionState)
                 {
                     default:
-                        string error = $"Invalid Pixel state {connectionState} while attempting to connect";
+                        string error = $"Unexpected Pixel connection state while attempting to connect: {connectionState}";
                         Debug.LogError($"Pixel {SafeName}: {error}");
                         onConnectionResult?.Invoke(this, false, error);
                         break;
                     case PixelConnectionState.Available:
                         IncrementConnectCount();
                         Debug.Assert(_connectionCount == 1);
-                        this._onConnectionResult += onConnectionResult;
-                        DoConnect();
+                        _onConnectionResult += onConnectionResult;
+                        DoConnect(connectionTimeout);
                         break;
                     case PixelConnectionState.Connecting:
                     case PixelConnectionState.Identifying:
                         // Already in the process of connecting, just add the callback and wait
                         IncrementConnectCount();
-                        this._onConnectionResult += onConnectionResult;
+                        _onConnectionResult += onConnectionResult;
                         break;
                     case PixelConnectionState.Ready:
                         // Trigger the callback immediately
@@ -156,7 +158,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            public void Disconnect(ConnectionResultHandler onDisconnectionResult = null, bool forceDisconnect = false)
+            public void Disconnect(PixelConnectResultHandler onDisconnectionResult = null, bool forceDisconnect = false)
             {
                 EnsureRunningOnMainThread();
 
@@ -177,7 +179,7 @@ namespace Systemic.Unity.Pixels
                         if (_connectionCount == 0)
                         {
                             // Register to be notified when disconnection is complete
-                            this._onDisconnectionResult += onDisconnectionResult;
+                            _onDisconnectionResult += onDisconnectionResult;
                             DoDisconnect();
                         }
                         else
@@ -189,7 +191,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            void DoConnect()
+            void DoConnect(float connectionTimeout)
             {
                 Debug.Assert(connectionState == PixelConnectionState.Available);
                 if (connectionState == PixelConnectionState.Available)
@@ -200,13 +202,13 @@ namespace Systemic.Unity.Pixels
                     IEnumerator ConnectAsync()
                     {
                         Debug.Log($"Pixel {SafeName}: Connecting...");
-                        Systemic.Unity.BluetoothLE.RequestEnumerator connectRequest = null;
+                        BluetoothLE.RequestEnumerator connectRequest = null;
                         connectRequest = Central.ConnectPeripheralAsync(
                             _peripheral,
                             // Forward connection event it our behavior is still valid and the request hasn't timed-out
                             // (in which case the disconnect event is already taken care by the code following the yield below)
                             (p, connected) => { if ((this != null) && (!connectRequest.IsTimeout)) OnConnectionEvent(p, connected); },
-                            DicePool.Instance.ConnectionTimeout);
+                            connectionTimeout);
 
                         yield return connectRequest;
                         string lastRequestError = connectRequest.Error;
@@ -323,7 +325,6 @@ namespace Systemic.Unity.Pixels
                     if (request.IsSuccess && (connectionState == PixelConnectionState.Identifying))
                     {
                         // Get the Pixel initial state
-                        Debug.LogWarning($"Sending State");
                         request = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
                         yield return request;
                     }
@@ -346,7 +347,7 @@ namespace Systemic.Unity.Pixels
                         }
                         else
                         {
-                            Debug.LogError($"{SafeName}: Got disconnected unexpectedly while in state {connectionState}");
+                            Debug.LogError($"Pixel {SafeName}: Got disconnected unexpectedly while in state {connectionState}");
                         }
 
                         // Reset connection count
@@ -433,7 +434,7 @@ namespace Systemic.Unity.Pixels
 
             class WriteDataEnumerator : IOperationEnumerator
             {
-                readonly Systemic.Unity.BluetoothLE.RequestEnumerator _request;
+                readonly BluetoothLE.RequestEnumerator _request;
 
                 public bool IsDone => _request.IsDone;
 

@@ -270,13 +270,13 @@ namespace Systemic.Unity.Pixels
 
             var newState = (PixelRollState)stateMsg.state;
             var newFace = stateMsg.face;
-            if (newState != state || newFace != face)
+            if (newState != rollState || newFace != face)
             {
-                state = newState;
+                rollState = newState;
                 face = newFace;
 
                 // Notify anyone who cares
-                StateChanged?.Invoke(this, state, face);
+                StateChanged?.Invoke(this, rollState, face);
             }
         }
 

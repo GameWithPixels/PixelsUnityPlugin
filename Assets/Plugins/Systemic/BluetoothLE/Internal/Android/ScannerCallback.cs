@@ -14,14 +14,14 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
         void onScanResult(AndroidJavaObject device, string advertisementDataJson)
         {
-            Debug.Log($"==> onScanResult: {advertisementDataJson}");
+            Debug.Log($"[BLE] Scan ==> onScanResult: {advertisementDataJson}");
 
             _onScanResult?.Invoke(device, JsonUtility.FromJson<NativeAdvertisementDataJson>(advertisementDataJson));
         }
 
         void onScanFailed(string error)
         {
-            Debug.Log($"==> onScanFailed: {error}");
+            Debug.Log($"[BLE] Scan ==> onScanFailed: {error}");
         }
     }
 }

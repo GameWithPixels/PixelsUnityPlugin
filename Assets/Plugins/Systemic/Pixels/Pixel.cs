@@ -8,6 +8,8 @@ using UnityEngine;
 //! @ingroup Unity_CSharp
 namespace Systemic.Unity.Pixels
 {
+    public delegate void PixelTelemetryEvent(Pixel pixel, AccelFrame frame);
+
     public abstract partial class Pixel
         : MonoBehaviour
     {
@@ -30,9 +32,9 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public bool isConnectingOrReady => (_connectionState == PixelConnectionState.Connecting)
-                || (_connectionState == PixelConnectionState.Identifying)
-                || (_connectionState == PixelConnectionState.Ready);
+        public bool isAvailable => _connectionState == PixelConnectionState.Available;
+
+        public bool isReady => _connectionState == PixelConnectionState.Ready;
 
         public PixelLastError lastError { get; protected set; } = PixelLastError.None;
 
@@ -50,7 +52,7 @@ namespace Systemic.Unity.Pixels
 
         public uint flashSize { get; protected set; } = 0;
 
-        public PixelRollState state { get; protected set; } = PixelRollState.Unknown;
+        public PixelRollState rollState { get; protected set; } = PixelRollState.Unknown;
 
         public int face { get; protected set; } = -1;
 
@@ -60,10 +62,8 @@ namespace Systemic.Unity.Pixels
 
         public int? rssi { get; protected set; } = null;
 
-        public delegate void TelemetryEvent(Pixel pixel, AccelFrame frame);
-
-        public TelemetryEvent _TelemetryReceived;
-        public event TelemetryEvent TelemetryReceived
+        public PixelTelemetryEvent _TelemetryReceived;
+        public event PixelTelemetryEvent TelemetryReceived
         {
             add
             {

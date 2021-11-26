@@ -13,19 +13,19 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
         // @IntRange(from = -128, to = 20)
         void onRssiRead(AndroidJavaObject device, int rssi)
         {
-            Debug.Log($"{RequestOperation.ReadPeripheralRssi} ==> onRssiRead {rssi}");
+            Debug.Log($"[BLE] {RequestOperation.ReadPeripheralRssi} ==> onRssiRead {rssi}");
             _onRssiRead?.Invoke(rssi, RequestStatus.Success);
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError($"{RequestOperation.ReadPeripheralRssi} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            Debug.LogError($"[BLE] {RequestOperation.ReadPeripheralRssi} ==> onRequestFailed: {(AndroidRequestStatus)status}");
             _onRssiRead?.Invoke(int.MinValue, AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError($"{RequestOperation.ReadPeripheralRssi} ==> onInvalidRequest");
+            Debug.LogError($"[BLE] {RequestOperation.ReadPeripheralRssi} ==> onInvalidRequest");
             _onRssiRead?.Invoke(int.MinValue, RequestStatus.InvalidCall);
         }
     }

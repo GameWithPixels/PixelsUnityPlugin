@@ -12,7 +12,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
         void onDataReceived(AndroidJavaObject device, AndroidJavaObject data)
         {
-            //Debug.Log($"{RequestOperation.SubscribeCharacteristic} ==> onDataReceived");
+            //Debug.Log($"[BLE] {RequestOperation.SubscribeCharacteristic} ==> onDataReceived");
             using var javaArray = data.Call<AndroidJavaObject>("getValue");
             _onDataReceived?.Invoke(JavaUtils.ToDotNetArray(javaArray), RequestStatus.Success); // No notification with error on Android
         }

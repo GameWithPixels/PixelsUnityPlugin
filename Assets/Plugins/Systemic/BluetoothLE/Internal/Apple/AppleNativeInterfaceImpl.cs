@@ -198,7 +198,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 else
                 {
                     // Callback not found
-                    Debug.LogError($"ConnectionEvent handler #{requestIndex} not found, request connection event and reason: {(ConnectionEvent)connectionEvent}, {(ConnectionEventReason)reason}");
+                    Debug.LogError($"[BLE] ConnectionEvent handler #{requestIndex} not found, request connection event and reason: {(ConnectionEvent)connectionEvent}, {(ConnectionEventReason)reason}");
                 }
             }
             catch (Exception e)
@@ -231,11 +231,11 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                     // Log success or error
                     if (err == AppleBluetoothError.Success)
                     {
-                        Debug.Log($"{op} ==> Request successful");
+                        Debug.Log($"[BLE] {op} ==> Request successful");
                     }
                     else
                     {
-                        Debug.LogError($"{op} ==> Request failed: {err} ({errorCode})");
+                        Debug.LogError($"[BLE] {op} ==> Request failed: {err} ({errorCode})");
                     }
 
                     // Notify user code
@@ -244,7 +244,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 else
                 {
                     // Callback not found
-                    Debug.LogError($"RequestStatus handler #{requestIndex} not found, request error code: {err} (0x{errorCode:X})");
+                    Debug.LogError($"[BLE] RequestStatus handler #{requestIndex} not found, request error code: {err} (0x{errorCode:X})");
                 }
             }
             catch (Exception e)
@@ -272,11 +272,11 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                     // Log success or error
                     if (err == AppleBluetoothError.Success)
                     {
-                        Debug.Log($"{RequestOperation.ReadPeripheralRssi} ==> Request successful");
+                        Debug.Log($"[BLE] {RequestOperation.ReadPeripheralRssi} ==> Request successful");
                     }
                     else
                     {
-                        Debug.LogError($"{RequestOperation.ReadPeripheralRssi} ==> Request failed: {err} ({errorCode})");
+                        Debug.LogError($"[BLE] {RequestOperation.ReadPeripheralRssi} ==> Request failed: {err} ({errorCode})");
                     }
 
                     // Notify user code
@@ -285,7 +285,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 else
                 {
                     // Callback not found
-                    Debug.LogError($"RssiReadHandler handler #{requestIndex} not found, request error code: {err} (0x{errorCode:X})");
+                    Debug.LogError($"[BLE] RssiReadHandler handler #{requestIndex} not found, request error code: {err} (0x{errorCode:X})");
                 }
             }
             catch (Exception e)
@@ -313,7 +313,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 }
                 else
                 {
-                    Debug.LogError($"ValueRead handler #{requestIndex} not found, request error code: {(AppleBluetoothError)errorCode} (0x{errorCode:X})");
+                    Debug.LogError($"[BLE] ValueRead handler #{requestIndex} not found, request error code: {(AppleBluetoothError)errorCode} (0x{errorCode:X})");
                 }
             }
             catch (Exception e)

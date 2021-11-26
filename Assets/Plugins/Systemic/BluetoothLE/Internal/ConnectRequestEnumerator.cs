@@ -34,7 +34,7 @@ namespace Systemic.Unity.BluetoothLE.Internal
                     _onTimeoutDisconnect?.Invoke();
 
                     // Cancel connection attempt
-                    _disconnect = new DisconnectRequestEnumerator(Peripheral);
+                    _disconnect = new DisconnectRequestEnumerator(Peripheral); //TODO we should already be disconnected!!
                     done = !_disconnect.MoveNext();
                 }
             }

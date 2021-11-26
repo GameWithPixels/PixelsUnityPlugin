@@ -71,12 +71,12 @@ namespace Systemic.Unity.Pixels
 
             if (sendMsg.IsSuccess)
             {
-                Debug.Log($"Pixel {name}: finished sending bulk data");
+                Debug.Log($"Pixel {name}: Finished sending bulk data");
                 onResult?.Invoke(true, null);
             }
             else
             {
-                Debug.LogError($"Pixel {name}: failed to upload data, {sendMsg.Error}");
+                Debug.LogError($"Pixel {name}: Failed to upload data, {sendMsg.Error}");
                 onResult?.Invoke(false, sendMsg.Error);
             }
         }
@@ -121,7 +121,7 @@ namespace Systemic.Unity.Pixels
                     }
                     else
                     {
-                        Debug.LogError($"Pixel {name}: received bulk data that is too big");
+                        Debug.LogError($"Pixel {name}: Received bulk data that is too big");
                     }
                 }
 
@@ -143,7 +143,7 @@ namespace Systemic.Unity.Pixels
                 if (totalDataReceived == size)
                 {
                     Debug.Assert(error == null);
-                    Debug.Log($"Pixel {name}: done downloading bulk data");
+                    Debug.Log($"Pixel {name}: Done downloading bulk data");
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace Systemic.Unity.Pixels
             }
             else
             {
-                Debug.LogError($"Pixel {name}: error downloading bulk data, {error}");
+                Debug.LogError($"Pixel {name}: Error downloading bulk data, {error}");
                 onResult?.Invoke(null, error);
             }
         }
@@ -199,8 +199,8 @@ namespace Systemic.Unity.Pixels
             //builder.AppendLine("actions: " + prepareDie.actionCount + ", " + prepareDie.actionSize);
             //builder.AppendLine("rules: " + prepareDie.ruleCount + " * " + Marshal.SizeOf<Behaviors.Rule>());
             //builder.AppendLine("behavior: " + Marshal.SizeOf<Behaviors.Behavior>());
-            //Debug.Log(builder.ToString());
-            //Debug.Log("Animation Data size: " + set.ComputeDataSetDataSize());
+            //Debug.Log($"Pixel {name}: {builder}");
+            //Debug.Log($"Pixel {name}: Animation Data size: {set.ComputeDataSetDataSize()}");
 
             var waitForMsg = new SendMessageAndWaitForResponseEnumerator<TransferAnimationSet, TransferAnimationSetAck>(this, prepareDie);
             yield return waitForMsg;
@@ -220,7 +220,7 @@ namespace Systemic.Unity.Pixels
                     //    }
                     //    hexdumpBuilder.Append(setData[i].ToString("X02") + " ");
                     //}
-                    //Debug.Log(hexdumpBuilder.ToString());
+                    //Debug.Log($"Pixel {name}: Dump => {hexdumpBuilder}");
 
                     // Upload data
                     var hash = DataSet.ComputeHash(setData);
@@ -268,7 +268,7 @@ namespace Systemic.Unity.Pixels
             uint hash = DataSet.ComputeHash(setData);
 
             prepareDie.hash = hash;
-            // Debug.Log("Animation Data to be sent:");
+            // Debug.Log($"Pixel {name}: Animation Data to be sent:");
             // Debug.Log("palette: " + prepareDie.paletteSize * Marshal.SizeOf<byte>());
             // Debug.Log("rgb keyframes: " + prepareDie.rgbKeyFrameCount + " * " + Marshal.SizeOf<Animations.RGBKeyframe>());
             // Debug.Log("rgb tracks: " + prepareDie.rgbTrackCount + " * " + Marshal.SizeOf<Animations.RGBTrack>());

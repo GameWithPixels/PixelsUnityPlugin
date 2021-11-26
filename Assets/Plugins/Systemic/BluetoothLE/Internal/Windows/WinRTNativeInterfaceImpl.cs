@@ -376,11 +376,11 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
                     // Log success or error
                     if (errorCode == RequestStatus.Success)
                     {
-                        Debug.Log($"{operation} ==> Request successful");
+                        Debug.Log($"[BLE:{periph.Name}] {operation} ==> Request successful");
                     }
                     else
                     {
-                        Debug.LogError($"{operation} ==> Request failed: {errorCode}");
+                        Debug.LogError($"[BLE:{periph.Name}] {operation} ==> Request failed: {errorCode}");
                     }
 
                     // We can forget about this handler instance, it won't be called anymore

@@ -443,9 +443,10 @@ namespace Systemic.Unity.BluetoothLE
                 pinf.NativeHandle = NativeInterface.CreatePeripheral(peripheral,
                     (connectionEvent, reason) => EnqueuePeripheralAction(pinf, () =>
                     {
-                        Debug.Log($"[BLE:{pinf.Name}] " +
-                            $"Connection event `{connectionEvent}`{(reason == ConnectionEventReason.Success ? "" : $" with reason `{reason}`")}, " +
-                            $"state was `{pinf.State}`");
+                        Debug.Log($"[BLE:{pinf.Name}] "
+                            + $"Connection event `{connectionEvent}`"
+                            + (reason == ConnectionEventReason.Success ? "" : $" with reason `{reason}`")
+                            + $", state was `{pinf.State}`");
                         OnPeripheralConnectionEvent(pinf, connectionEvent, reason);
                     }));
 
@@ -492,7 +493,7 @@ namespace Systemic.Unity.BluetoothLE
                                 }
                                 else
                                 {
-                                    // Invalid state, give up connecting
+                                    // We're either connected on in an invalid state, in both cases we stop trying to connect again
                                     onResult(status);
                                 }
                             }));
@@ -512,7 +513,7 @@ namespace Systemic.Unity.BluetoothLE
                     pinf.State = PeripheralState.Disconnecting;
                 }
 
-                if (!disconnected && !ready)
+                if (!(disconnected || ready))
                 {
                     // Nothing to do
                     return;
@@ -522,7 +523,7 @@ namespace Systemic.Unity.BluetoothLE
                 {
                     //Debug.Log($"[BLE:{pinf.Name}] Peripheral ready, setting MTU");
 
-                    if (pinf.NativeHandle.IsValid && (NativeInterface.GetPeripheralMtu(pinf.NativeHandle) == 21))
+                    if (pinf.NativeHandle.IsValid && (NativeInterface.GetPeripheralMtu(pinf.NativeHandle) == 21)) //TODO check value on Android
                     {
                         // Change MTU to maximum (note: MTU can only be set once)
                         NativeInterface.RequestPeripheralMtu(pinf.NativeHandle, NativeInterface.MaxMtu,
@@ -560,7 +561,7 @@ namespace Systemic.Unity.BluetoothLE
                 if (pinf.NativeHandle.IsValid && (pinf.State == PeripheralState.Connecting))
                 {
                     // We're done and ready
-                    Debug.Log($"[BLE:{pinf.Name}] Ready");
+                    Debug.Log($"[BLE:{pinf.Name}] Peripheral is ready");
 
                     // Update state
                     pinf.State = PeripheralState.Ready;
@@ -570,7 +571,7 @@ namespace Systemic.Unity.BluetoothLE
                 }
                 else if (pinf.NativeHandle.IsValid)
                 {
-                    Debug.LogWarning($"[BLE:{pinf.Name}] Connection cancelled before being ready");
+                    Debug.LogWarning($"[BLE:{pinf.Name}] Connection canceled before being ready");
                 }
                 else
                 {
@@ -595,6 +596,8 @@ namespace Systemic.Unity.BluetoothLE
             var nativeHandle = pinf.NativeHandle;
             pinf.NativeHandle = new NativePeripheralHandle();
 
+            Debug.Log($"[BLE:{pinf.Name}] Disconnecting{(nativeHandle.IsValid ? "" : " invalid peripheral")}");
+
             return new Internal.DisconnectRequestEnumerator(nativeHandle);
         }
 
@@ -612,6 +615,8 @@ namespace Systemic.Unity.BluetoothLE
         public static string GetPeripheralName(ScannedPeripheral peripheral)
         {
             EnsureRunningOnMainThread();
+
+            //TODO check peripheral?
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
             return nativeHandle.IsValid ? NativeInterface.GetPeripheralName(nativeHandle) : null;

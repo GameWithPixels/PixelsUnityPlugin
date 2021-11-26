@@ -12,19 +12,19 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
         void onMtuChanged(AndroidJavaObject device, int mtu)
         {
-            Debug.Log($"{RequestOperation.RequestPeripheralMtu} ==> onMtuChanged: {mtu}");
+            Debug.Log($"[BLE] {RequestOperation.RequestPeripheralMtu} ==> onMtuChanged: {mtu}");
             _onMtuResult?.Invoke(mtu, RequestStatus.Success);
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError($"{RequestOperation.RequestPeripheralMtu} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            Debug.LogError($"[BLE] {RequestOperation.RequestPeripheralMtu} ==> onRequestFailed: {(AndroidRequestStatus)status}");
             _onMtuResult?.Invoke(0, AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError($"{RequestOperation.RequestPeripheralMtu} ==> onInvalidRequest");
+            Debug.LogError($"[BLE] {RequestOperation.RequestPeripheralMtu} ==> onInvalidRequest");
             _onMtuResult?.Invoke(0, RequestStatus.InvalidCall);
         }
     }

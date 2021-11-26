@@ -12,20 +12,20 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 
         void onDataReceived(AndroidJavaObject device, AndroidJavaObject data)
         {
-            Debug.Log($"{RequestOperation.ReadCharacteristic} ==> onDataReceived");
+            Debug.Log($"[BLE] {RequestOperation.ReadCharacteristic} ==> onDataReceived");
             using var javaArray = data.Call<AndroidJavaObject>("getValue");
             _onValueRead?.Invoke(JavaUtils.ToDotNetArray(javaArray), RequestStatus.Success);
         }
 
         void onRequestFailed(AndroidJavaObject device, int status)
         {
-            Debug.LogError($"{RequestOperation.ReadCharacteristic} ==> onRequestFailed: {(AndroidRequestStatus)status}");
+            Debug.LogError($"[BLE] {RequestOperation.ReadCharacteristic} ==> onRequestFailed: {(AndroidRequestStatus)status}");
             _onValueRead?.Invoke(null, AndroidNativeInterfaceImpl.ToRequestStatus(status));
         }
 
         void onInvalidRequest()
         {
-            Debug.LogError($"{RequestOperation.ReadCharacteristic} ==> onInvalidRequest");
+            Debug.LogError($"[BLE] {RequestOperation.ReadCharacteristic} ==> onInvalidRequest");
             _onValueRead?.Invoke(null, RequestStatus.InvalidCall);
         }
     }
