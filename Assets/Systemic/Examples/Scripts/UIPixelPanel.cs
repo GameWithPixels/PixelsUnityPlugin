@@ -111,19 +111,19 @@ namespace Systemic.Unity.Examples
 
         public void Connect()
         {
-            DicePool.Instance.ConnectPixel(Pixel, () => !isActiveAndEnabled);
+            DiceBag.Instance.ConnectPixel(Pixel, () => !isActiveAndEnabled);
         }
 
         public void Disconnect()
         {
-            DicePool.Instance.DisconnectPixel(Pixel);
+            DiceBag.Instance.DisconnectPixel(Pixel);
         }
 
         public void Forget()
         {
             if (Pixel)
             {
-                DicePool.Instance.UnregisterPixel(Pixel);
+                DiceBag.Instance.UnregisterPixel(Pixel);
             }
             Destroy(gameObject);
         }

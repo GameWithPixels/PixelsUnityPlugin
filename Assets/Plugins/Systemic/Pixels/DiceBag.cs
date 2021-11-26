@@ -22,7 +22,7 @@ namespace Systemic.Unity.Pixels
     public delegate void PixelOperationResultHandler<T>(T result, string error);
     public delegate void PixelOperationProgressHandler(Pixel pixel, float progress); // Value between 0 and 1
 
-    public sealed partial class DicePool : MonoBehaviour
+    public sealed partial class DiceBag : MonoBehaviour
     {
         [SerializeField]
         IDialogBox _dialogBox = null;
@@ -38,7 +38,7 @@ namespace Systemic.Unity.Pixels
 
         public const float DefaultConnectionTimeout = 10; // In seconds
 
-        public static DicePool Instance { get; private set; }
+        public static DiceBag Instance { get; private set; }
 
         public bool IsScanning { get; private set; } //TODO update when Bluetooth radio turned off
 
@@ -311,7 +311,7 @@ namespace Systemic.Unity.Pixels
             // Safeguard
             if ((Instance != null) && (Instance != this))
             {
-                Debug.LogError($"A second instance of {typeof(DicePool)} got spawned, now destroying it");
+                Debug.LogError($"A second instance of {typeof(DiceBag)} got spawned, now destroying it");
                 Destroy(this);
             }
             Instance = this;

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Systemic.Unity.Examples
 {
-    [RequireComponent(typeof(DicePool))]
+    [RequireComponent(typeof(DiceBag))]
     public class PixelController : MonoBehaviour
     {
         [SerializeField]
@@ -30,7 +30,7 @@ namespace Systemic.Unity.Examples
         // Update is called once per frame
         void Update()
         {
-            foreach (var p in DicePool.Instance.AvailablePixels)
+            foreach (var p in DiceBag.Instance.AvailablePixels)
             {
                 if (_pixelsRoot.OfType<Transform>().All(t => t.name != p.name))
                 {
@@ -57,12 +57,12 @@ namespace Systemic.Unity.Examples
 
         public void StartScan()
         {
-            DicePool.Instance.ScanForPixels();
+            DiceBag.Instance.ScanForPixels();
         }
 
         public void StopScan()
         {
-            DicePool.Instance.StopScanForPixels();
+            DiceBag.Instance.StopScanForPixels();
         }
 
         #endregion

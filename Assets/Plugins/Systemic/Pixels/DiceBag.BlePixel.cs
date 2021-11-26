@@ -9,7 +9,7 @@ using Peripheral = Systemic.Unity.BluetoothLE.ScannedPeripheral;
 
 namespace Systemic.Unity.Pixels
 {
-    partial class DicePool
+    partial class DiceBag
     {
         sealed class BlePixel : Pixel
         {
@@ -391,7 +391,7 @@ namespace Systemic.Unity.Pixels
             }
 
             /// <summary>
-            /// Disconnects a Pixel, doesn't remove it from the pool though
+            /// Disconnects a Pixel, doesn't remove it from the bag though
             /// </sumary>
             void DoDisconnect(PixelLastError error = PixelLastError.None)
             {
@@ -490,11 +490,11 @@ namespace Systemic.Unity.Pixels
                 {
                     Debug.Assert(_peripheral != null);
 
-                    // Start Disconnect coroutine on DicePool since we are getting destroyed
-                    var pool = DicePool.Instance;
-                    if (pool && pool.gameObject.activeInHierarchy)
+                    // Start Disconnect coroutine on DiceBag since we are getting destroyed
+                    var diceBag = DiceBag.Instance;
+                    if (diceBag && diceBag.gameObject.activeInHierarchy)
                     {
-                        pool.StartCoroutine(Central.DisconnectPeripheralAsync(_peripheral));
+                        diceBag.StartCoroutine(Central.DisconnectPeripheralAsync(_peripheral));
                     }
                 }
             }
