@@ -1,0 +1,4 @@
+<map id="Systemic.Unity.Pixels.Behaviors.ConditionHelloGoodbye" name="Systemic.Unity.Pixels.Behaviors.ConditionHelloGoodbye">
+<area shape="rect" id="node1" title="Condition that triggers on a life state event &lt;/sumary&gt;" alt="" coords="5,80,216,121"/>
+<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_condition.html" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="71,5,151,32"/>
+</map>

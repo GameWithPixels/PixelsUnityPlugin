@@ -1,7 +1,5 @@
 var NAVTREEINDEX0 =
 {
-"":[2,0,0],
-"":[2,0,0,0],
 "_characteristic_8h.html":[4,0,1,1,0,0,0,0],
 "_characteristic_8h_source.html":[4,0,1,1,0,0,0,0],
 "_com_helper_8h.html":[4,0,1,1,0,0,2],
@@ -249,5 +247,7 @@ var NAVTREEINDEX0 =
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ad5728dbd4bacd4a9f7b50828f490fea7":[3,0,1,1,0,3,5],
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae871b31fb4f94a674cecabb9d3dce216":[3,0,1,1,0,3,6],
 "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#afe3386c8f52ee77ff6797c752dfcc98f":[3,0,1,1,0,3,19],
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html":[3,0,1,1,0,4]
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html":[3,0,1,1,0,4],
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a0c2d4e3e554826dcde47e391aa5de396":[3,0,1,1,0,4,1],
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a0c3cf4dc24571b37c0b2ddf383b85c30":[3,0,1,1,0,4,6]
 };

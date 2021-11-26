@@ -1,0 +1,11 @@
+<map id="Systemic.Unity.Pixels.Behaviors.ICondition" name="Systemic.Unity.Pixels.Behaviors.ICondition">
+<area shape="rect" id="node1" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="5,235,216,276"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_battery_state.html" title="Condition that triggers on battery state events &lt;/sumary&gt;" alt="" coords="264,5,475,47"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_connection_state.html" title="Condition that triggers on connection events &lt;/sumary&gt;" alt="" coords="264,71,475,112"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_crooked.html" title="Condition that triggers when the Pixel has landed by is crooked" alt="" coords="264,136,475,177"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_face_compare.html" title="Condition that triggers when the Pixel has landed on a face" alt="" coords="264,201,475,243"/>
+<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_handling.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="264,267,475,308"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye.html" title="Condition that triggers on a life state event &lt;/sumary&gt;" alt="" coords="264,332,475,373"/>
+<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_idle.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="264,397,475,439"/>
+<area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_rolling.html" title="Condition that triggers when the Pixel is being rolled" alt="" coords="264,463,475,504"/>
+</map>

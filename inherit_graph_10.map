@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,97,39"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html" title="Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine." alt="" coords="145,5,312,47"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title="Enumerator handling a request for reading a value from a BLE peripheral. It is meant to be run as cor..." alt="" coords="360,5,579,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,46,97,73"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html" title="Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine." alt="" coords="153,5,319,47"/>
+<area shape="rect" id="node4" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html" title=" " alt="" coords="145,71,327,112"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title="Enumerator handling a request for reading a value from a BLE peripheral. It is meant to be run as cor..." alt="" coords="375,5,593,47"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="376,71,592,112"/>
 </map>

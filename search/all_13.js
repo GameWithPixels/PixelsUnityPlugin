@@ -1,7 +1,18 @@
 var searchData=
 [
-  ['value_287',['Value',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#a31e594ba3ebc8f15cebae8b905e6d5c8',1,'Systemic::Unity::BluetoothLE::ValueRequestEnumerator']]],
-  ['valuechangedcallback_288',['ValueChangedCallback',['../cble_8h.html#ad95cf23155ddde12445a46c0e4b7c09f',1,'cble.h']]],
-  ['valuereadcallback_289',['ValueReadCallback',['../_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1',1,'ValueReadCallback():&#160;UnitBridge.h'],['../cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce',1,'ValueReadCallback():&#160;cble.h']]],
-  ['valuerequestenumerator_290',['ValueRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]]
+  ['uilogtotext_395',['UILogToText',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html',1,'Systemic::Unity::Examples']]],
+  ['uipixelpanel_396',['UIPixelPanel',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html',1,'Systemic::Unity::Examples']]],
+  ['uiupdatescantoggle_397',['UIUpdateScanToggle',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html',1,'Systemic::Unity::Examples']]],
+  ['unitbridge_2eh_398',['UnitBridge.h',['../_unit_bridge_8h.html',1,'']]],
+  ['unity_5fcsharp_399',['Unity_CSharp',['../group___unity___c_sharp.html',1,'']]],
+  ['unitybridge_2emm_400',['UnityBridge.mm',['../_unity_bridge_8mm.html',1,'']]],
+  ['unknown_401',['Unknown',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a88183b946cc5f0e8c96b2e66e1c74a7e',1,'Systemic.Unity.BluetoothLE.Unknown()'],['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a88183b946cc5f0e8c96b2e66e1c74a7e',1,'Systemic::BluetoothLE::Unknown()']]],
+  ['unsubscribe_402',['Unsubscribe',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#afe20f10b707de69948b3ff6e992b99f2',1,'Systemic::Unity::Examples::BleController']]],
+  ['unsubscribeasync_403',['unsubscribeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['unsubscribecharacteristic_404',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['unsubscribecharacteristic_405',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1',1,'Systemic.Unity.BluetoothLE.NativeInterface.UnsubscribeCharacteristic()'],['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#af7ad8d9a992e1dba7df0f151435d77eaa962f6118e63b99bb8546e0dd7e38a0c5',1,'Systemic.Unity.BluetoothLE.UnsubscribeCharacteristic()']]],
+  ['unsubscribecharacteristicasync_406',['UnsubscribeCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ac1335d32abf461169fe190a2bb4af804',1,'Systemic::Unity::BluetoothLE::Central']]],
+  ['updateleds_407',['updateLEDs',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient_pattern.html#a71224c91e36a4f3ac0c37cb2c9b4293b',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceGradientPattern.updateLEDs()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html#a2dea1c6909d342e73728cd986631cac8',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceKeyframed.updateLEDs()']]],
+  ['utils_2eh_408',['Utils.h',['../_utils_8h.html',1,'']]],
+  ['uuid_409',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]]
 ];

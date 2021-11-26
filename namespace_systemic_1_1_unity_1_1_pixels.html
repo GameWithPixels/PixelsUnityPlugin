@@ -83,8 +83,10 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_pixel
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic.Unity.Pixels Namespace Reference</div>  </div>
 </div><!--header-->
@@ -95,98 +97,44 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_unity_1_1_pixel
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dedicated access to <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice.">Pixels</a> dice. Available soon.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html">BleUuids</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice.">Pixels</a> Bluetooth Low Energy UUIDs.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html">ColorUtils</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html">DiceBag</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box.html">IDialogBox</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player.html">IAudioPlayer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a492b1971a094f64ce37ac52c3ad0e871"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a492b1971a094f64ce37ac52c3ad0e871">MessageType</a> : byte { <br />
-&#160;&#160;<b>None</b> = 0
-, <b>WhoAreYou</b>
-, <b>IAmADie</b>
-, <b>RollState</b>
+<tr class="memitem:a4956bccf98cf185c46be27d4e7c0b933"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> : byte { <br />
+&#160;&#160;<b>Unknown</b> = 0
+, <b>Generic</b>
+, <b>V3_Orange</b>
+, <b>V4_BlackClear</b>
 , <br />
-&#160;&#160;<b>Telemetry</b>
-, <b>BulkSetup</b>
-, <b>BulkSetupAck</b>
-, <b>BulkData</b>
+&#160;&#160;<b>V4_WhiteClear</b>
+, <b>V5_Grey</b>
+, <b>V5_White</b>
+, <b>V5_Black</b>
 , <br />
-&#160;&#160;<b>BulkDataAck</b>
-, <b>TransferAnimSet</b>
-, <b>TransferAnimSetAck</b>
-, <b>TransferAnimSetFinished</b>
+&#160;&#160;<b>V5_Gold</b>
+, <b>Onyx_Back</b>
+, <b>Hematite_Grey</b>
+, <b>Midnight_Galaxy</b>
 , <br />
-&#160;&#160;<b>TransferSettings</b>
-, <b>TransferSettingsAck</b>
-, <b>TransferSettingsFinished</b>
-, <b>TransferTestAnimSet</b>
-, <br />
-&#160;&#160;<b>TransferTestAnimSetAck</b>
-, <b>TransferTestAnimSetFinished</b>
-, <b>DebugLog</b>
-, <b>PlayAnim</b>
-, <br />
-&#160;&#160;<b>PlayAnimEvent</b>
-, <b>StopAnim</b>
-, <b>PlaySound</b>
-, <b>RequestRollState</b>
-, <br />
-&#160;&#160;<b>RequestAnimSet</b>
-, <b>RequestSettings</b>
-, <b>RequestTelemetry</b>
-, <b>ProgramDefaultAnimSet</b>
-, <br />
-&#160;&#160;<b>ProgramDefaultAnimSetFinished</b>
-, <b>Flash</b>
-, <b>FlashFinished</b>
-, <b>RequestDefaultAnimSetColor</b>
-, <br />
-&#160;&#160;<b>DefaultAnimSetColor</b>
-, <b>RequestBatteryLevel</b>
-, <b>BatteryLevel</b>
-, <b>RequestRssi</b>
-, <br />
-&#160;&#160;<b>Rssi</b>
-, <b>Calibrate</b>
-, <b>CalibrateFace</b>
-, <b>NotifyUser</b>
-, <br />
-&#160;&#160;<b>NotifyUserAck</b>
-, <b>TestHardware</b>
-, <b>SetStandardState</b>
-, <b>SetLEDAnimState</b>
-, <br />
-&#160;&#160;<b>SetBattleState</b>
-, <b>ProgramDefaultParameters</b>
-, <b>ProgramDefaultParametersFinished</b>
-, <b>SetDesignAndColor</b>
-, <br />
-&#160;&#160;<b>SetDesignAndColorAck</b>
-, <b>SetCurrentBehavior</b>
-, <b>SetCurrentBehaviorAck</b>
-, <b>SetName</b>
-, <br />
-&#160;&#160;<b>SetNameAck</b>
-, <b>TestBulkSend</b>
-, <b>TestBulkReceive</b>
-, <b>SetAllLEDsToColor</b>
-, <br />
-&#160;&#160;<b>AttractMode</b>
-, <b>PrintNormals</b>
-, <b>PrintA2DReadings</b>
-, <b>LightUpFace</b>
-, <br />
-&#160;&#160;<b>SetLEDToColor</b>
-, <b>DebugAnimController</b>
+&#160;&#160;<b>Aurora_Sky</b>
 <br />
  }</td></tr>
-<tr class="memdesc:a492b1971a094f64ce37ac52c3ad0e871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lists all the Pixels message types. The value is used for the first byte of data in a Pixel message to identify it's type.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#a492b1971a094f64ce37ac52c3ad0e871">More...</a><br /></td></tr>
-<tr class="separator:a492b1971a094f64ce37ac52c3ad0e871"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac944d086df691a911f7914a5e991ff68"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ac944d086df691a911f7914a5e991ff68">RollState</a> : byte { <br />
+<tr class="memdesc:a4956bccf98cf185c46be27d4e7c0b933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available combinations of Pixel designs and colors.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">More...</a><br /></td></tr>
+<tr class="separator:a4956bccf98cf185c46be27d4e7c0b933"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdadd27224819442e9127d26c9a10500"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> : byte { <br />
 &#160;&#160;<b>Unknown</b> = 0
 , <b>OnFace</b>
 , <b>Handling</b>
@@ -195,14 +143,46 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>Crooked</b>
 <br />
  }</td></tr>
-<tr class="memdesc:ac944d086df691a911f7914a5e991ff68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel roll states.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#ac944d086df691a911f7914a5e991ff68">More...</a><br /></td></tr>
-<tr class="separator:ac944d086df691a911f7914a5e991ff68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:afdadd27224819442e9127d26c9a10500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel roll states.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">More...</a><br /></td></tr>
+<tr class="separator:afdadd27224819442e9127d26c9a10500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab45f6871dd362b700bc0557849d71b7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a> { <br />
+&#160;&#160;<b>Invalid</b> = -1
+, <b>Available</b>
+, <b>Connecting</b>
+, <b>Identifying</b>
+, <br />
+&#160;&#160;<b>Ready</b>
+, <b>Disconnecting</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:aab45f6871dd362b700bc0557849d71b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel connection states.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">More...</a><br /></td></tr>
+<tr class="separator:aab45f6871dd362b700bc0557849d71b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751dce57008c674bebe38dfb1b1661f9"><td class="memItemLeft" align="right" valign="top"><a id="a751dce57008c674bebe38dfb1b1661f9"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>PixelLastError</b> { <b>None</b> = 0
+, <b>ConnectionError</b>
+, <b>Disconnected</b>
+ }</td></tr>
+<tr class="separator:a751dce57008c674bebe38dfb1b1661f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a8340e4e7e8e1abeb7841aa85faad473d"><td class="memItemLeft" align="right" valign="top"><a id="a8340e4e7e8e1abeb7841aa85faad473d"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>PixelConnectResultHandler</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, bool ready, string error)</td></tr>
+<tr class="separator:a8340e4e7e8e1abeb7841aa85faad473d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a524a9a800bc9727e08d42e4831987111"><td class="memItemLeft" align="right" valign="top"><a id="a524a9a800bc9727e08d42e4831987111"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>PixelOperationResultHandler&lt; T &gt;</b> (T result, string error)</td></tr>
+<tr class="separator:a524a9a800bc9727e08d42e4831987111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ea5694202f05b33ce4500af8085578"><td class="memItemLeft" align="right" valign="top"><a id="ae5ea5694202f05b33ce4500af8085578"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>PixelOperationProgressHandler</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, float progress)</td></tr>
+<tr class="separator:ae5ea5694202f05b33ce4500af8085578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a254da82d46274ac54f721f547061c347"><td class="memItemLeft" align="right" valign="top"><a id="a254da82d46274ac54f721f547061c347"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>PixelTelemetryEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html">AccelFrame</a> frame)</td></tr>
+<tr class="separator:a254da82d46274ac54f721f547061c347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> game engine that enables communications with <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice.">Pixels</a> dice. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a492b1971a094f64ce37ac52c3ad0e871"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a492b1971a094f64ce37ac52c3ad0e871">&#9670;&nbsp;</a></span>MessageType</h2>
+<a id="aab45f6871dd362b700bc0557849d71b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab45f6871dd362b700bc0557849d71b7">&#9670;&nbsp;</a></span>PixelConnectionState</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -211,7 +191,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a492b1971a094f64ce37ac52c3ad0e871">Systemic.Unity.Pixels.MessageType</a> : byte</td>
+          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">Systemic.Unity.Pixels.PixelConnectionState</a></td>
         </tr>
       </table>
   </td>
@@ -221,12 +201,12 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Lists all the <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice.">Pixels</a> message types. The value is used for the first byte of data in a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Dedicated access to Pixels dice. Available soon.">Pixel</a> message to identify it's type. </p>
+<p><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> connection states. </p>
 
 </div>
 </div>
-<a id="ac944d086df691a911f7914a5e991ff68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac944d086df691a911f7914a5e991ff68">&#9670;&nbsp;</a></span>RollState</h2>
+<a id="a4956bccf98cf185c46be27d4e7c0b933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4956bccf98cf185c46be27d4e7c0b933">&#9670;&nbsp;</a></span>PixelDesignAndColor</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +215,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ac944d086df691a911f7914a5e991ff68">Systemic.Unity.Pixels.RollState</a> : byte</td>
+          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">Systemic.Unity.Pixels.PixelDesignAndColor</a> : byte</td>
         </tr>
       </table>
   </td>
@@ -245,7 +225,31 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Dedicated access to Pixels dice. Available soon.">Pixel</a> roll states. </p>
+<p>Available combinations of <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> designs and colors. </p>
+
+</div>
+</div>
+<a id="afdadd27224819442e9127d26c9a10500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdadd27224819442e9127d26c9a10500">&#9670;&nbsp;</a></span>PixelRollState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">Systemic.Unity.Pixels.PixelRollState</a> : byte</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> roll states. </p>
 
 </div>
 </div>

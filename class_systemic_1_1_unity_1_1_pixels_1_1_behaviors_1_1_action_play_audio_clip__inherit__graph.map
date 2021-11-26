@@ -1,0 +1,4 @@
+<map id="Systemic.Unity.Pixels.Behaviors.ActionPlayAudioClip" name="Systemic.Unity.Pixels.Behaviors.ActionPlayAudioClip">
+<area shape="rect" id="node1" title="Action to play a sound!" alt="" coords="5,80,216,121"/>
+<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_action.html" title="Base interface for Actions. Stores the actual type so that we can cast the data to the proper derived..." alt="" coords="79,5,142,32"/>
+</map>

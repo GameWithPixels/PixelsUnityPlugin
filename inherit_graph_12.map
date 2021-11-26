@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html" title="Pixels Bluetooth Low Energy UUIDs." alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node1" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance.html" title="Animation instance data, refers to an animation preset but stores the instance data and (derived clas..." alt="" coords="5,169,224,211"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_fade_candy.html" title="Procedural on off animation instance data" alt="" coords="273,5,492,47"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient.html" title="Procedural on off animation instance data" alt="" coords="273,71,492,112"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient_pattern.html" title="Keyframe&#45;based animation instance data" alt="" coords="272,136,493,177"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html" title="Keyframe&#45;based animation instance data" alt="" coords="273,201,492,243"/>
+<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html" title="Procedural on off animation instance data" alt="" coords="273,267,492,308"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html" title="Procedural on off animation instance data" alt="" coords="273,332,492,373"/>
 </map>
