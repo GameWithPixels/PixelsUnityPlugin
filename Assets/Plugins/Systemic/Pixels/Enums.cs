@@ -67,9 +67,9 @@ namespace Systemic.Unity.Pixels
     }
 
     /// <summary>
-    /// The last error encountered while communicating with a PixeL.
+    /// Identify an error encountered while communicating with a PixeL.
     /// </summary>
-    public enum PixelLastError
+    public enum PixelError
     {
         /// No error.
         None = 0,

@@ -121,7 +121,7 @@ namespace Systemic.Unity.Pixels
                 if (message == null) throw new System.ArgumentNullException(nameof(message));
 
                 _msgType = message.GetType();
-                _sendMessage = Pixel.WriteDataAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
+                _sendMessage = Pixel.SendMessageAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
             }
 
             public SendMessageAndWaitForResponseEnumerator(Pixel pixel, float timeoutSec = AckMessageTimeout)

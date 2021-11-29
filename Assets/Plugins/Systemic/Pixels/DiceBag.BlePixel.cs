@@ -39,15 +39,15 @@ namespace Systemic.Unity.Pixels
             int _connectionCount;
 
             // Connection internal events
-            PixelConnectResultHandler _onConnectionResult;
-            PixelConnectResultHandler _onDisconnectionResult;
+            ConnectionResultCallback _onConnectionResult;
+            ConnectionResultCallback _onDisconnectionResult;
 
             public bool isConnectingOrReady => (connectionState == PixelConnectionState.Connecting)
                     || (connectionState == PixelConnectionState.Identifying)
                     || (connectionState == PixelConnectionState.Ready);
 
             /// <summary>
-            /// Event triggered when a Pixel got disconnected for other reasons than a call to Disconnect().
+            /// Event raised when a Pixel gets disconnected for other reasons than a call to Disconnect().
             /// Most likely the BLE device was turned off or got out of range.
             /// </summary>
             public event System.Action DisconnectedUnexpectedly;
@@ -92,20 +92,31 @@ namespace Systemic.Unity.Pixels
                         designAndColor = advData.designAndColor;
                         rollState = advData.rollState;
                         face = advData.currentFace;
-                        batteryLevel = advData.batteryLevel / 255f;
+
+                        float newBatteryLevel = advData.batteryLevel / 255f;
+                        bool batteryLevelChanged = batteryLevel != newBatteryLevel;
+                        batteryLevel = newBatteryLevel;
+
+                        bool rssiChanged = rssi != _peripheral.Rssi;
                         rssi = _peripheral.Rssi;
 
-                        // Trigger callbacks
-                        BatteryLevelChanged?.Invoke(this, batteryLevel, charging);
+                        // Run callbacks
                         if (appearanceChanged)
                         {
                             AppearanceChanged?.Invoke(this, faceCount, designAndColor);
                         }
                         if (rollStateChanged)
                         {
-                            StateChanged?.Invoke(this, rollState, face);
+                            RollStateChanged?.Invoke(this, rollState, face);
                         }
-                        RssiChanged?.Invoke(this, rssi);
+                        if (batteryLevelChanged)
+                        {
+                            BatteryLevelChanged?.Invoke(this, batteryLevel, isCharging);
+                        }
+                        if (rssiChanged)
+                        {
+                            RssiChanged?.Invoke(this, rssi);
+                        }
                     }
                     else
                     {
@@ -118,10 +129,10 @@ namespace Systemic.Unity.Pixels
             {
                 EnsureRunningOnMainThread();
 
-                lastError = PixelLastError.None;
+                lastError = PixelError.None;
             }
 
-            public void Connect(float connectionTimeout, PixelConnectResultHandler onConnectionResult = null)
+            public void Connect(float connectionTimeout, ConnectionResultCallback onConnectionResult = null)
             {
                 EnsureRunningOnMainThread();
 
@@ -151,14 +162,14 @@ namespace Systemic.Unity.Pixels
                         _onConnectionResult += onConnectionResult;
                         break;
                     case PixelConnectionState.Ready:
-                        // Trigger the callback immediately
+                        // Run the callback immediately
                         IncrementConnectCount();
                         onConnectionResult?.Invoke(this, true, null);
                         break;
                 }
             }
 
-            public void Disconnect(PixelConnectResultHandler onDisconnectionResult = null, bool forceDisconnect = false)
+            public void Disconnect(ConnectionResultCallback onDisconnectionResult = null, bool forceDisconnect = false)
             {
                 EnsureRunningOnMainThread();
 
@@ -184,7 +195,7 @@ namespace Systemic.Unity.Pixels
                         }
                         else
                         {
-                            // Trigger the callback immediately
+                            // Run the callback immediately
                             onDisconnectionResult(this, true, null);
                         }
                         break;
@@ -290,11 +301,11 @@ namespace Systemic.Unity.Pixels
                                 }
                                 else
                                 {
-                                    // Trigger callback
+                                    // Run callback
                                     NotifyConnectionResult(error);
 
                                     // Updating info didn't work, disconnect the Pixel die
-                                    DoDisconnect(PixelLastError.ConnectionError);
+                                    DoDisconnect(PixelError.ConnectionError);
                                 }
                             }
                         }
@@ -315,7 +326,7 @@ namespace Systemic.Unity.Pixels
                     connectionState = PixelConnectionState.Identifying;
 
                     // Reset error
-                    SetLastError(PixelLastError.None);
+                    SetLastError(PixelError.None);
 
                     // Ask the Pixel who it is!
                     var request = new SendMessageAndWaitForResponseEnumerator<WhoAreYou, IAmADie>(this) as IOperationEnumerator;
@@ -354,7 +365,7 @@ namespace Systemic.Unity.Pixels
                         _connectionCount = 0;
 
                         connectionState = PixelConnectionState.Available;
-                        SetLastError(PixelLastError.Disconnected);
+                        SetLastError(PixelError.Disconnected);
 
                         DisconnectedUnexpectedly?.Invoke();
                     }
@@ -370,7 +381,7 @@ namespace Systemic.Unity.Pixels
                     {
                         Debug.Log($"Pixel {SafeName}: Received message of type {message.GetType()}");
 
-                        if (messageDelegates.TryGetValue(message.type, out MessageReceivedEvent del))
+                        if (_messageDelegates.TryGetValue(message.type, out MessageReceivedEventHandler del))
                         {
                             del.Invoke(message);
                         }
@@ -393,9 +404,9 @@ namespace Systemic.Unity.Pixels
             /// <summary>
             /// Disconnects a Pixel, doesn't remove it from the bag though
             /// </sumary>
-            void DoDisconnect(PixelLastError error = PixelLastError.None)
+            void DoDisconnect(PixelError error = PixelError.None)
             {
-                if (error != PixelLastError.None)
+                if (error != PixelError.None)
                 {
                     // We're disconnecting because of an error
                     SetLastError(error);
@@ -423,12 +434,12 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            void SetLastError(PixelLastError newError)
+            void SetLastError(PixelError newError)
             {
                 lastError = newError;
-                if (lastError != PixelLastError.None)
+                if (lastError != PixelError.None)
                 {
-                    GotError?.Invoke(this, newError);
+                    ErrorRaised?.Invoke(this, newError);
                 }
             }
 
@@ -464,7 +475,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            protected override IOperationEnumerator WriteDataAsync(byte[] bytes, float timeout = 0)
+            protected override IOperationEnumerator SendMessageAsync(byte[] bytes, float timeout = 0)
             {
                 EnsureRunningOnMainThread();
 

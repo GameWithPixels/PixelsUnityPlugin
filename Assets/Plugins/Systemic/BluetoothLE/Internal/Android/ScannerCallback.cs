@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
+    internal delegate void ScanResultCallback(AndroidJavaObject device, NativeAdvertisementDataJson advertisementData);
+
     internal sealed class ScannerCallback : AndroidJavaProxy
     {
-        public delegate void ScanResultHandler(AndroidJavaObject device, NativeAdvertisementDataJson advertisementData);
+        ScanResultCallback _onScanResult;
 
-        ScanResultHandler _onScanResult;
-
-        public ScannerCallback(ScanResultHandler onScanResult)
+        public ScannerCallback(ScanResultCallback onScanResult)
             : base("com.systemic.bluetoothle.Scanner$ScannerCallback")
             => _onScanResult = onScanResult;
 

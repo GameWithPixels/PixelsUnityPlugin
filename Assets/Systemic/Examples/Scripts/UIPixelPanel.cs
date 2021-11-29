@@ -55,10 +55,10 @@ namespace Systemic.Unity.Examples
             {
                 _connectionState.text = Pixel.connectionState.ToString();
                 _name.text = Pixel.name;
-                int battery = Mathf.RoundToInt(100 * Pixel.batteryLevel ?? 0);
-                string charging = Pixel.charging.HasValue ? (Pixel.charging.Value ? "charging" : "not charging") : "N/A";
-                _battery.text = Pixel.batteryLevel.HasValue ? $"{battery}%, {charging}" : "N/A";
-                _rssi.text = Pixel.rssi.HasValue ? Pixel.rssi.Value.ToString() : "N/A";
+                int battery = Mathf.RoundToInt(100 * Pixel.batteryLevel);
+                string charging = Pixel.isCharging ? "charging" : "not charging";
+                _battery.text = $"{battery}%, {charging}";
+                _rssi.text = Pixel.rssi.ToString();
                 _version.text = Pixel.firmwareVersionId;
                 _design.text = Pixel.designAndColor.ToString();
                 _rollstate.text = Pixel.rollState.ToString();

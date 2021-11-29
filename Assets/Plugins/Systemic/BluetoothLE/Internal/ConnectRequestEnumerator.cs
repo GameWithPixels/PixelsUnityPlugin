@@ -13,7 +13,7 @@ namespace Systemic.Unity.BluetoothLE.Internal
         public ConnectRequestEnumerator(
             NativePeripheralHandle peripheral,
             float timeoutSec,
-            Action<NativePeripheralHandle, NativeRequestResultHandler> action,
+            Action<NativePeripheralHandle, NativeRequestResultCallback> action,
             Action onTimeoutDisconnect)
             : base(RequestOperation.ConnectPeripheral, peripheral, timeoutSec, action)
         {

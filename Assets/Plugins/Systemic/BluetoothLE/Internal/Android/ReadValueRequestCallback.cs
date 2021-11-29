@@ -4,9 +4,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class ReadValueRequestCallback : AndroidJavaProxy
     {
-        NativeValueRequestResultHandler<byte[]> _onValueRead;
+        NativeValueRequestResultCallback<byte[]> _onValueRead;
 
-        public ReadValueRequestCallback(NativeValueRequestResultHandler<byte[]> onValueRead)
+        public ReadValueRequestCallback(NativeValueRequestResultCallback<byte[]> onValueRead)
             : base("com.systemic.bluetoothle.Peripheral$ReadValueRequestCallback")
             => _onValueRead = onValueRead;
 

@@ -8,31 +8,18 @@ using Peripheral = Systemic.Unity.BluetoothLE.ScannedPeripheral;
 
 namespace Systemic.Unity.Pixels
 {
-    public interface IDialogBox
-    {
-        bool Show(string title, string message, string okMessage = "Ok", string cancelMessage = null, System.Action<bool> closeAction = null);
-    }
-
-    public interface IAudioPlayer
-    {
-        void PlayAudioClip(uint clipId);
-    }
-
-    public delegate void PixelConnectResultHandler(Pixel pixel, bool ready, string error);
-    public delegate void PixelOperationResultHandler<T>(T result, string error);
-    public delegate void PixelOperationProgressHandler(Pixel pixel, float progress); // Value between 0 and 1
+    public delegate void ConnectionResultCallback(Pixel pixel, bool ready, string error);
+    public delegate void OperationResultCallback<T>(T result, string error);
+    public delegate void OperationProgressCallback(Pixel pixel, float progress); // Value between 0 and 1
 
     public sealed partial class DiceBag : MonoBehaviour
     {
-        [SerializeField]
-        IDialogBox _dialogBox = null;
-
-        [SerializeField]
-        IAudioPlayer _audioPlayer = null;
-
         HashSet<BlePixel> _pixels = new HashSet<BlePixel>();
         HashSet<BlePixel> _pixelsToDestroy = new HashSet<BlePixel>();
         Dictionary<string, string> _registeredPixels = new Dictionary<string, string>(); // Key is system id, value is name (may be empty)
+
+        NotifyUserCallback _notifyUser;
+        PlayAudioClipCallback _playAudioClip;
 
         public const string ConnectTimeoutErrorMessage = "Timeout trying to connect, Pixel may be out of range or turned off";
 
@@ -50,11 +37,11 @@ namespace Systemic.Unity.Pixels
 
         public event System.Action<Pixel> PixelDiscovered;
 
-        #region Scanning
+        #region Scan for Pixels
 
         /// <summary>
         /// Start scanning for new and existing Pixels, filling our lists in the process from
-        /// events triggered by Central.
+        /// events raised by Central.
         /// </sumary>
         public void ScanForPixels()
         {
@@ -103,8 +90,8 @@ namespace Systemic.Unity.Pixels
 
                 pixel = dieObj.AddComponent<BlePixel>();
                 pixel.DisconnectedUnexpectedly += () => DestroyPixel(pixel);
-                pixel.NotifyUserReceived += (_, cancel, text, ackCallback) => _dialogBox.Show("Message from " + name, text, "Ok", cancel ? "Cancel" : null, ackCallback);
-                pixel.PlayAudioClipReceived += (_, clipId) => _audioPlayer.PlayAudioClip(clipId);
+                pixel.SubscribeToUserNotifications(_notifyUser);
+                pixel.SubscribeToPlayAudioClip(_playAudioClip);
 
                 _pixels.Add(pixel);
             }
@@ -124,13 +111,30 @@ namespace Systemic.Unity.Pixels
 
         #endregion
 
-        #region BLE Pixel management
+        #region Communicate with Pixels
 
         public void ResetErrors()
         {
             foreach (var pixel in _pixels)
             {
                 pixel.ResetLastError();
+            }
+        }
+        public void SubscribeToUserNotifications(NotifyUserCallback notifyUserCallback)
+        {
+            _notifyUser = notifyUserCallback;
+            foreach (var p in _pixels)
+            {
+                p.SubscribeToUserNotifications(notifyUserCallback);
+            }
+        }
+
+        public void SubscribeToPlayAudioClip(PlayAudioClipCallback playAudioClipCallback)
+        {
+            _playAudioClip = playAudioClipCallback;
+            foreach (var p in _pixels)
+            {
+                p.SubscribeToPlayAudioClip(playAudioClipCallback);
             }
         }
 
@@ -186,12 +190,12 @@ namespace Systemic.Unity.Pixels
         }
 
         // Doc connection counter!
-        public Coroutine ConnectPixel(Pixel pixel, System.Func<bool> requestCancelFunc, PixelConnectResultHandler resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
+        public Coroutine ConnectPixel(Pixel pixel, System.Func<bool> requestCancelFunc, ConnectionResultCallback resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
         {
             return ConnectPixels(new Pixel[] { pixel }, requestCancelFunc, resultCallback, connectionTimeout);
         }
 
-        public Coroutine ConnectPixels(IEnumerable<Pixel> pixels, System.Func<bool> requestCancelFunc, PixelConnectResultHandler resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
+        public Coroutine ConnectPixels(IEnumerable<Pixel> pixels, System.Func<bool> requestCancelFunc, ConnectionResultCallback resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
         {
             if (pixels == null) throw new System.ArgumentNullException(nameof(pixels));
             if (requestCancelFunc == null) throw new System.ArgumentNullException(nameof(requestCancelFunc));
@@ -288,7 +292,7 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Cleanly destroys a Pixel die, disconnecting if necessary and triggering events in the process
+        /// Cleanly destroys a Pixel die, disconnecting if necessary and raising events in the process
         /// Does not remove it from the list though
         /// </sumary>
         void DestroyPixel(BlePixel pixel)

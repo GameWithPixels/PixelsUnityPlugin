@@ -73,7 +73,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect.
         Connecting,
 
-        /// Raised once the peripheral is connected, at which point service discovery is triggered.
+        /// Raised once the peripheral is connected, just before services are being discovered.
         Connected,
 
         /// Raised when the peripheral fails to connect, the reason for the failure is also given.

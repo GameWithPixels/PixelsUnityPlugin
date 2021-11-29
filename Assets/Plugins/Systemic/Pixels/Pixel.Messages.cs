@@ -10,31 +10,31 @@ namespace Systemic.Unity.Pixels
 
         #region Message Infrastructure
 
-        void AddMessageHandler(MessageType msgType, MessageReceivedEvent newDel)
+        void AddMessageHandler(MessageType msgType, MessageReceivedEventHandler newDel)
         {
-            if (messageDelegates.TryGetValue(msgType, out MessageReceivedEvent del))
+            if (_messageDelegates.TryGetValue(msgType, out MessageReceivedEventHandler del))
             {
                 del += newDel;
-                messageDelegates[msgType] = del;
+                _messageDelegates[msgType] = del;
             }
             else
             {
-                messageDelegates.Add(msgType, newDel);
+                _messageDelegates.Add(msgType, newDel);
             }
         }
 
-        void RemoveMessageHandler(MessageType msgType, MessageReceivedEvent newDel)
+        void RemoveMessageHandler(MessageType msgType, MessageReceivedEventHandler newDel)
         {
-            if (messageDelegates.TryGetValue(msgType, out MessageReceivedEvent del))
+            if (_messageDelegates.TryGetValue(msgType, out MessageReceivedEventHandler del))
             {
                 del -= newDel;
                 if (del == null)
                 {
-                    messageDelegates.Remove(msgType);
+                    _messageDelegates.Remove(msgType);
                 }
                 else
                 {
-                    messageDelegates[msgType] = del;
+                    _messageDelegates[msgType] = del;
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace Systemic.Unity.Pixels
 
             Debug.Log($"Pixel {SafeName}: Posting message of type {message.GetType()}");
 
-            StartCoroutine(WriteDataAsync(PixelMessageMarshaling.ToByteArray(message)));
+            StartCoroutine(SendMessageAsync(PixelMessageMarshaling.ToByteArray(message)));
         }
 
         #endregion
@@ -80,14 +80,14 @@ namespace Systemic.Unity.Pixels
             PostMessage(new AttractMode());
         }
 
-        public IEnumerator GetDieStateAsync(PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator GetDieStateAsync(OperationResultCallback<bool> onResult = null)
         {
             var op = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator GetDieInfoAsync(PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator GetDieInfoAsync(OperationResultCallback<bool> onResult = null)
         {
             var op = new SendMessageAndWaitForResponseEnumerator<WhoAreYou, IAmADie>(this);
             yield return op;
@@ -128,60 +128,71 @@ namespace Systemic.Unity.Pixels
             });
         }
 
-        public IEnumerator UpdateBatteryLevelAsync(PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator UpdateBatteryLevelAsync(OperationResultCallback<bool> onResult = null)
         {
             var op = new SendMessageAndProcessResponseWithValue<RequestBatteryLevel, BatteryLevel, float>(this,
                 lvlMsg =>
                 {
+                    bool charging = lvlMsg.charging != 0;
+                    bool changed = (batteryLevel != lvlMsg.level) || (isCharging != charging);
                     batteryLevel = lvlMsg.level;
-                    charging = lvlMsg.charging != 0;
-                    BatteryLevelChanged?.Invoke(this, lvlMsg.level, lvlMsg.charging != 0);
+                    isCharging = charging;
+                    if (changed)
+                    {
+                        BatteryLevelChanged?.Invoke(this, batteryLevel, isCharging);
+                    }
                     return lvlMsg.level;
                 });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator UpdateRssiAsync(PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator UpdateRssiAsync(OperationResultCallback<bool> onResult = null)
         {
             var op = new SendMessageAndProcessResponseWithValue<RequestRssi, Rssi, int>(this,
                 rssiMsg =>
                 {
-                    rssi = rssiMsg.rssi;
-                    RssiChanged?.Invoke(this, rssiMsg.rssi);
+                    if (rssi != rssiMsg.rssi)
+                    {
+                        rssi = rssiMsg.rssi;
+                        RssiChanged?.Invoke(this, rssi);
+                    }
                     return rssiMsg.rssi;
                 });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator SetCurrentDesignAndColorAsync(PixelDesignAndColor design, PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator SetCurrentDesignAndColorAsync(PixelDesignAndColor design, OperationResultCallback<bool> onResult = null)
         {
             var op = new SendMessageAndProcessResponseEnumerator<SetDesignAndColor, Rssi>(this,
                 new SetDesignAndColor() { designAndColor = design },
                 _ =>
                 {
-                    designAndColor = design;
-                    AppearanceChanged?.Invoke(this, faceCount, designAndColor);
+                    if (designAndColor != design)
+                    {
+                        designAndColor = design;
+                        AppearanceChanged?.Invoke(this, faceCount, designAndColor);
+                    }
                 });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator RenameDieAsync(string newName, PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator RenameDieAsync(string newName, OperationResultCallback<bool> onResult = null)
         {
             Debug.Log($"Pixel {SafeName}: Renaming to " + newName);
 
             byte[] nameBytes = System.Text.Encoding.UTF8.GetBytes(newName + "\0");
-            byte[] nameByte10 = new byte[10]; // 10 is the declared size in DieMessageSetName. There is probably a better way to do this...
-            System.Array.Copy(nameBytes, nameByte10, nameBytes.Length);
+            byte[] nameByteMaxSize = new byte[SetName.NameMaxSize];
+            System.Array.Copy(nameBytes, nameByteMaxSize, nameBytes.Length);
 
-            var op = new SendMessageAndWaitForResponseEnumerator<SetName, SetNameAck>(this, new SetName { name = nameByte10 });
+            var op = new SendMessageAndWaitForResponseEnumerator<SetName, SetNameAck>(this, new SetName { name = nameByteMaxSize });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator BlinkAsync(Color color, int count, PixelOperationResultHandler<bool> onResult = null)
+        public IEnumerator BlinkAsync(Color color, int count, OperationResultCallback<bool> onResult = null)
         {
             Color32 color32 = color;
             var msg = new Blink
@@ -268,7 +279,7 @@ namespace Systemic.Unity.Pixels
             var stateMsg = (RollState)message;
             Debug.Log($"Pixel {SafeName}: State is {stateMsg.state}, {stateMsg.face}");
 
-            var newState = (PixelRollState)stateMsg.state;
+            var newState = stateMsg.state;
             var newFace = stateMsg.face;
             if (newState != rollState || newFace != face)
             {
@@ -276,7 +287,7 @@ namespace Systemic.Unity.Pixels
                 face = newFace;
 
                 // Notify anyone who cares
-                StateChanged?.Invoke(this, rollState, face);
+                RollStateChanged?.Invoke(this, rollState, face + 1);
             }
         }
 
@@ -284,11 +295,11 @@ namespace Systemic.Unity.Pixels
         {
             // Don't bother doing anything with the message if we don't have
             // anybody interested in telemetry data.
-            if (_TelemetryReceived != null)
+            if (_telemetryReceived != null)
             {
                 // Notify anyone who cares
                 var telem = (AccelerationState)message;
-                _TelemetryReceived.Invoke(this, telem.data);
+                _telemetryReceived.Invoke(this, telem.data);
             }
         }
 
@@ -306,14 +317,14 @@ namespace Systemic.Unity.Pixels
             bool cancel = notifyUserMsg.cancel != 0;
             //float timeout = notifyUserMsg.timeout_s;
             string text = System.Text.Encoding.UTF8.GetString(notifyUserMsg.data, 0, notifyUserMsg.data.Length);
-            NotifyUserReceived(this, cancel, text,
+            _notifyUser?.Invoke(this, text, cancel,
                 res => PostMessage(new NotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
         }
 
         void OnPlayAudioClip(IPixelMessage message)
         {
             var playClipMessage = (PlaySound)message;
-            PlayAudioClipReceived?.Invoke(this, (uint)playClipMessage.clipId);
+            _playAudioClip?.Invoke(this, (uint)playClipMessage.clipId);
         }
 
         #endregion

@@ -274,7 +274,7 @@ void sgBleShutdown()
                 copy.emplace_back(p);
             }
             _peripherals.clear();
-            //TODO remove all subscriptions callbacks so their are not triggered after this point
+            //TODO remove all subscriptions callbacks so their events are not raised after this point
         }
         // Peripherals are destroyed here
         // We want _peripherals to be empty in case a callback to user code tries

@@ -471,7 +471,7 @@ namespace Systemic.Unity.BluetoothLE
                     pinf.ConnectionEvent = onConnectionEvent;
                     Connect(pinf, onResult);
 
-                    static void Connect(PeripheralInfo pinf, NativeRequestResultHandler onResult)
+                    static void Connect(PeripheralInfo pinf, NativeRequestResultCallback onResult)
                     {
                         pinf.State = PeripheralState.Connecting;
 
@@ -932,7 +932,7 @@ namespace Systemic.Unity.BluetoothLE
         }
 
         //TODO it doesn't seem correct to call onResult!
-        private static NativeValueRequestResultHandler<byte[]> GetNativeValueChangedHandler(PeripheralInfo pinf, Action<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        private static NativeValueRequestResultCallback<byte[]> GetNativeValueChangedHandler(PeripheralInfo pinf, Action<byte[]> onValueChanged, NativeRequestResultCallback onResult)
         {
             return (data, status) =>
             {

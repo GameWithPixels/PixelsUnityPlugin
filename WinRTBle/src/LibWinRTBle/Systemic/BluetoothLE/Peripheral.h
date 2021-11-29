@@ -100,7 +100,7 @@ namespace Systemic::BluetoothLE
          *
          * @param requiredServices List of services UUIDs that the peripheral should support, may be empty.
          * @param maintainConnection Whether to automatically reconnect after an unexpected disconnection
-         *                           (i.e. not triggered by a call to disconnect()).
+         *                           (i.e. not requested by a call to disconnect()).
          * @return A future with the resulting request status.
          */
         std::future<BleRequestStatus> connectAsync(
@@ -245,7 +245,7 @@ namespace Systemic::BluetoothLE
         }
 
         // Take the lock and release device and session, be sure to call notifyQueuedConnectionEvents() afterwards
-        void internalDisconnect(ConnectionEventReason reason, bool triggeredByDevice = false);
+        void internalDisconnect(ConnectionEventReason reason, bool fromDevice = false);
 
         // Notify user code with pending connection event
         void notifyQueuedConnectionEvents()

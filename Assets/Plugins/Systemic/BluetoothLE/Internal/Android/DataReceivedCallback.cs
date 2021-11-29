@@ -4,9 +4,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class DataReceivedCallback : AndroidJavaProxy
     {
-        NativeValueRequestResultHandler<byte[]> _onDataReceived;
+        NativeValueRequestResultCallback<byte[]> _onDataReceived;
 
-        public DataReceivedCallback(NativeValueRequestResultHandler<byte[]> onDataReceived)
+        public DataReceivedCallback(NativeValueRequestResultCallback<byte[]> onDataReceived)
             : base("no.nordicsemi.android.ble.callback.DataReceivedCallback")
             => _onDataReceived = onDataReceived;
 

@@ -4,9 +4,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
 {
     internal sealed class MtuRequestCallback : AndroidJavaProxy
     {
-        NativeValueRequestResultHandler<int> _onMtuResult;
+        NativeValueRequestResultCallback<int> _onMtuResult;
 
-        public MtuRequestCallback(NativeValueRequestResultHandler<int> onMtuResult)
+        public MtuRequestCallback(NativeValueRequestResultCallback<int> onMtuResult)
             : base("com.systemic.bluetoothle.Peripheral$MtuRequestCallback")
             => _onMtuResult = onMtuResult;
 

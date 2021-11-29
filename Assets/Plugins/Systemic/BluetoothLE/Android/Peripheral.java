@@ -324,7 +324,7 @@ public class Peripheral
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should support, may be null or empty.
      * @param autoReconnect Whether to automatically reconnect after an unexpected disconnection
-     *                      (i.e. not triggered by a call to disconnect()).
+     *                      (i.e. not requested by a call to disconnect()).
      * @param requestCallback The callback for notifying of the request result.
      */
     public void connect(final String requiredServicesUuids, final boolean autoReconnect, final RequestCallback requestCallback)

@@ -18,7 +18,7 @@ namespace Systemic.Unity.BluetoothLE
         internal NativePeripheralHandle(INativePeripheralHandleImpl client) => NativePeripheral = client;
 
         /// <summary>
-        /// The native peripheral handle.
+        /// Gets the native peripheral handle.
         /// </summary>
         internal INativePeripheralHandleImpl NativePeripheral { get; }
 
@@ -86,7 +86,7 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         /// <param name="onBluetoothEvent">Invoked when the host device Bluetooth state changes.</param>
         /// <returns>Whether the initialization was successful.</returns>
-        public static bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
+        public static bool Initialize(NativeBluetoothCallback onBluetoothEvent)
         {
             if (onBluetoothEvent == null) throw new ArgumentNullException(nameof(onBluetoothEvent));
 
@@ -151,7 +151,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Handle to the native object for the BLE peripheral.
         /// Returns <c>null</c> if an object was already returned for this peripheral, and not yet released.
         /// </returns>
-        public static NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEventChanged)
+        public static NativePeripheralHandle CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventCallback onConnectionEventChanged)
         {
             if (bluetoothAddress == 0) throw new ArgumentException("Empty bluetooth address", nameof(bluetoothAddress));
             if (onConnectionEventChanged == null) throw new ArgumentNullException(nameof(onConnectionEventChanged));
@@ -174,7 +174,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Handle to the native object for the BLE peripheral.
         /// Returns <c>null</c> if an object was already returned for this peripheral, and not yet released.
         /// </returns>
-        public static NativePeripheralHandle CreatePeripheral(ScannedPeripheral scannedPeripheral, NativeConnectionEventHandler onConnectionEvent)
+        public static NativePeripheralHandle CreatePeripheral(ScannedPeripheral scannedPeripheral, NativeConnectionEventCallback onConnectionEvent)
         {
             if (scannedPeripheral == null) throw new ArgumentNullException(nameof(scannedPeripheral));
             if (scannedPeripheral.NativeDevice == null) throw new ArgumentException("Invalid ScannedPeripheral", nameof(scannedPeripheral));
@@ -210,7 +210,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="requiredServices">List of services that the peripheral should support, may be null or empty.</param>
         /// <param name="autoReconnect">Whether the native implementation should attempt to automatically reconnect
-        ///                             after an unexpected disconnection (i.e. not triggered by a call
+        ///                             after an unexpected disconnection (i.e. not requested by a call
         ///                             to <see cref="DisconnectPeripheral"/>).</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>
@@ -218,7 +218,7 @@ namespace Systemic.Unity.BluetoothLE
         /// Windows and Android implementations time out after a short delay (8 and 30 seconds respectively)
         /// whereas iOS never times out.
         /// </remarks>
-        public static void ConnectPeripheral(NativePeripheralHandle nativePeripheralHandle, IEnumerable<Guid> requiredServices, bool autoReconnect, NativeRequestResultHandler onResult)
+        public static void ConnectPeripheral(NativePeripheralHandle nativePeripheralHandle, IEnumerable<Guid> requiredServices, bool autoReconnect, NativeRequestResultCallback onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
@@ -237,7 +237,7 @@ namespace Systemic.Unity.BluetoothLE
         /// </summary>
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
-        public static void DisconnectPeripheral(NativePeripheralHandle nativePeripheralHandle, NativeRequestResultHandler onResult)
+        public static void DisconnectPeripheral(NativePeripheralHandle nativePeripheralHandle, NativeRequestResultCallback onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onResult == null) throw new ArgumentNullException(nameof(onResult));
@@ -289,7 +289,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="mtu">The requested MTU, see <see cref="MinMtu"/> and <see cref="MaxMtu"/> for the legal range of values.</param>
         /// <param name="onMtuResult">Invoked when the request has completed (successfully or not), with the updated MTU value.</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void RequestPeripheralMtu(NativePeripheralHandle nativePeripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public static void RequestPeripheralMtu(NativePeripheralHandle nativePeripheralHandle, int mtu, NativeValueRequestResultCallback<int> onMtuResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if ((mtu < MinMtu) || (mtu > MaxMtu)) throw new ArgumentException($"MTU must be between {MinMtu} and {MaxMtu}", nameof(mtu));
@@ -306,7 +306,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="nativePeripheralHandle">Handle to the native object for the BLE peripheral.</param>
         /// <param name="onRssiResult">Invoked when the request has completed (successfully or not), with the read RSSI value.</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void ReadPeripheralRssi(NativePeripheralHandle nativePeripheralHandle, NativeValueRequestResultHandler<int> onRssiResult)
+        public static void ReadPeripheralRssi(NativePeripheralHandle nativePeripheralHandle, NativeValueRequestResultCallback<int> onRssiResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (onRssiResult == null) throw new ArgumentNullException(nameof(onRssiResult));
@@ -393,7 +393,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
         /// <param name="onValueReadResult">Invoked when the request has completed (successfully or not) and with the characteristic's read value on success.</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void ReadCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueReadResult)
+        public static void ReadCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueReadResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (serviceUuid == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(serviceUuid));
@@ -419,7 +419,7 @@ namespace Systemic.Unity.BluetoothLE
         ///                               It's usually best to request a response.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void WriteCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
+        public static void WriteCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultCallback onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (serviceUuid == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(serviceUuid));
@@ -452,7 +452,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="onValueChanged">Invoked when the value of the characteristic changes.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void SubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public static void SubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueChanged, NativeRequestResultCallback onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (serviceUuid == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(serviceUuid));
@@ -480,7 +480,7 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="instanceIndex">The instance index of the characteristic if listed more than once for the service, default is zero.</param>
         /// <param name="onResult">Invoked when the request has completed (successfully or not).</param>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static void UnsubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
+        public static void UnsubscribeCharacteristic(NativePeripheralHandle nativePeripheralHandle, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, NativeRequestResultCallback onResult)
         {
             if (!nativePeripheralHandle.IsValid) throw new ArgumentException("Invalid NativePeripheralHandle", nameof(nativePeripheralHandle));
             if (serviceUuid == Guid.Empty) throw new ArgumentException("Empty service UUID", nameof(serviceUuid));

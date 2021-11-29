@@ -11,7 +11,7 @@ namespace Systemic.Unity.Pixels
     {
         protected string SafeName => this != null ? name : "(destroyed)";
 
-        public IEnumerator UploadBulkDataAsync(byte[] bytes, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
+        public IEnumerator UploadBulkDataAsync(byte[] bytes, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
@@ -81,7 +81,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public IEnumerator DownloadBulkDataAsync(PixelOperationResultHandler<byte[]> onResult = null, PixelOperationProgressHandler onProgress = null)
+        public IEnumerator DownloadBulkDataAsync(OperationResultCallback<byte[]> onResult = null, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
@@ -166,7 +166,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public IEnumerator UploadDataSetAsync(DataSet set, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
+        public IEnumerator UploadDataSetAsync(DataSet set, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
@@ -248,7 +248,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, PixelOperationResultHandler<bool> onResult = null, PixelOperationProgressHandler onProgress = null)
+        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
@@ -314,7 +314,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, PixelOperationProgressHandler onProgress = null)
+        private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;

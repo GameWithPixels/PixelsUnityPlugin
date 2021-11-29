@@ -430,8 +430,10 @@ namespace Systemic.Unity.Pixels.Messages
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class SetName : IPixelMessage
     {
+        public const int NameMaxSize = 10;
+
         public MessageType type { get; set; } = MessageType.SetName;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = NameMaxSize)]
         public byte[] name;
     }
 

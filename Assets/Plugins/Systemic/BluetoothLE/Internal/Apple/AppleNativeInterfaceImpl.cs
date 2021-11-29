@@ -82,36 +82,36 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             "unsupported";
 #endif
 
-        delegate void CentralStateUpdateHandler(bool isAvailable);
-        delegate void DiscoveredPeripheralHandler(string advertisementDataJson);
-        delegate void PeripheralConnectionEventHandler(RequestIndex requestIndex, string peripheralId, int connectionEvent, int reason);
-        delegate void RequestStatusHandler(RequestIndex requestIndex, int errorCode);
-        delegate void RssiReadHandler(RequestIndex requestIndex, int rssi, int errorCode);
-        delegate void ValueReadHandler(RequestIndex requestIndex, IntPtr data, UIntPtr length, int errorCode);
+        delegate void CentralStateUpdateCallback(bool isAvailable);
+        delegate void DiscoveredPeripheralCallback(string advertisementDataJson);
+        delegate void PeripheralConnectionEventCallback(RequestIndex requestIndex, string peripheralId, int connectionEvent, int reason);
+        delegate void RequestStatusCallback(RequestIndex requestIndex, int errorCode);
+        delegate void RssiReadEventCallback(RequestIndex requestIndex, int rssi, int errorCode);
+        delegate void ValueReadCallback(RequestIndex requestIndex, IntPtr data, UIntPtr length, int errorCode);
 
         [DllImport(_libName)]
-        private static extern bool sgBleInitialize(CentralStateUpdateHandler onCentralStateUpdate);
+        private static extern bool sgBleInitialize(CentralStateUpdateCallback onCentralStateUpdate);
 
         [DllImport(_libName)]
         private static extern void sgBleShutdown();
 
         [DllImport(_libName)]
-        private static extern bool sgBleStartScan(string requiredServicesUuids, bool allowDuplicates, DiscoveredPeripheralHandler onDiscoveredPeripheral);
+        private static extern bool sgBleStartScan(string requiredServicesUuids, bool allowDuplicates, DiscoveredPeripheralCallback onDiscoveredPeripheral);
 
         [DllImport(_libName)]
         private static extern void sgBleStopScan();
 
         [DllImport(_libName)]
-        private static extern bool sgBleCreatePeripheral(string peripheralId, PeripheralConnectionEventHandler onConnectionEvent, RequestIndex requestIndex);
+        private static extern bool sgBleCreatePeripheral(string peripheralId, PeripheralConnectionEventCallback onConnectionEvent, RequestIndex requestIndex);
 
         [DllImport(_libName)]
         private static extern void sgBleReleasePeripheral(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern void sgBleConnectPeripheral(string peripheralId, string requiredServicesUuids, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleConnectPeripheral(string peripheralId, string requiredServicesUuids, RequestStatusCallback onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void sgBleDisconnectPeripheral(string peripheralId, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleDisconnectPeripheral(string peripheralId, RequestStatusCallback onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
         private static extern string sgBleGetPeripheralName(string peripheralId);
@@ -120,7 +120,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         private static extern int sgBleGetPeripheralMtu(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern void sgBleReadPeripheralRssi(string peripheralId, RssiReadHandler onRssiRead, RequestIndex requestIndex);
+        private static extern void sgBleReadPeripheralRssi(string peripheralId, RssiReadEventCallback onRssiRead, RequestIndex requestIndex);
 
         [DllImport(_libName)]
         private static extern string sgBleGetPeripheralDiscoveredServices(string peripheralId);
@@ -132,27 +132,27 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         private static extern ulong sgBleGetCharacteristicProperties(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex);
 
         [DllImport(_libName)]
-        private static extern void sgBleReadCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadHandler onReadChanged, RequestIndex requestIndex);
+        private static extern void sgBleReadCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadCallback onReadChanged, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void sgBleWriteCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleWriteCharacteristicValue(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusCallback onRequestStatus, RequestIndex requestIndex);
 
         [DllImport(_libName)]
-        private static extern void sgBleSetNotifyCharacteristic(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadHandler onValueChanged, RequestStatusHandler onRequestStatus, RequestIndex requestIndex);
+        private static extern void sgBleSetNotifyCharacteristic(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadCallback onValueChanged, RequestStatusCallback onRequestStatus, RequestIndex requestIndex);
 
         #endregion
 
         #region Handlers management
 
-        static NativeBluetoothEventHandler _onBluetoothEvent;
-        static DiscoveredPeripheralHandler _onDiscoveredPeripheral; // We can have only one scan at a time, so one handler
-        static Dictionary<RequestIndex, NativeConnectionEventHandler> _onConnectionEventHandlers = new Dictionary<RequestIndex, NativeConnectionEventHandler>();
-        static Dictionary<RequestIndex, (RequestOperation, NativeRequestResultHandler)> _onRequestStatusHandlers = new Dictionary<RequestIndex, (RequestOperation, NativeRequestResultHandler)>();
-        static Dictionary<RequestIndex, NativeValueRequestResultHandler<int>> _onRssiReadHandlers = new Dictionary<RequestIndex, NativeValueRequestResultHandler<int>>();
-        static Dictionary<RequestIndex, NativeValueRequestResultHandler<byte[]>> _onValueReadHandlers = new Dictionary<RequestIndex, NativeValueRequestResultHandler<byte[]>>();
+        static NativeBluetoothCallback _onBluetoothEvent;
+        static DiscoveredPeripheralCallback _onDiscoveredPeripheral; // We can have only one scan at a time, so one handler
+        static Dictionary<RequestIndex, NativeConnectionEventCallback> _onConnectionEventHandlers = new Dictionary<RequestIndex, NativeConnectionEventCallback>();
+        static Dictionary<RequestIndex, (RequestOperation, NativeRequestResultCallback)> _onRequestStatusHandlers = new Dictionary<RequestIndex, (RequestOperation, NativeRequestResultCallback)>();
+        static Dictionary<RequestIndex, NativeValueRequestResultCallback<int>> _onRssiReadHandlers = new Dictionary<RequestIndex, NativeValueRequestResultCallback<int>>();
+        static Dictionary<RequestIndex, NativeValueRequestResultCallback<byte[]>> _onValueReadHandlers = new Dictionary<RequestIndex, NativeValueRequestResultCallback<byte[]>>();
         static volatile RequestIndex _requestIndex;
 
-        [MonoPInvokeCallback(typeof(CentralStateUpdateHandler))]
+        [MonoPInvokeCallback(typeof(CentralStateUpdateCallback))]
         static void OnCentralStateUpdate(bool available)
         {
             try
@@ -165,7 +165,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        [MonoPInvokeCallback(typeof(DiscoveredPeripheralHandler))]
+        [MonoPInvokeCallback(typeof(DiscoveredPeripheralCallback))]
         static void OnDiscoveredPeripheral(string advertisementDataJson)
         {
             try
@@ -178,13 +178,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        [MonoPInvokeCallback(typeof(PeripheralConnectionEventHandler))]
+        [MonoPInvokeCallback(typeof(PeripheralConnectionEventCallback))]
         static void OnPeripheralConnectionEvent(RequestIndex requestIndex, string peripheralId, int connectionEvent, int reason)
         {
             try
             {
                 // Get C# callback
-                NativeConnectionEventHandler handler;
+                NativeConnectionEventCallback handler;
                 lock (_onConnectionEventHandlers)
                 {
                     _onConnectionEventHandlers.TryGetValue(requestIndex, out handler);
@@ -207,7 +207,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        [MonoPInvokeCallback(typeof(RequestStatusHandler))]
+        [MonoPInvokeCallback(typeof(RequestStatusCallback))]
         static void OnRequestStatus(RequestIndex requestIndex, int errorCode)
         {
             try
@@ -216,10 +216,10 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
 
                 // Get C# callback
                 RequestOperation op;
-                NativeRequestResultHandler handler;
+                NativeRequestResultCallback handler;
                 lock (_onConnectionEventHandlers)
                 {
-                    if (_onRequestStatusHandlers.TryGetValue(requestIndex, out (RequestOperation, NativeRequestResultHandler) item))
+                    if (_onRequestStatusHandlers.TryGetValue(requestIndex, out (RequestOperation, NativeRequestResultCallback) item))
                     {
                         _onRequestStatusHandlers.Remove(requestIndex);
                     }
@@ -253,7 +253,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        [MonoPInvokeCallback(typeof(RssiReadHandler))]
+        [MonoPInvokeCallback(typeof(RssiReadEventCallback))]
         static void OnRssiReadHandler(RequestIndex requestIndex, int rssi, int errorCode)
         {
             try
@@ -261,7 +261,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 var err = (AppleBluetoothError)errorCode;
 
                 // Get C# callback
-                NativeValueRequestResultHandler<int> handler;
+                NativeValueRequestResultCallback<int> handler;
                 lock (_onRssiReadHandlers)
                 {
                     _onRssiReadHandlers.TryGetValue(requestIndex, out handler);
@@ -294,13 +294,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        [MonoPInvokeCallback(typeof(ValueReadHandler))]
+        [MonoPInvokeCallback(typeof(ValueReadCallback))]
         static void OnValueReadHandler(RequestIndex requestIndex, IntPtr data, UIntPtr length, int errorCode)
         {
             try
             {
                 // Get C# callback
-                NativeValueRequestResultHandler<byte[]> handler;
+                NativeValueRequestResultCallback<byte[]> handler;
                 lock (_onValueReadHandlers)
                 {
                     _onValueReadHandlers.TryGetValue(requestIndex, out handler);
@@ -324,7 +324,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
 
         #endregion
 
-        public bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
+        public bool Initialize(NativeBluetoothCallback onBluetoothEvent)
         {
             _onBluetoothEvent = onBluetoothEvent;
             return sgBleInitialize(OnCentralStateUpdate);
@@ -353,12 +353,12 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         }
 
         // Not available on Apple systems
-        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventCallback onConnectionEvent)
         {
             return null;
         }
 
-        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventCallback onConnectionEvent)
         {
             var requestIndex = Interlocked.Increment(ref _requestIndex);
             lock (_onConnectionEventHandlers)
@@ -382,14 +382,14 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         }
 
         //TODO on iOS connect waits indefinitely and autoReconnect is ignored
-        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultCallback onResult)
         {
             var requestIndex = SetRequestHandler(RequestOperation.ConnectPeripheral, onResult);
 
             sgBleConnectPeripheral(GetPeripheralId(peripheralHandle), requiredServicesUuids, OnRequestStatus, requestIndex);
         }
 
-        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
+        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultCallback onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheralHandle;
             var requestIndex = SetRequestHandler(RequestOperation.DisconnectPeripheral, onResult);
@@ -408,13 +408,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             return sgBleGetPeripheralMtu(GetPeripheralId(peripheralHandle));
         }
 
-        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultCallback<int> onMtuResult)
         {
             // No support for MTU request with Apple Core Bluetooth, we just return the automatically negotiated MTU
             onMtuResult(GetPeripheralMtu(peripheralHandle), RequestStatus.NotSupported);
         }
 
-        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<int> onRssiRead)
+        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultCallback<int> onRssiRead)
         {
             var requestIndex = Interlocked.Increment(ref _requestIndex);
             lock (_onRssiReadHandlers)
@@ -440,7 +440,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             return (CharacteristicProperties)sgBleGetCharacteristicProperties(GetPeripheralId(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex);
         }
 
-        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueRead)
+        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueRead)
         {
             var requestIndex = Interlocked.Increment(ref _requestIndex);
             lock (_onValueReadHandlers)
@@ -452,7 +452,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             //TODO remove handler once value is read
         }
 
-        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
+        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultCallback onResult)
         {
             var requestIndex = SetRequestHandler(RequestOperation.WriteCharacteristic, onResult);
 
@@ -467,7 +467,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             }
         }
 
-        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueChanged, NativeRequestResultCallback onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheralHandle;
             var requestIndex = SetRequestHandler(RequestOperation.SubscribeCharacteristic, onResult);
@@ -480,7 +480,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             sgBleSetNotifyCharacteristic(pxPeripheral.PeripheralId, serviceUuid, characteristicUuid, instanceIndex, OnValueReadHandler, OnRequestStatus, requestIndex);
         }
 
-        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
+        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultCallback onResult)
         {
             var pxPeripheral = (NativePxPeripheral)peripheralHandle;
             var requestIndex = SetRequestHandler(RequestOperation.UnsubscribeCharacteristic, onResult);
@@ -498,7 +498,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
             return ((NativePxPeripheral)peripheralHandle).PeripheralId;
         }
 
-        private RequestIndex SetRequestHandler(RequestOperation operation, NativeRequestResultHandler onResult)
+        private RequestIndex SetRequestHandler(RequestOperation operation, NativeRequestResultCallback onResult)
         {
             var requestIndex = Interlocked.Increment(ref _requestIndex);
             lock (_onRequestStatusHandlers)

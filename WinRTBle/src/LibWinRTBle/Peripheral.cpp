@@ -257,7 +257,7 @@ namespace Systemic::BluetoothLE
         co_return result;
     }
     
-    void Peripheral::internalDisconnect(ConnectionEventReason reason, bool triggeredByDevice)
+    void Peripheral::internalDisconnect(ConnectionEventReason reason, bool fromDevice)
     {
         BluetoothLEDevice device{ nullptr };
         GattSession session{ nullptr };
@@ -265,7 +265,7 @@ namespace Systemic::BluetoothLE
 
         std::lock_guard lock{ _connectOpMtx };
 
-        if (!triggeredByDevice)
+        if (!fromDevice)
         {
             // Cancel any on-going connect operation
             ++_connectCounter;
@@ -276,9 +276,9 @@ namespace Systemic::BluetoothLE
         assert(_session != nullptr);
 
         // Don't remove device as want it to reconnect automatically
-        if (triggeredByDevice && (_session.MaintainConnection())) return;
+        if (fromDevice && (_session.MaintainConnection())) return;
 
-        if (!triggeredByDevice)
+        if (!fromDevice)
         {
             // Notify that we are disconnecting
             _connectionEventsQueue.emplace_back(ConnectionEvent::Disconnecting, ConnectionEventReason::Success);

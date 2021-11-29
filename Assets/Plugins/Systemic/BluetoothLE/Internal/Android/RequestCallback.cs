@@ -6,9 +6,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Android
     internal sealed class RequestCallback : AndroidJavaProxy
     {
         RequestOperation _operation;
-        NativeRequestResultHandler _onResult;
+        NativeRequestResultCallback _onResult;
 
-        public RequestCallback(RequestOperation operation, NativeRequestResultHandler onResult)
+        public RequestCallback(RequestOperation operation, NativeRequestResultCallback onResult)
             : base("com.systemic.bluetoothle.Peripheral$RequestCallback")
             => (_operation, _onResult) = (operation, onResult);
 

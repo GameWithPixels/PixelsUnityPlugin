@@ -24,13 +24,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
         sealed class NativePeripheral : INativePeripheralHandleImpl
         {
             // Keep references to all callbacks so they are not reclaimed by the GC
-            PeripheralConnectionEventHandler _peripheralConnectionStatusChanged;
-            HashSet<RequestStatusHandler> _requestStatusHandlers = new HashSet<RequestStatusHandler>();
-            Dictionary<string, ValueChangedHandler> _valueChangedHandlers = new Dictionary<string, ValueChangedHandler>();
+            PeripheralConnectionEventCallback _peripheralConnectionStatusChanged;
+            HashSet<RequestStatusCallback> _requestStatusHandlers = new HashSet<RequestStatusCallback>();
+            Dictionary<string, ValueChangedCallback> _valueChangedHandlers = new Dictionary<string, ValueChangedCallback>();
 
             static HashSet<NativePeripheral> _releasedPeripherals = new HashSet<NativePeripheral>();
 
-            public NativePeripheral(ulong bluetoothAddress, string name, PeripheralConnectionEventHandler onPeripheralConnectionStatusChanged)
+            public NativePeripheral(ulong bluetoothAddress, string name, PeripheralConnectionEventCallback onPeripheralConnectionStatusChanged)
                 => (BluetoothAddress, Name, _peripheralConnectionStatusChanged) = (bluetoothAddress, name, onPeripheralConnectionStatusChanged);
 
             public ulong BluetoothAddress { get; }
@@ -39,7 +39,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
 
             public bool IsValid => BluetoothAddress != 0;
 
-            public void KeepRequestHandler(RequestStatusHandler onRequestStatus)
+            public void KeepRequestHandler(RequestStatusCallback onRequestStatus)
             {
                 lock (_requestStatusHandlers)
                 {
@@ -47,7 +47,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
                 }
             }
 
-            public void ForgetRequestHandler(RequestStatusHandler onRequestStatus)
+            public void ForgetRequestHandler(RequestStatusCallback onRequestStatus)
             {
                 lock (_requestStatusHandlers)
                 {
@@ -57,7 +57,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
                 CheckReleased();
             }
 
-            public void KeepValueChangedHandler(string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged)
+            public void KeepValueChangedHandler(string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedCallback onValueChanged)
             {
                 lock (_valueChangedHandlers)
                 {
@@ -125,36 +125,36 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             "unsupported";
 #endif
 
-        delegate void CentralStateUpdateHandler(bool isAvailable);
-        delegate void DiscoveredPeripheralHandler([MarshalAs(UnmanagedType.LPStr)] string advertisementDataJson);
-        delegate void RequestStatusHandler(RequestStatus errorCode);
-        delegate void PeripheralConnectionEventHandler(ulong peripheralId, int connectionEvent, int reason);
-        delegate void ValueReadHandler(IntPtr data, UIntPtr length, RequestStatus errorCode);
-        delegate void ValueChangedHandler(IntPtr data, UIntPtr length);
+        delegate void CentralStateUpdateCallback(bool isAvailable);
+        delegate void DiscoveredPeripheralCallback([MarshalAs(UnmanagedType.LPStr)] string advertisementDataJson);
+        delegate void RequestStatusCallback(RequestStatus errorCode);
+        delegate void PeripheralConnectionEventCallback(ulong peripheralId, int connectionEvent, int reason);
+        delegate void ValueReadCallback(IntPtr data, UIntPtr length, RequestStatus errorCode);
+        delegate void ValueChangedCallback(IntPtr data, UIntPtr length);
 
         [DllImport(_libName)]
-        private static extern bool sgBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateHandler onCentralStateUpdate);
+        private static extern bool sgBleInitialize(bool apartmentSingleThreaded, CentralStateUpdateCallback onCentralStateUpdate);
 
         [DllImport(_libName)]
         private static extern void sgBleShutdown();
 
         [DllImport(_libName)]
-        private static extern bool sgBleStartScan(string requiredServicesUuids, DiscoveredPeripheralHandler onDiscoveredPeripheral);
+        private static extern bool sgBleStartScan(string requiredServicesUuids, DiscoveredPeripheralCallback onDiscoveredPeripheral);
 
         [DllImport(_libName)]
         private static extern void sgBleStopScan();
 
         [DllImport(_libName)]
-        private static extern bool sgBleCreatePeripheral(ulong peripheralId, PeripheralConnectionEventHandler onConnectionEvent);
+        private static extern bool sgBleCreatePeripheral(ulong peripheralId, PeripheralConnectionEventCallback onConnectionEvent);
 
         [DllImport(_libName)]
         private static extern void sgBleReleasePeripheral(ulong peripheralId);
 
         [DllImport(_libName)]
-        private static extern void sgBleConnectPeripheral(ulong peripheralId, string requiredServicesUuids, bool autoReconnect, RequestStatusHandler onRequestStatus);
+        private static extern void sgBleConnectPeripheral(ulong peripheralId, string requiredServicesUuids, bool autoReconnect, RequestStatusCallback onRequestStatus);
 
         [DllImport(_libName)]
-        private static extern void sgBleDisconnectPeripheral(ulong peripheralId, RequestStatusHandler onRequestStatus);
+        private static extern void sgBleDisconnectPeripheral(ulong peripheralId, RequestStatusCallback onRequestStatus);
 
         [DllImport(_libName)]
         private static extern string sgBleGetPeripheralName(ulong peripheralId);
@@ -172,23 +172,23 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
         private static extern ulong sgBleGetCharacteristicProperties(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex);
 
         [DllImport(_libName)]
-        private static extern void sgBleReadCharacteristicValue(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadHandler onValueRead);
+        private static extern void sgBleReadCharacteristicValue(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueReadCallback onValueRead);
 
         [DllImport(_libName)]
-        private static extern void sgBleWriteCharacteristicValue(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusHandler onRequestStatus);
+        private static extern void sgBleWriteCharacteristicValue(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, IntPtr data, UIntPtr length, bool withoutResponse, RequestStatusCallback onRequestStatus);
 
         [DllImport(_libName)]
-        private static extern void sgBleSetNotifyCharacteristic(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedHandler onValueChanged, RequestStatusHandler onRequestStatus);
+        private static extern void sgBleSetNotifyCharacteristic(ulong peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex, ValueChangedCallback onValueChanged, RequestStatusCallback onRequestStatus);
 
         #endregion
 
         // Keep a reference to state update and discovery callbacks so they are not reclaimed by the GC
-        private static CentralStateUpdateHandler _onCentralStateUpdate;
-        private static DiscoveredPeripheralHandler _onDiscoveredPeripheral;
+        private static CentralStateUpdateCallback _onCentralStateUpdate;
+        private static DiscoveredPeripheralCallback _onDiscoveredPeripheral;
 
-        public bool Initialize(NativeBluetoothEventHandler onBluetoothEvent)
+        public bool Initialize(NativeBluetoothCallback onBluetoothEvent)
         {
-            CentralStateUpdateHandler onCentralStateUpdate = available => onBluetoothEvent(available ? BluetoothStatus.Enabled : BluetoothStatus.Disabled);
+            CentralStateUpdateCallback onCentralStateUpdate = available => onBluetoothEvent(available ? BluetoothStatus.Enabled : BluetoothStatus.Disabled);
             bool success = sgBleInitialize(true, onCentralStateUpdate);
             if (success)
             {
@@ -205,7 +205,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
 
         public bool StartScan(string requiredServiceUuids, Action<INativeDevice, NativeAdvertisementDataJson> onScannedPeripheral)
         {
-            DiscoveredPeripheralHandler onDiscoveredPeripheral = jsonStr =>
+            DiscoveredPeripheralCallback onDiscoveredPeripheral = jsonStr =>
             {
                 try
                 {
@@ -233,9 +233,9 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             _onDiscoveredPeripheral = null;
         }
 
-        private INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, string debugName, NativeConnectionEventHandler onConnectionEvent)
+        private INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, string debugName, NativeConnectionEventCallback onConnectionEvent)
         {
-            PeripheralConnectionEventHandler peripheralConnectionEventHandler = (ulong peripheralId, int connectionEvent, int reason) =>
+            PeripheralConnectionEventCallback peripheralConnectionEventHandler = (ulong peripheralId, int connectionEvent, int reason) =>
             {
                 try
                 {
@@ -251,12 +251,12 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return success ? new NativePeripheral(bluetoothAddress, debugName, peripheralConnectionEventHandler) : null;
         }
 
-        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventCallback onConnectionEvent)
         {
             return CreatePeripheral(bluetoothAddress, bluetoothAddress.ToString(), onConnectionEvent);
         }
 
-        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventHandler onConnectionEvent)
+        public INativePeripheralHandleImpl CreatePeripheral(INativeDevice device, NativeConnectionEventCallback onConnectionEvent)
         {
             var p = (NativeScannedPeripheral)device;
             return CreatePeripheral(p.BluetoothAddress, p.Name, onConnectionEvent);
@@ -269,13 +269,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             sgBleReleasePeripheral(GetPeripheralAddress(peripheralHandle));
         }
 
-        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultHandler onResult)
+        public void ConnectPeripheral(INativePeripheralHandleImpl peripheralHandle, string requiredServicesUuids, bool autoReconnect, NativeRequestResultCallback onResult)
         {
             sgBleConnectPeripheral(GetPeripheralAddress(peripheralHandle), requiredServicesUuids, autoReconnect,
                 GetRequestStatusHandler(RequestOperation.ConnectPeripheral, peripheralHandle, onResult));
         }
 
-        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
+        public void DisconnectPeripheral(INativePeripheralHandleImpl peripheralHandle, NativeRequestResultCallback onResult)
         {
             var periph = (NativePeripheral)peripheralHandle;
             sgBleDisconnectPeripheral(GetPeripheralAddress(peripheralHandle),
@@ -294,13 +294,13 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return sgBleGetPeripheralMtu(GetPeripheralAddress(peripheralHandle));
         }
 
-        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultHandler<int> onMtuResult)
+        public void RequestPeripheralMtu(INativePeripheralHandleImpl peripheralHandle, int mtu, NativeValueRequestResultCallback<int> onMtuResult)
         {
             // No support for MTU request with WinRT Bluetooth, we just return the automatically negotiated MTU
             onMtuResult(GetPeripheralMtu(peripheralHandle), RequestStatus.NotSupported);
         }
 
-        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<int> onRssiRead)
+        public void ReadPeripheralRssi(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultCallback<int> onRssiRead)
         {
             // No support for reading RSSI of connected device with WinRT Bluetooth
             onRssiRead(int.MinValue, RequestStatus.NotSupported);
@@ -321,7 +321,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return (CharacteristicProperties)sgBleGetCharacteristicProperties(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex);
         }
 
-        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueRead)
+        public void ReadCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueRead)
         {
             var valueReadHandler = GetValueReadHandler(peripheralHandle, onValueRead);
             var periph = (NativePeripheral)peripheralHandle;
@@ -329,7 +329,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             sgBleReadCharacteristicValue(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, valueReadHandler);
         }
 
-        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultHandler onResult)
+        public void WriteCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, byte[] data, bool withoutResponse, NativeRequestResultCallback onResult)
         {
             var (ptr, length) = UnmanagedBuffer.AllocUnmanagedBuffer(data);
             try
@@ -343,7 +343,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             }
         }
 
-        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultHandler<byte[]> onValueChanged, NativeRequestResultHandler onResult)
+        public void SubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeValueRequestResultCallback<byte[]> onValueChanged, NativeRequestResultCallback onResult)
         {
             var valueChangedHandler = GetValueChangedHandler(peripheralHandle, onValueChanged);
             var periph = (NativePeripheral)peripheralHandle;
@@ -352,7 +352,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
                 GetRequestStatusHandler(RequestOperation.SubscribeCharacteristic, peripheralHandle, onResult));
         }
 
-        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultHandler onResult)
+        public void UnsubscribeCharacteristic(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex, NativeRequestResultCallback onResult)
         {
             sgBleSetNotifyCharacteristic(GetPeripheralAddress(peripheralHandle), serviceUuid, characteristicUuid, instanceIndex, null,
                 GetRequestStatusHandler(RequestOperation.UnsubscribeCharacteristic, peripheralHandle, onResult));
@@ -365,10 +365,10 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return ((NativePeripheral)peripheralHandle).BluetoothAddress;
         }
 
-        private RequestStatusHandler GetRequestStatusHandler(RequestOperation operation, INativePeripheralHandleImpl peripheralHandle, NativeRequestResultHandler onResult)
+        private RequestStatusCallback GetRequestStatusHandler(RequestOperation operation, INativePeripheralHandleImpl peripheralHandle, NativeRequestResultCallback onResult)
         {
             var periph = (NativePeripheral)peripheralHandle;
-            RequestStatusHandler onRequestStatus = null;
+            RequestStatusCallback onRequestStatus = null;
             onRequestStatus = errorCode =>
             {
                 try
@@ -398,10 +398,10 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return onRequestStatus;
         }
 
-        private ValueReadHandler GetValueReadHandler(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<byte[]> onValueRead)
+        private ValueReadCallback GetValueReadHandler(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultCallback<byte[]> onValueRead)
         {
             var periph = (NativePeripheral)peripheralHandle;
-            ValueReadHandler valueChangedHandler = (IntPtr data, UIntPtr length, RequestStatus status) =>
+            ValueReadCallback valueChangedHandler = (IntPtr data, UIntPtr length, RequestStatus status) =>
             {
                 try
                 {
@@ -416,10 +416,10 @@ namespace Systemic.Unity.BluetoothLE.Internal.Windows
             return valueChangedHandler;
         }
 
-        private ValueChangedHandler GetValueChangedHandler(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultHandler<byte[]> onValueChanged)
+        private ValueChangedCallback GetValueChangedHandler(INativePeripheralHandleImpl peripheralHandle, NativeValueRequestResultCallback<byte[]> onValueChanged)
         {
             var periph = (NativePeripheral)peripheralHandle;
-            ValueChangedHandler valueChangedHandler = (IntPtr data, UIntPtr length) =>
+            ValueChangedCallback valueChangedHandler = (IntPtr data, UIntPtr length) =>
             {
                 try
                 {

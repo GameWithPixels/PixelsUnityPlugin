@@ -45,7 +45,7 @@ namespace Systemic.Unity.Examples
         [SerializeField]
         Button _shutdownBtn = null;
 
-        [Tooltip("Buttons for triggering various Bluetooth operations")]
+        [Tooltip("Buttons for running various Bluetooth operations")]
         [SerializeField]
         Button[] _operationsBtn = null;
 

@@ -158,7 +158,7 @@ extern "C"
      * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
      *                              should support, may be null or empty.
      * @param autoReconnect Whether to automatically reconnect after an unexpected disconnection
-     *                      (i.e. not triggered by a call to sgBleDisconnectPeripheral()).
+     *                      (i.e. not requested by a call to sgBleDisconnectPeripheral()).
      * @param onRequestStatus Called when the request has completed (successfully or not).
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */

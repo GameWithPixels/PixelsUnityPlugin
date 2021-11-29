@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, SGBleConnectionEvent)
     /// Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect.
     SGBleConnectionEventConnecting,
 
-    /// Raised once the peripheral is connected, at which point service discovery is triggered.
+    /// Raised once the peripheral is connected, just before services are being discovered.
     SGBleConnectionEventConnected,
 
     /// Raised when the peripheral fails to connect, the reason of failure is also given.

@@ -108,7 +108,7 @@ namespace Systemic.Unity.BluetoothLE
             RequestOperation operation,
             NativePeripheralHandle nativeHandle,
             float timeoutSec,
-            Action<NativePeripheralHandle, NativeRequestResultHandler> action)
+            Action<NativePeripheralHandle, NativeRequestResultCallback> action)
             : this(operation, nativeHandle, timeoutSec)
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
