@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['data_614',['data',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html#a9de5ed73b6752f1f9961be2da1cc349d',1,'Systemic::BluetoothLE::ManufacturerData::data()'],['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#a7fe7bbdb86decc5f432459f22edcddfb',1,'Systemic::BluetoothLE::AdvertisementData::data() const']]],
-  ['datatype_615',['dataType',['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#aa65974f044063fad444a965bfe47e475',1,'Systemic::BluetoothLE::AdvertisementData']]],
-  ['deviceid_616',['deviceId',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aadfc64f111572d79cf7636f5ba6ec65f',1,'Systemic::BluetoothLE::Peripheral']]],
-  ['disconnect_617',['Disconnect',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#a33d141dd40658dffe6f793e8064dc91d',1,'Systemic::Unity::Examples::BleController']]],
-  ['disconnect_618',['disconnect',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a94708aeb9ae19b07a3d214734c388b99',1,'com.systemic.bluetoothle.Peripheral.disconnect()'],['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920',1,'Systemic::BluetoothLE::Peripheral::disconnect()']]],
-  ['disconnectperipheral_619',['DisconnectPeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab16ccba92aeda0e7fb4fde50daeef131',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['disconnectperipheralasync_620',['DisconnectPeripheralAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ae8766065b822b9e52305061dd6b80604',1,'Systemic::Unity::BluetoothLE::Central']]]
+  ['calibrateface_697',['CalibrateFace',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a42f50dfd7dccf10dbc1fff26df7ec729',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['cancelqueue_698',['cancelQueue',['../interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7',1,'SGBlePeripheralQueue']]],
+  ['cannotify_699',['canNotify',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad8d1b0d9e43a088d4f185af441a2e121',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['canread_700',['canRead',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a3a75a21a14334352867788c3031cdce9',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['canwrite_701',['canWrite',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad6c3ae19535ebab9bf93577cead476ae',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['clearavailablepixels_702',['ClearAvailablePixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1a08f9f2273cf654b66dd6ab9b6e3f54',1,'Systemic::Unity::Pixels::DiceBag']]],
+  ['clearperipherals_703',['clearPeripherals',['../interface_s_g_ble_central_manager_delegate.html#aa93bf7d3373eb28ddc76ff6b8dbfa8a4',1,'SGBleCentralManagerDelegate']]],
+  ['combinecolors_704',['CombineColors',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a8209d3eb2e84c314630ab261f41a4f88',1,'Systemic::Unity::Pixels::ColorUtils']]],
+  ['companyid_705',['companyId',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html#a73010e136aced47e171aadca1a071fcf',1,'Systemic::BluetoothLE::ManufacturerData']]],
+  ['connect_706',['Connect',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#afa5211f76c9f52dea8b473a331292593',1,'Systemic.Unity.Examples.BleController.Connect()'],['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html#a60a181ff6d1f193ac38fbab31d098f2c',1,'Systemic.Unity.Examples.UIPixelPanel.Connect()']]],
+  ['connect_707',['connect',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ac05a7060117e2e25871edf551ef2a0ce',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['connectasync_708',['connectAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9',1,'Systemic::BluetoothLE::Peripheral']]],
+  ['connectionresultcallback_709',['ConnectionResultCallback',['../namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17',1,'Systemic::Unity::Pixels']]],
+  ['connectionstatechangedeventhandler_710',['ConnectionStateChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12',1,'Systemic::Unity::Pixels']]],
+  ['connectperipheral_711',['ConnectPeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ad9b356ac6cc4a834cdee52a4f2201190',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['connectperipheralasync_712',['ConnectPeripheralAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abeb433e3dd13e6a7f4c11ee9abd39b6e',1,'Systemic::Unity::BluetoothLE::Central']]],
+  ['connectpixel_713',['ConnectPixel',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a4aa668d3ceeecec73c34b3772ff9ed42',1,'Systemic::Unity::Pixels::DiceBag']]],
+  ['connectpixels_714',['ConnectPixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a770b4e8ab01602e05f3e62506277f44e',1,'Systemic::Unity::Pixels::DiceBag']]],
+  ['copycharacteristics_715',['copyCharacteristics',['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a67233e62ec82718978f539417b481ed5',1,'Systemic::BluetoothLE::Service']]],
+  ['copydiscoveredperipherals_716',['copyDiscoveredPeripherals',['../class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a7ca9bddf6fbf8be840c50fefaca3b6b4',1,'Systemic::BluetoothLE::Scanner']]],
+  ['copydiscoveredservices_717',['copyDiscoveredServices',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ab253d12f92fc8d9cda2eb2180a25db09',1,'Systemic::BluetoothLE::Peripheral']]],
+  ['copytocombuffer_718',['copyToComBuffer',['../namespace_systemic_1_1_com_helper.html#a4aa95c08028b4c98fc5be86831df76ff',1,'Systemic::ComHelper::copyToComBuffer(const char *str)'],['../namespace_systemic_1_1_com_helper.html#ae004e6d26ea18865718d0b4f8ca9d88d',1,'Systemic::ComHelper::copyToComBuffer(const wchar_t *str)']]],
+  ['createperipheral_719',['CreatePeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ac36a5fd72fdc1db97fc6a7015c6293ba',1,'Systemic.Unity.BluetoothLE.NativeInterface.CreatePeripheral(ulong bluetoothAddress, NativeConnectionEventCallback onConnectionEventChanged)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a9c7b3545e08d783e5a2fcb9e96967b20',1,'Systemic.Unity.BluetoothLE.NativeInterface.CreatePeripheral(ScannedPeripheral scannedPeripheral, NativeConnectionEventCallback onConnectionEvent)']]]
 ];

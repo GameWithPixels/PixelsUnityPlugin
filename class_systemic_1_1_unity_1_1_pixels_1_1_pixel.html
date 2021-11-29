@@ -88,19 +88,21 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_unity_1_1_pixels_1_
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Systemic.Unity.Pixels.Pixel Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> die.  
+ <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Systemic.Unity.Pixels.Pixel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_systemic_1_1_unity_1_1_pixels_1_1_pixel__inherit__graph.png" border="0" usemap="#a_systemic_8_unity_8_pixels_8_pixel_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_systemic_8_unity_8_pixels_8_pixel_inherit__map" id="a_systemic_8_unity_8_pixels_8_pixel_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,184,107"/>
+<area shape="rect" title="Represents a Pixel die." alt="" coords="5,80,184,107"/>
 <area shape="rect" title=" " alt="" coords="39,5,151,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -108,238 +110,1735 @@ Inheritance diagram for Systemic.Unity.Pixels.Pixel:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html">IOperationEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for an enumerator handling an asynchronous operation with a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html">SendMessageAndProcessResponseEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator that first sends a message to a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>, then waits for a message of the given type as the response and pass it to a user callback.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html">SendMessageAndProcessResponseWithValueEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator that first sends a message to a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>, then waits for a message of the given type as the response and pass it to a user callback. The value returned by the callback is stored in the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html#ab774528bb036e02634ce43bff2479eb8">Value</a> property.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html">SendMessageAndWaitForResponseEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator that first sends a message to a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> and then waits for a message of the given type as the response.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html">WaitForMessageEnumerator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator that waits until the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> receives a message of the given type.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad5c5a95d7aab70e8b75d940ee28974b1"><td class="memItemLeft" align="right" valign="top"><a id="ad5c5a95d7aab70e8b75d940ee28974b1"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>StateChangedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> newState, int newFace)</td></tr>
-<tr class="separator:ad5c5a95d7aab70e8b75d940ee28974b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5545cb466c4549c886fd0209890118a"><td class="memItemLeft" align="right" valign="top"><a id="ae5545cb466c4549c886fd0209890118a"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectionStateChangedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a> oldState, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a> newState)</td></tr>
-<tr class="separator:ae5545cb466c4549c886fd0209890118a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af782a2c6045767781f9755e072796059"><td class="memItemLeft" align="right" valign="top"><a id="af782a2c6045767781f9755e072796059"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>ErrorEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, PixelLastError error)</td></tr>
-<tr class="separator:af782a2c6045767781f9755e072796059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a920a9bce0900ee8498176d1230052e1c"><td class="memItemLeft" align="right" valign="top"><a id="a920a9bce0900ee8498176d1230052e1c"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>AppearanceChangedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int newFaceCount, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> newDesign)</td></tr>
-<tr class="separator:a920a9bce0900ee8498176d1230052e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5217d1bdb40365f782906a8ce01c484"><td class="memItemLeft" align="right" valign="top"><a id="ad5217d1bdb40365f782906a8ce01c484"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>BatteryLevelChangedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, float? level, bool? charging)</td></tr>
-<tr class="separator:ad5217d1bdb40365f782906a8ce01c484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec1587d8922da6daead00aaf58ea144"><td class="memItemLeft" align="right" valign="top"><a id="aaec1587d8922da6daead00aaf58ea144"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>RssiChangedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int? rssi)</td></tr>
-<tr class="separator:aaec1587d8922da6daead00aaf58ea144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d80ee3d72d67b126210c916ccde680"><td class="memItemLeft" align="right" valign="top"><a id="a76d80ee3d72d67b126210c916ccde680"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>NotifyUserReceivedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, bool cancel, string text, System.Action&lt; bool &gt; ackCallback)</td></tr>
-<tr class="separator:a76d80ee3d72d67b126210c916ccde680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ec7b0025813bc8beba5ead99274668"><td class="memItemLeft" align="right" valign="top"><a id="a72ec7b0025813bc8beba5ead99274668"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>PlayAudioClipReceivedEvent</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, uint clipId)</td></tr>
-<tr class="separator:a72ec7b0025813bc8beba5ead99274668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f4be540c572a2ecfa659e4409fa8351"><td class="memItemLeft" align="right" valign="top"><a id="a7f4be540c572a2ecfa659e4409fa8351"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>UploadBulkDataAsync</b> (byte[] bytes, PixelOperationResultHandler&lt; bool &gt; onResult=null, PixelOperationProgressHandler onProgress=null)</td></tr>
-<tr class="separator:a7f4be540c572a2ecfa659e4409fa8351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed86917c369728cff8661efd909635a"><td class="memItemLeft" align="right" valign="top"><a id="a3ed86917c369728cff8661efd909635a"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>DownloadBulkDataAsync</b> (PixelOperationResultHandler&lt; byte[]&gt; onResult=null, PixelOperationProgressHandler onProgress=null)</td></tr>
-<tr class="separator:a3ed86917c369728cff8661efd909635a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a858ba1cea3029b93fbde6c06bb76c9bc"><td class="memItemLeft" align="right" valign="top"><a id="a858ba1cea3029b93fbde6c06bb76c9bc"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>UploadDataSetAsync</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a> set, PixelOperationResultHandler&lt; bool &gt; onResult=null, PixelOperationProgressHandler onProgress=null)</td></tr>
-<tr class="separator:a858ba1cea3029b93fbde6c06bb76c9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a823723a6523d37ec6dd5eb3d826e9160"><td class="memItemLeft" align="right" valign="top"><a id="a823723a6523d37ec6dd5eb3d826e9160"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>PlayTestAnimationAsync</b> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a> testAnimSet, PixelOperationResultHandler&lt; bool &gt; onResult=null, PixelOperationProgressHandler onProgress=null)</td></tr>
-<tr class="separator:a823723a6523d37ec6dd5eb3d826e9160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ccf30bb901060a8f7549ba986914dc7"><td class="memItemLeft" align="right" valign="top"><a id="a4ccf30bb901060a8f7549ba986914dc7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PlayAnimation</b> (int animationIndex)</td></tr>
-<tr class="separator:a4ccf30bb901060a8f7549ba986914dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a4ce15403e58f0735c3b6c455f60bfb"><td class="memItemLeft" align="right" valign="top"><a id="a3a4ce15403e58f0735c3b6c455f60bfb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PlayAnimation</b> (int animationIndex, int remapFace, bool loop)</td></tr>
-<tr class="separator:a3a4ce15403e58f0735c3b6c455f60bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd7c1de851cb7e09ec144cfb4a58a514"><td class="memItemLeft" align="right" valign="top"><a id="abd7c1de851cb7e09ec144cfb4a58a514"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StopAnimation</b> (int animationIndex, int remapIndex)</td></tr>
-<tr class="separator:abd7c1de851cb7e09ec144cfb4a58a514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a599934d7956b3abb8827b3782b885d69"><td class="memItemLeft" align="right" valign="top"><a id="a599934d7956b3abb8827b3782b885d69"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StartAttractMode</b> ()</td></tr>
-<tr class="separator:a599934d7956b3abb8827b3782b885d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374ce5ae27fe152375a410b6149668b8"><td class="memItemLeft" align="right" valign="top"><a id="a374ce5ae27fe152375a410b6149668b8"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>GetDieStateAsync</b> (PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:a374ce5ae27fe152375a410b6149668b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af605ab015a85326a0092a052000ea53a"><td class="memItemLeft" align="right" valign="top"><a id="af605ab015a85326a0092a052000ea53a"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>GetDieInfoAsync</b> (PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:af605ab015a85326a0092a052000ea53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcdd34244fc8e26dc222ee7380711621"><td class="memItemLeft" align="right" valign="top"><a id="afcdd34244fc8e26dc222ee7380711621"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RequestTelemetry</b> (bool on)</td></tr>
-<tr class="separator:afcdd34244fc8e26dc222ee7380711621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adca5c1b5004fe3c3f73e8b6b1d7e3395"><td class="memItemLeft" align="right" valign="top"><a id="adca5c1b5004fe3c3f73e8b6b1d7e3395"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RequestBulkData</b> ()</td></tr>
-<tr class="separator:adca5c1b5004fe3c3f73e8b6b1d7e3395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90ff672e308fdf5dac28f521ee6e668a"><td class="memItemLeft" align="right" valign="top"><a id="a90ff672e308fdf5dac28f521ee6e668a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PrepareBulkData</b> ()</td></tr>
-<tr class="separator:a90ff672e308fdf5dac28f521ee6e668a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad03c38c67e94e2d4d9600d2431040f28"><td class="memItemLeft" align="right" valign="top"><a id="ad03c38c67e94e2d4d9600d2431040f28"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLEDsToRandomColor</b> ()</td></tr>
-<tr class="separator:ad03c38c67e94e2d4d9600d2431040f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a571a13456397bca0d62925e29390eae7"><td class="memItemLeft" align="right" valign="top"><a id="a571a13456397bca0d62925e29390eae7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLEDsToColor</b> (Color color)</td></tr>
+<tr class="memitem:a34b2ec6ce10e1e47c08acb84a2d210d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a34b2ec6ce10e1e47c08acb84a2d210d0">SubscribeToUserNotifications</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070">NotifyUserCallback</a> notifyUserCallback)</td></tr>
+<tr class="memdesc:a34b2ec6ce10e1e47c08acb84a2d210d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes to user notifications request send by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a34b2ec6ce10e1e47c08acb84a2d210d0">More...</a><br /></td></tr>
+<tr class="separator:a34b2ec6ce10e1e47c08acb84a2d210d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ac97fbd12ed2f5b63b03a4c21cddf97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0ac97fbd12ed2f5b63b03a4c21cddf97">SubscribeToPlayAudioClip</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747">PlayAudioClipCallback</a> playAudioClipCallback)</td></tr>
+<tr class="memdesc:a0ac97fbd12ed2f5b63b03a4c21cddf97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes to audio request send by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0ac97fbd12ed2f5b63b03a4c21cddf97">More...</a><br /></td></tr>
+<tr class="separator:a0ac97fbd12ed2f5b63b03a4c21cddf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff36995773bf34b593ac62d84232ef4"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1ff36995773bf34b593ac62d84232ef4">UploadBulkDataAsync</a> (byte[] bytes, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a> onProgress=null)</td></tr>
+<tr class="memdesc:a1ff36995773bf34b593ac62d84232ef4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously uploads the given data to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1ff36995773bf34b593ac62d84232ef4">More...</a><br /></td></tr>
+<tr class="separator:a1ff36995773bf34b593ac62d84232ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5411d6ec9292d59ef50b24d2fcad3a"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2b5411d6ec9292d59ef50b24d2fcad3a">DownloadBulkDataAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b">DataOperationResultCallback</a> onResult, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a> onProgress=null)</td></tr>
+<tr class="memdesc:a2b5411d6ec9292d59ef50b24d2fcad3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously downloads the data from the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2b5411d6ec9292d59ef50b24d2fcad3a">More...</a><br /></td></tr>
+<tr class="separator:a2b5411d6ec9292d59ef50b24d2fcad3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48bc7e75bd1ecfddc51e3776b5c0c5e"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#aa48bc7e75bd1ecfddc51e3776b5c0c5e">UploadDataSetAsync</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a> dataSet, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a> onProgress=null)</td></tr>
+<tr class="memdesc:aa48bc7e75bd1ecfddc51e3776b5c0c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously uploads the given data set of animations to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#aa48bc7e75bd1ecfddc51e3776b5c0c5e">More...</a><br /></td></tr>
+<tr class="separator:aa48bc7e75bd1ecfddc51e3776b5c0c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dbdf956baf05a33a77edc3ae9994dc6"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1dbdf956baf05a33a77edc3ae9994dc6">PlayTestAnimationAsync</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a> testAnimSet, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a> onProgress=null)</td></tr>
+<tr class="memdesc:a1dbdf956baf05a33a77edc3ae9994dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously plays the LEDs animations for the given data set.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1dbdf956baf05a33a77edc3ae9994dc6">More...</a><br /></td></tr>
+<tr class="separator:a1dbdf956baf05a33a77edc3ae9994dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b0dfdcb44aa6d3640e611e97994491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a95b0dfdcb44aa6d3640e611e97994491">PlayAnimation</a> (int animationIndex, int remapFace=0, bool loop=false)</td></tr>
+<tr class="memdesc:a95b0dfdcb44aa6d3640e611e97994491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to play the animation stored at the given index with face optional remapping and looping.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a95b0dfdcb44aa6d3640e611e97994491">More...</a><br /></td></tr>
+<tr class="separator:a95b0dfdcb44aa6d3640e611e97994491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23af43bc500d58f1d743152f8f7edd4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a23af43bc500d58f1d743152f8f7edd4b">StopAnimation</a> (int animationIndex, int remapFace=0)</td></tr>
+<tr class="memdesc:a23af43bc500d58f1d743152f8f7edd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to stop playing the animation stored on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> at the given index with face remapping.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a23af43bc500d58f1d743152f8f7edd4b">More...</a><br /></td></tr>
+<tr class="separator:a23af43bc500d58f1d743152f8f7edd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9a683eca3cfa5d8e19653fa102d753"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a4d9a683eca3cfa5d8e19653fa102d753">GetRollStateAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:a4d9a683eca3cfa5d8e19653fa102d753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the instance <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020" title="Gets the Pixel current roll state.">rollState</a> and <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7" title="Gets Pixel the current face that is up.">face</a> properties.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a4d9a683eca3cfa5d8e19653fa102d753">More...</a><br /></td></tr>
+<tr class="separator:a4d9a683eca3cfa5d8e19653fa102d753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf8874dff1c9e016080fa0e5dfdd8b46"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adf8874dff1c9e016080fa0e5dfdd8b46">UpdateInfoAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:adf8874dff1c9e016080fa0e5dfdd8b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the instance information.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adf8874dff1c9e016080fa0e5dfdd8b46">More...</a><br /></td></tr>
+<tr class="separator:adf8874dff1c9e016080fa0e5dfdd8b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a765d04807b94e8110ffd8db8add4fd0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a765d04807b94e8110ffd8db8add4fd0e">RequestTelemetry</a> (bool turnOn)</td></tr>
+<tr class="memdesc:a765d04807b94e8110ffd8db8add4fd0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to turn telemetry on or off.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a765d04807b94e8110ffd8db8add4fd0e">More...</a><br /></td></tr>
+<tr class="separator:a765d04807b94e8110ffd8db8add4fd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fcbe51833ffec51561e75cd96b112fe"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a9fcbe51833ffec51561e75cd96b112fe">UpdateBatteryLevelAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:a9fcbe51833ffec51561e75cd96b112fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244" title="Gets the Pixel last read battery level. The value is normalized between 0 and 1 included.">batteryLevel</a> and <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a29bdd3f0e347c8c5908c27899bb056c5" title="Indicates whether or not the Pixel was last reported as charging.">isCharging</a> properties.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a9fcbe51833ffec51561e75cd96b112fe">More...</a><br /></td></tr>
+<tr class="separator:a9fcbe51833ffec51561e75cd96b112fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63b212ab18bb59155097a30cde85769"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af63b212ab18bb59155097a30cde85769">UpdateRssiAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:af63b212ab18bb59155097a30cde85769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec" title="Gets the Pixel last read Received Signal Strength Indicator (RSSI) value.">rssi</a> property.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af63b212ab18bb59155097a30cde85769">More...</a><br /></td></tr>
+<tr class="separator:af63b212ab18bb59155097a30cde85769"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92297c8162fe8e791a8f19cef1503eb8"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a92297c8162fe8e791a8f19cef1503eb8">SetDesignAndColorAsync</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058">designAndColor</a>, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:a92297c8162fe8e791a8f19cef1503eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set its design and color.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a92297c8162fe8e791a8f19cef1503eb8">More...</a><br /></td></tr>
+<tr class="separator:a92297c8162fe8e791a8f19cef1503eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9803d5cad2cba0b314af539b2378bd4"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af9803d5cad2cba0b314af539b2378bd4">RenameAsync</a> (string name, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:af9803d5cad2cba0b314af539b2378bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to change its name.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af9803d5cad2cba0b314af539b2378bd4">More...</a><br /></td></tr>
+<tr class="separator:af9803d5cad2cba0b314af539b2378bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571a13456397bca0d62925e29390eae7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a571a13456397bca0d62925e29390eae7">SetLEDsToColor</a> (Color color)</td></tr>
+<tr class="memdesc:a571a13456397bca0d62925e29390eae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set all the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> LEDs with the same given color.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a571a13456397bca0d62925e29390eae7">More...</a><br /></td></tr>
 <tr class="separator:a571a13456397bca0d62925e29390eae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34c226ca6a7992507198f10b974dfa75"><td class="memItemLeft" align="right" valign="top"><a id="a34c226ca6a7992507198f10b974dfa75"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateBatteryLevelAsync</b> (PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:a34c226ca6a7992507198f10b974dfa75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38f7bdf2324162744766e4b4e4d74e86"><td class="memItemLeft" align="right" valign="top"><a id="a38f7bdf2324162744766e4b4e4d74e86"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateRssiAsync</b> (PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:a38f7bdf2324162744766e4b4e4d74e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1879bcd60c49bbb34d4d7f7eac90b27"><td class="memItemLeft" align="right" valign="top"><a id="aa1879bcd60c49bbb34d4d7f7eac90b27"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>SetCurrentDesignAndColorAsync</b> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> design, PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:aa1879bcd60c49bbb34d4d7f7eac90b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa14fbca42862bcc5b4024e6452666c39"><td class="memItemLeft" align="right" valign="top"><a id="aa14fbca42862bcc5b4024e6452666c39"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>RenameDieAsync</b> (string newName, PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:aa14fbca42862bcc5b4024e6452666c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad388aa9d622b65d1a6611e236e568e04"><td class="memItemLeft" align="right" valign="top"><a id="ad388aa9d622b65d1a6611e236e568e04"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>BlinkAsync</b> (Color color, int count, PixelOperationResultHandler&lt; bool &gt; onResult=null)</td></tr>
-<tr class="separator:ad388aa9d622b65d1a6611e236e568e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5edc6797a5a584b838810300f78da82b"><td class="memItemLeft" align="right" valign="top"><a id="a5edc6797a5a584b838810300f78da82b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StartHardwareTest</b> ()</td></tr>
-<tr class="separator:a5edc6797a5a584b838810300f78da82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9432e0f23f32100a8ae21af45467cb9d"><td class="memItemLeft" align="right" valign="top"><a id="a9432e0f23f32100a8ae21af45467cb9d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>StartCalibration</b> ()</td></tr>
+<tr class="memitem:a67a7c1e2056ea6d327676af5678fd096"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a67a7c1e2056ea6d327676af5678fd096">BlinkLEDsAsync</a> (Color color, int count=3, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:a67a7c1e2056ea6d327676af5678fd096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to make its LEDs blink a given number of time.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a67a7c1e2056ea6d327676af5678fd096">More...</a><br /></td></tr>
+<tr class="separator:a67a7c1e2056ea6d327676af5678fd096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9432e0f23f32100a8ae21af45467cb9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a9432e0f23f32100a8ae21af45467cb9d">StartCalibration</a> ()</td></tr>
+<tr class="memdesc:a9432e0f23f32100a8ae21af45467cb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to start die calibration.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a9432e0f23f32100a8ae21af45467cb9d">More...</a><br /></td></tr>
 <tr class="separator:a9432e0f23f32100a8ae21af45467cb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f50dfd7dccf10dbc1fff26df7ec729"><td class="memItemLeft" align="right" valign="top"><a id="a42f50dfd7dccf10dbc1fff26df7ec729"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CalibrateFace</b> (int face)</td></tr>
+<tr class="memitem:a42f50dfd7dccf10dbc1fff26df7ec729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a42f50dfd7dccf10dbc1fff26df7ec729">CalibrateFace</a> (int <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7">face</a>)</td></tr>
+<tr class="memdesc:a42f50dfd7dccf10dbc1fff26df7ec729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to start face calibration.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a42f50dfd7dccf10dbc1fff26df7ec729">More...</a><br /></td></tr>
 <tr class="separator:a42f50dfd7dccf10dbc1fff26df7ec729"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a728b59697a96aa1e20ff3c780bca9310"><td class="memItemLeft" align="right" valign="top"><a id="a728b59697a96aa1e20ff3c780bca9310"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetStandardMode</b> ()</td></tr>
+<tr class="memitem:a728b59697a96aa1e20ff3c780bca9310"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a728b59697a96aa1e20ff3c780bca9310">SetStandardMode</a> ()</td></tr>
+<tr class="memdesc:a728b59697a96aa1e20ff3c780bca9310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set it to standard mode (the default which plays animations based on roll events).  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a728b59697a96aa1e20ff3c780bca9310">More...</a><br /></td></tr>
 <tr class="separator:a728b59697a96aa1e20ff3c780bca9310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaff12a95dd7f3c641f1493f87238b7f"><td class="memItemLeft" align="right" valign="top"><a id="afaff12a95dd7f3c641f1493f87238b7f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLEDAnimatorMode</b> ()</td></tr>
+<tr class="memitem:afaff12a95dd7f3c641f1493f87238b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afaff12a95dd7f3c641f1493f87238b7f">SetLEDAnimatorMode</a> ()</td></tr>
+<tr class="memdesc:afaff12a95dd7f3c641f1493f87238b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set it to LED animator mode.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afaff12a95dd7f3c641f1493f87238b7f">More...</a><br /></td></tr>
 <tr class="separator:afaff12a95dd7f3c641f1493f87238b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad64af8593a74cd38d1247b9487d4f98b"><td class="memItemLeft" align="right" valign="top"><a id="ad64af8593a74cd38d1247b9487d4f98b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBattleMode</b> ()</td></tr>
-<tr class="separator:ad64af8593a74cd38d1247b9487d4f98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ee709a293d37cd870b1b79f2343965"><td class="memItemLeft" align="right" valign="top"><a id="a20ee709a293d37cd870b1b79f2343965"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>DebugAnimController</b> ()</td></tr>
-<tr class="separator:a20ee709a293d37cd870b1b79f2343965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa72fafcaa66d11b60e0474acaf3baa44"><td class="memItemLeft" align="right" valign="top"><a id="aa72fafcaa66d11b60e0474acaf3baa44"></a>
-IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>PrintNormalsAsync</b> ()</td></tr>
-<tr class="separator:aa72fafcaa66d11b60e0474acaf3baa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e81bc0010d69aa4731dffd4e5ecdd0e"><td class="memItemLeft" align="right" valign="top"><a id="a1e81bc0010d69aa4731dffd4e5ecdd0e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetParams</b> ()</td></tr>
-<tr class="separator:a1e81bc0010d69aa4731dffd4e5ecdd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2381aefefd2d7e0435a9d211bae5b18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af2381aefefd2d7e0435a9d211bae5b18">ResetParameters</a> ()</td></tr>
+<tr class="memdesc:af2381aefefd2d7e0435a9d211bae5b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to reset its parameters.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af2381aefefd2d7e0435a9d211bae5b18">More...</a><br /></td></tr>
+<tr class="separator:af2381aefefd2d7e0435a9d211bae5b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a297edb217d2fcbc5cbb91d07a06b5042"><td class="memItemLeft" align="right" valign="top"><a id="a297edb217d2fcbc5cbb91d07a06b5042"></a>
-PixelTelemetryEvent&#160;</td><td class="memItemRight" valign="bottom"><b>_TelemetryReceived</b></td></tr>
-<tr class="separator:a297edb217d2fcbc5cbb91d07a06b5042"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a380c6633e87322e373c5fe2453b5cac6"><td class="memItemLeft" align="right" valign="top"><a id="a380c6633e87322e373c5fe2453b5cac6"></a>
-StateChangedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>StateChanged</b></td></tr>
-<tr class="separator:a380c6633e87322e373c5fe2453b5cac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ecbf73d1b2e2a785c4501f0c266662b"><td class="memItemLeft" align="right" valign="top"><a id="a6ecbf73d1b2e2a785c4501f0c266662b"></a>
-ConnectionStateChangedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectionStateChanged</b></td></tr>
-<tr class="separator:a6ecbf73d1b2e2a785c4501f0c266662b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa26a1bc352d7752560759101e90003e3"><td class="memItemLeft" align="right" valign="top"><a id="aa26a1bc352d7752560759101e90003e3"></a>
-ErrorEvent&#160;</td><td class="memItemRight" valign="bottom"><b>GotError</b></td></tr>
-<tr class="separator:aa26a1bc352d7752560759101e90003e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6da26ad93fc0368d866b483db3c1966"><td class="memItemLeft" align="right" valign="top"><a id="ac6da26ad93fc0368d866b483db3c1966"></a>
-AppearanceChangedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>AppearanceChanged</b></td></tr>
-<tr class="separator:ac6da26ad93fc0368d866b483db3c1966"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7f3c52966838cdc1a5232375c290217"><td class="memItemLeft" align="right" valign="top"><a id="ac7f3c52966838cdc1a5232375c290217"></a>
-BatteryLevelChangedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>BatteryLevelChanged</b></td></tr>
-<tr class="separator:ac7f3c52966838cdc1a5232375c290217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e9feaf1d5521283dff6047e4effedfd"><td class="memItemLeft" align="right" valign="top"><a id="a2e9feaf1d5521283dff6047e4effedfd"></a>
-RssiChangedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>RssiChanged</b></td></tr>
-<tr class="separator:a2e9feaf1d5521283dff6047e4effedfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3df8bf1c389d811d03124ffa8eb4f9b"><td class="memItemLeft" align="right" valign="top"><a id="ae3df8bf1c389d811d03124ffa8eb4f9b"></a>
-NotifyUserReceivedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>NotifyUserReceived</b></td></tr>
-<tr class="separator:ae3df8bf1c389d811d03124ffa8eb4f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae087c10af52334801d9f3ef8a01df843"><td class="memItemLeft" align="right" valign="top"><a id="ae087c10af52334801d9f3ef8a01df843"></a>
-PlayAudioClipReceivedEvent&#160;</td><td class="memItemRight" valign="bottom"><b>PlayAudioClipReceived</b></td></tr>
-<tr class="separator:ae087c10af52334801d9f3ef8a01df843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7505542016ea8da4c37511e7ab76af9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12">ConnectionStateChangedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab7505542016ea8da4c37511e7ab76af9">ConnectionStateChanged</a></td></tr>
+<tr class="memdesc:ab7505542016ea8da4c37511e7ab76af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> connection state changes.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab7505542016ea8da4c37511e7ab76af9">More...</a><br /></td></tr>
+<tr class="separator:ab7505542016ea8da4c37511e7ab76af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ab0a95ad905f8e80d3eb2925e8dfa17e6">ErrorRaisedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f">ErrorRaised</a></td></tr>
+<tr class="memdesc:a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when communications with the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> encountered an error.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f">More...</a><br /></td></tr>
+<tr class="separator:a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6fd65b15976433f2ad24ab69492e0c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ae4f0bf1f5ccb4b9b0b2d0d20d1d3f637">AppearanceChangedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac6fd65b15976433f2ad24ab69492e0c8">AppearanceChanged</a></td></tr>
+<tr class="memdesc:ac6fd65b15976433f2ad24ab69492e0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> appearance setting is changed.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac6fd65b15976433f2ad24ab69492e0c8">More...</a><br /></td></tr>
+<tr class="separator:ac6fd65b15976433f2ad24ab69492e0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a346e7c126e2555d5288c8fd6344dba6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1">RollStateChangedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a346e7c126e2555d5288c8fd6344dba6c">RollStateChanged</a></td></tr>
+<tr class="memdesc:a346e7c126e2555d5288c8fd6344dba6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> roll state changes.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a346e7c126e2555d5288c8fd6344dba6c">More...</a><br /></td></tr>
+<tr class="separator:a346e7c126e2555d5288c8fd6344dba6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25046a600591dacea0bbd9bbcde835a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae">BatteryLevelChangedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9">BatteryLevelChanged</a></td></tr>
+<tr class="memdesc:a25046a600591dacea0bbd9bbcde835a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when the battery level reported by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> changes.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9">More...</a><br /></td></tr>
+<tr class="separator:a25046a600591dacea0bbd9bbcde835a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7684d206c86684fdf17a026e902c6d9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6">RssiChangedEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f">RssiChanged</a></td></tr>
+<tr class="memdesc:a7684d206c86684fdf17a026e902c6d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when the RSSI value reported by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> changes.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f">More...</a><br /></td></tr>
+<tr class="separator:a7684d206c86684fdf17a026e902c6d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a0a4008679ef75e48e5fa5b36b87cc23f"><td class="memItemLeft" align="right" valign="top"><a id="a0a4008679ef75e48e5fa5b36b87cc23f"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><b>AckMessageTimeout</b> = 5</td></tr>
+<tr class="memitem:a0a4008679ef75e48e5fa5b36b87cc23f"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0a4008679ef75e48e5fa5b36b87cc23f">AckMessageTimeout</a> = 5</td></tr>
+<tr class="memdesc:a0a4008679ef75e48e5fa5b36b87cc23f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The timeout in seconds for waiting the response of a message send to a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0a4008679ef75e48e5fa5b36b87cc23f">More...</a><br /></td></tr>
 <tr class="separator:a0a4008679ef75e48e5fa5b36b87cc23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a775ca1c0820e98580b38dd844beb6554"><td class="memItemLeft" align="right" valign="top"><a id="a775ca1c0820e98580b38dd844beb6554"></a>
-delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>MessageReceivedEvent</b> (<a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html">IPixelMessage</a> msg)</td></tr>
-<tr class="separator:a775ca1c0820e98580b38dd844beb6554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa00930eabbb23ab7c16aabbe135e526f"><td class="memItemLeft" align="right" valign="top"><a id="aa00930eabbb23ab7c16aabbe135e526f"></a>
-abstract <a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html">IOperationEnumerator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WriteDataAsync</b> (byte[] bytes, float timeout=0)</td></tr>
-<tr class="separator:aa00930eabbb23ab7c16aabbe135e526f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae08b67296dbcc2e51ff7027b67e450"><td class="memItemLeft" align="right" valign="top"><a id="a6ae08b67296dbcc2e51ff7027b67e450"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>EnsureRunningOnMainThread</b> ()</td></tr>
+<tr class="memitem:acba001c8dd2ec9aedf51e1243129f6ee"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">MessageReceivedEventHandler</a> (<a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html">IPixelMessage</a> message)</td></tr>
+<tr class="memdesc:acba001c8dd2ec9aedf51e1243129f6ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal event handler for message notification.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">More...</a><br /></td></tr>
+<tr class="separator:acba001c8dd2ec9aedf51e1243129f6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae710ea362cbbb62084abf3b2656bea10"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html">IOperationEnumerator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ae710ea362cbbb62084abf3b2656bea10">SendMessageAsync</a> (byte[] bytes, float timeout=0)</td></tr>
+<tr class="memdesc:ae710ea362cbbb62084abf3b2656bea10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract method to send a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ae710ea362cbbb62084abf3b2656bea10">More...</a><br /></td></tr>
+<tr class="separator:ae710ea362cbbb62084abf3b2656bea10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ae08b67296dbcc2e51ff7027b67e450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6ae08b67296dbcc2e51ff7027b67e450">EnsureRunningOnMainThread</a> ()</td></tr>
+<tr class="memdesc:a6ae08b67296dbcc2e51ff7027b67e450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to method to check if we are running on the main thread. Throws an exception if running on another thread.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6ae08b67296dbcc2e51ff7027b67e450">More...</a><br /></td></tr>
 <tr class="separator:a6ae08b67296dbcc2e51ff7027b67e450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:acd500ae0c464ed4be3c59f6a1624c3ea"><td class="memItemLeft" align="right" valign="top"><a id="acd500ae0c464ed4be3c59f6a1624c3ea"></a>
-Dictionary&lt; <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90">MessageType</a>, MessageReceivedEvent &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>messageDelegates</b></td></tr>
-<tr class="separator:acd500ae0c464ed4be3c59f6a1624c3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a827f253a0a6101c2f790bf3429c2db2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a827f253a0a6101c2f790bf3429c2db2a">AddMessageHandler</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90">MessageType</a> messageType, <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">MessageReceivedEventHandler</a> eventHandler)</td></tr>
+<tr class="memdesc:a827f253a0a6101c2f790bf3429c2db2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an event hander for the given message type.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a827f253a0a6101c2f790bf3429c2db2a">More...</a><br /></td></tr>
+<tr class="separator:a827f253a0a6101c2f790bf3429c2db2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d19ac4f49bbaaf5beb0e2194951285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a65d19ac4f49bbaaf5beb0e2194951285">RemoveMessageHandler</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90">MessageType</a> messageType, <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">MessageReceivedEventHandler</a> eventHandler)</td></tr>
+<tr class="memdesc:a65d19ac4f49bbaaf5beb0e2194951285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an event hander for the given message type.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a65d19ac4f49bbaaf5beb0e2194951285">More...</a><br /></td></tr>
+<tr class="separator:a65d19ac4f49bbaaf5beb0e2194951285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50b34dd63d5e7aa908c65f6ec7019a78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50b34dd63d5e7aa908c65f6ec7019a78">NotifyMessageHandler</a> (<a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html">IPixelMessage</a> message)</td></tr>
+<tr class="memdesc:a50b34dd63d5e7aa908c65f6ec7019a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify the event handlers for the given message, based on its type.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50b34dd63d5e7aa908c65f6ec7019a78">More...</a><br /></td></tr>
+<tr class="separator:a50b34dd63d5e7aa908c65f6ec7019a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c8cf73f952f54083f47270dd7cb5f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad4c8cf73f952f54083f47270dd7cb5f1">PostMessage&lt; T &gt;</a> (T message)</td></tr>
+<tr class="memdesc:ad4c8cf73f952f54083f47270dd7cb5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a coroutine that sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad4c8cf73f952f54083f47270dd7cb5f1">More...</a><br /></td></tr>
+<tr class="separator:ad4c8cf73f952f54083f47270dd7cb5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6173c842c5478a3c6db8928d55343156"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6173c842c5478a3c6db8928d55343156">RegisterDefaultMessageHandlers</a> ()</td></tr>
+<tr class="memdesc:a6173c842c5478a3c6db8928d55343156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the default message handlers, called once during instance initialization.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6173c842c5478a3c6db8928d55343156">More...</a><br /></td></tr>
+<tr class="separator:a6173c842c5478a3c6db8928d55343156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a05682f39ea0346889afa6b74fc385cc4"><td class="memItemLeft" align="right" valign="top"><a id="a05682f39ea0346889afa6b74fc385cc4"></a>
-<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a>?&#160;</td><td class="memItemRight" valign="bottom"><b>connectionState</b><code> [get, protected set]</code></td></tr>
+<tr class="memitem:a05682f39ea0346889afa6b74fc385cc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a05682f39ea0346889afa6b74fc385cc4">connectionState</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a05682f39ea0346889afa6b74fc385cc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the connection state to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a05682f39ea0346889afa6b74fc385cc4">More...</a><br /></td></tr>
 <tr class="separator:a05682f39ea0346889afa6b74fc385cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcafaae597873b34c1bda5a04388ac9a"><td class="memItemLeft" align="right" valign="top"><a id="adcafaae597873b34c1bda5a04388ac9a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isAvailable</b><code> [get]</code></td></tr>
+<tr class="memitem:adcafaae597873b34c1bda5a04388ac9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adcafaae597873b34c1bda5a04388ac9a">isAvailable</a><code> [get]</code></td></tr>
+<tr class="memdesc:adcafaae597873b34c1bda5a04388ac9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the connection state is set to available, meaning the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> can be connected to.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adcafaae597873b34c1bda5a04388ac9a">More...</a><br /></td></tr>
 <tr class="separator:adcafaae597873b34c1bda5a04388ac9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50c9e4badf7448bf9591d35f4cf73c3b"><td class="memItemLeft" align="right" valign="top"><a id="a50c9e4badf7448bf9591d35f4cf73c3b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isReady</b><code> [get]</code></td></tr>
+<tr class="memitem:a50c9e4badf7448bf9591d35f4cf73c3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50c9e4badf7448bf9591d35f4cf73c3b">isReady</a><code> [get]</code></td></tr>
+<tr class="memdesc:a50c9e4badf7448bf9591d35f4cf73c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the connection state is set to ready, meaning the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> is connected and ready to communicate.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50c9e4badf7448bf9591d35f4cf73c3b">More...</a><br /></td></tr>
 <tr class="separator:a50c9e4badf7448bf9591d35f4cf73c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecd7778b0f01a1277bb0040a10233251"><td class="memItemLeft" align="right" valign="top"><a id="aecd7778b0f01a1277bb0040a10233251"></a>
-PixelLastError&#160;</td><td class="memItemRight" valign="bottom"><b>lastError</b> = PixelLastError.None<code> [get, protected set]</code></td></tr>
-<tr class="separator:aecd7778b0f01a1277bb0040a10233251"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0564258a3fda3dd721c971ac0eaf4ea1"><td class="memItemLeft" align="right" valign="top"><a id="a0564258a3fda3dd721c971ac0eaf4ea1"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>systemId</b><code> [get, protected set]</code></td></tr>
+<tr class="memitem:afb1d63baca5298095b709a42a05bc4bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3">PixelError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afb1d63baca5298095b709a42a05bc4bf">lastError</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:afb1d63baca5298095b709a42a05bc4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last error that happened during communications with the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afb1d63baca5298095b709a42a05bc4bf">More...</a><br /></td></tr>
+<tr class="separator:afb1d63baca5298095b709a42a05bc4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0564258a3fda3dd721c971ac0eaf4ea1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0564258a3fda3dd721c971ac0eaf4ea1">systemId</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a0564258a3fda3dd721c971ac0eaf4ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique system id assigned to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. This value is platform specific and may change over long periods of time.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0564258a3fda3dd721c971ac0eaf4ea1">More...</a><br /></td></tr>
 <tr class="separator:a0564258a3fda3dd721c971ac0eaf4ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0ddcdd6be2406430fe8000670c4a2f1"><td class="memItemLeft" align="right" valign="top"><a id="ad0ddcdd6be2406430fe8000670c4a2f1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>faceCount</b> = 0<code> [get, protected set]</code></td></tr>
+<tr class="memitem:ad0ddcdd6be2406430fe8000670c4a2f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad0ddcdd6be2406430fe8000670c4a2f1">faceCount</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:ad0ddcdd6be2406430fe8000670c4a2f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of faces for the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad0ddcdd6be2406430fe8000670c4a2f1">More...</a><br /></td></tr>
 <tr class="separator:ad0ddcdd6be2406430fe8000670c4a2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f298dfcea662a1dfb0f8c317f931058"><td class="memItemLeft" align="right" valign="top"><a id="a2f298dfcea662a1dfb0f8c317f931058"></a>
-<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>designAndColor</b> = PixelDesignAndColor.Unknown<code> [get, protected set]</code></td></tr>
+<tr class="memitem:a2f298dfcea662a1dfb0f8c317f931058"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058">designAndColor</a> = PixelDesignAndColor.Unknown<code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a2f298dfcea662a1dfb0f8c317f931058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> combination of design and color.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058">More...</a><br /></td></tr>
 <tr class="separator:a2f298dfcea662a1dfb0f8c317f931058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f5342d0331e718ce8323162d6adebb0"><td class="memItemLeft" align="right" valign="top"><a id="a2f5342d0331e718ce8323162d6adebb0"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>firmwareVersionId</b> = &quot;Unknown&quot;<code> [get, protected set]</code></td></tr>
+<tr class="memitem:a2f5342d0331e718ce8323162d6adebb0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f5342d0331e718ce8323162d6adebb0">firmwareVersionId</a> = &quot;Unknown&quot;<code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a2f5342d0331e718ce8323162d6adebb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the version id of the firmware running on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f5342d0331e718ce8323162d6adebb0">More...</a><br /></td></tr>
 <tr class="separator:a2f5342d0331e718ce8323162d6adebb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2fa58c0f7fb8a18aaa637d805e3294a"><td class="memItemLeft" align="right" valign="top"><a id="ac2fa58c0f7fb8a18aaa637d805e3294a"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>dataSetHash</b> = 0<code> [get, protected set]</code></td></tr>
+<tr class="memitem:ac2fa58c0f7fb8a18aaa637d805e3294a"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac2fa58c0f7fb8a18aaa637d805e3294a">dataSetHash</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:ac2fa58c0f7fb8a18aaa637d805e3294a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the hash value of the animation data loaded on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac2fa58c0f7fb8a18aaa637d805e3294a">More...</a><br /></td></tr>
 <tr class="separator:ac2fa58c0f7fb8a18aaa637d805e3294a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe5ffb5d2d245091332c19d63037edcb"><td class="memItemLeft" align="right" valign="top"><a id="afe5ffb5d2d245091332c19d63037edcb"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>flashSize</b> = 0<code> [get, protected set]</code></td></tr>
+<tr class="memitem:afe5ffb5d2d245091332c19d63037edcb"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afe5ffb5d2d245091332c19d63037edcb">flashSize</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:afe5ffb5d2d245091332c19d63037edcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of memory that can be used to store animation data on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afe5ffb5d2d245091332c19d63037edcb">More...</a><br /></td></tr>
 <tr class="separator:afe5ffb5d2d245091332c19d63037edcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed2060b451e12cb37d118f3ff848020"><td class="memItemLeft" align="right" valign="top"><a id="a3ed2060b451e12cb37d118f3ff848020"></a>
-<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rollState</b> = PixelRollState.Unknown<code> [get, protected set]</code></td></tr>
+<tr class="memitem:a3ed2060b451e12cb37d118f3ff848020"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020">rollState</a> = <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e">PixelRollState.Unknown</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a3ed2060b451e12cb37d118f3ff848020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> current roll state.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020">More...</a><br /></td></tr>
 <tr class="separator:a3ed2060b451e12cb37d118f3ff848020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86a8ae9430db86808539f3a0799c85c7"><td class="memItemLeft" align="right" valign="top"><a id="a86a8ae9430db86808539f3a0799c85c7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>face</b> = -1<code> [get, protected set]</code></td></tr>
+<tr class="memitem:a86a8ae9430db86808539f3a0799c85c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7">face</a> = -1<code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a86a8ae9430db86808539f3a0799c85c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> the current face that is up.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7">More...</a><br /></td></tr>
 <tr class="separator:a86a8ae9430db86808539f3a0799c85c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d9e52db81c57bb852f0a874a0f5b605"><td class="memItemLeft" align="right" valign="top"><a id="a9d9e52db81c57bb852f0a874a0f5b605"></a>
-float?&#160;</td><td class="memItemRight" valign="bottom"><b>batteryLevel</b> = null<code> [get, protected set]</code></td></tr>
-<tr class="separator:a9d9e52db81c57bb852f0a874a0f5b605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24b2f3c2cbcc376e6b9ee8a20684fc2b"><td class="memItemLeft" align="right" valign="top"><a id="a24b2f3c2cbcc376e6b9ee8a20684fc2b"></a>
-bool?&#160;</td><td class="memItemRight" valign="bottom"><b>charging</b> = null<code> [get, protected set]</code></td></tr>
-<tr class="separator:a24b2f3c2cbcc376e6b9ee8a20684fc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a170f5b65ecdfabe73e0dfa8d228982c6"><td class="memItemLeft" align="right" valign="top"><a id="a170f5b65ecdfabe73e0dfa8d228982c6"></a>
-int?&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b> = null<code> [get, protected set]</code></td></tr>
-<tr class="separator:a170f5b65ecdfabe73e0dfa8d228982c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a292810212f51c4b3897e7aae47ba29e3"><td class="memItemLeft" align="right" valign="top"><a id="a292810212f51c4b3897e7aae47ba29e3"></a>
-PixelTelemetryEvent&#160;</td><td class="memItemRight" valign="bottom"><b>TelemetryReceived</b></td></tr>
-<tr class="separator:a292810212f51c4b3897e7aae47ba29e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a392d34cb2bebbef04e0addaa6aa4a7"><td class="memItemLeft" align="right" valign="top"><a id="a7a392d34cb2bebbef04e0addaa6aa4a7"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>SafeName</b><code> [get]</code></td></tr>
+<tr class="memitem:ad2a5b864a5f2f24f5eaa8dd55cd11244"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244">batteryLevel</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:ad2a5b864a5f2f24f5eaa8dd55cd11244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> last read battery level. The value is normalized between 0 and 1 included.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244">More...</a><br /></td></tr>
+<tr class="separator:ad2a5b864a5f2f24f5eaa8dd55cd11244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29bdd3f0e347c8c5908c27899bb056c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a29bdd3f0e347c8c5908c27899bb056c5">isCharging</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:a29bdd3f0e347c8c5908c27899bb056c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether or not the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> was last reported as charging.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a29bdd3f0e347c8c5908c27899bb056c5">More...</a><br /></td></tr>
+<tr class="separator:a29bdd3f0e347c8c5908c27899bb056c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6592e2ea680cbdc526b947750b24cec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec">rssi</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:ad6592e2ea680cbdc526b947750b24cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> last read Received Signal Strength Indicator (RSSI) value.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec">More...</a><br /></td></tr>
+<tr class="separator:ad6592e2ea680cbdc526b947750b24cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99b4f77eb4dab8c3ca5cde22c325642"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a8500d56af4d9bdf707f5f1827045d47a">TelemetryEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af99b4f77eb4dab8c3ca5cde22c325642">TelemetryReceived</a></td></tr>
+<tr class="memdesc:af99b4f77eb4dab8c3ca5cde22c325642"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event raised when telemetry data is received.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af99b4f77eb4dab8c3ca5cde22c325642">More...</a><br /></td></tr>
+<tr class="separator:af99b4f77eb4dab8c3ca5cde22c325642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a392d34cb2bebbef04e0addaa6aa4a7"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7a392d34cb2bebbef04e0addaa6aa4a7">SafeName</a><code> [get]</code></td></tr>
+<tr class="memdesc:a7a392d34cb2bebbef04e0addaa6aa4a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this property to access the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> name without having to first check if the object is considered destroyed by <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> (to avoid generating an error).  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7a392d34cb2bebbef04e0addaa6aa4a7">More...</a><br /></td></tr>
 <tr class="separator:a7a392d34cb2bebbef04e0addaa6aa4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> die. </p>
+<p>This class offers access to many settings and features of a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. This abstract class does not implement a specific communication protocol with the dice, leaving the door open to have multiple implementations including a virtual die. Currently only Bluetooth communications are supported, see <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html" title="Singleton that manages Bluetooth Low Energy Pixels.">DiceBag</a> to connect to and communicate with Bluetooth Low Energy <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.</p>
+<p>The <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> name is given by the parent class MonoBehaviour name property. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a827f253a0a6101c2f790bf3429c2db2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a827f253a0a6101c2f790bf3429c2db2a">&#9670;&nbsp;</a></span>AddMessageHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.AddMessageHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90">MessageType</a>&#160;</td>
+          <td class="paramname"><em>messageType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">MessageReceivedEventHandler</a>&#160;</td>
+          <td class="paramname"><em>eventHandler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add an event hander for the given message type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageType</td><td>The type of message to subscribe to.</td></tr>
+    <tr><td class="paramname">eventHandler</td><td>The event handler to add.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a67a7c1e2056ea6d327676af5678fd096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a7c1e2056ea6d327676af5678fd096">&#9670;&nbsp;</a></span>BlinkLEDsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.BlinkLEDsAsync </td>
+          <td>(</td>
+          <td class="paramtype">Color&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to make its LEDs blink a given number of time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>The desired color for the LEDs.</td></tr>
+    <tr><td class="paramname">count</td><td>The number of blinks.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="a42f50dfd7dccf10dbc1fff26df7ec729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f50dfd7dccf10dbc1fff26df7ec729">&#9670;&nbsp;</a></span>CalibrateFace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.CalibrateFace </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>face</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to start face calibration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">face</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2b5411d6ec9292d59ef50b24d2fcad3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b5411d6ec9292d59ef50b24d2fcad3a">&#9670;&nbsp;</a></span>DownloadBulkDataAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.DownloadBulkDataAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b">DataOperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a>&#160;</td>
+          <td class="paramname"><em>onProgress</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously downloads the data from the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onResult</td><td>A callback that is called when the operation completes, with the received data if successful or null and an error message on failure.</td></tr>
+    <tr><td class="paramname">onProgress</td><td>An optional callback that is called as the operation progresses with the progress value being between 0 an 1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="a6ae08b67296dbcc2e51ff7027b67e450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae08b67296dbcc2e51ff7027b67e450">&#9670;&nbsp;</a></span>EnsureRunningOnMainThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.EnsureRunningOnMainThread </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper to method to check if we are running on the main thread. Throws an exception if running on another thread. </p>
+
+</div>
+</div>
+<a id="a4d9a683eca3cfa5d8e19653fa102d753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9a683eca3cfa5d8e19653fa102d753">&#9670;&nbsp;</a></span>GetRollStateAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.GetRollStateAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the instance <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020" title="Gets the Pixel current roll state.">rollState</a> and <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7" title="Gets Pixel the current face that is up.">face</a> properties. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="acba001c8dd2ec9aedf51e1243129f6ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba001c8dd2ec9aedf51e1243129f6ee">&#9670;&nbsp;</a></span>MessageReceivedEventHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void Systemic.Unity.Pixels.Pixel.MessageReceivedEventHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html">IPixelMessage</a>&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internal event handler for message notification. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message object.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a50b34dd63d5e7aa908c65f6ec7019a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b34dd63d5e7aa908c65f6ec7019a78">&#9670;&nbsp;</a></span>NotifyMessageHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.NotifyMessageHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html">IPixelMessage</a>&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Notify the event handlers for the given message, based on its type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message object.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a95b0dfdcb44aa6d3640e611e97994491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95b0dfdcb44aa6d3640e611e97994491">&#9670;&nbsp;</a></span>PlayAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.PlayAnimation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>animationIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>remapFace</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>loop</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to play the animation stored at the given index with face optional remapping and looping. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">animationIndex</td><td>The stored index of the animation to play.</td></tr>
+    <tr><td class="paramname">remapFace</td><td>The index of the face to remap the animation to.</td></tr>
+    <tr><td class="paramname">loop</td><td>Whether to loop the animation.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1dbdf956baf05a33a77edc3ae9994dc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dbdf956baf05a33a77edc3ae9994dc6">&#9670;&nbsp;</a></span>PlayTestAnimationAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.PlayTestAnimationAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a>&#160;</td>
+          <td class="paramname"><em>testAnimSet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a>&#160;</td>
+          <td class="paramname"><em>onProgress</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously plays the LEDs animations for the given data set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">testAnimSet</td><td>The data set containing the animations to play.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+    <tr><td class="paramname">onProgress</td><td>An optional callback that is called as the operation progresses with the progress value being between 0 an 1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="ad4c8cf73f952f54083f47270dd7cb5f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c8cf73f952f54083f47270dd7cb5f1">&#9670;&nbsp;</a></span>PostMessage&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.PostMessage&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Starts a coroutine that sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of the message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message instance to send.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IPixelMessage</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a6173c842c5478a3c6db8928d55343156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6173c842c5478a3c6db8928d55343156">&#9670;&nbsp;</a></span>RegisterDefaultMessageHandlers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Systemic.Unity.Pixels.Pixel.RegisterDefaultMessageHandlers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register the default message handlers, called once during instance initialization. </p>
+
+</div>
+</div>
+<a id="a65d19ac4f49bbaaf5beb0e2194951285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d19ac4f49bbaaf5beb0e2194951285">&#9670;&nbsp;</a></span>RemoveMessageHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.RemoveMessageHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90">MessageType</a>&#160;</td>
+          <td class="paramname"><em>messageType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee">MessageReceivedEventHandler</a>&#160;</td>
+          <td class="paramname"><em>eventHandler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove an event hander for the given message type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageType</td><td>The type of message to unsubscribe from.</td></tr>
+    <tr><td class="paramname">eventHandler</td><td>The event handler to remove.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af9803d5cad2cba0b314af539b2378bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9803d5cad2cba0b314af539b2378bd4">&#9670;&nbsp;</a></span>RenameAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.RenameAsync </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to change its name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name to set.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="a765d04807b94e8110ffd8db8add4fd0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a765d04807b94e8110ffd8db8add4fd0e">&#9670;&nbsp;</a></span>RequestTelemetry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.RequestTelemetry </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>turnOn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to turn telemetry on or off. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turnOn</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af2381aefefd2d7e0435a9d211bae5b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2381aefefd2d7e0435a9d211bae5b18">&#9670;&nbsp;</a></span>ResetParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.ResetParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to reset its parameters. </p>
+
+</div>
+</div>
+<a id="ae710ea362cbbb62084abf3b2656bea10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae710ea362cbbb62084abf3b2656bea10">&#9670;&nbsp;</a></span>SendMessageAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html">IOperationEnumerator</a> Systemic.Unity.Pixels.Pixel.SendMessageAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Abstract method to send a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bytes</td><td></td></tr>
+    <tr><td class="paramname">timeout</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a92297c8162fe8e791a8f19cef1503eb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92297c8162fe8e791a8f19cef1503eb8">&#9670;&nbsp;</a></span>SetDesignAndColorAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.SetDesignAndColorAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a>&#160;</td>
+          <td class="paramname"><em>designAndColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set its design and color. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">designAndColor</td><td>The design and color value to set.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="afaff12a95dd7f3c641f1493f87238b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaff12a95dd7f3c641f1493f87238b7f">&#9670;&nbsp;</a></span>SetLEDAnimatorMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.SetLEDAnimatorMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set it to LED animator mode. </p>
+
+</div>
+</div>
+<a id="a571a13456397bca0d62925e29390eae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a571a13456397bca0d62925e29390eae7">&#9670;&nbsp;</a></span>SetLEDsToColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.SetLEDsToColor </td>
+          <td>(</td>
+          <td class="paramtype">Color&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set all the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> LEDs with the same given color. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>The desired color for the LEDs.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a728b59697a96aa1e20ff3c780bca9310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a728b59697a96aa1e20ff3c780bca9310">&#9670;&nbsp;</a></span>SetStandardMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.SetStandardMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set it to standard mode (the default which plays animations based on roll events). </p>
+
+</div>
+</div>
+<a id="a9432e0f23f32100a8ae21af45467cb9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9432e0f23f32100a8ae21af45467cb9d">&#9670;&nbsp;</a></span>StartCalibration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.StartCalibration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to start die calibration. </p>
+
+</div>
+</div>
+<a id="a23af43bc500d58f1d743152f8f7edd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23af43bc500d58f1d743152f8f7edd4b">&#9670;&nbsp;</a></span>StopAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.StopAnimation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>animationIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>remapFace</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to stop playing the animation stored on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> at the given index with face remapping. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">animationIndex</td><td>The stored index of the animation to stop playing.</td></tr>
+    <tr><td class="paramname">remapFace</td><td>The index of the face to remap the animation to.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ac97fbd12ed2f5b63b03a4c21cddf97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac97fbd12ed2f5b63b03a4c21cddf97">&#9670;&nbsp;</a></span>SubscribeToPlayAudioClip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.SubscribeToPlayAudioClip </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747">PlayAudioClipCallback</a>&#160;</td>
+          <td class="paramname"><em>playAudioClipCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribes to audio request send by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+<p>Replaces the callback passed in a previous call to this method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">playAudioClipCallback</td><td>The callback to run, pass null to unsubscribe.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a34b2ec6ce10e1e47c08acb84a2d210d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b2ec6ce10e1e47c08acb84a2d210d0">&#9670;&nbsp;</a></span>SubscribeToUserNotifications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Systemic.Unity.Pixels.Pixel.SubscribeToUserNotifications </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070">NotifyUserCallback</a>&#160;</td>
+          <td class="paramname"><em>notifyUserCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribes to user notifications request send by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+<p>Replaces the callback passed in a previous call to this method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">notifyUserCallback</td><td>The callback to run, pass null to unsubscribe.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9fcbe51833ffec51561e75cd96b112fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fcbe51833ffec51561e75cd96b112fe">&#9670;&nbsp;</a></span>UpdateBatteryLevelAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.UpdateBatteryLevelAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244" title="Gets the Pixel last read battery level. The value is normalized between 0 and 1 included.">batteryLevel</a> and <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a29bdd3f0e347c8c5908c27899bb056c5" title="Indicates whether or not the Pixel was last reported as charging.">isCharging</a> properties. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="adf8874dff1c9e016080fa0e5dfdd8b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf8874dff1c9e016080fa0e5dfdd8b46">&#9670;&nbsp;</a></span>UpdateInfoAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.UpdateInfoAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the instance information. </p>
+<p>On success, this will update the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad0ddcdd6be2406430fe8000670c4a2f1" title="Gets the number of faces for the Pixel.">faceCount</a>, <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058" title="Gets the Pixel combination of design and color.">designAndColor</a>, <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac2fa58c0f7fb8a18aaa637d805e3294a" title="Get the hash value of the animation data loaded on the Pixel.">dataSetHash</a>, <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afe5ffb5d2d245091332c19d63037edcb" title="Get the size of memory that can be used to store animation data on the Pixel.">flashSize</a> and <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f5342d0331e718ce8323162d6adebb0" title="Get the version id of the firmware running on the Pixel.">firmwareVersionId</a> properties and raise the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac6fd65b15976433f2ad24ab69492e0c8" title="Event raised when the Pixel appearance setting is changed.">AppearanceChanged</a> event if the face out or design and color have changed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="af63b212ab18bb59155097a30cde85769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af63b212ab18bb59155097a30cde85769">&#9670;&nbsp;</a></span>UpdateRssiAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.UpdateRssiAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to update the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec" title="Gets the Pixel last read Received Signal Strength Indicator (RSSI) value.">rssi</a> property. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="a1ff36995773bf34b593ac62d84232ef4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff36995773bf34b593ac62d84232ef4">&#9670;&nbsp;</a></span>UploadBulkDataAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.UploadBulkDataAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>bytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a>&#160;</td>
+          <td class="paramname"><em>onProgress</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously uploads the given data to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bytes</td><td>The data to upload.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+    <tr><td class="paramname">onProgress</td><td>An optional callback that is called as the operation progresses with the progress value being between 0 an 1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<a id="aa48bc7e75bd1ecfddc51e3776b5c0c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa48bc7e75bd1ecfddc51e3776b5c0c5e">&#9670;&nbsp;</a></span>UploadDataSetAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Systemic.Unity.Pixels.Pixel.UploadDataSetAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html">DataSet</a>&#160;</td>
+          <td class="paramname"><em>dataSet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a>&#160;</td>
+          <td class="paramname"><em>onResult</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c">OperationProgressCallback</a>&#160;</td>
+          <td class="paramname"><em>onProgress</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously uploads the given data set of animations to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> flash memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dataSet</td><td>The data set to upload.</td></tr>
+    <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
+    <tr><td class="paramname">onProgress</td><td>An optional callback that is called as the operation progresses with the progress value being between 0 an 1.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An enumerator meant to be run as a coroutine.</dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0a4008679ef75e48e5fa5b36b87cc23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a4008679ef75e48e5fa5b36b87cc23f">&#9670;&nbsp;</a></span>AckMessageTimeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Systemic.Unity.Pixels.Pixel.AckMessageTimeout = 5</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The timeout in seconds for waiting the response of a message send to a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="ac6fd65b15976433f2ad24ab69492e0c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6fd65b15976433f2ad24ab69492e0c8">&#9670;&nbsp;</a></span>AppearanceChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ae4f0bf1f5ccb4b9b0b2d0d20d1d3f637">AppearanceChangedEventHandler</a> Systemic.Unity.Pixels.Pixel.AppearanceChanged</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> appearance setting is changed. </p>
+
+</div>
+</div>
+<a id="a25046a600591dacea0bbd9bbcde835a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25046a600591dacea0bbd9bbcde835a9">&#9670;&nbsp;</a></span>BatteryLevelChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae">BatteryLevelChangedEventHandler</a> Systemic.Unity.Pixels.Pixel.BatteryLevelChanged</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when the battery level reported by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> changes. </p>
+
+</div>
+</div>
+<a id="ab7505542016ea8da4c37511e7ab76af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7505542016ea8da4c37511e7ab76af9">&#9670;&nbsp;</a></span>ConnectionStateChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12">ConnectionStateChangedEventHandler</a> Systemic.Unity.Pixels.Pixel.ConnectionStateChanged</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> connection state changes. </p>
+
+</div>
+</div>
+<a id="a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ceabb75ba4ea3f2e7acc2cc4cbb4a8f">&#9670;&nbsp;</a></span>ErrorRaised</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ab0a95ad905f8e80d3eb2925e8dfa17e6">ErrorRaisedEventHandler</a> Systemic.Unity.Pixels.Pixel.ErrorRaised</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when communications with the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> encountered an error. </p>
+
+</div>
+</div>
+<a id="a346e7c126e2555d5288c8fd6344dba6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a346e7c126e2555d5288c8fd6344dba6c">&#9670;&nbsp;</a></span>RollStateChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1">RollStateChangedEventHandler</a> Systemic.Unity.Pixels.Pixel.RollStateChanged</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> roll state changes. </p>
+
+</div>
+</div>
+<a id="a7684d206c86684fdf17a026e902c6d9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7684d206c86684fdf17a026e902c6d9f">&#9670;&nbsp;</a></span>RssiChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6">RssiChangedEventHandler</a> Systemic.Unity.Pixels.Pixel.RssiChanged</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event raised when the RSSI value reported by the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> changes. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="ad2a5b864a5f2f24f5eaa8dd55cd11244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a5b864a5f2f24f5eaa8dd55cd11244">&#9670;&nbsp;</a></span>batteryLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Systemic.Unity.Pixels.Pixel.batteryLevel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> last read battery level. The value is normalized between 0 and 1 included. </p>
+
+</div>
+</div>
+<a id="a05682f39ea0346889afa6b74fc385cc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05682f39ea0346889afa6b74fc385cc4">&#9670;&nbsp;</a></span>connectionState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7">PixelConnectionState</a>? Systemic.Unity.Pixels.Pixel.connectionState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the connection state to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="ac2fa58c0f7fb8a18aaa637d805e3294a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2fa58c0f7fb8a18aaa637d805e3294a">&#9670;&nbsp;</a></span>dataSetHash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint Systemic.Unity.Pixels.Pixel.dataSetHash</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the hash value of the animation data loaded on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="a2f298dfcea662a1dfb0f8c317f931058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f298dfcea662a1dfb0f8c317f931058">&#9670;&nbsp;</a></span>designAndColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> Systemic.Unity.Pixels.Pixel.designAndColor = PixelDesignAndColor.Unknown</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> combination of design and color. </p>
+
+</div>
+</div>
+<a id="a86a8ae9430db86808539f3a0799c85c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a8ae9430db86808539f3a0799c85c7">&#9670;&nbsp;</a></span>face</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Systemic.Unity.Pixels.Pixel.face = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> the current face that is up. </p>
+
+</div>
+</div>
+<a id="ad0ddcdd6be2406430fe8000670c4a2f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0ddcdd6be2406430fe8000670c4a2f1">&#9670;&nbsp;</a></span>faceCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Systemic.Unity.Pixels.Pixel.faceCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the number of faces for the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="a2f5342d0331e718ce8323162d6adebb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5342d0331e718ce8323162d6adebb0">&#9670;&nbsp;</a></span>firmwareVersionId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Systemic.Unity.Pixels.Pixel.firmwareVersionId = &quot;Unknown&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the version id of the firmware running on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="afe5ffb5d2d245091332c19d63037edcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe5ffb5d2d245091332c19d63037edcb">&#9670;&nbsp;</a></span>flashSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint Systemic.Unity.Pixels.Pixel.flashSize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the size of memory that can be used to store animation data on the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="adcafaae597873b34c1bda5a04388ac9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcafaae597873b34c1bda5a04388ac9a">&#9670;&nbsp;</a></span>isAvailable</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic.Unity.Pixels.Pixel.isAvailable</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates whether the connection state is set to available, meaning the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> can be connected to. </p>
+
+</div>
+</div>
+<a id="a29bdd3f0e347c8c5908c27899bb056c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29bdd3f0e347c8c5908c27899bb056c5">&#9670;&nbsp;</a></span>isCharging</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic.Unity.Pixels.Pixel.isCharging</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates whether or not the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> was last reported as charging. </p>
+
+</div>
+</div>
+<a id="a50c9e4badf7448bf9591d35f4cf73c3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c9e4badf7448bf9591d35f4cf73c3b">&#9670;&nbsp;</a></span>isReady</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic.Unity.Pixels.Pixel.isReady</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates whether the connection state is set to ready, meaning the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> is connected and ready to communicate. </p>
+
+</div>
+</div>
+<a id="afb1d63baca5298095b709a42a05bc4bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1d63baca5298095b709a42a05bc4bf">&#9670;&nbsp;</a></span>lastError</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3">PixelError</a> Systemic.Unity.Pixels.Pixel.lastError</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the last error that happened during communications with the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
+
+</div>
+</div>
+<a id="a3ed2060b451e12cb37d118f3ff848020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed2060b451e12cb37d118f3ff848020">&#9670;&nbsp;</a></span>rollState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> Systemic.Unity.Pixels.Pixel.rollState = <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e">PixelRollState.Unknown</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> current roll state. </p>
+
+</div>
+</div>
+<a id="ad6592e2ea680cbdc526b947750b24cec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6592e2ea680cbdc526b947750b24cec">&#9670;&nbsp;</a></span>rssi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Systemic.Unity.Pixels.Pixel.rssi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> last read Received Signal Strength Indicator (RSSI) value. </p>
+
+</div>
+</div>
+<a id="a7a392d34cb2bebbef04e0addaa6aa4a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a392d34cb2bebbef04e0addaa6aa4a7">&#9670;&nbsp;</a></span>SafeName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Systemic.Unity.Pixels.Pixel.SafeName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Use this property to access the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> name without having to first check if the object is considered destroyed by <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> (to avoid generating an error). </p>
+
+</div>
+</div>
+<a id="a0564258a3fda3dd721c971ac0eaf4ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0564258a3fda3dd721c971ac0eaf4ea1">&#9670;&nbsp;</a></span>systemId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Systemic.Unity.Pixels.Pixel.systemId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the unique system id assigned to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. This value is platform specific and may change over long periods of time. </p>
+
+</div>
+</div>
+<a id="af99b4f77eb4dab8c3ca5cde22c325642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99b4f77eb4dab8c3ca5cde22c325642">&#9670;&nbsp;</a></span>TelemetryReceived</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a8500d56af4d9bdf707f5f1827045d47a">TelemetryEventHandler</a> Systemic.Unity.Pixels.Pixel.TelemetryReceived</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">add</span><span class="mlabel">remove</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Event raised when telemetry data is received. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Assets/Plugins/Systemic/Pixels/Pixel.cs</li>
-<li>Assets/Plugins/Systemic/Pixels/Pixel.DataTransfer.cs</li>
 <li>Assets/Plugins/Systemic/Pixels/Pixel.Messages.cs</li>
+<li>Assets/Plugins/Systemic/Pixels/Pixel.DataTransfer.cs</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -32,15 +32,16 @@ var NAVTREE =
         [ "Central", "index.html#autotoc_md4", null ],
         [ "Pixel", "index.html#autotoc_md5", null ]
       ] ],
-      [ "Subscribing to events", "index.html#autotoc_md6", null ],
+      [ "Subscribing to Pixel events", "index.html#autotoc_md6", null ],
       [ "Examples", "index.html#autotoc_md7", [
-        [ "Console Application", "index.html#autotoc_md8", null ],
-        [ "Test Pad Application", "index.html#autotoc_md9", null ]
+        [ "Pixels Demo", "index.html#autotoc_md8", null ],
+        [ "Console Application", "index.html#autotoc_md9", null ],
+        [ "Test Pad Application", "index.html#autotoc_md10", null ]
       ] ],
-      [ "Architecture", "index.html#autotoc_md10", [
-        [ "Main classes", "index.html#autotoc_md11", null ],
-        [ "Execution flow between plugins and C# code", "index.html#autotoc_md12", null ],
-        [ "Native Plugins", "index.html#autotoc_md13", null ]
+      [ "Architecture", "index.html#autotoc_md11", [
+        [ "Main classes", "index.html#autotoc_md12", null ],
+        [ "Execution flow between plugins and C# code", "index.html#autotoc_md13", null ],
+        [ "Native Plugins", "index.html#autotoc_md14", null ]
       ] ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
@@ -59,8 +60,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ],
         [ "Events", "functions_evnt.html", null ]
@@ -81,11 +82,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_characteristic_8h.html",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a107c0d62d71ddd01eabe2916237094cc",
-"class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a170f5b65ecdfabe73e0dfa8d228982c6",
-"namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track.html"
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a33c44196f61862e2419c650618ad1c5e",
+"class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye.html#a438d42af783be8b306a1bae633f38194",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1dbdf956baf05a33a77edc3ae9994dc6",
+"interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html",
+"namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90adee596d1fa28edf9e3c68db1b2f9182b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

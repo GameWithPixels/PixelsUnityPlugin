@@ -1,5 +1,5 @@
 <map id="Systemic.Unity.Pixels.Behaviors.IAction" name="Systemic.Unity.Pixels.Behaviors.IAction">
 <area shape="rect" id="node1" title="Base interface for Actions. Stores the actual type so that we can cast the data to the proper derived..." alt="" coords="5,39,216,80"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_animation.html" title="Action to play an animation, really!" alt="" coords="264,5,475,47"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_animation.html" title="Action to play an animation." alt="" coords="264,5,475,47"/>
 <area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_audio_clip.html" title="Action to play a sound!" alt="" coords="264,71,475,112"/>
 </map>

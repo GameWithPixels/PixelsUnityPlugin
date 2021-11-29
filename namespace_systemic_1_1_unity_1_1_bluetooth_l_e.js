@@ -67,8 +67,8 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
       [ "AdapterOff", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eab34780231f9c8a6db0787f4b10335637", null ],
       [ "Timeout", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eac85a251cc457840f1e032f1b733e9398", null ]
     ] ],
-    [ "NativeBluetoothEventHandler", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727", null ],
-    [ "NativeConnectionEventHandler", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec", null ],
-    [ "NativeRequestResultHandler", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc", null ],
-    [ "NativeValueRequestResultHandler< T >", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a9de6bf4222af1249e2ff8525f201b94f", null ]
+    [ "NativeBluetoothCallback", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a5c1eb9a85811eb7ca41ead1cbd61ef6f", null ],
+    [ "NativeConnectionEventCallback", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a87e7711380c0f356254ddf9c30d90b00", null ],
+    [ "NativeRequestResultCallback", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3", null ],
+    [ "NativeValueRequestResultCallback< T >", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae1ccbc5b0db51a1ac9fe95d2a5cac951", null ]
 ];

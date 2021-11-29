@@ -1,5 +1,5 @@
 <map id="Systemic.Unity.Pixels.Pixel.WaitForMessageEnumerator&lt; T &gt;" name="Systemic.Unity.Pixels.Pixel.WaitForMessageEnumerator&lt; T &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,155,221,196"/>
-<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html" title=" " alt="" coords="39,80,187,107"/>
+<area shape="rect" id="node1" title="Enumerator that waits until the Pixel receives a message of the given type." alt="" coords="5,155,221,196"/>
+<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html" title="Interface for an enumerator handling an asynchronous operation with a Pixel." alt="" coords="39,80,187,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="67,5,159,32"/>
 </map>

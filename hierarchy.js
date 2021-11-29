@@ -48,7 +48,6 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Animations.AnimationRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html", null ],
       [ "Systemic.Unity.Pixels.Animations.AnimationSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.IAudioPlayer", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player.html", null ],
     [ "Systemic.Unity.Pixels.Behaviors.ICondition", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_condition.html", [
       [ "Systemic.Unity.Pixels.Behaviors.ConditionBatteryState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_battery_state.html", null ],
       [ "Systemic.Unity.Pixels.Behaviors.ConditionConnectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_connection_state.html", null ],
@@ -59,7 +58,6 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Behaviors.ConditionIdle", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_idle.html", null ],
       [ "Systemic.Unity.Pixels.Behaviors.ConditionRolling", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_rolling.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.IDialogBox", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box.html", null ],
     [ "IEnumerator", null, [
       [ "Systemic.Unity.BluetoothLE.RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", [
         [ "Systemic.Unity.BluetoothLE.ValueRequestEnumerator< T >", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", null ]
@@ -105,9 +103,9 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.RequestAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_animation_set.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestBatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_battery_level.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestDefaultAnimationSetColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_default_animation_set_color.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.RequestRollState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestRssi", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_rssi.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestSettings", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_settings.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.RequestState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestTelemetry", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_telemetry.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RollState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_roll_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.Rssi", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_rssi.html", null ],
@@ -139,7 +137,6 @@ var hierarchy =
     [ "Systemic.Unity.Pixels.Animations.Keyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe.html", null ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
     [ "MonoBehaviour", null, [
-      [ "ConfigurePlist", "class_configure_plist.html", null ],
       [ "Systemic.Unity.Examples.BleConsole", "class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html", null ],
       [ "Systemic.Unity.Examples.BleController", "class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html", null ],
       [ "Systemic.Unity.Examples.PixelController", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html", null ],
@@ -147,7 +144,6 @@ var hierarchy =
       [ "Systemic.Unity.Examples.UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", null ],
       [ "Systemic.Unity.Examples.UIPixelPanel", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html", null ],
       [ "Systemic.Unity.Examples.UIUpdateScanToggle", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html", null ],
-      [ "Systemic.Unity.Pixels.Animations.AnimationSequence", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_sequence.html", null ],
       [ "Systemic.Unity.Pixels.DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", null ],
       [ "Systemic.Unity.Pixels.Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", null ]
     ] ],
@@ -181,6 +177,9 @@ var hierarchy =
     ] ],
     [ "Systemic.Unity.Pixels.Animations.Track", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html", null ],
     [ "Systemic.Unity.Pixels.Pixel.WaitForMessageEnumerator< TResp >", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html", [
-      [ "Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator< TMsg, TResp >", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html", null ]
+      [ "Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator< TMsg, TResp >", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html", [
+        [ "Systemic.Unity.Pixels.Pixel.SendMessageAndProcessResponseEnumerator< TMsg, TResp >", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html", null ],
+        [ "Systemic.Unity.Pixels.Pixel.SendMessageAndProcessResponseWithValueEnumerator< TMsg, TResp, TValue >", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html", null ]
+      ] ]
     ] ]
 ];

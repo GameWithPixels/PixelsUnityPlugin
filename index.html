@@ -113,9 +113,10 @@ Central</h2>
 <p>Native resources are also managed by <em>Central</em> and it tries to account for differences between the different platforms.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Pixel</h2>
-<p>While the above classes offer a generic access to Bluetooth Low Energy peripherals, we will soon add new classes dedicated to working with Pixels dice and that take care of dealing with the Bluetooth communications technical details.</p>
+<p>While the above classes allow for a generic access to Bluetooth Low Energy peripherals, the <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html"><em>Pixel</em></a> class offers an easy access to many settings and features specific to Pixel dice.</p>
+<p>The <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html"><em>DiceBag</em></a> singleton manages Pixel instances.</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
-Subscribing to events</h1>
+Subscribing to Pixel events</h1>
 <p>When dealing with Bluetooth Low Energy (BLE) peripherals and specifically Pixels, one may want to subscribe to events for being notified of a state change (like a die being rolled).</p>
 <p>The chart below shows the workflow of subscribing to Pixels events and reading them.</p>
 <p><img src="subscription-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connection Events Workflow"/></p>
@@ -127,21 +128,29 @@ Subscribing to events</h1>
 Examples</h1>
 <p>Example scenes for Unity are located in the <code>Assets/Systemic/Examples</code> folder.</p>
 <h2><a class="anchor" id="autotoc_md8"></a>
+Pixels Demo</h2>
+<p>Demonstrates how to communicate with Pixels.</p><ul>
+<li>Reading state</li>
+<li>Pushing animation data</li>
+</ul>
+<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html">PixelsDemo</a> class documentation.</p>
+<p><img src="pixels-demo.png" alt="" class="inline" title="Pixels Demo Screenshot"/></p>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Console Application</h2>
 <p>This application outputs the console logs onto the screen.</p>
 <p>It demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it, sending messages and getting notifications.</p>
-<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html">PixelConsole</a> class documentation.</p>
+<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html">BleConsole</a> class documentation.</p>
 <p><img src="console-app.png" alt="" class="inline" title="Console Application Screenshot"/></p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Test Pad Application</h2>
-<p>This application let the user trigger various Bluetooth operations on Pixels dice.</p>
+<p>This application let the user run various Bluetooth operations on Pixels dice.</p>
 <p>One may scan for Pixels, connect to one, retrieve information from and send messages to it.</p>
-<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html">PixelController</a> class documentation.</p>
+<p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html">BleController</a> class documentation.</p>
 <p><img src="test-pad-app.png" alt="" class="inline" title="Test Pad Application Screenshot"/></p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Architecture</h1>
 <p>This part of the documentation covers in more technical details how the structure of the Unity Asset.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Main classes</h2>
 <p>The native plugins have each a different way of binding with Unity C# code.</p>
 <p>Windows and iOS plugins must expose C functions that are manually bound to C# static methods. Together those C functions form an API which was developed specifically to be used from Unity. They make use of the C++ and Objective-C classes of their respective plugins</p>
@@ -152,7 +161,7 @@ Main classes</h2>
 <p>The later represents a Bluetooth Low Energy (BLE) peripheral that was scanned at a certain point in time. It must be used by the software to identify a specific peripheral when trying to connect to one, whether using the <em>NativeInterface</em> or the <em>Central</em> classes.</p>
 <p>The chart below shows those different layers:</p>
 <p><img src="general-architecture.svg" alt="" style="pointer-events: none;" class="inline" title="General Architecture"/></p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Execution flow between plugins and C# code</h2>
 <p>The chart below presents the execution flow of code when connecting to a peripheral.</p>
 <p><img src="connect-workflow.svg" alt="" style="pointer-events: none;" class="inline" title="Connect Workflow"/></p>
@@ -161,7 +170,7 @@ Execution flow between plugins and C# code</h2>
 <p>When running on Android, the Java <em>Peripheral</em> class is directly retrieved in C# and its connect method is invoked from Unity.</p>
 <p>Connecting to a peripheral and most other BLE requests are asynchronous. While such calls return almost immediately, the Operating System continues processing the request on a background thread and runs a callback to notify of its outcome.</p>
 <p>Such callbacks are then processed by the native code and forwarded back to the C# code through marshalling. Finally the proper C# handler is then invoked with the request result.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Native Plugins</h2>
 <p>Each native plugin implements classes that offer a simplified access to the Bluetooth Low Energy features. Those classes are designed to be as consistent as possible across the different platforms while still staying true to their platform specific APIs and coding style.</p>
 <p>This makes it possible to both have a similar workflow for the different platforms while still retaining access to some of their unique features.</p>

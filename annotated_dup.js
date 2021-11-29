@@ -52,7 +52,6 @@ var annotated_dup =
             [ "AnimationInstanceKeyframed", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed" ],
             [ "AnimationRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow" ],
             [ "AnimationInstanceRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow" ],
-            [ "AnimationSequence", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_sequence.html", null ],
             [ "AnimationSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple" ],
             [ "AnimationInstanceSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple" ],
             [ "DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set" ],
@@ -106,7 +105,7 @@ var annotated_dup =
             [ "PlayAnimationEvent", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event" ],
             [ "StopAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation" ],
             [ "PlaySound", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound" ],
-            [ "RequestState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_state" ],
+            [ "RequestRollState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state" ],
             [ "ProgramDefaultAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set" ],
             [ "ProgramDefaultAnimSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished" ],
             [ "Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink" ],
@@ -143,13 +142,10 @@ var annotated_dup =
           [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ],
           [ "ColorUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils" ],
           [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
-          [ "IDialogBox", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box" ],
-          [ "IAudioPlayer", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player" ],
           [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ]
         ] ]
       ] ]
     ] ],
-    [ "ConfigurePlist", "class_configure_plist.html", "class_configure_plist" ],
     [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", "interface_s_g_ble_central_manager_delegate" ],
     [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", "interface_s_g_ble_peripheral_queue" ],
     [ "SGBleRequest", "interface_s_g_ble_request.html", "interface_s_g_ble_request" ]

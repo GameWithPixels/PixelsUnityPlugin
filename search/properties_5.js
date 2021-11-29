@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['name_858',['Name',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acd6cf79a21970381f494bdaff70b9496',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]]
+  ['face_1035',['face',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['facecount_1036',['faceCount',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad0ddcdd6be2406430fe8000670c4a2f1',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['firmwareversionid_1037',['firmwareVersionId',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f5342d0331e718ce8323162d6adebb0',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['flashsize_1038',['flashSize',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afe5ffb5d2d245091332c19d63037edcb',1,'Systemic::Unity::Pixels::Pixel']]]
 ];

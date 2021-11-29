@@ -109,13 +109,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class that abstracts each platform specific BLE support and offers a unified interface to the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> programmer.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html">RequestEnumerator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request to a BLE peripheral. Instances are meant to be run as coroutines.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The advertisement data of a peripheral received during a BLE scan.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html">ValueRequestEnumerator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request for reading a value from a BLE peripheral. It is meant to be run as coroutine.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator handling a request for reading a value from a BLE peripheral. Instances are meant to be run as coroutines.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -207,24 +207,24 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab5b78d6095cb5b5979a8794b3cdef727"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727">NativeBluetoothEventHandler</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9">BluetoothStatus</a> status)</td></tr>
-<tr class="memdesc:ab5b78d6095cb5b5979a8794b3cdef727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Bluetooth radio status event.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab5b78d6095cb5b5979a8794b3cdef727">More...</a><br /></td></tr>
-<tr class="separator:ab5b78d6095cb5b5979a8794b3cdef727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ad9302f7df3ded34d0312ae9dd4a3ec"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">NativeConnectionEventHandler</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6">ConnectionEvent</a> connectionEvent, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053">ConnectionEventReason</a> reason)</td></tr>
-<tr class="memdesc:a4ad9302f7df3ded34d0312ae9dd4a3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for BLE peripheral connection event, with the reason.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a4ad9302f7df3ded34d0312ae9dd4a3ec">More...</a><br /></td></tr>
-<tr class="separator:a4ad9302f7df3ded34d0312ae9dd4a3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3b271a6a42bb84fa9431299044bf2dc"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">NativeRequestResultHandler</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> result)</td></tr>
-<tr class="memdesc:ab3b271a6a42bb84fa9431299044bf2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for BLE peripheral requests result.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ab3b271a6a42bb84fa9431299044bf2dc">More...</a><br /></td></tr>
-<tr class="separator:ab3b271a6a42bb84fa9431299044bf2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9de6bf4222af1249e2ff8525f201b94f"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a9de6bf4222af1249e2ff8525f201b94f">NativeValueRequestResultHandler&lt; T &gt;</a> (T value, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> status)</td></tr>
-<tr class="memdesc:a9de6bf4222af1249e2ff8525f201b94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for returning a value and a status.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a9de6bf4222af1249e2ff8525f201b94f">More...</a><br /></td></tr>
-<tr class="separator:a9de6bf4222af1249e2ff8525f201b94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1eb9a85811eb7ca41ead1cbd61ef6f"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a5c1eb9a85811eb7ca41ead1cbd61ef6f">NativeBluetoothCallback</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9">BluetoothStatus</a> status)</td></tr>
+<tr class="memdesc:a5c1eb9a85811eb7ca41ead1cbd61ef6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Bluetooth radio status event.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a5c1eb9a85811eb7ca41ead1cbd61ef6f">More...</a><br /></td></tr>
+<tr class="separator:a5c1eb9a85811eb7ca41ead1cbd61ef6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87e7711380c0f356254ddf9c30d90b00"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a87e7711380c0f356254ddf9c30d90b00">NativeConnectionEventCallback</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6">ConnectionEvent</a> connectionEvent, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053">ConnectionEventReason</a> reason)</td></tr>
+<tr class="memdesc:a87e7711380c0f356254ddf9c30d90b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for BLE peripheral connection event, with the reason.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a87e7711380c0f356254ddf9c30d90b00">More...</a><br /></td></tr>
+<tr class="separator:a87e7711380c0f356254ddf9c30d90b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946a99511232ca9adc42887e0c6a9ec3"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3">NativeRequestResultCallback</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> result)</td></tr>
+<tr class="memdesc:a946a99511232ca9adc42887e0c6a9ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for BLE peripheral requests result.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3">More...</a><br /></td></tr>
+<tr class="separator:a946a99511232ca9adc42887e0c6a9ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1ccbc5b0db51a1ac9fe95d2a5cac951"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae1ccbc5b0db51a1ac9fe95d2a5cac951">NativeValueRequestResultCallback&lt; T &gt;</a> (T value, <a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a> status)</td></tr>
+<tr class="memdesc:ae1ccbc5b0db51a1ac9fe95d2a5cac951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for returning a value and a status.  <a href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae1ccbc5b0db51a1ac9fe95d2a5cac951">More...</a><br /></td></tr>
+<tr class="separator:ae1ccbc5b0db51a1ac9fe95d2a5cac951"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A collection of C# classes for the <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> game engine that provides a simplified access to Bluetooth Low Energy peripherals. </p>
 <p><a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> plugins are used to access native Bluetooth APIs specific to each supported platform: Windows 10 and above, iOS and Android.</p>
 <p>The most useful class for <a class="el" href="namespace_systemic_1_1_unity.html" title="A collection of C# classes for the Unity game engine provided by Systemic Games. This open source pac...">Unity</a> developers to access a Bluetooth peripheral is <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a>.</p>
-<p>For communicating specifically with Pixel dices see <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Systemic.Unity.Pixels.Pixel</a>.</p>
+<p>For communicating specifically with Pixel dices see <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Systemic.Unity.Pixels.Pixel</a>.</p>
 <p>For <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html" title="A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...">Central</a>.</p>
 <p>Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -329,7 +329,7 @@ Functions</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6ae321c53b354930ba96f0243e652df458"></a>Connecting&#160;</td><td class="fielddoc"><p>Raised at the beginning of the connect sequence and is followed either by Connected or FailedToConnect. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6a2ec0d16e4ca169baedb9b2d50ec5c6d7"></a>Connected&#160;</td><td class="fielddoc"><p>Raised once the peripheral is connected, at which point service discovery is triggered. </p>
+<tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6a2ec0d16e4ca169baedb9b2d50ec5c6d7"></a>Connected&#160;</td><td class="fielddoc"><p>Raised once the peripheral is connected, just before services are being discovered. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="adba39c6638265898a3f769e9b2686fe6af6b5c5c8c76b65f34f7c4f5fba2c08e2"></a>FailedToConnect&#160;</td><td class="fielddoc"><p>Raised when the peripheral fails to connect, the reason for the failure is also given. </p>
 </td></tr>
@@ -482,14 +482,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ab5b78d6095cb5b5979a8794b3cdef727"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5b78d6095cb5b5979a8794b3cdef727">&#9670;&nbsp;</a></span>NativeBluetoothEventHandler()</h2>
+<a id="a5c1eb9a85811eb7ca41ead1cbd61ef6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c1eb9a85811eb7ca41ead1cbd61ef6f">&#9670;&nbsp;</a></span>NativeBluetoothCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeBluetoothEventHandler </td>
+          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeBluetoothCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9">BluetoothStatus</a>&#160;</td>
           <td class="paramname"><em>status</em></td><td>)</td>
@@ -508,14 +508,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4ad9302f7df3ded34d0312ae9dd4a3ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ad9302f7df3ded34d0312ae9dd4a3ec">&#9670;&nbsp;</a></span>NativeConnectionEventHandler()</h2>
+<a id="a87e7711380c0f356254ddf9c30d90b00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87e7711380c0f356254ddf9c30d90b00">&#9670;&nbsp;</a></span>NativeConnectionEventCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeConnectionEventHandler </td>
+          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeConnectionEventCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#adba39c6638265898a3f769e9b2686fe6">ConnectionEvent</a>&#160;</td>
           <td class="paramname"><em>connectionEvent</em>, </td>
@@ -545,14 +545,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab3b271a6a42bb84fa9431299044bf2dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3b271a6a42bb84fa9431299044bf2dc">&#9670;&nbsp;</a></span>NativeRequestResultHandler()</h2>
+<a id="a946a99511232ca9adc42887e0c6a9ec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946a99511232ca9adc42887e0c6a9ec3">&#9670;&nbsp;</a></span>NativeRequestResultCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeRequestResultHandler </td>
+          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeRequestResultCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e">RequestStatus</a>&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
@@ -571,14 +571,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9de6bf4222af1249e2ff8525f201b94f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9de6bf4222af1249e2ff8525f201b94f">&#9670;&nbsp;</a></span>NativeValueRequestResultHandler&lt; T &gt;()</h2>
+<a id="ae1ccbc5b0db51a1ac9fe95d2a5cac951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ccbc5b0db51a1ac9fe95d2a5cac951">&#9670;&nbsp;</a></span>NativeValueRequestResultCallback&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeValueRequestResultHandler&lt; T &gt; </td>
+          <td class="memname">delegate void Systemic.Unity.BluetoothLE.NativeValueRequestResultCallback&lt; T &gt; </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>value</em>, </td>

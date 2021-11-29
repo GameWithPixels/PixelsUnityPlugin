@@ -13,7 +13,6 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_animations =
     [ "AnimationInstanceKeyframed", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed" ],
     [ "AnimationRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow" ],
     [ "AnimationInstanceRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow" ],
-    [ "AnimationSequence", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_sequence.html", null ],
     [ "AnimationSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple" ],
     [ "AnimationInstanceSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple" ],
     [ "DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set" ],

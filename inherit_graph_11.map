@@ -1,3 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html" title="The advertisement data of a peripheral received during a BLE scan." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,274,117,301"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html" title="Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,..." alt="" coords="179,5,350,47"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html" title="Demonstrates various Bluetooth operations on Pixels using the device agnostic Central class...." alt="" coords="179,71,350,112"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html" title="Demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated..." alt="" coords="179,136,350,177"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html" title="Demonstrates how to communicate with Pixels.Pixel dice using the Pixels.DiceBag singleton." alt="" coords="179,201,350,243"/>
+<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html" title="Gets the log messages and copy them to a UI.Text object." alt="" coords="179,267,350,308"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html" title="Show information about a Pixels.Pixel and buttons to connect, disconnect and remove a Pixel." alt="" coords="179,332,350,373"/>
+<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html" title="Specialized class that updates the state of a Toggle instance based on whether the DiceBag is scannin..." alt="" coords="179,397,350,439"/>
+<area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html" title="Singleton that manages Bluetooth Low Energy Pixels." alt="" coords="165,463,364,490"/>
+<area shape="rect" id="node10" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die." alt="" coords="175,514,354,541"/>
 </map>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['centralmanager_844',['centralManager',['../interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d',1,'SGBleCentralManagerDelegate']]],
-  ['connectedperipherals_845',['ConnectedPeripherals',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a3cefdca7b402a51a9d3ff147ad74866d',1,'Systemic::Unity::BluetoothLE::Central']]],
-  ['current_846',['Current',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a65953bd0ee6462de0d8bd1056123a1db',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]]
+  ['batterylevel_1025',['batteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['bluetoothaddress_1026',['BluetoothAddress',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acdcfb6173e7418cb036fff771c24a11f',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]]
 ];

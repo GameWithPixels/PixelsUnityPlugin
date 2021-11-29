@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['unsubscribe_728',['Unsubscribe',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#afe20f10b707de69948b3ff6e992b99f2',1,'Systemic::Unity::Examples::BleController']]],
-  ['unsubscribeasync_729',['unsubscribeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661',1,'Systemic::BluetoothLE::Characteristic']]],
-  ['unsubscribecharacteristic_730',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
-  ['unsubscribecharacteristic_731',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#abc0a893615c573e65892655a95a618a1',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['unsubscribecharacteristicasync_732',['UnsubscribeCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ac1335d32abf461169fe190a2bb4af804',1,'Systemic::Unity::BluetoothLE::Central']]],
-  ['updateleds_733',['updateLEDs',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient_pattern.html#a71224c91e36a4f3ac0c37cb2c9b4293b',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceGradientPattern.updateLEDs()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html#a2dea1c6909d342e73728cd986631cac8',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceKeyframed.updateLEDs()']]],
-  ['uuid_734',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]]
+  ['telemetryeventhandler_878',['TelemetryEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a8500d56af4d9bdf707f5f1827045d47a',1,'Systemic::Unity::Pixels']]],
+  ['timestamp_879',['timestamp',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#aa49e8dfcee40fea96b3517ca7d56bce0',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['tocolor_880',['ToColor',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a837934013d6cf4b6e94f4e65fef1a678',1,'Systemic::Unity::Pixels::ColorUtils']]],
+  ['tofulluuid_881',['ToFullUuid',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html#ac92a0ecea5de928083913af866ea5186',1,'Systemic::Unity::BluetoothLE::BleUuid']]],
+  ['togglescanning_882',['ToggleScanning',['../class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html#a6264ced160e15e796aafb83b19f7db2a',1,'Systemic::Unity::Examples::PixelController']]],
+  ['txpowerlevel_883',['txPowerLevel',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a1447ebf7e2063a6368a8488e8cf84afb',1,'Systemic::BluetoothLE::ScannedPeripheral']]]
 ];

@@ -1,17 +1,17 @@
 var class_systemic_1_1_unity_1_1_pixels_1_1_color_utils =
 [
-    [ "addColors", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a3035764e27b715173755b6886a3d3adf", null ],
-    [ "gamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a71bcdab9eb05a6079f7ff8d30f5d8d62", null ],
-    [ "gamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a868613d6e8fa44fb9e8370935ca5cb99", null ],
-    [ "gamma8", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#ae1093c224a9f4a59be3334bc1ad046e2", null ],
-    [ "getBlue", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#aa1fe4cc9b395caf65e3edac8450937e5", null ],
-    [ "getGreen", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a6e49ed46bdff2f16df22aca18ebb6fa4", null ],
-    [ "getRed", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a08515daebfa4e29a523adf4400d67529", null ],
-    [ "interpolateColors", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a17452e5ad13bb47af3360333eac41ce5", null ],
-    [ "interpolateIntensity", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a39145368aa722090f40b76a31e78722e", null ],
-    [ "modulateColor", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a400302d1df297f103990d5cb22bc1fa4", null ],
-    [ "rainbowWheel", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a7cf30a7ba41be660988e0fdbc25cb537", null ],
-    [ "reverseGamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a4d6a80cff6a466d97c2f4c09b71bae53", null ],
-    [ "reverseGamma8", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#af085d28439fcf8308ccff9a467bcd355", null ],
-    [ "toColor", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#ab5e526ccc02c6e71d7d3b0040bb3153c", null ]
+    [ "CombineColors", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a8209d3eb2e84c314630ab261f41a4f88", null ],
+    [ "Gamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#aaf4f8b4009cd05a6b0cd150131ca7bc2", null ],
+    [ "Gamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a6dabe5efa87853b2447c0a3a74f5669b", null ],
+    [ "Gamma8", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a5c5684c5e9f4753e15e84a6e5f87ee6b", null ],
+    [ "GetBlue", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a62e73139b3777c825b26cde7b020dc33", null ],
+    [ "GetGreen", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a6433057f4acb4c7ffc5405d4640f4cf3", null ],
+    [ "GetRed", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a6aee54152d21919a046f94b959c05e4e", null ],
+    [ "InterpolateColors", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#aca35a3ae640101e4b5b12e0798e727c6", null ],
+    [ "InterpolateIntensity", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a206b9a5672cd26e38b65a254fcebfe4e", null ],
+    [ "ModulateColor", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a5b777bf5c17fb55c81ad81f95e1d0257", null ],
+    [ "RainbowWheel", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#ad1cd6a0e367cfcc73c9f4568059be89c", null ],
+    [ "ReverseGamma", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a523824a920862c6a0c164d7fd5e8b85a", null ],
+    [ "ReverseGamma8", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a9a665d85eb72f73a86cfb2af7ace2b76", null ],
+    [ "ToColor", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html#a837934013d6cf4b6e94f4e65fef1a678", null ]
 ];

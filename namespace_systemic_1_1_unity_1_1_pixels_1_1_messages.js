@@ -29,7 +29,7 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_messages =
     [ "PlayAnimationEvent", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event" ],
     [ "StopAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation" ],
     [ "PlaySound", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound" ],
-    [ "RequestState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_state" ],
+    [ "RequestRollState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state" ],
     [ "ProgramDefaultAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set" ],
     [ "ProgramDefaultAnimSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished" ],
     [ "Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink" ],

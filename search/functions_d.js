@@ -1,17 +1,9 @@
 var searchData=
 [
-  ['read_671',['Read',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#aae2b58eae4442865ce71d50aaa5642f0',1,'Systemic::Unity::Examples::BleController']]],
-  ['readcharacteristic_672',['ReadCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a7dc291462687ad1e70bcd656e83d0928',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['readcharacteristic_673',['readCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0',1,'com::systemic::bluetoothle::Peripheral']]],
-  ['readcharacteristicasync_674',['ReadCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a9b5512d9129f83dee466da9e34324fdf',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec=DefaultRequestTimeout)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a546f6dc32945bd81926309d1437ddbae',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec=DefaultRequestTimeout)']]],
-  ['readperipheralrssi_675',['ReadPeripheralRssi',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#afff98d4096061ac592f8e26f33a9dee2',1,'Systemic.Unity.BluetoothLE.Central.ReadPeripheralRssi()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a4500a621b2c5bf3b5cf965c7faeb6676',1,'Systemic.Unity.BluetoothLE.NativeInterface.ReadPeripheralRssi()']]],
-  ['readrssi_676',['readRssi',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ad88b3b940d46d8c4e03dd723b809f33c',1,'com::systemic::bluetoothle::Peripheral']]],
-  ['readvalueasync_677',['readValueAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#abbea6bc0efd13de35129d44fb5f27a8c',1,'Systemic::BluetoothLE::Characteristic']]],
-  ['releaseperipheral_678',['ReleasePeripheral',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a11ec76e744bdb8e0b2d936a518d470ea',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['requestenumerator_679',['RequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#ae4157407175e7e3903320a64503fcb9f',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]],
-  ['requestmtu_680',['requestMtu',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a3aa53471a8b72d03ac55dc08e340e0f5',1,'com::systemic::bluetoothle::Peripheral']]],
-  ['requestperipheralmtu_681',['RequestPeripheralMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a09ef089f9763345278a4080e08cce89b',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['requesttypetostring_3a_682',['requestTypeToString:',['../interface_s_g_ble_request.html#a66f43c95ed12a4ded19f6ff055150b42',1,'SGBleRequest']]],
-  ['reset_683',['Reset',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a20a7bbf9d07f7aa999161d51d1e757b9',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]],
-  ['rssi_684',['rssi',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8ef2c10e3627ea4fa20f5b13c0b5dda3',1,'Systemic::BluetoothLE::ScannedPeripheral']]]
+  ['queueconnectwithservices_3acompletionhandler_3a_795',['queueConnectWithServices:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318',1,'SGBlePeripheralQueue']]],
+  ['queuedisconnect_3a_796',['queueDisconnect:',['../interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b',1,'SGBlePeripheralQueue']]],
+  ['queuereadrssi_3a_797',['queueReadRssi:',['../interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01',1,'SGBlePeripheralQueue']]],
+  ['queuereadvalueforcharacteristic_3avaluereadhandler_3a_798',['queueReadValueForCharacteristic:valueReadHandler:',['../interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5',1,'SGBlePeripheralQueue']]],
+  ['queuesetnotifyvalueforcharacteristic_3avaluechangedhandler_3acompletionhandler_3a_799',['queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6',1,'SGBlePeripheralQueue']]],
+  ['queuewritevalue_3aforcharacteristic_3atype_3acompletionhandler_3a_800',['queueWriteValue:forCharacteristic:type:completionHandler:',['../interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d',1,'SGBlePeripheralQueue']]]
 ];

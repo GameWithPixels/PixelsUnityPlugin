@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['txpowerlevel_873',['TxPowerLevel',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a214ee8a6b6df5ce3dfb645483d44615f',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
-  ['type_874',['type',['../interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e',1,'SGBleRequest']]]
+  ['operation_1057',['Operation',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#ae1455f89f599d741439015b54398a6d9',1,'Systemic::Unity::BluetoothLE::RequestEnumerator']]],
+  ['overflowservices_1058',['OverflowServices',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8b39d6c83a8a1ce822498153285ab328',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]]
 ];

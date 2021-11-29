@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writecharacteristicuuid_749',['WriteCharacteristicUuid',['../class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html#ad426461d86bf2785bfef307ee95cba80',1,'Systemic::Unity::Pixels::BleUuids']]]
+  ['logtext_913',['LogText',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html#a1ff7573a7f64d925e61f13cd05b4fa83',1,'Systemic::Unity::Examples::UILogToText']]]
 ];

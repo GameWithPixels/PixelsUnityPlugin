@@ -6,8 +6,6 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ],
     [ "ColorUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils" ],
     [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
-    [ "IDialogBox", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_dialog_box" ],
-    [ "IAudioPlayer", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_i_audio_player" ],
     [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ],
     [ "PixelConnectionState", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7", [
       [ "Invalid", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a4bbb8f967da6d1a610596d7257179c2b", null ],
@@ -32,10 +30,10 @@ var namespace_systemic_1_1_unity_1_1_pixels =
       [ "Midnight_Galaxy", "namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933a78284b58655bbd8d3b34bc4e8dfa8bcb", null ],
       [ "Aurora_Sky", "namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933a71f31cc391c116c1807bf6aaec5f8e84", null ]
     ] ],
-    [ "PixelLastError", "namespace_systemic_1_1_unity_1_1_pixels.html#a751dce57008c674bebe38dfb1b1661f9", [
-      [ "None", "namespace_systemic_1_1_unity_1_1_pixels.html#a751dce57008c674bebe38dfb1b1661f9a6adf97f83acf6453d4a6a4b1070f3754", null ],
-      [ "ConnectionError", "namespace_systemic_1_1_unity_1_1_pixels.html#a751dce57008c674bebe38dfb1b1661f9a094a6f6b0868122a9dd008cb91c083e4", null ],
-      [ "Disconnected", "namespace_systemic_1_1_unity_1_1_pixels.html#a751dce57008c674bebe38dfb1b1661f9aef70e46fd3bbc21e3e1f0b6815e750c0", null ]
+    [ "PixelError", "namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3", [
+      [ "None", "namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "ConnectionError", "namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3a094a6f6b0868122a9dd008cb91c083e4", null ],
+      [ "Disconnected", "namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3aef70e46fd3bbc21e3e1f0b6815e750c0", null ]
     ] ],
     [ "PixelRollState", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500", [
       [ "Unknown", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
@@ -44,8 +42,17 @@ var namespace_systemic_1_1_unity_1_1_pixels =
       [ "Rolling", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500af4920797afb92022a9c6608efcd86317", null ],
       [ "Crooked", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3", null ]
     ] ],
-    [ "PixelConnectResultHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a8340e4e7e8e1abeb7841aa85faad473d", null ],
-    [ "PixelOperationProgressHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae5ea5694202f05b33ce4500af8085578", null ],
-    [ "PixelOperationResultHandler< T >", "namespace_systemic_1_1_unity_1_1_pixels.html#a524a9a800bc9727e08d42e4831987111", null ],
-    [ "PixelTelemetryEvent", "namespace_systemic_1_1_unity_1_1_pixels.html#a254da82d46274ac54f721f547061c347", null ]
+    [ "AppearanceChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae4f0bf1f5ccb4b9b0b2d0d20d1d3f637", null ],
+    [ "BatteryLevelChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae", null ],
+    [ "ConnectionResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17", null ],
+    [ "ConnectionStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12", null ],
+    [ "DataOperationResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b", null ],
+    [ "ErrorRaisedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ab0a95ad905f8e80d3eb2925e8dfa17e6", null ],
+    [ "NotifyUserCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070", null ],
+    [ "OperationProgressCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a35d123a45ee145b174e5f08103d79a5c", null ],
+    [ "OperationResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4", null ],
+    [ "PlayAudioClipCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747", null ],
+    [ "RollStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1", null ],
+    [ "RssiChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6", null ],
+    [ "TelemetryEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a8500d56af4d9bdf707f5f1827045d47a", null ]
 ];

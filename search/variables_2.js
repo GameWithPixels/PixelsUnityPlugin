@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['maxmtu_745',['MaxMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['minmtu_746',['MinMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a6bd528295cca272faecb4c0cb37fc45d',1,'Systemic::Unity::BluetoothLE::NativeInterface']]]
+  ['connectionstatechanged_909',['ConnectionStateChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab7505542016ea8da4c37511e7ab76af9',1,'Systemic::Unity::Pixels::Pixel']]]
 ];
