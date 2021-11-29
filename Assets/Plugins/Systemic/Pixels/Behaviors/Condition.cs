@@ -3,7 +3,7 @@
 namespace Systemic.Unity.Pixels.Behaviors
 {
     /// <summary>
-    /// The types of conditions we support!
+    /// Defines the supported types of conditions.
     /// </summary>
     public enum ConditionType : byte
     {

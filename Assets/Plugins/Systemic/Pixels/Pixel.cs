@@ -11,7 +11,7 @@ namespace Systemic.Unity.Pixels
     /// <summary>
     /// Represents a Pixel die.
     ///
-    /// This class gives access to many settings and features of a Pixel. 
+    /// This class offers access to many settings and features of a Pixel.
     /// This abstract class does not implement a specific communication protocol with the dice, leaving the door
     /// open to have multiple implementations including a virtual die.
     /// Currently only Bluetooth communications are supported, see <see cref="DiceBag"/> to connect to and communicate

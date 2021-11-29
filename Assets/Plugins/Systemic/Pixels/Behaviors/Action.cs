@@ -3,7 +3,7 @@
 namespace Systemic.Unity.Pixels.Behaviors
 {
     /// <summary>
-    /// The different types of action we support. Yes, yes, it's only one right now :)
+    /// Defines the supported types of actions.
     /// </summary>
     public enum ActionType : byte
     {
@@ -25,7 +25,7 @@ namespace Systemic.Unity.Pixels.Behaviors
     };
 
     /// <summary>
-    /// Action to play an animation, really! 
+    /// Action to play an animation.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     [System.Serializable]

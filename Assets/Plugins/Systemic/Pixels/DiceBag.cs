@@ -10,7 +10,7 @@ namespace Systemic.Unity.Pixels
 {
     //TODO document Pixel registration
     /// <summary>
-    /// Singleton class that manages Bluetooth Low Energy Pixels.
+    /// Singleton that manages Bluetooth Low Energy Pixels.
     /// </summary>
     public sealed partial class DiceBag : MonoBehaviour
     {

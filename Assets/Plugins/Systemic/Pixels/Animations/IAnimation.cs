@@ -2,7 +2,7 @@
 namespace Systemic.Unity.Pixels.Animations
 {
     /// <summary>
-    /// Defines the types of Animation Presets we have/support
+    /// Defines the supported types of Animation Presets.
     /// </summary>
     public enum AnimationType : byte
     {

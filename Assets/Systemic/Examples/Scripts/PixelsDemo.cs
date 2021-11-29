@@ -3,7 +3,8 @@ using UnityEngine;
 namespace Systemic.Unity.Examples
 {
     /// <summary>
-    /// Demonstrates how to communicate with <see cref="Pixels.Pixel"/> dice.
+    /// Demonstrates how to communicate with <see cref="Pixels.Pixel"/> dice
+    /// using the <see cref="Pixels.DiceBag"/> singleton.
     /// - Reading state
     /// - Pushing animation data
     /// </summary>
