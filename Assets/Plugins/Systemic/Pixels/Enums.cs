@@ -26,11 +26,20 @@ namespace Systemic.Unity.Pixels
     /// </summary>
     public enum PixelRollState : byte
     {
+        /// The Pixel roll state could not be determined.
         Unknown = 0,
+
+        /// The Pixel is resting in a position with a face up.
         OnFace,
+
+        /// The Pixel is being handled.
         Handling,
+
+        /// The Pixel is rolling.
         Rolling,
-        Crooked
+
+        /// The Pixel is resting in a crooked position.
+        Crooked,
     };
 
     /// <summary>
@@ -38,18 +47,37 @@ namespace Systemic.Unity.Pixels
     /// </summary>
     public enum PixelConnectionState
     {
-        Invalid = -1,   // This is the value right after creation
-        Available,      // This is a Pixel we knew about and scanned
-        Connecting,     // This Pixel is in the process of being connected to
-        Identifying,    // Getting info from the Pixel, making sure it is valid to be used (right firmware, etc...)
-        Ready,          // Pixel is ready for communications
-        Disconnecting,  // We are currently disconnecting from this Pixel
+        /// This is the value right after creation.
+        Invalid = -1,
+
+        /// This is a Pixel we knew about and scanned.
+        Available,
+
+        /// We are currently connecting to this Pixel.
+        Connecting,
+
+        /// Getting info from the Pixel, making sure it is valid to be used (correct firmware version, etc.).
+        Identifying,
+
+        /// Pixel is ready for communications.
+        Ready,
+
+        /// We are currently disconnecting from this Pixel.
+        Disconnecting,
     }
 
+    /// <summary>
+    /// The last error encountered while communicating with a PixeL.
+    /// </summary>
     public enum PixelLastError
     {
+        /// No error.
         None = 0,
+
+        /// An error occurred during the connection.
         ConnectionError,
-        Disconnected
+
+        /// The Pixel is disconnected.
+        Disconnected,
     }
 }

@@ -133,8 +133,8 @@ namespace Systemic.Unity.Pixels.Animations
                             intensity = Mathf.Lerp(1.0f, 0.0f, (distance - sphere.radiusInner) / (sphere.radiusOuter = sphere.radiusInner));
                         }
                     }
-                    var color = ColorUtils.toColor((byte)(intensity * 255.0f), 0, 0);
-                    retColors[i] = ColorUtils.addColors(retColors[i], color);
+                    var color = ColorUtils.ToColor((byte)(intensity * 255.0f), 0, 0);
+                    retColors[i] = ColorUtils.CombineColors(retColors[i], color);
                 }
             }
             return retCount;

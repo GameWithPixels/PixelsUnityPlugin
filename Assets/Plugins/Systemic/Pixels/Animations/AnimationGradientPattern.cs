@@ -89,10 +89,10 @@ namespace Systemic.Unity.Pixels.Animations
                 byte prevKeyframeIntensity = prevKeyframe.intensity();
 
                 // Compute the interpolation parameter
-                intensity = ColorUtils.interpolateIntensity(prevKeyframeIntensity, prevKeyframeTime, nextKeyframeIntensity, nextKeyframeTime, time);
+                intensity = ColorUtils.InterpolateIntensity(prevKeyframeIntensity, prevKeyframeTime, nextKeyframeIntensity, nextKeyframeTime, time);
             }
 
-            return ColorUtils.modulateColor(color, intensity);
+            return ColorUtils.ModulateColor(color, intensity);
         }
 
         /// <summary>

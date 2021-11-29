@@ -484,7 +484,7 @@ namespace Systemic.Unity.Pixels
                 _connectionCount = 0;
                 connectionState = PixelConnectionState.Invalid;
 
-                Debug.Log($"Pixel {name}: destroyed (was connecting or connected: {disconnect})");
+                Debug.Log($"Pixel {name}: Got destroyed (was connecting or connected: {disconnect})");
 
                 if (disconnect)
                 {

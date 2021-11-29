@@ -34,7 +34,7 @@ namespace Systemic.Unity.Pixels.Animations
             {
 
                 var cl32 = (Color32)(getColor(colorIndex));
-                return ColorUtils.toColor(cl32.r, cl32.g, cl32.b);
+                return ColorUtils.ToColor(cl32.r, cl32.g, cl32.b);
             }
 
             public const ushort PALETTE_COLOR_FROM_FACE = 127;

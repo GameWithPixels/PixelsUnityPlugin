@@ -59,7 +59,7 @@ namespace Systemic.Unity.Pixels.Animations
             if (time <= fadeTime)
             {
                 // Ramp up
-                color = ColorUtils.interpolateColors(black, 0, rgb, fadeTime, time);
+                color = ColorUtils.InterpolateColors(black, 0, rgb, fadeTime, time);
             }
             else if (time <= fadeTime + onOffTime)
             {
@@ -68,7 +68,7 @@ namespace Systemic.Unity.Pixels.Animations
             else if (time <= fadeTime * 2 + onOffTime)
             {
                 // Ramp down
-                color = ColorUtils.interpolateColors(rgb, fadeTime + onOffTime, black, fadeTime * 2 + onOffTime, time);
+                color = ColorUtils.InterpolateColors(rgb, fadeTime + onOffTime, black, fadeTime * 2 + onOffTime, time);
             }
             else
             {
