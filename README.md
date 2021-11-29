@@ -67,11 +67,15 @@ between the different platforms.
 
 ### Pixel
 
-While the above classes offer a generic access to Bluetooth Low Energy peripherals,
-we will soon add new classes dedicated to working with Pixels dice and that take care
-of dealing with the Bluetooth communications technical details.
+While the above classes allow for a generic access to Bluetooth Low Energy peripherals,
+the [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) class offers an easy
+access to many settings and features specific to Pixel dice.
 
-## Subscribing to events
+
+The [_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) singleton manages
+Pixel instances.
+
+## Subscribing to Pixel events
 
 When dealing with Bluetooth Low Energy (BLE) peripherals and specifically Pixels, one
 may want to subscribe to events for being notified of a state change (like a die being
@@ -98,6 +102,17 @@ change and can process the event accordingly.
 
 Example scenes for Unity are located in the `Assets/Systemic/Examples` folder.
 
+### Pixels Demo
+
+Demonstrates how to communicate with Pixels.
+- Reading state
+- Pushing animation data
+
+More details are available with the [PixelsDemo]
+(class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html) class documentation.
+
+![Pixels Demo Screenshot](images/pixels-demo.png)
+
 ### Console Application
 
 This application outputs the console logs onto the screen.
@@ -105,19 +120,19 @@ This application outputs the console logs onto the screen.
 It demonstrates scanning for Pixels dice, connecting to one of them, retrieving information
 from it, sending messages and getting notifications.
 
-More details are available with the [PixelConsole]
-(class_systemic_1_1_unity_1_1_examples_1_1_pixel_console.html) class documentation.
+More details are available with the [BleConsole]
+(class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html) class documentation.
 
 ![Console Application Screenshot](images/console-app.png)
 
 ### Test Pad Application
 
-This application let the user trigger various Bluetooth operations on Pixels dice.
+This application let the user run various Bluetooth operations on Pixels dice.
 
 One may scan for Pixels, connect to one, retrieve information from and send messages to it.
 
-More details are available with the [PixelController]
-(class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html) class documentation.
+More details are available with the [BleController]
+(class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html) class documentation.
 
 ![Test Pad Application Screenshot](images/test-pad-app.png)
 
