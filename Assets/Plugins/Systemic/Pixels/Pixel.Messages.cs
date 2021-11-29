@@ -6,57 +6,19 @@ namespace Systemic.Unity.Pixels
 {
     partial class Pixel
     {
+        /// <summary>
+        /// The timeout in seconds for waiting the response of a message send to a Pixel.
+        /// </summary>
         public const float AckMessageTimeout = 5;
 
-        #region Message Infrastructure
-
-        void AddMessageHandler(MessageType msgType, MessageReceivedEventHandler newDel)
-        {
-            if (_messageDelegates.TryGetValue(msgType, out MessageReceivedEventHandler del))
-            {
-                del += newDel;
-                _messageDelegates[msgType] = del;
-            }
-            else
-            {
-                _messageDelegates.Add(msgType, newDel);
-            }
-        }
-
-        void RemoveMessageHandler(MessageType msgType, MessageReceivedEventHandler newDel)
-        {
-            if (_messageDelegates.TryGetValue(msgType, out MessageReceivedEventHandler del))
-            {
-                del -= newDel;
-                if (del == null)
-                {
-                    _messageDelegates.Remove(msgType);
-                }
-                else
-                {
-                    _messageDelegates[msgType] = del;
-                }
-            }
-        }
-
-        void PostMessage<T>(T message)
-            where T : IPixelMessage
-        {
-            EnsureRunningOnMainThread();
-
-            Debug.Log($"Pixel {SafeName}: Posting message of type {message.GetType()}");
-
-            StartCoroutine(SendMessageAsync(PixelMessageMarshaling.ToByteArray(message)));
-        }
-
-        #endregion
-
-        public void PlayAnimation(int animationIndex)
-        {
-            PostMessage(new PlayAnimation() { index = (byte)animationIndex });
-        }
-
-        public void PlayAnimation(int animationIndex, int remapFace, bool loop)
+        /// <summary>
+        /// Sends a message to the Pixel to play the animation stored at the given index
+        /// with face optional remapping and looping.
+        /// </summary>
+        /// <param name="animationIndex">The stored index of the animation to play.</param>
+        /// <param name="remapFace">The index of the face to remap the animation to.</param>
+        /// <param name="loop">Whether to loop the animation.</param>
+        public void PlayAnimation(int animationIndex, int remapFace = 0, bool loop = false)
         {
             PostMessage(new PlayAnimation()
             {
@@ -66,71 +28,72 @@ namespace Systemic.Unity.Pixels
             });
         }
 
-        public void StopAnimation(int animationIndex, int remapIndex)
+        /// <summary>
+        /// Sends a message to the Pixel to stop playing the animation stored on the Pixel
+        /// at the given index with face remapping.
+        /// </summary>
+        /// <param name="animationIndex">The stored index of the animation to stop playing.</param>
+        /// <param name="remapFace">The index of the face to remap the animation to.</param>
+        public void StopAnimation(int animationIndex, int remapFace = 0)
         {
             PostMessage(new StopAnimation()
             {
                 index = (byte)animationIndex,
-                remapFace = (byte)remapIndex,
+                remapFace = (byte)remapFace,
             });
         }
 
-        public void StartAttractMode()
+        /// <summary>
+        /// Sends a message to the Pixel to update the instance <see cref="rollState"/> and
+        /// <see cref="face"/> properties.
+        /// </summary>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator GetRollStateAsync(OperationResultCallback onResult = null)
         {
-            PostMessage(new AttractMode());
-        }
-
-        public IEnumerator GetDieStateAsync(OperationResultCallback<bool> onResult = null)
-        {
-            var op = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
+            var op = new SendMessageAndWaitForResponseEnumerator<RequestRollState, RollState>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator GetDieInfoAsync(OperationResultCallback<bool> onResult = null)
+        /// <summary>
+        /// Sends a message to the Pixel to update the instance information.
+        /// 
+        /// On success, this will update the <see cref="faceCount"/>, <see cref="designAndColor"/>,
+        /// <see cref="dataSetHash"/>, <see cref="flashSize"/> and <see cref="firmwareVersionId"/>
+        /// properties and raise the <see cref="AppearanceChanged"/> event if the face out or design
+        /// and color have changed.
+        /// </summary>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator UpdateInfoAsync(OperationResultCallback onResult = null)
         {
             var op = new SendMessageAndWaitForResponseEnumerator<WhoAreYou, IAmADie>(this);
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public void RequestTelemetry(bool on)
+        /// <summary>
+        /// Sends a message to the Pixel to turn telemetry on or off.
+        /// </summary>
+        /// <param name="turnOn"></param>
+        public void RequestTelemetry(bool turnOn)
         {
-            PostMessage(new RequestTelemetry() { telemetry = on ? (byte)1 : (byte)0 });
+            PostMessage(new RequestTelemetry() { telemetry = turnOn ? (byte)1 : (byte)0 });
         }
 
-        public void RequestBulkData()
+        /// <summary>
+        /// Sends a message to the Pixel to update the <see cref="batteryLevel"/> and
+        /// <see cref="isCharging"/> properties.
+        /// </summary>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator UpdateBatteryLevelAsync(OperationResultCallback onResult = null)
         {
-            PostMessage(new TestBulkSend());
-        }
-
-        public void PrepareBulkData()
-        {
-            PostMessage(new TestBulkReceive());
-        }
-
-        public void SetLEDsToRandomColor()
-        {
-            var msg = new SetAllLEDsToColor();
-            uint r = (byte)Random.Range(0, 256);
-            uint g = (byte)Random.Range(0, 256);
-            uint b = (byte)Random.Range(0, 256);
-            msg.color = (r << 16) + (g << 8) + b;
-            PostMessage(msg);
-        }
-
-        public void SetLEDsToColor(Color color)
-        {
-            Color32 color32 = color;
-            PostMessage(new SetAllLEDsToColor
-            {
-                color = (uint)((color32.r << 16) + (color32.g << 8) + color32.b)
-            });
-        }
-
-        public IEnumerator UpdateBatteryLevelAsync(OperationResultCallback<bool> onResult = null)
-        {
-            var op = new SendMessageAndProcessResponseWithValue<RequestBatteryLevel, BatteryLevel, float>(this,
+            var op = new SendMessageAndProcessResponseWithValueEnumerator<RequestBatteryLevel, BatteryLevel, float>(this,
                 lvlMsg =>
                 {
                     bool charging = lvlMsg.charging != 0;
@@ -147,9 +110,15 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator UpdateRssiAsync(OperationResultCallback<bool> onResult = null)
+        /// <summary>
+        /// Sends a message to the Pixel to update the <see cref="rssi"/> property.
+        /// </summary>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator UpdateRssiAsync(OperationResultCallback onResult = null)
         {
-            var op = new SendMessageAndProcessResponseWithValue<RequestRssi, Rssi, int>(this,
+            var op = new SendMessageAndProcessResponseWithValueEnumerator<RequestRssi, Rssi, int>(this,
                 rssiMsg =>
                 {
                     if (rssi != rssiMsg.rssi)
@@ -163,27 +132,41 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator SetCurrentDesignAndColorAsync(PixelDesignAndColor design, OperationResultCallback<bool> onResult = null)
+        /// <summary>
+        /// Sends a message to the Pixel to set its design and color.
+        /// </summary>
+        /// <param name="designAndColor">The design and color value to set.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator SetDesignAndColorAsync(PixelDesignAndColor designAndColor, OperationResultCallback onResult = null)
         {
             var op = new SendMessageAndProcessResponseEnumerator<SetDesignAndColor, Rssi>(this,
-                new SetDesignAndColor() { designAndColor = design },
+                new SetDesignAndColor() { designAndColor = designAndColor },
                 _ =>
                 {
-                    if (designAndColor != design)
+                    if (this.designAndColor != designAndColor)
                     {
-                        designAndColor = design;
-                        AppearanceChanged?.Invoke(this, faceCount, designAndColor);
+                        this.designAndColor = designAndColor;
+                        AppearanceChanged?.Invoke(this, faceCount, this.designAndColor);
                     }
                 });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator RenameDieAsync(string newName, OperationResultCallback<bool> onResult = null)
+        /// <summary>
+        /// Sends a message to the Pixel to change its name.
+        /// </summary>
+        /// <param name="name">The name to set.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator RenameAsync(string name, OperationResultCallback onResult = null)
         {
-            Debug.Log($"Pixel {SafeName}: Renaming to " + newName);
+            Debug.Log($"Pixel {SafeName}: Renaming to " + name);
 
-            byte[] nameBytes = System.Text.Encoding.UTF8.GetBytes(newName + "\0");
+            byte[] nameBytes = System.Text.Encoding.UTF8.GetBytes(name + "\0");
             byte[] nameByteMaxSize = new byte[SetName.NameMaxSize];
             System.Array.Copy(nameBytes, nameByteMaxSize, nameBytes.Length);
 
@@ -192,7 +175,28 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public IEnumerator BlinkAsync(Color color, int count, OperationResultCallback<bool> onResult = null)
+        /// <summary>
+        /// Sends a message to the Pixel to set all the Pixel LEDs with the same given color.
+        /// </summary>
+        /// <param name="color">The desired color for the LEDs.</param>
+        public void SetLEDsToColor(Color color)
+        {
+            Color32 color32 = color;
+            PostMessage(new SetAllLEDsToColor
+            {
+                color = (uint)((color32.r << 16) + (color32.g << 8) + color32.b)
+            });
+        }
+
+        /// <summary>
+        /// Sends a message to the Pixel to make its LEDs blink a given number of time.
+        /// </summary>
+        /// <param name="color">The desired color for the LEDs.</param>
+        /// <param name="count">The number of blinks.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator BlinkLEDsAsync(Color color, int count = 3, OperationResultCallback onResult = null)
         {
             Color32 color32 = color;
             var msg = new Blink
@@ -205,128 +209,46 @@ namespace Systemic.Unity.Pixels
             onResult?.Invoke(op.IsSuccess, op.Error);
         }
 
-        public void StartHardwareTest()
-        {
-            PostMessage(new TestHardware());
-        }
-
+        /// <summary>
+        /// Sends a message to the Pixel to start die calibration.
+        /// </summary>
         public void StartCalibration()
         {
             PostMessage(new Calibrate());
         }
 
+        /// <summary>
+        /// Sends a message to the Pixel to start face calibration.
+        /// </summary>
+        /// <param name="face"></param>
         public void CalibrateFace(int face)
         {
             PostMessage(new CalibrateFace() { face = (byte)face });
         }
 
+        /// <summary>
+        /// Sends a message to the Pixel to set it to standard mode (the default
+        /// which plays animations based on roll events).
+        /// </summary>
         public void SetStandardMode()
         {
             PostMessage(new SetStandardState());
         }
 
+        /// <summary>
+        /// Sends a message to the Pixel to set it to LED animator mode.
+        /// </summary>
         public void SetLEDAnimatorMode()
         {
             PostMessage(new SetLEDAnimState());
         }
 
-        public void SetBattleMode()
-        {
-            PostMessage(new SetBattleState());
-        }
-
-        public void DebugAnimController()
-        {
-            PostMessage(new DebugAnimationController());
-        }
-
-        public IEnumerator PrintNormalsAsync()
-        {
-            for (int i = 0; i < 20; ++i)
-            {
-                var msg = new PrintNormals { face = (byte)i };
-                PostMessage(msg);
-                yield return new WaitForSeconds(0.5f);
-            }
-        }
-
-        public void ResetParams()
+        /// <summary>
+        /// Sends a message to the Pixel to reset its parameters.
+        /// </summary>
+        public void ResetParameters()
         {
             PostMessage(new ProgramDefaultParameters());
         }
-
-        #region MessageHandlers
-
-        void OnIAmADieMessage(IPixelMessage message)
-        {
-            var idMsg = (IAmADie)message;
-            bool appearanceChanged = faceCount != idMsg.faceCount || designAndColor != idMsg.designAndColor;
-            faceCount = idMsg.faceCount;
-            designAndColor = idMsg.designAndColor;
-            dataSetHash = idMsg.dataSetHash;
-            flashSize = idMsg.flashSize;
-            firmwareVersionId = idMsg.versionInfo;
-            Debug.Log($"Pixel {SafeName}: {flashSize} bytes available for data, current dataset hash {dataSetHash:X08}, firmware version is {firmwareVersionId}");
-            if (appearanceChanged)
-            {
-                AppearanceChanged?.Invoke(this, faceCount, designAndColor);
-            }
-        }
-
-        void OnRollStateMessage(IPixelMessage message)
-        {
-            // Handle the message
-            var stateMsg = (RollState)message;
-            Debug.Log($"Pixel {SafeName}: State is {stateMsg.state}, {stateMsg.face}");
-
-            var newState = stateMsg.state;
-            var newFace = stateMsg.face;
-            if (newState != rollState || newFace != face)
-            {
-                rollState = newState;
-                face = newFace;
-
-                // Notify anyone who cares
-                RollStateChanged?.Invoke(this, rollState, face + 1);
-            }
-        }
-
-        void OnTelemetryMessage(IPixelMessage message)
-        {
-            // Don't bother doing anything with the message if we don't have
-            // anybody interested in telemetry data.
-            if (_telemetryReceived != null)
-            {
-                // Notify anyone who cares
-                var telem = (AccelerationState)message;
-                _telemetryReceived.Invoke(this, telem.data);
-            }
-        }
-
-        void OnDebugLogMessage(IPixelMessage message)
-        {
-            var dlm = (DebugLog)message;
-            string text = System.Text.Encoding.UTF8.GetString(dlm.data, 0, dlm.data.Length);
-            Debug.Log($"Pixel {SafeName}: {text}");
-        }
-
-        void OnNotifyUserMessage(IPixelMessage message)
-        {
-            var notifyUserMsg = (NotifyUser)message;
-            //bool ok = notifyUserMsg.ok != 0;
-            bool cancel = notifyUserMsg.cancel != 0;
-            //float timeout = notifyUserMsg.timeout_s;
-            string text = System.Text.Encoding.UTF8.GetString(notifyUserMsg.data, 0, notifyUserMsg.data.Length);
-            _notifyUser?.Invoke(this, text, cancel,
-                res => PostMessage(new NotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
-        }
-
-        void OnPlayAudioClip(IPixelMessage message)
-        {
-            var playClipMessage = (PlaySound)message;
-            _playAudioClip?.Invoke(this, (uint)playClipMessage.clipId);
-        }
-
-        #endregion
     }
 }

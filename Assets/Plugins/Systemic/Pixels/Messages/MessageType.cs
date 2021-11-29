@@ -2,7 +2,7 @@
 namespace Systemic.Unity.Pixels.Messages
 {
     /// <summary>
-    /// Lists all the Pixels message types.
+    /// Lists all the Pixel dice message types.
     /// The value is used for the first byte of data in a Pixel message to identify it's type.
     /// </summary>
     /// <remarks>

@@ -11,6 +11,9 @@ namespace Systemic.Unity.Pixels
 {
     partial class DiceBag
     {
+        /// <summary>
+        /// Implementation of Pixel communicating over Bluetooth Low Energy.
+        /// </summary>
         sealed class BlePixel : Pixel
         {
             /// <summary>
@@ -32,6 +35,9 @@ namespace Systemic.Unity.Pixels
                 public byte batteryLevel; // 0 -> 255
             };
 
+            // Error message on timeout
+            const string _connectTimeoutErrorMessage = "Timeout trying to connect, Pixel may be out of range or turned off";
+
             // The underlying BLE device
             Peripheral _peripheral;
 
@@ -42,6 +48,9 @@ namespace Systemic.Unity.Pixels
             ConnectionResultCallback _onConnectionResult;
             ConnectionResultCallback _onDisconnectionResult;
 
+            /// <summary>
+            /// Indicates whether the Pixel is either in the process of connecting and being ready, or ready to communicate.
+            /// </summary>
             public bool isConnectingOrReady => (connectionState == PixelConnectionState.Connecting)
                     || (connectionState == PixelConnectionState.Identifying)
                     || (connectionState == PixelConnectionState.Ready);
@@ -52,8 +61,15 @@ namespace Systemic.Unity.Pixels
             /// </summary>
             public event System.Action DisconnectedUnexpectedly;
 
+            /// <summary>
+            /// Gets the unique id assigned to the peripheral (platform dependent).
+            /// </summary>
             public string SystemId => _peripheral?.SystemId;
 
+            /// <summary>
+            /// Setup this instance for the given peripheral, may be called multiple times.
+            /// </summary>
+            /// <param name="peripheral">The peripheral to use.</param>
             public void Setup(Peripheral peripheral)
             {
                 EnsureRunningOnMainThread();
@@ -125,6 +141,9 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
+            /// <summary>
+            /// Clear the <see cref="Pixel.lastError"/>.
+            /// </summary>
             public void ResetLastError()
             {
                 EnsureRunningOnMainThread();
@@ -132,7 +151,14 @@ namespace Systemic.Unity.Pixels
                 lastError = PixelError.None;
             }
 
-            public void Connect(float connectionTimeout, ConnectionResultCallback onConnectionResult = null)
+            /// <summary>
+            /// Attempts to connect to this Pixel.
+            /// When called multiple times while connecting or connected, the connection counter is incremented and the same number
+            /// of calls to <see cref="Disconnect(ConnectionResultCallback, bool)"/> must be made to disconnect.
+            /// </summary>
+            /// <param name="timeout">Timeout in seconds.</param>
+            /// <param name="onResult">Optional callback that is called once the connection has succeeded or timed-out.</param>
+            public void Connect(float timeout, ConnectionResultCallback onResult = null)
             {
                 EnsureRunningOnMainThread();
 
@@ -147,29 +173,35 @@ namespace Systemic.Unity.Pixels
                     default:
                         string error = $"Unexpected Pixel connection state while attempting to connect: {connectionState}";
                         Debug.LogError($"Pixel {SafeName}: {error}");
-                        onConnectionResult?.Invoke(this, false, error);
+                        onResult?.Invoke(this, false, error);
                         break;
                     case PixelConnectionState.Available:
                         IncrementConnectCount();
                         Debug.Assert(_connectionCount == 1);
-                        _onConnectionResult += onConnectionResult;
-                        DoConnect(connectionTimeout);
+                        _onConnectionResult += onResult;
+                        DoConnect(timeout);
                         break;
                     case PixelConnectionState.Connecting:
                     case PixelConnectionState.Identifying:
                         // Already in the process of connecting, just add the callback and wait
                         IncrementConnectCount();
-                        _onConnectionResult += onConnectionResult;
+                        _onConnectionResult += onResult;
                         break;
                     case PixelConnectionState.Ready:
                         // Run the callback immediately
                         IncrementConnectCount();
-                        onConnectionResult?.Invoke(this, true, null);
+                        onResult?.Invoke(this, true, null);
                         break;
                 }
             }
 
-            public void Disconnect(ConnectionResultCallback onDisconnectionResult = null, bool forceDisconnect = false)
+            /// <summary>
+            /// Disconnect the Pixel.
+            /// </summary>
+            /// <param name="onConnectionResult">Optional callback that is called once the disconnection has succeeded or failed.</param>
+            /// <param name="forceDisconnect">Whether to disconnect even the number of calls to this methods doesn't match
+            ///                               the number of calls to <see cref="Connect(float, ConnectionResultCallback)"/></param>
+            public void Disconnect(ConnectionResultCallback onResult = null, bool forceDisconnect = false)
             {
                 EnsureRunningOnMainThread();
 
@@ -177,7 +209,7 @@ namespace Systemic.Unity.Pixels
                 {
                     default:
                         // Pixel not connected
-                        onDisconnectionResult?.Invoke(this, true, null);
+                        onResult?.Invoke(this, true, null);
                         break;
                     case PixelConnectionState.Ready:
                     case PixelConnectionState.Connecting:
@@ -190,18 +222,19 @@ namespace Systemic.Unity.Pixels
                         if (_connectionCount == 0)
                         {
                             // Register to be notified when disconnection is complete
-                            _onDisconnectionResult += onDisconnectionResult;
+                            _onDisconnectionResult += onResult;
                             DoDisconnect();
                         }
                         else
                         {
                             // Run the callback immediately
-                            onDisconnectionResult(this, true, null);
+                            onResult(this, true, null);
                         }
                         break;
                 }
             }
 
+            // Connect with a timeout in seconds
             void DoConnect(float connectionTimeout)
             {
                 Debug.Assert(connectionState == PixelConnectionState.Available);
@@ -248,7 +281,7 @@ namespace Systemic.Unity.Pixels
 
                                     if (subscribeRequest.IsTimeout)
                                     {
-                                        error = ConnectTimeoutErrorMessage;
+                                        error = _connectTimeoutErrorMessage;
                                     }
                                     else if (!subscribeRequest.IsSuccess)
                                     {
@@ -266,7 +299,7 @@ namespace Systemic.Unity.Pixels
                             }
                             else if (connectRequest.IsTimeout)
                             {
-                                error = ConnectTimeoutErrorMessage;
+                                error = _connectTimeoutErrorMessage;
                             }
                             else
                             {
@@ -281,7 +314,7 @@ namespace Systemic.Unity.Pixels
                                 yield return DoIdentifyAsync(req =>
                                 {
                                     lastRequestError = req.Error;
-                                    error = req.IsTimeout ? ConnectTimeoutErrorMessage : req.Error;
+                                    error = req.IsTimeout ? _connectTimeoutErrorMessage : req.Error;
                                 });
 
                                 // Check connection state
@@ -304,7 +337,7 @@ namespace Systemic.Unity.Pixels
                                     // Run callback
                                     NotifyConnectionResult(error);
 
-                                    // Updating info didn't work, disconnect the Pixel die
+                                    // Updating info didn't work, disconnect the Pixel
                                     DoDisconnect(PixelError.ConnectionError);
                                 }
                             }
@@ -336,7 +369,7 @@ namespace Systemic.Unity.Pixels
                     if (request.IsSuccess && (connectionState == PixelConnectionState.Identifying))
                     {
                         // Get the Pixel initial state
-                        request = new SendMessageAndWaitForResponseEnumerator<RequestState, RollState>(this);
+                        request = new SendMessageAndWaitForResponseEnumerator<RequestRollState, RollState>(this);
                         yield return request;
                     }
 
@@ -375,35 +408,29 @@ namespace Systemic.Unity.Pixels
                 {
                     Debug.Assert(data != null);
 
-                    // Process the message coming from the actual Pixel die!
+                    // Process the message coming from the actual Pixel!
                     var message = PixelMessageMarshaling.FromByteArray(data);
                     if (message != null)
                     {
                         Debug.Log($"Pixel {SafeName}: Received message of type {message.GetType()}");
-
-                        if (_messageDelegates.TryGetValue(message.type, out MessageReceivedEventHandler del))
-                        {
-                            del.Invoke(message);
-                        }
+                        NotifyMessageHandler(message);
                     }
                 }
-            }
 
-            void NotifyConnectionResult(string error = null)
-            {
-                if (error != null)
+                void NotifyConnectionResult(string error = null)
                 {
-                    Debug.LogError($"Pixel {SafeName}: {error}");
-                }
+                    if (error != null)
+                    {
+                        Debug.LogError($"Pixel {SafeName}: {error}");
+                    }
 
-                var callbackCopy = _onConnectionResult;
-                _onConnectionResult = null;
-                callbackCopy?.Invoke(this, error == null, error);
+                    var callbackCopy = _onConnectionResult;
+                    _onConnectionResult = null;
+                    callbackCopy?.Invoke(this, error == null, error);
+                }
             }
 
-            /// <summary>
-            /// Disconnects a Pixel, doesn't remove it from the bag though
-            /// </sumary>
+            // Disconnect the Pixel, an error might be given as the reason for disconnecting
             void DoDisconnect(PixelError error = PixelError.None)
             {
                 if (error != PixelError.None)
@@ -434,6 +461,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
+            // Set the last error
             void SetLastError(PixelError newError)
             {
                 lastError = newError;
@@ -443,6 +471,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
+            // Used by SendMessageAsync
             class WriteDataEnumerator : IOperationEnumerator
             {
                 readonly BluetoothLE.RequestEnumerator _request;
@@ -475,6 +504,7 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
+            // Send the given message to the Pixel, with a timeout in seconds
             protected override IOperationEnumerator SendMessageAsync(byte[] bytes, float timeout = 0)
             {
                 EnsureRunningOnMainThread();
@@ -485,6 +515,7 @@ namespace Systemic.Unity.Pixels
 
             }
 
+            // Called when the behaviour will be destroyed by Unity
             void OnDestroy()
             {
                 DisconnectedUnexpectedly = null;

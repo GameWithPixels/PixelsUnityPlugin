@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Systemic.Unity.Pixels;
 using UnityEngine;
 
 namespace Systemic.Unity.Examples
 {
     /// <summary>
-    /// Demonstrates how to communicate with Pixels.
+    /// Demonstrates how to communicate with <see cref="Pixels.Pixel"/> dice.
     /// - Reading state
-    /// - Pushing animation
+    /// - Pushing animation data
     /// </summary>
     public class PixelsDemo : MonoBehaviour
     {

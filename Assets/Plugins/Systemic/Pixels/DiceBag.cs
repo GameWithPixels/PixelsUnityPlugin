@@ -8,40 +8,65 @@ using Peripheral = Systemic.Unity.BluetoothLE.ScannedPeripheral;
 
 namespace Systemic.Unity.Pixels
 {
-    public delegate void ConnectionResultCallback(Pixel pixel, bool ready, string error);
-    public delegate void OperationResultCallback<T>(T result, string error);
-    public delegate void OperationProgressCallback(Pixel pixel, float progress); // Value between 0 and 1
-
+    //TODO document Pixel registration
+    /// <summary>
+    /// Singleton class that manages Bluetooth Low Energy Pixels.
+    /// </summary>
     public sealed partial class DiceBag : MonoBehaviour
     {
-        HashSet<BlePixel> _pixels = new HashSet<BlePixel>();
-        HashSet<BlePixel> _pixelsToDestroy = new HashSet<BlePixel>();
-        Dictionary<string, string> _registeredPixels = new Dictionary<string, string>(); // Key is system id, value is name (may be empty)
+        // List of known pixels
+        readonly HashSet<BlePixel> _pixels = new HashSet<BlePixel>();
 
+        // Pixels to be destroyed in the next frame update
+        readonly HashSet<BlePixel> _pixelsToDestroy = new HashSet<BlePixel>();
+
+        // Map of registered Pixels, the key is a Pixel system id and the value its name (may be empty)
+        readonly Dictionary<string, string> _registeredPixels = new Dictionary<string, string>();
+
+        // Callbacks for notifying user code
         NotifyUserCallback _notifyUser;
         PlayAudioClipCallback _playAudioClip;
 
-        public const string ConnectTimeoutErrorMessage = "Timeout trying to connect, Pixel may be out of range or turned off";
+        /// <summary>
+        /// The default Pixel connection timeout in seconds.
+        /// </summary>
+        public const float DefaultConnectionTimeout = 10;
 
-        public const float DefaultConnectionTimeout = 10; // In seconds
-
+        /// <summary>
+        /// Gets the singleton instance.
+        /// </summary>
         public static DiceBag Instance { get; private set; }
 
+        /// <summary>
+        /// Indicates whether we are scanning for Pixel dice.
+        /// </summary>
         public bool IsScanning { get; private set; } //TODO update when Bluetooth radio turned off
 
+        /// <summary>
+        /// Gets the list of available (scanned but not connected) Pixel dice.
+        /// </summary>
         public Pixel[] AvailablePixels => _pixels.Where(p => p.isAvailable).ToArray();
 
+        /// <summary>
+        /// Gets the list of Pixel dice that are connected and ready to communicate.
+        /// </summary>
         public Pixel[] ConnectedPixels => _pixels.Where(p => p.isReady).ToArray();
 
+        /// <summary>
+        /// Gets the system ids of the registered Pixel dice.
+        /// </summary>
         public string[] RegisteredPixelSystemIds => _registeredPixels.Keys.ToArray();
 
+        /// <summary>
+        /// An event raised when a Pixel is discovered, may be raised multiple times for
+        /// the same Pixel as it receives new advertisement packets from it.
+        /// </summary>
         public event System.Action<Pixel> PixelDiscovered;
 
         #region Scan for Pixels
 
         /// <summary>
-        /// Start scanning for new and existing Pixels, filling our lists in the process from
-        /// events raised by Central.
+        /// Starts scanning for Pixel dice.
         /// </sumary>
         public void ScanForPixels()
         {
@@ -52,7 +77,7 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Stops the current scan 
+        /// Stops the current scan.
         /// </sumary>
         public void StopScanForPixels()
         {
@@ -61,10 +86,11 @@ namespace Systemic.Unity.Pixels
             Central.StopScan();
         }
 
-        public void ClearScanList()
+        /// <summary>
+        /// Removes all available Pixel dice.
+        /// </summary>
+        public void ClearAvailablePixels()
         {
-            Debug.Log("Clearing scan list");
-
             var pixelsCopy = new List<BlePixel>(_pixels);
             foreach (var pixel in pixelsCopy)
             {
@@ -75,9 +101,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        /// <summary>
-        /// Called by Central when a new Pixel is discovered!
-        /// </sumary>
+        // Called by Central when a new Pixel is discovered
         void OnPeripheralDiscovered(Peripheral peripheral)
         {
             // Check if have already a Pixel object for this peripheral
@@ -113,6 +137,9 @@ namespace Systemic.Unity.Pixels
 
         #region Communicate with Pixels
 
+        /// <summary>
+        /// Reset errors on all know Pixel dice.
+        /// </summary>
         public void ResetErrors()
         {
             foreach (var pixel in _pixels)
@@ -120,6 +147,11 @@ namespace Systemic.Unity.Pixels
                 pixel.ResetLastError();
             }
         }
+
+        /// <summary>
+        /// Subscribe to user notifications from Pixel dice.
+        /// </summary>
+        /// <param name="notifyUserCallback">The callback to be called when a Pixel requires to notify the user.</param>
         public void SubscribeToUserNotifications(NotifyUserCallback notifyUserCallback)
         {
             _notifyUser = notifyUserCallback;
@@ -129,6 +161,10 @@ namespace Systemic.Unity.Pixels
             }
         }
 
+        /// <summary>
+        /// Subscribe to play audio clip notifications from Pixel dice.
+        /// </summary>
+        /// <param name="playAudioClipCallback">The callback to be called when a Pixel requires to play an audio clip.</param>
         public void SubscribeToPlayAudioClip(PlayAudioClipCallback playAudioClipCallback)
         {
             _playAudioClip = playAudioClipCallback;
@@ -138,6 +174,11 @@ namespace Systemic.Unity.Pixels
             }
         }
 
+        /// <summary>
+        /// Register the given Pixel.
+        /// </summary>
+        /// <param name="systemId">The system id for the Pixel.</param>
+        /// <param name="name">The name of the Pixel, may be empty.</param>
         public void RegisterPixel(string systemId, string name = "")
         {
             if (systemId == null) throw new System.ArgumentNullException(nameof(systemId));
@@ -147,6 +188,10 @@ namespace Systemic.Unity.Pixels
             _registeredPixels[systemId] = name;
         }
 
+        /// <summary>
+        /// Unregister the given Pixel.
+        /// </summary>
+        /// <param name="systemId">The system id for the Pixel.</param>
         public void UnregisterPixel(string systemId)
         {
             if (systemId == null) throw new System.ArgumentNullException(nameof(systemId));
@@ -166,6 +211,10 @@ namespace Systemic.Unity.Pixels
             }
         }
 
+        /// <summary>
+        /// Unregister the given Pixel.
+        /// </summary>
+        /// <param name="pixel">The Pixel to unregister.</param>
         public void UnregisterPixel(Pixel pixel)
         {
             if (pixel == null) throw new System.ArgumentNullException(nameof(pixel));
@@ -189,13 +238,51 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        // Doc connection counter!
-        public Coroutine ConnectPixel(Pixel pixel, System.Func<bool> requestCancelFunc, ConnectionResultCallback resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
+        /// <summary>
+        /// Requests to connect to the given Pixel.
+        ///
+        /// Each Pixel object maintains a connection counter which is incremented when calling
+        /// this method while the die is already connecting or connected.
+        /// The counter is decremented for each disconnection call and the die is disconnected
+        /// only once the counter reaches zero.
+        /// 
+        /// This connection counter allows for different parts of the user code to request a connection
+        /// or a disconnection without impacting each others.
+        /// </summary>
+        /// <param name="pixel">The Pixel to connect to.</param>
+        /// <param name="requestCancelFunc">A callback which is called for each frame during connection,
+        ///                                 it may return true to cancel the connection request.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="connectionTimeout">The connection timeout in seconds.</param>
+        /// <returns>The coroutine running the request.</returns>
+        public Coroutine ConnectPixel(Pixel pixel, System.Func<bool> requestCancelFunc, ConnectionResultCallback onResult = null, float connectionTimeout = DefaultConnectionTimeout)
         {
-            return ConnectPixels(new Pixel[] { pixel }, requestCancelFunc, resultCallback, connectionTimeout);
+            if (pixel == null) throw new System.ArgumentNullException(nameof(pixel));
+            if (requestCancelFunc == null) throw new System.ArgumentNullException(nameof(requestCancelFunc));
+
+            return ConnectPixels(new Pixel[] { pixel }, requestCancelFunc, onResult, connectionTimeout);
         }
 
-        public Coroutine ConnectPixels(IEnumerable<Pixel> pixels, System.Func<bool> requestCancelFunc, ConnectionResultCallback resultCallback = null, float connectionTimeout = DefaultConnectionTimeout)
+        /// <summary>
+        /// Requests to connect to the given list of Pixel dice.
+        ///
+        /// Each Pixel object maintains a connection counter which is incremented when calling
+        /// this method while the die is already connecting or connected.
+        /// The counter is decremented for each disconnection call and the die is disconnected
+        /// only once the counter reaches zero.
+        /// 
+        /// This connection counter allows for different parts of the user code to request a connection
+        /// or a disconnection without impacting each others.
+        /// </summary>
+        /// <param name="pixels">The Pixel dice to connect to.</param>
+        /// <param name="requestCancelFunc">A callback which is called for each frame during connection,
+        ///                                 it may return true to cancel the connection request.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="connectionTimeout">The connection timeout in seconds.</param>
+        /// <returns>The coroutine running the request.</returns>
+        public Coroutine ConnectPixels(IEnumerable<Pixel> pixels, System.Func<bool> requestCancelFunc, ConnectionResultCallback onResult = null, float connectionTimeout = DefaultConnectionTimeout)
         {
             if (pixels == null) throw new System.ArgumentNullException(nameof(pixels));
             if (requestCancelFunc == null) throw new System.ArgumentNullException(nameof(requestCancelFunc));
@@ -235,7 +322,7 @@ namespace Systemic.Unity.Pixels
                     var pixel = pixelsList[i];
                     _registeredPixels[pixel.systemId] = pixel.name;
 
-                    // We found the Pixel die, try to connect
+                    // We found the Pixel, try to connect
                     int index = i; // Capture the current value of i
                     pixel.Connect(connectionTimeout, (_, res, error) => results[index] = res ? "" : error);
                 }
@@ -245,7 +332,7 @@ namespace Systemic.Unity.Pixels
 
                 if (isCancelled)
                 {
-                    // Disconnect any Pixel die that just successfully connected or that are still connecting
+                    // Disconnect any Pixel that just successfully connected or that are still connecting
                     for (int i = 0; i < pixelsList.Count; ++i)
                     {
                         if (string.IsNullOrEmpty(results[i]))
@@ -253,22 +340,33 @@ namespace Systemic.Unity.Pixels
                             var pixel = pixelsList[i];
                             pixel?.Disconnect();
                         }
-                        resultCallback?.Invoke(pixelsList[i], false, "Connection to Pixel canceled by application");
+                        onResult?.Invoke(pixelsList[i], false, "Connection to Pixel canceled by application");
                     }
                 }
-                else if (resultCallback != null)
+                else if (onResult != null)
                 {
                     // Report connection result(s)
                     for (int i = 0; i < pixelsList.Count; ++i)
                     {
                         bool connected = results[i] == "";
                         Debug.Assert((!connected) || _pixels.Contains(pixelsList[i]));
-                        resultCallback.Invoke(pixelsList[i], connected, connected ? null : results[i]);
+                        onResult.Invoke(pixelsList[i], connected, connected ? null : results[i]);
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Requests to disconnect to the given Pixel.
+        /// 
+        /// If a connection was requested several times before disconnecting, the same number
+        /// of calls must be made to this methods for the disconnection to occur, unless
+        /// <paramref name="forceDisconnect"/> is true.
+        /// </summary>
+        /// <param name="pixel">The Pixel to disconnect from.</param>
+        /// <param name="forceDisconnect">Whether to disconnect even if there were more connection requests
+        ///                               than calls to disconnect.</param>
+        /// <returns>The coroutine running the request.</returns>
         public Coroutine DisconnectPixel(Pixel pixel, bool forceDisconnect = false)
         {
             if (pixel == null) throw new System.ArgumentNullException(nameof(pixel));
@@ -291,10 +389,7 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        /// <summary>
-        /// Cleanly destroys a Pixel die, disconnecting if necessary and raising events in the process
-        /// Does not remove it from the list though
-        /// </sumary>
+        // Cleanly destroys a Pixel instance, disconnecting if necessary and raising events in the process
         void DestroyPixel(BlePixel pixel)
         {
             Debug.Assert(pixel);
@@ -310,6 +405,7 @@ namespace Systemic.Unity.Pixels
 
         #region Unity messages
 
+        // Called when the behaviour becomes enabled and active
         void OnEnable()
         {
             // Safeguard
@@ -321,16 +417,19 @@ namespace Systemic.Unity.Pixels
             Instance = this;
         }
 
+        // Called when the behaviour becomes disabled or inactive
         void OnDisable()
         {
             Instance = null;
         }
 
+        // Start is called before the first frame update
         void Start()
         {
             Central.Initialize(); //TODO handle error + user message
         }
 
+        // Update is called once per frame
         void Update()
         {
             List<BlePixel> destroyNow = null;

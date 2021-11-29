@@ -1,11 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using Systemic.Unity.Pixels;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Systemic.Unity.Examples
 {
+    /// <summary>
+    /// Show information about a <see cref="Pixels.Pixel"/> and buttons to connect, disconnect and remove a Pixel.
+    /// </summary>
     public class UIPixelPanel : MonoBehaviour
     {
         [SerializeField]
@@ -38,9 +40,14 @@ namespace Systemic.Unity.Examples
         [SerializeField]
         Button _disconnectButton = null;
 
+        /// <summary>
+        /// Gets the attached <see cref="Pixels.Pixel"/>, see <see cref="AttachToPixel(Pixel)"/>.
+        /// </summary>
         public Pixel Pixel { get; private set; }
 
         Coroutine _refreshInfoCoroutine;
+
+        #region Unity messages
 
         // Start is called before the first frame update
         void Start()
@@ -76,6 +83,14 @@ namespace Systemic.Unity.Examples
             }
         }
 
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Attach the instance to a <see cref="Pixels.Pixel"/> instance (replaces any previous attachment).
+        /// </summary>
+        /// <param name="pixel">The <see cref="Pixels.Pixel"/> instance to attach to.</param>
         public void AttachToPixel(Pixel pixel)
         {
             if (pixel == null) throw new System.ArgumentNullException(nameof(pixel));
@@ -109,16 +124,25 @@ namespace Systemic.Unity.Examples
             }
         }
 
+        /// <summary>
+        /// Attempts to connect to the <see cref="Pixels.Pixel"/>.
+        /// </summary>
         public void Connect()
         {
             DiceBag.Instance.ConnectPixel(Pixel, () => !isActiveAndEnabled);
         }
 
+        /// <summary>
+        /// Disconnects from the <see cref="Pixels.Pixel"/>.
+        /// </summary>
         public void Disconnect()
         {
             DiceBag.Instance.DisconnectPixel(Pixel);
         }
 
+        /// <summary>
+        /// Remove the <see cref="Pixels.Pixel"/> from the list.
+        /// </summary>
         public void Forget()
         {
             if (Pixel)
@@ -127,5 +151,7 @@ namespace Systemic.Unity.Examples
             }
             Destroy(gameObject);
         }
+
+        #endregion
     }
 }

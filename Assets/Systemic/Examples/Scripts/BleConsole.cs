@@ -46,7 +46,7 @@ namespace Systemic.Unity.Examples
 
             Debug.Log("Scanning for Pixels...");
 
-            // Filter peripherals with the Pixels' service UUID
+            // Filter peripherals with the Pixel service UUID
             Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
 
             // Wait until a Pixel is found
@@ -123,7 +123,7 @@ namespace Systemic.Unity.Examples
                     + $"{(MessageType)data[0]} {string.Join(" ", data.Skip(1).Select(b => b.ToString("X2")))}");
             }
 
-            // Subscribe to get Pixels events (such as roll state) and responses from queries
+            // Subscribe to get Pixel events (such as roll state) and responses from queries
             yield return Central.SubscribeCharacteristicAsync(
                 peripheral, BleUuids.ServiceUuid, notifyCharacteristicUuid, OnReceivedData);
             Debug.Log("Subscribed to characteristic");

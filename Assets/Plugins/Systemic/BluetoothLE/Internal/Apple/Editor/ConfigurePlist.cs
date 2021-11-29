@@ -4,30 +4,32 @@ using UnityEditor.Callbacks;
 using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
-/// <summary>
-/// Post process build step that adds required NSBluetoothAlwaysUsageDescription entry to Info.plist
-/// for iOS builds.
-/// </summary>
-public class ConfigurePlist : MonoBehaviour
+namespace Systemic.Unity.BluetoothLE.Internal.Apple
 {
     /// <summary>
-    /// Adds NSBluetoothAlwaysUsageDescription entry to Info.plist for iOS builds.
+    /// Post process build step that adds required NSBluetoothAlwaysUsageDescription entry to Info.plist
+    /// for iOS builds.
     /// </summary>
-    /// <param name="buildTarget">Build platform target.</param>
-    /// <param name="pathToBuiltProject">Path to the build files.</param>
-    [PostProcessBuild]
-    public static void ChangeXcodePlist(BuildTarget buildTarget, string pathToBuiltProject)
+    public class ConfigurePlist : MonoBehaviour
     {
-        if (buildTarget == BuildTarget.iOS)
+        /// <summary>
+        /// Adds NSBluetoothAlwaysUsageDescription entry to Info.plist for iOS builds.
+        /// </summary>
+        /// <param name="buildTarget">Build platform target.</param>
+        /// <param name="pathToBuiltProject">Path to the build files.</param>
+        [PostProcessBuild]
+        public static void ChangeXcodePlist(BuildTarget buildTarget, string pathToBuiltProject)
         {
-            string plistPath = Path.Combine(pathToBuiltProject, "Info.plist");
-            var plist = new PlistDocument();
-            plist.ReadFromFile(plistPath);
-            plist.root.SetString(
-                "NSBluetoothAlwaysUsageDescription",
-                "Uses Bluetooth to communicate with Pixel dices.");
-            plist.WriteToFile(plistPath);
+            if (buildTarget == BuildTarget.iOS)
+            {
+                string plistPath = Path.Combine(pathToBuiltProject, "Info.plist");
+                var plist = new PlistDocument();
+                plist.ReadFromFile(plistPath);
+                plist.root.SetString(
+                    "NSBluetoothAlwaysUsageDescription",
+                    "Uses Bluetooth to communicate with Pixel dice.");
+                plist.WriteToFile(plistPath);
+            }
         }
     }
-
 }

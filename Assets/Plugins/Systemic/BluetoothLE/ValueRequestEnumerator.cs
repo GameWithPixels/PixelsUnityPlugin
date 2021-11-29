@@ -4,7 +4,7 @@ namespace Systemic.Unity.BluetoothLE
 {
     /// <summary>
     /// Enumerator handling a request for reading a value from a BLE peripheral.
-    /// It is meant to be run as coroutine.
+    /// Instances are meant to be run as coroutines.
     /// </summary>
     /// <typeparam name="T">Type of the value to be returned by the request.</typeparam>
     public class ValueRequestEnumerator<T> : RequestEnumerator

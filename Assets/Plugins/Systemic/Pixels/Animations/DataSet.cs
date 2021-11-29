@@ -7,10 +7,10 @@ namespace Systemic.Unity.Pixels.Animations
 {
     /// <summary>
     /// Data Set is the set of all behaviors, conditions, rules, animations and colors
-    /// stored in the Pixel die. This data gets transfered straight to the dice. For that purpose,
-    /// the data is essentially 'exploded' into flat buffers. i.e. a all the keyframes of
-    /// all the anims are stored in a single keyframe array, and individual tracks reference
-    /// 'their' keyframes using an offset and count into that array.
+    /// stored in the memory of a Pixel die. This data gets transfered straight to the dice.
+    /// For that purpose, the data is essentially 'exploded' into flat buffers. i.e. all
+    /// the key-frames of all the animations are stored in a single key-frame array, and
+    /// individual tracks reference 'their' key-frames using an offset and count into that array.
     /// </summary>
     [System.Serializable]
     [StructLayout(LayoutKind.Sequential)]

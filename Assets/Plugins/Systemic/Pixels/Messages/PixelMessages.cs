@@ -224,7 +224,7 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class RequestState : IPixelMessage
+    public class RequestRollState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RequestRollState;
     }

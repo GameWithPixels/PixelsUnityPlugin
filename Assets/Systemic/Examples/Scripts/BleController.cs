@@ -11,13 +11,13 @@ using UnityEngine.UI;
 namespace Systemic.Unity.Examples
 {
     /// <summary>
-    /// Demonstrates various Bluetooth operations on Pixels dice.
+    /// Demonstrates various Bluetooth operations on Pixels using the device agnostic
+    /// <see cref="Central"/> class.
     /// One may scan for Pixels, connect to one, retrieve information from and send messages to it.
-    /// 
     /// 
     /// The buttons are grayed out when the functionality it will use is not available
     /// (for example, the "write" button is not available when the application is not
-    /// connected to a Pixel die).
+    /// connected to a Pixel).
     /// </summary>
     public class BleController : MonoBehaviour
     {
@@ -112,7 +112,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StartScan()
         {
-            // Filter peripherals with the Pixels service UUID
+            // Filter peripherals with the Pixel service UUID
             Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
         }
 

@@ -33,10 +33,10 @@ namespace Systemic.Unity.BluetoothLE
         /// Unsubscribe from a peripheral's characteristic.
         UnsubscribeCharacteristic,
     }
-    
+
     /// <summary>
     /// Enumerator handling a request to a BLE peripheral.
-    /// It is meant to be run as coroutine.
+    /// Instances are meant to be run as coroutines.
     /// </summary>
     public class RequestEnumerator : IEnumerator
     {
@@ -69,7 +69,7 @@ namespace Systemic.Unity.BluetoothLE
         public RequestStatus RequestStatus => _status.HasValue ? _status.Value : RequestStatus.InProgress;
 
         /// <summary>
-        /// Gets the request status as a string.
+        /// Gets the request status as a string or null if there was no error.
         /// </summary>
         public string Error => RequestStatus switch
         {

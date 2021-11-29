@@ -110,7 +110,7 @@ namespace Systemic.Unity.Pixels.Messages
                         ret = FromByteArray<StopAnimation>(data);
                         break;
                     case MessageType.RequestRollState:
-                        ret = FromByteArray<RequestState>(data);
+                        ret = FromByteArray<RequestRollState>(data);
                         break;
                     case MessageType.RequestAnimationSet:
                         ret = FromByteArray<RequestAnimationSet>(data);

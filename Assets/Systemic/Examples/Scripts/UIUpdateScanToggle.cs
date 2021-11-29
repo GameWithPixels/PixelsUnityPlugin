@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using Systemic.Unity.Pixels;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Systemic.Unity.Examples
 {
+    /// <summary>
+    /// Specialized class that updates the state of a <see cref="Toggle"/> instance
+    /// based on whether the <see cref="DiceBag"/> is scanning for Pixels.
+    /// </summary>
     [RequireComponent(typeof(Toggle))]
     public class UIUpdateScanToggle : MonoBehaviour
     {

@@ -9,10 +9,19 @@ namespace Systemic.Unity.Pixels
 {
     partial class Pixel
     {
-        protected string SafeName => this != null ? name : "(destroyed)";
-
-        public IEnumerator UploadBulkDataAsync(byte[] bytes, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
+        /// <summary>
+        /// Asynchronously uploads the given data to the Pixel flash memory.
+        /// </summary>
+        /// <param name="bytes">The data to upload.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="onProgress">An optional callback that is called as the operation progresses
+        ///                          with the progress value being between 0 an 1.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator UploadBulkDataAsync(byte[] bytes, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
         {
+            if (bytes == null) throw new System.ArgumentNullException(nameof(bytes));
+
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
@@ -21,7 +30,8 @@ namespace Systemic.Unity.Pixels
             onProgress?.Invoke(this, 0);
 
             // Send setup message
-            IOperationEnumerator sendMsg = new SendMessageAndWaitForResponseEnumerator<BulkSetup, BulkSetupAck>(this, new BulkSetup { size = remainingSize });
+            IOperationEnumerator sendMsg =
+                new SendMessageAndWaitForResponseEnumerator<BulkSetup, BulkSetupAck>(this, new BulkSetup { size = remainingSize });
             yield return sendMsg;
 
             if (sendMsg.IsSuccess)
@@ -81,8 +91,18 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public IEnumerator DownloadBulkDataAsync(OperationResultCallback<byte[]> onResult = null, OperationProgressCallback onProgress = null)
+        /// <summary>
+        /// Asynchronously downloads the data from the Pixel flash memory.
+        /// </summary>
+        /// <param name="onResult">A callback that is called when the operation completes, with the received
+        ///                        data if successful or null and an error message on failure.</param>
+        /// <param name="onProgress">An optional callback that is called as the operation progresses
+        ///                          with the progress value being between 0 an 1.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator DownloadBulkDataAsync(DataOperationResultCallback onResult, OperationProgressCallback onProgress = null)
         {
+            if (onResult == null) throw new System.ArgumentNullException(nameof(onResult));
+
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
@@ -128,7 +148,7 @@ namespace Systemic.Unity.Pixels
                 AddMessageHandler(MessageType.BulkData, bulkReceived);
                 try
                 {
-                    // Send acknowledgment to the Pixel die, so it may transfer bulk data immediately
+                    // Send acknowledgment to Pixel, so it may transfer bulk data immediately
                     PostMessage(new BulkSetupAck());
 
                     // Wait for all the bulk data to be received
@@ -157,35 +177,46 @@ namespace Systemic.Unity.Pixels
 
             if (error != null)
             {
-                onResult?.Invoke(buffer, null);
+                onResult(buffer, null);
             }
             else
             {
                 Debug.LogError($"Pixel {name}: Error downloading bulk data, {error}");
-                onResult?.Invoke(null, error);
+                onResult(null, error);
             }
         }
 
-        public IEnumerator UploadDataSetAsync(DataSet set, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
+        /// <summary>
+        /// Asynchronously uploads the given data set of animations to the Pixel flash memory.
+        /// </summary>
+        /// <param name="dataSet">The data set to upload.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="onProgress">An optional callback that is called as the operation progresses
+        ///                          with the progress value being between 0 an 1.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator UploadDataSetAsync(DataSet dataSet, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
         {
+            if (dataSet == null) throw new System.ArgumentNullException(nameof(dataSet));
+
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
             // Prepare the Pixel
             var prepareDie = new TransferAnimationSet
             {
-                paletteSize = set.animationBits.getPaletteSize(),
-                rgbKeyFrameCount = set.animationBits.getRGBKeyframeCount(),
-                rgbTrackCount = set.animationBits.getRGBTrackCount(),
-                keyFrameCount = set.animationBits.getKeyframeCount(),
-                trackCount = set.animationBits.getTrackCount(),
-                animationCount = set.getAnimationCount(),
-                animationSize = (ushort)set.animations.Sum((anim) => Marshal.SizeOf(anim.GetType())),
-                conditionCount = set.getConditionCount(),
-                conditionSize = (ushort)set.conditions.Sum((cond) => Marshal.SizeOf(cond.GetType())),
-                actionCount = set.getActionCount(),
-                actionSize = (ushort)set.actions.Sum((action) => Marshal.SizeOf(action.GetType())),
-                ruleCount = set.getRuleCount(),
+                paletteSize = dataSet.animationBits.getPaletteSize(),
+                rgbKeyFrameCount = dataSet.animationBits.getRGBKeyframeCount(),
+                rgbTrackCount = dataSet.animationBits.getRGBTrackCount(),
+                keyFrameCount = dataSet.animationBits.getKeyframeCount(),
+                trackCount = dataSet.animationBits.getTrackCount(),
+                animationCount = dataSet.getAnimationCount(),
+                animationSize = (ushort)dataSet.animations.Sum((anim) => Marshal.SizeOf(anim.GetType())),
+                conditionCount = dataSet.getConditionCount(),
+                conditionSize = (ushort)dataSet.conditions.Sum((cond) => Marshal.SizeOf(cond.GetType())),
+                actionCount = dataSet.getActionCount(),
+                actionSize = (ushort)dataSet.actions.Sum((action) => Marshal.SizeOf(action.GetType())),
+                ruleCount = dataSet.getRuleCount(),
             };
             //StringBuilder builder = new StringBuilder();
             //builder.AppendLine("Animation Data to be sent:");
@@ -210,7 +241,7 @@ namespace Systemic.Unity.Pixels
             {
                 if (waitForMsg.Message.result != 0)
                 {
-                    var setData = set.ToByteArray();
+                    var setData = dataSet.ToByteArray();
                     //StringBuilder hexdumpBuilder = new StringBuilder();
                     //for (int i = 0; i < setData.Length; ++i)
                     //{
@@ -224,8 +255,10 @@ namespace Systemic.Unity.Pixels
 
                     // Upload data
                     var hash = DataSet.ComputeHash(setData);
-                    Debug.Log($"Pixel {name}: ready to receive dataset, byte array should be: {set.ComputeDataSetDataSize()} bytes and hash 0x{hash:X8}");
-                    yield return InternalUploadDataSetAsync(MessageType.TransferAnimationSetFinished, setData, err => error = err, onProgress);
+                    Debug.Log($"Pixel {name}: ready to receive dataset, byte array should be:"
+                        + $" {dataSet.ComputeDataSetDataSize()} bytes and hash 0x{hash:X8}");
+                    yield return InternalUploadDataSetAsync(
+                        MessageType.TransferAnimationSetFinished, setData, err => error = err, onProgress);
                 }
                 else
                 {
@@ -248,8 +281,19 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, OperationResultCallback<bool> onResult = null, OperationProgressCallback onProgress = null)
+        /// <summary>
+        /// Asynchronously plays the LEDs animations for the given data set.
+        /// </summary>
+        /// <param name="testAnimSet">The data set containing the animations to play.</param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="onProgress">An optional callback that is called as the operation progresses
+        ///                          with the progress value being between 0 an 1.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
+        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
         {
+            if (testAnimSet == null) throw new System.ArgumentNullException(nameof(testAnimSet));
+
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;
 
@@ -284,8 +328,10 @@ namespace Systemic.Unity.Pixels
                 {
                     case TransferTestAnimationSetAckType.Download:
                         // Upload data
-                        Debug.Log($"Pixel {name}: ready to receive test dataset, byte array should be: {setData.Length} bytes and hash 0x{hash:X8}");
-                        yield return InternalUploadDataSetAsync(MessageType.TransferTestAnimationSetFinished, setData, err => error = err, onProgress);
+                        Debug.Log($"Pixel {name}: ready to receive test dataset, byte array should be:"
+                            + $" {setData.Length} bytes and hash 0x{hash:X8}");
+                        yield return InternalUploadDataSetAsync(
+                            MessageType.TransferTestAnimationSetFinished, setData, err => error = err, onProgress);
                         break;
 
                     case TransferTestAnimationSetAckType.UpToDate:
@@ -314,6 +360,17 @@ namespace Systemic.Unity.Pixels
             }
         }
 
+        /// <summary>
+        /// Asynchronously uploads the given data to the Pixel flash memory and waits for the specified
+        /// confirmation message.
+        /// </summary>
+        /// <param name="transferDataFinished"></param>
+        /// <param name="data"></param>
+        /// <param name="onResult">An optional callback that is called when the operation completes
+        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="onProgress">An optional callback that is called as the operation progresses
+        ///                          with the progress value being between 0 an 1.</param>
+        /// <returns>An enumerator meant to be run as a coroutine.</returns>
         private IEnumerator InternalUploadDataSetAsync(MessageType transferDataFinished, byte[] data, System.Action<string> onResult, OperationProgressCallback onProgress = null)
         {
             // Keep name locally in case our game object gets destroyed along the way
@@ -376,7 +433,7 @@ namespace Systemic.Unity.Pixels
 
         //public IEnumerator DownloadSettingsAsync(DieOperationResultHandler<DieSettings> onResult = null, DieOperationProgressHandler onProgress = null)
         //{
-        //    // Request the settings from the Pixel die
+        //    // Request the Pixel settings
         //    var waitForMsg = new SendMessageAndWaitForResponseEnumerator<DieMessageRequestSettings, DieMessageTransferSettings>(this);
         //    yield return waitForMsg;
 

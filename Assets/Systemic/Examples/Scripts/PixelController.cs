@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Systemic.Unity.Pixels;
 using UnityEngine;
 
 namespace Systemic.Unity.Examples
 {
+    /// <summary>
+    /// Demonstrates how to scan for, connect to and retrieve information from Pixel dice
+    /// using the dedicated <see cref="Pixel"/> class.
+    /// </summary>
     [RequireComponent(typeof(DiceBag))]
     public class PixelController : MonoBehaviour
     {
@@ -43,6 +45,10 @@ namespace Systemic.Unity.Examples
 
         #region Public methods
 
+        /// <summary>
+        /// Toggle <see cref="Pixel"/> scanning on or off.
+        /// </summary>
+        /// <param name="startScan">Whether to start a scan/</param>
         public void ToggleScanning(bool startScan)
         {
             if (startScan)
@@ -55,11 +61,17 @@ namespace Systemic.Unity.Examples
             }
         }
 
+        /// <summary>
+        /// Start scanning for <see cref="Pixel"/>s.
+        /// </summary>
         public void StartScan()
         {
             DiceBag.Instance.ScanForPixels();
         }
 
+        /// <summary>
+        /// Stop scanning for <see cref="Pixel"/>s.
+        /// </summary>
         public void StopScan()
         {
             DiceBag.Instance.StopScanForPixels();

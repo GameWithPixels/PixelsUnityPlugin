@@ -3,84 +3,15 @@ using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
 /// <summary>
-/// A collection of C# classes for the Unity game engine that enables communications with Pixels dice.
+/// A collection of C# classes for the Unity game engine that enables communications with Pixel dice.
 /// </summary>
 //! @ingroup Unity_CSharp
 namespace Systemic.Unity.Pixels
 {
     /// <summary>
-    /// Delegate for Pixel connection state events.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="previousState">The previous connection state.</param>
-    /// <param name="state">The current connection sate.</param>
-    public delegate void ConnectionStateChangedEventHandler(Pixel pixel, PixelConnectionState previousState, PixelConnectionState state);
-
-    /// <summary>
-    /// Delegate for Pixel communication error events.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="error">The type of error.</param>
-    public delegate void ErrorRaisedEventHandler(Pixel pixel, PixelError error);
-
-    /// <summary>
-    /// Delegate for Pixel appearance setting changes.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="faceCount"></param>
-    /// <param name="design"></param>
-    public delegate void AppearanceChangedEventHandler(Pixel pixel, int faceCount, PixelDesignAndColor design);
-
-    /// <summary>
-    /// Delegate for Pixel roll events.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="rollState">The roll state.</param>
-    /// <param name="face">The face index, when applicable (face number is index + 1).</param>
-    public delegate void RollStateChangedEventHandler(Pixel pixel, PixelRollState rollState, int face);
-
-    /// <summary>
-    /// Delegate for Pixel battery level changes.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="level">The latest battery level reported by the die, normalized between 0 and 1 included.</param>
-    /// <param name="charging">Whether or not the battery is reported as charging.</param>
-    public delegate void BatteryLevelChangedEventHandler(Pixel pixel, float batteryLevel, bool isCharging);
-
-    /// <summary>
-    /// Delegate for Pixel RSSI changes.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="rssi">The latest RSSI reported by the die.</param>
-    public delegate void RssiChangedEventHandler(Pixel pixel, int rssi);
-
-    /// <summary>
-    /// Delegate for Pixel telemetry events.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="frame">The latest acceleration data reported by the die.</param>
-    public delegate void TelemetryEventHandler(Pixel pixel, AccelFrame frame);
-
-    /// <summary>
-    /// Delegate for Pixel requests to notify user of some message, with the option to cancel the operation.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="text">The text to display to the user.</param>
-    /// <param name="canCancel">Whether the user may cancel the operation.</param>
-    /// <param name="userActionCallback">The callback to run once the user has acknowledged the message.
-    ///                                  False may be passed to cancel the operation when applicable.</param>
-    public delegate void NotifyUserCallback(Pixel pixel, string text, bool canCancel, System.Action<bool> userActionCallback);
-
-    /// <summary>
-    /// Delegate for Pixel requests to play an audio clip.
-    /// </summary>
-    /// <param name="pixel">The source of the event.</param>
-    /// <param name="clipId">The audio clip id to play.</param>
-    public delegate void PlayAudioClipCallback(Pixel pixel, uint clipId);
-
-    /// <summary>
     /// Represents a Pixel die.
     ///
+    /// This class gives access to many settings and features of a Pixel. 
     /// This abstract class does not implement a specific communication protocol with the dice, leaving the door
     /// open to have multiple implementations including a virtual die.
     /// Currently only Bluetooth communications are supported, see <see cref="DiceBag"/> to connect to and communicate
@@ -96,14 +27,18 @@ namespace Systemic.Unity.Pixels
         // Use property to change value so it may properly raise the corresponding event
         PixelConnectionState _connectionState = PixelConnectionState.Invalid;
 
-        TelemetryEventHandler _telemetryReceived;
+        // Events and callbacks
+        TelemetryEventHandler _notifyTelemetry;
         NotifyUserCallback _notifyUser;
         PlayAudioClipCallback _playAudioClip;
+
+        // Maps a message type an event handler
+        readonly Dictionary<MessageType, MessageReceivedEventHandler> _messageHandlers = new Dictionary<MessageType, MessageReceivedEventHandler>();
 
         #region Public properties
 
         /// <summary>
-        /// Gets the connection state to the Pixel die.
+        /// Gets the connection state to the Pixel.
         /// </summary>
         public PixelConnectionState connectionState
         {
@@ -124,7 +59,7 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Indicates whether the connection state is set to available, meaning the Pixel die can be connected to.
+        /// Indicates whether the connection state is set to available, meaning the Pixel can be connected to.
         /// </summary>
         public bool isAvailable => _connectionState == PixelConnectionState.Available;
 
@@ -190,7 +125,7 @@ namespace Systemic.Unity.Pixels
         public bool isCharging { get; protected set; }
 
         /// <summary>
-        /// Gets the Pixel last read RSSI value.
+        /// Gets the Pixel last read Received Signal Strength Indicator (RSSI) value.
         /// </summary>
         public int rssi { get; protected set; }
 
@@ -261,17 +196,17 @@ namespace Systemic.Unity.Pixels
         {
             add
             {
-                if (_telemetryReceived == null)
+                if (_notifyTelemetry == null)
                 {
                     // The first time around, we make sure to request telemetry from the Pixel
                     RequestTelemetry(true);
                 }
-                _telemetryReceived += value;
+                _notifyTelemetry += value;
             }
             remove
             {
-                _telemetryReceived -= value;
-                if (_telemetryReceived == null || _telemetryReceived.GetInvocationList().Length == 0)
+                _notifyTelemetry -= value;
+                if (_notifyTelemetry == null || _notifyTelemetry.GetInvocationList().Length == 0)
                 {
                     if (connectionState == PixelConnectionState.Ready)
                     {
@@ -288,15 +223,16 @@ namespace Systemic.Unity.Pixels
         #region Protected members
 
         /// <summary>
-        /// Internal delegate per message type.
+        /// Internal event handler for message notification.
         /// </summary>
         /// <param name="message">The message object.</param>
         protected delegate void MessageReceivedEventHandler(IPixelMessage message);
 
         /// <summary>
-        /// Maps a message type to the corresponding event handler.
+        /// Use this property to access the Pixel name without having to first check if the object
+        /// is considered destroyed by Unity (to avoid generating an error).
         /// </summary>
-        protected Dictionary<MessageType, MessageReceivedEventHandler> _messageDelegates;
+        protected string SafeName => this != null ? name : "(destroyed)";
 
         /// <summary>
         /// Abstract method to send a message to the Pixel.
@@ -317,20 +253,162 @@ namespace Systemic.Unity.Pixels
             }
         }
 
+        /// <summary>
+        /// Add an event hander for the given message type.
+        /// </summary>
+        /// <param name="messageType">The type of message to subscribe to.</param>
+        /// <param name="eventHandler">The event handler to add.</param>
+        protected void AddMessageHandler(MessageType messageType, MessageReceivedEventHandler eventHandler)
+        {
+            if (messageType == MessageType.None) throw new System.ArgumentException($"Message type can't be {messageType}", nameof(messageType));
+            if (eventHandler == null) throw new System.ArgumentNullException(nameof(eventHandler));
+
+            if (_messageHandlers.TryGetValue(messageType, out MessageReceivedEventHandler del))
+            {
+                del += eventHandler;
+                _messageHandlers[messageType] = del;
+            }
+            else
+            {
+                _messageHandlers.Add(messageType, eventHandler);
+            }
+        }
+
+        /// <summary>
+        /// Remove an event hander for the given message type.
+        /// </summary>
+        /// <param name="messageType">The type of message to unsubscribe from.</param>
+        /// <param name="eventHandler">The event handler to remove.</param>
+        protected void RemoveMessageHandler(MessageType messageType, MessageReceivedEventHandler eventHandler)
+        {
+            if (messageType == MessageType.None) throw new System.ArgumentException($"Message type can't be {messageType}", nameof(messageType));
+            if (eventHandler == null) throw new System.ArgumentNullException(nameof(eventHandler));
+
+            if (_messageHandlers.TryGetValue(messageType, out MessageReceivedEventHandler del))
+            {
+                del -= eventHandler;
+                if (del == null)
+                {
+                    _messageHandlers.Remove(messageType);
+                }
+                else
+                {
+                    _messageHandlers[messageType] = del;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Notify the event handlers for the given message, based on its type.
+        /// </summary>
+        /// <param name="message">The message object.</param>
+        protected void NotifyMessageHandler(IPixelMessage message)
+        {
+            if (message == null) throw new System.ArgumentNullException(nameof(message));
+
+            if (_messageHandlers.TryGetValue(message.type, out MessageReceivedEventHandler del))
+            {
+                del.Invoke(message);
+            }
+        }
+
+        /// <summary>
+        /// Starts a coroutine that sends a message to the Pixel.
+        /// </summary>
+        /// <typeparam name="T">Type of the message.</typeparam>
+        /// <param name="message">The message instance to send.</param>
+        protected void PostMessage<T>(T message)
+            where T : IPixelMessage
+        {
+            EnsureRunningOnMainThread();
+
+            Debug.Log($"Pixel {SafeName}: Posting message of type {message.GetType()}");
+
+            StartCoroutine(SendMessageAsync(PixelMessageMarshaling.ToByteArray(message)));
+        }
+
+        /// <summary>
+        /// Register the default message handlers, called once during instance initialization.
+        /// </summary>
+        protected virtual void RegisterDefaultMessageHandlers()
+        {
+            // Setup delegates for face and telemetry
+            _messageHandlers.Add(MessageType.IAmADie, msg => ProcessIAmADieMessage((IAmADie)msg));
+            _messageHandlers.Add(MessageType.RollState, msg => ProcessRollStateMessage((RollState)msg));
+            _messageHandlers.Add(MessageType.Telemetry, msg => ProcessTelemetryMessage((AccelerationState)msg));
+            _messageHandlers.Add(MessageType.DebugLog, msg => ProcessDebugLogMessage((DebugLog)msg));
+            _messageHandlers.Add(MessageType.NotifyUser, msg => ProcessNotifyUserMessage((NotifyUser)msg));
+            _messageHandlers.Add(MessageType.PlaySound, msg => ProcessPlayAudioClip((PlaySound)msg));
+
+            void ProcessIAmADieMessage(IAmADie message)
+            {
+                Debug.Log($"Pixel {SafeName}: {message.flashSize} bytes available for data,"
+                    + $" current dataset hash {message.dataSetHash:X08}, firmware version is {message.versionInfo}");
+
+                // Update instance
+                bool appearanceChanged = faceCount != message.faceCount || designAndColor != message.designAndColor;
+                faceCount = message.faceCount;
+                designAndColor = message.designAndColor;
+                dataSetHash = message.dataSetHash;
+                flashSize = message.flashSize;
+                firmwareVersionId = message.versionInfo;
+
+                if (appearanceChanged)
+                {
+                    // Notify
+                    AppearanceChanged?.Invoke(this, faceCount, designAndColor);
+                }
+            }
+
+            void ProcessRollStateMessage(RollState message)
+            {
+                Debug.Log($"Pixel {SafeName}: State is {message.state}, {message.face}");
+
+                if ((message.state != rollState) || (message.face != face))
+                {
+                    // Update instance
+                    rollState = message.state;
+                    face = message.face;
+
+                    // Notify
+                    RollStateChanged?.Invoke(this, rollState, face + 1);
+                }
+            }
+
+            void ProcessTelemetryMessage(AccelerationState message)
+            {
+                // Notify
+                _notifyTelemetry?.Invoke(this, message.data);
+            }
+
+            void ProcessDebugLogMessage(DebugLog message)
+            {
+                string text = System.Text.Encoding.UTF8.GetString(message.data, 0, message.data.Length);
+                Debug.Log($"Pixel {SafeName}: {text}");
+            }
+
+            void ProcessNotifyUserMessage(NotifyUser message)
+            {
+                //bool ok = message.ok != 0;
+                bool cancel = message.cancel != 0;
+                //float timeout = message.timeout_s;
+                string text = System.Text.Encoding.UTF8.GetString(message.data, 0, message.data.Length);
+                _notifyUser?.Invoke(this, text, cancel,
+                    res => PostMessage(new NotifyUserAck() { okCancel = (byte)(res ? 1 : 0) }));
+            }
+
+            void ProcessPlayAudioClip(PlaySound message)
+            {
+                _playAudioClip?.Invoke(this, message.clipId);
+            }
+        }
+
         #endregion
 
-        // Awake is called when the script instance is being loaded
+        // Awake is called when the behaviour is being loaded
         void Awake()
         {
-            _messageDelegates = new Dictionary<MessageType, MessageReceivedEventHandler>();
-
-            // Setup delegates for face and telemetry
-            _messageDelegates.Add(MessageType.IAmADie, OnIAmADieMessage);
-            _messageDelegates.Add(MessageType.RollState, OnRollStateMessage);
-            _messageDelegates.Add(MessageType.Telemetry, OnTelemetryMessage);
-            _messageDelegates.Add(MessageType.DebugLog, OnDebugLogMessage);
-            _messageDelegates.Add(MessageType.NotifyUser, OnNotifyUserMessage);
-            _messageDelegates.Add(MessageType.PlaySound, OnPlayAudioClip);
+            RegisterDefaultMessageHandlers();
         }
     }
 }
