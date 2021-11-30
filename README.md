@@ -67,60 +67,56 @@ between the different platforms.
 
 ### Pixel
 
-While the above classes allow for a generic access to Bluetooth Low Energy peripherals,
-the [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) class offers an easy
-access to many settings and features specific to Pixel dice.
+While the above classes implement a generic access to any Bluetooth Low Energy peripheral,
+there are many Pixel specific types in the [_Systemic.Unity.Pixels_]
+(namespace_systemic_1_1_unity_1_1_pixels.html) namespace.
 
+The [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) class has many properties
+and methods to communicate with Pixels dice.
 
-The [_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) singleton manages
-Pixel instances.
+Also the [_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) singleton
+implements scanning and connection methods for Pixels dice.
 
-## Subscribing to Pixel events
+#### Pixel messages
 
-When dealing with Bluetooth Low Energy (BLE) peripherals and specifically Pixels, one
-may want to subscribe to events for being notified of a state change (like a die being
-rolled).
+See the [_Messages_](namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html) sub-namespace.
 
-The chart below shows the workflow of subscribing to Pixels events and reading them.
+#### LED animations data
 
-![Connection Events Workflow](images/subscription-workflow.svg)
+See the [_Animations_](namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html) sub-namespace.
 
-The software must scan for peripherals to identify which one to connect to. A Pixel dice
-advertise specific BLE services and thus can be easily filtered out during a scan.
+#### LED animations profiles
 
-Once a die is found, the software may connect to it. Upon success it can subscribe to
-the characteristic (a BLE communication channel) that notifies of rolling dice events.
-
-It may also write to another characteristic to send messages to the die and, for example,
-request its current state (like which face is up).
-
-When the die is rolled (or upon other events), the characteristic value (its data) is
-changed to reflect that even. Thanks to the subscription, the software is notified of this
-change and can process the event accordingly.
+See the [_Profiles_](namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html) sub-namespace.
 
 ## Examples
 
-Example scenes for Unity are located in the `Assets/Systemic/Examples` folder.
+The example scenes for Unity are located in the `Assets/Systemic/Examples` folder and
+the script they are used are in the [Systemic.Unity.Examples]
+(namespace_systemic_1_1_unity_1_1_examples.html) namespace.
 
 ### Pixels Demo
 
-Demonstrates how to communicate with Pixels.
-- Reading state
-- Pushing animation data
+Demonstrates how to scan for, connect to and retrieve information from Pixel dice
+using the dedicated [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) and
+[_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) classes.
 
-More details are available with the [PixelsDemo]
-(class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html) class documentation.
+See the [_PixelController_](class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html)
+and the [_UIPixelPanel_](class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html)
+classes documentation.
 
 ![Pixels Demo Screenshot](images/pixels-demo.png)
 
 ### Console Application
 
-This application outputs the console logs onto the screen.
+This application runs a series of Bluetooth requests and outputs the console logs
+onto the screen.
 
-It demonstrates scanning for Pixels dice, connecting to one of them, retrieving information
-from it, sending messages and getting notifications.
+It demonstrates scanning for Pixels dice, connecting to one of them, retrieving
+information from it, sending messages and getting notifications using the device agnostic
+[_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html) class.
 
-More details are available with the [BleConsole]
+More details are available with the [_BleConsole_]
 (class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html) class documentation.
 
 ![Console Application Screenshot](images/console-app.png)
@@ -129,9 +125,11 @@ More details are available with the [BleConsole]
 
 This application let the user run various Bluetooth operations on Pixels dice.
 
-One may scan for Pixels, connect to one, retrieve information from and send messages to it.
+One may scan for Pixels, connect to one, retrieve information from and send messages to it
+using the device agnostic [_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html)
+class.
 
-More details are available with the [BleController]
+More details are available with the [_BleController_]
 (class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html) class documentation.
 
 ![Test Pad Application Screenshot](images/test-pad-app.png)
@@ -176,6 +174,29 @@ to one, whether using the _NativeInterface_ or the _Central_ classes.
 The chart below shows those different layers:
 
 ![General Architecture](images/general-architecture.svg)
+
+### Subscribing to Pixel events
+
+When dealing with Bluetooth Low Energy (BLE) peripherals and specifically Pixels, one
+may want to subscribe to events for being notified of a state change (like a die being
+rolled).
+
+The chart below shows the workflow of subscribing to Pixels events and reading them.
+
+![Connection Events Workflow](images/subscription-workflow.svg)
+
+The software must scan for peripherals to identify which one to connect to. A Pixel dice
+advertise specific BLE services and thus can be easily filtered out during a scan.
+
+Once a die is found, the software may connect to it. Upon success it can subscribe to
+the characteristic (a BLE communication channel) that notifies of rolling dice events.
+
+It may also write to another characteristic to send messages to the die and, for example,
+request its current state (like which face is up).
+
+When the die is rolled (or upon other events), the characteristic value (its data) is
+changed to reflect that even. Thanks to the subscription, the software is notified of this
+change and can process the event accordingly.
 
 ### Execution flow between plugins and C# code
 
