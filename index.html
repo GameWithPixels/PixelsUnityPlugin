@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 Overview</h1>
 <p>Bluetooth access is not available in Unity so our implementation is relying on native plugins (also included) to get a direct access to the Bluetooth Low Energy APIs for each supported platform.</p>
 <p>Accessing a Bluetooth Low Energy devices (usually referred to as peripherals) happens in two steps. First there is scanning which discovers available peripherals in the vicinity, and second there is a connection attempt.</p>
-<p>One connected to a peripheral, the software may start to query for its capabilities and exchange data back and forth with the peripheral. When developing software connecting to Bluetooth devices such as Pixels dice, the code need to account for disconnection events that may happen at any moment and for a variety of reasons : the peripheral was moved out of reach, it ran out of battery, interferences prevented the flow of communication to get through properly, etc.</p>
+<p>One connected to a peripheral, the software may start to query for its capabilities and exchange data back and forth with the peripheral. When developing software connecting to Bluetooth devices such as Pixel dice, the code need to account for disconnection events that may happen at any moment and for a variety of reasons : the peripheral was moved out of reach, it ran out of battery, interferences prevented the flow of communication to get through properly, etc.</p>
 <p>This library aims to provide different levels of abstraction layers to Bluetooth Low Energy peripherals from Unity. The highest level of abstraction layer offers a simplified access to the most useful Pixels features whereas the lowest level layer enables direct access to the Bluetooth Low Energy protocol.</p>
 <p>The main classes available from Unity are introduced below. For more details about their implementation or the native plugins, please refer to the Doxygen generated code <a href="modules.html">documentation</a>. Following Doxygen semantics, the documentation is divided in "modules":</p><ul>
 <li>The Unity C# code</li>
@@ -109,13 +109,13 @@ NativeInterface</h2>
 <p>The raw functionality of the native plugins is exposed through the <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html"><em>NativeInterface</em></a> static class. Callbacks from the native implementation such as for scanning, connection events or requests responses may run on any thread. Also user code also has to manage the lifetime of native resources. Available features and behavior may vary depending on the platform or device it's running on.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Central</h2>
-<p>On the other hand, the <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> static class wraps <em>NativeInterface</em> with a design tailored for Unity. All asynchronous Bluetooth requests return a Unity coroutine that can be yielded. Connection and scanning events are managed by the class and are notified to the user code on the main thread during frame updates.</p>
+<p>On the other hand, the <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> static class wraps <em>NativeInterface</em> with a design tailored for Unity. All asynchronous Bluetooth requests return coroutine that can be yielded by Unity. Connection and scanning events are managed by the class and are notified to the user code on the main thread during frame updates.</p>
 <p>Native resources are also managed by <em>Central</em> and it tries to account for differences between the different platforms.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Pixel</h2>
-<p>While the above classes implement a generic access to any Bluetooth Low Energy peripheral, there are many Pixel specific types in the <a href="namespace_systemic_1_1_unity_1_1_pixels.html"><em>Systemic.Unity.Pixels</em></a> namespace.</p>
-<p>The <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html"><em>Pixel</em></a> class has many properties and methods to communicate with Pixels dice.</p>
-<p>Also the <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html"><em>DiceBag</em></a> singleton implements scanning and connection methods for Pixels dice.</p>
+<p>While the above classes implement a generic access to any Bluetooth Low Energy peripheral, there are several Pixel specific types in the <a href="namespace_systemic_1_1_unity_1_1_pixels.html"><em>Systemic.Unity.Pixels</em></a> namespace.</p>
+<p>The <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html"><em>Pixel</em></a> class has many properties and methods to communicate with Pixel dice.</p>
+<p>Also the <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html"><em>DiceBag</em></a> singleton implements Pixel scanning and connection methods.</p>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Pixel messages</h3>
 <p>See the <a href="namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html"><em>Messages</em></a> sub-namespace.</p>
@@ -127,21 +127,21 @@ LED animations profiles</h3>
 <p>See the <a href="namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html"><em>Profiles</em></a> sub-namespace.</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Examples</h1>
-<p>The example scenes for Unity are located in the <code>Assets/Systemic/Examples</code> folder and the script they are used are in the <a href="namespace_systemic_1_1_unity_1_1_examples.html">Systemic.Unity.Examples</a> namespace.</p>
+<p>The example scenes for Unity are located in the <code>Assets/Systemic/Examples</code> folder and the scripts they use are in the <a href="namespace_systemic_1_1_unity_1_1_examples.html">Systemic.Unity.Examples</a> namespace.</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Pixels Demo</h2>
-<p>Demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html"><em>Pixel</em></a> and <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html"><em>DiceBag</em></a> classes.</p>
+<p>This application demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html"><em>Pixel</em></a> and <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html"><em>DiceBag</em></a> classes.</p>
 <p>See the <a href="class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html"><em>PixelController</em></a> and the <a href="class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html"><em>UIPixelPanel</em></a> classes documentation.</p>
 <p><img src="pixels-demo.png" alt="" class="inline" title="Pixels Demo Screenshot"/></p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Console Application</h2>
 <p>This application runs a series of Bluetooth requests and outputs the console logs onto the screen.</p>
-<p>It demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it, sending messages and getting notifications using the device agnostic <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> class.</p>
+<p>It demonstrates scanning for Pixel dice, connecting to one of them, retrieving information from it, sending messages and getting notifications using the device agnostic <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> class.</p>
 <p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html"><em>BleConsole</em></a> class documentation.</p>
 <p><img src="console-app.png" alt="" class="inline" title="Console Application Screenshot"/></p>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Test Pad Application</h2>
-<p>This application let the user run various Bluetooth operations on Pixels dice.</p>
+<p>This application let the user run various Bluetooth operations on Pixel dice.</p>
 <p>One may scan for Pixels, connect to one, retrieve information from and send messages to it using the device agnostic <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html"><em>Central</em></a> class.</p>
 <p>More details are available with the <a href="class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html"><em>BleController</em></a> class documentation.</p>
 <p><img src="test-pad-app.png" alt="" class="inline" title="Test Pad Application Screenshot"/></p>
