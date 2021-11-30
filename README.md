@@ -22,7 +22,7 @@ second there is a connection attempt.
 
 One connected to a peripheral, the software may start to query for its capabilities and
 exchange data back and forth with the peripheral.
-When developing software connecting to Bluetooth devices such as Pixels dice, the code
+When developing software connecting to Bluetooth devices such as Pixel dice, the code
 need to account for disconnection events that may happen at any moment and
 for a variety of reasons : the peripheral was moved out of reach, it ran out of battery,
 interferences prevented the flow of communication to get through properly, etc.
@@ -58,7 +58,7 @@ Available features and behavior may vary depending on the platform or device it'
 
 On the other hand, the [_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html)
 static class wraps _NativeInterface_ with a design tailored for Unity.
-All asynchronous Bluetooth requests return a Unity coroutine that can be yielded.
+All asynchronous Bluetooth requests return coroutine that can be yielded by Unity.
 Connection and scanning events are managed by the class and are notified to the user
 code on the main thread during frame updates.
 
@@ -67,15 +67,15 @@ between the different platforms.
 
 ### Pixel
 
-While the above classes implement a generic access to any Bluetooth Low Energy peripheral,
-there are many Pixel specific types in the [_Systemic.Unity.Pixels_]
-(namespace_systemic_1_1_unity_1_1_pixels.html) namespace.
+While the above classes implement a generic access to any Bluetooth Low Energy
+peripheral, there are several Pixel specific types in the
+[_Systemic.Unity.Pixels_](namespace_systemic_1_1_unity_1_1_pixels.html) namespace.
 
 The [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) class has many properties
-and methods to communicate with Pixels dice.
+and methods to communicate with Pixel dice.
 
 Also the [_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) singleton
-implements scanning and connection methods for Pixels dice.
+implements Pixel scanning and connection methods.
 
 #### Pixel messages
 
@@ -91,15 +91,16 @@ See the [_Profiles_](namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html) 
 
 ## Examples
 
-The example scenes for Unity are located in the `Assets/Systemic/Examples` folder and
-the script they are used are in the [Systemic.Unity.Examples]
-(namespace_systemic_1_1_unity_1_1_examples.html) namespace.
+The example scenes for Unity are located in the `Assets/Systemic/Examples` folder
+and the scripts they use are in the
+[Systemic.Unity.Examples](namespace_systemic_1_1_unity_1_1_examples.html) namespace.
 
 ### Pixels Demo
 
-Demonstrates how to scan for, connect to and retrieve information from Pixel dice
-using the dedicated [_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html) and
-[_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) classes.
+This application demonstrates how to scan for, connect to and retrieve information
+from Pixel dice using the dedicated
+[_Pixel_](class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html)
+and [_DiceBag_](class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html) classes.
 
 See the [_PixelController_](class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html)
 and the [_UIPixelPanel_](class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html)
@@ -112,9 +113,10 @@ classes documentation.
 This application runs a series of Bluetooth requests and outputs the console logs
 onto the screen.
 
-It demonstrates scanning for Pixels dice, connecting to one of them, retrieving
-information from it, sending messages and getting notifications using the device agnostic
-[_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html) class.
+It demonstrates scanning for Pixel dice, connecting to one of them, retrieving
+information from it, sending messages and getting notifications using the device
+agnostic [_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html)
+class.
 
 More details are available with the [_BleConsole_]
 (class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html) class documentation.
@@ -123,11 +125,11 @@ More details are available with the [_BleConsole_]
 
 ### Test Pad Application
 
-This application let the user run various Bluetooth operations on Pixels dice.
+This application let the user run various Bluetooth operations on Pixel dice.
 
-One may scan for Pixels, connect to one, retrieve information from and send messages to it
-using the device agnostic [_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html)
-class.
+One may scan for Pixels, connect to one, retrieve information from and send messages
+to it using the device agnostic
+[_Central_](class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html) class.
 
 More details are available with the [_BleController_]
 (class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html) class documentation.
