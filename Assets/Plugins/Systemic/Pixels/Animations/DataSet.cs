@@ -27,14 +27,14 @@ namespace Systemic.Unity.Pixels.Animations
             public List<Color> palette = new List<Color>();
             public List<RGBKeyframe> rgbKeyframes = new List<RGBKeyframe>();
             public List<RGBTrack> rgbTracks = new List<RGBTrack>();
-            public List<Keyframe> keyframes = new List<Keyframe>();
+            public List<SimpleKeyframe> keyframes = new List<SimpleKeyframe>();
             public List<Track> tracks = new List<Track>();
 
             public uint getColor32(ushort colorIndex)
             {
 
                 var cl32 = (Color32)(getColor(colorIndex));
-                return ColorUtils.ToColor(cl32.r, cl32.g, cl32.b);
+                return ColorUIntUtils.ToColor(cl32.r, cl32.g, cl32.b);
             }
 
             public const ushort PALETTE_COLOR_FROM_FACE = 127;
@@ -56,7 +56,7 @@ namespace Systemic.Unity.Pixels.Animations
                 }
             }
             public RGBKeyframe getRGBKeyframe(ushort keyFrameIndex) => rgbKeyframes[keyFrameIndex];
-            public Keyframe getKeyframe(ushort keyFrameIndex) => keyframes[keyFrameIndex];
+            public SimpleKeyframe getKeyframe(ushort keyFrameIndex) => keyframes[keyFrameIndex];
             public ushort getPaletteSize() => (ushort)(palette.Count * 3);
             public ushort getRGBKeyframeCount() => (ushort)rgbKeyframes.Count;
             public RGBTrack getRGBTrack(ushort trackIndex) => rgbTracks[trackIndex];
@@ -70,7 +70,7 @@ namespace Systemic.Unity.Pixels.Animations
                 return roundUpTo4(palette.Count * Marshal.SizeOf<byte>() * 3) + // 3 bytes per color
                     rgbKeyframes.Count * Marshal.SizeOf<RGBKeyframe>() +
                     rgbTracks.Count * Marshal.SizeOf<RGBTrack>() +
-                    keyframes.Count * Marshal.SizeOf<Keyframe>() +
+                    keyframes.Count * Marshal.SizeOf<SimpleKeyframe>() +
                     tracks.Count * Marshal.SizeOf<Track>();
             }
 
@@ -111,7 +111,7 @@ namespace Systemic.Unity.Pixels.Animations
                 foreach (var keyframe in keyframes)
                 {
                     Marshal.StructureToPtr(keyframe, current, false);
-                    current += Marshal.SizeOf<Keyframe>();
+                    current += Marshal.SizeOf<SimpleKeyframe>();
                 }
 
                 // Copy tracks
@@ -127,10 +127,10 @@ namespace Systemic.Unity.Pixels.Animations
 
         public AnimationBits animationBits = new AnimationBits();
         public List<IAnimation> animations = new List<IAnimation>();
-        public List<Behaviors.ICondition> conditions = new List<Behaviors.ICondition>();
-        public List<Behaviors.IAction> actions = new List<Behaviors.IAction>();
-        public List<Behaviors.Rule> rules = new List<Behaviors.Rule>();
-        public Behaviors.Behavior behavior = null;
+        public List<Profiles.ICondition> conditions = new List<Profiles.ICondition>();
+        public List<Profiles.IAction> actions = new List<Profiles.IAction>();
+        public List<Profiles.Rule> rules = new List<Profiles.Rule>();
+        public Profiles.Profile behavior = null;
         public ushort padding;
 
         public int ComputeDataSetDataSize()
@@ -142,8 +142,8 @@ namespace Systemic.Unity.Pixels.Animations
                 conditions.Sum((cond) => Marshal.SizeOf(cond.GetType())) + // actual conditions
                 roundUpTo4(actions.Count * Marshal.SizeOf<ushort>()) + // offsets
                 actions.Sum((action) => Marshal.SizeOf(action.GetType())) + // actual actions
-                rules.Count * Marshal.SizeOf<Behaviors.Rule>() +
-                Marshal.SizeOf<Behaviors.Behavior>();
+                rules.Count * Marshal.SizeOf<Profiles.Rule>() +
+                Marshal.SizeOf<Profiles.Profile>();
         }
 
         // D. J. Bernstein hash function
@@ -179,13 +179,13 @@ namespace Systemic.Unity.Pixels.Animations
 
         public IAnimation getAnimation(ushort animIndex) => animations[animIndex];
         public ushort getAnimationCount() => (ushort)animations.Count;
-        public Behaviors.ICondition getCondition(int conditionIndex) => conditions[conditionIndex];
+        public Profiles.ICondition getCondition(int conditionIndex) => conditions[conditionIndex];
         public ushort getConditionCount() => (ushort)conditions.Count;
-        public Behaviors.IAction getAction(int actionIndex) => actions[actionIndex];
+        public Profiles.IAction getAction(int actionIndex) => actions[actionIndex];
         public ushort getActionCount() => (ushort)actions.Count;
-        public Behaviors.Rule getRule(int ruleIndex) => rules[ruleIndex];
+        public Profiles.Rule getRule(int ruleIndex) => rules[ruleIndex];
         public ushort getRuleCount() => (ushort)rules.Count;
-        public Behaviors.Behavior getBehavior() => behavior;
+        public Profiles.Profile getBehavior() => behavior;
 
         public byte[] ToTestAnimationByteArray()
         {
@@ -297,12 +297,12 @@ namespace Systemic.Unity.Pixels.Animations
             foreach (var rule in rules)
             {
                 Marshal.StructureToPtr(rule, current, false);
-                current += Marshal.SizeOf<Behaviors.Rule>();
+                current += Marshal.SizeOf<Profiles.Rule>();
             }
 
             // Behaviors
             Marshal.StructureToPtr(behavior, current, false);
-            current += Marshal.SizeOf<Behaviors.Behavior>();
+            current += Marshal.SizeOf<Profiles.Profile>();
 
             return current;
         }

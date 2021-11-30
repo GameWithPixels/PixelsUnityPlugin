@@ -1,4 +1,8 @@
 ﻿
+/// <summary>
+/// Set of classes to represent all supported Pixel messages as well as en enum <see cref="MessageType"/>
+/// with all the message types and a marshaling helper <see cref="PixelMessageMarshaling"/>.
+/// </summary>
 namespace Systemic.Unity.Pixels.Messages
 {
     /// <summary>

@@ -106,7 +106,7 @@ namespace Systemic.Unity.Pixels
 
                 Pixel = pixel;
                 _timeout = Time.realtimeSinceStartup + timeoutSec;
-                _msgType = PixelMessageMarshaling.GetMessageType<T>();
+                _msgType = Marshaling.GetMessageType<T>();
             }
 
             /// <summary>
@@ -207,7 +207,7 @@ namespace Systemic.Unity.Pixels
                 if (message == null) throw new System.ArgumentNullException(nameof(message));
 
                 _msgType = message.GetType();
-                _sendMessage = Pixel.SendMessageAsync(PixelMessageMarshaling.ToByteArray(message), timeoutSec);
+                _sendMessage = Pixel.SendMessageAsync(Marshaling.ToByteArray(message), timeoutSec);
             }
 
             /// <summary>

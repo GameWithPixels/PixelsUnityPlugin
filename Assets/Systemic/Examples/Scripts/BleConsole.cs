@@ -14,7 +14,7 @@ namespace Systemic.Unity.Examples
 {
     /// <summary>
     /// Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,
-    /// sending messages and getting notifications.
+    /// sending messages and getting notifications using the device agnostic <see cref="Central"/> class.
     /// </summary>
     public class BleConsole : MonoBehaviour
     {

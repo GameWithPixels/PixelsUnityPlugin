@@ -6,7 +6,7 @@ namespace Systemic.Unity.Examples
 {
     /// <summary>
     /// Demonstrates how to scan for, connect to and retrieve information from Pixel dice
-    /// using the dedicated <see cref="Pixel"/> class.
+    /// using the dedicated <see cref="Pixel"/> and <see cref="DiceBag"/> classes.
     /// </summary>
     [RequireComponent(typeof(DiceBag))]
     public class PixelController : MonoBehaviour
@@ -38,6 +38,15 @@ namespace Systemic.Unity.Examples
                 {
                     AddPixelPanel(p);
                 }
+            }
+
+            var toRemove = _pixelsRoot.GetComponentsInChildren<UIPixelPanel>()
+                .Where(p => !DiceBag.Instance.AllPixels.Contains(p.Pixel))
+                .Select(p => p.gameObject)
+                .ToArray();
+            foreach (var gameObject in toRemove)
+            {
+                Destroy(gameObject);
             }
         }
 
@@ -74,7 +83,15 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StopScan()
         {
-            DiceBag.Instance.StopScanForPixels();
+            DiceBag.Instance.CancelScanning();
+        }
+
+        /// <summary>
+        /// Remove all scanned Pixels that are not connected.
+        /// </summary>
+        public void ClearScanList()
+        {
+            DiceBag.Instance.ClearAvailablePixels();
         }
 
         #endregion

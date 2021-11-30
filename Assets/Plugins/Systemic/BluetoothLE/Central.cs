@@ -105,13 +105,21 @@ namespace Systemic.Unity.BluetoothLE
                 _actionQueue.Enqueue(action);
             }
 
-            void Start()
+            void OnEnable()
             {
                 // Safeguard
-                if (_instance != this)
+                if ((_instance != null) && (_instance != this))
                 {
                     Debug.LogError($"A second instance of {typeof(CentralBehaviour)} got spawned, now destroying it");
                     Destroy(this);
+                }
+            }
+
+            void OnDisable()
+            {
+                if (_instance == this)
+                {
+                    _instance = null;
                 }
             }
 

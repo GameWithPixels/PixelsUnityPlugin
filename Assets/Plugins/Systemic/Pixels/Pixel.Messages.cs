@@ -164,7 +164,7 @@ namespace Systemic.Unity.Pixels
         /// <returns>An enumerator meant to be run as a coroutine.</returns>
         public IEnumerator RenameAsync(string name, OperationResultCallback onResult = null)
         {
-            Debug.Log($"Pixel {SafeName}: Renaming to " + name);
+            Debug.Log($"Pixel {SafeName}: Renaming to {name}");
 
             byte[] nameBytes = System.Text.Encoding.UTF8.GetBytes(name + "\0");
             byte[] nameByteMaxSize = new byte[SetName.NameMaxSize];

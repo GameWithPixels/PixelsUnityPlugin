@@ -41,7 +41,7 @@ namespace Systemic.Unity.Pixels
             // The underlying BLE device
             Peripheral _peripheral;
 
-            // Count how many time Connect() was called, so we only disconnect after the same number of calls to Disconnect()
+            // Count the number of connection requests and disconnect only after the same number of disconnection requests
             int _connectionCount;
 
             // Connection internal events
@@ -152,9 +152,11 @@ namespace Systemic.Unity.Pixels
             }
 
             /// <summary>
-            /// Attempts to connect to this Pixel.
-            /// When called multiple times while connecting or connected, the connection counter is incremented and the same number
-            /// of calls to <see cref="Disconnect(ConnectionResultCallback, bool)"/> must be made to disconnect.
+            /// Request to connect the Pixel.
+            ///
+            /// If called while connecting or being connected, the connection counter is increased and the same
+            /// number of calls to <see cref="Disconnect(ConnectionResultCallback, bool)"/> must be made
+            /// to disconnect the Pixel.
             /// </summary>
             /// <param name="timeout">Timeout in seconds.</param>
             /// <param name="onResult">Optional callback that is called once the connection has succeeded or timed-out.</param>
@@ -196,14 +198,20 @@ namespace Systemic.Unity.Pixels
             }
 
             /// <summary>
-            /// Disconnect the Pixel.
+            /// Request to disconnect the Pixel.
+            ///
+            /// An actual disconnection won't happen until this method is called as many time as
+            /// <see cref="Connect(float, ConnectionResultCallback)"/> or <paramref name="forceDisconnect"/> is true.
             /// </summary>
             /// <param name="onConnectionResult">Optional callback that is called once the disconnection has succeeded or failed.</param>
-            /// <param name="forceDisconnect">Whether to disconnect even the number of calls to this methods doesn't match
-            ///                               the number of calls to <see cref="Connect(float, ConnectionResultCallback)"/></param>
-            public void Disconnect(ConnectionResultCallback onResult = null, bool forceDisconnect = false)
+            /// <param name="forceDisconnect">Disconnect regardless of the number of calls previously made to
+            ///                               <see cref="Connect(float, ConnectionResultCallback)"/></param>
+            /// <returns>Whether an actual disconnection will happen.</returns>
+            public bool Disconnect(ConnectionResultCallback onResult = null, bool forceDisconnect = false)
             {
                 EnsureRunningOnMainThread();
+
+                bool willDisconnect = false;
 
                 switch (connectionState)
                 {
@@ -223,6 +231,7 @@ namespace Systemic.Unity.Pixels
                         {
                             // Register to be notified when disconnection is complete
                             _onDisconnectionResult += onResult;
+                            willDisconnect = true;
                             DoDisconnect();
                         }
                         else
@@ -232,6 +241,8 @@ namespace Systemic.Unity.Pixels
                         }
                         break;
                 }
+
+                return willDisconnect;
             }
 
             // Connect with a timeout in seconds
@@ -346,7 +357,7 @@ namespace Systemic.Unity.Pixels
                         if (canceled)
                         {
                             // Wrong state => we got canceled, just abort without notifying
-                            Debug.LogWarning($"Pixel {SafeName}: connect sequence interrupted, last request error is: {lastRequestError}");
+                            Debug.LogWarning($"Pixel {SafeName}: Connect sequence interrupted, last request error is: {lastRequestError}");
                         }
                     }
                 }
@@ -409,7 +420,7 @@ namespace Systemic.Unity.Pixels
                     Debug.Assert(data != null);
 
                     // Process the message coming from the actual Pixel!
-                    var message = PixelMessageMarshaling.FromByteArray(data);
+                    var message = Marshaling.FromByteArray(data);
                     if (message != null)
                     {
                         Debug.Log($"Pixel {SafeName}: Received message of type {message.GetType()}");
@@ -467,7 +478,7 @@ namespace Systemic.Unity.Pixels
                 lastError = newError;
                 if (lastError != PixelError.None)
                 {
-                    ErrorRaised?.Invoke(this, newError);
+                    ErrorEncountered?.Invoke(this, newError);
                 }
             }
 
@@ -516,15 +527,16 @@ namespace Systemic.Unity.Pixels
             }
 
             // Called when the behaviour will be destroyed by Unity
-            void OnDestroy()
+            protected override void OnDestroy()
             {
+                base.OnDestroy();
+
                 DisconnectedUnexpectedly = null;
                 _onConnectionResult = null;
                 _onDisconnectionResult = null;
 
                 bool disconnect = isConnectingOrReady;
                 _connectionCount = 0;
-                connectionState = PixelConnectionState.Invalid;
 
                 Debug.Log($"Pixel {name}: Got destroyed (was connecting or connected: {disconnect})");
 

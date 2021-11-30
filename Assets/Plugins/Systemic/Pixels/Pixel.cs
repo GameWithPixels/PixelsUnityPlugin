@@ -47,7 +47,6 @@ namespace Systemic.Unity.Pixels
             {
                 EnsureRunningOnMainThread();
 
-                Debug.Assert(System.Threading.Thread.CurrentThread.ManagedThreadId == 1);
                 if (value != _connectionState)
                 {
                     Debug.Log($"Pixel {SafeName}: Connection state change, {_connectionState} => {value}");
@@ -131,32 +130,6 @@ namespace Systemic.Unity.Pixels
 
         #endregion
 
-        #region Public methods
-
-        /// <summary>
-        /// Subscribes to user notifications request send by the Pixel.
-        /// 
-        /// Replaces the callback passed in a previous call to this method.
-        /// </summary>
-        /// <param name="notifyUserCallback">The callback to run, pass null to unsubscribe.</param>
-        public void SubscribeToUserNotifications(NotifyUserCallback notifyUserCallback)
-        {
-            _notifyUser = notifyUserCallback;
-        }
-
-        /// <summary>
-        /// Subscribes to audio request send by the Pixel.
-        /// 
-        /// Replaces the callback passed in a previous call to this method.
-        /// </summary>
-        /// <param name="playAudioClipCallback">The callback to run, pass null to unsubscribe.</param>
-        public void SubscribeToPlayAudioClip(PlayAudioClipCallback playAudioClipCallback)
-        {
-            _playAudioClip = playAudioClipCallback;
-        }
-
-        #endregion
-
         #region Public events
 
         /// <summary>
@@ -167,7 +140,7 @@ namespace Systemic.Unity.Pixels
         /// <summary>
         /// Event raised when communications with the Pixel encountered an error.
         /// </summary>
-        public ErrorRaisedEventHandler ErrorRaised;
+        public ErrorRaisedEventHandler ErrorEncountered;
 
         /// <summary>
         /// Event raised when the Pixel appearance setting is changed.
@@ -220,7 +193,27 @@ namespace Systemic.Unity.Pixels
 
         #endregion
 
-        #region Protected members
+        /// <summary>
+        /// Subscribe to requests send by the Pixel to notify user.
+        /// 
+        /// Replaces the callback passed in a previous call to this method.
+        /// </summary>
+        /// <param name="notifyUserCallback">The callback to run, pass null to unsubscribe.</param>
+        public void SubscribeToUserNotifyRequest(NotifyUserCallback notifyUserCallback)
+        {
+            _notifyUser = notifyUserCallback;
+        }
+
+        /// <summary>
+        /// Subscribes to requests send by the Pixel to play an audio clip.
+        /// 
+        /// Replaces the callback passed in a previous call to this method.
+        /// </summary>
+        /// <param name="playAudioClipCallback">The callback to run, pass null to unsubscribe.</param>
+        public void SubscribeToPlayAudioClipRequest(PlayAudioClipCallback playAudioClipCallback)
+        {
+            _playAudioClip = playAudioClipCallback;
+        }
 
         /// <summary>
         /// Internal event handler for message notification.
@@ -324,7 +317,7 @@ namespace Systemic.Unity.Pixels
 
             Debug.Log($"Pixel {SafeName}: Posting message of type {message.GetType()}");
 
-            StartCoroutine(SendMessageAsync(PixelMessageMarshaling.ToByteArray(message)));
+            StartCoroutine(SendMessageAsync(Marshaling.ToByteArray(message)));
         }
 
         /// <summary>
@@ -403,7 +396,11 @@ namespace Systemic.Unity.Pixels
             }
         }
 
-        #endregion
+        // Called when the behaviour will be destroyed by Unity
+        protected virtual void OnDestroy()
+        {
+            connectionState = PixelConnectionState.Invalid;
+        }
 
         // Awake is called when the behaviour is being loaded
         void Awake()

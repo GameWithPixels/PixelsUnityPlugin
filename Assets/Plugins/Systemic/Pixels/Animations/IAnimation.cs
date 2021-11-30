@@ -1,4 +1,7 @@
 ﻿
+/// <summary>
+/// Set of types for manipulating Pixel LEDs animations data.
+/// </summary>
 namespace Systemic.Unity.Pixels.Animations
 {
     /// <summary>

@@ -69,23 +69,23 @@ namespace Systemic.Unity.Pixels.Animations
             int retCount = 0;
             if (preset.traveling != 0)
             {
-                // Fill the indices and colors for the anim controller to know how to update leds
+                // Fill the indices and colors for the anim controller to know how to update LEDs
                 for (int i = 0; i < 20; ++i)
                 {
                     if ((preset.faceMask & (1 << i)) != 0)
                     {
                         retIndices[retCount] = AnimationRainbow.faceIndices[i];
-                        retColors[retCount] = ColorUtils.Gamma(ColorUtils.RainbowWheel((byte)((wheelPos + i * 256 / 20) % 256), intensity));
+                        retColors[retCount] = GammaUtils.Gamma(ColorUIntUtils.RainbowWheel((byte)((wheelPos + i * 256 / 20) % 256), intensity));
                         retCount++;
                     }
                 }
             }
             else
             {
-                // All leds same color
-                color = ColorUtils.Gamma(ColorUtils.RainbowWheel((byte)wheelPos, intensity));
+                // All LEDs same color
+                color = GammaUtils.Gamma(ColorUIntUtils.RainbowWheel((byte)wheelPos, intensity));
 
-                // Fill the indices and colors for the anim controller to know how to update leds
+                // Fill the indices and colors for the anim controller to know how to update LEDs
                 for (int i = 0; i < 20; ++i)
                 {
                     if ((preset.faceMask & (1 << i)) != 0)

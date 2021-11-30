@@ -67,7 +67,7 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.BulkData;
         public byte size;
         public ushort offset;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PixelMessageMarshaling.maxDataSize)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = Marshaling.maxDataSize)]
         public byte[] data;
     }
 
@@ -186,7 +186,7 @@ namespace Systemic.Unity.Pixels.Messages
     public class DebugLog : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.DebugLog;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PixelMessageMarshaling.maxDataSize)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = Marshaling.maxDataSize)]
         public byte[] data;
     }
 
@@ -341,7 +341,7 @@ namespace Systemic.Unity.Pixels.Messages
         public byte timeout_s;
         public byte ok; // Boolean
         public byte cancel; // Boolean
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PixelMessageMarshaling.maxDataSize - 4)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = Marshaling.maxDataSize - 4)]
         public byte[] data;
     }
 

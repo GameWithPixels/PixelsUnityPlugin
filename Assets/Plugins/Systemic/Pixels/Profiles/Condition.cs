@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Systemic.Unity.Pixels.Behaviors
+namespace Systemic.Unity.Pixels.Profiles
 {
     /// <summary>
     /// Defines the supported types of conditions.

@@ -94,7 +94,7 @@ namespace Systemic.Unity.Pixels.Animations
                 uint prevKeyframeColor = prevKeyframe.color(bits);
 
                 // Compute the interpolation parameter
-                color = ColorUtils.InterpolateColors(prevKeyframeColor, prevKeyframeTime, nextKeyframeColor, nextKeyframeTime, time);
+                color = ColorUIntUtils.InterpolateColors(prevKeyframeColor, prevKeyframeTime, nextKeyframeColor, nextKeyframeTime, time);
             }
 
             return color;

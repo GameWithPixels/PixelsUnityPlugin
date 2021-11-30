@@ -140,18 +140,6 @@ namespace Systemic.Unity.Examples
             DiceBag.Instance.DisconnectPixel(Pixel);
         }
 
-        /// <summary>
-        /// Remove the <see cref="Pixels.Pixel"/> from the list.
-        /// </summary>
-        public void Forget()
-        {
-            if (Pixel)
-            {
-                DiceBag.Instance.UnregisterPixel(Pixel);
-            }
-            Destroy(gameObject);
-        }
-
         #endregion
     }
 }

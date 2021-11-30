@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-namespace Systemic.Unity.Pixels.Behaviors
+namespace Systemic.Unity.Pixels.Profiles
 {
     /// <summary>
     /// A behavior's rule, with a condition and a list of actions.

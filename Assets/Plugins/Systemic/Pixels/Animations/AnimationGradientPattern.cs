@@ -22,7 +22,7 @@ namespace Systemic.Unity.Pixels.Animations
             return kf.time();
         }
 
-        public Keyframe getKeyframe(DataSet.AnimationBits bits, ushort keyframeIndex)
+        public SimpleKeyframe getKeyframe(DataSet.AnimationBits bits, ushort keyframeIndex)
         {
             Debug.Assert(keyframeIndex < keyFrameCount);
             return bits.getKeyframe((ushort)(keyframesOffset + keyframeIndex));
@@ -89,10 +89,10 @@ namespace Systemic.Unity.Pixels.Animations
                 byte prevKeyframeIntensity = prevKeyframe.intensity();
 
                 // Compute the interpolation parameter
-                intensity = ColorUtils.InterpolateIntensity(prevKeyframeIntensity, prevKeyframeTime, nextKeyframeIntensity, nextKeyframeTime, time);
+                intensity = ColorUIntUtils.InterpolateIntensity(prevKeyframeIntensity, prevKeyframeTime, nextKeyframeIntensity, nextKeyframeTime, time);
             }
 
-            return ColorUtils.ModulateColor(color, intensity);
+            return ColorUIntUtils.ModulateColor(color, intensity);
         }
 
         /// <summary>

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Systemic.Unity.Pixels.Messages
 {
-    public static class PixelMessageMarshaling
+    public static class Marshaling
     {
         public const int maxDataSize = 100;
 
@@ -137,7 +134,7 @@ namespace Systemic.Unity.Pixels.Messages
                         System.Array.Copy(data, 1, modifiedData, 4, 9);
                         ret = FromByteArray<BatteryLevel>(modifiedData);
 #else
-                        ret = FromByteArray<DieMessageBatteryLevel>(data);
+                        ret = FromByteArray<BatteryLevel>(data);
 #endif
                         break;
                     case MessageType.RequestBatteryLevel:
