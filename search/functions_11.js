@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['unregisterpixel_884',['UnregisterPixel',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ae5571fae2c6fb95610d5d14f1821aab3',1,'Systemic.Unity.Pixels.DiceBag.UnregisterPixel(string systemId)'],['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ace3ae88c11acb13ac5714e8ee794d963',1,'Systemic.Unity.Pixels.DiceBag.UnregisterPixel(Pixel pixel)']]],
   ['unsubscribe_885',['Unsubscribe',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#afe20f10b707de69948b3ff6e992b99f2',1,'Systemic::Unity::Examples::BleController']]],
   ['unsubscribeasync_886',['unsubscribeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a0fcc168cd65a80ed15088e32007cc661',1,'Systemic::BluetoothLE::Characteristic']]],
-  ['unsubscribecharacteristic_887',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3a35b76377540a4df72dff7736aad4a3',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['unsubscribecharacteristic_888',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['unsubscribecharacteristic_887',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['unsubscribecharacteristic_888',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3a35b76377540a4df72dff7736aad4a3',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['unsubscribecharacteristicasync_889',['UnsubscribeCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ac1335d32abf461169fe190a2bb4af804',1,'Systemic::Unity::BluetoothLE::Central']]],
   ['updatebatterylevelasync_890',['UpdateBatteryLevelAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a9fcbe51833ffec51561e75cd96b112fe',1,'Systemic::Unity::Pixels::Pixel']]],
   ['updateinfoasync_891',['UpdateInfoAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adf8874dff1c9e016080fa0e5dfdd8b46',1,'Systemic::Unity::Pixels::Pixel']]],

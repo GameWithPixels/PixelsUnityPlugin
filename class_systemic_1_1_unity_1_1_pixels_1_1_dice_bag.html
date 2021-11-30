@@ -94,14 +94,14 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_unity_1_1_pixels_1_
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton that manages Bluetooth Low Energy <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a>.  
+<p>Singleton that manages Bluetooth Low Energy <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a>. Scan and connection requests are counted, meaning that the same number of respectively scan cancellation and disconnection requests must be made for them to effectively happen.  
  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Systemic.Unity.Pixels.DiceBag:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag__inherit__graph.png" border="0" usemap="#a_systemic_8_unity_8_pixels_8_dice_bag_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_systemic_8_unity_8_pixels_8_dice_bag_inherit__map" id="a_systemic_8_unity_8_pixels_8_dice_bag_inherit__map">
-<area shape="rect" title="Singleton that manages Bluetooth Low Energy Pixels." alt="" coords="5,80,204,107"/>
+<area shape="rect" title="Singleton that manages Bluetooth Low Energy Pixels. Scan and connection requests are counted,..." alt="" coords="5,80,204,107"/>
 <area shape="rect" title=" " alt="" coords="49,5,161,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -112,31 +112,28 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a8b1b40706d30091cbf1ec2c3140d2160">ScanForPixels</a> ()</td></tr>
 <tr class="memdesc:a8b1b40706d30091cbf1ec2c3140d2160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. &lt;/sumary&gt; <br /></td></tr>
 <tr class="separator:a8b1b40706d30091cbf1ec2c3140d2160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a759912867a4ba55cdddfb5cb14d4be24"><td class="memItemLeft" align="right" valign="top"><a id="a759912867a4ba55cdddfb5cb14d4be24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a759912867a4ba55cdddfb5cb14d4be24">StopScanForPixels</a> ()</td></tr>
-<tr class="memdesc:a759912867a4ba55cdddfb5cb14d4be24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the current scan. &lt;/sumary&gt; <br /></td></tr>
-<tr class="separator:a759912867a4ba55cdddfb5cb14d4be24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566d6610c420f7ecedbc40c86df3da65"><td class="memItemLeft" align="right" valign="top"><a id="a566d6610c420f7ecedbc40c86df3da65"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a566d6610c420f7ecedbc40c86df3da65">CancelScanning</a> (bool forceCancel=false)</td></tr>
+<tr class="memdesc:a566d6610c420f7ecedbc40c86df3da65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops scanning for <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a> when called as many times as <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a8b1b40706d30091cbf1ec2c3140d2160" title="Starts scanning for Pixel dice. &lt;/sumary&gt;">ScanForPixels</a>. &lt;/sumary&gt; </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">forceCancel</td><td>If true stops scanning regardless of the number of scan calls that were made.</td></tr>
+  </table>
+  </dd>
+</dl>
+<br /></td></tr>
+<tr class="separator:a566d6610c420f7ecedbc40c86df3da65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a08f9f2273cf654b66dd6ab9b6e3f54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1a08f9f2273cf654b66dd6ab9b6e3f54">ClearAvailablePixels</a> ()</td></tr>
 <tr class="memdesc:a1a08f9f2273cf654b66dd6ab9b6e3f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all available <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1a08f9f2273cf654b66dd6ab9b6e3f54">More...</a><br /></td></tr>
 <tr class="separator:a1a08f9f2273cf654b66dd6ab9b6e3f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3f9e9572879d3a844317a208080176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a3c3f9e9572879d3a844317a208080176">SubscribeToUserNotifyRequest</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070">NotifyUserCallback</a> notifyUserCallback)</td></tr>
+<tr class="memdesc:a3c3f9e9572879d3a844317a208080176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to requests from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice to notify user.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a3c3f9e9572879d3a844317a208080176">More...</a><br /></td></tr>
+<tr class="separator:a3c3f9e9572879d3a844317a208080176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1a3c3ca73ff6bf753a0cf6a389b803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#afe1a3c3ca73ff6bf753a0cf6a389b803">SubscribeToPlayAudioClipRequest</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747">PlayAudioClipCallback</a> playAudioClipCallback)</td></tr>
+<tr class="memdesc:afe1a3c3ca73ff6bf753a0cf6a389b803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to requests from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice to play an audio clip.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#afe1a3c3ca73ff6bf753a0cf6a389b803">More...</a><br /></td></tr>
+<tr class="separator:afe1a3c3ca73ff6bf753a0cf6a389b803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad586ff074481c1e171483e9ca2b7dfbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ad586ff074481c1e171483e9ca2b7dfbd">ResetErrors</a> ()</td></tr>
 <tr class="memdesc:ad586ff074481c1e171483e9ca2b7dfbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset errors on all know <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ad586ff074481c1e171483e9ca2b7dfbd">More...</a><br /></td></tr>
 <tr class="separator:ad586ff074481c1e171483e9ca2b7dfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a983676a2ad19070cb50b8a122d21d325"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a983676a2ad19070cb50b8a122d21d325">SubscribeToUserNotifications</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070">NotifyUserCallback</a> notifyUserCallback)</td></tr>
-<tr class="memdesc:a983676a2ad19070cb50b8a122d21d325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to user notifications from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a983676a2ad19070cb50b8a122d21d325">More...</a><br /></td></tr>
-<tr class="separator:a983676a2ad19070cb50b8a122d21d325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a247d744f6f7bb766bca4fa45f6dfae7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a247d744f6f7bb766bca4fa45f6dfae7f">SubscribeToPlayAudioClip</a> (<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747">PlayAudioClipCallback</a> playAudioClipCallback)</td></tr>
-<tr class="memdesc:a247d744f6f7bb766bca4fa45f6dfae7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to play audio clip notifications from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a247d744f6f7bb766bca4fa45f6dfae7f">More...</a><br /></td></tr>
-<tr class="separator:a247d744f6f7bb766bca4fa45f6dfae7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4e6ce9d73f460a0fe1ce09c38040c16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af4e6ce9d73f460a0fe1ce09c38040c16">RegisterPixel</a> (string systemId, string name=&quot;&quot;)</td></tr>
-<tr class="memdesc:af4e6ce9d73f460a0fe1ce09c38040c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af4e6ce9d73f460a0fe1ce09c38040c16">More...</a><br /></td></tr>
-<tr class="separator:af4e6ce9d73f460a0fe1ce09c38040c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5571fae2c6fb95610d5d14f1821aab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ae5571fae2c6fb95610d5d14f1821aab3">UnregisterPixel</a> (string systemId)</td></tr>
-<tr class="memdesc:ae5571fae2c6fb95610d5d14f1821aab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ae5571fae2c6fb95610d5d14f1821aab3">More...</a><br /></td></tr>
-<tr class="separator:ae5571fae2c6fb95610d5d14f1821aab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace3ae88c11acb13ac5714e8ee794d963"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ace3ae88c11acb13ac5714e8ee794d963">UnregisterPixel</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel)</td></tr>
-<tr class="memdesc:ace3ae88c11acb13ac5714e8ee794d963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ace3ae88c11acb13ac5714e8ee794d963">More...</a><br /></td></tr>
-<tr class="separator:ace3ae88c11acb13ac5714e8ee794d963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aa668d3ceeecec73c34b3772ff9ed42"><td class="memItemLeft" align="right" valign="top">Coroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a4aa668d3ceeecec73c34b3772ff9ed42">ConnectPixel</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, System.Func&lt; bool &gt; requestCancelFunc, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17">ConnectionResultCallback</a> onResult=null, float connectionTimeout=<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#adbfdc67063cda04a5bc1f6cbeb5a9509">DefaultConnectionTimeout</a>)</td></tr>
 <tr class="memdesc:a4aa668d3ceeecec73c34b3772ff9ed42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requests to connect to the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a4aa668d3ceeecec73c34b3772ff9ed42">More...</a><br /></td></tr>
 <tr class="separator:a4aa668d3ceeecec73c34b3772ff9ed42"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,18 +155,21 @@ Properties</h2></td></tr>
 <tr class="memitem:af0dffa2661d5c62a9d2f461e38de1f35"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html">DiceBag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af0dffa2661d5c62a9d2f461e38de1f35">Instance</a><code> [get]</code></td></tr>
 <tr class="memdesc:af0dffa2661d5c62a9d2f461e38de1f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the singleton instance.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af0dffa2661d5c62a9d2f461e38de1f35">More...</a><br /></td></tr>
 <tr class="separator:af0dffa2661d5c62a9d2f461e38de1f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fef1c92fbc50fcc173e012ad6730e08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a8fef1c92fbc50fcc173e012ad6730e08">IsReady</a><code> [get]</code></td></tr>
+<tr class="memdesc:a8fef1c92fbc50fcc173e012ad6730e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether we are ready for scanning and connecting to peripherals.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a8fef1c92fbc50fcc173e012ad6730e08">More...</a><br /></td></tr>
+<tr class="separator:a8fef1c92fbc50fcc173e012ad6730e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78173ca87aef81b73db757c2cbab73e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a78173ca87aef81b73db757c2cbab73e3">IsScanning</a><code> [get]</code></td></tr>
 <tr class="memdesc:a78173ca87aef81b73db757c2cbab73e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether we are scanning for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a78173ca87aef81b73db757c2cbab73e3">More...</a><br /></td></tr>
 <tr class="separator:a78173ca87aef81b73db757c2cbab73e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cfd719b583c1a88436dcef95fd6ac0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1cfd719b583c1a88436dcef95fd6ac0b">AllPixels</a><code> [get]</code></td></tr>
+<tr class="memdesc:a1cfd719b583c1a88436dcef95fd6ac0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of all <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a> we know about.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1cfd719b583c1a88436dcef95fd6ac0b">More...</a><br /></td></tr>
+<tr class="separator:a1cfd719b583c1a88436dcef95fd6ac0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173439e563a2be48d46fd6f139ef017a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a">AvailablePixels</a><code> [get]</code></td></tr>
 <tr class="memdesc:a173439e563a2be48d46fd6f139ef017a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of available (scanned but not connected) <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a">More...</a><br /></td></tr>
 <tr class="separator:a173439e563a2be48d46fd6f139ef017a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace79975f76751c27f8ffb46eb777467a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ace79975f76751c27f8ffb46eb777467a">ConnectedPixels</a><code> [get]</code></td></tr>
 <tr class="memdesc:ace79975f76751c27f8ffb46eb777467a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice that are connected and ready to communicate.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ace79975f76751c27f8ffb46eb777467a">More...</a><br /></td></tr>
 <tr class="separator:ace79975f76751c27f8ffb46eb777467a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bfae74d12d63820ea3e76d50edd86b3"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1bfae74d12d63820ea3e76d50edd86b3">RegisteredPixelSystemIds</a><code> [get]</code></td></tr>
-<tr class="memdesc:a1bfae74d12d63820ea3e76d50edd86b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the system ids of the registered <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1bfae74d12d63820ea3e76d50edd86b3">More...</a><br /></td></tr>
-<tr class="separator:a1bfae74d12d63820ea3e76d50edd86b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
 Events</h2></td></tr>
@@ -178,7 +178,8 @@ Events</h2></td></tr>
 <tr class="separator:a9543da90a1d5b0860151c0983e8ca7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Singleton that manages Bluetooth Low Energy <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a>. </p>
+<div class="textblock"><p>Singleton that manages Bluetooth Low Energy <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a>. Scan and connection requests are counted, meaning that the same number of respectively scan cancellation and disconnection requests must be made for them to effectively happen. </p>
+<p>This allows for different parts of the user code to work with this singleton without impacting each others.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1a08f9f2273cf654b66dd6ab9b6e3f54"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a08f9f2273cf654b66dd6ab9b6e3f54">&#9670;&nbsp;</a></span>ClearAvailablePixels()</h2>
@@ -238,8 +239,8 @@ Events</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to connect to the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
-<p>Each <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> object maintains a connection counter which is incremented when calling this method while the die is already connecting or connected. The counter is decremented for each disconnection call and the die is disconnected only once the counter reaches zero.</p>
-<p>This connection counter allows for different parts of the user code to request a connection or a disconnection without impacting each others.</p>
+<p>Each <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> object maintains a connection counter which is incremented for each connection request. and decremented for each disconnection request. The same number of disconnection requests than connection requests must be made to disconnect the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.</p>
+<p>This allows for different parts of the user code to request a connection or a disconnection without impacting each others.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel</td><td>The <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to connect to.</td></tr>
@@ -292,8 +293,8 @@ Events</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to connect to the given list of <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. </p>
-<p>Each <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> object maintains a connection counter which is incremented when calling this method while the die is already connecting or connected. The counter is decremented for each disconnection call and the die is disconnected only once the counter reaches zero.</p>
-<p>This connection counter allows for different parts of the user code to request a connection or a disconnection without impacting each others.</p>
+<p>Each <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> object maintains a connection counter which is incremented for each connection request. and decremented for each disconnection request. The same number of disconnection requests than connection requests must be made to disconnect the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.</p>
+<p>This allows for different parts of the user code to request a connection or a disconnection without impacting each others.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixels</td><td>The <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice to connect to.</td></tr>
@@ -334,7 +335,7 @@ Events</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Requests to disconnect to the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
-<p>If a connection was requested several times before disconnecting, the same number of calls must be made to this methods for the disconnection to occur, unless <em>forceDisconnect</em>  is true.</p>
+<p>If a connection was requested several times before disconnecting, the same number of calls must be made to this method for the disconnection to happen, unless <em>forceDisconnect</em>  is true.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel</td><td>The <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to disconnect from.</td></tr>
@@ -343,43 +344,6 @@ Events</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The coroutine running the request.</dd></dl>
-
-</div>
-</div>
-<a id="af4e6ce9d73f460a0fe1ce09c38040c16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4e6ce9d73f460a0fe1ce09c38040c16">&#9670;&nbsp;</a></span>RegisterPixel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Systemic.Unity.Pixels.DiceBag.RegisterPixel </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>systemId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em> = <code>&quot;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Register the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">systemId</td><td>The system id for the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.</td></tr>
-    <tr><td class="paramname">name</td><td>The name of the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>, may be empty.</td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -402,14 +366,14 @@ Events</h2></td></tr>
 
 </div>
 </div>
-<a id="a247d744f6f7bb766bca4fa45f6dfae7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a247d744f6f7bb766bca4fa45f6dfae7f">&#9670;&nbsp;</a></span>SubscribeToPlayAudioClip()</h2>
+<a id="afe1a3c3ca73ff6bf753a0cf6a389b803"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe1a3c3ca73ff6bf753a0cf6a389b803">&#9670;&nbsp;</a></span>SubscribeToPlayAudioClipRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Systemic.Unity.Pixels.DiceBag.SubscribeToPlayAudioClip </td>
+          <td class="memname">void Systemic.Unity.Pixels.DiceBag.SubscribeToPlayAudioClipRequest </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747">PlayAudioClipCallback</a>&#160;</td>
           <td class="paramname"><em>playAudioClipCallback</em></td><td>)</td>
@@ -418,7 +382,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Subscribe to play audio clip notifications from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. </p>
+<p>Subscribe to requests from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice to play an audio clip. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">playAudioClipCallback</td><td>The callback to be called when a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> requires to play an audio clip.</td></tr>
@@ -428,14 +392,14 @@ Events</h2></td></tr>
 
 </div>
 </div>
-<a id="a983676a2ad19070cb50b8a122d21d325"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a983676a2ad19070cb50b8a122d21d325">&#9670;&nbsp;</a></span>SubscribeToUserNotifications()</h2>
+<a id="a3c3f9e9572879d3a844317a208080176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3f9e9572879d3a844317a208080176">&#9670;&nbsp;</a></span>SubscribeToUserNotifyRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Systemic.Unity.Pixels.DiceBag.SubscribeToUserNotifications </td>
+          <td class="memname">void Systemic.Unity.Pixels.DiceBag.SubscribeToUserNotifyRequest </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070">NotifyUserCallback</a>&#160;</td>
           <td class="paramname"><em>notifyUserCallback</em></td><td>)</td>
@@ -444,62 +408,10 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Subscribe to user notifications from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. </p>
+<p>Subscribe to requests from <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice to notify user. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">notifyUserCallback</td><td>The callback to be called when a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> requires to notify the user.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ace3ae88c11acb13ac5714e8ee794d963"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace3ae88c11acb13ac5714e8ee794d963">&#9670;&nbsp;</a></span>UnregisterPixel() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Systemic.Unity.Pixels.DiceBag.UnregisterPixel </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a>&#160;</td>
-          <td class="paramname"><em>pixel</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unregister the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pixel</td><td>The <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to unregister.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae5571fae2c6fb95610d5d14f1821aab3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5571fae2c6fb95610d5d14f1821aab3">&#9670;&nbsp;</a></span>UnregisterPixel() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Systemic.Unity.Pixels.DiceBag.UnregisterPixel </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>systemId</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unregister the given <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">systemId</td><td>The system id for the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -532,6 +444,30 @@ Events</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a1cfd719b583c1a88436dcef95fd6ac0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfd719b583c1a88436dcef95fd6ac0b">&#9670;&nbsp;</a></span>AllPixels</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> [] Systemic.Unity.Pixels.DiceBag.AllPixels</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the list of all <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixel dice.">Pixels</a> we know about. </p>
+
+</div>
+</div>
 <a id="a173439e563a2be48d46fd6f139ef017a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a173439e563a2be48d46fd6f139ef017a">&#9670;&nbsp;</a></span>AvailablePixels</h2>
 
@@ -604,6 +540,30 @@ Events</h2></td></tr>
 
 </div>
 </div>
+<a id="a8fef1c92fbc50fcc173e012ad6730e08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fef1c92fbc50fcc173e012ad6730e08">&#9670;&nbsp;</a></span>IsReady</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Systemic.Unity.Pixels.DiceBag.IsReady</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates whether we are ready for scanning and connecting to peripherals. </p>
+
+</div>
+</div>
 <a id="a78173ca87aef81b73db757c2cbab73e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78173ca87aef81b73db757c2cbab73e3">&#9670;&nbsp;</a></span>IsScanning</h2>
 
@@ -625,30 +585,6 @@ Events</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Indicates whether we are scanning for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. </p>
-
-</div>
-</div>
-<a id="a1bfae74d12d63820ea3e76d50edd86b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bfae74d12d63820ea3e76d50edd86b3">&#9670;&nbsp;</a></span>RegisteredPixelSystemIds</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string [] Systemic.Unity.Pixels.DiceBag.RegisteredPixelSystemIds</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the system ids of the registered <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. </p>
 
 </div>
 </div>

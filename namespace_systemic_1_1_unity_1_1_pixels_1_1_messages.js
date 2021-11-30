@@ -1,7 +1,7 @@
 var namespace_systemic_1_1_unity_1_1_pixels_1_1_messages =
 [
     [ "AccelFrame", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame" ],
-    [ "PixelMessageMarshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_pixel_message_marshaling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_pixel_message_marshaling" ],
+    [ "Marshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling" ],
     [ "IPixelMessage", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message" ],
     [ "WhoAreYou", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you" ],
     [ "IAmADieMarshaledData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die_marshaled_data.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die_marshaled_data" ],

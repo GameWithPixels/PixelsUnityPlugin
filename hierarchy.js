@@ -11,7 +11,6 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Animations.AnimationInstanceRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html", null ],
       [ "Systemic.Unity.Pixels.Animations.AnimationInstanceSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Behaviors.Behavior", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_behavior.html", null ],
     [ "Systemic.Unity.BluetoothLE.BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", null ],
     [ "Systemic.Unity.Pixels.BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", null ],
     [ "<CBCentralManagerDelegate>", null, [
@@ -22,7 +21,7 @@ var hierarchy =
     ] ],
     [ "Systemic.Unity.BluetoothLE.Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", null ],
     [ "Systemic::BluetoothLE::Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", null ],
-    [ "Systemic.Unity.Pixels.ColorUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html", null ],
+    [ "Systemic.Unity.Pixels.ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", null ],
     [ "DataReceivedCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
     ] ],
@@ -36,9 +35,10 @@ var hierarchy =
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ],
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Behaviors.IAction", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_action.html", [
-      [ "Systemic.Unity.Pixels.Behaviors.ActionPlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_animation.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ActionPlayAudioClip", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_audio_clip.html", null ]
+    [ "Systemic.Unity.Pixels.GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", null ],
+    [ "Systemic.Unity.Pixels.Profiles.IAction", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_action.html", [
+      [ "Systemic.Unity.Pixels.Profiles.ActionPlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ActionPlayAudioClip", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html", null ]
     ] ],
     [ "Systemic.Unity.Pixels.Animations.IAnimation", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation.html", [
       [ "Systemic.Unity.Pixels.Animations.AnimationFadeCandy", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_fade_candy.html", null ],
@@ -48,15 +48,15 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Animations.AnimationRainbow", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html", null ],
       [ "Systemic.Unity.Pixels.Animations.AnimationSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Behaviors.ICondition", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_condition.html", [
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionBatteryState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_battery_state.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionConnectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_connection_state.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionCrooked", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_crooked.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionFaceCompare", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_face_compare.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionHandling", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_handling.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionHelloGoodbye", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionIdle", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_idle.html", null ],
-      [ "Systemic.Unity.Pixels.Behaviors.ConditionRolling", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_rolling.html", null ]
+    [ "Systemic.Unity.Pixels.Profiles.ICondition", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html", [
+      [ "Systemic.Unity.Pixels.Profiles.ConditionBatteryState", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionConnectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionCrooked", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionFaceCompare", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionHandling", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionHelloGoodbye", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionIdle", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html", null ],
+      [ "Systemic.Unity.Pixels.Profiles.ConditionRolling", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html", null ]
     ] ],
     [ "IEnumerator", null, [
       [ "Systemic.Unity.BluetoothLE.RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", [
@@ -134,13 +134,12 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.TransferTestAnimationSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set_finished.html", null ],
       [ "Systemic.Unity.Pixels.Messages.WhoAreYou", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Animations.Keyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe.html", null ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
+    [ "Systemic.Unity.Pixels.Messages.Marshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html", null ],
     [ "MonoBehaviour", null, [
       [ "Systemic.Unity.Examples.BleConsole", "class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html", null ],
       [ "Systemic.Unity.Examples.BleController", "class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html", null ],
       [ "Systemic.Unity.Examples.PixelController", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html", null ],
-      [ "Systemic.Unity.Examples.PixelsDemo", "class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html", null ],
       [ "Systemic.Unity.Examples.UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", null ],
       [ "Systemic.Unity.Examples.UIPixelPanel", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html", null ],
       [ "Systemic.Unity.Examples.UIUpdateScanToggle", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html", null ],
@@ -159,19 +158,20 @@ var hierarchy =
       [ "SGBleRequest", "interface_s_g_ble_request.html", null ]
     ] ],
     [ "com.systemic.bluetoothle.Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", null ],
-    [ "Systemic.Unity.Pixels.Messages.PixelMessageMarshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_pixel_message_marshaling.html", null ],
+    [ "Systemic.Unity.Pixels.Profiles.Profile", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile.html", null ],
     [ "Systemic.Unity.Pixels.Animations.RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", null ],
     [ "Systemic.Unity.Pixels.Animations.RGBTrack", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track.html", null ],
     [ "RssiCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_rssi_request_callback.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Behaviors.Rule", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_rule.html", null ],
+    [ "Systemic.Unity.Pixels.Profiles.Rule", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule.html", null ],
     [ "Systemic::BluetoothLE::ScannedPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", null ],
     [ "Systemic.Unity.BluetoothLE.ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", null ],
     [ "com.systemic.bluetoothle.Scanner", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html", null ],
     [ "Systemic::BluetoothLE::Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", null ],
     [ "com.systemic.bluetoothle.Scanner.ScannerCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html", null ],
     [ "Systemic::BluetoothLE::Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", null ],
+    [ "Systemic.Unity.Pixels.Animations.SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", null ],
     [ "SuccessCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],

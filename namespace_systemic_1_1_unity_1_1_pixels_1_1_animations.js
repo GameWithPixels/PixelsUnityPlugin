@@ -18,7 +18,7 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_animations =
     [ "DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set" ],
     [ "IAnimation", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation" ],
     [ "RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe" ],
-    [ "Keyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe" ],
+    [ "SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe" ],
     [ "AnimationType", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877", [
       [ "Unknown", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
       [ "Simple", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a1fbb1e3943c2c6c560247ac8f9289780", null ],

@@ -1,0 +1,4 @@
+<map id="Systemic.Unity.Pixels.Profiles.ConditionCrooked" name="Systemic.Unity.Pixels.Profiles.ConditionCrooked">
+<area shape="rect" id="node1" title="Condition that triggers when the Pixel has landed by is crooked" alt="" coords="5,80,201,121"/>
+<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="63,5,143,32"/>
+</map>

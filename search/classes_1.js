@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['batterylevel_547',['BatteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['behavior_548',['Behavior',['../class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_behavior.html',1,'Systemic::Unity::Pixels::Behaviors']]],
+  ['batterylevel_548',['BatteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['bleconsole_549',['BleConsole',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html',1,'Systemic::Unity::Examples']]],
   ['blecontroller_550',['BleController',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html',1,'Systemic::Unity::Examples']]],
   ['bleuuid_551',['BleUuid',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html',1,'Systemic::Unity::BluetoothLE']]],

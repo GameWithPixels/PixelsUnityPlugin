@@ -20,5 +20,6 @@ var searchData=
   ['sgblecentralmanagerdelegate_638',['SGBleCentralManagerDelegate',['../interface_s_g_ble_central_manager_delegate.html',1,'']]],
   ['sgbleperipheralqueue_639',['SGBlePeripheralQueue',['../interface_s_g_ble_peripheral_queue.html',1,'']]],
   ['sgblerequest_640',['SGBleRequest',['../interface_s_g_ble_request.html',1,'']]],
-  ['stopanimation_641',['StopAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html',1,'Systemic::Unity::Pixels::Messages']]]
+  ['simplekeyframe_641',['SimpleKeyframe',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html',1,'Systemic::Unity::Pixels::Animations']]],
+  ['stopanimation_642',['StopAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html',1,'Systemic::Unity::Pixels::Messages']]]
 ];

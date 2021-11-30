@@ -32,7 +32,6 @@ var annotated_dup =
           [ "BleConsole", "class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html", null ],
           [ "BleController", "class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html", "class_systemic_1_1_unity_1_1_examples_1_1_ble_controller" ],
           [ "PixelController", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html", "class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller" ],
-          [ "PixelsDemo", "class_systemic_1_1_unity_1_1_examples_1_1_pixels_demo.html", null ],
           [ "UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text" ],
           [ "UIPixelPanel", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel" ],
           [ "UIUpdateScanToggle", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html", null ]
@@ -57,27 +56,11 @@ var annotated_dup =
             [ "DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set" ],
             [ "IAnimation", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation" ],
             [ "RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe" ],
-            [ "Keyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_keyframe" ]
-          ] ],
-          [ "Behaviors", "namespace_systemic_1_1_unity_1_1_pixels_1_1_behaviors.html", [
-            [ "IAction", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_action.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_action" ],
-            [ "ActionPlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_animation.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_animation" ],
-            [ "ActionPlayAudioClip", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_audio_clip.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_action_play_audio_clip" ],
-            [ "Behavior", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_behavior.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_behavior" ],
-            [ "ICondition", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_condition.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_i_condition" ],
-            [ "ConditionIdle", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_idle.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_idle" ],
-            [ "ConditionHandling", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_handling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_handling" ],
-            [ "ConditionRolling", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_rolling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_rolling" ],
-            [ "ConditionCrooked", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_crooked.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_crooked" ],
-            [ "ConditionFaceCompare", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_face_compare.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_face_compare" ],
-            [ "ConditionHelloGoodbye", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_hello_goodbye" ],
-            [ "ConditionConnectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_connection_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_connection_state" ],
-            [ "ConditionBatteryState", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_battery_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_condition_battery_state" ],
-            [ "Rule", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_rule.html", "class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_rule" ]
+            [ "SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe" ]
           ] ],
           [ "Messages", "namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html", [
             [ "AccelFrame", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame" ],
-            [ "PixelMessageMarshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_pixel_message_marshaling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_pixel_message_marshaling" ],
+            [ "Marshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling" ],
             [ "IPixelMessage", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message" ],
             [ "WhoAreYou", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you" ],
             [ "IAmADieMarshaledData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die_marshaled_data.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die_marshaled_data" ],
@@ -139,9 +122,26 @@ var annotated_dup =
             [ "SetNameAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name_ack.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name_ack" ],
             [ "DebugAnimationController", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_debug_animation_controller.html", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_debug_animation_controller" ]
           ] ],
+          [ "Profiles", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html", [
+            [ "IAction", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_action.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_action" ],
+            [ "ActionPlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation" ],
+            [ "ActionPlayAudioClip", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip" ],
+            [ "ICondition", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html", "interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition" ],
+            [ "ConditionIdle", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle" ],
+            [ "ConditionHandling", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling" ],
+            [ "ConditionRolling", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling" ],
+            [ "ConditionCrooked", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked" ],
+            [ "ConditionFaceCompare", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare" ],
+            [ "ConditionHelloGoodbye", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye" ],
+            [ "ConditionConnectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state" ],
+            [ "ConditionBatteryState", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state" ],
+            [ "Profile", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile" ],
+            [ "Rule", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule" ]
+          ] ],
           [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ],
-          [ "ColorUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_utils" ],
+          [ "ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils" ],
           [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
+          [ "GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils" ],
           [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ]
         ] ]
       ] ]

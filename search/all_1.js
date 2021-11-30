@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['batterylevel_36',['batteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['batterylevel_37',['BatteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['batterylevelchanged_38',['BatteryLevelChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['batterylevelchangedeventhandler_39',['BatteryLevelChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae',1,'Systemic::Unity::Pixels']]],
-  ['behavior_40',['Behavior',['../class_systemic_1_1_unity_1_1_pixels_1_1_behaviors_1_1_behavior.html',1,'Systemic::Unity::Pixels::Behaviors']]],
+  ['batterylevel_37',['batteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['batterylevel_38',['BatteryLevel',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['batterylevelchanged_39',['BatteryLevelChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['batterylevelchangedeventhandler_40',['BatteryLevelChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae',1,'Systemic::Unity::Pixels']]],
   ['bleconsole_41',['BleConsole',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html',1,'Systemic::Unity::Examples']]],
   ['blecontroller_42',['BleController',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html',1,'Systemic::Unity::Examples']]],
   ['blerequeststatus_43',['BleRequestStatus',['../cble_8h.html#a93948ea5158e486cfe82ed859f621f90',1,'BleRequestStatus():&#160;cble.h'],['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449',1,'Systemic::BluetoothLE::BleRequestStatus()']]],
