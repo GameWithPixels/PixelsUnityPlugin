@@ -52,7 +52,7 @@ var class_systemic_1_1_unity_1_1_pixels_1_1_pixel =
     [ "firmwareVersionId", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f5342d0331e718ce8323162d6adebb0", null ],
     [ "flashSize", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afe5ffb5d2d245091332c19d63037edcb", null ],
     [ "isAvailable", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adcafaae597873b34c1bda5a04388ac9a", null ],
-    [ "isCharging", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a29bdd3f0e347c8c5908c27899bb056c5", null ],
+    [ "isCharging", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac75954ced6cdbc851421817e40928c93", null ],
     [ "isReady", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50c9e4badf7448bf9591d35f4cf73c3b", null ],
     [ "lastError", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afb1d63baca5298095b709a42a05bc4bf", null ],
     [ "rollState", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020", null ],

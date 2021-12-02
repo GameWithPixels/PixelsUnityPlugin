@@ -1,6 +1,6 @@
-<map id="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleCentralManagerDelegate.h" name="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleCentralManagerDelegate.h">
-<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="87,5,293,61"/>
-<area shape="rect" id="node2" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,109,228,165"/>
-<area shape="rect" id="node3" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="91,213,289,255"/>
-<area shape="rect" id="node4" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="81,303,299,344"/>
+<map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h">
+<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="55,5,283,61"/>
+<area shape="rect" id="node2" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,109,200,165"/>
+<area shape="rect" id="node3" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="84,213,255,255"/>
+<area shape="rect" id="node4" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="74,303,265,344"/>
 </map>

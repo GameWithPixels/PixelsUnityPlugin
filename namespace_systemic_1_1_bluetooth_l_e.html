@@ -112,7 +112,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the information from advertisement packet(s) received from a peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html">Scanner</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements scanning of Bluetooth Low Energy (BLE) peripherals.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered peripherals with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html" title="Holds the information from advertisement packet(s) received from a peripheral.">ScannedPeripheral</a> objects.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html">Service</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_service.html#details">More...</a><br /></td></tr>
@@ -195,9 +195,16 @@ Enumerations</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals. </p>
+<dl class="section note"><dt>Note</dt><dd>Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.</dd></dl>
 <p>WinRT APIs are used to access Bluetooth. It allows communicating with devices without needing to first add them in Windows' Bluetooth devices manager.</p>
-<p>Requires at least Windows 10 version 1709 (Fall Creators Update). </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<p>Requires at least Windows 10 version 1709 (Fall Creators Update).</p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered p...">Scanner</a> class enables scanning for Bluetooth Low Energy peripherals. It stores and notifies of discovered peripherals with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html" title="Holds the information from advertisement packet(s) received from a peripheral.">ScannedPeripheral</a> objects.</p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html" title="Represents a Bluetooth Low Energy (BLE) peripheral.">Peripheral</a> class implements the most used BLE operation for communicating with BLE peripherals. After a successful connection, services and characteristics are discovered and made accessible through the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_service.html" title="Represents a primary service on a Bluetooth Low Energy (BLE) peripheral.">Service</a> and <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html" title="Represents a service&#39;s characteristic of a Bluetooth Low Energy (BLE) peripheral.">Characteristic</a> classes.</p>
+<p>Below is a diagram of the main classes of this library: </p><div class="image">
+<object type="image/svg+xml" data="native-winrt.svg" style="pointer-events: none;"></object>
+<div class="caption">
+Classes diagram</div></div>
+ </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ac1603adad69e83af9fb9eb2c57761449"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1603adad69e83af9fb9eb2c57761449">&#9670;&nbsp;</a></span>BleRequestStatus</h2>
 

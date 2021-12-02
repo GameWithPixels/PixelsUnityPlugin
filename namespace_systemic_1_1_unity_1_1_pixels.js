@@ -44,7 +44,7 @@ var namespace_systemic_1_1_unity_1_1_pixels =
       [ "Crooked", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3", null ]
     ] ],
     [ "AppearanceChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae4f0bf1f5ccb4b9b0b2d0d20d1d3f637", null ],
-    [ "BatteryLevelChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a816dab13d4e3156dfbc4c032244474ae", null ],
+    [ "BatteryLevelChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a9cb484dfc314ebe0c483332152ec8a05", null ],
     [ "ConnectionResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17", null ],
     [ "ConnectionStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12", null ],
     [ "DataOperationResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b", null ],

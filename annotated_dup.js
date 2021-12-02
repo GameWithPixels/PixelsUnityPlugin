@@ -25,6 +25,7 @@ var annotated_dup =
           [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
           [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
           [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],
+          [ "ManufacturerData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data" ],
           [ "ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
           [ "ValueRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator" ]
         ] ],

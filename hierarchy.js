@@ -26,6 +26,7 @@ var hierarchy =
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
     ] ],
     [ "Systemic.Unity.Pixels.Animations.DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", null ],
+    [ "Systemic.Unity.Pixels.DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", null ],
     [ "std::enable_shared_from_this", null, [
       [ "Systemic::BluetoothLE::Peripheral", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html", null ]
     ] ],
@@ -135,6 +136,7 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.WhoAreYou", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you.html", null ]
     ] ],
     [ "Systemic::BluetoothLE::ManufacturerData", "class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
+    [ "Systemic.Unity.BluetoothLE.ManufacturerData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html", null ],
     [ "Systemic.Unity.Pixels.Messages.Marshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html", null ],
     [ "MonoBehaviour", null, [
       [ "Systemic.Unity.Examples.BleConsole", "class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html", null ],
@@ -143,7 +145,6 @@ var hierarchy =
       [ "Systemic.Unity.Examples.UILogToText", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html", null ],
       [ "Systemic.Unity.Examples.UIPixelPanel", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html", null ],
       [ "Systemic.Unity.Examples.UIUpdateScanToggle", "class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html", null ],
-      [ "Systemic.Unity.Pixels.DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", null ],
       [ "Systemic.Unity.Pixels.Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", null ]
     ] ],
     [ "Systemic.Unity.Pixels.Animations.AnimationInstanceFadeCandy.MovingSphere", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_fade_candy_1_1_moving_sphere.html", null ],

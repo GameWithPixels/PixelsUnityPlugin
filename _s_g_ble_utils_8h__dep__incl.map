@@ -1,5 +1,5 @@
-<map id="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleUtils.h" name="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleUtils.h">
-<area shape="rect" id="node1" title="A few internal functions." alt="" coords="13,5,216,47"/>
-<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="15,95,214,136"/>
-<area shape="rect" id="node3" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,184,224,225"/>
+<map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleUtils.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleUtils.h">
+<area shape="rect" id="node1" title="A few internal functions." alt="" coords="13,5,188,47"/>
+<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="15,95,186,136"/>
+<area shape="rect" id="node3" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,184,196,225"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batterylevelchanged_908',['BatteryLevelChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9',1,'Systemic::Unity::Pixels::Pixel']]]
+  ['batterylevelchanged_909',['BatteryLevelChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a25046a600591dacea0bbd9bbcde835a9',1,'Systemic::Unity::Pixels::Pixel']]]
 ];

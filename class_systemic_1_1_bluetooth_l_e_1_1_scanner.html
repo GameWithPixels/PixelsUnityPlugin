@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_s
 </div><!--header-->
 <div class="contents">
 
-<p>Implements scanning of Bluetooth Low Energy (BLE) peripherals.  
+<p>Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered peripherals with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html" title="Holds the information from advertisement packet(s) received from a peripheral.">ScannedPeripheral</a> objects.  
  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_scanner_8h_source.html">Scanner.h</a>&gt;</code></p>
@@ -98,19 +98,19 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_bluetooth_l_e_1_1_s
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a21bb494ad03c25baac40a5c52a67eae1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a21bb494ad03c25baac40a5c52a67eae1">Scanner</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> &gt;)&gt; peripheralDiscovered, std::vector&lt; winrt::guid &gt; services=std::vector&lt; winrt::guid &gt;{})</td></tr>
-<tr class="memdesc:a21bb494ad03c25baac40a5c52a67eae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> and immediately starts scanning for BLE peripherals.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a21bb494ad03c25baac40a5c52a67eae1">More...</a><br /></td></tr>
+<tr class="memdesc:a21bb494ad03c25baac40a5c52a67eae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered p...">Scanner</a> and immediately starts scanning for BLE peripherals.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a21bb494ad03c25baac40a5c52a67eae1">More...</a><br /></td></tr>
 <tr class="separator:a21bb494ad03c25baac40a5c52a67eae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ca9bddf6fbf8be840c50fefaca3b6b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a7ca9bddf6fbf8be840c50fefaca3b6b4">copyDiscoveredPeripherals</a> (std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> &gt;&gt; &amp;outDiscoveredPeripherals)</td></tr>
 <tr class="memdesc:a7ca9bddf6fbf8be840c50fefaca3b6b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the discovered peripherals to the given std::vector.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a7ca9bddf6fbf8be840c50fefaca3b6b4">More...</a><br /></td></tr>
 <tr class="separator:a7ca9bddf6fbf8be840c50fefaca3b6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c77959596f4c101fbcd1de7aceceb31"><td class="memItemLeft" align="right" valign="top"><a id="a0c77959596f4c101fbcd1de7aceceb31"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html#a0c77959596f4c101fbcd1de7aceceb31">~Scanner</a> ()</td></tr>
-<tr class="memdesc:a0c77959596f4c101fbcd1de7aceceb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the scan and destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> instance. <br /></td></tr>
+<tr class="memdesc:a0c77959596f4c101fbcd1de7aceceb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the scan and destroys the <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered p...">Scanner</a> instance. <br /></td></tr>
 <tr class="separator:a0c77959596f4c101fbcd1de7aceceb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements scanning of Bluetooth Low Energy (BLE) peripherals. </p>
-<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> class internally stores a WinRT's <code>BluetoothLEAdvertisementWatcher</code> object. </p><dl class="section see"><dt>See also</dt><dd><a href="https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher">https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher</a> </dd></dl>
+<div class="textblock"><p>Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered peripherals with <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html" title="Holds the information from advertisement packet(s) received from a peripheral.">ScannedPeripheral</a> objects. </p>
+<p>The <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered p...">Scanner</a> class internally stores a WinRT's <code>BluetoothLEAdvertisementWatcher</code> object. </p><dl class="section see"><dt>See also</dt><dd><a href="https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher">https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a21bb494ad03c25baac40a5c52a67eae1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21bb494ad03c25baac40a5c52a67eae1">&#9670;&nbsp;</a></span>Scanner()</h2>
@@ -138,7 +138,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals.">Scanner</a> and immediately starts scanning for BLE peripherals. </p>
+<p>Initializes a new instance of <a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_scanner.html" title="Implements scanning of Bluetooth Low Energy (BLE) peripherals. It stores and notifies of discovered p...">Scanner</a> and immediately starts scanning for BLE peripherals. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">peripheralDiscovered</td><td>Called for each received advertisement packet. <br  />

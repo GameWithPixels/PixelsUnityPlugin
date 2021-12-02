@@ -1,4 +1,4 @@
-var dir_46e8127e7067f0e872f13d26f43237cf =
+var dir_7afecd4c5dffc62bf4530307aaf8b678 =
 [
     [ "SGBleCentralManagerDelegate.h", "_s_g_ble_central_manager_delegate_8h.html", null ],
     [ "SGBlePeripheralQueue.h", "_s_g_ble_peripheral_queue_8h.html", null ],

@@ -1,4 +1,4 @@
-<map id="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleRequest.h" name="Assets/Plugins/Systemic/BluetoothLE/iOS/SGBleRequest.h">
-<area shape="rect" id="node1" title="Internal types for representing a BLE request." alt="" coords="5,5,228,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="35,95,199,121"/>
+<map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleRequest.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleRequest.h">
+<area shape="rect" id="node1" title="Internal types for representing a BLE request." alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="21,95,185,121"/>
 </map>

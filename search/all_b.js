@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['name_240',['Name',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acd6cf79a21970381f494bdaff70b9496',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
-  ['name_241',['name',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ac117d374c9e3ea7ec9f0013bc3bcbd43',1,'Systemic::BluetoothLE::Peripheral::name()'],['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a03835681e5699e6857d82150bc3ea66d',1,'Systemic::BluetoothLE::ScannedPeripheral::name()']]],
+  ['name_240',['name',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#ac117d374c9e3ea7ec9f0013bc3bcbd43',1,'Systemic::BluetoothLE::Peripheral::name()'],['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a03835681e5699e6857d82150bc3ea66d',1,'Systemic::BluetoothLE::ScannedPeripheral::name()']]],
+  ['name_241',['Name',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acd6cf79a21970381f494bdaff70b9496',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
   ['nativebluetoothcallback_242',['NativeBluetoothCallback',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a5c1eb9a85811eb7ca41ead1cbd61ef6f',1,'Systemic::Unity::BluetoothLE']]],
   ['nativeconnectioneventcallback_243',['NativeConnectionEventCallback',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a87e7711380c0f356254ddf9c30d90b00',1,'Systemic::Unity::BluetoothLE']]],
   ['nativeinterface_244',['NativeInterface',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html',1,'Systemic::Unity::BluetoothLE']]],
