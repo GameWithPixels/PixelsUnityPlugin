@@ -61,6 +61,7 @@ namespace Systemic.Unity.Examples
 
         #region Unity messages
 
+        // Called when the instance becomes enabled and active
         void OnEnable()
         {
             // Clear out text output
@@ -70,6 +71,7 @@ namespace Systemic.Unity.Examples
             Central.Initialize();
         }
 
+        // Called when the instance becomes disabled or inactive
         void OnDisable()
         {
             // Shutdown the library

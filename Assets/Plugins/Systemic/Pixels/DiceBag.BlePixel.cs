@@ -9,7 +9,7 @@ using Peripheral = Systemic.Unity.BluetoothLE.ScannedPeripheral;
 
 namespace Systemic.Unity.Pixels
 {
-    partial class DiceBag
+    static partial class DiceBag
     {
         /// <summary>
         /// Implementation of Pixel communicating over Bluetooth Low Energy.
@@ -90,14 +90,31 @@ namespace Systemic.Unity.Pixels
                 systemId = _peripheral.SystemId;
                 name = _peripheral.Name;
 
+                bool rssiChanged = rssi != _peripheral.Rssi;
+                rssi = _peripheral.Rssi;
+                if (rssiChanged)
+                {
+                    RssiChanged?.Invoke(this, rssi);
+                }
+
                 if (_peripheral.ManufacturerData?.Count > 0)
                 {
                     // Marshall the data into the struct we expect
                     int size = Marshal.SizeOf(typeof(PixelAdvertisingData));
-                    if (_peripheral.ManufacturerData.Count == size)
+                    if (_peripheral.ManufacturerData[0].Data.Count == (size - 2))
                     {
-                        System.IntPtr ptr = Marshal.AllocHGlobal(size);
-                        Marshal.Copy(_peripheral.ManufacturerData.ToArray(), 0, ptr, size);
+                        // Copy data in a byte array for marshaling
+                        var manufData = _peripheral.ManufacturerData[0];
+                        var arr = new byte[size];
+                        arr[0] = (byte)(manufData.ManufacturerId & 0xFF);
+                        arr[1] = (byte)(manufData.ManufacturerId >> 8);
+                        for (int i = 2; i < size; ++i)
+                        {
+                            arr[i] = manufData.Data[i - 2];
+                        }
+
+                        var ptr = Marshal.AllocHGlobal(size);
+                        Marshal.Copy(arr, 0, ptr, size);
                         var advData = Marshal.PtrToStructure<PixelAdvertisingData>(ptr);
                         Marshal.FreeHGlobal(ptr);
 
@@ -112,9 +129,7 @@ namespace Systemic.Unity.Pixels
                         float newBatteryLevel = advData.batteryLevel / 255f;
                         bool batteryLevelChanged = batteryLevel != newBatteryLevel;
                         batteryLevel = newBatteryLevel;
-
-                        bool rssiChanged = rssi != _peripheral.Rssi;
-                        rssi = _peripheral.Rssi;
+                        isCharging = null;
 
                         // Run callbacks
                         if (appearanceChanged)
@@ -128,10 +143,6 @@ namespace Systemic.Unity.Pixels
                         if (batteryLevelChanged)
                         {
                             BatteryLevelChanged?.Invoke(this, batteryLevel, isCharging);
-                        }
-                        if (rssiChanged)
-                        {
-                            RssiChanged?.Invoke(this, rssi);
                         }
                     }
                     else
@@ -260,7 +271,7 @@ namespace Systemic.Unity.Pixels
                         BluetoothLE.RequestEnumerator connectRequest = null;
                         connectRequest = Central.ConnectPeripheralAsync(
                             _peripheral,
-                            // Forward connection event it our behavior is still valid and the request hasn't timed-out
+                            // Forward connection event it our behaviour is still valid and the request hasn't timed-out
                             // (in which case the disconnect event is already taken care by the code following the yield below)
                             (p, connected) => { if ((this != null) && (!connectRequest.IsTimeout)) OnConnectionEvent(p, connected); },
                             connectionTimeout);
@@ -284,7 +295,7 @@ namespace Systemic.Unity.Pixels
                                 {
                                     var subscribeRequest = Central.SubscribeCharacteristicAsync(
                                         _peripheral, pixelService, subscribeCharacteristic,
-                                        // Forward value change event if our behavior is still valid
+                                        // Forward value change event if our behaviour is still valid
                                         data => { if (this != null) { OnValueChanged(data); } });
 
                                     yield return subscribeRequest;
@@ -545,11 +556,7 @@ namespace Systemic.Unity.Pixels
                     Debug.Assert(_peripheral != null);
 
                     // Start Disconnect coroutine on DiceBag since we are getting destroyed
-                    var diceBag = DiceBag.Instance;
-                    if (diceBag && diceBag.gameObject.activeInHierarchy)
-                    {
-                        diceBag.StartCoroutine(Central.DisconnectPeripheralAsync(_peripheral));
-                    }
+                    DiceBag.StartCoroutine(Central.DisconnectPeripheralAsync(_peripheral), noThrow: true);
                 }
             }
         }

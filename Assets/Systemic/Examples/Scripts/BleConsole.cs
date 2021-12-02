@@ -18,12 +18,14 @@ namespace Systemic.Unity.Examples
     /// </summary>
     public class BleConsole : MonoBehaviour
     {
+        // Called when the instance becomes enabled and active
         void OnEnable()
         {
             // Initialize the library
             Central.Initialize();
         }
 
+        // Called when the instance becomes disabled or inactive
         void OnDisable()
         {
             // Shutdown the library

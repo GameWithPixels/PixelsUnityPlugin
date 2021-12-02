@@ -88,7 +88,7 @@ class has many properties and methods to communicate with Pixel dice.
 
 Also the
 [_DiceBag_](https://gamewithpixels.github.io/PixelsUnityPlugin/class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html)
-singleton implements methods for scanning for and connecting to Pixels.
+static class implements methods for scanning for and connecting to Pixels.
 
 #### Pixel messages
 

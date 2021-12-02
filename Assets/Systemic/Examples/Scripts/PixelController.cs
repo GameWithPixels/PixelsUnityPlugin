@@ -8,7 +8,6 @@ namespace Systemic.Unity.Examples
     /// Demonstrates how to scan for, connect to and retrieve information from Pixel dice
     /// using the dedicated <see cref="Pixel"/> and <see cref="DiceBag"/> classes.
     /// </summary>
-    [RequireComponent(typeof(DiceBag))]
     public class PixelController : MonoBehaviour
     {
         [SerializeField]
@@ -18,8 +17,17 @@ namespace Systemic.Unity.Examples
 
         #region Unity messages
 
-        private void OnEnable()
+        // Called when the instance becomes enabled and active
+        void OnEnable()
         {
+            //TODO handle error + user message
+            BluetoothLE.Central.Initialize();
+        }
+
+        // Called when the instance becomes disabled or inactive
+        void OnDisable()
+        {
+            BluetoothLE.Central.Shutdown();
         }
 
         // Start is called before the first frame update
@@ -32,7 +40,7 @@ namespace Systemic.Unity.Examples
         // Update is called once per frame
         void Update()
         {
-            foreach (var p in DiceBag.Instance.AvailablePixels)
+            foreach (var p in DiceBag.AvailablePixels)
             {
                 if (_pixelsRoot.OfType<Transform>().All(t => t.name != p.name))
                 {
@@ -41,7 +49,7 @@ namespace Systemic.Unity.Examples
             }
 
             var toRemove = _pixelsRoot.GetComponentsInChildren<UIPixelPanel>()
-                .Where(p => !DiceBag.Instance.AllPixels.Contains(p.Pixel))
+                .Where(p => !DiceBag.AllPixels.Contains(p.Pixel))
                 .Select(p => p.gameObject)
                 .ToArray();
             foreach (var gameObject in toRemove)
@@ -75,7 +83,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StartScan()
         {
-            DiceBag.Instance.ScanForPixels();
+            DiceBag.ScanForPixels();
         }
 
         /// <summary>
@@ -83,7 +91,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StopScan()
         {
-            DiceBag.Instance.CancelScanning();
+            DiceBag.CancelScanning();
         }
 
         /// <summary>
@@ -91,7 +99,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void ClearScanList()
         {
-            DiceBag.Instance.ClearAvailablePixels();
+            DiceBag.ClearAvailablePixels();
         }
 
         #endregion

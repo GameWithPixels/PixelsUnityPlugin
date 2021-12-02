@@ -63,7 +63,7 @@ namespace Systemic.Unity.Examples
                 _connectionState.text = Pixel.connectionState.ToString();
                 _name.text = Pixel.name;
                 int battery = Mathf.RoundToInt(100 * Pixel.batteryLevel);
-                string charging = Pixel.isCharging ? "charging" : "not charging";
+                string charging = Pixel.isCharging.HasValue ? (Pixel.isCharging.HasValue ? "charging" : "not charging") : "";
                 _battery.text = $"{battery}%, {charging}";
                 _rssi.text = Pixel.rssi.ToString();
                 _version.text = Pixel.firmwareVersionId;
@@ -129,7 +129,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void Connect()
         {
-            DiceBag.Instance.ConnectPixel(Pixel, () => !isActiveAndEnabled);
+            DiceBag.ConnectPixel(Pixel, () => !isActiveAndEnabled);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void Disconnect()
         {
-            DiceBag.Instance.DisconnectPixel(Pixel);
+            DiceBag.DisconnectPixel(Pixel);
         }
 
         #endregion

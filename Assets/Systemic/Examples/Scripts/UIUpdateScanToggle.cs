@@ -22,7 +22,7 @@ namespace Systemic.Unity.Examples
         // Update is called once per frame
         void Update()
         {
-            _toggle.isOn = DiceBag.Instance.IsScanning;
+            _toggle.isOn = DiceBag.IsScanning;
         }
     }
 }

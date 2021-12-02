@@ -206,6 +206,8 @@ namespace
         str << ",\"isConnectable\":" << (peripheral->isConnectable() ? "true" : "false");
         str << ",\"rssi\":" << peripheral->rssi();
         str << ",\"txPowerLevel\":" << peripheral->txPowerLevel();
+
+        // Services
         if (!peripheral->services().empty())
         {
             str << ",\"services\":[";
@@ -214,22 +216,30 @@ namespace
             {
                 if (!first) str << ",";
                 first = false;
+
                 str << "\"" << toStr(uuid) << "\"";
             }
             str << "]";
         }
+
+        // Manufacturer data
         if (!peripheral->manufacturerData().empty())
         {
-            //TODO company id, multiple sets and peripheral->advertisingData()
-            auto& manuf = peripheral->manufacturerData()[0];
-            str << ",\"manufacturerData\":[";
-            str << (manuf.companyId() & 0xFF) << "," << (manuf.companyId() >> 8);
-            for (auto b : manuf.data())
+            size_t i = 0;
+            for (auto& manuf : peripheral->manufacturerData())
             {
-                str << "," << (int)b;
+                str << ",\"manufacturerData" << i++ << "\":[";
+                str << (manuf.companyId() & 0xFF) << "," << (manuf.companyId() >> 8);
+                for (auto b : manuf.data())
+                {
+                    str << "," << (int)b;
+                }
+                str << "]";
             }
-            str << "]";
         }
+
+        //TODO peripheral->advertisingData()
+
         str << "}";
         return str.str();
     }
