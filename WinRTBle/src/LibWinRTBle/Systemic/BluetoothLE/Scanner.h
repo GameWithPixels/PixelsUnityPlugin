@@ -18,7 +18,8 @@ namespace Systemic::BluetoothLE
 
     /**
      * @brief Implements scanning of Bluetooth Low Energy (BLE) peripherals.
-     *
+     *        It stores and notifies of discovered peripherals with ScannedPeripheral objects.
+     * 
      * The Scanner class internally stores a WinRT's \c BluetoothLEAdvertisementWatcher object.
      * @see https://docs.microsoft.com/en-us/uwp/api/windows.devices.bluetooth.advertisement.bluetoothleadvertisementwatcher
      */

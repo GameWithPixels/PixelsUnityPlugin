@@ -3,7 +3,9 @@ using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
 /// <summary>
-/// A collection of C# classes for the Unity game engine that enables communications with Pixel dice.
+/// A collection of C# classes for the Unity game engine that enables communications with Pixels dice.
+/// The <see cref="Pixel"/> class represents a die peripheral and the <see cref="DiceBag"/> singleton
+/// implements methods for scanning for and connecting to Pixels.
 /// </summary>
 //! @ingroup Unity_CSharp
 namespace Systemic.Unity.Pixels

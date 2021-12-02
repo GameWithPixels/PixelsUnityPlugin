@@ -7,6 +7,7 @@ using UnityEngine;
 //! \defgroup Unity_CSharp
 //! @brief A collection of C# classes for the Unity game engine that provides a simplified access
 //!        to Bluetooth Low Energy peripherals.
+//! @see Systemic.Unity.BluetoothLE and Systemic.Unity.Pixels namespaces.
 
 /// <summary>
 /// Systemic Games base namespace.

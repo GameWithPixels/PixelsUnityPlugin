@@ -24,7 +24,7 @@ namespace Systemic::BluetoothLE
      * and it must be ready before accessing the services.
      * The peripheral becomes ready once all the required services have been discovered.
      *
-     * The connection method connectAsync() is asynchronous and returns a std::future.
+     * The connection method connectAsync() is asynchronous and returns a \c std::future.
      *
      * A specific Service may be retrieved by its UUID with getDiscoveredService().
      * A service contains characteristics for which data may be read or written.

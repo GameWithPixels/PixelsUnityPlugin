@@ -8,19 +8,27 @@
 //! \defgroup WinRT_Cpp
 //! @brief A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals.
 //!
-//! @note Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
-//!
-//! @image html native-winrt.svg "Classes diagram"
-//!
 //! @see Systemic::BluetoothLE namespace.
 
 /**
  * @brief A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals.
  *
+ * @note Some knowledge with Bluetooth Low Energy semantics is recommended for reading this documentation.
+ *
  * WinRT APIs are used to access Bluetooth. It allows communicating with devices without needing
  * to first add them in Windows' Bluetooth devices manager.
  *
  * Requires at least Windows 10 version 1709 (Fall Creators Update).
+ *
+ * The Scanner class enables scanning for Bluetooth Low Energy peripherals.
+ * It stores and notifies of discovered peripherals with ScannedPeripheral objects.
+ *
+ * The Peripheral class implements the most used BLE operation for communicating with BLE peripherals.
+ * After a successful connection, services and characteristics are discovered and made accessible through
+ * the Service and Characteristic classes.
+ *
+ * Below is a diagram of the main classes of this library:
+ * @image html native-winrt.svg "Classes diagram"
  *
  * @ingroup WinRT_Cpp
  */
