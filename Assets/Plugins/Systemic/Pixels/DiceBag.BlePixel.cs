@@ -282,9 +282,9 @@ namespace Systemic.Unity.Pixels
                         if (connectRequest.IsSuccess)
                         {
                             // Now connected to a Pixel, get characteristics and subscribe before switching to Identifying state
-                            var pixelService = BleUuids.ServiceUuid;
-                            var subscribeCharacteristic = BleUuids.NotifyCharacteristicUuid;
-                            var writeCharacteristic = BleUuids.WriteCharacteristicUuid;
+                            var pixelService = PixelUuids.ServiceUuid;
+                            var subscribeCharacteristic = PixelUuids.NotifyCharacteristicUuid;
+                            var writeCharacteristic = PixelUuids.WriteCharacteristicUuid;
 
                             var characteristics = Central.GetPeripheralServiceCharacteristics(_peripheral, pixelService);
                             if ((characteristics != null) && characteristics.Contains(subscribeCharacteristic) && characteristics.Contains(writeCharacteristic))
@@ -501,8 +501,8 @@ namespace Systemic.Unity.Pixels
 
                 public WriteDataEnumerator(Peripheral peripheral, byte[] bytes, float timeout)
                 {
-                    var pixelService = BleUuids.ServiceUuid;
-                    var writeCharacteristic = BleUuids.WriteCharacteristicUuid;
+                    var pixelService = PixelUuids.ServiceUuid;
+                    var writeCharacteristic = PixelUuids.WriteCharacteristicUuid;
                     _request = Central.WriteCharacteristicAsync(peripheral, pixelService, writeCharacteristic, bytes, timeout);
                 }
 

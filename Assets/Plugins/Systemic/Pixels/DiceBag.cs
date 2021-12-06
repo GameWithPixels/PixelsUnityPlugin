@@ -14,6 +14,8 @@ namespace Systemic.Unity.Pixels
     /// and disconnection requests must be made for them to effectively happen.
     ///
     /// This allows for different parts of the user code to work with this singleton without impacting each others.
+    /// 
+    /// <see cref="Central"/> must be initialized first before calling methods of this class.
     /// </summary>
     public static partial class DiceBag
     {
@@ -81,7 +83,7 @@ namespace Systemic.Unity.Pixels
             ++_scanRequestCount;
             Central.PeripheralDiscovered -= OnPeripheralDiscovered; // Prevents from subscribing twice
             Central.PeripheralDiscovered += OnPeripheralDiscovered;
-            Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
+            Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
         }
 
         /// <summary>

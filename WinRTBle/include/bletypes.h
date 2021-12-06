@@ -166,7 +166,7 @@ namespace Systemic::BluetoothLE
         IndicateEncryptionRequired = 0x200,
     };
 
-    // Gatt errors
+    // GATT errors
     //GattProtocolError.InvalidHandle = 1
     //GattProtocolError.ReadNotPermitted = 2
     //GattProtocolError.WriteNotPermitted = 3

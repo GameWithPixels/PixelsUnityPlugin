@@ -31,10 +31,10 @@ namespace Systemic.Unity.BluetoothLE.Test
 
         IEnumerator SelectPeripheral()
         {
-            Central.ScanForPeripheralsWithServices(new[] { BleUuids.ServiceUuid });
+            Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
             yield return WaitUntilWithTimeout(() =>
             {
-                _peripheral = Central.ScannedPeripherals.FirstOrDefault(p => p.Services.Contains(BleUuids.ServiceUuid));
+                _peripheral = Central.ScannedPeripherals.FirstOrDefault(p => p.Services.Contains(PixelUuids.ServiceUuid));
                 return _peripheral != null;
             });
             Central.StopScan();
@@ -82,7 +82,7 @@ namespace Systemic.Unity.BluetoothLE.Test
         IEnumerator SubscribeAsync()
         {
             Assert.NotNull(_peripheral, "No peripheral selected");
-            var request = Central.SubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid, OnReceivedData);
+            var request = Central.SubscribeCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid, OnReceivedData);
             yield return request;
             Assert.IsTrue(request.IsSuccess, "Subscribe failed");
         }
@@ -90,7 +90,7 @@ namespace Systemic.Unity.BluetoothLE.Test
         IEnumerator UnsubscribeAsync()
         {
             Assert.NotNull(_peripheral, "No peripheral selected");
-            var request = Central.UnsubscribeCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
+            var request = Central.UnsubscribeCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid);
             yield return request;
             Assert.IsTrue(request.IsSuccess, "Unsubscribe failed");
         }
@@ -98,7 +98,7 @@ namespace Systemic.Unity.BluetoothLE.Test
         IEnumerator ReadValueAsync()
         {
             Assert.NotNull(_peripheral, "No peripheral selected");
-            var request = Central.ReadCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.NotifyCharacteristicUuid);
+            var request = Central.ReadCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid);
             yield return request;
             Assert.IsTrue(request.IsSuccess, "Read failed");
         }
@@ -106,7 +106,7 @@ namespace Systemic.Unity.BluetoothLE.Test
         IEnumerator SendMessageAsync(MessageType messageType, bool withoutResponse = false)
         {
             Assert.NotNull(_peripheral, "No peripheral selected");
-            var request = Central.WriteCharacteristicAsync(_peripheral, BleUuids.ServiceUuid, BleUuids.WriteCharacteristicUuid, new byte[] { (byte)messageType }, withoutResponse: withoutResponse);
+            var request = Central.WriteCharacteristicAsync(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid, new byte[] { (byte)messageType }, withoutResponse: withoutResponse);
             yield return request;
             Assert.IsTrue(request.IsSuccess, "Write failed");
         }

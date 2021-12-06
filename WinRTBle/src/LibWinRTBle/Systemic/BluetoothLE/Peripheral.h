@@ -273,8 +273,8 @@ namespace Systemic::BluetoothLE
 
             if (device.ConnectionStatus() == BluetoothConnectionStatus::Disconnected)
             {
-                auto reason = (_session != nullptr) && (_session.MaintainConnection()) ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout;
-                internalDisconnect(reason, true);
+                bool linkLoss = (_session != nullptr) && _session.MaintainConnection();
+                internalDisconnect(linkLoss ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout, true);
                 notifyQueuedConnectionEvents();
             }
             else

@@ -265,11 +265,8 @@ namespace Systemic::BluetoothLE
 
         std::lock_guard lock{ _connectOpMtx };
 
-        if (!fromDevice)
-        {
-            // Cancel any on-going connect operation
-            ++_connectCounter;
-        }
+        // Cancel any on-going connect operation
+        ++_connectCounter;
 
         // Nothing to do if no device
         if (!_device) return;

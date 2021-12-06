@@ -257,7 +257,10 @@ bool sgBleInitialize(bool apartmentSingleThreaded, BluetoothStateUpdateCallback 
     try
     {
         winrt::init_apartment(apartmentSingleThreaded ? winrt::apartment_type::single_threaded : winrt::apartment_type::multi_threaded);
-        onBluetoothStateUpdate(true); //TODO
+        if (onBluetoothStateUpdate)
+        {
+            onBluetoothStateUpdate(true); //TODO
+        }
         return true;
     }
     catch (const winrt::hresult_error&)
@@ -414,7 +417,7 @@ void sgBleDisconnectPeripheral(
 }
 
 //TODO return BleRequestStatus as out parameter
-// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or sgFreeString() (.NET marshaling takes care of it)
 const char* sgBleGetPeripheralName(bluetooth_address_t address)
 {
     return runForPeripheral<const char*>(address, nullptr,
@@ -429,7 +432,7 @@ int sgBleGetPeripheralMtu(bluetooth_address_t address)
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or sgFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
 const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
 {
@@ -452,7 +455,7 @@ const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
 }
 
 // returns a comma separated list of UUIDs
-// caller should free string with CoTaskMemFree() or sgBleFreeString() (.NET marshaling takes care of it)
+// caller should free string with CoTaskMemFree() or sgFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
 const char* sgBleGetPeripheralServiceCharacteristics(
     bluetooth_address_t address,

@@ -55,10 +55,10 @@ typedef void (*RequestStatusCallback)(BleRequestStatus status);
 typedef void (*PeripheralConnectionEventCallback)(bluetooth_address_t address, ConnectionEvent connectionEvent, ConnectionEventReason reason);
 
 /// Callback notifying of the value read from a peripheral's characteristic.
-typedef void (*ValueReadCallback)(const void* _data, size_t length, BleRequestStatus status);
+typedef void (*ValueReadCallback)(const void* data, size_t length, BleRequestStatus status);
 
 /// Callback notifying of a value change for a peripheral's characteristic.
-typedef void (*ValueChangedCallback)(const void* _data, size_t length);
+typedef void (*ValueChangedCallback)(const void* data, size_t length);
 
 extern "C"
 {
@@ -191,7 +191,7 @@ extern "C"
      * @param address The Bluetooth address of a connected peripheral.
      * @return The name of the peripheral, or null if the call failed.
      *
-     * @remark The caller should free the returned string with either a call to sgBleFreeString()
+     * @remark The caller should free the returned string with either a call to sgFreeString()
      *         or CoTaskMemFree(). <br>
      *         .NET marshaling automatically takes care of it.
      */
@@ -218,7 +218,7 @@ extern "C"
      * @param address The Bluetooth address of a connected peripheral.
      * @return A comma separated list of services UUIDs, or null if the call failed.
      *
-     * @remark The caller should free the returned string with either a call to sgBleFreeString()
+     * @remark The caller should free the returned string with either a call to sgFreeString()
      *         or CoTaskMemFree(). <br>
      *         .NET marshaling automatically takes care of it.
      */
@@ -234,7 +234,7 @@ extern "C"
      * @param serviceUuid The service UUID for which to retrieve the characteristics.
      * @return A comma separated list of characteristics UUIDs, or null if the call failed.
      *
-     * @remark The caller should free the returned string with either a call to sgBleFreeString()
+     * @remark The caller should free the returned string with either a call to sgFreeString()
      *         or CoTaskMemFree(). <br>
      *         .NET marshaling automatically takes care of it.
      */
