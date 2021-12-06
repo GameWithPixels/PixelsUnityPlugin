@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['calibrate_560',['Calibrate',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['calibrateface_561',['CalibrateFace',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate_face.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['central_562',['Central',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html',1,'Systemic::Unity::BluetoothLE']]],
-  ['characteristic_563',['Characteristic',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html',1,'Systemic::BluetoothLE']]],
-  ['coloruintutils_564',['ColorUIntUtils',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html',1,'Systemic::Unity::Pixels']]],
-  ['conditionbatterystate_565',['ConditionBatteryState',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionconnectionstate_566',['ConditionConnectionState',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditioncrooked_567',['ConditionCrooked',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionfacecompare_568',['ConditionFaceCompare',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionhandling_569',['ConditionHandling',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionhellogoodbye_570',['ConditionHelloGoodbye',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionidle_571',['ConditionIdle',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html',1,'Systemic::Unity::Pixels::Profiles']]],
-  ['conditionrolling_572',['ConditionRolling',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html',1,'Systemic::Unity::Pixels::Profiles']]]
+  ['calibrate_562',['Calibrate',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['calibrateface_563',['CalibrateFace',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate_face.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['central_564',['Central',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html',1,'Systemic::Unity::BluetoothLE']]],
+  ['characteristic_565',['Characteristic',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html',1,'Systemic::BluetoothLE']]],
+  ['characteristicproperties_566',['CharacteristicProperties',['../classble_1_1_characteristic_properties.html',1,'ble']]],
+  ['coloruintutils_567',['ColorUIntUtils',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html',1,'Systemic::Unity::Pixels']]],
+  ['conditionbatterystate_568',['ConditionBatteryState',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionconnectionstate_569',['ConditionConnectionState',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditioncrooked_570',['ConditionCrooked',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionfacecompare_571',['ConditionFaceCompare',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionhandling_572',['ConditionHandling',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionhellogoodbye_573',['ConditionHelloGoodbye',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionidle_574',['ConditionIdle',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['conditionrolling_575',['ConditionRolling',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html',1,'Systemic::Unity::Pixels::Profiles']]],
+  ['connectionevent_576',['ConnectionEvent',['../classble_1_1_connection_event.html',1,'ble']]],
+  ['connectioneventreason_577',['ConnectionEventReason',['../classble_1_1_connection_event_reason.html',1,'ble']]]
 ];

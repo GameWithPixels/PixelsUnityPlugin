@@ -148,14 +148,14 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#ab2fbc1d6152ddfbc21ee4091a6f3d68d">PeripheralConnectionEventCallback</a>) (<a class="el" href="cble_8h.html#a673835ee6c766365da05cf26513db424">bluetooth_address_t</a> address, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a> connectionEvent, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a> reason)</td></tr>
 <tr class="memdesc:ab2fbc1d6152ddfbc21ee4091a6f3d68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback notifying of a change connection state of a peripheral, with the reason for the change. <br /></td></tr>
 <tr class="separator:ab2fbc1d6152ddfbc21ee4091a6f3d68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6b1bbb3e4adacc7182168e8ede72ce"><td class="memItemLeft" align="right" valign="top"><a id="a2d6b1bbb3e4adacc7182168e8ede72ce"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce">ValueReadCallback</a>) (const void *_data, size_t length, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> status)</td></tr>
-<tr class="memdesc:a2d6b1bbb3e4adacc7182168e8ede72ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback notifying of the value read from a peripheral's characteristic. <br /></td></tr>
-<tr class="separator:a2d6b1bbb3e4adacc7182168e8ede72ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad95cf23155ddde12445a46c0e4b7c09f"><td class="memItemLeft" align="right" valign="top"><a id="ad95cf23155ddde12445a46c0e4b7c09f"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#ad95cf23155ddde12445a46c0e4b7c09f">ValueChangedCallback</a>) (const void *_data, size_t length)</td></tr>
-<tr class="memdesc:ad95cf23155ddde12445a46c0e4b7c09f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback notifying of a value change for a peripheral's characteristic. <br /></td></tr>
-<tr class="separator:ad95cf23155ddde12445a46c0e4b7c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeffb9de8c8d9381c5fc14574046be8b"><td class="memItemLeft" align="right" valign="top"><a id="aeeffb9de8c8d9381c5fc14574046be8b"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b">ValueReadCallback</a>) (const void *data, size_t length, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> status)</td></tr>
+<tr class="memdesc:aeeffb9de8c8d9381c5fc14574046be8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback notifying of the value read from a peripheral's characteristic. <br /></td></tr>
+<tr class="separator:aeeffb9de8c8d9381c5fc14574046be8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed859a187af809568c832830073490f7"><td class="memItemLeft" align="right" valign="top"><a id="aed859a187af809568c832830073490f7"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aed859a187af809568c832830073490f7">ValueChangedCallback</a>) (const void *data, size_t length)</td></tr>
+<tr class="memdesc:aed859a187af809568c832830073490f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback notifying of a value change for a peripheral's characteristic. <br /></td></tr>
+<tr class="separator:aed859a187af809568c832830073490f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -212,13 +212,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
 <tr class="memitem:a91d3413c2c17656b3eee6ddc95e4db26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a91d3413c2c17656b3eee6ddc95e4db26">sgBleGetCharacteristicProperties</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex)</td></tr>
 <tr class="memdesc:a91d3413c2c17656b3eee6ddc95e4db26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the standard BLE properties of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a91d3413c2c17656b3eee6ddc95e4db26">More...</a><br /></td></tr>
 <tr class="separator:a91d3413c2c17656b3eee6ddc95e4db26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9">sgBleReadCharacteristicValue</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce">ValueReadCallback</a> onValueRead)</td></tr>
+<tr class="memitem:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9">sgBleReadCharacteristicValue</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b">ValueReadCallback</a> onValueRead)</td></tr>
 <tr class="memdesc:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9">More...</a><br /></td></tr>
 <tr class="separator:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba81473698ab88c4fdafa410b67c5e43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aba81473698ab88c4fdafa410b67c5e43">sgBleWriteCharacteristicValue</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, const void *data, const size_t length, bool withoutResponse, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
 <tr class="memdesc:aba81473698ab88c4fdafa410b67c5e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to write to the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#aba81473698ab88c4fdafa410b67c5e43">More...</a><br /></td></tr>
 <tr class="separator:aba81473698ab88c4fdafa410b67c5e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f7558d2820f45a9f50116db968ebb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a53f7558d2820f45a9f50116db968ebb5">sgBleSetNotifyCharacteristic</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#ad95cf23155ddde12445a46c0e4b7c09f">ValueChangedCallback</a> onValueChanged, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
+<tr class="memitem:a53f7558d2820f45a9f50116db968ebb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a53f7558d2820f45a9f50116db968ebb5">sgBleSetNotifyCharacteristic</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#aed859a187af809568c832830073490f7">ValueChangedCallback</a> onValueChanged, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
 <tr class="memdesc:a53f7558d2820f45a9f50116db968ebb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes or unsubscribes for value changes of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a53f7558d2820f45a9f50116db968ebb5">More...</a><br /></td></tr>
 <tr class="separator:a53f7558d2820f45a9f50116db968ebb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Miscellaneous</div></td></tr>
@@ -440,7 +440,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A comma separated list of services UUIDs, or null if the call failed.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to sgBleFreeString() or CoTaskMemFree(). <br  />
+<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to <a class="el" href="cble_8h.html#a8dfd54abea1e087f5ac51ac977701579" title="Deallocates a string returned by any of the sgBle* methods.">sgFreeString()</a> or CoTaskMemFree(). <br  />
  .NET marshaling automatically takes care of it. </dd></dl>
 
 </div>
@@ -496,7 +496,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The name of the peripheral, or null if the call failed.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to sgBleFreeString() or CoTaskMemFree(). <br  />
+<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to <a class="el" href="cble_8h.html#a8dfd54abea1e087f5ac51ac977701579" title="Deallocates a string returned by any of the sgBle* methods.">sgFreeString()</a> or CoTaskMemFree(). <br  />
  .NET marshaling automatically takes care of it. </dd></dl>
 
 </div>
@@ -537,7 +537,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A comma separated list of characteristics UUIDs, or null if the call failed.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to sgBleFreeString() or CoTaskMemFree(). <br  />
+<dl class="section remark"><dt>Remarks</dt><dd>The caller should free the returned string with either a call to <a class="el" href="cble_8h.html#a8dfd54abea1e087f5ac51ac977701579" title="Deallocates a string returned by any of the sgBle* methods.">sgFreeString()</a> or CoTaskMemFree(). <br  />
  .NET marshaling automatically takes care of it. </dd></dl>
 
 </div>
@@ -613,7 +613,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="cble_8h.html#a2d6b1bbb3e4adacc7182168e8ede72ce">ValueReadCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b">ValueReadCallback</a>&#160;</td>
           <td class="paramname"><em>onValueRead</em>&#160;</td>
         </tr>
         <tr>
@@ -699,7 +699,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="cble_8h.html#ad95cf23155ddde12445a46c0e4b7c09f">ValueChangedCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="cble_8h.html#aed859a187af809568c832830073490f7">ValueChangedCallback</a>&#160;</td>
           <td class="paramname"><em>onValueChanged</em>, </td>
         </tr>
         <tr>

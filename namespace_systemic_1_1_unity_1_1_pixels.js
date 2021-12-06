@@ -3,11 +3,11 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "Animations", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations" ],
     [ "Messages", "namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html", "namespace_systemic_1_1_unity_1_1_pixels_1_1_messages" ],
     [ "Profiles", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles" ],
-    [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ],
     [ "ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils" ],
     [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
     [ "GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils" ],
     [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ],
+    [ "PixelUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids" ],
     [ "PixelConnectionState", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7", [
       [ "Invalid", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a4bbb8f967da6d1a610596d7257179c2b", null ],
       [ "Available", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a78945de8de090e90045d299651a68a9b", null ],

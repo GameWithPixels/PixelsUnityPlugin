@@ -1,13 +1,14 @@
 var searchData=
 [
+  ['manufacturerdata_224',['ManufacturerData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a2a28024142e7c624506128b2b14c387e',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
   ['manufacturerdata_225',['manufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a9d8be37958e82fe69a33e6da7a39e0bf',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
-  ['manufacturerdata_226',['ManufacturerData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a2a28024142e7c624506128b2b14c387e',1,'Systemic.Unity.BluetoothLE.ScannedPeripheral.ManufacturerData()'],['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE::ManufacturerData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic.Unity.BluetoothLE.ManufacturerData']]],
+  ['manufacturerdata_226',['ManufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE::ManufacturerData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic.Unity.BluetoothLE.ManufacturerData']]],
   ['manufacturerid_227',['ManufacturerId',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html#ad4668aa8e0696cf9a80115bf934d5201',1,'Systemic::Unity::BluetoothLE::ManufacturerData']]],
   ['marshaling_228',['Marshaling',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['maxmtu_229',['MaxMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['message_230',['Message',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html#a0e59de674d03bb2308cfc30f082583ca',1,'Systemic::Unity::Pixels::Pixel::WaitForMessageEnumerator']]],
   ['messagereceivedeventhandler_231',['MessageReceivedEventHandler',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['messagetype_232',['MessageType',['../namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90',1,'Systemic::Unity::Pixels::Messages']]],
+  ['messagetype_232',['MessageType',['../namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90',1,'Systemic.Unity.Pixels.Messages.MessageType()'],['../classpixel_1_1_message_type.html',1,'pixel.MessageType']]],
   ['minmtu_233',['MinMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a6bd528295cca272faecb4c0cb37fc45d',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['modulatecolor_234',['ModulateColor',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html#a3da02ed550bbb32bb3debf59664272f1',1,'Systemic::Unity::Pixels::ColorUIntUtils']]],
   ['modulatecolor_235',['modulateColor',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ae29a207a8fd4933b4c095ced0af63687',1,'Systemic::Unity::Pixels::Animations::Track']]],

@@ -1,5 +1,12 @@
 var annotated_dup =
 [
+    [ "ble", null, [
+      [ "ConnectionEvent", "classble_1_1_connection_event.html", "classble_1_1_connection_event" ],
+      [ "ConnectionEventReason", "classble_1_1_connection_event_reason.html", "classble_1_1_connection_event_reason" ],
+      [ "BleRequestStatus", "classble_1_1_ble_request_status.html", "classble_1_1_ble_request_status" ],
+      [ "CharacteristicProperties", "classble_1_1_characteristic_properties.html", "classble_1_1_characteristic_properties" ],
+      [ "ScannedPeripheral", "classble_1_1_scanned_peripheral.html", "classble_1_1_scanned_peripheral" ]
+    ] ],
     [ "com", null, [
       [ "systemic", null, [
         [ "bluetoothle", "namespacecom_1_1systemic_1_1bluetoothle.html", [
@@ -7,6 +14,12 @@ var annotated_dup =
           [ "Scanner", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner" ]
         ] ]
       ] ]
+    ] ],
+    [ "pixel", null, [
+      [ "PixelUuids", "classpixel_1_1_pixel_uuids.html", "classpixel_1_1_pixel_uuids" ],
+      [ "MessageType", "classpixel_1_1_message_type.html", "classpixel_1_1_message_type" ],
+      [ "PixelDesignAndColor", "classpixel_1_1_pixel_design_and_color.html", "classpixel_1_1_pixel_design_and_color" ],
+      [ "PixelRollState", "classpixel_1_1_pixel_roll_state.html", "classpixel_1_1_pixel_roll_state" ]
     ] ],
     [ "Systemic", "namespace_systemic.html", [
       [ "BluetoothLE", "namespace_systemic_1_1_bluetooth_l_e.html", [
@@ -139,11 +152,11 @@ var annotated_dup =
             [ "Profile", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile" ],
             [ "Rule", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule.html", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule" ]
           ] ],
-          [ "BleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids" ],
           [ "ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils" ],
           [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
           [ "GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils" ],
-          [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ]
+          [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ],
+          [ "PixelUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids" ]
         ] ]
       ] ]
     ] ],

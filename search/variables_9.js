@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['serviceuuid_920',['ServiceUuid',['../class_systemic_1_1_unity_1_1_pixels_1_1_ble_uuids.html#ad99395d0bc16c50aa150da9f867c6c50',1,'Systemic::Unity::Pixels::BleUuids']]]
+  ['serviceuuid_929',['ServiceUuid',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html#aeee34fc0d8d4ad49e66b3d9f2811805b',1,'Systemic::Unity::Pixels::PixelUuids']]]
 ];
