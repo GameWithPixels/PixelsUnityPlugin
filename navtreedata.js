@@ -85,13 +85,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_characteristic_8h.html",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a7a58acc69048281cd580dcdc7c9f90b4",
-"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html#af1627045577362674c10dc877f5f88bc",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a728b59697a96aa1e20ff3c780bca9310",
-"classpixel_1_1_pixel_design_and_color.html#a64cb24454d272435379afb8f9d732bb7",
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a750596d2bbb7eb52300225bcd5a84084"
+"",
+"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a4041dfa57b774e48b190f110389ba8ee",
+"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html#ab1ebcb68e907db6bb1c06dce94886dc5",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a571a13456397bca0d62925e29390eae7",
+"classpixel_1_1_message_type.html#afac912edd501e7cfe4e650ea907f4125",
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3",
+"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a0966875da0f93df7c5425fa22689353d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

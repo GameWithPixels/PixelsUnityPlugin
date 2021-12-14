@@ -1,5 +1,10 @@
 var NAVTREEINDEX4 =
 {
+"classpixel_1_1_message_type.html#afac912edd501e7cfe4e650ea907f4125":[3,0,2,1,6],
+"classpixel_1_1_message_type.html#affeb8c26c452838b855fcf7ecd360c5b":[3,0,2,1,24],
+"classpixel_1_1_pixel_design_and_color.html":[3,0,2,2],
+"classpixel_1_1_pixel_design_and_color.html#a10a2a60b1b4e41c40e67e2ad840dcb5e":[3,0,2,2,11],
+"classpixel_1_1_pixel_design_and_color.html#a1f4dc4000fd485c0acc45bc95935d752":[3,0,2,2,3],
 "classpixel_1_1_pixel_design_and_color.html#a64cb24454d272435379afb8f9d732bb7":[3,0,2,2,0],
 "classpixel_1_1_pixel_design_and_color.html#a70078feb60eb34d2c35d6cea2698d331":[3,0,2,2,4],
 "classpixel_1_1_pixel_design_and_color.html#a75df53a3e9ea77d42f0c2ec709095d6d":[3,0,2,2,9],
@@ -92,8 +97,8 @@ var NAVTREEINDEX4 =
 "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd":[1,2,4],
 "group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f":[4,0,0,0,0,0,0,2,0],
 "group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f":[1,2,5],
-"group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6":[4,0,0,0,0,0,0,3,0],
 "group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6":[1,2,3],
+"group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6":[4,0,0,0,0,0,0,3,0],
 "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a58536bb1bc9a399939941ba98dccfe12":[1,2,6,5],
 "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a673eb38d75dfd0ed1ecebbc9ccd8517c":[1,2,6,0],
 "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a6ff50324c1b41a252f7c54b3307580e3":[1,2,6,4],
@@ -244,10 +249,5 @@ var NAVTREEINDEX4 =
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9":[2,0,3,2,0,11,7],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a9ed2d871602556951e39f3cebd08d6cb":[2,0,3,2,0,11,3],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ab34780231f9c8a6db0787f4b10335637":[2,0,3,2,0,11,6],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ac85a251cc457840f1e032f1b733e9398":[2,0,3,2,0,11,4],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3":[2,0,3,2,0,16],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e":[2,0,3,2,0,13],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea0e22fe7d45f8e5632a4abf369b24e29c":[2,0,3,2,0,13,3],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea12d868c18cb29bf58f02b504be9033fd":[2,0,3,2,0,13,2],
-"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea16eda536c5a9f951aa496fa52f400fd5":[2,0,3,2,0,13,7]
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053ac85a251cc457840f1e032f1b733e9398":[2,0,3,2,0,11,4]
 };

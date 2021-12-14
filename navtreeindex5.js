@@ -1,5 +1,10 @@
 var NAVTREEINDEX5 =
 {
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3":[2,0,3,2,0,16],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1e":[2,0,3,2,0,13],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea0e22fe7d45f8e5632a4abf369b24e29c":[2,0,3,2,0,13,3],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea12d868c18cb29bf58f02b504be9033fd":[2,0,3,2,0,13,2],
+"namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea16eda536c5a9f951aa496fa52f400fd5":[2,0,3,2,0,13,7],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea505a83f220c02df2f85c3810cd9ceb38":[2,0,3,2,0,13,0],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea902b0d55fddef6f8d651fe1035b7d4bd":[2,0,3,2,0,13,1],
 "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1ea9ed2d871602556951e39f3cebd08d6cb":[2,0,3,2,0,13,8],
@@ -244,10 +249,5 @@ var NAVTREEINDEX5 =
 "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#aa5a19d43dc47de983a4ab52c95abd38c":[3,0,3,1,2,0,4,3],
 "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ae29a207a8fd4933b4c095ced0af63687":[3,0,3,1,2,0,4,5],
 "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ae5db9c3bb9f2c9bd1231654a660a85ae":[3,0,3,1,2,0,4,2],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html":[3,0,3,1,2,1,0],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a0966875da0f93df7c5425fa22689353d":[3,0,3,1,2,1,0,10],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a3895c5a8c8440435335e87048e405003":[3,0,3,1,2,1,0,9],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a3e813dea64d426314f38bd819a4c7f66":[3,0,3,1,2,1,0,6],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a4b410fb5e9618136dd8285d5ce7e1dcb":[3,0,3,1,2,1,0,5],
-"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html#a66fa1068e4e99c8b24b0555af7c462e5":[3,0,3,1,2,1,0,1]
+"struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html":[3,0,3,1,2,1,0]
 };
