@@ -1,3 +1,5 @@
+#if UNITY_IOS
+
 using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -25,11 +27,14 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
                 string plistPath = Path.Combine(pathToBuiltProject, "Info.plist");
                 var plist = new PlistDocument();
                 plist.ReadFromFile(plistPath);
-                plist.root.SetString(
-                    "NSBluetoothAlwaysUsageDescription",
-                    "Uses Bluetooth to communicate with Pixel dice.");
+
+                string bleDesc = "Uses Bluetooth to communicate with Pixel dice.";
+                plist.root.SetString("NSBluetoothPeripheralUsageDescription", bleDesc); // For deployment target earlier than iOS 13
+                plist.root.SetString("NSBluetoothAlwaysUsageDescription", bleDesc);
                 plist.WriteToFile(plistPath);
             }
         }
     }
 }
+
+#endif
