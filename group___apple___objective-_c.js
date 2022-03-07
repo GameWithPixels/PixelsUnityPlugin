@@ -33,19 +33,27 @@ var group___apple___objective__c =
     [ "SGBleConnectionEventHandler", "group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6", null ],
     [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd", null ],
     [ "SGBleRequestCompletionHandler", "group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f", null ],
-    [ "SGBleRequestExecuteHandler", "group___apple___objective-_c.html#ga52bad8f94223fed49a02b9c60b6b2afb", [
-      [ "SGBleConnectionEventConnecting", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a673eb38d75dfd0ed1ecebbc9ccd8517c", null ],
-      [ "SGBleConnectionEventConnected", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5aae6c83567c94e9ff792cdf428c62678e", null ],
-      [ "SGBleConnectionEventFailedToConnect", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a916e62d0298a5715f0fa50e3730a8491", null ],
-      [ "SGBleConnectionEventReady", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5acec85e9e9c63ca56e39300ab1ed5629c", null ],
-      [ "SGBleConnectionEventDisconnecting", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a6ff50324c1b41a252f7c54b3307580e3", null ],
-      [ "SGBleConnectionEventDisconnected", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a58536bb1bc9a399939941ba98dccfe12", null ],
-      [ "SGBleConnectionEventReasonUnknown", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a96aafed235ff9f6f276e06d9d06e54f2", null ],
-      [ "SGBleConnectionEventReasonSuccess", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a6e3580469f3f3ad504d3d745a5026563", null ],
-      [ "SGBleConnectionEventReasonCanceled", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04affeb4734877e11a6fdac50ee1fda3832", null ],
-      [ "SGBleConnectionEventReasonNotSupported", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a70a5b369e1950d5840b7b53e0a8761c0", null ],
-      [ "SGBleConnectionEventReasonTimeout", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04afcd8119d12c1d314431c71a91b394cb7", null ],
-      [ "SGBleConnectionEventReasonLinkLoss", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a2ef464fec9871252d620bc01d2acc154", null ],
-      [ "SGBleConnectionEventReasonAdapterOff", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a13ce53c963b9ba520d3d6943193b830b", null ]
-    ] ]
+    [ "SGBleRequestExecuteHandler", "group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46", [
+      [ "SGBleConnectionEventConnecting", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a673eb38d75dfd0ed1ecebbc9ccd8517c", null ],
+      [ "SGBleConnectionEventConnected", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7aae6c83567c94e9ff792cdf428c62678e", null ],
+      [ "SGBleConnectionEventFailedToConnect", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a916e62d0298a5715f0fa50e3730a8491", null ],
+      [ "SGBleConnectionEventReady", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7acec85e9e9c63ca56e39300ab1ed5629c", null ],
+      [ "SGBleConnectionEventDisconnecting", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a6ff50324c1b41a252f7c54b3307580e3", null ],
+      [ "SGBleConnectionEventDisconnected", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a58536bb1bc9a399939941ba98dccfe12", null ],
+      [ "SGBleConnectionEventReasonUnknown", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a96aafed235ff9f6f276e06d9d06e54f2", null ],
+      [ "SGBleConnectionEventReasonSuccess", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a6e3580469f3f3ad504d3d745a5026563", null ],
+      [ "SGBleConnectionEventReasonCanceled", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5affeb4734877e11a6fdac50ee1fda3832", null ],
+      [ "SGBleConnectionEventReasonNotSupported", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a70a5b369e1950d5840b7b53e0a8761c0", null ],
+      [ "SGBleConnectionEventReasonTimeout", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5afcd8119d12c1d314431c71a91b394cb7", null ],
+      [ "SGBleConnectionEventReasonLinkLoss", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a2ef464fec9871252d620bc01d2acc154", null ],
+      [ "SGBleConnectionEventReasonAdapterOff", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a13ce53c963b9ba520d3d6943193b830b", null ],
+      [ "SGBlePeripheralRequestErrorDisconnected", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738", null ],
+      [ "SGBlePeripheralRequestErrorInvalidCall", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1", null ],
+      [ "SGBlePeripheralRequestErrorInvalidParameters", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6", null ],
+      [ "SGBlePeripheralRequestErrorCanceled", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8", null ]
+    ] ],
+    [ "SGBleCanceledError", "group___apple___objective-_c.html#ga3eb718af999217b6c58cff156be0f9a3", null ],
+    [ "SGBleDisconnectedError", "group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26", null ],
+    [ "SGBleInvalidCallError", "group___apple___objective-_c.html#ga2b17657e68a99476c0c7215a35339a35", null ],
+    [ "SGBleInvalidParametersError", "group___apple___objective-_c.html#gafce456ed50953cbc236ffd60662d873d", null ]
 ];

@@ -12,7 +12,7 @@ var searchData=
   ['address_9',['address',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a833f8a34535752f6957148cc00172a5c',1,'Systemic::BluetoothLE::ScannedPeripheral::address()'],['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518',1,'Systemic::BluetoothLE::Peripheral::address()']]],
   ['adpateroff_10',['AdpaterOff',['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6ac8afe2b6c8cbedd939017e05b4e86056',1,'Systemic::BluetoothLE']]],
   ['advertisementdata_11',['AdvertisementData',['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html',1,'Systemic::BluetoothLE']]],
-  ['advertisingdata_12',['advertisingData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#af780c93c98034ffdbc6bb2dd76d015bb',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['advertisingdata_12',['advertisingData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a24cd8b59e68cd808fb9529351a79658d',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
   ['allpixels_13',['AllPixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1cfd719b583c1a88436dcef95fd6ac0b',1,'Systemic::Unity::Pixels::DiceBag']]],
   ['android_5fjava_14',['Android_Java',['../group___android___java.html',1,'']]],
   ['animationbits_15',['AnimationBits',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html',1,'Systemic::Unity::Pixels::Animations::DataSet']]],

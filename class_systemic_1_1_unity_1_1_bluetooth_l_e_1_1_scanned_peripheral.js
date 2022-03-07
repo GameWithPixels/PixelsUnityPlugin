@@ -4,7 +4,6 @@ var class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral =
     [ "IsConnectable", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#ade5c30457fffe9976bee09fe29408394", null ],
     [ "ManufacturerData", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a2a28024142e7c624506128b2b14c387e", null ],
     [ "Name", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acd6cf79a21970381f494bdaff70b9496", null ],
-    [ "NativeDevice", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a4206fd0cf9492139bc3188a33b0ffbcb", null ],
     [ "OverflowServices", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8b39d6c83a8a1ce822498153285ab328", null ],
     [ "Rssi", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a59af00de5b9974d87c02002e59360b65", null ],
     [ "Services", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a62bf496fd033853ed0fa098a0301112b", null ],

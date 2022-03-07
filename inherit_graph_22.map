@@ -1,9 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation.html" title="Base class for animation presets. All presets have a few properties in common. Presets are stored in ..." alt="" coords="5,169,224,211"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_fade_candy.html" title="Procedural rainbow animation" alt="" coords="272,5,491,47"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_gradient.html" title="Procedural rainbow animation" alt="" coords="272,71,491,112"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_gradient_pattern.html" title="A keyframe&#45;based animation with a gradient applied over size: 8 bytes (+ actual track and keyframe da..." alt="" coords="272,136,491,177"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_keyframed.html" title="A keyframe&#45;based animation size: 8 bytes (+ actual track and keyframe data)" alt="" coords="272,201,491,243"/>
-<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html" title="Procedural rainbow animation" alt="" coords="272,267,491,308"/>
-<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html" title="Procedural on off animation" alt="" coords="272,332,491,373"/>
+<area shape="rect" id="node1" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html" title=" " alt="" coords="5,5,224,47"/>
 </map>

@@ -2,10 +2,10 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
 [
     [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
     [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
-    [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
-    [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
-    [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],
     [ "ManufacturerData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data" ],
+    [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
+    [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
+    [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],
     [ "ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
     [ "ValueRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator" ],
     [ "BluetoothStatus", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9", [

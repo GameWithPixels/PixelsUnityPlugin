@@ -1,13 +1,13 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/UnitBridge.h" name="Assets/Plugins/Systemic/Plugins/iOS/UnitBridge.h">
-<area shape="rect" id="node1" title="This file exists only to be included in UnityBridge.mm." alt="" coords="554,5,725,47"/>
-<area shape="rect" id="node2" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="340,169,552,196"/>
-<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="587,244,692,271"/>
-<area shape="rect" id="node6" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="265,95,432,121"/>
-<area shape="rect" id="node8" href="$_s_g_ble_utils_8h.html" title="A few internal functions." alt="" coords="5,169,103,196"/>
-<area shape="rect" id="node9" title=" " alt="" coords="677,95,738,121"/>
-<area shape="rect" id="node10" title=" " alt="" coords="762,95,823,121"/>
-<area shape="rect" id="node11" title=" " alt="" coords="847,95,901,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="147,319,311,345"/>
-<area shape="rect" id="node4" title=" " alt="" coords="311,244,511,271"/>
-<area shape="rect" id="node7" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="169,244,288,271"/>
+<area shape="rect" id="node1" title="This file exists only to be included in UnityBridge.mm." alt="" coords="430,5,601,47"/>
+<area shape="rect" id="node2" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="267,169,479,196"/>
+<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="268,244,373,271"/>
+<area shape="rect" id="node6" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="180,95,347,121"/>
+<area shape="rect" id="node8" href="$_s_g_ble_utils_8h.html" title="Library error codes and a few internal functions." alt="" coords="44,244,141,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="553,95,614,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="638,95,699,121"/>
+<area shape="rect" id="node11" title=" " alt="" coords="723,95,777,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="97,319,261,345"/>
+<area shape="rect" id="node4" title=" " alt="" coords="298,319,498,345"/>
+<area shape="rect" id="node7" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="23,169,141,196"/>
 </map>
