@@ -7,6 +7,7 @@ var namespace_systemic_1_1_bluetooth_l_e =
     [ "ScannedPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
     [ "Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanner" ],
     [ "Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", "class_systemic_1_1_bluetooth_l_e_1_1_service" ],
+    [ "ServiceData", "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_service_data" ],
     [ "bluetooth_address_t", "namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773", null ],
     [ "BleRequestStatus", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449", [
       [ "Success", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a505a83f220c02df2f85c3810cd9ceb38", null ],

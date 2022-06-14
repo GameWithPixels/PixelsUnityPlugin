@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['manufacturerdata_0',['manufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a73dea6d93ba412d723ff586bf69f4697',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['manufacturersdata_0',['manufacturersData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a9d171b79af52b2602cf3b8cefa800281',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
   ['messagereceivedeventhandler_1',['MessageReceivedEventHandler',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#acba001c8dd2ec9aedf51e1243129f6ee',1,'Systemic::Unity::Pixels::Pixel']]],
   ['modulatecolor_2',['ModulateColor',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html#a3da02ed550bbb32bb3debf59664272f1',1,'Systemic::Unity::Pixels::ColorUIntUtils']]],
   ['modulatecolor_3',['modulateColor',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ae29a207a8fd4933b4c095ced0af63687',1,'Systemic::Unity::Pixels::Animations::Track']]],

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['manufacturerdata_0',['manufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a73dea6d93ba412d723ff586bf69f4697',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
-  ['manufacturerdata_1',['ManufacturerData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a2a28024142e7c624506128b2b14c387e',1,'Systemic.Unity.BluetoothLE.ScannedPeripheral.ManufacturerData()'],['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE::ManufacturerData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic.Unity.BluetoothLE.ManufacturerData']]],
-  ['manufacturerid_2',['ManufacturerId',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html#ad4668aa8e0696cf9a80115bf934d5201',1,'Systemic::Unity::BluetoothLE::ManufacturerData']]],
+  ['manufacturerdata_0',['ManufacturerData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a2a28024142e7c624506128b2b14c387e',1,'Systemic.Unity.BluetoothLE.ScannedPeripheral.ManufacturerData()'],['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE::ManufacturerData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic.Unity.BluetoothLE.ManufacturerData']]],
+  ['manufacturerid_1',['ManufacturerId',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html#ad4668aa8e0696cf9a80115bf934d5201',1,'Systemic::Unity::BluetoothLE::ManufacturerData']]],
+  ['manufacturersdata_2',['manufacturersData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a9d171b79af52b2602cf3b8cefa800281',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
   ['marshaling_3',['Marshaling',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['maxmtu_4',['MaxMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['message_5',['Message',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html#a0e59de674d03bb2308cfc30f082583ca',1,'Systemic::Unity::Pixels::Pixel::WaitForMessageEnumerator']]],

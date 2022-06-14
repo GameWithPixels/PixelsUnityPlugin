@@ -174,6 +174,7 @@ var hierarchy =
     [ "Systemic::BluetoothLE::Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", null ],
     [ "com.systemic.bluetoothle.Scanner.ScannerCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html", null ],
     [ "Systemic::BluetoothLE::Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", null ],
+    [ "Systemic::BluetoothLE::ServiceData", "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html", null ],
     [ "Systemic.Unity.Pixels.Animations.SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", null ],
     [ "SuccessCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]

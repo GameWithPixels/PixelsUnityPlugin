@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['data',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html#a2f8a282c76ced621e2cac5ae9caf0d16',1,'Systemic::BluetoothLE::ManufacturerData::data()'],['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#aa7cbeed1bc6b363c93ae30a882fba183',1,'Systemic::BluetoothLE::AdvertisementData::data()']]],
+  ['data_0',['data',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html#a2f8a282c76ced621e2cac5ae9caf0d16',1,'Systemic::BluetoothLE::ManufacturerData::data()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service_data.html#a460940605a8b166a2e6200175e916c6a',1,'Systemic::BluetoothLE::ServiceData::data()'],['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#aa7cbeed1bc6b363c93ae30a882fba183',1,'Systemic::BluetoothLE::AdvertisementData::data()']]],
   ['dataoperationresultcallback_1',['DataOperationResultCallback',['../namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b',1,'Systemic::Unity::Pixels']]],
   ['datatype_2',['dataType',['../class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html#aa65974f044063fad444a965bfe47e475',1,'Systemic::BluetoothLE::AdvertisementData']]],
   ['deviceid_3',['deviceId',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629',1,'Systemic::BluetoothLE::Peripheral']]],

@@ -87,11 +87,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_characteristic_8h.html",
-"class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html#a3da02ed550bbb32bb3debf59664272f1",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab677f75a8b7d7e4820631dfb8f01571a",
-"group___apple___objective-_c.html#ga3eb718af999217b6c58cff156be0f9a3",
-"namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070"
+"class_systemic_1_1_bluetooth_l_e_1_1_service_data.html#a460940605a8b166a2e6200175e916c6a",
+"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a92297c8162fe8e791a8f19cef1503eb8",
+"globals.html",
+"namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a10b0501000c144cb2a7424bd45e1bcde"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

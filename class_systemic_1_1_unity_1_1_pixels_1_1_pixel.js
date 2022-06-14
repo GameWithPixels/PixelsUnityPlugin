@@ -43,7 +43,7 @@ var class_systemic_1_1_unity_1_1_pixels_1_1_pixel =
     [ "RollStateChanged", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a346e7c126e2555d5288c8fd6344dba6c", null ],
     [ "RssiChanged", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f", null ],
     [ "batteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad2a5b864a5f2f24f5eaa8dd55cd11244", null ],
-    [ "connectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab677f75a8b7d7e4820631dfb8f01571a", null ],
+    [ "connectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a05682f39ea0346889afa6b74fc385cc4", null ],
     [ "dataSetHash", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac2fa58c0f7fb8a18aaa637d805e3294a", null ],
     [ "designAndColor", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058", null ],
     [ "face", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7", null ],

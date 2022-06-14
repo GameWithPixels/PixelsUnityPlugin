@@ -29,7 +29,8 @@ var annotated_dup =
         [ "Peripheral", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_peripheral" ],
         [ "ScannedPeripheral", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
         [ "Scanner", "class_systemic_1_1_bluetooth_l_e_1_1_scanner.html", "class_systemic_1_1_bluetooth_l_e_1_1_scanner" ],
-        [ "Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", "class_systemic_1_1_bluetooth_l_e_1_1_service" ]
+        [ "Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", "class_systemic_1_1_bluetooth_l_e_1_1_service" ],
+        [ "ServiceData", "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_service_data" ]
       ] ],
       [ "Unity", "namespace_systemic_1_1_unity.html", [
         [ "BluetoothLE", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html", [
