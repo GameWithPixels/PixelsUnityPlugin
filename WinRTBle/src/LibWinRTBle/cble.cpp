@@ -10,6 +10,7 @@
 #include <sstream>
 #include <mutex>
 
+using namespace winrt::Windows::Devices::Bluetooth;
 using namespace Systemic;
 using namespace Systemic::BluetoothLE;
 
@@ -211,34 +212,57 @@ namespace
         if (!peripheral->services().empty())
         {
             str << ",\"services\":[";
-            bool first = true;
-            for (auto& uuid : peripheral->services())
+            auto& services = peripheral->services();
+            for (size_t i = 0, iMax = services.size(); i < iMax; ++i)
             {
-                if (!first) str << ",";
-                first = false;
-
-                str << "\"" << toStr(uuid) << "\"";
+                if (i > 0) str << ",";
+                str << "\"" << toStr(services[i]) << "\"";
             }
             str << "]";
         }
 
-        // Manufacturer data
-        if (!peripheral->manufacturerData().empty())
+        // Manufacturers data
+        if (!peripheral->manufacturersData().empty())
         {
-            size_t i = 0;
-            for (auto& manuf : peripheral->manufacturerData())
+            str << ",\"manufacturersData\":[";
+            auto& manufData = peripheral->manufacturersData();
+            for (size_t i = 0, iMax = manufData.size(); i < iMax; ++i)
             {
-                str << ",\"manufacturerData" << i++ << "\":[";
-                str << (manuf.companyId() & 0xFF) << "," << (manuf.companyId() >> 8);
-                for (auto b : manuf.data())
+                if (i > 0) str << ",";
+                str << "{\"companyId\":" << manufData[i].companyId();
+                str << ",\"data\":[";
+                auto& data = manufData[i].data();
+                for (size_t j = 0, jMax = data.size(); j < jMax; ++j)
                 {
-                    str << "," << (int)b;
+                    if (j > 0) str << ",";
+                    str << (int)data[j];
                 }
-                str << "]";
+                str << "]}";
             }
+            str << "]";
         }
 
-        //TODO peripheral->advertisingData()
+        // Services data
+        if (!peripheral->servicesData().empty())
+        {
+            str << ",\"servicesData\":[";
+            auto& servData = peripheral->servicesData();
+            for (size_t i = 0, iMax = servData.size(); i < iMax; ++i)
+            {
+                if (i > 0) str << ",";
+                const auto uuid = BluetoothUuidHelper::FromShortId(servData[i].shortUuid());
+                str << "{\"uuid\":\"" << toStr(uuid);
+                str << "\",\"data\":[";
+                auto& data = servData[i].data();
+                for (size_t j = 0, jMax = data.size(); j < jMax; ++j)
+                {
+                    if (j > 0) str << ",";
+                    str << (int)data[j];
+                }
+                str << "]}";
+            }
+            str << "]";
+        }
 
         str << "}";
         return str.str();
@@ -440,14 +464,12 @@ const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
         [](auto p)
         {
             std::stringstream str{};
-            bool first = true;
             std::vector<std::shared_ptr<Service>> services{};
             p->copyDiscoveredServices(services);
-            for (auto& s : services)
+            for (size_t i = 0, iMax = services.size(); i < iMax; ++i)
             {
-                if (!first) str << ",";
-                first = false;
-                str << toStr(s->uuid());
+                if (i > 0) str << ",";
+                str << toStr(services[i]->uuid());
             }
             return ComHelper::copyToComBuffer(str.str().data());
         }
@@ -468,14 +490,12 @@ const char* sgBleGetPeripheralServiceCharacteristics(
             auto service = p->getDiscoveredService(winrt::guid{ serviceUuid });
             if (service)
             {
-                bool first = true;
                 std::vector<std::shared_ptr<Characteristic>> characteristics{};
                 service->copyCharacteristics(characteristics);
-                for (auto& c : characteristics)
+                for (size_t i = 0, iMax = characteristics.size(); i < iMax; ++i)
                 {
-                    if (!first) str << ",";
-                    first = false;
-                    str << toStr(c->uuid());
+                    if (i > 0) str << ",";
+                    str << toStr(characteristics[i]->uuid());
                 }
             }
             return ComHelper::copyToComBuffer(str.str().data());

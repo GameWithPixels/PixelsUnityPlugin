@@ -44,7 +44,46 @@ namespace Systemic::BluetoothLE
         // Initializes a new instance of ManufacturerData with the company id and a WinRT data buffer
         ManufacturerData(uint16_t companyId, winrt::Windows::Storage::Streams::IBuffer data)
             : _companyId{ companyId }, _data{ Internal::dataBufferToBytesVector(data) } {}
+    };
 
+    /**
+     * @brief Stores a company id and it's associated binary data.
+     *
+     * @note This is a read only class.
+     */
+    class ServiceData
+    {
+        uint16_t _shortUuid{};
+        std::vector<uint8_t> _data{};
+
+    public:
+        /**
+         * @brief Gets the service short id (16 bits).
+         *
+         * @return The service short id.
+         */
+        uint16_t shortUuid() const { return _shortUuid; }
+
+        /**
+         * @brief Gets the binary data associated with the service.
+         *
+         * @return The binary data. 
+         */
+        const std::vector<uint8_t>& data() const { return _data; }
+
+    private:
+        friend Scanner;
+
+        // Initializes a new instance of ServiceData with a WinRT data buffer first containing the service short UUID
+        ServiceData(winrt::Windows::Storage::Streams::IBuffer data)
+            : _shortUuid(0), _data{ Internal::dataBufferToBytesVector(data) }
+        {
+            if (_data.size() >= 2)
+            {
+                _shortUuid = _data[0] | ((uint16_t)_data[1] << 8);
+                _data.erase(_data.begin(), _data.begin() + 2);
+            }
+        }
     };
 
     /**
@@ -103,7 +142,8 @@ namespace Systemic::BluetoothLE
         int _rssi{};
         int _txPowerLevel{};
         std::vector<winrt::guid> _services{};
-        std::vector<ManufacturerData> _manufacturerData{};
+        std::vector<ManufacturerData> _manufacturersData{};
+        std::vector<ServiceData> _servicesData{};
         std::vector<AdvertisementData> _advertisingData{};
 
     public:
@@ -186,7 +226,17 @@ namespace Systemic::BluetoothLE
          *
          * @return The list of manufacturer data of the peripheral.
          */
-        const std::vector<ManufacturerData>& manufacturerData() const { return _manufacturerData; }
+        const std::vector<ManufacturerData>& manufacturersData() const { return _manufacturersData; }
+
+        /**
+         * @brief Gets the list of service data contained in the advertisement packet(s).
+         *
+         * If multiple advertisement packets were used to initialize this instance,
+         * the returned value is the concatenation of data from all the packets.
+         *
+         * @return The list of service data of the peripheral.
+         */
+        const std::vector<ServiceData>& servicesData() const { return _servicesData; }
 
         /**
          * @brief Gets the list of binary advertisement data contained in the advertisement packet(s).
@@ -209,7 +259,8 @@ namespace Systemic::BluetoothLE
             int rssi,
             int txPowerLevel,
             const std::vector<winrt::guid>& services,
-            const std::vector<ManufacturerData>& manufacturerData,
+            const std::vector<ManufacturerData>& manufacturersData,
+            const std::vector<ServiceData>& servicesData,
             const std::vector<AdvertisementData>& advertisingData)
             :
             _timestamp{ timestamp },
@@ -219,7 +270,8 @@ namespace Systemic::BluetoothLE
             _rssi{ rssi },
             _txPowerLevel{ txPowerLevel },
             _services{ services },
-            _manufacturerData{ manufacturerData },
+            _manufacturersData{ manufacturersData },
+            _servicesData{ servicesData },
             _advertisingData{ advertisingData } {}
 
         ScannedPeripheral(
@@ -229,7 +281,8 @@ namespace Systemic::BluetoothLE
             int rssi,
             int txPowerLevel,
             const std::vector<winrt::guid>& services,
-            const std::vector<ManufacturerData>& manufacturerData,
+            const std::vector<ManufacturerData>& manufacturersData,
+            const std::vector<ServiceData>& servicesData,
             const std::vector<AdvertisementData>& advertisingData)
             :
             _timestamp{ timestamp },
@@ -239,7 +292,8 @@ namespace Systemic::BluetoothLE
             _rssi{ rssi },
             _txPowerLevel{ txPowerLevel },
             _services{ concat(peripheral._services, services) },
-            _manufacturerData{ concat(peripheral._manufacturerData, manufacturerData) },
+            _manufacturersData{ concat(peripheral._manufacturersData, manufacturersData) },
+            _servicesData{ concat(peripheral._servicesData, servicesData) },
             _advertisingData{ concat(peripheral._advertisingData, advertisingData) } {}
 
         template <typename T>

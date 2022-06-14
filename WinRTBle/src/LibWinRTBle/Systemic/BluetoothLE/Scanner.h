@@ -120,7 +120,8 @@ namespace Systemic::BluetoothLE
 
             std::wstring name{};
             std::vector<winrt::guid> services{};
-            std::vector<ManufacturerData> manufacturerData{};
+            std::vector<ManufacturerData> manufacturersData{};
+            std::vector<ServiceData> servicesData{};
             std::vector<AdvertisementData> advertisingData{};
 
             auto advertisement = args.Advertisement();
@@ -144,11 +145,11 @@ namespace Systemic::BluetoothLE
                 auto manufDataList = advertisement.ManufacturerData();
                 if (manufDataList)
                 {
-                    manufacturerData.reserve(manufDataList.Size());
+                    manufacturersData.reserve(manufDataList.Size());
                     for (const auto& manuf : manufDataList)
                     {
                         auto size = manuf.Data().Length();
-                        manufacturerData.emplace_back(ManufacturerData{ manuf.CompanyId(), manuf.Data() });
+                        manufacturersData.emplace_back(ManufacturerData{ manuf.CompanyId(), manuf.Data() });
                     }
                 }
 
@@ -161,6 +162,12 @@ namespace Systemic::BluetoothLE
                     {
                         auto size = adv.Data().Length();
                         advertisingData.emplace_back(AdvertisementData{ adv.DataType(), adv.Data() });
+
+                        // Check if it's a service data
+                        if (adv.DataType() == 0x16) // Service Data - 16-bit UUID
+                        {
+                            servicesData.emplace_back(ServiceData{ adv.Data() });
+                        }
                     }
                 }
             }
@@ -189,7 +196,8 @@ namespace Systemic::BluetoothLE
                         args.RawSignalStrengthInDBm(),
                         txPower,
                         services,
-                        manufacturerData,
+                        manufacturersData,
+                        servicesData,
                         advertisingData) };
 
                 {
@@ -218,7 +226,8 @@ namespace Systemic::BluetoothLE
                                 args.RawSignalStrengthInDBm(),
                                 txPower,
                                 services,
-                                manufacturerData,
+                                manufacturersData,
+                                servicesData,
                                 advertisingData));
 
                         _peripherals[updatedPeripheral->address()] = updatedPeripheral;
