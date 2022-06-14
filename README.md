@@ -1,7 +1,7 @@
 # PixelsUnityPlugin
 
 This is the Pixels plugin for Unity, a Unity Asset that enables communications between
-Pixels and a smartphone or a computer through Bluetooth Low Energy.
+Pixels dice and a smartphone or a computer using Bluetooth Low Energy.
 
 The following platforms are currently supported: Windows 10 version 1709 (Fall Creators
 Update) and above, iOS and Android. Mac support will be added next.

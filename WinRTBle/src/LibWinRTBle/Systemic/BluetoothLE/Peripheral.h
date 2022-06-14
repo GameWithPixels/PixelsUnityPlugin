@@ -96,6 +96,7 @@ namespace Systemic::BluetoothLE
         /**
          * @brief Connects to the BLE peripheral.
          *
+         * Concurrent calls are invalid and will return an error.
          * This request timeouts after 7 to 8 seconds, as of Windows 10 21H1.
          *
          * @param requiredServices List of services UUIDs that the peripheral should support, may be empty.

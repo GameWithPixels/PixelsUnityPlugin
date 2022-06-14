@@ -233,13 +233,13 @@ inline NSString *advertisementDataToJsonString(const char *systemId, NSDictionar
     }
     if (overflowServiceUUIDs)
     {
-        [jsonStr appendString:@"\"overflowServiceUUIDs\":"];
+        [jsonStr appendString:@"\"overflowServices\":"];
         appendToJsonStr(jsonStr, overflowServiceUUIDs);
         [jsonStr appendString:@","];
     }
     if (solicitedServiceUUIDs)
     {
-        [jsonStr appendString:@"\"solicitedServiceUUIDs\":"];
+        [jsonStr appendString:@"\"solicitedServices\":"];
         appendToJsonStr(jsonStr, solicitedServiceUUIDs);
         [jsonStr appendString:@","];
     }

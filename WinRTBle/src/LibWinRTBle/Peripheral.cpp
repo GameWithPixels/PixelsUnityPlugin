@@ -51,7 +51,7 @@ namespace Systemic::BluetoothLE
     {
         //TODO return error code
 
-        size_t connectCounter = 0;
+        size_t connectCounter; // Initilized in the block bellow
         {
             std::lock_guard lock{ _connectOpMtx };
             if (_isReady)
@@ -60,6 +60,7 @@ namespace Systemic::BluetoothLE
             }
             if (_connecting)
             {
+                //TODO instead wait for other connection call to succeed
                 co_return BleRequestStatus::InvalidCall;
             }
 
@@ -227,7 +228,7 @@ namespace Systemic::BluetoothLE
                     if (ownsSession)
                     {
                         // It's ok to call disconnect while holding the lock since we have a copy
-                        // of the current device and session, so there destruction won't happen
+                        // of the current device and session, so their destruction won't happen
                         // in internalDisconnect() but in this method when they go out of scope
                         // and after the lock has been released
                         internalDisconnect(reason);

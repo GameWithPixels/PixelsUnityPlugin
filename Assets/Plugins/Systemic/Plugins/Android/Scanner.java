@@ -223,7 +223,7 @@ public final class Scanner
                         // List<ParcelUuid> solicitedServiceUUIDs = scanRecord.getServiceSolicitationUuids();
                         // if ((solicitedServiceUUIDs != null) && (solicitedServiceUUIDs.size() > 0))
                         // {
-                        //     sb.append(",\"solicitedServiceUUIDs\":[");
+                        //     sb.append(",\"solicitedServices\":[");
                         //     boolean first = true;
                         //     for (ParcelUuid uuid : solicitedServiceUUIDs)
                         //     {
