@@ -7,7 +7,7 @@ var searchData=
   ['sendmessageandprocessresponsewithvalueenumerator_4',['SendMessageAndProcessResponseWithValueEnumerator',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html',1,'Systemic::Unity::Pixels::Pixel']]],
   ['sendmessageandwaitforresponseenumerator_5',['SendMessageAndWaitForResponseEnumerator',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html',1,'Systemic::Unity::Pixels::Pixel']]],
   ['service_6',['Service',['../class_systemic_1_1_bluetooth_l_e_1_1_service.html',1,'Systemic::BluetoothLE']]],
-  ['servicedata_7',['ServiceData',['../class_systemic_1_1_bluetooth_l_e_1_1_service_data.html',1,'Systemic::BluetoothLE']]],
+  ['servicedata_7',['ServiceData',['../class_systemic_1_1_bluetooth_l_e_1_1_service_data.html',1,'Systemic::BluetoothLE::ServiceData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html',1,'Systemic.Unity.BluetoothLE.ServiceData']]],
   ['setallledstocolor_8',['SetAllLEDsToColor',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_all_l_e_ds_to_color.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['setbattlestate_9',['SetBattleState',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_battle_state.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['setcurrentbehavior_10',['SetCurrentBehavior',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_current_behavior.html',1,'Systemic::Unity::Pixels::Messages']]],

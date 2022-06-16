@@ -247,7 +247,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Connects to the BLE peripheral. </p>
-<p >This request timeouts after 7 to 8 seconds, as of Windows 10 21H1.</p>
+<p >Concurrent calls are invalid and will return an error. This request timeouts after 7 to 8 seconds, as of Windows 10 21H1.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">requiredServices</td><td>List of services UUIDs that the peripheral should support, may be empty. </td></tr>

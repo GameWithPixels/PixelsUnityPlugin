@@ -7,6 +7,7 @@ var namespace_systemic_1_1_unity_1_1_bluetooth_l_e =
     [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],
     [ "RequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator" ],
     [ "ScannedPeripheral", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral" ],
+    [ "ServiceData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data" ],
     [ "ValueRequestEnumerator", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator" ],
     [ "BluetoothStatus", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9", [
       [ "Disabled", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9ab9f5c797ebbf55adccdd8539a65a0241", null ],

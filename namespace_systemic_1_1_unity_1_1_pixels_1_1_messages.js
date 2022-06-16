@@ -16,7 +16,6 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_messages =
     [ "DebugLog", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_debug_log.html", null ],
     [ "DefaultAnimationSetColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_default_animation_set_color.html", null ],
     [ "IAmADie", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die.html", null ],
-    [ "IAmADieMarshaledData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die_marshaled_data.html", null ],
     [ "IPixelMessage", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html", null ],
     [ "Marshaling", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html", null ],
     [ "NotifyUser", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user.html", null ],

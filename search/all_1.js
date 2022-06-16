@@ -12,13 +12,15 @@ var searchData=
   ['blink_9',['Blink',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['blinkfinished_10',['BlinkFinished',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_finished.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['blinkledsasync_11',['BlinkLEDsAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a67a7c1e2056ea6d327676af5678fd096',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['bluetooth_5faddress_5ft_12',['bluetooth_address_t',['../cble_8h.html#a673835ee6c766365da05cf26513db424',1,'bluetooth_address_t():&#160;cble.h'],['../namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773',1,'Systemic::BluetoothLE::bluetooth_address_t()']]],
+  ['bluetooth_5faddress_5ft_12',['bluetooth_address_t',['../namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773',1,'Systemic::BluetoothLE::bluetooth_address_t()'],['../cble_8h.html#a673835ee6c766365da05cf26513db424',1,'bluetooth_address_t():&#160;cble.h']]],
   ['bluetoothaddress_13',['BluetoothAddress',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#acdcfb6173e7418cb036fff771c24a11f',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
   ['bluetoothstateupdatecallback_14',['BluetoothStateUpdateCallback',['../_unit_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb',1,'BluetoothStateUpdateCallback():&#160;UnitBridge.h'],['../cble_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb',1,'BluetoothStateUpdateCallback():&#160;cble.h']]],
   ['bluetoothstatus_15',['BluetoothStatus',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a3b6f42efe9864fdc76ec45fe0cd3f0c9',1,'Systemic::Unity::BluetoothLE']]],
   ['broadcast_16',['Broadcast',['../namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1aabbfd9d167188751a0e15df8dda1ae46',1,'Systemic::BluetoothLE::Broadcast()'],['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#add494924942857195b4d1f9d5a6e24fbabe55b6387170df0ca68f41225268e842',1,'Systemic.Unity.BluetoothLE.Broadcast()']]],
-  ['bulkdata_17',['BulkData',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['bulkdataack_18',['BulkDataAck',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['bulksetup_19',['BulkSetup',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['bulksetupack_20',['BulkSetupAck',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup_ack.html',1,'Systemic::Unity::Pixels::Messages']]]
+  ['builddatetime_17',['buildDateTime',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1aef5fb8d99d601911d974580b46b45f',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['buildtimestamp_18',['buildTimestamp',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a30fdbaaba9dcc5d507682d92ee57ee9f',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['bulkdata_19',['BulkData',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['bulkdataack_20',['BulkDataAck',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['bulksetup_21',['BulkSetup',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html',1,'Systemic::Unity::Pixels::Messages']]],
+  ['bulksetupack_22',['BulkSetupAck',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup_ack.html',1,'Systemic::Unity::Pixels::Messages']]]
 ];

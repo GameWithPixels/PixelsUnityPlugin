@@ -36,5 +36,6 @@ var searchData=
   ['attachtopixel_33',['AttachToPixel',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html#a6f780001bce02858daef41f1c298f740',1,'Systemic::Unity::Examples::UIPixelPanel']]],
   ['attractmode_34',['AttractMode',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['available_35',['Available',['../namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a78945de8de090e90045d299651a68a9b',1,'Systemic::Unity::Pixels']]],
-  ['availablepixels_36',['AvailablePixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a',1,'Systemic::Unity::Pixels::DiceBag']]]
+  ['availableflashsize_36',['availableFlashSize',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0909df4c9f81fef80dfa15a4f0e601a1',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['availablepixels_37',['AvailablePixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a',1,'Systemic::Unity::Pixels::DiceBag']]]
 ];
