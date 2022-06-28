@@ -66,7 +66,7 @@ namespace Systemic.Unity.Examples
                 string charging = Pixel.isCharging.HasValue ? (Pixel.isCharging.HasValue ? "charging" : "not charging") : "";
                 _battery.text = $"{battery}%, {charging}";
                 _rssi.text = Pixel.rssi.ToString();
-                _version.text = Pixel.firmwareVersion;
+                _version.text = Pixel.buildDateTime.ToString();
                 _design.text = Pixel.designAndColor.ToString();
                 _rollstate.text = Pixel.rollState.ToString();
                 _face.text = $"{Pixel.face + 1} of {Pixel.faceCount}";
