@@ -28,7 +28,7 @@ namespace Systemic.Unity.Pixels
 
             /// <summary>
             /// This data structure mirrors CustomManufacturerData in firmware/bluetooth/bluetooth_stack.cpp
-            /// </sumary>
+            /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             struct CustomManufacturerData
             {
@@ -44,7 +44,7 @@ namespace Systemic.Unity.Pixels
 
             /// <summary>
             /// This data structure mirrors CustomServiceData in firmware/bluetooth/bluetooth_stack.cpp
-            /// </sumary>
+            /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             struct CustomServiceData
             {
@@ -54,7 +54,7 @@ namespace Systemic.Unity.Pixels
 
             /// <summary>
             /// Older version of the CustomManufacturerData (was named CustomAdvertisingData in firmware code)
-            /// </sumary>
+            /// </summary>
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             struct CustomAdvertisingData
             {

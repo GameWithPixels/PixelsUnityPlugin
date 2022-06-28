@@ -282,9 +282,9 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Asynchronously plays the LEDs animations for the given data set.
+        /// Asynchronously plays the (only) LEDs animation included in the given data set.
         /// </summary>
-        /// <param name="testAnimSet">The data set containing the animations to play.</param>
+        /// <param name="testAnimSet">The data set containing just one animation to play.</param>
         /// <param name="onResult">An optional callback that is called when the operation completes
         ///                        successfully (true) or not (false) with an error message.</param>
         /// <param name="onProgress">An optional callback that is called as the operation progresses
@@ -293,6 +293,7 @@ namespace Systemic.Unity.Pixels
         public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
         {
             if (testAnimSet == null) throw new System.ArgumentNullException(nameof(testAnimSet));
+            if (testAnimSet.getAnimationCount() != 1) throw new System.ArgumentException(nameof(testAnimSet));
 
             // Keep name locally in case our game object gets destroyed along the way
             string name = SafeName;

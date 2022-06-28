@@ -34,9 +34,9 @@ namespace Systemic.Unity.Pixels.Animations
             return bits.getColor32(colorIndex());
         }
 
-        public void setTimeAndColorIndex(ushort timeInMS, ushort colorIndex)
+        public void setTimeAndColorIndex(ushort timeMs, ushort colorIndex)
         {
-            timeAndColor = (ushort)(((((uint)timeInMS / 20) & 0b111111111) << 7) |
+            timeAndColor = (ushort)(((((uint)timeMs / 20) & 0b111111111) << 7) |
                            ((uint)colorIndex & 0b1111111));
         }
 

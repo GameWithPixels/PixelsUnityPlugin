@@ -16,9 +16,9 @@ namespace Systemic.Unity.Pixels.Animations
     [StructLayout(LayoutKind.Sequential)]
     public class DataSet
     {
-        public const int MAX_COLOR_MAP_SIZE = (1 << 7);
-        public const int MAX_PALETTE_SIZE = MAX_COLOR_MAP_SIZE * 3;
-        public const int SPECIAL_COLOR_INDEX = (MAX_COLOR_MAP_SIZE - 1);
+        //public const int MAX_COLOR_MAP_SIZE = (1 << 7);
+        //public const int MAX_PALETTE_SIZE = MAX_COLOR_MAP_SIZE * 3;
+        //public const int SPECIAL_COLOR_INDEX = (MAX_COLOR_MAP_SIZE - 1);
 
         [System.Serializable]
         [StructLayout(LayoutKind.Sequential)]
@@ -37,16 +37,13 @@ namespace Systemic.Unity.Pixels.Animations
                 return ColorUIntUtils.ToColor(cl32.r, cl32.g, cl32.b);
             }
 
-            public const ushort PALETTE_COLOR_FROM_FACE = 127;
-            public const ushort PALETTE_COLOR_FROM_RANDOM = 126;
-
             public Color getColor(ushort colorIndex)
             {
-                if (colorIndex == PALETTE_COLOR_FROM_FACE)
+                if (colorIndex == Constants.PaletteColorFromFace)
                 {
                     return Color.blue;
                 }
-                else if (colorIndex == PALETTE_COLOR_FROM_RANDOM)
+                else if (colorIndex == Constants.PaletteColorFromRandom)
                 {
                     return Color.black;
                 }
@@ -126,7 +123,7 @@ namespace Systemic.Unity.Pixels.Animations
         }
 
         public AnimationBits animationBits = new AnimationBits();
-        public List<IAnimation> animations = new List<IAnimation>();
+        public List<IAnimationPreset> animations = new List<IAnimationPreset>();
         public List<Profiles.ICondition> conditions = new List<Profiles.ICondition>();
         public List<Profiles.IAction> actions = new List<Profiles.IAction>();
         public List<Profiles.Rule> rules = new List<Profiles.Rule>();
@@ -177,7 +174,7 @@ namespace Systemic.Unity.Pixels.Animations
             return hash;
         }
 
-        public IAnimation getAnimation(ushort animIndex) => animations[animIndex];
+        public IAnimationPreset getAnimation(ushort animIndex) => animations[animIndex];
         public ushort getAnimationCount() => (ushort)animations.Count;
         public Profiles.ICondition getCondition(int conditionIndex) => conditions[conditionIndex];
         public ushort getConditionCount() => (ushort)conditions.Count;
@@ -185,7 +182,7 @@ namespace Systemic.Unity.Pixels.Animations
         public ushort getActionCount() => (ushort)actions.Count;
         public Profiles.Rule getRule(int ruleIndex) => rules[ruleIndex];
         public ushort getRuleCount() => (ushort)rules.Count;
-        public Profiles.Profile getBehavior() => behavior;
+        public Profiles.Profile getProfile() => profile;
 
         public byte[] ToTestAnimationByteArray()
         {
@@ -301,7 +298,7 @@ namespace Systemic.Unity.Pixels.Animations
             }
 
             // Behaviors
-            Marshal.StructureToPtr(behavior, current, false);
+            Marshal.StructureToPtr(profile, current, false);
             current += Marshal.SizeOf<Profiles.Profile>();
 
             return current;
