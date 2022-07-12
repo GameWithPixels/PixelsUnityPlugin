@@ -221,7 +221,7 @@ namespace Systemic.Unity.Pixels
         /// <param name="face"></param>
         public void CalibrateFace(int face)
         {
-            PostMessage(new CalibrateFace() { face = (byte)face });
+            PostMessage(new CalibrateFace() { faceIndex = (byte)face });
         }
 
         /// <summary>

@@ -33,7 +33,7 @@ namespace Systemic.Unity.Pixels
             struct CustomManufacturerData
             {
                 // Pixel type identification
-                public byte faceCount; // Which kind of dice this is
+                public byte ledCount; // Which kind of dice this is
                 public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
 
                 // Current state
@@ -192,20 +192,22 @@ namespace Systemic.Unity.Pixels
                             // Marshal data to an object
                             var ptr = Marshal.AllocHGlobal(size);
                             Marshal.Copy(arr, 0, ptr, size);
-                            var advData1 = Marshal.PtrToStructure<CustomAdvertisingData>(ptr);
+                            var advData = Marshal.PtrToStructure<CustomAdvertisingData>(ptr);
                             Marshal.FreeHGlobal(ptr);
 
-                            manufData.faceCount = advData1.faceCount;
-                            manufData.designAndColor = advData1.designAndColor;
-                            manufData.rollState = advData1.rollState;
-                            manufData.currentFace = advData1.currentFace;
-                            manufData.batteryLevel = advData1.batteryLevel;
+                            manufData.ledCount = advData.faceCount;
+                            manufData.designAndColor = advData.designAndColor;
+                            manufData.rollState = advData.rollState;
+                            manufData.currentFace = advData.currentFace;
+                            manufData.batteryLevel = advData.batteryLevel;
+
+                            servData.deviceId = advData.deviceId;
                         }
 
                         // Update Pixel data
-                        bool appearanceChanged = faceCount != manufData.faceCount || designAndColor != manufData.designAndColor;
+                        bool appearanceChanged = faceCount != manufData.ledCount || designAndColor != manufData.designAndColor;
                         bool rollStateChanged = rollState != manufData.rollState || face != manufData.currentFace;
-                        faceCount = manufData.faceCount;
+                        faceCount = manufData.ledCount;
                         designAndColor = manufData.designAndColor;
                         rollState = manufData.rollState;
                         face = manufData.currentFace;

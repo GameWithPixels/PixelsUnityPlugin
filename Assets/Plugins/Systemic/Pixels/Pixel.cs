@@ -395,13 +395,13 @@ namespace Systemic.Unity.Pixels
 
             void ProcessRollStateMessage(RollState message)
             {
-                Debug.Log($"Pixel {SafeName}: State is {message.state}, {message.face}");
+                Debug.Log($"Pixel {SafeName}: State is {message.state}, {message.faceIndex}");
 
-                if ((message.state != rollState) || (message.face != face))
+                if ((message.state != rollState) || (message.faceIndex != face))
                 {
                     // Update instance
                     rollState = message.state;
-                    face = message.face;
+                    face = message.faceIndex;
 
                     // Notify
                     RollStateChanged?.Invoke(this, rollState, face + 1);

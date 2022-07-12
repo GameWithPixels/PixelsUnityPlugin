@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Systemic.Unity.Pixels.Animations
 {
     /// <summary>
-    /// Data Set is the set of all behaviors, conditions, rules, animations and colors
+    /// Data Set is the set of a profile, conditions, rules, animations and colors
     /// stored in the memory of a Pixel die. This data gets transfered straight to the dice.
     /// For that purpose, the data is essentially 'exploded' into flat buffers. i.e. all
     /// the key-frames of all the animations are stored in a single key-frame array, and
@@ -127,8 +127,7 @@ namespace Systemic.Unity.Pixels.Animations
         public List<Profiles.ICondition> conditions = new List<Profiles.ICondition>();
         public List<Profiles.IAction> actions = new List<Profiles.IAction>();
         public List<Profiles.Rule> rules = new List<Profiles.Rule>();
-        public Profiles.Profile behavior = null;
-        public ushort padding;
+        public Profiles.Profile profile = null; //TODO null??
 
         public int ComputeDataSetDataSize()
         {
@@ -187,6 +186,11 @@ namespace Systemic.Unity.Pixels.Animations
         public byte[] ToTestAnimationByteArray()
         {
             Debug.Assert(animations.Count == 1);
+            if (animationBits.palette.Count > 127)
+            {
+                Debug.LogError("Profile has more than 127 colors: " + animationBits.palette.Count);
+            }
+
             int size = animationBits.ComputeDataSize() + Marshal.SizeOf(animations[0].GetType());
             System.IntPtr ptr = Marshal.AllocHGlobal(size);
             for (int i = 0; i < size; ++i)
@@ -205,6 +209,11 @@ namespace Systemic.Unity.Pixels.Animations
 
         public byte[] ToByteArray()
         {
+            if (animationBits.palette.Count > 127)
+            {
+                Debug.LogError("Profile has more than 127 colors: " + animationBits.palette.Count);
+            }
+
             int size = ComputeDataSetDataSize();
             System.IntPtr ptr = Marshal.AllocHGlobal(size);
             for (int i = 0; i < size; ++i)
@@ -297,7 +306,7 @@ namespace Systemic.Unity.Pixels.Animations
                 current += Marshal.SizeOf<Profiles.Rule>();
             }
 
-            // Behaviors
+            // Profile
             Marshal.StructureToPtr(profile, current, false);
             current += Marshal.SizeOf<Profiles.Profile>();
 

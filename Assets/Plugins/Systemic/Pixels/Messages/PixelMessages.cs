@@ -45,7 +45,7 @@ namespace Systemic.Unity.Pixels.Messages
     {
         public MessageType type { get; set; } = MessageType.RollState;
         public PixelRollState state;
-        public byte face;
+        public byte faceIndex;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -339,7 +339,7 @@ namespace Systemic.Unity.Pixels.Messages
     public class CalibrateFace : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.CalibrateFace;
-        public byte face;
+        public byte faceIndex;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -406,7 +406,7 @@ namespace Systemic.Unity.Pixels.Messages
     public class PrintNormals : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.PrintNormals;
-        public byte face;
+        public byte faceIndex;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
