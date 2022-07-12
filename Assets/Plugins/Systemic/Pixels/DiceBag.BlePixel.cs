@@ -33,7 +33,7 @@ namespace Systemic.Unity.Pixels
             struct CustomManufacturerData
             {
                 // Pixel type identification
-                public byte ledCount; // Which kind of dice this is
+                public byte ledCount; // Number of LEDs
                 public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
 
                 // Current state
@@ -48,7 +48,7 @@ namespace Systemic.Unity.Pixels
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             struct CustomServiceData
             {
-                public uint deviceId;
+                public uint pixelId;
                 public uint buildTimestamp;
             };
 
@@ -59,11 +59,11 @@ namespace Systemic.Unity.Pixels
             struct CustomAdvertisingData
             {
                 // Pixel type identification
+                public byte ledCount; // Number of LEDs
                 public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
-                public byte faceCount; // Which kind of dice this is
 
                 // Device ID
-                public uint deviceId;
+                public uint pixelId;
 
                 // Current state
                 public PixelRollState rollState; // Indicates whether the dice is being shaken
@@ -142,8 +142,8 @@ namespace Systemic.Unity.Pixels
                     // Marshall the data into the struct we expect
                     if (isManufData || isOldAdvData)
                     {
-                        CustomManufacturerData manufData;
-                        CustomServiceData servData = new CustomServiceData();
+                        var manufData = new CustomManufacturerData();
+                        var servData = new CustomServiceData();
 
                         if (isManufData)
                         {
@@ -195,19 +195,19 @@ namespace Systemic.Unity.Pixels
                             var advData = Marshal.PtrToStructure<CustomAdvertisingData>(ptr);
                             Marshal.FreeHGlobal(ptr);
 
-                            manufData.ledCount = advData.faceCount;
+                            manufData.ledCount = advData.ledCount;
                             manufData.designAndColor = advData.designAndColor;
                             manufData.rollState = advData.rollState;
                             manufData.currentFace = advData.currentFace;
                             manufData.batteryLevel = advData.batteryLevel;
 
-                            servData.deviceId = advData.deviceId;
+                            servData.pixelId = advData.pixelId;
                         }
 
                         // Update Pixel data
-                        bool appearanceChanged = faceCount != manufData.ledCount || designAndColor != manufData.designAndColor;
+                        bool appearanceChanged = ledCount != manufData.ledCount || designAndColor != manufData.designAndColor;
                         bool rollStateChanged = rollState != manufData.rollState || face != manufData.currentFace;
-                        faceCount = manufData.ledCount;
+                        ledCount = manufData.ledCount;
                         designAndColor = manufData.designAndColor;
                         rollState = manufData.rollState;
                         face = manufData.currentFace;
@@ -217,13 +217,13 @@ namespace Systemic.Unity.Pixels
                         batteryLevel = newBatteryLevel;
                         isCharging = null;
 
-                        deviceId = servData.deviceId;
+                        pixelId = servData.pixelId;
                         buildTimestamp = servData.buildTimestamp;
 
                         // Run callbacks
                         if (appearanceChanged)
                         {
-                            AppearanceChanged?.Invoke(this, faceCount, designAndColor);
+                            AppearanceChanged?.Invoke(this, ledCount, designAndColor);
                         }
                         if (rollStateChanged)
                         {
