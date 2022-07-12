@@ -21,6 +21,7 @@ var hierarchy =
     [ "Systemic.Unity.BluetoothLE.Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", null ],
     [ "Systemic::BluetoothLE::Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", null ],
     [ "Systemic.Unity.Pixels.ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", null ],
+    [ "Systemic.Unity.Pixels.Animations.Constants", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_constants.html", null ],
     [ "DataReceivedCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_read_value_request_callback.html", null ]
     ] ],
@@ -40,7 +41,7 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Profiles.ActionPlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html", null ],
       [ "Systemic.Unity.Pixels.Profiles.ActionPlayAudioClip", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html", null ]
     ] ],
-    [ "Systemic.Unity.Pixels.Animations.IAnimation", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation.html", [
+    [ "Systemic.Unity.Pixels.Animations.IAnimationPreset", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation_preset.html", [
       [ "Systemic.Unity.Pixels.Animations.AnimationFadeCandy", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_fade_candy.html", null ],
       [ "Systemic.Unity.Pixels.Animations.AnimationGradient", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_gradient.html", null ],
       [ "Systemic.Unity.Pixels.Animations.AnimationGradientPattern", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_gradient_pattern.html", null ],

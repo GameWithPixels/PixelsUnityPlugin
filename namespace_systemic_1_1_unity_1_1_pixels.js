@@ -43,7 +43,7 @@ var namespace_systemic_1_1_unity_1_1_pixels =
       [ "Rolling", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500af4920797afb92022a9c6608efcd86317", null ],
       [ "Crooked", "namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3", null ]
     ] ],
-    [ "AppearanceChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae4f0bf1f5ccb4b9b0b2d0d20d1d3f637", null ],
+    [ "AppearanceChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae5a5699fbe0cf5013bef1d3e57937d4c", null ],
     [ "BatteryLevelChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a9cb484dfc314ebe0c483332152ec8a05", null ],
     [ "ConnectionResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17", null ],
     [ "ConnectionStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12", null ],

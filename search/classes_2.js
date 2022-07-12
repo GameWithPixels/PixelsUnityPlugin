@@ -15,5 +15,6 @@ var searchData=
   ['conditionidle_12',['ConditionIdle',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html',1,'Systemic::Unity::Pixels::Profiles']]],
   ['conditionrolling_13',['ConditionRolling',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html',1,'Systemic::Unity::Pixels::Profiles']]],
   ['connectionevent_14',['ConnectionEvent',['../classble_1_1_connection_event.html',1,'ble']]],
-  ['connectioneventreason_15',['ConnectionEventReason',['../classble_1_1_connection_event_reason.html',1,'ble']]]
+  ['connectioneventreason_15',['ConnectionEventReason',['../classble_1_1_connection_event_reason.html',1,'ble']]],
+  ['constants_16',['Constants',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_constants.html',1,'Systemic::Unity::Pixels::Animations']]]
 ];

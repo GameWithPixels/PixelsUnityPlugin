@@ -19,24 +19,11 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles =
       [ "PlayAnimation", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a125e75810d9ff0d5893fc4e5871dbea2a9ffd7ca11e30aa8b0092572f750241e8", null ],
       [ "PlayAudioClip", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a125e75810d9ff0d5893fc4e5871dbea2abcef2bd07043ce57687e751a02f14751", null ]
     ] ],
-    [ "ConditionBatteryState_Flags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a7d973ebc4b97df20dc29fc27f6c97f93", [
-      [ "Ok", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a7d973ebc4b97df20dc29fc27f6c97f93aa60852f204ed8028c1c58808b746d115", null ],
-      [ "Low", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a7d973ebc4b97df20dc29fc27f6c97f93a28d0edd045e05cf5af64e35ae0c4c6ef", null ],
-      [ "Charging", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a7d973ebc4b97df20dc29fc27f6c97f93ad7b54fc61b65b19c4694a29b6044aacd", null ],
-      [ "Done", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a7d973ebc4b97df20dc29fc27f6c97f93af92965e2c8a7afb3c1b9a5c09a263636", null ]
-    ] ],
-    [ "ConditionConnectionState_Flags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a14e1dd2658256cb27be4de20294972e6", [
-      [ "Connected", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a14e1dd2658256cb27be4de20294972e6a2ec0d16e4ca169baedb9b2d50ec5c6d7", null ],
-      [ "Disconnected", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a14e1dd2658256cb27be4de20294972e6aef70e46fd3bbc21e3e1f0b6815e750c0", null ]
-    ] ],
-    [ "ConditionFaceCompare_Flags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a1d48f8aa09757e6d8d84e5063a5e38aa", [
-      [ "Less", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a1d48f8aa09757e6d8d84e5063a5e38aaa1cfdf0e8d0c87a228c1f40d9bee7888b", null ],
-      [ "Equal", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a1d48f8aa09757e6d8d84e5063a5e38aaaf5f286e73bda105e538310b3190f75c5", null ],
-      [ "Greater", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a1d48f8aa09757e6d8d84e5063a5e38aaa8768a6821cd735aea4f5b0df88c1fc6a", null ]
-    ] ],
-    [ "ConditionHelloGoodbye_Flags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a634bd17af6003b812ec25515c60aa012", [
-      [ "Hello", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a634bd17af6003b812ec25515c60aa012a8b1a9953c4611296a827abf8c47804d7", null ],
-      [ "Goodbye", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a634bd17af6003b812ec25515c60aa012a6fc422233a40a75a1f028e11c3cd1140", null ]
+    [ "BatteryStateFlags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ac9f9d1aab07a697b51bd50e259e2d164", [
+      [ "Ok", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ac9f9d1aab07a697b51bd50e259e2d164aa60852f204ed8028c1c58808b746d115", null ],
+      [ "Low", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ac9f9d1aab07a697b51bd50e259e2d164a28d0edd045e05cf5af64e35ae0c4c6ef", null ],
+      [ "Charging", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ac9f9d1aab07a697b51bd50e259e2d164ad7b54fc61b65b19c4694a29b6044aacd", null ],
+      [ "Done", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ac9f9d1aab07a697b51bd50e259e2d164af92965e2c8a7afb3c1b9a5c09a263636", null ]
     ] ],
     [ "ConditionType", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a40a30ac0133c358a4e753dc5ca4e7f49", [
       [ "Unknown", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a40a30ac0133c358a4e753dc5ca4e7f49a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
@@ -48,5 +35,18 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles =
       [ "ConnectionState", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a40a30ac0133c358a4e753dc5ca4e7f49af241e06a777328ebf212d34fbfaa72bf", null ],
       [ "BatteryState", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a40a30ac0133c358a4e753dc5ca4e7f49ad970da8b32b903c1be077957116b4a36", null ],
       [ "Idle", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a40a30ac0133c358a4e753dc5ca4e7f49ae599161956d626eda4cb0a5ffb85271c", null ]
+    ] ],
+    [ "ConnectionStateFlags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ade2f8a8fcb699780fe304d7b6ffd204a", [
+      [ "Connected", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ade2f8a8fcb699780fe304d7b6ffd204aa2ec0d16e4ca169baedb9b2d50ec5c6d7", null ],
+      [ "Disconnected", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#ade2f8a8fcb699780fe304d7b6ffd204aaef70e46fd3bbc21e3e1f0b6815e750c0", null ]
+    ] ],
+    [ "FaceCompareFlags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#aeedb58f68755111cebf392ded89a5930", [
+      [ "Less", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#aeedb58f68755111cebf392ded89a5930a1cfdf0e8d0c87a228c1f40d9bee7888b", null ],
+      [ "Equal", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#aeedb58f68755111cebf392ded89a5930af5f286e73bda105e538310b3190f75c5", null ],
+      [ "Greater", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#aeedb58f68755111cebf392ded89a5930a8768a6821cd735aea4f5b0df88c1fc6a", null ]
+    ] ],
+    [ "HelloGoodbyeFlags", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a06ab9b4e02e06dca69affec1ecf558f4", [
+      [ "Hello", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a06ab9b4e02e06dca69affec1ecf558f4a8b1a9953c4611296a827abf8c47804d7", null ],
+      [ "Goodbye", "namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a06ab9b4e02e06dca69affec1ecf558f4a6fc422233a40a75a1f028e11c3cd1140", null ]
     ] ]
 ];

@@ -1,11 +1,11 @@
 <map id="Systemic.Unity.Pixels.Profiles.ICondition" name="Systemic.Unity.Pixels.Profiles.ICondition">
 <area shape="rect" id="node1" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="5,235,201,276"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html" title="Condition that triggers on battery state events &lt;/sumary&gt;" alt="" coords="249,5,445,47"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html" title="Condition that triggers on connection events &lt;/sumary&gt;" alt="" coords="249,71,445,112"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html" title="Condition that triggers on battery state events" alt="" coords="249,5,445,47"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html" title="Condition that triggers on connection events" alt="" coords="249,71,445,112"/>
 <area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html" title="Condition that triggers when the Pixel has landed by is crooked" alt="" coords="249,136,445,177"/>
 <area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html" title="Condition that triggers when the Pixel has landed on a face" alt="" coords="249,201,445,243"/>
 <area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,267,445,308"/>
-<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html" title="Condition that triggers on a life state event &lt;/sumary&gt;" alt="" coords="249,332,445,373"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html" title="Condition that triggers on a life state event" alt="" coords="249,332,445,373"/>
 <area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,397,445,439"/>
 <area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html" title="Condition that triggers when the Pixel is being rolled" alt="" coords="249,463,445,504"/>
 </map>

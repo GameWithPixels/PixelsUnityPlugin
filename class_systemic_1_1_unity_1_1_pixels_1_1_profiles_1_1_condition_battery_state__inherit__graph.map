@@ -1,4 +1,4 @@
 <map id="Systemic.Unity.Pixels.Profiles.ConditionBatteryState" name="Systemic.Unity.Pixels.Profiles.ConditionBatteryState">
-<area shape="rect" id="node1" title="Condition that triggers on battery state events &lt;/sumary&gt;" alt="" coords="5,80,201,121"/>
+<area shape="rect" id="node1" title="Condition that triggers on battery state events" alt="" coords="5,80,201,121"/>
 <area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="63,5,143,32"/>
 </map>

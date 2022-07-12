@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['pixelconnectionstate_0',['PixelConnectionState',['../namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7',1,'Systemic::Unity::Pixels']]],
-  ['pixeldesignandcolor_1',['PixelDesignAndColor',['../namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933',1,'Systemic::Unity::Pixels']]],
-  ['pixelerror_2',['PixelError',['../namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3',1,'Systemic::Unity::Pixels']]],
-  ['pixelrollstate_3',['PixelRollState',['../namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500',1,'Systemic::Unity::Pixels']]]
+  ['hellogoodbyeflags_0',['HelloGoodbyeFlags',['../namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html#a06ab9b4e02e06dca69affec1ecf558f4',1,'Systemic::Unity::Pixels::Profiles']]]
 ];

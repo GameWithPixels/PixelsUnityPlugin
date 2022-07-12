@@ -26,8 +26,8 @@ var menudata={children:[
 {text:"Main Page",url:"index.html"},
 {text:"Modules",url:"modules.html"},
 {text:"Packages",url:"namespaces.html",children:[
-{text:"Packages",url:"namespaces.html"},
-{text:"Package Functions",url:"namespacemembers.html",children:[
+{text:"Package List",url:"namespaces.html"},
+{text:"Package Members",url:"namespacemembers.html",children:[
 {text:"All",url:"namespacemembers.html",children:[
 {text:"a",url:"namespacemembers.html#index_a"},
 {text:"b",url:"namespacemembers.html#index_b"},
@@ -35,6 +35,7 @@ var menudata={children:[
 {text:"d",url:"namespacemembers.html#index_d"},
 {text:"e",url:"namespacemembers.html#index_e"},
 {text:"f",url:"namespacemembers.html#index_f"},
+{text:"h",url:"namespacemembers.html#index_h"},
 {text:"i",url:"namespacemembers.html#index_i"},
 {text:"m",url:"namespacemembers.html#index_m"},
 {text:"n",url:"namespacemembers.html#index_n"},
