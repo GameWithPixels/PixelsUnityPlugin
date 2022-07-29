@@ -175,9 +175,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a571a13456397bca0d62925e29390eae7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a571a13456397bca0d62925e29390eae7">SetLEDsToColor</a> (Color color)</td></tr>
 <tr class="memdesc:a571a13456397bca0d62925e29390eae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to set all the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> LEDs with the same given color.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a571a13456397bca0d62925e29390eae7">More...</a><br /></td></tr>
 <tr class="separator:a571a13456397bca0d62925e29390eae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a7c1e2056ea6d327676af5678fd096"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a67a7c1e2056ea6d327676af5678fd096">BlinkLEDsAsync</a> (Color color, int count=3, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
-<tr class="memdesc:a67a7c1e2056ea6d327676af5678fd096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to make its LEDs blink a given number of time.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a67a7c1e2056ea6d327676af5678fd096">More...</a><br /></td></tr>
-<tr class="separator:a67a7c1e2056ea6d327676af5678fd096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93c3dabdc358645cf3514d9842adc95d"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a93c3dabdc358645cf3514d9842adc95d">BlinkLEDsAsync</a> (Color color, int count=3, float duration=1, float fade=0.5f, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a18a14205bbaca56dbb3d57fa40cf29b4">OperationResultCallback</a> onResult=null)</td></tr>
+<tr class="memdesc:a93c3dabdc358645cf3514d9842adc95d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to make its LEDs blink a given number of time.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a93c3dabdc358645cf3514d9842adc95d">More...</a><br /></td></tr>
+<tr class="separator:a93c3dabdc358645cf3514d9842adc95d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9432e0f23f32100a8ae21af45467cb9d"><td class="memItemLeft" align="right" valign="top"><a id="a9432e0f23f32100a8ae21af45467cb9d" name="a9432e0f23f32100a8ae21af45467cb9d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>StartCalibration</b> ()</td></tr>
 <tr class="memdesc:a9432e0f23f32100a8ae21af45467cb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> to start die calibration. <br /></td></tr>
@@ -381,8 +381,8 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>SafeName</b><code> 
 
 </div>
 </div>
-<a id="a67a7c1e2056ea6d327676af5678fd096" name="a67a7c1e2056ea6d327676af5678fd096"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67a7c1e2056ea6d327676af5678fd096">&#9670;&nbsp;</a></span>BlinkLEDsAsync()</h2>
+<a id="a93c3dabdc358645cf3514d9842adc95d" name="a93c3dabdc358645cf3514d9842adc95d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93c3dabdc358645cf3514d9842adc95d">&#9670;&nbsp;</a></span>BlinkLEDsAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -398,6 +398,18 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>SafeName</b><code> 
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>count</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>duration</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fade</em> = <code>0.5f</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -418,6 +430,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>SafeName</b><code> 
   <table class="params">
     <tr><td class="paramname">color</td><td>The desired color for the LEDs.</td></tr>
     <tr><td class="paramname">count</td><td>The number of blinks.</td></tr>
+    <tr><td class="paramname">duration</td><td>Duration of the animation in seconds.</td></tr>
     <tr><td class="paramname">onResult</td><td>An optional callback that is called when the operation completes successfully (true) or not (false) with an error message.</td></tr>
   </table>
   </dd>

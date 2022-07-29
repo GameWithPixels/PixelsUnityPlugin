@@ -89,7 +89,7 @@ var NAVTREEINDEX =
 "_characteristic_8h.html",
 "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html#a460940605a8b166a2e6200175e916c6a",
 "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a86a8ae9430db86808539f3a0799c85c7",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a92297c8162fe8e791a8f19cef1503eb8",
 "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a673eb38d75dfd0ed1ecebbc9ccd8517c",
 "namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90a2fb76e34068f0a7b25789ba60c1733ff"
 ];
