@@ -20,6 +20,6 @@ var searchData=
   ['uploadbulkdataasync_17',['UploadBulkDataAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1ff36995773bf34b593ac62d84232ef4',1,'Systemic::Unity::Pixels::Pixel']]],
   ['uploaddatasetasync_18',['UploadDataSetAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#aa48bc7e75bd1ecfddc51e3776b5c0c5e',1,'Systemic::Unity::Pixels::Pixel']]],
   ['utils_2eh_19',['Utils.h',['../_utils_8h.html',1,'']]],
-  ['uuid_20',['Uuid',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html#a4365312c15cd244259e952fec6f2d83a',1,'Systemic::Unity::BluetoothLE::ServiceData']]],
-  ['uuid_21',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]]
+  ['uuid_20',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]],
+  ['uuid_21',['Uuid',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html#a4365312c15cd244259e952fec6f2d83a',1,'Systemic::Unity::BluetoothLE::ServiceData']]]
 ];
