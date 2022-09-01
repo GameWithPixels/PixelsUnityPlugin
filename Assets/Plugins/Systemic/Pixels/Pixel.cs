@@ -133,7 +133,7 @@ namespace Systemic.Unity.Pixels
         /// 
         /// This value is set when the Pixel is being scanned or when connected.
         /// </summary>
-        public int face { get; protected set; } = -1; //TODO change to face number rather than index
+        public int currentFace { get; protected set; } = -1; //TODO change to face number rather than index
 
         /// <summary>
         /// Gets the Pixel last read battery level.
@@ -397,14 +397,14 @@ namespace Systemic.Unity.Pixels
             {
                 Debug.Log($"Pixel {SafeName}: State is {message.state}, {message.faceIndex}");
 
-                if ((message.state != rollState) || (message.faceIndex != face))
+                if ((message.state != rollState) || (message.faceIndex != currentFace))
                 {
                     // Update instance
                     rollState = message.state;
-                    face = message.faceIndex;
+                    currentFace = message.faceIndex;
 
                     // Notify
-                    RollStateChanged?.Invoke(this, rollState, face);
+                    RollStateChanged?.Invoke(this, rollState, currentFace);
                 }
             }
 
@@ -453,8 +453,7 @@ namespace Systemic.Unity.Pixels
         {
             // Unix timestamp is seconds past epoch
             var dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dateTime;
+            return dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
         }
     }
 }

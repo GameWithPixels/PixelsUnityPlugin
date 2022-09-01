@@ -100,7 +100,7 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Removes all available Pixel dice.
+        /// Removes all available (scanned but not connected) Pixel dice.
         /// </summary>
         public static void ClearAvailablePixels()
         {
@@ -227,11 +227,12 @@ namespace Systemic.Unity.Pixels
         /// This allows for different parts of the user code to request a connection or a disconnection without
         /// impacting each others.
         /// </summary>
-        /// <param name="pixels">The Pixel dice to connect to.</param>
+        /// <param name="pixels">The list of Pixels dice to connect to.</param>
         /// <param name="requestCancelFunc">A callback which is called for each frame during connection,
         ///                                 it may return true to cancel the connection request.</param>
-        /// <param name="onResult">An optional callback that is called when the operation completes
-        ///                        successfully (true) or not (false) with an error message.</param>
+        /// <param name="onResult">An optional callback that is called for each Pixel after all the connection
+        ///                        operations have completed, whether successfully (true) or not (false)
+        ///                        along with a message when an error was encountered.</param>
         /// <returns>The coroutine running the request.</returns>
         public static Coroutine ConnectPixels(IEnumerable<Pixel> pixels, System.Func<bool> requestCancelFunc, ConnectionResultCallback onResult = null)
         {
@@ -244,7 +245,7 @@ namespace Systemic.Unity.Pixels
                 var blePixel = p as BlePixel;
                 if ((blePixel == null) || (!_pixels.Contains(p)))
                 {
-                    Debug.LogError("Some Pixels requested to be connected are either null or unknown");
+                    Debug.LogError("Some Pixels requested to be connected are either null or not in the " + nameof(DiceBag));
                     return null;
                 }
                 pixelsList.Add(blePixel);
@@ -328,7 +329,7 @@ namespace Systemic.Unity.Pixels
             {
                 if (!_pixels.Contains(blePixel))
                 {
-                    Debug.LogError($"Trying to disconnect unknown Pixel {blePixel.name}");
+                    Debug.LogError("The Pixel requested to be disconnected is either null or not in the " + nameof(DiceBag));
                 }
                 else
                 {

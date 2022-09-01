@@ -69,7 +69,7 @@ namespace Systemic.Unity.Examples
                 _version.text = Pixel.buildDateTime.ToString();
                 _design.text = Pixel.designAndColor.ToString();
                 _rollstate.text = Pixel.rollState.ToString();
-                _face.text = $"{Pixel.face + 1} of {Pixel.ledCount}";
+                _face.text = $"{Pixel.currentFace + 1} of {Pixel.ledCount}";
 
                 _connectButton.interactable = Pixel.isAvailable;
                 _disconnectButton.interactable = Pixel.isReady;

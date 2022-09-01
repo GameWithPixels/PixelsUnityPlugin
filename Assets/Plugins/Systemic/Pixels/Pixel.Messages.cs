@@ -45,7 +45,7 @@ namespace Systemic.Unity.Pixels
 
         /// <summary>
         /// Sends a message to the Pixel to update the instance <see cref="rollState"/> and
-        /// <see cref="face"/> properties.
+        /// <see cref="currentFace"/> properties.
         /// </summary>
         /// <param name="onResult">An optional callback that is called when the operation completes
         ///                        successfully (true) or not (false) with an error message.</param>

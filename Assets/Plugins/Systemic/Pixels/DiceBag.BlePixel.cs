@@ -206,11 +206,11 @@ namespace Systemic.Unity.Pixels
 
                         // Update Pixel data
                         bool appearanceChanged = ledCount != manufData.ledCount || designAndColor != manufData.designAndColor;
-                        bool rollStateChanged = rollState != manufData.rollState || face != manufData.currentFace;
+                        bool rollStateChanged = rollState != manufData.rollState || currentFace != manufData.currentFace;
                         ledCount = manufData.ledCount;
                         designAndColor = manufData.designAndColor;
                         rollState = manufData.rollState;
-                        face = manufData.currentFace;
+                        currentFace = manufData.currentFace;
 
                         float newBatteryLevel = manufData.batteryLevel / 255f;
                         bool batteryLevelChanged = batteryLevel != newBatteryLevel;
@@ -227,7 +227,7 @@ namespace Systemic.Unity.Pixels
                         }
                         if (rollStateChanged)
                         {
-                            RollStateChanged?.Invoke(this, rollState, face);
+                            RollStateChanged?.Invoke(this, rollState, currentFace);
                         }
                         if (batteryLevelChanged)
                         {
