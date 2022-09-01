@@ -582,12 +582,12 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="peripheral">The connected peripheral.</param>
         /// <returns>The list of discovered services.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static Guid[] GetPeripheralDiscoveredServices(ScannedPeripheral peripheral)
+        public static Guid[] GetDiscoveredServices(ScannedPeripheral peripheral)
         {
             EnsureRunningOnMainThread();
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
-            return nativeHandle.IsValid ? NativeInterface.GetPeripheralDiscoveredServices(nativeHandle) : null;
+            return nativeHandle.IsValid ? NativeInterface.GetDiscoveredServices(nativeHandle) : null;
         }
 
         /// <summary>
@@ -599,12 +599,12 @@ namespace Systemic.Unity.BluetoothLE
         /// <param name="serviceUuid">The service UUID for which to retrieve the characteristics.</param>
         /// <returns>The list of discovered characteristics of a service.</returns>
         /// <remarks>The peripheral must be connected.</remarks>
-        public static Guid[] GetPeripheralServiceCharacteristics(ScannedPeripheral peripheral, Guid serviceUuid)
+        public static Guid[] GetServiceCharacteristics(ScannedPeripheral peripheral, Guid serviceUuid)
         {
             EnsureRunningOnMainThread();
 
             var nativeHandle = GetPeripheralInfo(peripheral).NativeHandle;
-            return nativeHandle.IsValid ? NativeInterface.GetPeripheralServiceCharacteristics(nativeHandle, serviceUuid) : null;
+            return nativeHandle.IsValid ? NativeInterface.GetServiceCharacteristics(nativeHandle, serviceUuid) : null;
         }
 
         //! @}

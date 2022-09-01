@@ -458,7 +458,7 @@ int sgBleGetPeripheralMtu(bluetooth_address_t address)
 // returns a comma separated list of UUIDs
 // caller should free string with CoTaskMemFree() or sgFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
-const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address)
+const char* sgBleGetDiscoveredServices(bluetooth_address_t address)
 {
     return runForPeripheral<const char*>(address, nullptr,
         [](auto p)

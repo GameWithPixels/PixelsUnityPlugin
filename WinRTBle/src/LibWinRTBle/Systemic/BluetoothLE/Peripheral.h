@@ -268,7 +268,7 @@ namespace Systemic::BluetoothLE
         }
 
         // Called by the device when the connection status changes
-        void onDeviceConnectionStatusChanged(BluetoothLEDevice device, winrt::Windows::Foundation::IInspectable __)
+        void onDeviceConnectionStatusChanged(BluetoothLEDevice device, winrt::Windows::Foundation::IInspectable _)
         {
             using namespace winrt::Windows::Devices::Bluetooth;
 

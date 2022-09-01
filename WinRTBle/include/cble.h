@@ -223,7 +223,7 @@ extern "C"
      *         .NET marshaling automatically takes care of it.
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
-    const char* sgBleGetPeripheralDiscoveredServices(bluetooth_address_t address);
+    const char* sgBleGetDiscoveredServices(bluetooth_address_t address);
 
     /**
      * @brief Returns the list of discovered characteristics for the given peripheral's service.

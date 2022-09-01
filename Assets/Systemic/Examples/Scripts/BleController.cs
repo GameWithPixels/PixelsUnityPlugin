@@ -150,8 +150,8 @@ namespace Systemic.Unity.Examples
             _lastValueText.text = "MTU: " + Central.GetPeripheralMtu(_peripheral);
 
             Debug.Log("Name: " + Central.GetPeripheralName(_peripheral));
-            Debug.Log("Services: " + string.Join(", ", Central.GetPeripheralDiscoveredServices(_peripheral).Select(g => g.ToString())));
-            Debug.Log("Characteristics: " + string.Join(", ", Central.GetPeripheralServiceCharacteristics(_peripheral, PixelUuids.ServiceUuid).Select(g => g.ToString())));
+            Debug.Log("Services: " + string.Join(", ", Central.GetDiscoveredServices(_peripheral).Select(g => g.ToString())));
+            Debug.Log("Characteristics: " + string.Join(", ", Central.GetServiceCharacteristics(_peripheral, PixelUuids.ServiceUuid).Select(g => g.ToString())));
             Debug.Log("Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid));
             Debug.Log("Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid));
 
@@ -320,7 +320,7 @@ namespace Systemic.Unity.Examples
             ++_notificationCounter;
 
             // Log and display message
-            Debug.Log($"Characteristic value change notification #{_notificationCounter} =>" +
+            Debug.Log($"Characteristic value changed notification #{_notificationCounter} =>" +
                 $" {string.Join(" ", data.Select(b => b.ToString("X2")))}");
             DisplayMessage(data);
         }

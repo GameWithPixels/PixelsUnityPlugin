@@ -375,7 +375,7 @@ namespace Systemic.Unity.Pixels
                             var subscribeCharacteristic = PixelUuids.NotifyCharacteristicUuid;
                             var writeCharacteristic = PixelUuids.WriteCharacteristicUuid;
 
-                            var characteristics = Central.GetPeripheralServiceCharacteristics(_peripheral, pixelService);
+                            var characteristics = Central.GetServiceCharacteristics(_peripheral, pixelService);
                             if ((characteristics != null) && characteristics.Contains(subscribeCharacteristic) && characteristics.Contains(writeCharacteristic))
                             {
                                 var subscribeRequest = Central.SubscribeCharacteristicAsync(
@@ -501,6 +501,7 @@ namespace Systemic.Unity.Pixels
                         }
 
                         // Reset connection count
+                        //TODO Central may try to reconnect automatically! (if disconnected on timeout or access denied)
                         _connectionCount = 0;
 
                         connectionState = PixelConnectionState.Available;

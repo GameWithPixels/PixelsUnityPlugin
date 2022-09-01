@@ -56,7 +56,7 @@ namespace Systemic.Unity.BluetoothLE.Test
 
             Assert.IsTrue(Central.GetPeripheralMtu(_peripheral) > NativeInterface.MinMtu, "MTU not changed");
             Assert.IsFalse(string.IsNullOrEmpty(Central.GetPeripheralName(_peripheral)), "Null or empty name");
-            Assert.AreEqual(Central.GetPeripheralDiscoveredServices(_peripheral)?.Length, 4, "Unexpected number of services");
+            Assert.AreEqual(Central.GetDiscoveredServices(_peripheral)?.Length, 4, "Unexpected number of services");
         }
 
         IEnumerator DisconnectAsync()

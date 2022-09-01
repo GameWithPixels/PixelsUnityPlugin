@@ -91,7 +91,7 @@ namespace Systemic.Unity.Examples
             Debug.Log(" * MTU: " + Central.GetPeripheralMtu(peripheral));
 
             // Enumerate characteristics (we could also directly retrieve them by their UUID)
-            var characteristics = Central.GetPeripheralServiceCharacteristics(peripheral, PixelUuids.ServiceUuid);
+            var characteristics = Central.GetServiceCharacteristics(peripheral, PixelUuids.ServiceUuid);
             Guid notifyCharacteristicUuid, writeCharacteristicUuid;
             for (int i = 0; i < characteristics.Length; ++i)
             {
@@ -121,7 +121,7 @@ namespace Systemic.Unity.Examples
             void OnReceivedData(byte[] data)
             {
                 // First byte is the type of message
-                Debug.Log($"Characteristic value change notification =>"
+                Debug.Log($"Characteristic value changed notification =>"
                     + $"{(MessageType)data[0]} {string.Join(" ", data.Skip(1).Select(b => b.ToString("X2")))}");
             }
 
