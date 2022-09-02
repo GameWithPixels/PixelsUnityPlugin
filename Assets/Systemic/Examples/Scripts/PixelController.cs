@@ -91,7 +91,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StopScan()
         {
-            DiceBag.CancelScanning();
+            DiceBag.StopScanning();
         }
 
         /// <summary>

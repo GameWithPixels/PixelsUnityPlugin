@@ -74,6 +74,7 @@ namespace Systemic.Unity.Pixels
         public static void ScanForPixels()
         {
             InternalBehaviour.Create();
+            Central.Initialize();
 
             ++_scanRequestCount;
             Central.PeripheralDiscovered -= OnPeripheralDiscovered; // Prevents from subscribing twice
@@ -84,12 +85,12 @@ namespace Systemic.Unity.Pixels
         /// <summary>
         /// Stops scanning for Pixels when called as many times as <see cref="ScanForPixels"/>.
         /// </summary>
-        /// <param name="forceCancel">If true stops scanning regardless of the number of scan calls that were made.</param>
-        public static void CancelScanning(bool forceCancel = false)
+        /// <param name="forceStop">If true stops scanning regardless of the number of scan calls that were made.</param>
+        public static void StopScanning(bool forceStop = false)
         {
             if (_scanRequestCount > 0)
             {
-                _scanRequestCount = forceCancel ? 0 : Mathf.Max(0, _scanRequestCount - 1);
+                _scanRequestCount = forceStop ? 0 : Mathf.Max(0, _scanRequestCount - 1);
 
                 if (_scanRequestCount == 0)
                 {
