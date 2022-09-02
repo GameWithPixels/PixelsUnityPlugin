@@ -139,7 +139,7 @@ namespace Systemic.Unity.Pixels.Animations
         public byte padding_type { get; set; } // to keep duration 16-bit aligned
         public ushort duration { get; set; } // in ms
 
-        public ushort tracksOffset; // offset into a global buffer of tracks
+        public ushort tracksOffset; // Offset into a global buffer of tracks
         public ushort trackCount;
         public byte flowOrder; // boolean, if true the indices are led indices, not face indices
         public byte paddingOrder;

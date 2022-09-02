@@ -283,7 +283,7 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Asynchronously plays the (only) LEDs animation included in the given data set.
+        /// Asynchronously plays the (single) LEDs animation included in the given data set.
         /// </summary>
         /// <param name="testAnimSet">The data set containing just one animation to play.</param>
         /// <param name="onResult">An optional callback that is called when the operation completes
@@ -311,7 +311,7 @@ namespace Systemic.Unity.Pixels
                 trackCount = testAnimSet.animationBits.getTrackCount(),
                 animationSize = (ushort)Marshal.SizeOf(testAnimSet.animations[0].GetType()),
                 hash = hash,
-        };
+            };
 
             // Debug.Log($"Pixel {name}: Animation Data to be sent:");
             // Debug.Log("palette: " + prepareDie.paletteSize * Marshal.SizeOf<byte>());
