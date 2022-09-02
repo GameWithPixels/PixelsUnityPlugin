@@ -145,12 +145,12 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>StopScan</b> (
 <tr><td colspan="2"><div class="groupHeader">Services operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:a59139b0cfd6f299a3b03c5a621007f37"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a59139b0cfd6f299a3b03c5a621007f37">GetPeripheralDiscoveredServices</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
-<tr class="memdesc:a59139b0cfd6f299a3b03c5a621007f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a59139b0cfd6f299a3b03c5a621007f37">More...</a><br /></td></tr>
-<tr class="separator:a59139b0cfd6f299a3b03c5a621007f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab251bb298f21b1aab3500be5dfe89e67"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab251bb298f21b1aab3500be5dfe89e67">GetPeripheralServiceCharacteristics</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid)</td></tr>
-<tr class="memdesc:ab251bb298f21b1aab3500be5dfe89e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics for the given peripheral's service.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab251bb298f21b1aab3500be5dfe89e67">More...</a><br /></td></tr>
-<tr class="separator:ab251bb298f21b1aab3500be5dfe89e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a251f61c799a2bd18a4856d0c379190ee"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a251f61c799a2bd18a4856d0c379190ee">GetDiscoveredServices</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle)</td></tr>
+<tr class="memdesc:a251f61c799a2bd18a4856d0c379190ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a251f61c799a2bd18a4856d0c379190ee">More...</a><br /></td></tr>
+<tr class="separator:a251f61c799a2bd18a4856d0c379190ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f32d9a4bf1322beba56bd0f3896179d"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a2f32d9a4bf1322beba56bd0f3896179d">GetServiceCharacteristics</a> (<a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a> nativePeripheralHandle, Guid serviceUuid)</td></tr>
+<tr class="memdesc:a2f32d9a4bf1322beba56bd0f3896179d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics for the given peripheral's service.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a2f32d9a4bf1322beba56bd0f3896179d">More...</a><br /></td></tr>
+<tr class="separator:a2f32d9a4bf1322beba56bd0f3896179d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Characteristics operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
@@ -449,8 +449,8 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517
 
 </div>
 </div>
-<a id="a59139b0cfd6f299a3b03c5a621007f37" name="a59139b0cfd6f299a3b03c5a621007f37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59139b0cfd6f299a3b03c5a621007f37">&#9670;&nbsp;</a></span>GetPeripheralDiscoveredServices()</h2>
+<a id="a251f61c799a2bd18a4856d0c379190ee" name="a251f61c799a2bd18a4856d0c379190ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a251f61c799a2bd18a4856d0c379190ee">&#9670;&nbsp;</a></span>GetDiscoveredServices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +459,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralDiscoveredServices </td>
+          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.NativeInterface.GetDiscoveredServices </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
           <td class="paramname"><em>nativePeripheralHandle</em></td><td>)</td>
@@ -557,8 +557,8 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517
 
 </div>
 </div>
-<a id="ab251bb298f21b1aab3500be5dfe89e67" name="ab251bb298f21b1aab3500be5dfe89e67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab251bb298f21b1aab3500be5dfe89e67">&#9670;&nbsp;</a></span>GetPeripheralServiceCharacteristics()</h2>
+<a id="a2f32d9a4bf1322beba56bd0f3896179d" name="a2f32d9a4bf1322beba56bd0f3896179d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f32d9a4bf1322beba56bd0f3896179d">&#9670;&nbsp;</a></span>GetServiceCharacteristics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +567,7 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxMtu</b> = 517
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.NativeInterface.GetPeripheralServiceCharacteristics </td>
+          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.NativeInterface.GetServiceCharacteristics </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html">NativePeripheralHandle</a>&#160;</td>
           <td class="paramname"><em>nativePeripheralHandle</em>, </td>

@@ -1,12 +1,12 @@
 var class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag =
 [
-    [ "CancelScanning", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a3785acaf7a0b97bca3d86faed35ea404", null ],
     [ "ClearAvailablePixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a818febabf9679c94fd4887008a66d819", null ],
     [ "ConnectPixel", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a017444565afada4b32472ffa1586945c", null ],
     [ "ConnectPixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a62dae041353de194bad720e72de599d2", null ],
     [ "DisconnectPixel", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af71a19f6286950588649038ba64bb7fc", null ],
     [ "ResetErrors", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#af8441eef053d008668091a1b94a731a9", null ],
     [ "ScanForPixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a224e4d13b5b223ec4230afcf5b0de8ac", null ],
+    [ "StopScanning", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a539deef30bd8edcd556eabb50aef3fba", null ],
     [ "SubscribeToPlayAudioClipRequest", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a7ebc49cddb8ca8ea32c017dcd90f7a33", null ],
     [ "SubscribeToUserNotifyRequest", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#aadeec82b8f98a43f839a4be7d17c69ad", null ],
     [ "AllPixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a1cfd719b583c1a88436dcef95fd6ac0b", null ],

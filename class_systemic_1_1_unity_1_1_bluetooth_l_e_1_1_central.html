@@ -135,12 +135,12 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>StopScan</b> (
 <tr><td colspan="2"><div class="groupHeader">Services operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:afc47db3236c44e2fc211d3a5ec73980e"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#afc47db3236c44e2fc211d3a5ec73980e">GetPeripheralDiscoveredServices</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral)</td></tr>
-<tr class="memdesc:afc47db3236c44e2fc211d3a5ec73980e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#afc47db3236c44e2fc211d3a5ec73980e">More...</a><br /></td></tr>
-<tr class="separator:afc47db3236c44e2fc211d3a5ec73980e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fb25d1256d3712f3c9acae03a893cc8"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a6fb25d1256d3712f3c9acae03a893cc8">GetPeripheralServiceCharacteristics</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral, Guid serviceUuid)</td></tr>
-<tr class="memdesc:a6fb25d1256d3712f3c9acae03a893cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics of the given peripheral's service.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a6fb25d1256d3712f3c9acae03a893cc8">More...</a><br /></td></tr>
-<tr class="separator:a6fb25d1256d3712f3c9acae03a893cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad232e7e6e054019ef2375fdf2248c42e"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ad232e7e6e054019ef2375fdf2248c42e">GetDiscoveredServices</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral)</td></tr>
+<tr class="memdesc:ad232e7e6e054019ef2375fdf2248c42e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ad232e7e6e054019ef2375fdf2248c42e">More...</a><br /></td></tr>
+<tr class="separator:ad232e7e6e054019ef2375fdf2248c42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb580175806e4d0fb022320c54d02996"><td class="memItemLeft" align="right" valign="top">static Guid[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#acb580175806e4d0fb022320c54d02996">GetServiceCharacteristics</a> (<a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a> peripheral, Guid serviceUuid)</td></tr>
+<tr class="memdesc:acb580175806e4d0fb022320c54d02996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics of the given peripheral's service.  <a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#acb580175806e4d0fb022320c54d02996">More...</a><br /></td></tr>
+<tr class="separator:acb580175806e4d0fb022320c54d02996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Characteristics operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
@@ -239,11 +239,11 @@ static Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e
 <div class="line">        peripheral, aServiceUuid, aCharacteristicUuid, anArrayOfBytes);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html">Systemic.Unity.BluetoothLE.Central</a></div><div class="ttdoc">A static class with methods for discovering, connecting to, and interacting with Bluetooth Low Energy...</div><div class="ttdef"><b>Definition:</b> Central.cs:89</div></div>
-<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_a3febd147d90c0a65ef2ed839bf3c5e88"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a3febd147d90c0a65ef2ed839bf3c5e88">Systemic.Unity.BluetoothLE.Central.StopScan</a></div><div class="ttdeci">static void StopScan()</div><div class="ttdoc">Stops an on-going BLE scan.</div><div class="ttdef"><b>Definition:</b> Central.cs:291</div></div>
+<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_a3febd147d90c0a65ef2ed839bf3c5e88"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a3febd147d90c0a65ef2ed839bf3c5e88">Systemic.Unity.BluetoothLE.Central.StopScan</a></div><div class="ttdeci">static void StopScan()</div><div class="ttdoc">Stops an on-going BLE scan.</div><div class="ttdef"><b>Definition:</b> Central.cs:293</div></div>
 <div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_a4041dfa57b774e48b190f110389ba8ee"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a4041dfa57b774e48b190f110389ba8ee">Systemic.Unity.BluetoothLE.Central.ScannedPeripherals</a></div><div class="ttdeci">static ScannedPeripheral[] ScannedPeripherals</div><div class="ttdoc">Gets the list of all scanned peripherals since Initialize was called. The list is cleared on Shutdown...</div><div class="ttdef"><b>Definition:</b> Central.cs:135</div></div>
-<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_a51b5f348e89adca677fd9c53f19334ed"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a51b5f348e89adca677fd9c53f19334ed">Systemic.Unity.BluetoothLE.Central.ScanForPeripheralsWithServices</a></div><div class="ttdeci">static bool ScanForPeripheralsWithServices(IEnumerable&lt; Guid &gt; serviceUuids=null)</div><div class="ttdoc">Starts scanning for BLE peripherals advertising the given list of services.</div><div class="ttdef"><b>Definition:</b> Central.cs:241</div></div>
-<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_abeb433e3dd13e6a7f4c11ee9abd39b6e"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abeb433e3dd13e6a7f4c11ee9abd39b6e">Systemic.Unity.BluetoothLE.Central.ConnectPeripheralAsync</a></div><div class="ttdeci">static RequestEnumerator ConnectPeripheralAsync(ScannedPeripheral peripheral, Action&lt; ScannedPeripheral, bool &gt; onConnectionEvent, float timeoutSec=0)</div><div class="ttdoc">Asynchronously connects to a discovered peripheral.</div><div class="ttdef"><b>Definition:</b> Central.cs:335</div></div>
-<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_af2ea6540c98e39b17ab596311fde099a"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#af2ea6540c98e39b17ab596311fde099a">Systemic.Unity.BluetoothLE.Central.WriteCharacteristicAsync</a></div><div class="ttdeci">static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec=DefaultRequestTimeout)</div><div class="ttdoc">Asynchronously writes to the specified service's characteristic for the given peripheral and waits fo...</div><div class="ttdef"><b>Definition:</b> Central.cs:694</div></div>
+<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_a51b5f348e89adca677fd9c53f19334ed"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a51b5f348e89adca677fd9c53f19334ed">Systemic.Unity.BluetoothLE.Central.ScanForPeripheralsWithServices</a></div><div class="ttdeci">static bool ScanForPeripheralsWithServices(IEnumerable&lt; Guid &gt; serviceUuids=null)</div><div class="ttdoc">Starts scanning for BLE peripherals advertising the given list of services.</div><div class="ttdef"><b>Definition:</b> Central.cs:243</div></div>
+<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_abeb433e3dd13e6a7f4c11ee9abd39b6e"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abeb433e3dd13e6a7f4c11ee9abd39b6e">Systemic.Unity.BluetoothLE.Central.ConnectPeripheralAsync</a></div><div class="ttdeci">static RequestEnumerator ConnectPeripheralAsync(ScannedPeripheral peripheral, Action&lt; ScannedPeripheral, bool &gt; onConnectionEvent, float timeoutSec=0)</div><div class="ttdoc">Asynchronously connects to a discovered peripheral.</div><div class="ttdef"><b>Definition:</b> Central.cs:337</div></div>
+<div class="ttc" id="aclass_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central_html_af2ea6540c98e39b17ab596311fde099a"><div class="ttname"><a href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#af2ea6540c98e39b17ab596311fde099a">Systemic.Unity.BluetoothLE.Central.WriteCharacteristicAsync</a></div><div class="ttdeci">static RequestEnumerator WriteCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, byte[] data, float timeoutSec=DefaultRequestTimeout)</div><div class="ttdoc">Asynchronously writes to the specified service's characteristic for the given peripheral and waits fo...</div><div class="ttdef"><b>Definition:</b> Central.cs:696</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="abeb433e3dd13e6a7f4c11ee9abd39b6e" name="abeb433e3dd13e6a7f4c11ee9abd39b6e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abeb433e3dd13e6a7f4c11ee9abd39b6e">&#9670;&nbsp;</a></span>ConnectPeripheralAsync()</h2>
@@ -404,8 +404,8 @@ static Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e
 
 </div>
 </div>
-<a id="afc47db3236c44e2fc211d3a5ec73980e" name="afc47db3236c44e2fc211d3a5ec73980e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc47db3236c44e2fc211d3a5ec73980e">&#9670;&nbsp;</a></span>GetPeripheralDiscoveredServices()</h2>
+<a id="ad232e7e6e054019ef2375fdf2248c42e" name="ad232e7e6e054019ef2375fdf2248c42e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad232e7e6e054019ef2375fdf2248c42e">&#9670;&nbsp;</a></span>GetDiscoveredServices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +414,7 @@ static Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.Central.GetPeripheralDiscoveredServices </td>
+          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.Central.GetDiscoveredServices </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a>&#160;</td>
           <td class="paramname"><em>peripheral</em></td><td>)</td>
@@ -513,8 +513,8 @@ static Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e
 
 </div>
 </div>
-<a id="a6fb25d1256d3712f3c9acae03a893cc8" name="a6fb25d1256d3712f3c9acae03a893cc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fb25d1256d3712f3c9acae03a893cc8">&#9670;&nbsp;</a></span>GetPeripheralServiceCharacteristics()</h2>
+<a id="acb580175806e4d0fb022320c54d02996" name="acb580175806e4d0fb022320c54d02996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb580175806e4d0fb022320c54d02996">&#9670;&nbsp;</a></span>GetServiceCharacteristics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -523,7 +523,7 @@ static Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.Central.GetPeripheralServiceCharacteristics </td>
+          <td class="memname">static Guid[] Systemic.Unity.BluetoothLE.Central.GetServiceCharacteristics </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html">ScannedPeripheral</a>&#160;</td>
           <td class="paramname"><em>peripheral</em>, </td>
