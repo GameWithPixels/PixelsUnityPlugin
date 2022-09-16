@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "Systemic.Unity.Pixels.Messages.AccelFrame", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_accel_frame.html", null ],
+    [ "Systemic.Unity.Pixels.Messages.AccelerationFrame", "struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_acceleration_frame.html", null ],
     [ "Systemic::BluetoothLE::AdvertisementData", "class_systemic_1_1_bluetooth_l_e_1_1_advertisement_data.html", null ],
     [ "Systemic.Unity.Pixels.Animations.DataSet.AnimationBits", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set_1_1_animation_bits.html", null ],
     [ "Systemic.Unity.Pixels.Animations.AnimationInstance", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance.html", [
@@ -74,7 +74,6 @@ var hierarchy =
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],
     [ "Systemic.Unity.Pixels.Messages.IPixelMessage", "interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html", [
-      [ "Systemic.Unity.Pixels.Messages.AccelerationState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_acceleration_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.AttractMode", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html", null ],
       [ "Systemic.Unity.Pixels.Messages.BatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html", null ],
       [ "Systemic.Unity.Pixels.Messages.Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", null ],
@@ -89,6 +88,7 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.DebugLog", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_debug_log.html", null ],
       [ "Systemic.Unity.Pixels.Messages.DefaultAnimationSetColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_default_animation_set_color.html", null ],
       [ "Systemic.Unity.Pixels.Messages.IAmADie", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.LedLoopback", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_led_loopback.html", null ],
       [ "Systemic.Unity.Pixels.Messages.NotifyUser", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user.html", null ],
       [ "Systemic.Unity.Pixels.Messages.NotifyUserAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.PlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation.html", null ],
@@ -109,19 +109,19 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.RollState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_roll_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.Rssi", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_rssi.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetAllLEDsToColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_all_l_e_ds_to_color.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.SetBattleState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_battle_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetCurrentBehavior", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_current_behavior.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetCurrentBehaviorAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_current_behavior_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetDesignAndColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_design_and_color.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetDesignAndColorAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_design_and_color_ack.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.SetLEDAnimState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_l_e_d_anim_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetName", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name.html", null ],
       [ "Systemic.Unity.Pixels.Messages.SetNameAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name_ack.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.SetStandardState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_standard_state.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.SetTopLevelState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_top_level_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.StopAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.Telemetry", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_telemetry.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TestBulkReceive", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_bulk_receive.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TestBulkSend", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_bulk_send.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TestHardware", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_hardware.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.TestLedLoopback", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_led_loopback.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TransferAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TransferAnimationSetAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.TransferAnimationSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set_finished.html", null ],

@@ -55,5 +55,5 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "PlayAudioClipCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a598468b92ef44d1df516f77a951f4747", null ],
     [ "RollStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1", null ],
     [ "RssiChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6", null ],
-    [ "TelemetryEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a8500d56af4d9bdf707f5f1827045d47a", null ]
+    [ "TelemetryEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae55833e8329c8b67e0feeac4d2f8e000", null ]
 ];
