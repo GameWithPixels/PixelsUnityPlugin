@@ -76,7 +76,7 @@ namespace Systemic::BluetoothLE
         Peripheral(bluetooth_address_t bluetoothAddress, std::function<void(ConnectionEvent, ConnectionEventReason)> onConnectionEvent)
             : _address{ bluetoothAddress }, _onConnectionEvent{ onConnectionEvent }
         {
-            assert(bluetoothAddress); //TODO check args
+            assert(bluetoothAddress); //TODO check arguments
             assert(onConnectionEvent);
             _connectionEventsQueue.reserve(16);
         }

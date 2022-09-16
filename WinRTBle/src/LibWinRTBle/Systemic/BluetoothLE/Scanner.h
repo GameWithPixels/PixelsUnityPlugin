@@ -172,7 +172,7 @@ namespace Systemic::BluetoothLE
                 }
             }
 
-            // Get tx power
+            // Get TX power
             int txPower = 0;
             if (args.TransmitPowerLevelInDBm())
             {
