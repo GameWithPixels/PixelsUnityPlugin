@@ -367,7 +367,7 @@ namespace Systemic.Unity.Pixels
             // Setup delegates for face and telemetry
             _messageHandlers.Add(MessageType.IAmADie, msg => ProcessIAmADieMessage((IAmADie)msg));
             _messageHandlers.Add(MessageType.RollState, msg => ProcessRollStateMessage((RollState)msg));
-            _messageHandlers.Add(MessageType.Telemetry, msg => ProcessTelemetryMessage((AccelerationState)msg));
+            _messageHandlers.Add(MessageType.Telemetry, msg => ProcessTelemetryMessage((Telemetry)msg));
             _messageHandlers.Add(MessageType.DebugLog, msg => ProcessDebugLogMessage((DebugLog)msg));
             _messageHandlers.Add(MessageType.NotifyUser, msg => ProcessNotifyUserMessage((NotifyUser)msg));
             _messageHandlers.Add(MessageType.PlaySound, msg => ProcessPlayAudioClip((PlaySound)msg));
@@ -408,10 +408,10 @@ namespace Systemic.Unity.Pixels
                 }
             }
 
-            void ProcessTelemetryMessage(AccelerationState message)
+            void ProcessTelemetryMessage(Telemetry message)
             {
                 // Notify
-                _notifyTelemetry?.Invoke(this, message.data);
+                _notifyTelemetry?.Invoke(this, message.accelFrame);
             }
 
             void ProcessDebugLogMessage(DebugLog message)

@@ -379,7 +379,7 @@ namespace Systemic.Unity.BluetoothLE
                 {
                     Debug.Assert(pInf.NativeHandle.IsValid); // Already checked by RequestEnumerator
 
-                    Debug.Log($"[BLE {pInf.Name}] Connecting with timeout of {timeoutSec}s...");
+                    Debug.Log($"[BLE {pInf.Name}] Connecting with {(timeoutSec == 0 ? "no timeout" : $"timeout of {timeoutSec}s")}...");
                     pInf.ConnStatusChangedCallback = onConnectionEvent;
                     Connect(pInf, onResult);
 
