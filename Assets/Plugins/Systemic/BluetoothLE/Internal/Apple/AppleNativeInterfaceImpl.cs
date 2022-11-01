@@ -126,7 +126,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
         private static extern string sgBleGetDiscoveredServices(string peripheralId);
 
         [DllImport(_libName)]
-        private static extern string sgBleGetPeripheralServiceCharacteristics(string peripheralId, string serviceUuid);
+        private static extern string sgBleGetServiceCharacteristics(string peripheralId, string serviceUuid);
 
         [DllImport(_libName)]
         private static extern ulong sgBleGetCharacteristicProperties(string peripheralId, string serviceUuid, string characteristicUuid, uint instanceIndex);
@@ -440,7 +440,7 @@ namespace Systemic.Unity.BluetoothLE.Internal.Apple
 
         public string GetServiceCharacteristics(INativePeripheralHandleImpl peripheralHandle, string serviceUuid)
         {
-            return sgBleGetPeripheralServiceCharacteristics(GetPeripheralId(peripheralHandle), serviceUuid);
+            return sgBleGetServiceCharacteristics(GetPeripheralId(peripheralHandle), serviceUuid);
         }
 
         public CharacteristicProperties GetCharacteristicProperties(INativePeripheralHandleImpl peripheralHandle, string serviceUuid, string characteristicUuid, uint instanceIndex)

@@ -479,7 +479,7 @@ const char* sgBleGetDiscoveredServices(bluetooth_address_t address)
 // returns a comma separated list of UUIDs
 // caller should free string with CoTaskMemFree() or sgFreeString() (.NET marshaling takes care of it)
 //TODO return BleRequestStatus as out parameter
-const char* sgBleGetPeripheralServiceCharacteristics(
+const char* sgBleGetServiceCharacteristics(
     bluetooth_address_t address,
     const char* serviceUuid)
 {
@@ -519,7 +519,7 @@ int sgBleGetCharacteristicProperties(
     );
 }
 
-void sgBleReadCharacteristicValue(
+void sgBleReadCharacteristic(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,
@@ -551,7 +551,7 @@ void sgBleReadCharacteristicValue(
     }
 }
 
-void sgBleWriteCharacteristicValue(
+void sgBleWriteCharacteristic(
     bluetooth_address_t address,
     const char* serviceUuid,
     const char* characteristicUuid,

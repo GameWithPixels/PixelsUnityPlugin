@@ -239,7 +239,7 @@ extern "C"
      *         .NET marshaling automatically takes care of it.
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
-    const char* sgBleGetPeripheralServiceCharacteristics(
+    const char* sgBleGetServiceCharacteristics(
         bluetooth_address_t address,
         const char* serviceUuid);
 
@@ -283,7 +283,7 @@ extern "C"
      * @return
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
-    void sgBleReadCharacteristicValue(
+    void sgBleReadCharacteristic(
         bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,
@@ -308,7 +308,7 @@ extern "C"
      * @return
      */
     /** @cond */ DLL_DECLSPEC /** @endcond */
-    void sgBleWriteCharacteristicValue(
+    void sgBleWriteCharacteristic(
         bluetooth_address_t address,
         const char* serviceUuid,
         const char* characteristicUuid,

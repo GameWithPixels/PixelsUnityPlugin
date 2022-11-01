@@ -318,8 +318,8 @@ const char *sgBleGetDiscoveredServices(peripheral_id_t peripheralId)
  * @remark The caller should free the returned string with a call to free(). <br>
  *         Unity marshaling takes care of it.
  */
-const char *sgBleGetPeripheralServiceCharacteristics(peripheral_id_t peripheralId,
-                                                     const char* serviceUuid)
+const char *sgBleGetServiceCharacteristics(peripheral_id_t peripheralId,
+                                           const char* serviceUuid)
 {
     CBService *service = getService(peripheralId, serviceUuid);
     return allocateCStr(toUuidsString(service.characteristics));
