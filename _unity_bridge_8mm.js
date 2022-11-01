@@ -7,7 +7,7 @@ var _unity_bridge_8mm =
     [ "sgBleGetDiscoveredServices", "_unity_bridge_8mm.html#ac8238862ad822ecb50f53bd4a73214f5", null ],
     [ "sgBleGetPeripheralMtu", "_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d", null ],
     [ "sgBleGetPeripheralName", "_unity_bridge_8mm.html#a2bcbab6c9985e9c1c29acd5c20331920", null ],
-    [ "sgBleGetPeripheralServiceCharacteristics", "_unity_bridge_8mm.html#a34ac2b39b937cf1e77f1625b107e341f", null ],
+    [ "sgBleGetServiceCharacteristics", "_unity_bridge_8mm.html#ad16f1e63c407a3ce77fa9e6067f8fe21", null ],
     [ "sgBleInitialize", "_unity_bridge_8mm.html#adf548044c2bd8f3f59116ddae3747ed6", null ],
     [ "sgBleReadCharacteristic", "_unity_bridge_8mm.html#a36f387bb746b0da83fc5938635a5f165", null ],
     [ "sgBleReadPeripheralRssi", "_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923", null ],

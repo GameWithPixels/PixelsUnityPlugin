@@ -19,14 +19,14 @@ var cble_8h =
     [ "sgBleGetDiscoveredServices", "cble_8h.html#ad2ef0137f5786adf00e2dfd91aca9796", null ],
     [ "sgBleGetPeripheralMtu", "cble_8h.html#a576c6f3ca318da3e0f0cb11170b15545", null ],
     [ "sgBleGetPeripheralName", "cble_8h.html#ab735777bd1f76d89f6fc4491e85e8cb2", null ],
-    [ "sgBleGetPeripheralServiceCharacteristics", "cble_8h.html#a6e5fdc2dcb6ca45b811c2770e2a47040", null ],
+    [ "sgBleGetServiceCharacteristics", "cble_8h.html#a24f8aaadc844f797717f1f774b9734a1", null ],
     [ "sgBleInitialize", "cble_8h.html#a8420fd828a0fab57108e22105ce04ccc", null ],
-    [ "sgBleReadCharacteristicValue", "cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9", null ],
+    [ "sgBleReadCharacteristic", "cble_8h.html#a610b2014d5c4e502ed5375013b1116a8", null ],
     [ "sgBleReleasePeripheral", "cble_8h.html#a8d4d451f1e1c969c4410f4ed78bd712b", null ],
     [ "sgBleSetNotifyCharacteristic", "cble_8h.html#a53f7558d2820f45a9f50116db968ebb5", null ],
     [ "sgBleShutdown", "cble_8h.html#aec51364ffaa0ef8838c1a8dc2ec6ac3c", null ],
     [ "sgBleStartScan", "cble_8h.html#a028d831acb047ffec9833afa49d2f1a7", null ],
     [ "sgBleStopScan", "cble_8h.html#aabaa08ebedf2b39063535411582a75a7", null ],
-    [ "sgBleWriteCharacteristicValue", "cble_8h.html#aba81473698ab88c4fdafa410b67c5e43", null ],
+    [ "sgBleWriteCharacteristic", "cble_8h.html#a422aa0b54d38f1b1ae3634b98e5ba062", null ],
     [ "sgFreeString", "cble_8h.html#a8dfd54abea1e087f5ac51ac977701579", null ]
 ];

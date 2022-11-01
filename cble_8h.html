@@ -203,21 +203,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 <tr class="memitem:ad2ef0137f5786adf00e2dfd91aca9796"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#ad2ef0137f5786adf00e2dfd91aca9796">sgBleGetDiscoveredServices</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address)</td></tr>
 <tr class="memdesc:ad2ef0137f5786adf00e2dfd91aca9796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered services for the given peripheral.  <a href="cble_8h.html#ad2ef0137f5786adf00e2dfd91aca9796">More...</a><br /></td></tr>
 <tr class="separator:ad2ef0137f5786adf00e2dfd91aca9796"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e5fdc2dcb6ca45b811c2770e2a47040"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a6e5fdc2dcb6ca45b811c2770e2a47040">sgBleGetPeripheralServiceCharacteristics</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid)</td></tr>
-<tr class="memdesc:a6e5fdc2dcb6ca45b811c2770e2a47040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered characteristics for the given peripheral's service.  <a href="cble_8h.html#a6e5fdc2dcb6ca45b811c2770e2a47040">More...</a><br /></td></tr>
-<tr class="separator:a6e5fdc2dcb6ca45b811c2770e2a47040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f8aaadc844f797717f1f774b9734a1"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a24f8aaadc844f797717f1f774b9734a1">sgBleGetServiceCharacteristics</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid)</td></tr>
+<tr class="memdesc:a24f8aaadc844f797717f1f774b9734a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the list of discovered characteristics for the given peripheral's service.  <a href="cble_8h.html#a24f8aaadc844f797717f1f774b9734a1">More...</a><br /></td></tr>
+<tr class="separator:a24f8aaadc844f797717f1f774b9734a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Characteristics operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
 <tr class="memitem:a91d3413c2c17656b3eee6ddc95e4db26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a91d3413c2c17656b3eee6ddc95e4db26">sgBleGetCharacteristicProperties</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex)</td></tr>
 <tr class="memdesc:a91d3413c2c17656b3eee6ddc95e4db26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the standard BLE properties of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a91d3413c2c17656b3eee6ddc95e4db26">More...</a><br /></td></tr>
 <tr class="separator:a91d3413c2c17656b3eee6ddc95e4db26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9">sgBleReadCharacteristicValue</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b">ValueReadCallback</a> onValueRead)</td></tr>
-<tr class="memdesc:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#aabb2f3663981aab719e9c3fbe9bc52a9">More...</a><br /></td></tr>
-<tr class="separator:aabb2f3663981aab719e9c3fbe9bc52a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba81473698ab88c4fdafa410b67c5e43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#aba81473698ab88c4fdafa410b67c5e43">sgBleWriteCharacteristicValue</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, const void *data, const size_t length, bool withoutResponse, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
-<tr class="memdesc:aba81473698ab88c4fdafa410b67c5e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to write to the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#aba81473698ab88c4fdafa410b67c5e43">More...</a><br /></td></tr>
-<tr class="separator:aba81473698ab88c4fdafa410b67c5e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a610b2014d5c4e502ed5375013b1116a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a610b2014d5c4e502ed5375013b1116a8">sgBleReadCharacteristic</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b">ValueReadCallback</a> onValueRead)</td></tr>
+<tr class="memdesc:a610b2014d5c4e502ed5375013b1116a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a610b2014d5c4e502ed5375013b1116a8">More...</a><br /></td></tr>
+<tr class="separator:a610b2014d5c4e502ed5375013b1116a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422aa0b54d38f1b1ae3634b98e5ba062"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a422aa0b54d38f1b1ae3634b98e5ba062">sgBleWriteCharacteristic</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, const void *data, const size_t length, bool withoutResponse, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
+<tr class="memdesc:a422aa0b54d38f1b1ae3634b98e5ba062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to write to the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a422aa0b54d38f1b1ae3634b98e5ba062">More...</a><br /></td></tr>
+<tr class="separator:a422aa0b54d38f1b1ae3634b98e5ba062"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f7558d2820f45a9f50116db968ebb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cble_8h.html#a53f7558d2820f45a9f50116db968ebb5">sgBleSetNotifyCharacteristic</a> (<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> address, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="cble_8h.html#aed859a187af809568c832830073490f7">ValueChangedCallback</a> onValueChanged, <a class="el" href="cble_8h.html#a23372fa72103a91cf3d7a0793e0b49a3">RequestStatusCallback</a> onRequestStatus)</td></tr>
 <tr class="memdesc:a53f7558d2820f45a9f50116db968ebb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes or unsubscribes for value changes of the specified service's characteristic for the given peripheral.  <a href="cble_8h.html#a53f7558d2820f45a9f50116db968ebb5">More...</a><br /></td></tr>
 <tr class="separator:a53f7558d2820f45a9f50116db968ebb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -501,14 +501,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 
 </div>
 </div>
-<a id="a6e5fdc2dcb6ca45b811c2770e2a47040" name="a6e5fdc2dcb6ca45b811c2770e2a47040"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e5fdc2dcb6ca45b811c2770e2a47040">&#9670;&nbsp;</a></span>sgBleGetPeripheralServiceCharacteristics()</h2>
+<a id="a24f8aaadc844f797717f1f774b9734a1" name="a24f8aaadc844f797717f1f774b9734a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f8aaadc844f797717f1f774b9734a1">&#9670;&nbsp;</a></span>sgBleGetServiceCharacteristics()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char * sgBleGetPeripheralServiceCharacteristics </td>
+          <td class="memname">const char * sgBleGetServiceCharacteristics </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td>
           <td class="paramname"><em>address</em>, </td>
@@ -580,14 +580,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 
 </div>
 </div>
-<a id="aabb2f3663981aab719e9c3fbe9bc52a9" name="aabb2f3663981aab719e9c3fbe9bc52a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabb2f3663981aab719e9c3fbe9bc52a9">&#9670;&nbsp;</a></span>sgBleReadCharacteristicValue()</h2>
+<a id="a610b2014d5c4e502ed5375013b1116a8" name="a610b2014d5c4e502ed5375013b1116a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a610b2014d5c4e502ed5375013b1116a8">&#9670;&nbsp;</a></span>sgBleReadCharacteristic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sgBleReadCharacteristicValue </td>
+          <td class="memname">void sgBleReadCharacteristic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td>
           <td class="paramname"><em>address</em>, </td>
@@ -793,14 +793,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 
 </div>
 </div>
-<a id="aba81473698ab88c4fdafa410b67c5e43" name="aba81473698ab88c4fdafa410b67c5e43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba81473698ab88c4fdafa410b67c5e43">&#9670;&nbsp;</a></span>sgBleWriteCharacteristicValue()</h2>
+<a id="a422aa0b54d38f1b1ae3634b98e5ba062" name="a422aa0b54d38f1b1ae3634b98e5ba062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a422aa0b54d38f1b1ae3634b98e5ba062">&#9670;&nbsp;</a></span>sgBleWriteCharacteristic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sgBleWriteCharacteristicValue </td>
+          <td class="memname">void sgBleWriteCharacteristic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a>&#160;</td>
           <td class="paramname"><em>address</em>, </td>
