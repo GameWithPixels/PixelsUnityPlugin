@@ -156,8 +156,6 @@ namespace Systemic.Unity.Pixels.Animations
     public class AnimationInstanceKeyframed
         : AnimationInstance
     {
-        public uint specialColorPayload; // meaning varies
-
         public AnimationInstanceKeyframed(AnimationKeyframed preset, DataSet.AnimationBits bits)
             : base(preset, bits)
         {

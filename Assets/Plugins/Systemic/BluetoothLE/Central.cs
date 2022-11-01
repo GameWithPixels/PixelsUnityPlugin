@@ -259,7 +259,7 @@ namespace Systemic.Unity.BluetoothLE
             {
                 EnqueueAction(() =>
                 {
-                    Debug.Log($"[BLE:{scannedPeripheral.Name}] Peripheral discovered with address={scannedPeripheral.BluetoothAddress}, RSSI={scannedPeripheral.Rssi})");
+                    Debug.Log($"[BLE:{scannedPeripheral.Name}] Peripheral discovered with name={scannedPeripheral.Name}, RSSI={scannedPeripheral.Rssi}");
 
                     // Keep track of discovered peripherals
                     if (!_peripheralsInfo.TryGetValue(scannedPeripheral.SystemId, out PeripheralInfo pInf))
@@ -379,7 +379,7 @@ namespace Systemic.Unity.BluetoothLE
                 {
                     Debug.Assert(pInf.NativeHandle.IsValid); // Already checked by RequestEnumerator
 
-                    Debug.Log($"[BLE {pInf.Name}] Connecting with {(timeoutSec == 0 ? "no timeout" : $"timeout of {timeoutSec}s")}...");
+                    Debug.Log($"[BLE {pInf.Name}] Connecting with {(timeoutSec == 0 ? "no timeout" : $"timeout of {timeoutSec}s")}, last known state is {pInf.State}");
                     pInf.ConnStatusChangedCallback = onConnectionEvent;
                     Connect(pInf, onResult);
 
@@ -506,7 +506,7 @@ namespace Systemic.Unity.BluetoothLE
             var nativeHandle = pInf.NativeHandle;
             pInf.NativeHandle = new NativePeripheralHandle();
 
-            Debug.Log($"[BLE {pInf.Name}] Disconnecting{(nativeHandle.IsValid ? "" : " invalid peripheral")}");
+            Debug.Log($"[BLE {pInf.Name}] Disconnecting{(nativeHandle.IsValid ? "" : " invalid peripheral")}, last known state is {pInf.State}");
 
             return new Internal.DisconnectRequestEnumerator(nativeHandle);
         }
