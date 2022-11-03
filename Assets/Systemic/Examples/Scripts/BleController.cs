@@ -244,11 +244,10 @@ namespace Systemic.Unity.Examples
                 // Keep peripheral and get information about it
                 _peripheral = myPeripheral;
                 Debug.Log("Got peripheral");
-                GetInfo();
             }
             else
             {
-                Debug.LogError("Failed to connect");
+                Debug.LogError("Failed to connect: " + request.Error);
             }
         }
 
@@ -260,9 +259,13 @@ namespace Systemic.Unity.Examples
             {
                 Debug.Log("RSSI = " + request.Value);
             }
-            else
+            else if (request.RequestStatus == RequestStatus.NotSupported)
             {
-                Debug.LogError("Failed to read RSSI");
+                Debug.LogError("Reading RSSI not available on this OS: " + SystemInfo.operatingSystem);
+            }
+            else if (request.RequestStatus == RequestStatus.NotSupported)
+            {
+                Debug.LogError("Failed to read RSSI: " + request.Error);
             }
         }
 
@@ -299,7 +302,7 @@ namespace Systemic.Unity.Examples
             }
             else
             {
-                Debug.LogError("Failed to read characteristic");
+                Debug.LogError("Failed to read characteristic: " + request.Error);
             }
         }
 
