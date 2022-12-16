@@ -45,8 +45,6 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public Pixel Pixel { get; private set; }
 
-        Coroutine _refreshInfoCoroutine;
-
         #region Unity messages
 
         // Start is called before the first frame update
@@ -63,7 +61,7 @@ namespace Systemic.Unity.Examples
                 _connectionState.text = Pixel.connectionState.ToString();
                 _name.text = Pixel.name;
                 int battery = Mathf.RoundToInt(100 * Pixel.batteryLevel);
-                string charging = Pixel.isCharging.HasValue ? (Pixel.isCharging.HasValue ? "charging" : "not charging") : "";
+                string charging = Pixel.isCharging ? "charging" : "not charging";
                 _battery.text = $"{battery}%, {charging}";
                 _rssi.text = Pixel.rssi.ToString();
                 _version.text = Pixel.buildDateTime.ToString();
@@ -103,22 +101,8 @@ namespace Systemic.Unity.Examples
                 {
                     if (newState == PixelConnectionState.Ready)
                     {
-                        Debug.Assert(_refreshInfoCoroutine == null);
-                        _refreshInfoCoroutine = StartCoroutine(RefreshRssiAndBattery());
-                        IEnumerator RefreshRssiAndBattery()
-                        {
-                            while (true)
-                            {
-                                yield return pixel.UpdateRssiAsync();
-                                yield return pixel.UpdateBatteryLevelAsync();
-                                yield return new WaitForSecondsRealtime(5);
-                            }
-                        }
-                    }
-                    else if (_refreshInfoCoroutine != null)
-                    {
-                        StopCoroutine(_refreshInfoCoroutine);
-                        _refreshInfoCoroutine = null;
+                        // Automatically update RSSI
+                        pixel.ReportRssi(true);
                     }
                 };
             }
