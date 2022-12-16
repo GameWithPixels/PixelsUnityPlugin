@@ -8,17 +8,17 @@ namespace Systemic.Unity.Pixels
     {
         Unknown = 0,
         Generic,
-        V3_Orange,
-        V4_BlackClear,
-        V4_WhiteClear,
-        V5_Grey,
-        V5_White,
-        V5_Black,
-        V5_Gold,
-        Onyx_Back,
-        Hematite_Grey,
-        Midnight_Galaxy,
-        Aurora_Sky
+        V3Orange,
+        V4BlackClear,
+        V4WhiteClear,
+        V5Grey,
+        V5White,
+        V5Black,
+        V5Gold,
+        OnyxBlack,
+        HematiteGrey,
+        MidnightGalaxy,
+        AuroraSky
     }
 
     /// <summary>
