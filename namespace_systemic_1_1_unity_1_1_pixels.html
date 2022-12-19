@@ -182,9 +182,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aebe8e47010eb4d4f2ddc51f6e03327b6"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6">RssiChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int rssi)</td></tr>
 <tr class="memdesc:aebe8e47010eb4d4f2ddc51f6e03327b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> RSSI changes.   <a href="namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6">More...</a><br /></td></tr>
 <tr class="separator:aebe8e47010eb4d4f2ddc51f6e03327b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcfb272833c92b64db8d059a2512d321"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#adcfb272833c92b64db8d059a2512d321">TemperatureChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, float temperature)</td></tr>
-<tr class="memdesc:adcfb272833c92b64db8d059a2512d321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> temperature changes.   <a href="namespace_systemic_1_1_unity_1_1_pixels.html#adcfb272833c92b64db8d059a2512d321">More...</a><br /></td></tr>
-<tr class="separator:adcfb272833c92b64db8d059a2512d321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdaea3c7f1fd0cf8132046caa4208118"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdaea3c7f1fd0cf8132046caa4208118">TemperatureChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, float mcuTemperature, float batteryTemperature)</td></tr>
+<tr class="memdesc:afdaea3c7f1fd0cf8132046caa4208118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> temperature changes.   <a href="namespace_systemic_1_1_unity_1_1_pixels.html#afdaea3c7f1fd0cf8132046caa4208118">More...</a><br /></td></tr>
+<tr class="separator:afdaea3c7f1fd0cf8132046caa4208118"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae55833e8329c8b67e0feeac4d2f8e000"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ae55833e8329c8b67e0feeac4d2f8e000">TelemetryEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_acceleration_frame.html">AccelerationFrame</a> frame)</td></tr>
 <tr class="memdesc:ae55833e8329c8b67e0feeac4d2f8e000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> telemetry events.   <a href="namespace_systemic_1_1_unity_1_1_pixels.html#ae55833e8329c8b67e0feeac4d2f8e000">More...</a><br /></td></tr>
 <tr class="separator:ae55833e8329c8b67e0feeac4d2f8e000"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -728,8 +728,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adcfb272833c92b64db8d059a2512d321" name="adcfb272833c92b64db8d059a2512d321"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcfb272833c92b64db8d059a2512d321">&#9670;&#160;</a></span>TemperatureChangedEventHandler()</h2>
+<a id="afdaea3c7f1fd0cf8132046caa4208118" name="afdaea3c7f1fd0cf8132046caa4208118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdaea3c7f1fd0cf8132046caa4208118">&#9670;&#160;</a></span>TemperatureChangedEventHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -744,7 +744,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>temperature</em>&#160;</td>
+          <td class="paramname"><em>mcuTemperature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>batteryTemperature</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -758,7 +764,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixel</td><td>The source of the event.</td></tr>
-    <tr><td class="paramname">temperature</td><td>The latest temperature in Celsius degrees reported by the die.</td></tr>
+    <tr><td class="paramname">temperature</td><td>The latest temperature for the microcontroller and the battery in Celsius degrees reported by the die.</td></tr>
   </table>
   </dd>
 </dl>

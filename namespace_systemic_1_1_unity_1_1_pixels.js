@@ -26,5 +26,5 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "RollStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1", null ],
     [ "RssiChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6", null ],
     [ "TelemetryEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae55833e8329c8b67e0feeac4d2f8e000", null ],
-    [ "TemperatureChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#adcfb272833c92b64db8d059a2512d321", null ]
+    [ "TemperatureChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#afdaea3c7f1fd0cf8132046caa4208118", null ]
 ];

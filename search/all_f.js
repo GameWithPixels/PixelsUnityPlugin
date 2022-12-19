@@ -2,8 +2,8 @@ var searchData=
 [
   ['rainbowwheel_0',['RainbowWheel',['../class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html#ac1851befe66036a469b3b17817a01b23',1,'Systemic::Unity::Pixels::ColorUIntUtils']]],
   ['read_1',['Read',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#aae2b58eae4442865ce71d50aaa5642f0',1,'Systemic.Unity.Examples.BleController.Read()'],['../namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1ad162d5748f7c32e6b4bc4b0f6f4261bd',1,'Systemic::BluetoothLE::Read()']]],
-  ['readcharacteristic_2',['ReadCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae8e3aec20c13e7347d2e1ef28eda4a20',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
-  ['readcharacteristic_3',['readCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['readcharacteristic_2',['readCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a1ca22ffddf9b9f6c0ac46585d2ea0bd0',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['readcharacteristic_3',['ReadCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ae8e3aec20c13e7347d2e1ef28eda4a20',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['readcharacteristicasync_4',['ReadCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a7d554398d7192d8102292c0aa2999cda',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, float timeoutSec=DefaultRequestTimeout)'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a88abfae52d446340bb9754c55628fb2b',1,'Systemic.Unity.BluetoothLE.Central.ReadCharacteristicAsync(ScannedPeripheral peripheral, Guid serviceUuid, Guid characteristicUuid, uint instanceIndex, float timeoutSec=DefaultRequestTimeout)']]],
   ['readperipheralrssi_5',['ReadPeripheralRssi',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a81e617704f362a9c52bd6ec783598e7b',1,'Systemic.Unity.BluetoothLE.Central.ReadPeripheralRssi()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#aec0049b881eb494ff439d46ab57447f5',1,'Systemic.Unity.BluetoothLE.NativeInterface.ReadPeripheralRssi()']]],
   ['readrssi_6',['readRssi',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#ad88b3b940d46d8c4e03dd723b809f33c',1,'com::systemic::bluetoothle::Peripheral']]],
@@ -45,11 +45,10 @@ var searchData=
   ['rollstate_42',['RollState',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_roll_state.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['rollstatechanged_43',['RollStateChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a346e7c126e2555d5288c8fd6344dba6c',1,'Systemic::Unity::Pixels::Pixel']]],
   ['rollstatechangedeventhandler_44',['RollStateChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1',1,'Systemic::Unity::Pixels']]],
-  ['rssi_45',['Rssi',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a59af00de5b9974d87c02002e59360b65',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
-  ['rssi_46',['rssi',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8ef2c10e3627ea4fa20f5b13c0b5dda3',1,'Systemic::BluetoothLE::ScannedPeripheral::rssi()'],['../interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b',1,'SGBlePeripheralQueue::rssi()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec',1,'Systemic.Unity.Pixels.Pixel.rssi()']]],
-  ['rssi_47',['Rssi',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_rssi.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['rssichanged_48',['RssiChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['rssichangedeventhandler_49',['RssiChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6',1,'Systemic::Unity::Pixels']]],
-  ['rssireadcallback_50',['RssiReadCallback',['../_unit_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3',1,'UnitBridge.h']]],
-  ['rule_51',['Rule',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule.html',1,'Systemic::Unity::Pixels::Profiles']]]
+  ['rssi_45',['rssi',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8ef2c10e3627ea4fa20f5b13c0b5dda3',1,'Systemic::BluetoothLE::ScannedPeripheral::rssi()'],['../interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b',1,'SGBlePeripheralQueue::rssi()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec',1,'Systemic.Unity.Pixels.Pixel.rssi()']]],
+  ['rssi_46',['Rssi',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a59af00de5b9974d87c02002e59360b65',1,'Systemic.Unity.BluetoothLE.ScannedPeripheral.Rssi()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_rssi.html',1,'Systemic.Unity.Pixels.Messages.Rssi']]],
+  ['rssichanged_47',['RssiChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['rssichangedeventhandler_48',['RssiChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6',1,'Systemic::Unity::Pixels']]],
+  ['rssireadcallback_49',['RssiReadCallback',['../_unit_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3',1,'UnitBridge.h']]],
+  ['rule_50',['Rule',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_rule.html',1,'Systemic::Unity::Pixels::Profiles']]]
 ];

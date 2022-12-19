@@ -89,9 +89,9 @@ var NAVTREEINDEX =
 "_characteristic_8h.html",
 "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html#a460940605a8b166a2e6200175e916c6a",
 "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a728b59697a96aa1e20ff3c780bca9310",
-"group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5afcd8119d12c1d314431c71a91b394cb7",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ae5db9c3bb9f2c9bd1231654a660a85ae"
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6ade3225d87b7680a6161b620e990061",
+"group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a70a5b369e1950d5840b7b53e0a8761c0",
+"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html#ad7c68f66fe633a1fdca8ff97f83f7252"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

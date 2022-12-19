@@ -44,6 +44,7 @@ var class_systemic_1_1_unity_1_1_pixels_1_1_pixel =
     [ "TemperatureChanged", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6ade3225d87b7680a6161b620e990061", null ],
     [ "availableFlashSize", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0909df4c9f81fef80dfa15a4f0e601a1", null ],
     [ "batteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a737ab9d4e8edecf85473cee474b85691", null ],
+    [ "batteryTemperature", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a342ffbec2cce8ac0a3a6238e707fb76e", null ],
     [ "buildDateTime", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1aef5fb8d99d601911d974580b46b45f", null ],
     [ "buildTimestamp", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a30fdbaaba9dcc5d507682d92ee57ee9f", null ],
     [ "connectionState", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab677f75a8b7d7e4820631dfb8f01571a", null ],
@@ -55,12 +56,12 @@ var class_systemic_1_1_unity_1_1_pixels_1_1_pixel =
     [ "isReady", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50c9e4badf7448bf9591d35f4cf73c3b", null ],
     [ "lastError", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#afb1d63baca5298095b709a42a05bc4bf", null ],
     [ "ledCount", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac80996b57ef1bb6999e1795db924e0e8", null ],
+    [ "mcuTemperature", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1c023753580990c3e21ddef74de3cc02", null ],
     [ "pixelId", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1559e6249d1a698c3d2d1387222d7d50", null ],
     [ "rollState", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a3ed2060b451e12cb37d118f3ff848020", null ],
     [ "rssi", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ad6592e2ea680cbdc526b947750b24cec", null ],
     [ "RssiChanged", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7684d206c86684fdf17a026e902c6d9f", null ],
     [ "SafeName", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a7a392d34cb2bebbef04e0addaa6aa4a7", null ],
     [ "systemId", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0564258a3fda3dd721c971ac0eaf4ea1", null ],
-    [ "TelemetryReceived", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af99b4f77eb4dab8c3ca5cde22c325642", null ],
-    [ "temperature", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ab232a3d5d36ed8daf3b1e5a447ad0cc2", null ]
+    [ "TelemetryReceived", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af99b4f77eb4dab8c3ca5cde22c325642", null ]
 ];
