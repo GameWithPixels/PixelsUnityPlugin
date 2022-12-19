@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['onface_0',['OnFace',['../namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a3288eaee32652fe2cbd9dabe0f218667',1,'Systemic::Unity::Pixels']]]
+  ['read_0',['Read',['../namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1ad162d5748f7c32e6b4bc4b0f6f4261bd',1,'Systemic::BluetoothLE']]],
+  ['ready_1',['Ready',['../namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31ae7d31fc0602fb2ede144d18cdffd816b',1,'Systemic::BluetoothLE']]]
 ];

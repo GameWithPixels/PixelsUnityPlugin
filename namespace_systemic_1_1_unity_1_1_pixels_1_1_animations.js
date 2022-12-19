@@ -16,16 +16,9 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_animations =
     [ "Constants", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_constants.html", null ],
     [ "DataSet", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set.html", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_data_set" ],
     [ "IAnimationPreset", "interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation_preset.html", null ],
-    [ "RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", null ],
+    [ "RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe" ],
     [ "RGBTrack", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track" ],
-    [ "SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", null ],
+    [ "SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe" ],
     [ "Track", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track.html", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_track" ],
-    [ "AnimationType", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877", [
-      [ "Unknown", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
-      [ "Simple", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a1fbb1e3943c2c6c560247ac8f9289780", null ],
-      [ "Rainbow", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a4aca5ee9a087fb9218bfb662fe92605c", null ],
-      [ "Keyframed", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a32c6463eed5a7d6f8ad78db370a54068", null ],
-      [ "GradientPattern", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a94f8274b6abd5669ea78ede325aef5e0", null ],
-      [ "Gradient", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877a5e59525cb7d1d1cd93be0b9f36e9d09a", null ]
-    ] ]
+    [ "AnimationType", "namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877", null ]
 ];

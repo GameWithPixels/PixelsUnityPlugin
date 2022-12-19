@@ -1,6 +1,6 @@
 <map id="Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator&lt; TMsg, TResp &gt;" name="Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator&lt; TMsg, TResp &gt;">
-<area shape="rect" id="node1" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="240,49,537,105"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="585,5,885,61"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="605,86,865,157"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="5,57,192,98"/>
+<area shape="rect" id="node1" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="240,49,537,104"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="585,5,885,60"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="605,85,865,154"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="5,57,192,97"/>
 </map>

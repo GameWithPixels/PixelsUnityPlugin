@@ -1,14 +1,14 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/UnityBridge.mm" name="Assets/Plugins/Systemic/Plugins/iOS/UnityBridge.mm">
-<area shape="rect" id="node1" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="420,5,611,47"/>
-<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="469,95,562,121"/>
-<area shape="rect" id="node3" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="267,244,479,271"/>
-<area shape="rect" id="node6" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="268,319,373,345"/>
-<area shape="rect" id="node7" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="180,169,347,196"/>
-<area shape="rect" id="node9" href="$_s_g_ble_utils_8h.html" title="Library error codes and a few internal functions." alt="" coords="44,319,141,345"/>
-<area shape="rect" id="node10" title=" " alt="" coords="553,169,614,196"/>
-<area shape="rect" id="node11" title=" " alt="" coords="638,169,699,196"/>
-<area shape="rect" id="node12" title=" " alt="" coords="723,169,777,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="97,393,261,420"/>
-<area shape="rect" id="node5" title=" " alt="" coords="298,393,498,420"/>
-<area shape="rect" id="node8" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="23,244,141,271"/>
+<area shape="rect" id="node1" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="423,5,614,45"/>
+<area shape="rect" id="node2" href="$_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="472,93,565,119"/>
+<area shape="rect" id="node3" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="269,240,481,265"/>
+<area shape="rect" id="node6" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="269,313,374,339"/>
+<area shape="rect" id="node7" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="182,167,349,192"/>
+<area shape="rect" id="node9" href="$_s_g_ble_utils_8h.html" title="Library error codes and a few internal functions." alt="" coords="45,313,142,339"/>
+<area shape="rect" id="node10" title=" " alt="" coords="556,167,617,192"/>
+<area shape="rect" id="node11" title=" " alt="" coords="641,167,703,192"/>
+<area shape="rect" id="node12" title=" " alt="" coords="727,167,780,192"/>
+<area shape="rect" id="node4" title=" " alt="" coords="98,387,262,412"/>
+<area shape="rect" id="node5" title=" " alt="" coords="299,387,499,412"/>
+<area shape="rect" id="node8" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="23,240,142,265"/>
 </map>

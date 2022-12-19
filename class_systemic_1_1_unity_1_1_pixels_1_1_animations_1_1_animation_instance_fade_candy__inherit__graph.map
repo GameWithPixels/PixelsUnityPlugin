@@ -1,4 +1,4 @@
 <map id="Systemic.Unity.Pixels.Animations.AnimationInstanceFadeCandy" name="Systemic.Unity.Pixels.Animations.AnimationInstanceFadeCandy">
-<area shape="rect" id="node1" title="Procedural on off animation instance data" alt="" coords="5,80,224,121"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance.html" title="Animation instance data, refers to an animation preset but stores the instance data and (derived clas..." alt="" coords="49,5,180,32"/>
+<area shape="rect" id="node1" title="Procedural on off animation instance data" alt="" coords="5,79,224,119"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance.html" title="Animation instance data, refers to an animation preset but stores the instance data and (derived clas..." alt="" coords="49,5,180,31"/>
 </map>

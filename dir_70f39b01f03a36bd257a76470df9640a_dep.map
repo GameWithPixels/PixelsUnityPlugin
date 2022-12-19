@@ -1,5 +1,5 @@
 <map id="Assets/Plugins/Systemic/BluetoothLE" name="Assets/Plugins/Systemic/BluetoothLE">
-<area shape="rect" id="node2" href="dir_f4e3bed633d017f2808ccafe9145a44a.html" title="Internal" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="clust2" href="dir_70f39b01f03a36bd257a76470df9640a.html" alt="" coords="27,52,237,121"/>
-<area shape="rect" id="clust1" href="dir_346808620f6d54c6fe1402ec9659c686.html" title="Systemic" alt="" coords="16,16,248,132"/>
+<area shape="rect" id="node2" href="dir_f4e3bed633d017f2808ccafe9145a44a.html" title="Internal" alt="" coords="38,63,103,88"/>
+<area shape="rect" id="clust2" href="dir_70f39b01f03a36bd257a76470df9640a.html" alt="" coords="27,52,232,99"/>
+<area shape="rect" id="clust1" href="dir_346808620f6d54c6fe1402ec9659c686.html" title="Systemic" alt="" coords="16,16,243,109"/>
 </map>

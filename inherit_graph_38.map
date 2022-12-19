@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_action.html" title="Base interface for Actions. Stores the actual type so that we can cast the data to the proper derived..." alt="" coords="5,39,201,80"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html" title="Action to play an animation." alt="" coords="249,5,445,47"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html" title="Action to play a sound!" alt="" coords="249,71,445,112"/>
+<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_action.html" title="Base interface for Actions. Stores the actual type so that we can cast the data to the proper derived..." alt="" coords="5,37,201,77"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html" title="Action to play an animation." alt="" coords="249,5,445,45"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html" title="Action to play a sound!" alt="" coords="249,69,445,109"/>
 </map>

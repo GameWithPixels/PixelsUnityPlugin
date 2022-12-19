@@ -1,11 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="5,235,201,276"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html" title="Condition that triggers on battery state events" alt="" coords="249,5,445,47"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html" title="Condition that triggers on connection events" alt="" coords="249,71,445,112"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html" title="Condition that triggers when the Pixel has landed by is crooked" alt="" coords="249,136,445,177"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html" title="Condition that triggers when the Pixel has landed on a face" alt="" coords="249,201,445,243"/>
-<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,267,445,308"/>
-<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html" title="Condition that triggers on a life state event" alt="" coords="249,332,445,373"/>
-<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,397,445,439"/>
-<area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html" title="Condition that triggers when the Pixel is being rolled" alt="" coords="249,463,445,504"/>
+<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_i_condition.html" title="The base struct for all conditions, stores a type identifier so we can tell the actual type of the co..." alt="" coords="5,229,201,269"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_battery_state.html" title="Condition that triggers on battery state events" alt="" coords="249,5,445,45"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_connection_state.html" title="Condition that triggers on connection events" alt="" coords="249,69,445,109"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_crooked.html" title="Condition that triggers when the Pixel has landed by is crooked" alt="" coords="249,133,445,173"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_face_compare.html" title="Condition that triggers when the Pixel has landed on a face" alt="" coords="249,197,445,237"/>
+<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_handling.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,261,445,301"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_hello_goodbye.html" title="Condition that triggers on a life state event" alt="" coords="249,325,445,365"/>
+<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_idle.html" title="Condition that triggers when the Pixel is being handled" alt="" coords="249,389,445,429"/>
+<area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_condition_rolling.html" title="Condition that triggers when the Pixel is being rolled" alt="" coords="249,453,445,493"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="Systemic.Unity.Pixels.Animations.AnimationRainbow" name="Systemic.Unity.Pixels.Animations.AnimationRainbow">
-<area shape="rect" id="node1" title="Procedural rainbow animation" alt="" coords="5,80,224,121"/>
-<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation_preset.html" title="Base class for animation presets. All presets have a few properties in common. Presets are stored in ..." alt="" coords="53,5,176,32"/>
+<area shape="rect" id="node1" title="Procedural rainbow animation" alt="" coords="5,79,224,119"/>
+<area shape="rect" id="node2" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_i_animation_preset.html" title="Base class for animation presets. All presets have a few properties in common. Presets are stored in ..." alt="" coords="53,5,176,31"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback" name="com.systemic.bluetoothle.Peripheral.ReadRssiRequestCallback">
-<area shape="rect" id="node1" title="Interface for RSSI read request callbacks." alt="" coords="56,80,293,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,104,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="128,5,221,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="246,5,405,32"/>
+<area shape="rect" id="node1" title="Interface for RSSI read request callbacks." alt="" coords="56,79,293,119"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,104,31"/>
+<area shape="rect" id="node3" title=" " alt="" coords="128,5,221,31"/>
+<area shape="rect" id="node4" title=" " alt="" coords="246,5,405,31"/>
 </map>

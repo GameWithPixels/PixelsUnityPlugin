@@ -1,6 +1,6 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h">
-<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="83,5,311,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,184,169,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="194,184,394,211"/>
-<area shape="rect" id="node4" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="144,109,249,136"/>
+<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="83,5,311,60"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,181,169,207"/>
+<area shape="rect" id="node3" title=" " alt="" coords="194,181,394,207"/>
+<area shape="rect" id="node4" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="144,108,249,133"/>
 </map>

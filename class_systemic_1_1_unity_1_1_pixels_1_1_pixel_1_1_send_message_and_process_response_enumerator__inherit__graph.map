@@ -1,5 +1,5 @@
 <map id="Systemic.Unity.Pixels.Pixel.SendMessageAndProcessResponseEnumerator&lt; TMsg, TResp &gt;" name="Systemic.Unity.Pixels.Pixel.SendMessageAndProcessResponseEnumerator&lt; TMsg, TResp &gt;">
-<area shape="rect" id="node1" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="5,184,305,240"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="40,95,271,136"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="62,5,249,47"/>
+<area shape="rect" id="node1" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="5,181,305,236"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="40,93,271,133"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="62,5,249,45"/>
 </map>
