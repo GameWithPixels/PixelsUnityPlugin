@@ -131,11 +131,10 @@ namespace Systemic::BluetoothLE
                     // If true, it will auto-reconnect to a lost device as soon it's available again
                     session.MaintainConnection(maintainConnection);
 
-                    // Check required services
-                    if (requiredServices.size())
-                    {
-                        auto gattServices = servicesResult.Services();
-
+                    auto gattServices = servicesResult.Services();
+                    bool hasRequiredServices = requiredServices.size() > 0;
+                    // If no serivces are required, skip checking for missing services
+                    if (hasRequiredServices) {
                         // Iterate through services to make sure we have all the requested ones
                         std::vector<winrt::guid> servicesUuids{};
                         servicesUuids.reserve(gattServices.Size());
@@ -144,43 +143,42 @@ namespace Systemic::BluetoothLE
                             servicesUuids.emplace_back(service.Uuid());
                         }
                         missingServices = !Internal::isSubset(requiredServices, std::move(servicesUuids));
+                    }
 
-                        // If all services are accounted for, get their characteristics
-                        if (!missingServices)
+                    // If all services are accounted for, get their characteristics
+                    if (!missingServices)
+                    {
+                        services.reserve(gattServices.Size());
+                        std::unordered_map<winrt::guid, std::vector<std::shared_ptr<Characteristic>>> characteristics{};
+                        for (auto service : gattServices)
                         {
-                            services.reserve(gattServices.Size());
-                            std::unordered_map<winrt::guid, std::vector<std::shared_ptr<Characteristic>>> characteristics{};
-
-                            for (auto service : gattServices)
+                            //TODO cache mode
+                            GattCharacteristicsResult characteristicsResult = nullptr;
+                            try
                             {
-                                //TODO cache mode
-                                GattCharacteristicsResult characteristicsResult = nullptr;
-                                try
-                                {
-                                    // Got an exception once, may be caused by having the device disconnected...
-                                    characteristicsResult = co_await service.GetCharacteristicsAsync(BluetoothCacheMode::Uncached);
-                                }
-                                catch (const winrt::hresult_error&)
-                                {
-                                    gattStatus = GattCommunicationStatus::AccessDenied;
-                                    break;
-                                }
-
-                                gattStatus = characteristicsResult.Status();
-                                if ((connectCounter != _connectCounter) || (gattStatus != GattCommunicationStatus::Success))
-                                {
-                                    break;
-                                }
-
-                                for (auto characteristic : characteristicsResult.Characteristics())
-                                {
-                                    auto it = characteristics.try_emplace(characteristic.Uuid()); // , std::vector<std::shared_ptr<Characteristic>>{}
-                                    it.first->second.emplace_back(new Characteristic(characteristic));
-                                }
-
-                                services.emplace_back(new Service{ shared_from_this(), service, characteristics });
-                                characteristics.clear();
+                                // Got an exception once, may be caused by having the device disconnected...
+                                characteristicsResult = co_await service.GetCharacteristicsAsync(BluetoothCacheMode::Uncached);
                             }
+                            catch (const winrt::hresult_error&)
+                            {
+                                gattStatus = GattCommunicationStatus::AccessDenied;
+                                break;
+                            }
+
+                            gattStatus = characteristicsResult.Status();
+                            if ((connectCounter != _connectCounter) || (gattStatus != GattCommunicationStatus::Success))
+                            {
+                                break;
+                            }
+
+                            for (auto characteristic : characteristicsResult.Characteristics())
+                            {
+                                auto it = characteristics.try_emplace(characteristic.Uuid()); // , std::vector<std::shared_ptr<Characteristic>>{}
+                                it.first->second.emplace_back(new Characteristic(characteristic));
+                            }
+
+                            services.emplace_back(new Service{ shared_from_this(), service, characteristics });
+                            characteristics.clear();
                         }
                     }
                 }
