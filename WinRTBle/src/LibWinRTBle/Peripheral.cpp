@@ -133,7 +133,7 @@ namespace Systemic::BluetoothLE
 
                     auto gattServices = servicesResult.Services();
                     bool hasRequiredServices = requiredServices.size() > 0;
-                    // If no serivces are required, skip checking for missing services
+                    // If no service is required, skip checking for missing services
                     if (hasRequiredServices) {
                         // Iterate through services to make sure we have all the requested ones
                         std::vector<winrt::guid> servicesUuids{};
