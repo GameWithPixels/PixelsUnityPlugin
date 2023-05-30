@@ -47,7 +47,7 @@ namespace internal
 {
 
 typedef void (^CompletionHandler)(NSError *error);
-typedef void (^ValueReadHandler)(CBCharacteristic *characteristic, NSError *error);
+typedef void (^ValueReadHandler)(SGBlePeripheralQueue *peripheral, CBCharacteristic *characteristic, NSError *error);
 
 static const int otherErrorsMask = 0x80000000;
 static const int unexpectedError = otherErrorsMask;
@@ -91,10 +91,10 @@ inline CompletionHandler toCompletionHandler(RequestStatusCallback onRequestStat
 
 inline ValueReadHandler toValueReadHandler(ValueReadCallback onValueRead, request_index_t requestIndex)
 {
-    void (^handler)(CBCharacteristic *, NSError *error) = nil;
+    ValueReadHandler handler = nil;
     if (onValueRead)
     {
-        handler = ^(CBCharacteristic *characteristic, NSError *error) {
+        handler = ^(SGBlePeripheralQueue *peripheral, CBCharacteristic *characteristic, NSError *error) {
           NSData *data = characteristic.value;
           onValueRead(requestIndex, data.bytes, data.length, toErrorCode(error));
         };
@@ -180,7 +180,7 @@ inline void appendToJsonStr(NSMutableString *jsonStr,
     [jsonStr appendString:@"["];
     for (NSUInteger i = start; i < end; i++)
     {
-        if (i > offset)
+        if (i > start)
         {
             [jsonStr appendString:@","];
         }
@@ -241,7 +241,7 @@ inline NSString *advertisementDataToJsonString(const char *systemId, NSDictionar
                 [jsonStr appendString:@","];
             }
             first = false;
-            [jsonStr appendFormat:@"{\"uuid\":\"%@\",", uuid];
+            [jsonStr appendFormat:@"{\"uuid\":\"%@\",", toJsonStr(uuid)];
             [jsonStr appendString:@"\"data\":"];
             appendToJsonStr(jsonStr, [servicesData objectForKey:uuid]);
             [jsonStr appendString:@"}"];
