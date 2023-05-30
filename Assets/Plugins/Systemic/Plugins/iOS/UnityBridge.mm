@@ -104,7 +104,7 @@ bool sgBleStartScan(const char *requiredServicesUuids,
         return false;
     }
     
-    _central.peripheralDiscoveryHandler = ^(CBPeripheral *peripheral, NSDictionary<NSString *,id> *advertisementData, NSNumber *RSSI){
+    _central.peripheralDiscoveryHandler = ^(CBPeripheral *peripheral, NSDictionary<NSString *,id> *advertisementData, NSNumber *RSSI) {
         onDiscoveredPeripheral([advertisementDataToJsonString(getPeripheralId(peripheral), advertisementData, RSSI) UTF8String]);
     };
     
@@ -161,7 +161,7 @@ bool sgBleCreatePeripheral(peripheral_id_t peripheralId,
         return false;
     }
     
-    // Creates our peripheral object
+    // Create our peripheral object
     SGBlePeripheralQueue *sgPeripheral = [[SGBlePeripheralQueue alloc] initWithPeripheral:cbPeripheral
                                                          centralManagerDelegate:_central
                                                          connectionEventHandler:^(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason){
@@ -212,8 +212,8 @@ void sgBleConnectPeripheral(peripheral_id_t peripheralId,
                             RequestStatusCallback onRequestStatus,
                             request_index_t requestIndex)
 {
-    SGBlePeripheralQueue *sgPeripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
-    [sgPeripheral queueConnectWithServices:toCBUUIDArray(requiredServicesUuids)
+    SGBlePeripheralQueue *peripheral = getSGBlePeripheralQueue(peripheralId, onRequestStatus, requestIndex);
+    [peripheral queueConnectWithServices:toCBUUIDArray(requiredServicesUuids)
                          completionHandler:toCompletionHandler(onRequestStatus, requestIndex)];
 }
 
