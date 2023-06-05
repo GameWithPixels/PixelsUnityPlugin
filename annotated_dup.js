@@ -80,7 +80,7 @@ var annotated_dup =
             [ "AttractMode", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html", null ],
             [ "BatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html", null ],
             [ "Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", null ],
-            [ "BlinkFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_finished.html", null ],
+            [ "BlinkAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_ack.html", null ],
             [ "BulkData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html", null ],
             [ "BulkDataAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html", null ],
             [ "BulkSetup", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html", null ],
@@ -160,7 +160,7 @@ var annotated_dup =
           [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
           [ "GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils" ],
           [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ],
-          [ "PixelUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids" ]
+          [ "PixelBleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids" ]
         ] ]
       ] ]
     ] ],

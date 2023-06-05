@@ -94,48 +94,56 @@ $(document).ready(function(){initNavTree('_s_g_ble_request_8h_source.html',''); 
 </div><!--header-->
 <div class="contents">
 <a href="_s_g_ble_request_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">typedef</span> NS_ENUM(NSInteger, SGBleRequestType)</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    SGBleRequestTypeUnknown = 0,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    SGBleRequestTypeConnect,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    SGBleRequestTypeDisconnect,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    SGBleRequestTypeReadRssi,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    SGBleRequestTypeReadValue,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    SGBleRequestTypeWriteValue,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    SGBleRequestTypeSetNotifyValue,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46">   27</a></span><span class="keyword">typedef</span> NSError * (^<a class="code hl_typedef" href="group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46">SGBleRequestExecuteHandler</a>)();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">   33</a></span><span class="keyword">typedef</span> void (^<a class="code hl_typedef" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a>)(NSError *error);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="interface_s_g_ble_request.html">   41</a></span><span class="keyword">@interface </span><a class="code hl_class" href="interface_s_g_ble_request.html">SGBleRequest</a> : NSObject</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SGBleRequestType _type;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_typedef" href="group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46">SGBleRequestExecuteHandler</a> _executeHandler;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_typedef" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a> _completionHandler;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Property getters</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>- (SGBleRequestType)type;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e">   56</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e">type</a>) SGBleRequestType type;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef SGBleRequest_h</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SGBleRequest_h</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>NS_ASSUME_NONNULL_BEGIN</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">typedef</span> NS_ENUM(NSInteger, SGBleRequestType)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    SGBleRequestTypeUnknown = 0,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    SGBleRequestTypeConnect,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SGBleRequestTypeDisconnect,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    SGBleRequestTypeReadRssi,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    SGBleRequestTypeReadValue,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    SGBleRequestTypeWriteValue,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    SGBleRequestTypeSetNotifyValue,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44">   32</a></span><span class="keyword">typedef</span> NSError * _Nullable (^<a class="code hl_typedef" href="group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44">SGBleRequestExecuteHandler</a>)();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b">   38</a></span><span class="keyword">typedef</span> void (^<a class="code hl_typedef" href="group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b">SGBleRequestCompletionHandler</a>)(NSError * _Nullable error);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="interface_s_g_ble_request.html">   46</a></span><span class="keyword">@interface </span><a class="code hl_class" href="interface_s_g_ble_request.html">SGBleRequest</a> : NSObject</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    SGBleRequestType _type;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_typedef" href="group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44">SGBleRequestExecuteHandler</a> _executeHandler;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_typedef" href="group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b">SGBleRequestCompletionHandler</a> _completionHandler;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// Property getters</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>- (SGBleRequestType)type;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>- (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(<a class="code hl_typedef" href="group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46">SGBleRequestExecuteHandler</a>)executeHandler completionHandler:(<a class="code hl_typedef" href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a>)completionHandler;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>- (NSError *)execute;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="interface_s_g_ble_request.html#ae4a10e4dfa30de7f36279227fc9f3f52">   61</a></span><span class="keyword">@property</span>(readonly, getter=type) SGBleRequestType type;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>- (instancetype)initWithRequestType:(SGBleRequestType)requestType executeHandler:(<a class="code hl_typedef" href="group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44">SGBleRequestExecuteHandler</a>)executeHandler  completionHandler: (nullable <a class="code hl_typedef" href="group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b">SGBleRequestCompletionHandler</a>)completionHandler;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>- (void)notifyResult:(NSError *)error;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>- (nullable NSError *)execute;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>+ (NSString *)requestTypeToString:(SGBleRequestType)typeSGBleRequest;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>- (void)notifyResult:(nullable NSError *)error;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">@end</span></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga74898fe3d2584f11e2d373a429d3fa46"><div class="ttname"><a href="group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46">SGBleRequestExecuteHandler</a></div><div class="ttdeci">NSError *(^ SGBleRequestExecuteHandler)()</div><div class="ttdoc">Internal type, runs the Bluetooth operation associated with a SGBleRequest object.</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:27</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga9c854b44e91a64cc5d54bd3534802f4f"><div class="ttname"><a href="group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f">SGBleRequestCompletionHandler</a></div><div class="ttdeci">void(^ SGBleRequestCompletionHandler)(NSError *error)</div><div class="ttdoc">Internal type, completion handler for operations associated with a SGBleRequest object.</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:33</div></div>
-<div class="ttc" id="ainterface_s_g_ble_request_html"><div class="ttname"><a href="interface_s_g_ble_request.html">SGBleRequest</a></div><div class="ttdoc">Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:42</div></div>
-<div class="ttc" id="ainterface_s_g_ble_request_html_af4ae5924d7b0ce5c2ff259780f37079e"><div class="ttname"><a href="interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e">SGBleRequest::type</a></div><div class="ttdeci">SGBleRequestType type</div><div class="ttdoc">Gets the type of request associated with this instance.</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:56</div></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>+ (NSString *)requestTypeToString:(SGBleRequestType)typeSGBleRequest;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">@end</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>NS_ASSUME_NONNULL_END</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif </span><span class="comment">/* SGBleRequest_h */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup___apple___objective-_c_html_gaeb8e70891ecc5fdbb8448ccec3e81d44"><div class="ttname"><a href="group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44">SGBleRequestExecuteHandler</a></div><div class="ttdeci">NSError *_Nullable(^ SGBleRequestExecuteHandler)()</div><div class="ttdoc">Internal type, runs the Bluetooth operation associated with a SGBleRequest object.</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:32</div></div>
+<div class="ttc" id="agroup___apple___objective-_c_html_gafe6817e222285e9b27d4050e8e433f0b"><div class="ttname"><a href="group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b">SGBleRequestCompletionHandler</a></div><div class="ttdeci">void(^ SGBleRequestCompletionHandler)(NSError *_Nullable error)</div><div class="ttdoc">Internal type, completion handler for operations associated with a SGBleRequest object.</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:38</div></div>
+<div class="ttc" id="ainterface_s_g_ble_request_html"><div class="ttname"><a href="interface_s_g_ble_request.html">SGBleRequest</a></div><div class="ttdoc">Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -96,18 +96,20 @@ $(document).ready(function(){initNavTree('_unity_bridge_8mm.html',''); initResiz
 
 <p>C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals on iOS.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#import &quot;<a class="el" href="_unit_bridge_8h_source.html">UnitBridge.h</a>&quot;</code><br />
+<div class="textblock"><code>#import &quot;<a class="el" href="_unity_bridge_8h_source.html">UnityBridge.h</a>&quot;</code><br />
+<code>#import &quot;<a class="el" href="_s_g_ble_errors_8h_source.html">SGBleErrors.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for UnityBridge.mm:</div>
 <div class="dyncontent">
 <div class="center"><img src="_unity_bridge_8mm__incl.png" border="0" usemap="#a_assets_2_plugins_2_systemic_2_plugins_2i_o_s_2_unity_bridge_8mm" alt=""/></div>
 <map name="a_assets_2_plugins_2_systemic_2_plugins_2i_o_s_2_unity_bridge_8mm" id="a_assets_2_plugins_2_systemic_2_plugins_2i_o_s_2_unity_bridge_8mm">
-<area shape="rect" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="423,5,614,45"/>
-<area shape="rect" href="_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="472,93,565,119"/>
+<area shape="rect" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="486,5,677,45"/>
+<area shape="rect" href="_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="469,93,568,119"/>
+<area shape="rect" href="_s_g_ble_errors_8h.html" title="Library error codes." alt="" coords="592,93,696,119"/>
 <area shape="rect" href="_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="269,240,481,265"/>
 <area shape="rect" href="_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="269,313,374,339"/>
 <area shape="rect" href="_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="182,167,349,192"/>
-<area shape="rect" href="_s_g_ble_utils_8h.html" title="Library error codes and a few internal functions." alt="" coords="45,313,142,339"/>
+<area shape="rect" href="_s_g_ble_utils_8h.html" title="A few internal functions." alt="" coords="45,313,142,339"/>
 <area shape="rect" title=" " alt="" coords="556,167,617,192"/>
 <area shape="rect" title=" " alt="" coords="641,167,703,192"/>
 <area shape="rect" title=" " alt="" coords="727,167,780,192"/>
@@ -120,14 +122,14 @@ Include dependency graph for UnityBridge.mm:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Library life cycle</div></td></tr>
-<tr class="memitem:adf548044c2bd8f3f59116ddae3747ed6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#adf548044c2bd8f3f59116ddae3747ed6">sgBleInitialize</a> (<a class="el" href="_unit_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb">BluetoothStateUpdateCallback</a> onBluetoothEvent)</td></tr>
+<tr class="memitem:adf548044c2bd8f3f59116ddae3747ed6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#adf548044c2bd8f3f59116ddae3747ed6">sgBleInitialize</a> (<a class="el" href="_unity_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb">BluetoothStateUpdateCallback</a> onBluetoothEvent)</td></tr>
 <tr class="memdesc:adf548044c2bd8f3f59116ddae3747ed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the library for accessing BLE peripherals.  <a href="_unity_bridge_8mm.html#adf548044c2bd8f3f59116ddae3747ed6">More...</a><br /></td></tr>
 <tr class="separator:adf548044c2bd8f3f59116ddae3747ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec51364ffaa0ef8838c1a8dc2ec6ac3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aec51364ffaa0ef8838c1a8dc2ec6ac3c">sgBleShutdown</a> ()</td></tr>
 <tr class="memdesc:aec51364ffaa0ef8838c1a8dc2ec6ac3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the library.  <a href="_unity_bridge_8mm.html#aec51364ffaa0ef8838c1a8dc2ec6ac3c">More...</a><br /></td></tr>
 <tr class="separator:aec51364ffaa0ef8838c1a8dc2ec6ac3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripherals scanning</div></td></tr>
-<tr class="memitem:a5cc1ed930419a499cdac49fafafe874b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">sgBleStartScan</a> (const char *requiredServicesUuids, bool allowDuplicates, <a class="el" href="_unit_bridge_8h.html#a8887223622b67037e485059865c20461">DiscoveredPeripheralCallback</a> onDiscoveredPeripheral)</td></tr>
+<tr class="memitem:a5cc1ed930419a499cdac49fafafe874b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">sgBleStartScan</a> (const char *requiredServicesUuids, bool allowDuplicates, <a class="el" href="_unity_bridge_8h.html#a8887223622b67037e485059865c20461">DiscoveredPeripheralCallback</a> onDiscoveredPeripheral)</td></tr>
 <tr class="memdesc:a5cc1ed930419a499cdac49fafafe874b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals advertising the given list of services.  <a href="_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b">More...</a><br /></td></tr>
 <tr class="separator:a5cc1ed930419a499cdac49fafafe874b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabaa08ebedf2b39063535411582a75a7"><td class="memItemLeft" align="right" valign="top"><a id="aabaa08ebedf2b39063535411582a75a7" name="aabaa08ebedf2b39063535411582a75a7"></a>
@@ -135,53 +137,53 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 <tr class="memdesc:aabaa08ebedf2b39063535411582a75a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops an on-going BLE scan. <br /></td></tr>
 <tr class="separator:aabaa08ebedf2b39063535411582a75a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripherals life cycle</div></td></tr>
-<tr class="memitem:a4376cf69ce32e0e8ff4764fcb39331cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a4376cf69ce32e0e8ff4764fcb39331cd">sgBleCreatePeripheral</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unit_bridge_8h.html#a68088ac07b17521d379e6e8cdeb46ea5">PeripheralConnectionEventCallback</a> onPeripheralConnectionEvent, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a4376cf69ce32e0e8ff4764fcb39331cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a4376cf69ce32e0e8ff4764fcb39331cd">sgBleCreatePeripheral</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unity_bridge_8h.html#a68088ac07b17521d379e6e8cdeb46ea5">PeripheralConnectionEventCallback</a> onPeripheralConnectionEvent, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a4376cf69ce32e0e8ff4764fcb39331cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Peripheral for the BLE peripheral with the given Bluetooth address.  <a href="_unity_bridge_8mm.html#a4376cf69ce32e0e8ff4764fcb39331cd">More...</a><br /></td></tr>
 <tr class="separator:a4376cf69ce32e0e8ff4764fcb39331cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee85385f9aba0bece5e129674dbabeef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aee85385f9aba0bece5e129674dbabeef">sgBleReleasePeripheral</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
+<tr class="memitem:aee85385f9aba0bece5e129674dbabeef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aee85385f9aba0bece5e129674dbabeef">sgBleReleasePeripheral</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
 <tr class="memdesc:aee85385f9aba0bece5e129674dbabeef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases the Peripheral object associated with the given peripheral id.  <a href="_unity_bridge_8mm.html#aee85385f9aba0bece5e129674dbabeef">More...</a><br /></td></tr>
 <tr class="separator:aee85385f9aba0bece5e129674dbabeef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripheral connection and disconnection</div></td></tr>
-<tr class="memitem:a3b498f22569e110b4e134e4bf6c1de3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a3b498f22569e110b4e134e4bf6c1de3b">sgBleConnectPeripheral</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *requiredServicesUuids, <a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a3b498f22569e110b4e134e4bf6c1de3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a3b498f22569e110b4e134e4bf6c1de3b">sgBleConnectPeripheral</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *requiredServicesUuids, <a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a3b498f22569e110b4e134e4bf6c1de3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the given peripheral.  <a href="_unity_bridge_8mm.html#a3b498f22569e110b4e134e4bf6c1de3b">More...</a><br /></td></tr>
 <tr class="separator:a3b498f22569e110b4e134e4bf6c1de3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa370dbb5c4a36eced274e3345e427be9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aa370dbb5c4a36eced274e3345e427be9">sgBleDisconnectPeripheral</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:aa370dbb5c4a36eced274e3345e427be9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#aa370dbb5c4a36eced274e3345e427be9">sgBleDisconnectPeripheral</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:aa370dbb5c4a36eced274e3345e427be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects the given peripheral.  <a href="_unity_bridge_8mm.html#aa370dbb5c4a36eced274e3345e427be9">More...</a><br /></td></tr>
 <tr class="separator:aa370dbb5c4a36eced274e3345e427be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripheral operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:a2bcbab6c9985e9c1c29acd5c20331920"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a2bcbab6c9985e9c1c29acd5c20331920">sgBleGetPeripheralName</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
+<tr class="memitem:a2bcbab6c9985e9c1c29acd5c20331920"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a2bcbab6c9985e9c1c29acd5c20331920">sgBleGetPeripheralName</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
 <tr class="memdesc:a2bcbab6c9985e9c1c29acd5c20331920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the given peripheral.  <a href="_unity_bridge_8mm.html#a2bcbab6c9985e9c1c29acd5c20331920">More...</a><br /></td></tr>
 <tr class="separator:a2bcbab6c9985e9c1c29acd5c20331920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a993485ec781ac8b1a22aff0c500cd14d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">sgBleGetPeripheralMtu</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
+<tr class="memitem:a993485ec781ac8b1a22aff0c500cd14d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">sgBleGetPeripheralMtu</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
 <tr class="memdesc:a993485ec781ac8b1a22aff0c500cd14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Maximum Transmission Unit (MTU) for the given peripheral.  <a href="_unity_bridge_8mm.html#a993485ec781ac8b1a22aff0c500cd14d">More...</a><br /></td></tr>
 <tr class="separator:a993485ec781ac8b1a22aff0c500cd14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a789be6df0a962dfcac661ee103369923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">sgBleReadPeripheralRssi</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unit_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3">RssiReadCallback</a> onRssiRead, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a789be6df0a962dfcac661ee103369923"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">sgBleReadPeripheralRssi</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, <a class="el" href="_unity_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3">RssiReadCallback</a> onRssiRead, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a789be6df0a962dfcac661ee103369923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the Received Signal Strength Indicator (RSSI) of the given peripheral.  <a href="_unity_bridge_8mm.html#a789be6df0a962dfcac661ee103369923">More...</a><br /></td></tr>
 <tr class="separator:a789be6df0a962dfcac661ee103369923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Services operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for ready peripherals. </p>
 </div></td></tr>
-<tr class="memitem:ac8238862ad822ecb50f53bd4a73214f5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ac8238862ad822ecb50f53bd4a73214f5">sgBleGetDiscoveredServices</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
+<tr class="memitem:ac8238862ad822ecb50f53bd4a73214f5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ac8238862ad822ecb50f53bd4a73214f5">sgBleGetDiscoveredServices</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId)</td></tr>
 <tr class="memdesc:ac8238862ad822ecb50f53bd4a73214f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered services for the given peripheral.  <a href="_unity_bridge_8mm.html#ac8238862ad822ecb50f53bd4a73214f5">More...</a><br /></td></tr>
 <tr class="separator:ac8238862ad822ecb50f53bd4a73214f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad16f1e63c407a3ce77fa9e6067f8fe21"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ad16f1e63c407a3ce77fa9e6067f8fe21">sgBleGetServiceCharacteristics</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid)</td></tr>
+<tr class="memitem:ad16f1e63c407a3ce77fa9e6067f8fe21"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#ad16f1e63c407a3ce77fa9e6067f8fe21">sgBleGetServiceCharacteristics</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid)</td></tr>
 <tr class="memdesc:ad16f1e63c407a3ce77fa9e6067f8fe21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of discovered characteristics for the given peripheral's service.  <a href="_unity_bridge_8mm.html#ad16f1e63c407a3ce77fa9e6067f8fe21">More...</a><br /></td></tr>
 <tr class="separator:ad16f1e63c407a3ce77fa9e6067f8fe21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Characteristics operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:a7ded91db47b80d9fba8181cd988c5fe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_unit_bridge_8h.html#abf1f941521787487872caf8c51565b28">characteristic_property_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">sgBleGetCharacteristicProperties</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex)</td></tr>
+<tr class="memitem:a7ded91db47b80d9fba8181cd988c5fe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_unity_bridge_8h.html#abf1f941521787487872caf8c51565b28">characteristic_property_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">sgBleGetCharacteristicProperties</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex)</td></tr>
 <tr class="memdesc:a7ded91db47b80d9fba8181cd988c5fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the standard BLE properties of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a7ded91db47b80d9fba8181cd988c5fe7">More...</a><br /></td></tr>
 <tr class="separator:a7ded91db47b80d9fba8181cd988c5fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36f387bb746b0da83fc5938635a5f165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a36f387bb746b0da83fc5938635a5f165">sgBleReadCharacteristic</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a> onValueRead, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a36f387bb746b0da83fc5938635a5f165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a36f387bb746b0da83fc5938635a5f165">sgBleReadCharacteristic</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="_unity_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a> onValueRead, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a36f387bb746b0da83fc5938635a5f165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to read the value of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a36f387bb746b0da83fc5938635a5f165">More...</a><br /></td></tr>
 <tr class="separator:a36f387bb746b0da83fc5938635a5f165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c93738fed71fd3c4eb16df51ad20ffd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a6c93738fed71fd3c4eb16df51ad20ffd">sgBleWriteCharacteristic</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, const void *data, const size_t length, bool withoutResponse, <a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a6c93738fed71fd3c4eb16df51ad20ffd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a6c93738fed71fd3c4eb16df51ad20ffd">sgBleWriteCharacteristic</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, const void *data, const size_t length, bool withoutResponse, <a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a6c93738fed71fd3c4eb16df51ad20ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a request to write to the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a6c93738fed71fd3c4eb16df51ad20ffd">More...</a><br /></td></tr>
 <tr class="separator:a6c93738fed71fd3c4eb16df51ad20ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9493f6491e10f6ac6ee5721db6d08f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a9493f6491e10f6ac6ee5721db6d08f99">sgBleSetNotifyCharacteristic</a> (<a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a> onValueChanged, <a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
+<tr class="memitem:a9493f6491e10f6ac6ee5721db6d08f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_unity_bridge_8mm.html#a9493f6491e10f6ac6ee5721db6d08f99">sgBleSetNotifyCharacteristic</a> (<a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a> peripheralId, const char *serviceUuid, const char *characteristicUuid, <a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a> instanceIndex, <a class="el" href="_unity_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a> onValueChanged, <a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a> onRequestStatus, <a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a> requestIndex)</td></tr>
 <tr class="memdesc:a9493f6491e10f6ac6ee5721db6d08f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes or unsubscribes for value changes of the specified service's characteristic for the given peripheral.  <a href="_unity_bridge_8mm.html#a9493f6491e10f6ac6ee5721db6d08f99">More...</a><br /></td></tr>
 <tr class="separator:a9493f6491e10f6ac6ee5721db6d08f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -198,7 +200,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleConnectPeripheral </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -210,13 +212,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
           <td class="paramname"><em>onRequestStatus</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -250,19 +252,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">bool sgBleCreatePeripheral </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a68088ac07b17521d379e6e8cdeb46ea5">PeripheralConnectionEventCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a68088ac07b17521d379e6e8cdeb46ea5">PeripheralConnectionEventCallback</a>&#160;</td>
           <td class="paramname"><em>onPeripheralConnectionEvent</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -299,19 +301,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleDisconnectPeripheral </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
           <td class="paramname"><em>onRequestStatus</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -341,9 +343,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_unit_bridge_8h.html#abf1f941521787487872caf8c51565b28">characteristic_property_t</a> sgBleGetCharacteristicProperties </td>
+          <td class="memname"><a class="el" href="_unity_bridge_8h.html#abf1f941521787487872caf8c51565b28">characteristic_property_t</a> sgBleGetCharacteristicProperties </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -361,7 +363,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
           <td class="paramname"><em>instanceIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -396,7 +398,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">const char * sgBleGetDiscoveredServices </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em></td><td>)</td>
           <td></td>
         </tr>
@@ -425,7 +427,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">int sgBleGetPeripheralMtu </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em></td><td>)</td>
           <td></td>
         </tr>
@@ -452,7 +454,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">const char * sgBleGetPeripheralName </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em></td><td>)</td>
           <td></td>
         </tr>
@@ -481,7 +483,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">const char * sgBleGetServiceCharacteristics </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -522,7 +524,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">bool sgBleInitialize </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb">BluetoothStateUpdateCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb">BluetoothStateUpdateCallback</a>&#160;</td>
           <td class="paramname"><em>onBluetoothEvent</em></td><td>)</td>
           <td></td>
         </tr>
@@ -549,7 +551,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleReadCharacteristic </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -567,19 +569,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
           <td class="paramname"><em>instanceIndex</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a>&#160;</td>
           <td class="paramname"><em>onValueRead</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -615,19 +617,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleReadPeripheralRssi </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3">RssiReadCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#ac340a95e730c292809d39b2b1192deb3">RssiReadCallback</a>&#160;</td>
           <td class="paramname"><em>onRssiRead</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -659,7 +661,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleReleasePeripheral </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em></td><td>)</td>
           <td></td>
         </tr>
@@ -685,7 +687,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleSetNotifyCharacteristic </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -703,25 +705,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
           <td class="paramname"><em>instanceIndex</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1">ValueReadCallback</a>&#160;</td>
           <td class="paramname"><em>onValueChanged</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
           <td class="paramname"><em>onRequestStatus</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>
@@ -791,7 +793,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a8887223622b67037e485059865c20461">DiscoveredPeripheralCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a8887223622b67037e485059865c20461">DiscoveredPeripheralCallback</a>&#160;</td>
           <td class="paramname"><em>onDiscoveredPeripheral</em>&#160;</td>
         </tr>
         <tr>
@@ -827,7 +829,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="memname">void sgBleWriteCharacteristic </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a7d0e6b62295ce2823ce8cf7517595c7c">peripheral_id_t</a>&#160;</td>
           <td class="paramname"><em>peripheralId</em>, </td>
         </tr>
         <tr>
@@ -845,7 +847,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3">characteristic_index_t</a>&#160;</td>
           <td class="paramname"><em>instanceIndex</em>, </td>
         </tr>
         <tr>
@@ -869,13 +871,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sgBleStopScan</b> ()<
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a6b963f0301436087796cff2e9d506c4f">RequestStatusCallback</a>&#160;</td>
           <td class="paramname"><em>onRequestStatus</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_unit_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_unity_bridge_8h.html#a21ea9bd5f0e2f09b5e35239688056fae">request_index_t</a>&#160;</td>
           <td class="paramname"><em>requestIndex</em>&#160;</td>
         </tr>
         <tr>

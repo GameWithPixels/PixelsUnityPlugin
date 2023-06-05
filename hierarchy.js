@@ -77,7 +77,7 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.AttractMode", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html", null ],
       [ "Systemic.Unity.Pixels.Messages.BatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html", null ],
       [ "Systemic.Unity.Pixels.Messages.Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.BlinkFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_finished.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.BlinkAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.BulkData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html", null ],
       [ "Systemic.Unity.Pixels.Messages.BulkDataAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.BulkSetup", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html", null ],
@@ -159,8 +159,8 @@ var hierarchy =
       [ "SGBleRequest", "interface_s_g_ble_request.html", null ]
     ] ],
     [ "com.systemic.bluetoothle.Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", null ],
+    [ "Systemic.Unity.Pixels.PixelBleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html", null ],
     [ "pixel.PixelUuids", "classpixel_1_1_pixel_uuids.html", null ],
-    [ "Systemic.Unity.Pixels.PixelUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html", null ],
     [ "Systemic.Unity.Pixels.Profiles.Profile", "class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_profile.html", null ],
     [ "Systemic.Unity.Pixels.Animations.RGBKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html", null ],
     [ "Systemic.Unity.Pixels.Animations.RGBTrack", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track.html", null ],

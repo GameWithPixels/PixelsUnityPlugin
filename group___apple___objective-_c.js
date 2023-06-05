@@ -2,38 +2,40 @@ var group___apple___objective__c =
 [
     [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", [
       [ "clearPeripherals", "interface_s_g_ble_central_manager_delegate.html#aa93bf7d3373eb28ddc76ff6b8dbfa8a4", null ],
-      [ "initWithStateUpdateHandler:", "interface_s_g_ble_central_manager_delegate.html#aebf051d3a3146ac4467365eadcf86fba", null ],
+      [ "initWithStateUpdateHandler:", "interface_s_g_ble_central_manager_delegate.html#a72fe4e1b391f9951e4fd8516ffb965e6", null ],
       [ "peripheralForIdentifier:", "interface_s_g_ble_central_manager_delegate.html#a061b77a0e0f212cc22198abc2965d295", null ],
-      [ "setConnectionEventHandler:forPeripheral:", "interface_s_g_ble_central_manager_delegate.html#a77cb474294a0bb1171c1ec1efb05bc15", null ],
+      [ "setConnectionEventHandler:forPeripheral:", "interface_s_g_ble_central_manager_delegate.html#a969452d309ce1328f58284131e0cc2db", null ],
       [ "centralManager", "interface_s_g_ble_central_manager_delegate.html#acb768dc4f13c71dffac2d43fef148d7d", null ],
       [ "isBluetoothOn", "interface_s_g_ble_central_manager_delegate.html#af51b0acad2c4cd30206338d8414139dd", null ],
       [ "peripheralDiscoveryHandler", "interface_s_g_ble_central_manager_delegate.html#a1b850ef9c7e9a982ec6567bcfdd9c830", null ],
       [ "peripherals", "interface_s_g_ble_central_manager_delegate.html#a772237c71b7bffe478488a1a47676df5", null ]
     ] ],
     [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", [
-      [ "cancelQueue", "interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7", null ],
-      [ "initWithPeripheral:centralManagerDelegate:connectionEventHandler:", "interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6", null ],
-      [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318", null ],
-      [ "queueDisconnect:", "interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b", null ],
-      [ "queueReadRssi:", "interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01", null ],
-      [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5", null ],
-      [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6", null ],
-      [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d", null ],
-      [ "isConnected", "interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35", null ],
+      [ "cancelAll", "interface_s_g_ble_peripheral_queue.html#a8a61c0d24d632cab27fe43d0346a1ac7", null ],
+      [ "initWithPeripheral:centralManagerDelegate:", "interface_s_g_ble_peripheral_queue.html#a1c9583950084c2a1680672699c690aea", null ],
+      [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a014fb4b6ecf152cca50447a3c8c63c74", null ],
+      [ "queueDisconnect:", "interface_s_g_ble_peripheral_queue.html#aa6225585b80a4b4e78b628f995b8d7f2", null ],
+      [ "queueReadRssi:", "interface_s_g_ble_peripheral_queue.html#ae4c6d38e7babecc51042a9b8f216b118", null ],
+      [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral_queue.html#ac088099467a4a59a95eb789e9ea53cba", null ],
+      [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a65776484544f94c49d4fa225382a4ab4", null ],
+      [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral_queue.html#aaeab8f2c73bbf0feff72dc258b151428", null ],
+      [ "_Nullable", "interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d", null ],
+      [ "isReady", "interface_s_g_ble_peripheral_queue.html#aa8ba7b0a88af5aefa2d28ae72cb0c0da", null ],
       [ "peripheral", "interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa", null ],
       [ "rssi", "interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b", null ]
     ] ],
     [ "SGBleRequest", "interface_s_g_ble_request.html", [
       [ "execute", "interface_s_g_ble_request.html#a30b72514b75ec994b08fb55cffcd3fde", null ],
-      [ "initWithRequestType:executeHandler:completionHandler:", "interface_s_g_ble_request.html#a03c9497b76856972a7250d35ce2602a4", null ],
-      [ "notifyResult:", "interface_s_g_ble_request.html#a03f3226508f114d1e9495025cc61897e", null ],
+      [ "initWithRequestType:executeHandler:completionHandler:", "interface_s_g_ble_request.html#ae4a10e4dfa30de7f36279227fc9f3f52", null ],
+      [ "notifyResult:", "interface_s_g_ble_request.html#a7405bb31d6d24ba9db2f4f6ffe079ac2", null ],
       [ "requestTypeToString:", "interface_s_g_ble_request.html#a66f43c95ed12a4ded19f6ff055150b42", null ],
       [ "type", "interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e", null ]
     ] ],
-    [ "SGBleConnectionEventHandler", "group___apple___objective-_c.html#gae5d9676c0c2204f460acd039b6da9ba6", null ],
-    [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga662b4b1ab3054584449b801ddb83d3fd", null ],
-    [ "SGBleRequestCompletionHandler", "group___apple___objective-_c.html#ga9c854b44e91a64cc5d54bd3534802f4f", null ],
-    [ "SGBleRequestExecuteHandler", "group___apple___objective-_c.html#ga74898fe3d2584f11e2d373a429d3fa46", [
+    [ "SGBleCharacteristicValueEventHandler", "group___apple___objective-_c.html#ga3c0d064596ca8593567b3cd8d52f7443", null ],
+    [ "SGBleConnectionEventHandler", "group___apple___objective-_c.html#ga609000134f19b0019c1165eaf395a546", null ],
+    [ "SGBlePeripheralDiscoveryHandler", "group___apple___objective-_c.html#ga7b0cf90602ca7f7fab87bc39db908dad", null ],
+    [ "SGBleRequestCompletionHandler", "group___apple___objective-_c.html#gafe6817e222285e9b27d4050e8e433f0b", null ],
+    [ "SGBleRequestExecuteHandler", "group___apple___objective-_c.html#gaeb8e70891ecc5fdbb8448ccec3e81d44", [
       [ "SGBleConnectionEventConnecting", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a673eb38d75dfd0ed1ecebbc9ccd8517c", null ],
       [ "SGBleConnectionEventConnected", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7aae6c83567c94e9ff792cdf428c62678e", null ],
       [ "SGBleConnectionEventFailedToConnect", "group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a916e62d0298a5715f0fa50e3730a8491", null ],
@@ -47,13 +49,17 @@ var group___apple___objective__c =
       [ "SGBleConnectionEventReasonTimeout", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5afcd8119d12c1d314431c71a91b394cb7", null ],
       [ "SGBleConnectionEventReasonLinkLoss", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a2ef464fec9871252d620bc01d2acc154", null ],
       [ "SGBleConnectionEventReasonAdapterOff", "group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a13ce53c963b9ba520d3d6943193b830b", null ],
-      [ "SGBlePeripheralRequestErrorDisconnected", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738", null ],
-      [ "SGBlePeripheralRequestErrorInvalidCall", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1", null ],
-      [ "SGBlePeripheralRequestErrorInvalidParameters", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6", null ],
-      [ "SGBlePeripheralRequestErrorCanceled", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8", null ]
+      [ "SGBleErrorOutOfMemory", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978", null ],
+      [ "SGBleErrorNotImplemented", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909", null ],
+      [ "SGBleErrorInvalidParameter", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4", null ],
+      [ "SGBleErrorInvalidState", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef", null ],
+      [ "SGBleErrorRequestCanceled", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b", null ],
+      [ "SGBleErrorPeripheralDisconnected", "group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995", null ]
     ] ],
-    [ "SGBleCanceledError", "group___apple___objective-_c.html#ga3eb718af999217b6c58cff156be0f9a3", null ],
     [ "SGBleDisconnectedError", "group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26", null ],
-    [ "SGBleInvalidCallError", "group___apple___objective-_c.html#ga2b17657e68a99476c0c7215a35339a35", null ],
-    [ "SGBleInvalidParametersError", "group___apple___objective-_c.html#gafce456ed50953cbc236ffd60662d873d", null ]
+    [ "SGBleInvalidParameterError", "group___apple___objective-_c.html#ga93d0ce0c99d54363f0ae45c75ceedcca", null ],
+    [ "SGBleInvalidStateError", "group___apple___objective-_c.html#ga03c59da94341f4f7fb44531f22f9d884", null ],
+    [ "SGBleNotImplementedError", "group___apple___objective-_c.html#ga81afcc5f2473c31916e643191e13c5f3", null ],
+    [ "SGBleOutOfMemoryError", "group___apple___objective-_c.html#ga5b802701cdf80a98d48cab5dcad65606", null ],
+    [ "SGBleRequestCanceledError", "group___apple___objective-_c.html#ga41029f4ecf7a8b64e00e1c7e89ffee54", null ]
 ];

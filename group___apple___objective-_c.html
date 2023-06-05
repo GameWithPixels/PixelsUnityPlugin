@@ -116,22 +116,26 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga74898fe3d2584f11e2d373a429d3fa46"><td class="memItemLeft" align="right" valign="top"><a id="ga74898fe3d2584f11e2d373a429d3fa46" name="ga74898fe3d2584f11e2d373a429d3fa46"></a>
-typedef NSError *(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleRequestExecuteHandler</b>) ()</td></tr>
-<tr class="memdesc:ga74898fe3d2584f11e2d373a429d3fa46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, runs the Bluetooth operation associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
-<tr class="separator:ga74898fe3d2584f11e2d373a429d3fa46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="memItemLeft" align="right" valign="top"><a id="ga9c854b44e91a64cc5d54bd3534802f4f" name="ga9c854b44e91a64cc5d54bd3534802f4f"></a>
-typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleRequestCompletionHandler</b>) (NSError *error)</td></tr>
-<tr class="memdesc:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, completion handler for operations associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
-<tr class="separator:ga9c854b44e91a64cc5d54bd3534802f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga662b4b1ab3054584449b801ddb83d3fd"><td class="memItemLeft" align="right" valign="top"><a id="ga662b4b1ab3054584449b801ddb83d3fd" name="ga662b4b1ab3054584449b801ddb83d3fd"></a>
-typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBlePeripheralDiscoveryHandler</b>) (CBPeripheral *peripheral, NSDictionary&lt; NSString *, id &gt; *advertisementData, NSNumber *RSSI)</td></tr>
-<tr class="memdesc:ga662b4b1ab3054584449b801ddb83d3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral discovery handler. <br /></td></tr>
-<tr class="separator:ga662b4b1ab3054584449b801ddb83d3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5d9676c0c2204f460acd039b6da9ba6"><td class="memItemLeft" align="right" valign="top"><a id="gae5d9676c0c2204f460acd039b6da9ba6" name="gae5d9676c0c2204f460acd039b6da9ba6"></a>
-typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleConnectionEventHandler</b>) (CBPeripheral *peripheral, SGBleConnectionEvent connectionEvent, NSError *error)</td></tr>
-<tr class="memdesc:gae5d9676c0c2204f460acd039b6da9ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
-<tr class="separator:gae5d9676c0c2204f460acd039b6da9ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb8e70891ecc5fdbb8448ccec3e81d44"><td class="memItemLeft" align="right" valign="top"><a id="gaeb8e70891ecc5fdbb8448ccec3e81d44" name="gaeb8e70891ecc5fdbb8448ccec3e81d44"></a>
+typedef NSError *_Nullable(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleRequestExecuteHandler</b>) ()</td></tr>
+<tr class="memdesc:gaeb8e70891ecc5fdbb8448ccec3e81d44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, runs the Bluetooth operation associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
+<tr class="separator:gaeb8e70891ecc5fdbb8448ccec3e81d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe6817e222285e9b27d4050e8e433f0b"><td class="memItemLeft" align="right" valign="top"><a id="gafe6817e222285e9b27d4050e8e433f0b" name="gafe6817e222285e9b27d4050e8e433f0b"></a>
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleRequestCompletionHandler</b>) (NSError *_Nullable error)</td></tr>
+<tr class="memdesc:gafe6817e222285e9b27d4050e8e433f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal type, completion handler for operations associated with a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> object. <br /></td></tr>
+<tr class="separator:gafe6817e222285e9b27d4050e8e433f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="memItemLeft" align="right" valign="top"><a id="ga7b0cf90602ca7f7fab87bc39db908dad" name="ga7b0cf90602ca7f7fab87bc39db908dad"></a>
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBlePeripheralDiscoveryHandler</b>) (CBPeripheral *_Nonnull peripheral, NSDictionary&lt; NSString *, id &gt; *_Nonnull advertisementData, NSNumber *_Nonnull rssi)</td></tr>
+<tr class="memdesc:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral discovery handler. <br /></td></tr>
+<tr class="separator:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga609000134f19b0019c1165eaf395a546"><td class="memItemLeft" align="right" valign="top"><a id="ga609000134f19b0019c1165eaf395a546" name="ga609000134f19b0019c1165eaf395a546"></a>
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleConnectionEventHandler</b>) (CBPeripheral *_Nonnull peripheral, SGBleConnectionEvent connectionEvent, NSError *_Nullable error)</td></tr>
+<tr class="memdesc:ga609000134f19b0019c1165eaf395a546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
+<tr class="separator:ga609000134f19b0019c1165eaf395a546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c0d064596ca8593567b3cd8d52f7443"><td class="memItemLeft" align="right" valign="top"><a id="ga3c0d064596ca8593567b3cd8d52f7443" name="ga3c0d064596ca8593567b3cd8d52f7443"></a>
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleCharacteristicValueEventHandler</b>) (<a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *_Nonnull peripheralQueue, CBCharacteristic *_Nonnull characteristic, NSError *_Nullable error)</td></tr>
+<tr class="memdesc:ga3c0d064596ca8593567b3cd8d52f7443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
+<tr class="separator:ga3c0d064596ca8593567b3cd8d52f7443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -173,32 +177,45 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga99fb83031ce9923c84392b4e92f956b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection events reasons.  <a href="group___apple___objective-_c.html#ga99fb83031ce9923c84392b4e92f956b5">More...</a><br /></td></tr>
 <tr class="separator:ga99fb83031ce9923c84392b4e92f956b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738">SGBlePeripheralRequestErrorDisconnected</a>
-, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1">SGBlePeripheralRequestErrorInvalidCall</a>
-, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6">SGBlePeripheralRequestErrorInvalidParameters</a>
-, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8">SGBlePeripheralRequestErrorCanceled</a>
+<tr class="memitem:gabc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978">SGBleErrorOutOfMemory</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909">SGBleErrorNotImplemented</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4">SGBleErrorInvalidParameter</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef">SGBleErrorInvalidState</a>
+, <br />
+&#160;&#160;<a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b">SGBleErrorRequestCanceled</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995">SGBleErrorPeripheralDisconnected</a>
+<br />
  }</td></tr>
-<tr class="memdesc:gabc6126af1d45847bc59afa0aa3216b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral request error codes.  <a href="group___apple___objective-_c.html#gabc6126af1d45847bc59afa0aa3216b04">More...</a><br /></td></tr>
+<tr class="memdesc:gabc6126af1d45847bc59afa0aa3216b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes.  <a href="group___apple___objective-_c.html#gabc6126af1d45847bc59afa0aa3216b04">More...</a><br /></td></tr>
 <tr class="separator:gabc6126af1d45847bc59afa0aa3216b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:ga5b802701cdf80a98d48cab5dcad65606"><td class="memItemLeft" align="right" valign="top"><a id="ga5b802701cdf80a98d48cab5dcad65606" name="ga5b802701cdf80a98d48cab5dcad65606"></a>
+NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleOutOfMemoryError</b></td></tr>
+<tr class="memdesc:ga5b802701cdf80a98d48cab5dcad65606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application out of memory. <br /></td></tr>
+<tr class="separator:ga5b802701cdf80a98d48cab5dcad65606"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81afcc5f2473c31916e643191e13c5f3"><td class="memItemLeft" align="right" valign="top"><a id="ga81afcc5f2473c31916e643191e13c5f3" name="ga81afcc5f2473c31916e643191e13c5f3"></a>
+NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleNotImplementedError</b></td></tr>
+<tr class="memdesc:ga81afcc5f2473c31916e643191e13c5f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call not implemented. <br /></td></tr>
+<tr class="separator:ga81afcc5f2473c31916e643191e13c5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga93d0ce0c99d54363f0ae45c75ceedcca"><td class="memItemLeft" align="right" valign="top"><a id="ga93d0ce0c99d54363f0ae45c75ceedcca" name="ga93d0ce0c99d54363f0ae45c75ceedcca"></a>
+NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleInvalidParameterError</b></td></tr>
+<tr class="memdesc:ga93d0ce0c99d54363f0ae45c75ceedcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral request was given one or more invalid parameters. <br /></td></tr>
+<tr class="separator:ga93d0ce0c99d54363f0ae45c75ceedcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga03c59da94341f4f7fb44531f22f9d884"><td class="memItemLeft" align="right" valign="top"><a id="ga03c59da94341f4f7fb44531f22f9d884" name="ga03c59da94341f4f7fb44531f22f9d884"></a>
+NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleInvalidStateError</b></td></tr>
+<tr class="memdesc:ga03c59da94341f4f7fb44531f22f9d884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth or peripheral not in proper state to execute request. <br /></td></tr>
+<tr class="separator:ga03c59da94341f4f7fb44531f22f9d884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga41029f4ecf7a8b64e00e1c7e89ffee54"><td class="memItemLeft" align="right" valign="top"><a id="ga41029f4ecf7a8b64e00e1c7e89ffee54" name="ga41029f4ecf7a8b64e00e1c7e89ffee54"></a>
+NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleRequestCanceledError</b></td></tr>
+<tr class="memdesc:ga41029f4ecf7a8b64e00e1c7e89ffee54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral request got canceled. <br /></td></tr>
+<tr class="separator:ga41029f4ecf7a8b64e00e1c7e89ffee54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6abb2f68f175b07ef5634407929eeb26"><td class="memItemLeft" align="right" valign="top"><a id="ga6abb2f68f175b07ef5634407929eeb26" name="ga6abb2f68f175b07ef5634407929eeb26"></a>
 NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleDisconnectedError</b></td></tr>
 <tr class="memdesc:ga6abb2f68f175b07ef5634407929eeb26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral got disconnected. <br /></td></tr>
 <tr class="separator:ga6abb2f68f175b07ef5634407929eeb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b17657e68a99476c0c7215a35339a35"><td class="memItemLeft" align="right" valign="top"><a id="ga2b17657e68a99476c0c7215a35339a35" name="ga2b17657e68a99476c0c7215a35339a35"></a>
-NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleInvalidCallError</b></td></tr>
-<tr class="memdesc:ga2b17657e68a99476c0c7215a35339a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral not in proper state to execute request. <br /></td></tr>
-<tr class="separator:ga2b17657e68a99476c0c7215a35339a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafce456ed50953cbc236ffd60662d873d"><td class="memItemLeft" align="right" valign="top"><a id="gafce456ed50953cbc236ffd60662d873d" name="gafce456ed50953cbc236ffd60662d873d"></a>
-NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleInvalidParametersError</b></td></tr>
-<tr class="memdesc:gafce456ed50953cbc236ffd60662d873d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral request has some invalid parameters. <br /></td></tr>
-<tr class="separator:gafce456ed50953cbc236ffd60662d873d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3eb718af999217b6c58cff156be0f9a3"><td class="memItemLeft" align="right" valign="top"><a id="ga3eb718af999217b6c58cff156be0f9a3" name="ga3eb718af999217b6c58cff156be0f9a3"></a>
-NSError *&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleCanceledError</b></td></tr>
-<tr class="memdesc:ga3eb718af999217b6c58cff156be0f9a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral request got canceled. <br /></td></tr>
-<tr class="separator:ga3eb718af999217b6c58cff156be0f9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >A collection of Objective-C classes that provides a simplified access to Bluetooth Low Energy peripherals. </p>
@@ -286,15 +303,19 @@ Classes diagram</div></div>
       </table>
 </div><div class="memdoc">
 
-<p>Peripheral request error codes. </p>
+<p>Error codes. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738" name="ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738"></a>SGBlePeripheralRequestErrorDisconnected&#160;</td><td class="fielddoc"><p >Peripheral got disconnected while executing request. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978" name="ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978"></a>SGBleErrorOutOfMemory&#160;</td><td class="fielddoc"><p >Application out of memory. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1" name="ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1"></a>SGBlePeripheralRequestErrorInvalidCall&#160;</td><td class="fielddoc"><p >Peripheral not in proper state to execute request. </p>
+<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909" name="ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909"></a>SGBleErrorNotImplemented&#160;</td><td class="fielddoc"><p >Call not implemented. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6" name="ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6"></a>SGBlePeripheralRequestErrorInvalidParameters&#160;</td><td class="fielddoc"><p >Peripheral request has some invalid parameters. </p>
+<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4" name="ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4"></a>SGBleErrorInvalidParameter&#160;</td><td class="fielddoc"><p >Peripheral request has one or more invalid parameters. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8" name="ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8"></a>SGBlePeripheralRequestErrorCanceled&#160;</td><td class="fielddoc"><p >Peripheral request got canceled. </p>
+<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef" name="ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef"></a>SGBleErrorInvalidState&#160;</td><td class="fielddoc"><p >Bluetooth or peripheral not in proper state to execute request. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b" name="ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b"></a>SGBleErrorRequestCanceled&#160;</td><td class="fielddoc"><p >Peripheral request got canceled. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995" name="ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995"></a>SGBleErrorPeripheralDisconnected&#160;</td><td class="fielddoc"><p >Peripheral got disconnected while executing request. </p>
 </td></tr>
 </table>
 

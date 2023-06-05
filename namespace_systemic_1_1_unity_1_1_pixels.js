@@ -7,7 +7,7 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "DiceBag", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag" ],
     [ "GammaUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html", "class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils" ],
     [ "Pixel", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel" ],
-    [ "PixelUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_uuids" ],
+    [ "PixelBleUuids", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html", "class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids" ],
     [ "PixelBatteryState", "namespace_systemic_1_1_unity_1_1_pixels.html#aeab0518779a4ff74a82e9326d4e6adf5", null ],
     [ "PixelConnectionState", "namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7", null ],
     [ "PixelDesignAndColor", "namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933", null ],

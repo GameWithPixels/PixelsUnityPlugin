@@ -94,45 +94,18 @@ $(document).ready(function(){initNavTree('_s_g_ble_utils_8h_source.html',''); in
 </div><!--header-->
 <div class="contents">
 <a href="_s_g_ble_utils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef SGBleUtils_h</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SGBleUtils_h</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">typedef</span> NS_ENUM(NSInteger, SGBlePeripheralRequestError)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738">   16</a></span>    <a class="code hl_enumvalue" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738">SGBlePeripheralRequestErrorDisconnected</a>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1">   19</a></span>    <a class="code hl_enumvalue" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1">SGBlePeripheralRequestErrorInvalidCall</a>,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6">   22</a></span>    <a class="code hl_enumvalue" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6">SGBlePeripheralRequestErrorInvalidParameters</a>,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8">   25</a></span>    <a class="code hl_enumvalue" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8">SGBlePeripheralRequestErrorCanceled</a>,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">extern</span> NSError *<a class="code hl_variable" href="group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26">SGBleDisconnectedError</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">extern</span> NSError *<a class="code hl_variable" href="group___apple___objective-_c.html#ga2b17657e68a99476c0c7215a35339a35">SGBleInvalidCallError</a>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">extern</span> NSError *<a class="code hl_variable" href="group___apple___objective-_c.html#gafce456ed50953cbc236ffd60662d873d">SGBleInvalidParametersError</a>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">extern</span> NSError *<a class="code hl_variable" href="group___apple___objective-_c.html#ga3eb718af999217b6c58cff156be0f9a3">SGBleCanceledError</a>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">//</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">// Internal</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">//</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">// Gets the serial queue used to run all BLE operations</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>dispatch_queue_t sgBleGetSerialQueue();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// Gets the error domain of the BLE library</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>NSErrorDomain sgBleGetErrorDomain();</div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga2b17657e68a99476c0c7215a35339a35"><div class="ttname"><a href="group___apple___objective-_c.html#ga2b17657e68a99476c0c7215a35339a35">SGBleInvalidCallError</a></div><div class="ttdeci">NSError * SGBleInvalidCallError</div><div class="ttdoc">Peripheral not in proper state to execute request.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.mm:21</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga3eb718af999217b6c58cff156be0f9a3"><div class="ttname"><a href="group___apple___objective-_c.html#ga3eb718af999217b6c58cff156be0f9a3">SGBleCanceledError</a></div><div class="ttdeci">NSError * SGBleCanceledError</div><div class="ttdoc">Peripheral request got canceled.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.mm:30</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ga6abb2f68f175b07ef5634407929eeb26"><div class="ttname"><a href="group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26">SGBleDisconnectedError</a></div><div class="ttdeci">NSError * SGBleDisconnectedError</div><div class="ttdoc">Peripheral got disconnected.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.mm:17</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_gafce456ed50953cbc236ffd60662d873d"><div class="ttname"><a href="group___apple___objective-_c.html#gafce456ed50953cbc236ffd60662d873d">SGBleInvalidParametersError</a></div><div class="ttdeci">NSError * SGBleInvalidParametersError</div><div class="ttdoc">Peripheral request has some invalid parameters.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.mm:26</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738"><div class="ttname"><a href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a66e8a8f6a1c0d71da2ab7fb6c7a07738">SGBlePeripheralRequestErrorDisconnected</a></div><div class="ttdeci">@ SGBlePeripheralRequestErrorDisconnected</div><div class="ttdoc">Peripheral got disconnected while executing request.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.h:16</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8"><div class="ttname"><a href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8570f2f50fccde43a929ce2c33fd1ce8">SGBlePeripheralRequestErrorCanceled</a></div><div class="ttdeci">@ SGBlePeripheralRequestErrorCanceled</div><div class="ttdoc">Peripheral request got canceled.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.h:25</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6"><div class="ttname"><a href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a9c7e9ba04c6e9891ca1ffe5b924e35a6">SGBlePeripheralRequestErrorInvalidParameters</a></div><div class="ttdeci">@ SGBlePeripheralRequestErrorInvalidParameters</div><div class="ttdoc">Peripheral request has some invalid parameters.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.h:22</div></div>
-<div class="ttc" id="agroup___apple___objective-_c_html_ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1"><div class="ttname"><a href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac6ef78dc7e6fac319efdffa555922cf1">SGBlePeripheralRequestErrorInvalidCall</a></div><div class="ttdeci">@ SGBlePeripheralRequestErrorInvalidCall</div><div class="ttdoc">Peripheral not in proper state to execute request.</div><div class="ttdef"><b>Definition:</b> SGBleUtils.h:19</div></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Gets the serial queue used to run all BLE operations</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>dispatch_queue_t sgBleGetSerialQueue();</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>NSErrorDomain sgBleGetErrorDomain();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif </span><span class="comment">/* SGBleUtils_h */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

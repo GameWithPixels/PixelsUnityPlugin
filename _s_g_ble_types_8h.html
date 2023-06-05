@@ -119,7 +119,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="95,5,278,45"/>
 <area shape="rect" href="_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="73,93,301,148"/>
 <area shape="rect" href="_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,196,200,251"/>
-<area shape="rect" href="_unit_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="152,299,323,339"/>
+<area shape="rect" href="_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="149,299,325,339"/>
 <area shape="rect" href="_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="142,387,333,427"/>
 </map>
 </div>
@@ -128,14 +128,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga662b4b1ab3054584449b801ddb83d3fd"><td class="memItemLeft" align="right" valign="top">
-typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBlePeripheralDiscoveryHandler</b>) (CBPeripheral *peripheral, NSDictionary&lt; NSString *, id &gt; *advertisementData, NSNumber *RSSI)</td></tr>
-<tr class="memdesc:ga662b4b1ab3054584449b801ddb83d3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral discovery handler. <br /></td></tr>
-<tr class="separator:ga662b4b1ab3054584449b801ddb83d3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5d9676c0c2204f460acd039b6da9ba6"><td class="memItemLeft" align="right" valign="top">
-typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleConnectionEventHandler</b>) (CBPeripheral *peripheral, SGBleConnectionEvent connectionEvent, NSError *error)</td></tr>
-<tr class="memdesc:gae5d9676c0c2204f460acd039b6da9ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
-<tr class="separator:gae5d9676c0c2204f460acd039b6da9ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="memItemLeft" align="right" valign="top">
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBlePeripheralDiscoveryHandler</b>) (CBPeripheral *_Nonnull peripheral, NSDictionary&lt; NSString *, id &gt; *_Nonnull advertisementData, NSNumber *_Nonnull rssi)</td></tr>
+<tr class="memdesc:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral discovery handler. <br /></td></tr>
+<tr class="separator:ga7b0cf90602ca7f7fab87bc39db908dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga609000134f19b0019c1165eaf395a546"><td class="memItemLeft" align="right" valign="top">
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleConnectionEventHandler</b>) (CBPeripheral *_Nonnull peripheral, SGBleConnectionEvent connectionEvent, NSError *_Nullable error)</td></tr>
+<tr class="memdesc:ga609000134f19b0019c1165eaf395a546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
+<tr class="separator:ga609000134f19b0019c1165eaf395a546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c0d064596ca8593567b3cd8d52f7443"><td class="memItemLeft" align="right" valign="top">
+typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><b>SGBleCharacteristicValueEventHandler</b>) (<a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *_Nonnull peripheralQueue, CBCharacteristic *_Nonnull characteristic, NSError *_Nullable error)</td></tr>
+<tr class="memdesc:ga3c0d064596ca8593567b3cd8d52f7443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection event handler. <br /></td></tr>
+<tr class="separator:ga3c0d064596ca8593567b3cd8d52f7443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -164,6 +168,18 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga99fb83031ce9923c84392b4e92f956b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripheral connection events reasons.  <a href="group___apple___objective-_c.html#ga99fb83031ce9923c84392b4e92f956b5">More...</a><br /></td></tr>
 <tr class="separator:ga99fb83031ce9923c84392b4e92f956b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc6126af1d45847bc59afa0aa3216b04"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978">SGBleErrorOutOfMemory</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909">SGBleErrorNotImplemented</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4">SGBleErrorInvalidParameter</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef">SGBleErrorInvalidState</a>
+, <br />
+&#160;&#160;<a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b">SGBleErrorRequestCanceled</a>
+, <a class="el" href="group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995">SGBleErrorPeripheralDisconnected</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:gabc6126af1d45847bc59afa0aa3216b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes.  <a href="group___apple___objective-_c.html#gabc6126af1d45847bc59afa0aa3216b04">More...</a><br /></td></tr>
+<tr class="separator:gabc6126af1d45847bc59afa0aa3216b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations. </p>

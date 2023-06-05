@@ -1,7 +1,23 @@
 var searchData=
 [
-  ['value_0',['Value',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html#a31e594ba3ebc8f15cebae8b905e6d5c8',1,'Systemic.Unity.BluetoothLE.ValueRequestEnumerator.Value()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html#ab774528bb036e02634ce43bff2479eb8',1,'Systemic.Unity.Pixels.Pixel.SendMessageAndProcessResponseWithValueEnumerator.Value()']]],
-  ['valuechangedcallback_1',['ValueChangedCallback',['../cble_8h.html#aed859a187af809568c832830073490f7',1,'cble.h']]],
-  ['valuereadcallback_2',['ValueReadCallback',['../_unit_bridge_8h.html#a6fc06c47532ccb9ea16509d5bbf768c1',1,'ValueReadCallback():&#160;UnitBridge.h'],['../cble_8h.html#aeeffb9de8c8d9381c5fc14574046be8b',1,'ValueReadCallback():&#160;cble.h']]],
-  ['valuerequestenumerator_3',['ValueRequestEnumerator',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html',1,'Systemic::Unity::BluetoothLE']]]
+  ['uilogtotext_0',['UILogToText',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html',1,'Systemic::Unity::Examples']]],
+  ['uipixelpanel_1',['UIPixelPanel',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html',1,'Systemic::Unity::Examples']]],
+  ['uiupdatescantoggle_2',['UIUpdateScanToggle',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html',1,'Systemic::Unity::Examples']]],
+  ['unity_5fcsharp_3',['Unity_CSharp',['../group___unity___c_sharp.html',1,'']]],
+  ['unitybridge_2eh_4',['UnityBridge.h',['../_unity_bridge_8h.html',1,'']]],
+  ['unitybridge_2emm_5',['UnityBridge.mm',['../_unity_bridge_8mm.html',1,'']]],
+  ['unknown_6',['Unknown',['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a88183b946cc5f0e8c96b2e66e1c74a7e',1,'Systemic::BluetoothLE']]],
+  ['unsubscribe_7',['Unsubscribe',['../class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html#afe20f10b707de69948b3ff6e992b99f2',1,'Systemic::Unity::Examples::BleController']]],
+  ['unsubscribeasync_8',['unsubscribeAsync',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a91269045e8a29ba73a5edd5a4fbccc61',1,'Systemic::BluetoothLE::Characteristic']]],
+  ['unsubscribecharacteristic_9',['unsubscribeCharacteristic',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html#a15911acde11d4e9818b008ae0de07d12',1,'com::systemic::bluetoothle::Peripheral']]],
+  ['unsubscribecharacteristic_10',['UnsubscribeCharacteristic',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a3a35b76377540a4df72dff7736aad4a3',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
+  ['unsubscribecharacteristicasync_11',['UnsubscribeCharacteristicAsync',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ac1335d32abf461169fe190a2bb4af804',1,'Systemic::Unity::BluetoothLE::Central']]],
+  ['updateinfoasync_12',['UpdateInfoAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#adf8874dff1c9e016080fa0e5dfdd8b46',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['updateleds_13',['updateLEDs',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html#a2dea1c6909d342e73728cd986631cac8',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceKeyframed.updateLEDs()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient_pattern.html#a71224c91e36a4f3ac0c37cb2c9b4293b',1,'Systemic.Unity.Pixels.Animations.AnimationInstanceGradientPattern.updateLEDs()']]],
+  ['updatetemperature_14',['UpdateTemperature',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#aff10da34a3e99b3cae85cacc3c311244',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['uploadbulkdataasync_15',['UploadBulkDataAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1ff36995773bf34b593ac62d84232ef4',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['uploaddatasetasync_16',['UploadDataSetAsync',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#aa48bc7e75bd1ecfddc51e3776b5c0c5e',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['utils_2eh_17',['Utils.h',['../_utils_8h.html',1,'']]],
+  ['uuid_18',['Uuid',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html#a4365312c15cd244259e952fec6f2d83a',1,'Systemic::Unity::BluetoothLE::ServiceData']]],
+  ['uuid_19',['uuid',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a23f0e97d6f4de6c666fde374f0b28a66',1,'Systemic::BluetoothLE::Characteristic::uuid()'],['../class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5a23c3a0a98870d008834e068490a35c',1,'Systemic::BluetoothLE::Service::uuid()']]]
 ];

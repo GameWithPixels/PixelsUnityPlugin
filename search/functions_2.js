@@ -1,7 +1,7 @@
 var searchData=
 [
   ['calibrateface_0',['CalibrateFace',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a42f50dfd7dccf10dbc1fff26df7ec729',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['cancelqueue_1',['cancelQueue',['../interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7',1,'SGBlePeripheralQueue']]],
+  ['cancelall_1',['cancelAll',['../interface_s_g_ble_peripheral_queue.html#a8a61c0d24d632cab27fe43d0346a1ac7',1,'SGBlePeripheralQueue']]],
   ['cannotify_2',['canNotify',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad8d1b0d9e43a088d4f185af441a2e121',1,'Systemic::BluetoothLE::Characteristic']]],
   ['canread_3',['canRead',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a3a75a21a14334352867788c3031cdce9',1,'Systemic::BluetoothLE::Characteristic']]],
   ['canwrite_4',['canWrite',['../class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#ad6c3ae19535ebab9bf93577cead476ae',1,'Systemic::BluetoothLE::Characteristic']]],

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['error_0',['Error',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html#a33c44196f61862e2419c650618ad1c5e',1,'Systemic.Unity.BluetoothLE.RequestEnumerator.Error()'],['../interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html#a12f611bd2a4bf019a099f6e3e3a41e99',1,'Systemic.Unity.Pixels.Pixel.IOperationEnumerator.Error()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html#a8a73b17fda23b007913b0b94789f4d1c',1,'Systemic.Unity.Pixels.Pixel.WaitForMessageEnumerator.Error()']]]
+  ['data_0',['Data',['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html#a87f6b5338cd85f5deea90987c684468e',1,'Systemic.Unity.BluetoothLE.ManufacturerData.Data()'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html#a50cf8bc83fe88790f2a8c9aaa9d8f76a',1,'Systemic.Unity.BluetoothLE.ServiceData.Data()']]],
+  ['datasethash_1',['dataSetHash',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac2fa58c0f7fb8a18aaa637d805e3294a',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['designandcolor_2',['designAndColor',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a2f298dfcea662a1dfb0f8c317f931058',1,'Systemic::Unity::Pixels::Pixel']]]
 ];

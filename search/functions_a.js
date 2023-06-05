@@ -6,6 +6,6 @@ var searchData=
   ['nativerequestresultcallback_3',['NativeRequestResultCallback',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a946a99511232ca9adc42887e0c6a9ec3',1,'Systemic::Unity::BluetoothLE']]],
   ['nativevaluerequestresultcallback_3c_20t_20_3e_4',['NativeValueRequestResultCallback&lt; T &gt;',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#ae1ccbc5b0db51a1ac9fe95d2a5cac951',1,'Systemic::Unity::BluetoothLE']]],
   ['notifymessagehandler_5',['NotifyMessageHandler',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50b34dd63d5e7aa908c65f6ec7019a78',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['notifyresult_3a_6',['notifyResult:',['../interface_s_g_ble_request.html#a03f3226508f114d1e9495025cc61897e',1,'SGBleRequest']]],
+  ['notifyresult_3a_6',['notifyResult:',['../interface_s_g_ble_request.html#a7405bb31d6d24ba9db2f4f6ffe079ac2',1,'SGBleRequest']]],
   ['notifyusercallback_7',['NotifyUserCallback',['../namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070',1,'Systemic::Unity::Pixels']]]
 ];

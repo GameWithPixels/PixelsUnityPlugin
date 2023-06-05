@@ -94,88 +94,97 @@ $(document).ready(function(){initNavTree('_s_g_ble_peripheral_queue_8h_source.ht
 </div><!--header-->
 <div class="contents">
 <a href="_s_g_ble_peripheral_queue_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_central_manager_delegate_8h.html">SGBleCentralManagerDelegate.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_types_8h.html">SGBleTypes.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_request_8h.html">SGBleRequest.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html">   39</a></span><span class="keyword">@interface </span><a class="code hl_class" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> : NSObject&lt;CBPeripheralDelegate&gt;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    dispatch_queue_t _queue; <span class="comment">// Run all peripheral requests</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_class" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> *_centralDelegate;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    CBPeripheral *_peripheral;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// Connection</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    void (^_connectionEventHandler)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    NSArray&lt;CBUUID *&gt; *_requiredServices;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    NSUInteger _discoveringServicesCounter;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SGBleConnectionEventReason _disconnectReason;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Last RSSI</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">int</span> _rssi;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// Requests</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_class" href="interface_s_g_ble_request.html">SGBleRequest</a> *_runningRequest; <span class="comment">// Accessed only from queue</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    NSMutableArray&lt;SGBleRequest *&gt; *_pendingRequests; <span class="comment">// Always synchronize access to this list</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef SGBlePeripheralQueue_h</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SGBlePeripheralQueue_h</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#import &lt;CoreBluetooth/CoreBluetooth.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_central_manager_delegate_8h.html">SGBleCentralManagerDelegate.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_types_8h.html">SGBleTypes.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#import &quot;<a class="code" href="_s_g_ble_request_8h.html">SGBleRequest.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>NS_ASSUME_NONNULL_BEGIN</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html">   44</a></span><span class="keyword">@interface </span><a class="code hl_class" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> : NSObject&lt;CBPeripheralDelegate&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    dispatch_queue_t _queue; <span class="comment">// Run all peripheral requests</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> *_centralDelegate;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    CBPeripheral *_peripheral;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Connection</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    NSArray&lt;CBUUID *&gt; *_requiredServices;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    NSUInteger _discoveringServicesCounter;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    SGBleConnectionEventReason _disconnectReason;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// Last RSSI</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> _rssi;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// Read notifications</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    void (^_valueReadHandler)(CBCharacteristic *characteristic, NSError *error);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    NSMapTable&lt;CBCharacteristic *, void (^)(CBCharacteristic *characteristic, NSError *error)&gt; *_valueChangedHandlers;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">// Property getters</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>- (CBPeripheral *)peripheral;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>- (bool)isConnected;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>- (int)rssi;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">   73</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">peripheral</a>) CBPeripheral *peripheral;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35">   78</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35">isConnected</a>) <span class="keywordtype">bool</span> isConnected;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">   83</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">rssi</a>) <span class="keywordtype">int</span> rssi;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>- (instancetype)initWithPeripheral:(CBPeripheral *)peripheral</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            centralManagerDelegate:(<a class="code hl_class" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> *)centralManagerDelegate</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            connectionEventHandler:(<span class="keywordtype">void</span> (^)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason))connectionEventHandler;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>- (void)queueConnectWithServices:(NSArray&lt;CBUUID *&gt; *)services</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>               completionHandler:(<span class="keywordtype">void</span> (^)(NSError *error))completionHandler;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>- (void)queueDisconnect:(<span class="keywordtype">void</span> (^)(NSError *error))completionHandler;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>- (void)queueReadRssi:(<span class="keywordtype">void</span> (^)(NSError *error))completionHandler;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// Requests</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="interface_s_g_ble_request.html">SGBleRequest</a> *_runningRequest; <span class="comment">// Accessed only from queue</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    NSMutableArray&lt;SGBleRequest *&gt; *_pendingRequests; <span class="comment">// Always synchronize access to this list</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Read notifications</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_typedef" href="group___apple___objective-_c.html#ga3c0d064596ca8593567b3cd8d52f7443">SGBleCharacteristicValueEventHandler</a> _valueReadHandler;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    NSMapTable&lt;CBCharacteristic *, SGBleCharacteristicValueEventHandler&gt; *_valueChangedHandlers;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// Property getters</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>- (CBPeripheral *)peripheral;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>- (bool)isConnected;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>- (int)rssi;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">   77</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">peripheral</a>) CBPeripheral *peripheral;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#aa8ba7b0a88af5aefa2d28ae72cb0c0da">   82</a></span><span class="keyword">@property</span>(assign) <span class="keywordtype">bool</span> isReady;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">   87</a></span><span class="keyword">@property</span>(readonly, getter=<a class="code hl_property" href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">rssi</a>) <span class="keywordtype">int</span> rssi;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">   92</a></span><span class="keyword">@property</span>(strong) <span class="keywordtype">void</span> (^ _Nullable connectionEventHandler)(<a class="code hl_class" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>- (instancetype)initWithPeripheral:(CBPeripheral *)peripheral</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            centralManagerDelegate:(<a class="code hl_class" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> *)centralManagerDelegate;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>- (void)queueConnectWithServices:(NSArray&lt;CBUUID *&gt; *)services</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>               completionHandler:(<span class="keywordtype">void</span> (^)(NSError * _Nullable error))completionHandler;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>- (void)queueDisconnect:(<span class="keywordtype">void</span> (^)(NSError * _Nullable error))completionHandler;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>- (void)queueReadValueForCharacteristic:(CBCharacteristic *)characteristic</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                       valueReadHandler:(<span class="keywordtype">void</span> (^)(CBCharacteristic *characteristic, NSError *error))valueReadHandler;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>- (void)queueWriteValue:(NSData *)data</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      forCharacteristic:(CBCharacteristic *)characteristic</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                   type:(CBCharacteristicWriteType)type</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      completionHandler:(<span class="keywordtype">void</span> (^)(NSError *error))completionHandler;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>- (void)queueSetNotifyValueForCharacteristic:(CBCharacteristic *)characteristic</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                         valueChangedHandler:(<span class="keywordtype">void</span> (^)(CBCharacteristic *characteristic, NSError *error))valueChangedHandler</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                           completionHandler:(<span class="keywordtype">void</span> (^)(NSError *error))completionHandler;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>- (void)cancelQueue;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>- (void)queueReadRssi:(<span class="keywordtype">void</span> (^)(NSError * _Nullable error))completionHandler;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>- (void)queueReadValueForCharacteristic:(CBCharacteristic *)characteristic</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                       valueReadHandler:(<span class="keywordtype">void</span> (^)(<a class="code hl_class" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, CBCharacteristic *characteristic, NSError *_Nullable error))valueReadHandler;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>- (void)queueWriteValue:(NSData *)data</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      forCharacteristic:(CBCharacteristic *)characteristic</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                   type:(CBCharacteristicWriteType)type</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      completionHandler:(<span class="keywordtype">void</span> (^)(NSError * _Nullable error))completionHandler;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>- (void)queueSetNotifyValueForCharacteristic:(CBCharacteristic *)characteristic</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                         valueChangedHandler:(<span class="keywordtype">void</span> (^ _Nullable)(<a class="code hl_class" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, CBCharacteristic *characteristic, NSError * _Nullable error))valueChangedHandler</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                           completionHandler:(<span class="keywordtype">void</span> (^)(NSError * _Nullable error))completionHandler;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="keyword">@end</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>- (void)cancelAll;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="keyword">@end</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>NS_ASSUME_NONNULL_END</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">#endif </span><span class="comment">/* SGBlePeripheralQueue_h */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_s_g_ble_central_manager_delegate_8h_html"><div class="ttname"><a href="_s_g_ble_central_manager_delegate_8h.html">SGBleCentralManagerDelegate.h</a></div><div class="ttdoc">Definition of the SGBleCentralManagerDelegate class.</div></div>
 <div class="ttc" id="a_s_g_ble_request_8h_html"><div class="ttname"><a href="_s_g_ble_request_8h.html">SGBleRequest.h</a></div><div class="ttdoc">Internal types for representing a BLE request.</div></div>
 <div class="ttc" id="a_s_g_ble_types_8h_html"><div class="ttname"><a href="_s_g_ble_types_8h.html">SGBleTypes.h</a></div><div class="ttdoc">Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations.</div></div>
-<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></div><div class="ttdoc">Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:24</div></div>
-<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a></div><div class="ttdoc">Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:39</div></div>
-<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html_a7f8766b8a19cb02eada08c082fb5660b"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">SGBlePeripheralQueue::rssi</a></div><div class="ttdeci">int rssi</div><div class="ttdoc">Gets the last read value of the Received Signal Strength Indicator (RSSI).</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:83</div></div>
-<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html_ac0b7399dde3713c7bfeab18646325e35"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35">SGBlePeripheralQueue::isConnected</a></div><div class="ttdeci">bool isConnected</div><div class="ttdoc">Indicates whether the peripheral is connected.</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:78</div></div>
-<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html_ade54a6860e9ccc547723be10a80067fa"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">SGBlePeripheralQueue::peripheral</a></div><div class="ttdeci">CBPeripheral * peripheral</div><div class="ttdoc">Gets the CBPeripheral object for this peripheral.</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:73</div></div>
-<div class="ttc" id="ainterface_s_g_ble_request_html"><div class="ttname"><a href="interface_s_g_ble_request.html">SGBleRequest</a></div><div class="ttdoc">Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:42</div></div>
+<div class="ttc" id="agroup___apple___objective-_c_html_ga3c0d064596ca8593567b3cd8d52f7443"><div class="ttname"><a href="group___apple___objective-_c.html#ga3c0d064596ca8593567b3cd8d52f7443">SGBleCharacteristicValueEventHandler</a></div><div class="ttdeci">void(^ SGBleCharacteristicValueEventHandler)(SGBlePeripheralQueue *_Nonnull peripheralQueue, CBCharacteristic *_Nonnull characteristic, NSError *_Nullable error)</div><div class="ttdoc">Peripheral connection event handler.</div><div class="ttdef"><b>Definition:</b> SGBleTypes.h:142</div></div>
+<div class="ttc" id="ainterface_s_g_ble_central_manager_delegate_html"><div class="ttname"><a href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a></div><div class="ttdoc">Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...</div><div class="ttdef"><b>Definition:</b> SGBleCentralManagerDelegate.h:29</div></div>
+<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a></div><div class="ttdoc">Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:44</div></div>
+<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html_a7f8766b8a19cb02eada08c082fb5660b"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b">SGBlePeripheralQueue::rssi</a></div><div class="ttdeci">int rssi</div><div class="ttdoc">Gets the last read value of the Received Signal Strength Indicator (RSSI).</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:87</div></div>
+<div class="ttc" id="ainterface_s_g_ble_peripheral_queue_html_ade54a6860e9ccc547723be10a80067fa"><div class="ttname"><a href="interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa">SGBlePeripheralQueue::peripheral</a></div><div class="ttdeci">CBPeripheral * peripheral</div><div class="ttdoc">Gets the CBPeripheral object for this peripheral.</div><div class="ttdef"><b>Definition:</b> SGBlePeripheralQueue.h:77</div></div>
+<div class="ttc" id="ainterface_s_g_ble_request_html"><div class="ttname"><a href="interface_s_g_ble_request.html">SGBleRequest</a></div><div class="ttdoc">Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...</div><div class="ttdef"><b>Definition:</b> SGBleRequest.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

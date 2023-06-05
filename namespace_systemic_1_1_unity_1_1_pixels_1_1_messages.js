@@ -4,7 +4,7 @@ var namespace_systemic_1_1_unity_1_1_pixels_1_1_messages =
     [ "AttractMode", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html", null ],
     [ "BatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html", null ],
     [ "Blink", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html", null ],
-    [ "BlinkFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_finished.html", null ],
+    [ "BlinkAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_ack.html", null ],
     [ "BulkData", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html", null ],
     [ "BulkDataAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html", null ],
     [ "BulkSetup", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html", null ],

@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html" title=" " alt="" coords="279,5,493,45"/>
 <area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html" title=" " alt="" coords="279,69,493,109"/>
 <area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html" title=" " alt="" coords="279,133,493,173"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_finished.html" title=" " alt="" coords="279,197,493,237"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_ack.html" title=" " alt="" coords="279,197,493,237"/>
 <area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html" title=" " alt="" coords="279,261,493,301"/>
 <area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html" title=" " alt="" coords="279,325,493,365"/>
 <area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html" title=" " alt="" coords="279,389,493,429"/>

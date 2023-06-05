@@ -115,39 +115,39 @@ Inheritance diagram for SGBlePeripheralQueue:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Initialization</div></td></tr>
-<tr class="memitem:a29ea776e83a8868246bbf65d72ce68c6"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">initWithPeripheral:centralManagerDelegate:connectionEventHandler:</a></td></tr>
-<tr class="memdesc:a29ea776e83a8868246bbf65d72ce68c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a> instance for the given CBPeripheral object, with a central manager delegate and a connection event handler.  <a href="interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6">More...</a><br /></td></tr>
-<tr class="separator:a29ea776e83a8868246bbf65d72ce68c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c9583950084c2a1680672699c690aea"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a1c9583950084c2a1680672699c690aea">initWithPeripheral:centralManagerDelegate:</a></td></tr>
+<tr class="memdesc:a1c9583950084c2a1680672699c690aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="interface_s_g_ble_peripheral_queue.html" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue...">SGBlePeripheralQueue</a> instance for the given CBPeripheral object, with a central manager delegate and a connection event handler.  <a href="interface_s_g_ble_peripheral_queue.html#a1c9583950084c2a1680672699c690aea">More...</a><br /></td></tr>
+<tr class="separator:a1c9583950084c2a1680672699c690aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Connection and disconnection</div></td></tr>
-<tr class="memitem:affd377e8dea6ea8d2ab04c862c683318"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318">queueConnectWithServices:completionHandler:</a></td></tr>
-<tr class="memdesc:affd377e8dea6ea8d2ab04c862c683318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to connect to the peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318">More...</a><br /></td></tr>
-<tr class="separator:affd377e8dea6ea8d2ab04c862c683318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdb76bdb397216d833b0f3c98003aa8b"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b">queueDisconnect:</a></td></tr>
-<tr class="memdesc:afdb76bdb397216d833b0f3c98003aa8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to disconnect the peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b">More...</a><br /></td></tr>
-<tr class="separator:afdb76bdb397216d833b0f3c98003aa8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014fb4b6ecf152cca50447a3c8c63c74"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a014fb4b6ecf152cca50447a3c8c63c74">queueConnectWithServices:completionHandler:</a></td></tr>
+<tr class="memdesc:a014fb4b6ecf152cca50447a3c8c63c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to connect to the peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#a014fb4b6ecf152cca50447a3c8c63c74">More...</a><br /></td></tr>
+<tr class="separator:a014fb4b6ecf152cca50447a3c8c63c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6225585b80a4b4e78b628f995b8d7f2"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#aa6225585b80a4b4e78b628f995b8d7f2">queueDisconnect:</a></td></tr>
+<tr class="memdesc:aa6225585b80a4b4e78b628f995b8d7f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to disconnect the peripheral.  <a href="interface_s_g_ble_peripheral_queue.html#aa6225585b80a4b4e78b628f995b8d7f2">More...</a><br /></td></tr>
+<tr class="separator:aa6225585b80a4b4e78b628f995b8d7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Peripheral operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:a478edf978c231ac2867d8fda6b17fb01"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01">queueReadRssi:</a></td></tr>
-<tr class="memdesc:a478edf978c231ac2867d8fda6b17fb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to read the Received Signal Strength Indicator (RSSI).  <a href="interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01">More...</a><br /></td></tr>
-<tr class="separator:a478edf978c231ac2867d8fda6b17fb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4c6d38e7babecc51042a9b8f216b118"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#ae4c6d38e7babecc51042a9b8f216b118">queueReadRssi:</a></td></tr>
+<tr class="memdesc:ae4c6d38e7babecc51042a9b8f216b118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to read the Received Signal Strength Indicator (RSSI).  <a href="interface_s_g_ble_peripheral_queue.html#ae4c6d38e7babecc51042a9b8f216b118">More...</a><br /></td></tr>
+<tr class="separator:ae4c6d38e7babecc51042a9b8f216b118"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Characteristic operations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Valid only for connected peripherals. </p>
 </div></td></tr>
-<tr class="memitem:ac71480119a984ce1f0212154ab0ed6d5"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5">queueReadValueForCharacteristic:valueReadHandler:</a></td></tr>
-<tr class="memdesc:ac71480119a984ce1f0212154ab0ed6d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to read the value of the specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5">More...</a><br /></td></tr>
-<tr class="separator:ac71480119a984ce1f0212154ab0ed6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1a0c7686bf7ce15551bb82c5a2cc45d"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d">queueWriteValue:forCharacteristic:type:completionHandler:</a></td></tr>
-<tr class="memdesc:af1a0c7686bf7ce15551bb82c5a2cc45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to write the value of specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d">More...</a><br /></td></tr>
-<tr class="separator:af1a0c7686bf7ce15551bb82c5a2cc45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c0cceb24f18c7b25a678d8ff61c67d6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6">queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:</a></td></tr>
-<tr class="memdesc:a9c0cceb24f18c7b25a678d8ff61c67d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to enable or disable notifications for the specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6">More...</a><br /></td></tr>
-<tr class="separator:a9c0cceb24f18c7b25a678d8ff61c67d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac088099467a4a59a95eb789e9ea53cba"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#ac088099467a4a59a95eb789e9ea53cba">queueReadValueForCharacteristic:valueReadHandler:</a></td></tr>
+<tr class="memdesc:ac088099467a4a59a95eb789e9ea53cba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to read the value of the specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#ac088099467a4a59a95eb789e9ea53cba">More...</a><br /></td></tr>
+<tr class="separator:ac088099467a4a59a95eb789e9ea53cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeab8f2c73bbf0feff72dc258b151428"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#aaeab8f2c73bbf0feff72dc258b151428">queueWriteValue:forCharacteristic:type:completionHandler:</a></td></tr>
+<tr class="memdesc:aaeab8f2c73bbf0feff72dc258b151428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to write the value of specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#aaeab8f2c73bbf0feff72dc258b151428">More...</a><br /></td></tr>
+<tr class="separator:aaeab8f2c73bbf0feff72dc258b151428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65776484544f94c49d4fa225382a4ab4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_s_g_ble_peripheral_queue.html#a65776484544f94c49d4fa225382a4ab4">queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:</a></td></tr>
+<tr class="memdesc:a65776484544f94c49d4fa225382a4ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a request to enable or disable notifications for the specified service's characteristic.  <a href="interface_s_g_ble_peripheral_queue.html#a65776484544f94c49d4fa225382a4ab4">More...</a><br /></td></tr>
+<tr class="separator:a65776484544f94c49d4fa225382a4ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Queue management.</div></td></tr>
-<tr class="memitem:a9a0baf1d416f53dc6cb7e8dd41e361e7"><td class="memItemLeft" align="right" valign="top"><a id="a9a0baf1d416f53dc6cb7e8dd41e361e7" name="a9a0baf1d416f53dc6cb7e8dd41e361e7"></a>
-(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>cancelQueue</b></td></tr>
-<tr class="memdesc:a9a0baf1d416f53dc6cb7e8dd41e361e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the queue of pending request and cancel the running request. <br /></td></tr>
-<tr class="separator:a9a0baf1d416f53dc6cb7e8dd41e361e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a61c0d24d632cab27fe43d0346a1ac7"><td class="memItemLeft" align="right" valign="top"><a id="a8a61c0d24d632cab27fe43d0346a1ac7" name="a8a61c0d24d632cab27fe43d0346a1ac7"></a>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>cancelAll</b></td></tr>
+<tr class="memdesc:a8a61c0d24d632cab27fe43d0346a1ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancel any pending or running request. <br /></td></tr>
+<tr class="separator:a8a61c0d24d632cab27fe43d0346a1ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -155,26 +155,30 @@ Properties</h2></td></tr>
 CBPeripheral *&#160;</td><td class="memItemRight" valign="bottom"><b>peripheral</b></td></tr>
 <tr class="memdesc:ade54a6860e9ccc547723be10a80067fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the CBPeripheral object for this peripheral. <br /></td></tr>
 <tr class="separator:ade54a6860e9ccc547723be10a80067fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0b7399dde3713c7bfeab18646325e35"><td class="memItemLeft" align="right" valign="top"><a id="ac0b7399dde3713c7bfeab18646325e35" name="ac0b7399dde3713c7bfeab18646325e35"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isConnected</b></td></tr>
-<tr class="memdesc:ac0b7399dde3713c7bfeab18646325e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the peripheral is connected. <br /></td></tr>
-<tr class="separator:ac0b7399dde3713c7bfeab18646325e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8ba7b0a88af5aefa2d28ae72cb0c0da"><td class="memItemLeft" align="right" valign="top"><a id="aa8ba7b0a88af5aefa2d28ae72cb0c0da" name="aa8ba7b0a88af5aefa2d28ae72cb0c0da"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isReady</b></td></tr>
+<tr class="memdesc:aa8ba7b0a88af5aefa2d28ae72cb0c0da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the peripheral is connected and has discovered its services. <br /></td></tr>
+<tr class="separator:aa8ba7b0a88af5aefa2d28ae72cb0c0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f8766b8a19cb02eada08c082fb5660b"><td class="memItemLeft" align="right" valign="top"><a id="a7f8766b8a19cb02eada08c082fb5660b" name="a7f8766b8a19cb02eada08c082fb5660b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 <tr class="memdesc:a7f8766b8a19cb02eada08c082fb5660b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last read value of the Received Signal Strength Indicator (RSSI). <br /></td></tr>
 <tr class="separator:a7f8766b8a19cb02eada08c082fb5660b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9408a45bed9cdd202842de045e99e6d"><td class="memItemLeft" align="right" valign="top"><a id="af9408a45bed9cdd202842de045e99e6d" name="af9408a45bed9cdd202842de045e99e6d"></a>
+void(^&#160;</td><td class="memItemRight" valign="bottom"><b>_Nullable</b> )(<a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason)</td></tr>
+<tr class="memdesc:af9408a45bed9cdd202842de045e99e6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for notifying connection status changes of the peripheral. <br /></td></tr>
+<tr class="separator:af9408a45bed9cdd202842de045e99e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Implementation of the <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheraldelegate">CBPeripheralDelegate</a> protocol. Queues up operations to be performed with a Bluetooth Low Energy (BLE) <a href="https://developer.apple.com/documentation/corebluetooth/cbperipheral">peripheral</a>, run them sequentially and notify of their outcome. </p>
 <p >The next queued operation (a <a class="el" href="interface_s_g_ble_request.html" title="Internal type, represents a Bluetooth operation to be performed on a peripheral. Used by SGBlePeriphe...">SGBleRequest</a> instance) is run only once the current one completes (whether successfully or not).</p>
 <p >The connection request has no time out and waits until the peripheral is connected. Any subsequent request is therefore blocked until the connection is successful.</p>
-<p >Call <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7" title="Clear the queue of pending request and cancel the running request.">cancelQueue (SGBlePeripheralQueue)</a> to cancel all pending operations, including an on-going connection.</p>
+<p >Call cancelQueue() to cancel all pending operations, including an on-going connection.</p>
 <p >Handlers (such as request completion handlers) are called on the shared BLE queue, user code for those handlers should return as quickly as possible to avoid delaying any further BLE event or operation.</p>
 <p >On being de-allocated, the instance cancels the connection to peripheral.</p>
 <dl class="section note"><dt>Note</dt><dd>A request keep a strong reference to the instance so the later won't be de-allocated until the queue is empty. </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a id="a29ea776e83a8868246bbf65d72ce68c6" name="a29ea776e83a8868246bbf65d72ce68c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29ea776e83a8868246bbf65d72ce68c6">&#9670;&#160;</a></span>initWithPeripheral:centralManagerDelegate:connectionEventHandler:</h2>
+<a id="a1c9583950084c2a1680672699c690aea" name="a1c9583950084c2a1680672699c690aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c9583950084c2a1680672699c690aea">&#9670;&#160;</a></span>initWithPeripheral:centralManagerDelegate:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,13 +193,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
           <td class="paramkey">centralManagerDelegate:</td>
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_s_g_ble_central_manager_delegate.html">SGBleCentralManagerDelegate</a> *)&#160;</td>
-          <td class="paramname"><em>centralManagerDelegate</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">connectionEventHandler:</td>
-          <td></td>
-          <td class="paramtype">(void(^)(SGBleConnectionEvent connectionEvent, SGBleConnectionEventReason reason))&#160;</td>
-          <td class="paramname"><em>connectionEventHandler</em>&#160;</td>
+          <td class="paramname"><em>centralManagerDelegate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -210,7 +208,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
   <table class="params">
     <tr><td class="paramname">peripheral</td><td>The CBPeripheral object for the BLE peripheral. </td></tr>
     <tr><td class="paramname">centralManagerDelegate</td><td>The instance of <a class="el" href="interface_s_g_ble_central_manager_delegate.html" title="Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ...">SGBleCentralManagerDelegate</a> that discovered the peripheral. </td></tr>
-    <tr><td class="paramname">connectionEventHandler</td><td>The handler for notifying of changes of the connection status of the peripheral. </td></tr>
   </table>
   </dd>
 </dl>
@@ -218,8 +215,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="affd377e8dea6ea8d2ab04c862c683318" name="affd377e8dea6ea8d2ab04c862c683318"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affd377e8dea6ea8d2ab04c862c683318">&#9670;&#160;</a></span>queueConnectWithServices:completionHandler:</h2>
+<a id="a014fb4b6ecf152cca50447a3c8c63c74" name="a014fb4b6ecf152cca50447a3c8c63c74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014fb4b6ecf152cca50447a3c8c63c74">&#9670;&#160;</a></span>queueConnectWithServices:completionHandler:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,13 +224,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="memname">- (void) queueConnectWithServices: </td>
           <td></td>
-          <td class="paramtype">(NSArray&lt;CBUUID *&gt; *)&#160;</td>
+          <td class="paramtype">(NSArray&lt; CBUUID * &gt; *)&#160;</td>
           <td class="paramname"><em>services</em></td>
         </tr>
         <tr>
           <td class="paramkey">completionHandler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -245,7 +242,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 </div><div class="memdoc">
 
 <p>Queues a request to connect to the peripheral. </p>
-<p >This request has not time out and waits until the peripheral is connected. Call <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7" title="Clear the queue of pending request and cancel the running request.">cancelQueue</a> to cancel all pending operations.</p>
+<p >This request has not time out and waits until the peripheral is connected. Call cancelQueue() to cancel all pending operations.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">services</td><td>List of services UUIDs that the peripheral should support, may be null or empty. </td></tr>
@@ -256,8 +253,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="afdb76bdb397216d833b0f3c98003aa8b" name="afdb76bdb397216d833b0f3c98003aa8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdb76bdb397216d833b0f3c98003aa8b">&#9670;&#160;</a></span>queueDisconnect:</h2>
+<a id="aa6225585b80a4b4e78b628f995b8d7f2" name="aa6225585b80a4b4e78b628f995b8d7f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6225585b80a4b4e78b628f995b8d7f2">&#9670;&#160;</a></span>queueDisconnect:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +262,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="memname">- (void) queueDisconnect: </td>
           <td></td>
-          <td class="paramtype">(void(^)(NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>completionHandler</em></td>
           <td></td>
         </tr>
@@ -273,7 +270,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 </div><div class="memdoc">
 
 <p>Queues a request to disconnect the peripheral. </p>
-<dl class="section note"><dt>Note</dt><dd>The request being queued, it is processed only when previous requests have completed. For an immediate disconnection first call <a class="el" href="interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7" title="Clear the queue of pending request and cancel the running request.">cancelQueue</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The request being queued, it is processed only when previous requests have completed. For an immediate disconnection first call cancelQueue().</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">completionHandler</td><td>The handler for notifying of the request result. </td></tr>
@@ -283,8 +280,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="a478edf978c231ac2867d8fda6b17fb01" name="a478edf978c231ac2867d8fda6b17fb01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a478edf978c231ac2867d8fda6b17fb01">&#9670;&#160;</a></span>queueReadRssi:</h2>
+<a id="ae4c6d38e7babecc51042a9b8f216b118" name="ae4c6d38e7babecc51042a9b8f216b118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4c6d38e7babecc51042a9b8f216b118">&#9670;&#160;</a></span>queueReadRssi:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +289,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="memname">- (void) queueReadRssi: </td>
           <td></td>
-          <td class="paramtype">(void(^)(NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>completionHandler</em></td>
           <td></td>
         </tr>
@@ -309,8 +306,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="ac71480119a984ce1f0212154ab0ed6d5" name="ac71480119a984ce1f0212154ab0ed6d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac71480119a984ce1f0212154ab0ed6d5">&#9670;&#160;</a></span>queueReadValueForCharacteristic:valueReadHandler:</h2>
+<a id="ac088099467a4a59a95eb789e9ea53cba" name="ac088099467a4a59a95eb789e9ea53cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac088099467a4a59a95eb789e9ea53cba">&#9670;&#160;</a></span>queueReadValueForCharacteristic:valueReadHandler:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +321,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="paramkey">valueReadHandler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(CBCharacteristic *characteristic, NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(<a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, CBCharacteristic *characteristic, NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>valueReadHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -347,8 +344,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="a9c0cceb24f18c7b25a678d8ff61c67d6" name="a9c0cceb24f18c7b25a678d8ff61c67d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c0cceb24f18c7b25a678d8ff61c67d6">&#9670;&#160;</a></span>queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:</h2>
+<a id="a65776484544f94c49d4fa225382a4ab4" name="a65776484544f94c49d4fa225382a4ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65776484544f94c49d4fa225382a4ab4">&#9670;&#160;</a></span>queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -362,13 +359,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="paramkey">valueChangedHandler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(CBCharacteristic *characteristic, NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(<a class="el" href="interface_s_g_ble_peripheral_queue.html">SGBlePeripheralQueue</a> *peripheralQueue, CBCharacteristic *characteristic, NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>valueChangedHandler</em></td>
         </tr>
         <tr>
           <td class="paramkey">completionHandler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>
@@ -392,8 +389,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
 
 </div>
 </div>
-<a id="af1a0c7686bf7ce15551bb82c5a2cc45d" name="af1a0c7686bf7ce15551bb82c5a2cc45d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1a0c7686bf7ce15551bb82c5a2cc45d">&#9670;&#160;</a></span>queueWriteValue:forCharacteristic:type:completionHandler:</h2>
+<a id="aaeab8f2c73bbf0feff72dc258b151428" name="aaeab8f2c73bbf0feff72dc258b151428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeab8f2c73bbf0feff72dc258b151428">&#9670;&#160;</a></span>queueWriteValue:forCharacteristic:type:completionHandler:</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,7 +416,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rssi</b></td></tr>
         <tr>
           <td class="paramkey">completionHandler:</td>
           <td></td>
-          <td class="paramtype">(void(^)(NSError *error))&#160;</td>
+          <td class="paramtype">(void(^)(NSError *<a class="el" href="interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d">_Nullable</a> error))&#160;</td>
           <td class="paramname"><em>completionHandler</em>&#160;</td>
         </tr>
         <tr>

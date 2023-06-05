@@ -1,14 +1,15 @@
 var interface_s_g_ble_peripheral_queue =
 [
-    [ "cancelQueue", "interface_s_g_ble_peripheral_queue.html#a9a0baf1d416f53dc6cb7e8dd41e361e7", null ],
-    [ "initWithPeripheral:centralManagerDelegate:connectionEventHandler:", "interface_s_g_ble_peripheral_queue.html#a29ea776e83a8868246bbf65d72ce68c6", null ],
-    [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral_queue.html#affd377e8dea6ea8d2ab04c862c683318", null ],
-    [ "queueDisconnect:", "interface_s_g_ble_peripheral_queue.html#afdb76bdb397216d833b0f3c98003aa8b", null ],
-    [ "queueReadRssi:", "interface_s_g_ble_peripheral_queue.html#a478edf978c231ac2867d8fda6b17fb01", null ],
-    [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral_queue.html#ac71480119a984ce1f0212154ab0ed6d5", null ],
-    [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a9c0cceb24f18c7b25a678d8ff61c67d6", null ],
-    [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral_queue.html#af1a0c7686bf7ce15551bb82c5a2cc45d", null ],
-    [ "isConnected", "interface_s_g_ble_peripheral_queue.html#ac0b7399dde3713c7bfeab18646325e35", null ],
+    [ "cancelAll", "interface_s_g_ble_peripheral_queue.html#a8a61c0d24d632cab27fe43d0346a1ac7", null ],
+    [ "initWithPeripheral:centralManagerDelegate:", "interface_s_g_ble_peripheral_queue.html#a1c9583950084c2a1680672699c690aea", null ],
+    [ "queueConnectWithServices:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a014fb4b6ecf152cca50447a3c8c63c74", null ],
+    [ "queueDisconnect:", "interface_s_g_ble_peripheral_queue.html#aa6225585b80a4b4e78b628f995b8d7f2", null ],
+    [ "queueReadRssi:", "interface_s_g_ble_peripheral_queue.html#ae4c6d38e7babecc51042a9b8f216b118", null ],
+    [ "queueReadValueForCharacteristic:valueReadHandler:", "interface_s_g_ble_peripheral_queue.html#ac088099467a4a59a95eb789e9ea53cba", null ],
+    [ "queueSetNotifyValueForCharacteristic:valueChangedHandler:completionHandler:", "interface_s_g_ble_peripheral_queue.html#a65776484544f94c49d4fa225382a4ab4", null ],
+    [ "queueWriteValue:forCharacteristic:type:completionHandler:", "interface_s_g_ble_peripheral_queue.html#aaeab8f2c73bbf0feff72dc258b151428", null ],
+    [ "_Nullable", "interface_s_g_ble_peripheral_queue.html#af9408a45bed9cdd202842de045e99e6d", null ],
+    [ "isReady", "interface_s_g_ble_peripheral_queue.html#aa8ba7b0a88af5aefa2d28ae72cb0c0da", null ],
     [ "peripheral", "interface_s_g_ble_peripheral_queue.html#ade54a6860e9ccc547723be10a80067fa", null ],
     [ "rssi", "interface_s_g_ble_peripheral_queue.html#a7f8766b8a19cb02eada08c082fb5660b", null ]
 ];
