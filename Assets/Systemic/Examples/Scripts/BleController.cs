@@ -115,7 +115,7 @@ namespace Systemic.Unity.Examples
         public void StartScan()
         {
             // Filter peripherals with the Pixel service UUID
-            Central.ScanForPeripheralsWithServices(new[] { PixelUuids.ServiceUuid });
+            Central.ScanForPeripheralsWithServices(new[] { PixelBleUuids.Service });
         }
 
         /// <summary>
@@ -151,9 +151,9 @@ namespace Systemic.Unity.Examples
 
             Debug.Log("Name: " + Central.GetPeripheralName(_peripheral));
             Debug.Log("Services: " + string.Join(", ", Central.GetDiscoveredServices(_peripheral).Select(g => g.ToString())));
-            Debug.Log("Characteristics: " + string.Join(", ", Central.GetServiceCharacteristics(_peripheral, PixelUuids.ServiceUuid).Select(g => g.ToString())));
-            Debug.Log("Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.NotifyCharacteristicUuid));
-            Debug.Log("Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelUuids.ServiceUuid, PixelUuids.WriteCharacteristicUuid));
+            Debug.Log("Characteristics: " + string.Join(", ", Central.GetServiceCharacteristics(_peripheral, PixelBleUuids.Service).Select(g => g.ToString())));
+            Debug.Log("Notify characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelBleUuids.Service, PixelBleUuids.NotifyCharacteristic));
+            Debug.Log("Write characteristic properties: " + Central.GetCharacteristicProperties(_peripheral, PixelBleUuids.Service, PixelBleUuids.WriteCharacteristic));
 
             StartCoroutine(ReadRssiAsync());
         }
@@ -273,8 +273,8 @@ namespace Systemic.Unity.Examples
         {
             yield return Central.SubscribeCharacteristicAsync(
                 _peripheral,
-                PixelUuids.ServiceUuid,
-                PixelUuids.NotifyCharacteristicUuid,
+                PixelBleUuids.Service,
+                PixelBleUuids.NotifyCharacteristic,
                 OnReceivedData);
             Debug.Log("Subscribed to characteristic");
         }
@@ -283,8 +283,8 @@ namespace Systemic.Unity.Examples
         {
             yield return Central.UnsubscribeCharacteristicAsync(
                 _peripheral,
-                PixelUuids.ServiceUuid,
-                PixelUuids.NotifyCharacteristicUuid);
+                PixelBleUuids.Service,
+                PixelBleUuids.NotifyCharacteristic);
             Debug.Log("Unsubscribed from characteristic");
         }
 
@@ -292,8 +292,8 @@ namespace Systemic.Unity.Examples
         {
             var request = Central.ReadCharacteristicAsync(
                 _peripheral,
-                PixelUuids.ServiceUuid,
-                PixelUuids.NotifyCharacteristicUuid);
+                PixelBleUuids.Service,
+                PixelBleUuids.NotifyCharacteristic);
             yield return request;
             if (request.IsSuccess)
             {
@@ -311,8 +311,8 @@ namespace Systemic.Unity.Examples
             Debug.Log("Sending message: " + messageType);
             yield return Central.WriteCharacteristicAsync(
                 _peripheral,
-                PixelUuids.ServiceUuid,
-                PixelUuids.WriteCharacteristicUuid,
+                PixelBleUuids.Service,
+                PixelBleUuids.WriteCharacteristic,
                 new byte[] { (byte)messageType },
                 withoutResponse: withoutResponse);
         }
