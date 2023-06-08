@@ -1,6 +1,12 @@
 var bletypes_8h =
 [
     [ "bluetooth_address_t", "bletypes_8h.html#ab4c3d4a45c42df83461f2198f5c35773", null ],
+    [ "BleAdapterState", "bletypes_8h.html#a2ea52dd2eb72ece14d6b2289dea530a9", [
+      [ "Unsupported", "bletypes_8h.html#a2ea52dd2eb72ece14d6b2289dea530a9ab4080bdf74febf04d578ff105cce9d3f", null ],
+      [ "Unavailable", "bletypes_8h.html#a2ea52dd2eb72ece14d6b2289dea530a9a453e6aa38d87b28ccae545967c53004f", null ],
+      [ "Disabled", "bletypes_8h.html#a2ea52dd2eb72ece14d6b2289dea530a9ab9f5c797ebbf55adccdd8539a65a0241", null ],
+      [ "Enabled", "bletypes_8h.html#a2ea52dd2eb72ece14d6b2289dea530a9a00d23a76e43b46dae9ec7aa9dcbebb32", null ]
+    ] ],
     [ "BleRequestStatus", "bletypes_8h.html#ac1603adad69e83af9fb9eb2c57761449", [
       [ "Success", "bletypes_8h.html#ac1603adad69e83af9fb9eb2c57761449a505a83f220c02df2f85c3810cd9ceb38", null ],
       [ "Error", "bletypes_8h.html#ac1603adad69e83af9fb9eb2c57761449a902b0d55fddef6f8d651fe1035b7d4bd", null ],

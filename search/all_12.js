@@ -28,7 +28,7 @@ var searchData=
   ['transfertestanimationset_25',['TransferTestAnimationSet',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['transfertestanimationsetack_26',['TransferTestAnimationSetAck',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set_ack.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['transfertestanimationsetfinished_27',['TransferTestAnimationSetFinished',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set_finished.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['txpowerlevel_28',['TxPowerLevel',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a214ee8a6b6df5ce3dfb645483d44615f',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
-  ['txpowerlevel_29',['txPowerLevel',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a1447ebf7e2063a6368a8488e8cf84afb',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['txpowerlevel_28',['txPowerLevel',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a1447ebf7e2063a6368a8488e8cf84afb',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
+  ['txpowerlevel_29',['TxPowerLevel',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a214ee8a6b6df5ce3dfb645483d44615f',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
   ['type_30',['type',['../interface_s_g_ble_request.html#af4ae5924d7b0ce5c2ff259780f37079e',1,'SGBleRequest']]]
 ];

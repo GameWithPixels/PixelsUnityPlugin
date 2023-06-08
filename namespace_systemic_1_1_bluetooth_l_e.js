@@ -9,6 +9,12 @@ var namespace_systemic_1_1_bluetooth_l_e =
     [ "Service", "class_systemic_1_1_bluetooth_l_e_1_1_service.html", "class_systemic_1_1_bluetooth_l_e_1_1_service" ],
     [ "ServiceData", "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html", "class_systemic_1_1_bluetooth_l_e_1_1_service_data" ],
     [ "bluetooth_address_t", "namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773", null ],
+    [ "BleAdapterState", "namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9", [
+      [ "Unsupported", "namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9ab4080bdf74febf04d578ff105cce9d3f", null ],
+      [ "Unavailable", "namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9a453e6aa38d87b28ccae545967c53004f", null ],
+      [ "Disabled", "namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9ab9f5c797ebbf55adccdd8539a65a0241", null ],
+      [ "Enabled", "namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9a00d23a76e43b46dae9ec7aa9dcbebb32", null ]
+    ] ],
     [ "BleRequestStatus", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449", [
       [ "Success", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a505a83f220c02df2f85c3810cd9ceb38", null ],
       [ "Error", "namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a902b0d55fddef6f8d651fe1035b7d4bd", null ],
@@ -54,5 +60,7 @@ var namespace_systemic_1_1_bluetooth_l_e =
       [ "LinkLoss", "namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a01389a4e54d8c078414891e86dd7742d", null ],
       [ "AdpaterOff", "namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6ac8afe2b6c8cbedd939017e05b4e86056", null ],
       [ "Peripheral", "namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a911e8211a55efee5a43a609b7bcb5db9", null ]
-    ] ]
+    ] ],
+    [ "getAdapterStateAsync", "namespace_systemic_1_1_bluetooth_l_e.html#aa043560ffd1f594bc512c7cc9991c541", null ],
+    [ "subscribeAdapterStateChangedAsync", "namespace_systemic_1_1_bluetooth_l_e.html#a57744c7ef4e09c4428de4571ba5fd203", null ]
 ];

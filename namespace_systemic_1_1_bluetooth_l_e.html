@@ -93,7 +93,8 @@ $(document).ready(function(){initNavTree('namespace_systemic_1_1_bluetooth_l_e.h
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Systemic::BluetoothLE Namespace Reference<div class="ingroups"><a class="el" href="group___win_r_t___cpp.html">WinRT_Cpp</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -137,6 +138,13 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>bluetooth_address_t<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a2ea52dd2eb72ece14d6b2289dea530a9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">BleAdapterState</a> { <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9ab4080bdf74febf04d578ff105cce9d3f">Unsupported</a>
+, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9a453e6aa38d87b28ccae545967c53004f">Unavailable</a>
+, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9ab9f5c797ebbf55adccdd8539a65a0241">Disabled</a>
+, <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9a00d23a76e43b46dae9ec7aa9dcbebb32">Enabled</a>
+ }</td></tr>
+<tr class="memdesc:a2ea52dd2eb72ece14d6b2289dea530a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth adapter states.  <a href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">More...</a><br /></td></tr>
+<tr class="separator:a2ea52dd2eb72ece14d6b2289dea530a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1603adad69e83af9fb9eb2c57761449"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> { <br />
 &#160;&#160;<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a505a83f220c02df2f85c3810cd9ceb38">Success</a>
 , <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
@@ -202,6 +210,15 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:acd6a573cf3ebbf3fbc154ddf408723f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard BLE values for characteristic properties, those are flags that can be combined.  <a href="namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1">More...</a><br /></td></tr>
 <tr class="separator:acd6a573cf3ebbf3fbc154ddf408723f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aa043560ffd1f594bc512c7cc9991c541"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">BleAdapterState</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#aa043560ffd1f594bc512c7cc9991c541">getAdapterStateAsync</a> ()</td></tr>
+<tr class="memdesc:aa043560ffd1f594bc512c7cc9991c541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the default Bluetooth adapter state.  <a href="namespace_systemic_1_1_bluetooth_l_e.html#aa043560ffd1f594bc512c7cc9991c541">More...</a><br /></td></tr>
+<tr class="separator:aa043560ffd1f594bc512c7cc9991c541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57744c7ef4e09c4428de4571ba5fd203"><td class="memItemLeft" align="right" valign="top">std::future&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a57744c7ef4e09c4428de4571ba5fd203">subscribeAdapterStateChangedAsync</a> (const std::function&lt; void(<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">BleAdapterState</a>)&gt; &amp;onStateChanged)</td></tr>
+<tr class="memdesc:a57744c7ef4e09c4428de4571ba5fd203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to the default Bluetooth adapter radio state events.  <a href="namespace_systemic_1_1_bluetooth_l_e.html#a57744c7ef4e09c4428de4571ba5fd203">More...</a><br /></td></tr>
+<tr class="separator:a57744c7ef4e09c4428de4571ba5fd203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals. </p>
@@ -215,6 +232,40 @@ Enumerations</h2></td></tr>
 <div class="caption">
 Classes diagram</div></div>
  </div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2ea52dd2eb72ece14d6b2289dea530a9" name="a2ea52dd2eb72ece14d6b2289dea530a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea52dd2eb72ece14d6b2289dea530a9">&#9670;&#160;</a></span>BleAdapterState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">Systemic::BluetoothLE::BleAdapterState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bluetooth adapter states. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2ea52dd2eb72ece14d6b2289dea530a9ab4080bdf74febf04d578ff105cce9d3f" name="a2ea52dd2eb72ece14d6b2289dea530a9ab4080bdf74febf04d578ff105cce9d3f"></a>Unsupported&#160;</td><td class="fielddoc"><p >The system doesn't have a compatible Bluetooth adapter. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2ea52dd2eb72ece14d6b2289dea530a9a453e6aa38d87b28ccae545967c53004f" name="a2ea52dd2eb72ece14d6b2289dea530a9a453e6aa38d87b28ccae545967c53004f"></a>Unavailable&#160;</td><td class="fielddoc"><p >The radio of the default Bluetooth adapter is in a uncontrollable state. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2ea52dd2eb72ece14d6b2289dea530a9ab9f5c797ebbf55adccdd8539a65a0241" name="a2ea52dd2eb72ece14d6b2289dea530a9ab9f5c797ebbf55adccdd8539a65a0241"></a>Disabled&#160;</td><td class="fielddoc"><p >The radio of the default Bluetooth adapter is disabled or powered off. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2ea52dd2eb72ece14d6b2289dea530a9a00d23a76e43b46dae9ec7aa9dcbebb32" name="a2ea52dd2eb72ece14d6b2289dea530a9a00d23a76e43b46dae9ec7aa9dcbebb32"></a>Enabled&#160;</td><td class="fielddoc"><p >The radio of the default Bluetooth adapter is enabled and ready for use.. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="ac1603adad69e83af9fb9eb2c57761449" name="ac1603adad69e83af9fb9eb2c57761449"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1603adad69e83af9fb9eb2c57761449">&#9670;&#160;</a></span>BleRequestStatus</h2>
 
@@ -382,6 +433,54 @@ Classes diagram</div></div>
 <tr><td class="fieldname"><a id="afe5f28749f3cd25418c6ca2f593376f6a911e8211a55efee5a43a609b7bcb5db9" name="afe5f28749f3cd25418c6ca2f593376f6a911e8211a55efee5a43a609b7bcb5db9"></a>Peripheral&#160;</td><td class="fielddoc"><p >Disconnection was initiated by peripheral. </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aa043560ffd1f594bc512c7cc9991c541" name="aa043560ffd1f594bc512c7cc9991c541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa043560ffd1f594bc512c7cc9991c541">&#9670;&#160;</a></span>getAdapterStateAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">BleAdapterState</a> &gt; Systemic::BluetoothLE::getAdapterStateAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the default Bluetooth adapter state. </p>
+<dl class="section return"><dt>Returns</dt><dd>The adapter state </dd></dl>
+
+</div>
+</div>
+<a id="a57744c7ef4e09c4428de4571ba5fd203" name="a57744c7ef4e09c4428de4571ba5fd203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57744c7ef4e09c4428de4571ba5fd203">&#9670;&#160;</a></span>subscribeAdapterStateChangedAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::future&lt; bool &gt; Systemic::BluetoothLE::subscribeAdapterStateChangedAsync </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void(<a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#a2ea52dd2eb72ece14d6b2289dea530a9">BleAdapterState</a>)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>onStateChanged</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subscribe to the default Bluetooth adapter radio state events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onStateChanged</td><td>Called when the radio state changes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A future indicating whether the operation was successful or not. </dd></dl>
 
 </div>
 </div>

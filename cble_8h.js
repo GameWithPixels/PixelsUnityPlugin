@@ -2,7 +2,7 @@ var cble_8h =
 [
     [ "BleRequestStatus", "cble_8h.html#a93948ea5158e486cfe82ed859f621f90", null ],
     [ "bluetooth_address_t", "cble_8h.html#a673835ee6c766365da05cf26513db424", null ],
-    [ "BluetoothStateUpdateCallback", "cble_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb", null ],
+    [ "BluetoothStateUpdateCallback", "cble_8h.html#a7624977cdcddeb4078292a97b13eabf7", null ],
     [ "characteristic_index_t", "cble_8h.html#af24b1c88d262d190de702852f3ac7cf3", null ],
     [ "CharacteristicProperties", "cble_8h.html#a1c6210e1a35579d69c87d32ca14af6cf", null ],
     [ "ConnectionEvent", "cble_8h.html#ac2098f11906f322a52e642752cab6eaf", null ],

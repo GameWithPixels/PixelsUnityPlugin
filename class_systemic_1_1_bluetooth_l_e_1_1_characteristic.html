@@ -135,9 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adb149acfb321c3faf851b0623f8c82af"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#adb149acfb321c3faf851b0623f8c82af">writeAsync</a> (const std::vector&lt; std::uint8_t &gt; &amp;data, bool withoutResponse=false)</td></tr>
 <tr class="memdesc:adb149acfb321c3faf851b0623f8c82af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the given data to the value of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#adb149acfb321c3faf851b0623f8c82af">More...</a><br /></td></tr>
 <tr class="separator:adb149acfb321c3faf851b0623f8c82af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f9bd5688e2fc436bf094d14454b0cd5"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a6f9bd5688e2fc436bf094d14454b0cd5">subscribeAsync</a> (std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt; onValueChanged)</td></tr>
-<tr class="memdesc:a6f9bd5688e2fc436bf094d14454b0cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes for value changes of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a6f9bd5688e2fc436bf094d14454b0cd5">More...</a><br /></td></tr>
-<tr class="separator:a6f9bd5688e2fc436bf094d14454b0cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a943e79dbf2e0418eaa4aabdf2c061f74"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a943e79dbf2e0418eaa4aabdf2c061f74">subscribeAsync</a> (const std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt; &amp;onValueChanged)</td></tr>
+<tr class="memdesc:a943e79dbf2e0418eaa4aabdf2c061f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribes for value changes of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a943e79dbf2e0418eaa4aabdf2c061f74">More...</a><br /></td></tr>
+<tr class="separator:a943e79dbf2e0418eaa4aabdf2c061f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91269045e8a29ba73a5edd5a4fbccc61"><td class="memItemLeft" align="right" valign="top">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a91269045e8a29ba73a5edd5a4fbccc61">unsubscribeAsync</a> ()</td></tr>
 <tr class="memdesc:a91269045e8a29ba73a5edd5a4fbccc61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribes from value changes of the characteristic.  <a href="class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html#a91269045e8a29ba73a5edd5a4fbccc61">More...</a><br /></td></tr>
 <tr class="separator:a91269045e8a29ba73a5edd5a4fbccc61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -269,8 +269,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f9bd5688e2fc436bf094d14454b0cd5" name="a6f9bd5688e2fc436bf094d14454b0cd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f9bd5688e2fc436bf094d14454b0cd5">&#9670;&#160;</a></span>subscribeAsync()</h2>
+<a id="a943e79dbf2e0418eaa4aabdf2c061f74" name="a943e79dbf2e0418eaa4aabdf2c061f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a943e79dbf2e0418eaa4aabdf2c061f74">&#9670;&#160;</a></span>subscribeAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +278,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">std::future&lt; <a class="el" href="namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449">BleRequestStatus</a> &gt; Systemic::BluetoothLE::Characteristic::subscribeAsync </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt;&#160;</td>
+          <td class="paramtype">const std::function&lt; void(const std::vector&lt; std::uint8_t &gt; &amp;)&gt; &amp;&#160;</td>
           <td class="paramname"><em>onValueChanged</em></td><td>)</td>
           <td></td>
         </tr>
