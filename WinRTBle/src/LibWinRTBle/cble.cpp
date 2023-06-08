@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "../../include/cble.h"
+#include "Systemic/BluetoothLE/BluetoothLE.h"
 #include "Systemic/BluetoothLE/Scanner.h"
 #include "Systemic/BluetoothLE/ScannedPeripheral.h"
 #include "Systemic/BluetoothLE/Peripheral.h"
@@ -71,7 +72,7 @@ namespace
     void runForPeripheral(
         bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
-        std::function<void(std::shared_ptr<Peripheral>)> action)
+        const std::function<void(std::shared_ptr<Peripheral>)>& action)
     {
         assert(action);
 
@@ -89,7 +90,7 @@ namespace
     T runForPeripheral(
         bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
-        std::function<T(std::shared_ptr<Peripheral>)> func)
+        const std::function<T(std::shared_ptr<Peripheral>)>& func)
     {
         assert(func);
         T result{};
@@ -113,7 +114,7 @@ namespace
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
         RequestStatusCallback onRequestStatus,
-        std::function<T(std::shared_ptr<Characteristic>)> func)
+        const std::function<T(std::shared_ptr<Characteristic>)>& func)
     {
         assert(func);
         T result{};
@@ -133,13 +134,13 @@ namespace
     void runForPeripheralAsync(
         bluetooth_address_t address,
         RequestStatusCallback onRequestStatus,
-        std::function<std::future<void>(std::shared_ptr<Peripheral>)> actionFuture)
+        const std::function<std::future<void>(std::shared_ptr<Peripheral>)>& actionFuture)
     {
         assert(actionFuture);
 
         if (auto peripheral = findPeripheral(address))
         {
-            // Run the future (which continues on another thread)
+            // Run the future (which continues executing on another thread)
             actionFuture(peripheral);
         }
         else if (onRequestStatus)
@@ -154,7 +155,7 @@ namespace
         const char* characteristicUuid,
         characteristic_index_t instanceIndex,
         RequestStatusCallback onRequestStatus,
-        std::function<std::future<void>(std::shared_ptr<Characteristic>)> actionFuture)
+        const std::function<std::future<void>(std::shared_ptr<Characteristic>)>& actionFuture)
     {
         assert(actionFuture);
 
@@ -162,6 +163,7 @@ namespace
 
         if (auto characteristic = findCharacteristic(address, serviceUuid, characteristicUuid, instanceIndex))
         {
+            // Run the future (which continues executing on another thread)
             actionFuture(characteristic);
             return BleRequestStatus::Success;
         }
@@ -269,7 +271,6 @@ namespace
     }
 }
 
-
 //////////////////////////////////////////////////////////////////////////////////////////
 //
 // Exported C interface
@@ -283,7 +284,16 @@ bool sgBleInitialize(bool apartmentSingleThreaded, BluetoothStateUpdateCallback 
         winrt::init_apartment(apartmentSingleThreaded ? winrt::apartment_type::single_threaded : winrt::apartment_type::multi_threaded);
         if (onBluetoothStateUpdate)
         {
-            onBluetoothStateUpdate(true); //TODO
+            // This future will continue executing on another thread
+            auto notify = [](BluetoothStateUpdateCallback onBluetoothStateUpdate)->std::future<void>
+            {
+                auto state = co_await getAdapterStateAsync();
+                // TODO check if we haven't shutdown
+                onBluetoothStateUpdate(state);
+            }(onBluetoothStateUpdate);
+
+            // Watch for adapter state changes
+            subscribeAdapterStateChangedAsync(onBluetoothStateUpdate);
         }
         return true;
     }
@@ -295,6 +305,9 @@ bool sgBleInitialize(bool apartmentSingleThreaded, BluetoothStateUpdateCallback 
 
 void sgBleShutdown()
 {
+    // Unsubscribe from adapter state changes
+    subscribeAdapterStateChangedAsync(nullptr);
+
     // Destroy scanner instance
     {
         std::lock_guard lock{ _scannerMutex };

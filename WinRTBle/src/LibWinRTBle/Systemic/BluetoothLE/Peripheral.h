@@ -73,7 +73,7 @@ namespace Systemic::BluetoothLE
          * @param bluetoothAddress The Bluetooth address of the BLE peripheral.
          * @param onConnectionEvent Called when the connection status of the peripheral changes.
          */
-        Peripheral(bluetooth_address_t bluetoothAddress, std::function<void(ConnectionEvent, ConnectionEventReason)> onConnectionEvent)
+        Peripheral(bluetooth_address_t bluetoothAddress, const std::function<void(ConnectionEvent, ConnectionEventReason)>& onConnectionEvent)
             : _address{ bluetoothAddress }, _onConnectionEvent{ onConnectionEvent }
         {
             assert(bluetoothAddress); //TODO check arguments

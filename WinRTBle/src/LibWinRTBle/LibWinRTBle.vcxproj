@@ -161,6 +161,7 @@
     <ClInclude Include="..\..\include\bletypes.h" />
     <ClInclude Include="..\..\include\cble.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Systemic\BluetoothLE\BluetoothLE.h" />
     <ClInclude Include="Systemic\BluetoothLE\Characteristic.h" />
     <ClInclude Include="Systemic\BluetoothLE\ScannedPeripheral.h" />
     <ClInclude Include="Systemic\BluetoothLE\Peripheral.h" />
@@ -181,6 +182,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Peripheral.cpp" />
+    <ClCompile Include="BluetoothLE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

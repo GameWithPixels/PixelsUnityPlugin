@@ -43,7 +43,7 @@ using CharacteristicProperties = Systemic::BluetoothLE::CharacteristicProperties
 using characteristic_index_t = std::uint32_t;
 
 /// Callback notifying of a change of the host device Bluetooth state, for example radio turned on or off.
-typedef void (*BluetoothStateUpdateCallback)(bool available);
+typedef void (*BluetoothStateUpdateCallback)(Systemic::BluetoothLE::BleAdapterState state);
 
 /// Callback notifying of the discovery of a BLE peripheral, with its advertisement data as a JSON string.
 typedef void (*DiscoveredPeripheralCallback)(const char* advertisementDataJson);

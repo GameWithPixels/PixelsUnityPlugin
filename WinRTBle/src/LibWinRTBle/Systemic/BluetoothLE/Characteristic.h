@@ -173,7 +173,7 @@ namespace Systemic::BluetoothLE
          * @param onValueChanged Called when the value of the characteristic changes.
          * @return A future with the resulting request status.
          */
-        std::future<BleRequestStatus> subscribeAsync(std::function<void(const std::vector<std::uint8_t>&)> onValueChanged)
+        std::future<BleRequestStatus> subscribeAsync(const std::function<void(const std::vector<std::uint8_t>&)>& onValueChanged)
         {
             using namespace winrt::Windows::Devices::Bluetooth::GenericAttributeProfile;
 

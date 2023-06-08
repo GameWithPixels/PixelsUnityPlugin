@@ -34,6 +34,22 @@
  */
 namespace Systemic::BluetoothLE
 {
+    /// Bluetooth adapter states.
+    enum class BleAdapterState
+    {
+        /// The system doesn't have a compatible Bluetooth adapter.
+        Unsupported,
+
+        /// The radio of the default Bluetooth adapter is in a uncontrollable state.
+        Unavailable,
+
+        /// The radio of the default Bluetooth adapter is disabled or powered off.
+        Disabled,
+
+        /// The radio of the default Bluetooth adapter is enabled and ready for use..
+        Enabled
+    };
+
     /// Type for a Bluetooth address.
     using bluetooth_address_t = std::uint64_t;
 

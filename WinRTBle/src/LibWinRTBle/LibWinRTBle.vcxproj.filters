@@ -62,6 +62,9 @@
     <ClInclude Include="Systemic\Internal\Utils.h">
       <Filter>Header Files\Systemic\Internal</Filter>
     </ClInclude>
+    <ClInclude Include="Systemic\BluetoothLE\BluetoothLE.h">
+      <Filter>Header Files\Systemic\BluetoothLE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -78,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="cble.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothLE.cpp">
+      <Filter>Source Files\Systemic\BluetoothLE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
