@@ -360,7 +360,6 @@ bool sgBleStartScan(
     }
     catch (const winrt::hresult_error&)
     {
-        //TODO Bluetooth not enabled
         return false;
     }
 }

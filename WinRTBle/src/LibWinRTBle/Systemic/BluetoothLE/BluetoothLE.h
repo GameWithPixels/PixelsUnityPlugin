@@ -20,7 +20,7 @@ namespace Systemic::BluetoothLE
      * @brief Subscribe to the default Bluetooth adapter radio state events.
      *
      * @param onStateChanged Called when the radio state changes
-     * @return A future indicating whether the operation was successful or not.
+     * @return A future indicating whether the operation was successful.
      */
     std::future<bool> subscribeAdapterStateChangedAsync(const std::function<void(BleAdapterState)>& onStateChanged);
 }
