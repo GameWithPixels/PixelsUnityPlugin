@@ -16,7 +16,7 @@ var namespace_systemic_1_1_unity_1_1_pixels =
     [ "AppearanceChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ae5a5699fbe0cf5013bef1d3e57937d4c", null ],
     [ "BatteryLevelChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ac17841da0564550cb27f86895f0436dc", null ],
     [ "ConnectionResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a07a541b4b5921c5235defa1401f79b17", null ],
-    [ "ConnectionStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#a14825e6b22d8d41769750bf58d996e12", null ],
+    [ "ConnectionStateChangedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ad1bc7654637134d199b2a069b020b40a", null ],
     [ "DataOperationResultCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#a93b1543e0989a6382ee06be3dab2580b", null ],
     [ "ErrorRaisedEventHandler", "namespace_systemic_1_1_unity_1_1_pixels.html#ab0a95ad905f8e80d3eb2925e8dfa17e6", null ],
     [ "NotifyUserCallback", "namespace_systemic_1_1_unity_1_1_pixels.html#af154ed79001f4cdc53610cee6d10e070", null ],

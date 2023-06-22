@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['initialize_0',['Initialize',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abb5992244660d58e7f1930d4c56976b6',1,'Systemic.Unity.BluetoothLE.Central.Initialize()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a30c72f8400d9d560a354e4bed32d1b9c',1,'Systemic.Unity.BluetoothLE.NativeInterface.Initialize()']]],
+  ['initialize_0',['Initialize',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abb5992244660d58e7f1930d4c56976b6',1,'Systemic.Unity.BluetoothLE.Central.Initialize()'],['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#a30c72f8400d9d560a354e4bed32d1b9c',1,'Systemic.Unity.BluetoothLE.NativeInterface.Initialize()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ac6635aa606df0623b04517f466589c63',1,'Systemic.Unity.Pixels.DiceBag.Initialize()']]],
   ['initwithperipheral_3acentralmanagerdelegate_3a_1',['initWithPeripheral:centralManagerDelegate:',['../interface_s_g_ble_peripheral_queue.html#a1c9583950084c2a1680672699c690aea',1,'SGBlePeripheralQueue']]],
   ['initwithrequesttype_3aexecutehandler_3acompletionhandler_3a_2',['initWithRequestType:executeHandler:completionHandler:',['../interface_s_g_ble_request.html#ae4a10e4dfa30de7f36279227fc9f3f52',1,'SGBleRequest']]],
   ['initwithstateupdatehandler_3a_3',['initWithStateUpdateHandler:',['../interface_s_g_ble_central_manager_delegate.html#a72fe4e1b391f9951e4fd8516ffb965e6',1,'SGBleCentralManagerDelegate']]],

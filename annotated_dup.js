@@ -10,6 +10,7 @@ var annotated_dup =
     [ "com", null, [
       [ "systemic", null, [
         [ "bluetoothle", "namespacecom_1_1systemic_1_1bluetoothle.html", [
+          [ "BluetoothState", "classcom_1_1systemic_1_1bluetoothle_1_1_bluetooth_state.html", "classcom_1_1systemic_1_1bluetoothle_1_1_bluetooth_state" ],
           [ "Peripheral", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html", "classcom_1_1systemic_1_1bluetoothle_1_1_peripheral" ],
           [ "Scanner", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html", "classcom_1_1systemic_1_1bluetoothle_1_1_scanner" ]
         ] ]
@@ -97,13 +98,13 @@ var annotated_dup =
             [ "NotifyUserAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user_ack.html", null ],
             [ "PlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation.html", null ],
             [ "PlayAnimationEvent", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html", null ],
-            [ "PlaySound", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound.html", null ],
-            [ "PrintAnimControllerState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_anim_controller_state.html", null ],
+            [ "PrintAnimationControllerState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_animation_controller_state.html", null ],
             [ "PrintNormals", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_normals.html", null ],
             [ "ProgramDefaultAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set.html", null ],
-            [ "ProgramDefaultAnimSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished.html", null ],
+            [ "ProgramDefaultAnimationSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set_finished.html", null ],
             [ "ProgramDefaultParameters", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters.html", null ],
             [ "ProgramDefaultParametersFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters_finished.html", null ],
+            [ "RemoteAction", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_remote_action.html", null ],
             [ "RequestAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_animation_set.html", null ],
             [ "RequestBatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_battery_level.html", null ],
             [ "RequestDefaultAnimationSetColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_default_animation_set_color.html", null ],

@@ -67,6 +67,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", null ],
         [ "Events", "functions_evnt.html", null ]
       ] ]
@@ -88,10 +89,10 @@ var NAVTREEINDEX =
 [
 "_bluetooth_l_e_8h.html",
 "class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5b4191998717c78d4661dc5576db6f33",
-"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a50b34dd63d5e7aa908c65f6ec7019a78",
-"group___apple___objective-_c.html",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_track.html#a8ddccba90d5bba97685eb9d8571904bf"
+"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a342ffbec2cce8ac0a3a6238e707fb76e",
+"functions_p.html",
+"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html#a2b48af7bca8c27cf216a8df3bb9f6331"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

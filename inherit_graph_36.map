@@ -1,6 +1,63 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="5,49,192,104"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_wait_for_response_enumerator.html" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="240,49,537,104"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="585,5,885,60"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="605,85,865,154"/>
+<area shape="rect" id="node1" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_pixel_message.html" title=" " alt="" coords="5,1893,219,1933"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html" title=" " alt="" coords="279,5,493,45"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_battery_level.html" title=" " alt="" coords="279,69,493,109"/>
+<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink.html" title=" " alt="" coords="279,133,493,173"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_blink_ack.html" title=" " alt="" coords="279,197,493,237"/>
+<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data.html" title=" " alt="" coords="279,261,493,301"/>
+<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_data_ack.html" title=" " alt="" coords="279,325,493,365"/>
+<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup.html" title=" " alt="" coords="279,389,493,429"/>
+<area shape="rect" id="node9" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_bulk_setup_ack.html" title=" " alt="" coords="279,453,493,493"/>
+<area shape="rect" id="node10" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate.html" title=" " alt="" coords="279,517,493,557"/>
+<area shape="rect" id="node11" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_calibrate_face.html" title=" " alt="" coords="279,581,493,621"/>
+<area shape="rect" id="node12" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_debug_log.html" title=" " alt="" coords="279,645,493,685"/>
+<area shape="rect" id="node13" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_default_animation_set_color.html" title=" " alt="" coords="279,709,493,749"/>
+<area shape="rect" id="node14" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_i_am_a_die.html" title=" " alt="" coords="279,773,493,813"/>
+<area shape="rect" id="node15" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_led_loopback.html" title=" " alt="" coords="279,837,493,877"/>
+<area shape="rect" id="node16" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user.html" title=" " alt="" coords="279,901,493,941"/>
+<area shape="rect" id="node17" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user_ack.html" title=" " alt="" coords="279,965,493,1005"/>
+<area shape="rect" id="node18" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation.html" title=" " alt="" coords="279,1029,493,1069"/>
+<area shape="rect" id="node19" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html" title=" " alt="" coords="279,1093,493,1133"/>
+<area shape="rect" id="node20" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_animation_controller_state.html" title=" " alt="" coords="279,1157,493,1197"/>
+<area shape="rect" id="node21" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_normals.html" title=" " alt="" coords="279,1221,493,1261"/>
+<area shape="rect" id="node22" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set.html" title=" " alt="" coords="279,1285,493,1325"/>
+<area shape="rect" id="node23" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set_finished.html" title=" " alt="" coords="267,1349,505,1389"/>
+<area shape="rect" id="node24" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters.html" title=" " alt="" coords="279,1413,493,1453"/>
+<area shape="rect" id="node25" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters_finished.html" title=" " alt="" coords="272,1477,500,1517"/>
+<area shape="rect" id="node26" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_remote_action.html" title=" " alt="" coords="279,1541,493,1581"/>
+<area shape="rect" id="node27" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_animation_set.html" title=" " alt="" coords="279,1605,493,1645"/>
+<area shape="rect" id="node28" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_battery_level.html" title=" " alt="" coords="279,1669,493,1709"/>
+<area shape="rect" id="node29" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_default_animation_set_color.html" title=" " alt="" coords="277,1733,495,1773"/>
+<area shape="rect" id="node30" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_roll_state.html" title=" " alt="" coords="279,1797,493,1837"/>
+<area shape="rect" id="node31" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_rssi.html" title=" " alt="" coords="279,1861,493,1901"/>
+<area shape="rect" id="node32" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_settings.html" title=" " alt="" coords="279,1925,493,1965"/>
+<area shape="rect" id="node33" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_telemetry.html" title=" " alt="" coords="279,1989,493,2029"/>
+<area shape="rect" id="node34" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_temperature.html" title=" " alt="" coords="279,2053,493,2093"/>
+<area shape="rect" id="node35" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_roll_state.html" title=" " alt="" coords="279,2117,493,2157"/>
+<area shape="rect" id="node36" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_rssi.html" title=" " alt="" coords="267,2182,505,2207"/>
+<area shape="rect" id="node37" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_all_l_e_ds_to_color.html" title=" " alt="" coords="279,2232,493,2272"/>
+<area shape="rect" id="node38" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_current_behavior.html" title=" " alt="" coords="279,2296,493,2336"/>
+<area shape="rect" id="node39" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_current_behavior_ack.html" title=" " alt="" coords="279,2360,493,2400"/>
+<area shape="rect" id="node40" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_design_and_color.html" title=" " alt="" coords="279,2424,493,2464"/>
+<area shape="rect" id="node41" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_design_and_color_ack.html" title=" " alt="" coords="279,2488,493,2528"/>
+<area shape="rect" id="node42" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name.html" title=" " alt="" coords="279,2552,493,2592"/>
+<area shape="rect" id="node43" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_name_ack.html" title=" " alt="" coords="279,2616,493,2656"/>
+<area shape="rect" id="node44" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_set_top_level_state.html" title=" " alt="" coords="279,2680,493,2720"/>
+<area shape="rect" id="node45" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html" title=" " alt="" coords="279,2744,493,2784"/>
+<area shape="rect" id="node46" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_telemetry.html" title=" " alt="" coords="279,2808,493,2848"/>
+<area shape="rect" id="node47" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_temperature.html" title=" " alt="" coords="279,2872,493,2912"/>
+<area shape="rect" id="node48" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_bulk_receive.html" title=" " alt="" coords="279,2936,493,2976"/>
+<area shape="rect" id="node49" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_bulk_send.html" title=" " alt="" coords="279,3000,493,3040"/>
+<area shape="rect" id="node50" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_hardware.html" title=" " alt="" coords="279,3064,493,3104"/>
+<area shape="rect" id="node51" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_test_led_loopback.html" title=" " alt="" coords="279,3128,493,3168"/>
+<area shape="rect" id="node52" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set.html" title=" " alt="" coords="279,3192,493,3232"/>
+<area shape="rect" id="node53" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set_ack.html" title=" " alt="" coords="279,3256,493,3296"/>
+<area shape="rect" id="node54" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_animation_set_finished.html" title=" " alt="" coords="279,3320,493,3360"/>
+<area shape="rect" id="node55" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_settings.html" title=" " alt="" coords="279,3384,493,3424"/>
+<area shape="rect" id="node56" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_settings_ack.html" title=" " alt="" coords="279,3448,493,3488"/>
+<area shape="rect" id="node57" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_settings_finished.html" title=" " alt="" coords="279,3512,493,3552"/>
+<area shape="rect" id="node58" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set.html" title=" " alt="" coords="279,3576,493,3616"/>
+<area shape="rect" id="node59" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set_ack.html" title=" " alt="" coords="279,3640,493,3680"/>
+<area shape="rect" id="node60" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_transfer_test_animation_set_finished.html" title=" " alt="" coords="275,3704,497,3744"/>
+<area shape="rect" id="node61" href="$class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_who_are_you.html" title=" " alt="" coords="279,3768,493,3808"/>
 </map>

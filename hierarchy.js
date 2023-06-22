@@ -12,6 +12,7 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Animations.AnimationInstanceSimple", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html", null ]
     ] ],
     [ "Systemic.Unity.BluetoothLE.BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", null ],
+    [ "com.systemic.bluetoothle.BluetoothState", "classcom_1_1systemic_1_1bluetoothle_1_1_bluetooth_state.html", null ],
     [ "<CBCentralManagerDelegate>", null, [
       [ "SGBleCentralManagerDelegate", "interface_s_g_ble_central_manager_delegate.html", null ]
     ] ],
@@ -92,13 +93,13 @@ var hierarchy =
       [ "Systemic.Unity.Pixels.Messages.NotifyUserAck", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_notify_user_ack.html", null ],
       [ "Systemic.Unity.Pixels.Messages.PlayAnimation", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation.html", null ],
       [ "Systemic.Unity.Pixels.Messages.PlayAnimationEvent", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.PlaySound", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_sound.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.PrintAnimControllerState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_anim_controller_state.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.PrintAnimationControllerState", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_animation_controller_state.html", null ],
       [ "Systemic.Unity.Pixels.Messages.PrintNormals", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_print_normals.html", null ],
-      [ "Systemic.Unity.Pixels.Messages.ProgramDefaultAnimSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_anim_set_finished.html", null ],
       [ "Systemic.Unity.Pixels.Messages.ProgramDefaultAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.ProgramDefaultAnimationSetFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_animation_set_finished.html", null ],
       [ "Systemic.Unity.Pixels.Messages.ProgramDefaultParameters", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters.html", null ],
       [ "Systemic.Unity.Pixels.Messages.ProgramDefaultParametersFinished", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_program_default_parameters_finished.html", null ],
+      [ "Systemic.Unity.Pixels.Messages.RemoteAction", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_remote_action.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestAnimationSet", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_animation_set.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestBatteryLevel", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_battery_level.html", null ],
       [ "Systemic.Unity.Pixels.Messages.RequestDefaultAnimationSetColor", "class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_request_default_animation_set_color.html", null ],
@@ -178,6 +179,7 @@ var hierarchy =
     [ "Systemic::BluetoothLE::ServiceData", "class_systemic_1_1_bluetooth_l_e_1_1_service_data.html", null ],
     [ "Systemic.Unity.BluetoothLE.ServiceData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html", null ],
     [ "Systemic.Unity.Pixels.Animations.SimpleKeyframe", "struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html", null ],
+    [ "com.systemic.bluetoothle.BluetoothState.StateCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_bluetooth_state_1_1_state_callback.html", null ],
     [ "SuccessCallback", null, [
       [ "com.systemic.bluetoothle.Peripheral.RequestCallback", "interfacecom_1_1systemic_1_1bluetoothle_1_1_peripheral_1_1_request_callback.html", null ]
     ] ],

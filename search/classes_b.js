@@ -20,5 +20,6 @@ var searchData=
   ['sgbleperipheralqueue_17',['SGBlePeripheralQueue',['../interface_s_g_ble_peripheral_queue.html',1,'']]],
   ['sgblerequest_18',['SGBleRequest',['../interface_s_g_ble_request.html',1,'']]],
   ['simplekeyframe_19',['SimpleKeyframe',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html',1,'Systemic::Unity::Pixels::Animations']]],
-  ['stopanimation_20',['StopAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html',1,'Systemic::Unity::Pixels::Messages']]]
+  ['statecallback_20',['StateCallback',['../interfacecom_1_1systemic_1_1bluetoothle_1_1_bluetooth_state_1_1_state_callback.html',1,'com::systemic::bluetoothle::BluetoothState']]],
+  ['stopanimation_21',['StopAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_stop_animation.html',1,'Systemic::Unity::Pixels::Messages']]]
 ];

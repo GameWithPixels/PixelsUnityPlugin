@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_unity_1_1_pixels_1_
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
@@ -103,14 +104,24 @@ $(document).ready(function(){initNavTree('class_systemic_1_1_unity_1_1_pixels_1_
 <p>Static class that scan for and connect to <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice. Scan and connection requests are counted, meaning that the same number of respectively scan cancellation and disconnection requests must be made for them to effectively happen.  
  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a77fc0d5d2fea16ac6595a8ac8140febe"><td class="memItemLeft" align="right" valign="top"><a id="a77fc0d5d2fea16ac6595a8ac8140febe" name="a77fc0d5d2fea16ac6595a8ac8140febe"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febe">ScanStatus</a> </td></tr>
+<tr class="memdesc:a77fc0d5d2fea16ac6595a8ac8140febe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return status when starting a scan with <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a07211513967d34ca0436e6411ff31c53" title="Starts scanning for Pixel dice.">ScanForPixels</a>. In case of error, check <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ae806a904d3c509d634ba3088481e18a2" title="Bluetooth status, Central.Status property.">BluetoothStatus</a> for more information about the current Bluetooth state. Note that it is possible that the state changed since the attempt to start scanning.  <br /></td></tr>
+<tr class="separator:a77fc0d5d2fea16ac6595a8ac8140febe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a224e4d13b5b223ec4230afcf5b0de8ac"><td class="memItemLeft" align="right" valign="top"><a id="a224e4d13b5b223ec4230afcf5b0de8ac" name="a224e4d13b5b223ec4230afcf5b0de8ac"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>ScanForPixels</b> ()</td></tr>
-<tr class="memdesc:a224e4d13b5b223ec4230afcf5b0de8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <br /></td></tr>
-<tr class="separator:a224e4d13b5b223ec4230afcf5b0de8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6635aa606df0623b04517f466589c63"><td class="memItemLeft" align="right" valign="top"><a id="ac6635aa606df0623b04517f466589c63" name="ac6635aa606df0623b04517f466589c63"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> ()</td></tr>
+<tr class="memdesc:ac6635aa606df0623b04517f466589c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the instance and the Bluetooth stack. Be sure to call this method before any other one of this singleton.  <br /></td></tr>
+<tr class="separator:ac6635aa606df0623b04517f466589c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07211513967d34ca0436e6411ff31c53"><td class="memItemLeft" align="right" valign="top"><a id="a07211513967d34ca0436e6411ff31c53" name="a07211513967d34ca0436e6411ff31c53"></a>
+static <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febe">ScanStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ScanForPixels</b> ()</td></tr>
+<tr class="memdesc:a07211513967d34ca0436e6411ff31c53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> dice.  <br /></td></tr>
+<tr class="separator:a07211513967d34ca0436e6411ff31c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a539deef30bd8edcd556eabb50aef3fba"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a539deef30bd8edcd556eabb50aef3fba">StopScanning</a> (bool forceStop=false)</td></tr>
-<tr class="memdesc:a539deef30bd8edcd556eabb50aef3fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops scanning for <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice....">Pixels</a> when called as many times as <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a224e4d13b5b223ec4230afcf5b0de8ac" title="Starts scanning for Pixel dice.">ScanForPixels</a>.   <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a539deef30bd8edcd556eabb50aef3fba">More...</a><br /></td></tr>
+<tr class="memdesc:a539deef30bd8edcd556eabb50aef3fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops scanning for <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice....">Pixels</a> when called as many times as <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a07211513967d34ca0436e6411ff31c53" title="Starts scanning for Pixel dice.">ScanForPixels</a>.   <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a539deef30bd8edcd556eabb50aef3fba">More...</a><br /></td></tr>
 <tr class="separator:a539deef30bd8edcd556eabb50aef3fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a818febabf9679c94fd4887008a66d819"><td class="memItemLeft" align="right" valign="top"><a id="a818febabf9679c94fd4887008a66d819" name="a818febabf9679c94fd4887008a66d819"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearAvailablePixels</b> ()</td></tr>
@@ -138,6 +149,10 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>ResetErrors</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:ae806a904d3c509d634ba3088481e18a2"><td class="memItemLeft" align="right" valign="top"><a id="ae806a904d3c509d634ba3088481e18a2" name="ae806a904d3c509d634ba3088481e18a2"></a>
+static BluetoothStatus&#160;</td><td class="memItemRight" valign="bottom"><b>BluetoothStatus</b><code> [get]</code></td></tr>
+<tr class="memdesc:ae806a904d3c509d634ba3088481e18a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth status, Central.Status property.  <br /></td></tr>
+<tr class="separator:ae806a904d3c509d634ba3088481e18a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fef1c92fbc50fcc173e012ad6730e08"><td class="memItemLeft" align="right" valign="top"><a id="a8fef1c92fbc50fcc173e012ad6730e08" name="a8fef1c92fbc50fcc173e012ad6730e08"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsReady</b><code> [get]</code></td></tr>
 <tr class="memdesc:a8fef1c92fbc50fcc173e012ad6730e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether we are ready for scanning and connecting to peripherals.  <br /></td></tr>
@@ -161,6 +176,10 @@ static <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">P
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="events" name="events"></a>
 Events</h2></td></tr>
+<tr class="memitem:a78091d57bb07d0cce1d2938cb876823f"><td class="memItemLeft" align="right" valign="top"><a id="a78091d57bb07d0cce1d2938cb876823f" name="a78091d57bb07d0cce1d2938cb876823f"></a>
+static System.Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#ae806a904d3c509d634ba3088481e18a2">BluetoothStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>BluetoothStatusChanged</b></td></tr>
+<tr class="memdesc:a78091d57bb07d0cce1d2938cb876823f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth status event, Central.StatusChanged event.  <br /></td></tr>
+<tr class="separator:a78091d57bb07d0cce1d2938cb876823f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9543da90a1d5b0860151c0983e8ca7fc"><td class="memItemLeft" align="right" valign="top"><a id="a9543da90a1d5b0860151c0983e8ca7fc" name="a9543da90a1d5b0860151c0983e8ca7fc"></a>
 static System.Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PixelDiscovered</b></td></tr>
 <tr class="memdesc:a9543da90a1d5b0860151c0983e8ca7fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event raised when a <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> is discovered, may be raised multiple times for the same <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die.">Pixel</a> as it receives new advertisement packets from it.  <br /></td></tr>
@@ -349,7 +368,7 @@ static System.Action&lt; <a class="el" href="class_systemic_1_1_unity_1_1_pixels
 </table>
 </div><div class="memdoc">
 
-<p>Stops scanning for <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice....">Pixels</a> when called as many times as <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a224e4d13b5b223ec4230afcf5b0de8ac" title="Starts scanning for Pixel dice.">ScanForPixels</a>.  </p>
+<p>Stops scanning for <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html" title="A collection of C# classes for the Unity game engine that enables communications with Pixels dice....">Pixels</a> when called as many times as <a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a07211513967d34ca0436e6411ff31c53" title="Starts scanning for Pixel dice.">ScanForPixels</a>.  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">forceStop</td><td>If true stops scanning regardless of the number of scan calls that were made.</td></tr>

@@ -1,10 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,205,117,230"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html" title="Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,..." alt="" coords="169,5,340,45"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html" title="Demonstrates various Bluetooth operations on Pixels using the device agnostic Central class...." alt="" coords="169,69,340,109"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html" title="Demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated..." alt="" coords="169,133,340,173"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html" title="Gets the log messages and copy them to a UI.Text object." alt="" coords="169,197,340,237"/>
-<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html" title="Show information about a Pixels.Pixel and buttons to connect, disconnect and remove a Pixel." alt="" coords="169,261,340,301"/>
-<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html" title="Specialized class that updates the state of a Toggle instance based on whether the DiceBag is scannin..." alt="" coords="169,325,340,365"/>
-<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die." alt="" coords="165,390,344,415"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,45,97,70"/>
+<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_request_enumerator.html" title="Enumerator handling a request to a BLE peripheral. Instances are meant to be run as coroutines." alt="" coords="153,5,319,45"/>
+<area shape="rect" id="node4" href="$interface_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_i_operation_enumerator.html" title="Interface for an enumerator handling an asynchronous operation with a Pixel." alt="" coords="145,69,327,109"/>
+<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title="Enumerator handling a request for reading a value from a BLE peripheral. Instances are meant to be ru..." alt="" coords="375,5,593,45"/>
+<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title="Enumerator that waits until the Pixel receives a message of the given type." alt="" coords="376,69,592,109"/>
 </map>

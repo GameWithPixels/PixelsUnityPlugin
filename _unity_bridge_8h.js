@@ -1,6 +1,6 @@
 var _unity_bridge_8h =
 [
-    [ "BluetoothStateUpdateCallback", "_unity_bridge_8h.html#ac82100ca2a6e3c9056ce7e8fbc81a6fb", null ],
+    [ "BluetoothStateUpdateCallback", "_unity_bridge_8h.html#af9a083ed902a60728563c6bc65d33162", null ],
     [ "characteristic_index_t", "_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3", null ],
     [ "characteristic_property_t", "_unity_bridge_8h.html#abf1f941521787487872caf8c51565b28", null ],
     [ "DiscoveredPeripheralCallback", "_unity_bridge_8h.html#a8887223622b67037e485059865c20461", null ],

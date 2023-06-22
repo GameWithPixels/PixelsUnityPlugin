@@ -1,8 +1,8 @@
 var searchData=
 [
   ['manufacturerdata_0',['ManufacturerData',['../class_systemic_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic::BluetoothLE::ManufacturerData'],['../struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html',1,'Systemic.Unity.BluetoothLE.ManufacturerData']]],
-  ['manufacturersdata_1',['manufacturersData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a9d171b79af52b2602cf3b8cefa800281',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
-  ['manufacturersdata_2',['ManufacturersData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a10247e223faf3d0b5aab160ca6e4d8c8',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
+  ['manufacturersdata_1',['ManufacturersData',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a10247e223faf3d0b5aab160ca6e4d8c8',1,'Systemic::Unity::BluetoothLE::ScannedPeripheral']]],
+  ['manufacturersdata_2',['manufacturersData',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a9d171b79af52b2602cf3b8cefa800281',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
   ['marshaling_3',['Marshaling',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_marshaling.html',1,'Systemic::Unity::Pixels::Messages']]],
   ['maxmtu_4',['MaxMtu',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html#ab43000de0bcf7df1fdf3a94427e0aa8c',1,'Systemic::Unity::BluetoothLE::NativeInterface']]],
   ['mcutemperature_5',['mcuTemperature',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1c023753580990c3e21ddef74de3cc02',1,'Systemic::Unity::Pixels::Pixel']]],

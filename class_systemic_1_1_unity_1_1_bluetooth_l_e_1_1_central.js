@@ -11,9 +11,9 @@ var class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central =
     [ "ReadCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a7d554398d7192d8102292c0aa2999cda", null ],
     [ "ReadCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a88abfae52d446340bb9754c55628fb2b", null ],
     [ "ReadPeripheralRssi", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a81e617704f362a9c52bd6ec783598e7b", null ],
-    [ "ScanForPeripheralsWithServices", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a51b5f348e89adca677fd9c53f19334ed", null ],
     [ "Shutdown", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a0626752ec71fd1aea3e2f4920c85fd43", null ],
-    [ "StopScan", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a3febd147d90c0a65ef2ed839bf3c5e88", null ],
+    [ "StartScanning", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a709251b7a302018a8ff734a2de33892f", null ],
+    [ "StopScanning", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aaa74b9ebc66b4541cf6fb89b0d5907a3", null ],
     [ "SubscribeCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a4d2f85b39e064af40f01472c289a1d10", null ],
     [ "SubscribeCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#abc841062a8596ad96ac9563d66d4da35", null ],
     [ "UnsubscribeCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ac1335d32abf461169fe190a2bb4af804", null ],
@@ -21,9 +21,11 @@ var class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central =
     [ "WriteCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#af2ea6540c98e39b17ab596311fde099a", null ],
     [ "WriteCharacteristicAsync", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ab1c176df49364f6f541df35c12e62d28", null ],
     [ "DefaultRequestTimeout", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a9fbf811ec5d116d1617a34570258edcc", null ],
-    [ "ConnectedPeripherals", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a3cefdca7b402a51a9d3ff147ad74866d", null ],
-    [ "IsReady", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a09cb20d2c7b310711858dbd3ee449f5c", null ],
     [ "IsScanning", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a1f91909e58bb1a21921e8f4f3848baa4", null ],
+    [ "ReadyPeripherals", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a48e38bca2a2746449785b0525c529180", null ],
     [ "ScannedPeripherals", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a4041dfa57b774e48b190f110389ba8ee", null ],
-    [ "PeripheralDiscovered", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a7a58acc69048281cd580dcdc7c9f90b4", null ]
+    [ "Status", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a08a5e673af41b5867a71d215b6995d5f", null ],
+    [ "IsScanningChanged", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ae3f099be2ad6901234360722e91fd757", null ],
+    [ "PeripheralDiscovered", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a7a58acc69048281cd580dcdc7c9f90b4", null ],
+    [ "StatusChanged", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#aa10dc0f9746f8e1d0eafacb8085f78f9", null ]
 ];
