@@ -9,7 +9,7 @@ Update) and above, iOS and Android. Mac support will be added next.
 The development of this plugin is made using Unity 2020.3.
 It should work just as well on all Unity version since 2018.
 Please open a [ticket](https://github.com/GameWithPixels/PixelsUnityPlugin/issues)
-in GitHub if you're having any issue.
+on GitHub if you're having any issue.
 
 ## Overview
 
@@ -98,7 +98,7 @@ sub-namespace.
 
 #### LED animations data
 
-Lighting patterns let you customize how a Pixel dice will light up.
+Animations let you customize how a Pixel dice will light up.
 There is a wide spectrum of possibilities, from a simple flash of colors to
 a rainbow effect, or more advanced effects such as waterfall, rotating rings, etc.
 
@@ -111,7 +111,7 @@ sub-namespace.
 Profiles define when and how your dice will light up.
 A profile is made up of a list of rules. Each rule associates an event
 (for example roll is equal to 1, or dice is picked up) with an action such as
-playing a luminous pattern on the die or an audio clip in the app.
+playing an animation on the die or an audio clip in the app.
 
 See the
 [_Profiles_](https://gamewithpixels.github.io/PixelsUnityPlugin/namespace_systemic_1_1_unity_1_1_pixels_1_1_profiles.html)
