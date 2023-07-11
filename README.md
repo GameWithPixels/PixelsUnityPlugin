@@ -4,10 +4,21 @@ This is the Pixels plugin for Unity, a Unity Asset that enables communications b
 Pixels dice and a smartphone or a computer using Bluetooth Low Energy.
 
 The following platforms are currently supported: Windows 10 version 1709 (Fall Creators
-Update) and above, iOS and Android. Mac support will be added next.
+Update) and above, iOS and Android. MacOS support will be added next.
 
 The development of this plugin is made using Unity 2020.3.
 It should work just as well on all Unity version since 2018.
+
+## Foreword
+
+Pixels are full of LEDs, smarts and no larger than regular dice, they can be
+customized to light up when and how you desire.
+Check our [website](https://gamewithpixels.com/) for more information.
+
+> **Warning**
+> Before jumping into programming please make sure to read our Pixels developer's
+> [guide](https://github.com/GameWithPixels/.github/blob/main/doc/DevelopersGuide.md).
+
 Please open a [ticket](https://github.com/GameWithPixels/PixelsUnityPlugin/issues)
 on GitHub if you're having any issue.
 
