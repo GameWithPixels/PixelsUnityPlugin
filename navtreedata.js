@@ -26,26 +26,27 @@ var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
     [ "PixelsUnityPlugin", "index.html", [
-      [ "Overview", "index.html#autotoc_md1", null ],
-      [ "Unity classes", "index.html#autotoc_md2", [
-        [ "NativeInterface", "index.html#autotoc_md3", null ],
-        [ "Central", "index.html#autotoc_md4", null ],
-        [ "Pixel", "index.html#autotoc_md5", [
-          [ "Pixel messages", "index.html#autotoc_md6", null ],
-          [ "LED animations data", "index.html#autotoc_md7", null ],
-          [ "LED animations profiles", "index.html#autotoc_md8", null ]
+      [ "Foreword", "index.html#autotoc_md1", null ],
+      [ "Overview", "index.html#autotoc_md2", null ],
+      [ "Unity classes", "index.html#autotoc_md3", [
+        [ "NativeInterface", "index.html#autotoc_md4", null ],
+        [ "Central", "index.html#autotoc_md5", null ],
+        [ "Pixel", "index.html#autotoc_md6", [
+          [ "Pixel messages", "index.html#autotoc_md7", null ],
+          [ "LED animations data", "index.html#autotoc_md8", null ],
+          [ "LED animations profiles", "index.html#autotoc_md9", null ]
         ] ]
       ] ],
-      [ "Examples", "index.html#autotoc_md9", [
-        [ "Pixels Demo", "index.html#autotoc_md10", null ],
-        [ "Console Application", "index.html#autotoc_md11", null ],
-        [ "Test Pad Application", "index.html#autotoc_md12", null ]
+      [ "Examples", "index.html#autotoc_md10", [
+        [ "Pixels Demo", "index.html#autotoc_md11", null ],
+        [ "Console Application", "index.html#autotoc_md12", null ],
+        [ "Test Pad Application", "index.html#autotoc_md13", null ]
       ] ],
-      [ "Architecture", "index.html#autotoc_md13", [
-        [ "Main classes", "index.html#autotoc_md14", null ],
-        [ "Subscribing to Pixel events", "index.html#autotoc_md15", null ],
-        [ "Execution flow between plugins and C# code", "index.html#autotoc_md16", null ],
-        [ "Native Plugins", "index.html#autotoc_md17", null ]
+      [ "Architecture", "index.html#autotoc_md14", [
+        [ "Main classes", "index.html#autotoc_md15", null ],
+        [ "Subscribing to Pixel events", "index.html#autotoc_md16", null ],
+        [ "Execution flow between plugins and C# code", "index.html#autotoc_md17", null ],
+        [ "Native Plugins", "index.html#autotoc_md18", null ]
       ] ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
@@ -92,7 +93,7 @@ var NAVTREEINDEX =
 "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html",
 "class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a342ffbec2cce8ac0a3a6238e707fb76e",
 "functions_p.html",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html#a2b48af7bca8c27cf216a8df3bb9f6331"
+"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html#a259e388983e71e580746e2e990f96678"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
