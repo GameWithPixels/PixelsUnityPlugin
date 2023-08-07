@@ -5,8 +5,6 @@
 
 #pragma once
 
-#include "../../../include/bletypes.h"
-
 namespace Systemic::BluetoothLE
 {
     /**

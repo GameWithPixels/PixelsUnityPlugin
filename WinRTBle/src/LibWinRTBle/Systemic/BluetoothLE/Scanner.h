@@ -6,10 +6,6 @@
 #pragma once
 
 #include <mutex>
-
-// Common BLE types
-#include "../../../include/bletypes.h"
-#include "../Internal/Utils.h"
 #include "ScannedPeripheral.h"
 
 namespace Systemic::BluetoothLE

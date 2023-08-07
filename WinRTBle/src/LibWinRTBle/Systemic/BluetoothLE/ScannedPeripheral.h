@@ -5,10 +5,6 @@
 
 #pragma once
 
-// Common BLE types
-#include "../../../include/bletypes.h"
-#include "../Internal/Utils.h"
-
 namespace Systemic::BluetoothLE
 {
     class Scanner;

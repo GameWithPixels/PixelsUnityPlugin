@@ -5,9 +5,6 @@
 
 #pragma once
 
-// Common BLE types
-#include "../../../include/bletypes.h"
-
 namespace Systemic::BluetoothLE
 {
     class Peripheral;

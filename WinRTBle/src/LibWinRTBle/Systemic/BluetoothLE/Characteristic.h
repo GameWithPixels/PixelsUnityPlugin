@@ -7,10 +7,6 @@
 
 #include <type_traits> // underlying_type
 
-// Common BLE types
-#include "../../../include/bletypes.h"
-#include "../Internal/Utils.h"
-
 namespace Systemic::BluetoothLE
 {
     class Peripheral;

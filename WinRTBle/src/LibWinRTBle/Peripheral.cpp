@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Systemic/Internal/Utils.h"
 #include "Systemic/BluetoothLE/Peripheral.h"
 #include "Systemic/BluetoothLE/Service.h"
 #include "Systemic/BluetoothLE/Characteristic.h"

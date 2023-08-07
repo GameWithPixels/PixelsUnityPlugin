@@ -49,4 +49,7 @@
 #include <functional>
 #include <future>
 
+#include "../../include/bletypes.h"
+#include "Systemic/Internal/Utils.h"
+
 #pragma comment(lib, "windowsapp")
