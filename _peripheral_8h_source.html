@@ -98,189 +98,186 @@ $(document).ready(function(){initNavTree('_peripheral_8h_source.html',''); initR
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// Common BLE types</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../../../include/bletypes.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_systemic_1_1_bluetooth_l_e.html">Systemic::BluetoothLE</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">class </span>Service;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">   35</a></span>    <span class="keyword">class </span><a class="code hl_class" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;Peripheral&gt;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">using </span>BluetoothLEDevice = winrt::Windows::Devices::Bluetooth::BluetoothLEDevice;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">using </span>GattSession = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_systemic_1_1_bluetooth_l_e.html">Systemic::BluetoothLE</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">class </span>Service;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">   32</a></span>    <span class="keyword">class </span><a class="code hl_class" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Peripheral</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;Peripheral&gt;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">using </span>BluetoothLEDevice = winrt::Windows::Devices::Bluetooth::BluetoothLEDevice;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">using </span>GattSession = winrt::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// The Bluetooth address</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> _address{};</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// The Bluetooth address</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> _address{};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// The user callback for connection events</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keyword">const</span> std::function&lt;void(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt; _onConnectionEvent{};</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// The user callback for connection events</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> std::function&lt;void(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt; _onConnectionEvent{};</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// Device and session</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        BluetoothLEDevice _device{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        GattSession _session{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        winrt::event_token _connectionStatusChangedToken{};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// Device and session</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        BluetoothLEDevice _device{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        GattSession _session{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        winrt::event_token _connectionStatusChangedToken{};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// Services</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::unordered_map&lt;winrt::guid, std::shared_ptr&lt;Service&gt;&gt; _services{};</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// Services</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::unordered_map&lt;winrt::guid, std::shared_ptr&lt;Service&gt;&gt; _services{};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// The ready state</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">volatile</span> <span class="keywordtype">bool</span> _isReady{};</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// The ready state</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">volatile</span> <span class="keywordtype">bool</span> _isReady{};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// Connection</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">mutable</span> std::recursive_mutex _connectOpMtx{};   <span class="comment">// Connection mutex</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">volatile</span> <span class="keywordtype">size_t</span> _connectCounter{};              <span class="comment">// Incremented every time connect or disconnect is called</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">volatile</span> <span class="keywordtype">bool</span> _connecting{};                    <span class="comment">// Whether we are trying to connect</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// Connection</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keyword">mutable</span> std::recursive_mutex _connectOpMtx{};   <span class="comment">// Connection mutex</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">volatile</span> <span class="keywordtype">size_t</span> _connectCounter{};              <span class="comment">// Incremented every time connect or disconnect is called</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">volatile</span> <span class="keywordtype">bool</span> _connecting{};                    <span class="comment">// Whether we are trying to connect</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// Queue of connection events to notify to user</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        std::vector&lt;std::tuple&lt;ConnectionEvent, ConnectionEventReason&gt;&gt; _connectionEventsQueue{};</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="comment">// Queue of connection events to notify to user</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::vector&lt;std::tuple&lt;ConnectionEvent, ConnectionEventReason&gt;&gt; _connectionEventsQueue{};</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">   76</a></span>        <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">Peripheral</a>(<a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> bluetoothAddress, <span class="keyword">const</span> std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt;&amp; onConnectionEvent)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            : _address{ bluetoothAddress }, _onConnectionEvent{ onConnectionEvent }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            assert(bluetoothAddress); <span class="comment">//TODO check arguments</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            assert(onConnectionEvent);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            _connectionEventsQueue.reserve(16);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">   87</a></span>        <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">~Peripheral</a>()</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">disconnect</a>();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        std::future&lt;BleRequestStatus&gt; <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">connectAsync</a>(</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            std::vector&lt;winrt::guid&gt; requiredServices = std::vector&lt;winrt::guid&gt;{},</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <span class="keywordtype">bool</span> maintainConnection = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">  116</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">disconnect</a>()</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        {</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            internalDisconnect(ConnectionEventReason::Success);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            notifyQueuedConnectionEvents(); <span class="comment">//TODO not getting those events!</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">  132</a></span>        <a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">address</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <span class="keywordflow">return</span> _address;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        }</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">  144</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">isConnected</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keyword">using namespace </span>winrt::Windows::Devices::Bluetooth;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            <span class="keywordflow">return</span> dev ? (dev.ConnectionStatus() == BluetoothConnectionStatus::Connected) : <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">  160</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">isReady</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            <span class="keywordflow">return</span> _isReady;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        }</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">  175</a></span>        <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">deviceId</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <span class="keywordflow">return</span> dev ? dev.DeviceId().data() : <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">  186</a></span>        <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">name</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            <span class="keywordflow">return</span> dev ? dev.Name().data() : <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        }</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">  197</a></span>        uint16_t <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">mtu</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="comment">//TODO is the lock needed?</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            std::lock_guard lock{ _connectOpMtx };</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            <span class="keywordflow">return</span> _session ? _session.MaxPduSize() : 0;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        }</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">  215</a></span>        std::shared_ptr&lt;Service&gt; <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">getDiscoveredService</a>(<span class="keyword">const</span> winrt::guid&amp; uuid)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            std::lock_guard lock{ _connectOpMtx };</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            <span class="keyword">auto</span> it = _services.find(uuid);</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <span class="keywordflow">return</span> it != _services.end() ? it-&gt;second : <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        }</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">  227</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">copyDiscoveredServices</a>(std::vector&lt;std::shared_ptr&lt;Service&gt;&gt;&amp; outServices)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            std::lock_guard lock{ _connectOpMtx };</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            outServices.reserve(outServices.size() + _services.size());</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [_, s] : _services)</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            {</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                outServices.emplace_back(s);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            }</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        }</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="comment">// Get the device object in a thread safe manner</span></div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        BluetoothLEDevice safeGetDevice()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <span class="comment">//TODO is the lock needed?</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            std::lock_guard lock{ _connectOpMtx };</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keywordflow">return</span> _device;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">   73</a></span>        <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">Peripheral</a>(<a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> bluetoothAddress, <span class="keyword">const</span> std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">ConnectionEvent</a>, <a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a>)&gt;&amp; onConnectionEvent)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            : _address{ bluetoothAddress }, _onConnectionEvent{ onConnectionEvent }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            assert(bluetoothAddress); <span class="comment">//TODO check arguments</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            assert(onConnectionEvent);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            _connectionEventsQueue.reserve(16);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">   84</a></span>        <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">~Peripheral</a>()</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">disconnect</a>();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        std::future&lt;BleRequestStatus&gt; <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">connectAsync</a>(</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            std::vector&lt;winrt::guid&gt; requiredServices = std::vector&lt;winrt::guid&gt;{},</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordtype">bool</span> maintainConnection = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">  113</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">disconnect</a>()</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            internalDisconnect(ConnectionEventReason::Success);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            notifyQueuedConnectionEvents(); <span class="comment">//TODO not getting those events!</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">  129</a></span>        <a class="code hl_typedef" href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">bluetooth_address_t</a> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">address</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">return</span> _address;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">  141</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">isConnected</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="keyword">using namespace </span>winrt::Windows::Devices::Bluetooth;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keywordflow">return</span> dev ? (dev.ConnectionStatus() == BluetoothConnectionStatus::Connected) : <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">  157</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">isReady</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">return</span> _isReady;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">  172</a></span>        <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">deviceId</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordflow">return</span> dev ? dev.DeviceId().data() : <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">  183</a></span>        <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">name</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <span class="keyword">auto</span> dev = safeGetDevice();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keywordflow">return</span> dev ? dev.Name().data() : <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">  194</a></span>        uint16_t <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">mtu</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="comment">//TODO is the lock needed?</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            std::lock_guard lock{ _connectOpMtx };</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keywordflow">return</span> _session ? _session.MaxPduSize() : 0;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">  212</a></span>        std::shared_ptr&lt;Service&gt; <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">getDiscoveredService</a>(<span class="keyword">const</span> winrt::guid&amp; uuid)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            std::lock_guard lock{ _connectOpMtx };</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            <span class="keyword">auto</span> it = _services.find(uuid);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            <span class="keywordflow">return</span> it != _services.end() ? it-&gt;second : <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">  224</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">copyDiscoveredServices</a>(std::vector&lt;std::shared_ptr&lt;Service&gt;&gt;&amp; outServices)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            std::lock_guard lock{ _connectOpMtx };</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            outServices.reserve(outServices.size() + _services.size());</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [_, s] : _services)</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                outServices.emplace_back(s);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            }</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="comment">// Get the device object in a thread safe manner</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        BluetoothLEDevice safeGetDevice()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            <span class="comment">//TODO is the lock needed?</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            std::lock_guard lock{ _connectOpMtx };</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">return</span> _device;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">// Take the lock and release device and session, be sure to call notifyQueuedConnectionEvents() afterwards</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordtype">void</span> internalDisconnect(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a> reason, <span class="keywordtype">bool</span> fromDevice = <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="comment">// Take the lock and release device and session, be sure to call notifyQueuedConnectionEvents() afterwards</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordtype">void</span> internalDisconnect(<a class="code hl_enumeration" href="namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6">ConnectionEventReason</a> reason, <span class="keywordtype">bool</span> fromDevice = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">// Notify user code with pending connection event</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="keywordtype">void</span> notifyQueuedConnectionEvents()</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        {</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <span class="comment">//TODO optimize for case with 1 or 2 elements in queue</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            <span class="keyword">decltype</span>(_connectionEventsQueue) queue{};</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            {</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                std::lock_guard lock{ _connectOpMtx };</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                queue = _connectionEventsQueue;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                _connectionEventsQueue.clear();</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordflow">if</span> (_onConnectionEvent)</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [ev, reason] : queue)</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                {</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                    _onConnectionEvent(ev, reason);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                }</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            }</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        }</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="comment">// Called by the device when the connection status changes</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordtype">void</span> onDeviceConnectionStatusChanged(BluetoothLEDevice device, winrt::Windows::Foundation::IInspectable _)</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        {</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keyword">using namespace </span>winrt::Windows::Devices::Bluetooth;</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordflow">if</span> (device.ConnectionStatus() == BluetoothConnectionStatus::Disconnected)</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                <span class="keywordtype">bool</span> linkLoss = (_session != <span class="keyword">nullptr</span>) &amp;&amp; _session.MaintainConnection();</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                internalDisconnect(linkLoss ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                notifyQueuedConnectionEvents();</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            }</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            {</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                <span class="comment">// Connected event is raised in connectAsync() after it has successfully retrieved the services</span></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            }</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        }</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    };</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>}</div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Systemic::BluetoothLE::Peripheral</a></div><div class="ttdoc">Represents a Bluetooth Low Energy (BLE) peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:36</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a047893bcd38ccdfbd8d727fc3e754518"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">Systemic::BluetoothLE::Peripheral::address</a></div><div class="ttdeci">bluetooth_address_t address() const</div><div class="ttdoc">Gets the Bluetooth address of the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:132</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a3f33632a1bc75a4a702645d33b036c35"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">Systemic::BluetoothLE::Peripheral::name</a></div><div class="ttdeci">const wchar_t * name() const</div><div class="ttdoc">Gets the name of the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:186</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a3fa8ebca1113dc3ddcba347ff7f3e753"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">Systemic::BluetoothLE::Peripheral::Peripheral</a></div><div class="ttdeci">Peripheral(bluetooth_address_t bluetoothAddress, const std::function&lt; void(ConnectionEvent, ConnectionEventReason)&gt; &amp;onConnectionEvent)</div><div class="ttdoc">Initializes a new instance of Peripheral with the given Bluetooth address and a callback for notifyin...</div><div class="ttdef"><b>Definition:</b> Peripheral.h:76</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a43f7b604454c6ae08831e96f0dfbd690"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">Systemic::BluetoothLE::Peripheral::getDiscoveredService</a></div><div class="ttdeci">std::shared_ptr&lt; Service &gt; getDiscoveredService(const winrt::guid &amp;uuid) const</div><div class="ttdoc">Gets the Service instance with the given UUID.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:215</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a474010cd03aa4e5fcfee3e1ebd1f861e"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">Systemic::BluetoothLE::Peripheral::copyDiscoveredServices</a></div><div class="ttdeci">void copyDiscoveredServices(std::vector&lt; std::shared_ptr&lt; Service &gt; &gt; &amp;outServices) const</div><div class="ttdoc">Copy the discovered services to the given std::vector.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:227</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a578a3fae6a1b6c7762a3af0a33fe856f"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">Systemic::BluetoothLE::Peripheral::isConnected</a></div><div class="ttdeci">bool isConnected() const</div><div class="ttdoc">Indicates whether the peripheral is connected.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:144</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a6ae9187d70e9d755df5d5fa66cbdaca9"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">Systemic::BluetoothLE::Peripheral::connectAsync</a></div><div class="ttdeci">std::future&lt; BleRequestStatus &gt; connectAsync(std::vector&lt; winrt::guid &gt; requiredServices=std::vector&lt; winrt::guid &gt;{}, bool maintainConnection=false)</div><div class="ttdoc">Connects to the BLE peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.cpp:48</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a92995f51bab12ee805d6b951ddd5e629"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">Systemic::BluetoothLE::Peripheral::deviceId</a></div><div class="ttdeci">const wchar_t * deviceId() const</div><div class="ttdoc">Gets the device id assigned by the system for the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:175</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aa49e1cdfad677998171c6dca9b4cabcc"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">Systemic::BluetoothLE::Peripheral::mtu</a></div><div class="ttdeci">uint16_t mtu() const</div><div class="ttdoc">Gets the Maximum Transmission Unit (MTU).</div><div class="ttdef"><b>Definition:</b> Peripheral.h:197</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aa52326834f832e720b50f503f507f920"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">Systemic::BluetoothLE::Peripheral::disconnect</a></div><div class="ttdeci">void disconnect()</div><div class="ttdoc">Immediately disconnects the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:116</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aaefaf95ef932e3782cc9e78dbb10077d"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">Systemic::BluetoothLE::Peripheral::isReady</a></div><div class="ttdeci">bool isReady() const</div><div class="ttdoc">Indicates whether the peripheral is ready.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:160</div></div>
-<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_afac92a7222095bfa982685ba9f690327"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">Systemic::BluetoothLE::Peripheral::~Peripheral</a></div><div class="ttdeci">~Peripheral()</div><div class="ttdoc">Disconnects and destroys the Peripheral instance.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:87</div></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="comment">// Notify user code with pending connection event</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordtype">void</span> notifyQueuedConnectionEvents()</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            <span class="comment">//TODO optimize for case with 1 or 2 elements in queue</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <span class="keyword">decltype</span>(_connectionEventsQueue) queue{};</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                std::lock_guard lock{ _connectOpMtx };</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                queue = _connectionEventsQueue;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                _connectionEventsQueue.clear();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            }</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="keywordflow">if</span> (_onConnectionEvent)</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            {</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; [ev, reason] : queue)</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>                {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                    _onConnectionEvent(ev, reason);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                }</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            }</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="comment">// Called by the device when the connection status changes</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordtype">void</span> onDeviceConnectionStatusChanged(BluetoothLEDevice device, winrt::Windows::Foundation::IInspectable _)</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        {</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keyword">using namespace </span>winrt::Windows::Devices::Bluetooth;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            <span class="keywordflow">if</span> (device.ConnectionStatus() == BluetoothConnectionStatus::Disconnected)</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                <span class="keywordtype">bool</span> linkLoss = (_session != <span class="keyword">nullptr</span>) &amp;&amp; _session.MaintainConnection();</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                internalDisconnect(linkLoss ? ConnectionEventReason::LinkLoss : ConnectionEventReason::Timeout, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                notifyQueuedConnectionEvents();</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="comment">// Connected event is raised in connectAsync() after it has successfully retrieved the services</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            }</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        }</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    };</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>}</div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html">Systemic::BluetoothLE::Peripheral</a></div><div class="ttdoc">Represents a Bluetooth Low Energy (BLE) peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:33</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a047893bcd38ccdfbd8d727fc3e754518"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a047893bcd38ccdfbd8d727fc3e754518">Systemic::BluetoothLE::Peripheral::address</a></div><div class="ttdeci">bluetooth_address_t address() const</div><div class="ttdoc">Gets the Bluetooth address of the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:129</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a3f33632a1bc75a4a702645d33b036c35"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3f33632a1bc75a4a702645d33b036c35">Systemic::BluetoothLE::Peripheral::name</a></div><div class="ttdeci">const wchar_t * name() const</div><div class="ttdoc">Gets the name of the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:183</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a3fa8ebca1113dc3ddcba347ff7f3e753"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a3fa8ebca1113dc3ddcba347ff7f3e753">Systemic::BluetoothLE::Peripheral::Peripheral</a></div><div class="ttdeci">Peripheral(bluetooth_address_t bluetoothAddress, const std::function&lt; void(ConnectionEvent, ConnectionEventReason)&gt; &amp;onConnectionEvent)</div><div class="ttdoc">Initializes a new instance of Peripheral with the given Bluetooth address and a callback for notifyin...</div><div class="ttdef"><b>Definition:</b> Peripheral.h:73</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a43f7b604454c6ae08831e96f0dfbd690"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a43f7b604454c6ae08831e96f0dfbd690">Systemic::BluetoothLE::Peripheral::getDiscoveredService</a></div><div class="ttdeci">std::shared_ptr&lt; Service &gt; getDiscoveredService(const winrt::guid &amp;uuid) const</div><div class="ttdoc">Gets the Service instance with the given UUID.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:212</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a474010cd03aa4e5fcfee3e1ebd1f861e"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a474010cd03aa4e5fcfee3e1ebd1f861e">Systemic::BluetoothLE::Peripheral::copyDiscoveredServices</a></div><div class="ttdeci">void copyDiscoveredServices(std::vector&lt; std::shared_ptr&lt; Service &gt; &gt; &amp;outServices) const</div><div class="ttdoc">Copy the discovered services to the given std::vector.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:224</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a578a3fae6a1b6c7762a3af0a33fe856f"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a578a3fae6a1b6c7762a3af0a33fe856f">Systemic::BluetoothLE::Peripheral::isConnected</a></div><div class="ttdeci">bool isConnected() const</div><div class="ttdoc">Indicates whether the peripheral is connected.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:141</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a6ae9187d70e9d755df5d5fa66cbdaca9"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a6ae9187d70e9d755df5d5fa66cbdaca9">Systemic::BluetoothLE::Peripheral::connectAsync</a></div><div class="ttdeci">std::future&lt; BleRequestStatus &gt; connectAsync(std::vector&lt; winrt::guid &gt; requiredServices=std::vector&lt; winrt::guid &gt;{}, bool maintainConnection=false)</div><div class="ttdoc">Connects to the BLE peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.cpp:47</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_a92995f51bab12ee805d6b951ddd5e629"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#a92995f51bab12ee805d6b951ddd5e629">Systemic::BluetoothLE::Peripheral::deviceId</a></div><div class="ttdeci">const wchar_t * deviceId() const</div><div class="ttdoc">Gets the device id assigned by the system for the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:172</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aa49e1cdfad677998171c6dca9b4cabcc"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa49e1cdfad677998171c6dca9b4cabcc">Systemic::BluetoothLE::Peripheral::mtu</a></div><div class="ttdeci">uint16_t mtu() const</div><div class="ttdoc">Gets the Maximum Transmission Unit (MTU).</div><div class="ttdef"><b>Definition:</b> Peripheral.h:194</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aa52326834f832e720b50f503f507f920"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aa52326834f832e720b50f503f507f920">Systemic::BluetoothLE::Peripheral::disconnect</a></div><div class="ttdeci">void disconnect()</div><div class="ttdoc">Immediately disconnects the peripheral.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:113</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_aaefaf95ef932e3782cc9e78dbb10077d"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#aaefaf95ef932e3782cc9e78dbb10077d">Systemic::BluetoothLE::Peripheral::isReady</a></div><div class="ttdeci">bool isReady() const</div><div class="ttdoc">Indicates whether the peripheral is ready.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:157</div></div>
+<div class="ttc" id="aclass_systemic_1_1_bluetooth_l_e_1_1_peripheral_html_afac92a7222095bfa982685ba9f690327"><div class="ttname"><a href="class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html#afac92a7222095bfa982685ba9f690327">Systemic::BluetoothLE::Peripheral::~Peripheral</a></div><div class="ttdeci">~Peripheral()</div><div class="ttdoc">Disconnects and destroys the Peripheral instance.</div><div class="ttdef"><b>Definition:</b> Peripheral.h:84</div></div>
 <div class="ttc" id="anamespace_systemic_1_1_bluetooth_l_e_html"><div class="ttname"><a href="namespace_systemic_1_1_bluetooth_l_e.html">Systemic::BluetoothLE</a></div><div class="ttdoc">A collection of C++ classes that provides a simplified access to Bluetooth Low Energy peripherals.</div><div class="ttdef"><b>Definition:</b> bletypes.h:36</div></div>
 <div class="ttc" id="anamespace_systemic_1_1_bluetooth_l_e_html_ab4c3d4a45c42df83461f2198f5c35773"><div class="ttname"><a href="namespace_systemic_1_1_bluetooth_l_e.html#ab4c3d4a45c42df83461f2198f5c35773">Systemic::BluetoothLE::bluetooth_address_t</a></div><div class="ttdeci">std::uint64_t bluetooth_address_t</div><div class="ttdoc">Type for a Bluetooth address.</div><div class="ttdef"><b>Definition:</b> bletypes.h:54</div></div>
 <div class="ttc" id="anamespace_systemic_1_1_bluetooth_l_e_html_af67d6a3d5585e29744bbde22e3e04a31"><div class="ttname"><a href="namespace_systemic_1_1_bluetooth_l_e.html#af67d6a3d5585e29744bbde22e3e04a31">Systemic::BluetoothLE::ConnectionEvent</a></div><div class="ttdeci">ConnectionEvent</div><div class="ttdoc">Peripheral connection events.</div><div class="ttdef"><b>Definition:</b> bletypes.h:101</div></div>

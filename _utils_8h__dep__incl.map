@@ -1,6 +1,4 @@
 <map id="WinRTBle/src/LibWinRTBle/Systemic/Internal/Utils.h" name="WinRTBle/src/LibWinRTBle/Systemic/Internal/Utils.h">
-<area shape="rect" id="node1" title="A few internal functions." alt="" coords="327,5,509,45"/>
-<area shape="rect" id="node2" href="$_characteristic_8h.html" title="Definition of the Characteristic class." alt="" coords="5,93,255,133"/>
-<area shape="rect" id="node3" href="$_scanned_peripheral_8h.html" title="Definition of the ManufacturerData, AdvertisementData and DiscoveredPeripheral classes." alt="" coords="279,93,557,133"/>
-<area shape="rect" id="node4" href="$_scanner_8h.html" title="Definition of the Scanner class." alt="" coords="397,181,615,221"/>
+<area shape="rect" id="node1" title="A few internal functions." alt="" coords="5,5,188,45"/>
+<area shape="rect" id="node2" href="$pch_8h.html" title="Precompiled header file." alt="" coords="5,93,188,133"/>
 </map>

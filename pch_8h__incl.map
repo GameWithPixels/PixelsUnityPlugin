@@ -1,5 +1,5 @@
 <map id="WinRTBle/src/LibWinRTBle/pch.h" name="WinRTBle/src/LibWinRTBle/pch.h">
-<area shape="rect" id="node1" title="Precompiled header file." alt="" coords="2342,5,2525,45"/>
+<area shape="rect" id="node1" title="Precompiled header file." alt="" coords="2582,5,2765,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,101,88,126"/>
 <area shape="rect" id="node3" title=" " alt="" coords="113,101,205,126"/>
 <area shape="rect" id="node4" title=" " alt="" coords="229,101,413,126"/>
@@ -24,4 +24,7 @@
 <area shape="rect" id="node23" title=" " alt="" coords="3666,101,3777,126"/>
 <area shape="rect" id="node24" title=" " alt="" coords="3801,101,3879,126"/>
 <area shape="rect" id="node25" title=" " alt="" coords="3903,101,3958,126"/>
+<area shape="rect" id="node26" href="$bletypes_8h.html" title="Some types used across the Systemic::BluetoothLE library." alt="" coords="3982,101,4127,126"/>
+<area shape="rect" id="node27" href="$_utils_8h.html" title="A few internal functions." alt="" coords="4151,101,4315,126"/>
+<area shape="rect" id="node28" title=" " alt="" coords="4196,181,4271,207"/>
 </map>
