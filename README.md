@@ -1,4 +1,4 @@
-# PixelsUnityPlugin
+# Pixels Unity Plugin
 
 This is the Pixels plugin for Unity, a Unity Asset that enables communications between
 Pixels dice and a smartphone or a computer using Bluetooth Low Energy.
