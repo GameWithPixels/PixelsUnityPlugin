@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pixelsunityplugin_0',['PixelsUnityPlugin',['../index.html',1,'']]]
+  ['pixels_20unity_20plugin_0',['Pixels Unity Plugin',['../index.html',1,'']]]
 ];

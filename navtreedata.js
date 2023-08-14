@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
-    [ "PixelsUnityPlugin", "index.html", [
+    [ "Pixels Unity Plugin", "index.html", [
       [ "Foreword", "index.html#autotoc_md1", null ],
       [ "Overview", "index.html#autotoc_md2", null ],
       [ "Unity classes", "index.html#autotoc_md3", [

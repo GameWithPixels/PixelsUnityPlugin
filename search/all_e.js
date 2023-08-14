@@ -21,7 +21,7 @@ var searchData=
   ['pixelerror_18',['PixelError',['../namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3',1,'Systemic::Unity::Pixels']]],
   ['pixelid_19',['pixelId',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a1559e6249d1a698c3d2d1387222d7d50',1,'Systemic::Unity::Pixels::Pixel']]],
   ['pixelrollstate_20',['PixelRollState',['../classpixel_1_1_pixel_roll_state.html',1,'pixel.PixelRollState'],['../namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500',1,'Systemic.Unity.Pixels.PixelRollState()']]],
-  ['pixelsunityplugin_21',['PixelsUnityPlugin',['../index.html',1,'']]],
+  ['pixels_20unity_20plugin_21',['Pixels Unity Plugin',['../index.html',1,'']]],
   ['pixeluuids_22',['PixelUuids',['../classpixel_1_1_pixel_uuids.html',1,'pixel']]],
   ['playanimation_23',['PlayAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a95b0dfdcb44aa6d3640e611e97994491',1,'Systemic.Unity.Pixels.Pixel.PlayAnimation()'],['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation.html',1,'Systemic.Unity.Pixels.Messages.PlayAnimation']]],
   ['playanimationevent_24',['PlayAnimationEvent',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_play_animation_event.html',1,'Systemic::Unity::Pixels::Messages']]],
