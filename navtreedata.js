@@ -25,31 +25,8 @@
 var NAVTREE =
 [
   [ "Pixels Plugin for Unity", "index.html", [
-    [ "Pixels Unity Plugin", "index.html", [
-      [ "Foreword", "index.html#autotoc_md1", null ],
-      [ "Overview", "index.html#autotoc_md2", null ],
-      [ "Unity classes", "index.html#autotoc_md3", [
-        [ "NativeInterface", "index.html#autotoc_md4", null ],
-        [ "Central", "index.html#autotoc_md5", null ],
-        [ "Pixel", "index.html#autotoc_md6", [
-          [ "Pixel messages", "index.html#autotoc_md7", null ],
-          [ "LED animations data", "index.html#autotoc_md8", null ],
-          [ "LED animations profiles", "index.html#autotoc_md9", null ]
-        ] ]
-      ] ],
-      [ "Examples", "index.html#autotoc_md10", [
-        [ "Pixels Demo", "index.html#autotoc_md11", null ],
-        [ "Console Application", "index.html#autotoc_md12", null ],
-        [ "Test Pad Application", "index.html#autotoc_md13", null ]
-      ] ],
-      [ "Architecture", "index.html#autotoc_md14", [
-        [ "Main classes", "index.html#autotoc_md15", null ],
-        [ "Subscribing to Pixel events", "index.html#autotoc_md16", null ],
-        [ "Execution flow between plugins and C# code", "index.html#autotoc_md17", null ],
-        [ "Native Plugins", "index.html#autotoc_md18", null ]
-      ] ]
-    ] ],
-    [ "Modules", "modules.html", "modules" ],
+    [ "Pixels Unity Plugin", "index.html", "index" ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],
       [ "Package Members", "namespacemembers.html", [
@@ -90,10 +67,10 @@ var NAVTREEINDEX =
 [
 "_bluetooth_l_e_8h.html",
 "class_systemic_1_1_bluetooth_l_e_1_1_service.html#a5b4191998717c78d4661dc5576db6f33",
-"class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html",
-"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a342ffbec2cce8ac0a3a6238e707fb76e",
-"functions_p.html",
-"struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html#a259e388983e71e580746e2e990f96678"
+"class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febea902b0d55fddef6f8d651fe1035b7d4bd",
+"class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac1e5512f75c34da45cdc804880c662af",
+"index.html#autotoc_md10",
+"namespace_systemic_1_1_unity_1_1_pixels_1_1_messages.html#a181e94e9e2afc3f70e0a4ee3e5bb7b90a092078ed7932aa1b2767c9206c819d1a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

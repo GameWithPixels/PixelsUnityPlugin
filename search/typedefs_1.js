@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['characteristic_5findex_5ft_0',['characteristic_index_t',['../_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3',1,'characteristic_index_t():&#160;UnityBridge.h'],['../cble_8h.html#af24b1c88d262d190de702852f3ac7cf3',1,'characteristic_index_t():&#160;cble.h']]],
+  ['characteristic_5findex_5ft_0',['characteristic_index_t',['../_unity_bridge_8h.html#af24b1c88d262d190de702852f3ac7cf3',1,'characteristic_index_t:&#160;UnityBridge.h'],['../cble_8h.html#af24b1c88d262d190de702852f3ac7cf3',1,'characteristic_index_t:&#160;cble.h']]],
   ['characteristic_5fproperty_5ft_1',['characteristic_property_t',['../_unity_bridge_8h.html#abf1f941521787487872caf8c51565b28',1,'UnityBridge.h']]],
   ['characteristicproperties_2',['CharacteristicProperties',['../cble_8h.html#a1c6210e1a35579d69c87d32ca14af6cf',1,'cble.h']]],
   ['connectionevent_3',['ConnectionEvent',['../cble_8h.html#ac2098f11906f322a52e642752cab6eaf',1,'cble.h']]],

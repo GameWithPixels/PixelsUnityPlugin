@@ -1,6 +1,9 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleRequest.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleRequest.h">
-<area shape="rect" id="node1" title="Internal types for representing a BLE request." alt="" coords="5,5,200,45"/>
-<area shape="rect" id="node2" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,93,200,148"/>
-<area shape="rect" id="node3" href="$_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="15,196,191,236"/>
-<area shape="rect" id="node4" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="7,284,198,324"/>
+<area shape="rect" id="Node000001" title="Internal types for representing a BLE request." alt="" coords="5,5,200,46"/>
+<area shape="rect" id="Node000002" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,94,200,150"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,61,105,93,100,93,100,61"/>
+<area shape="rect" id="Node000003" href="$_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="15,198,190,238"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,165,105,197,100,197,100,165"/>
+<area shape="rect" id="Node000004" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="7,286,198,327"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,254,105,286,100,286,100,254"/>
 </map>

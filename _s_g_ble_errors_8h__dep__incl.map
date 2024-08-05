@@ -1,4 +1,5 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleErrors.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleErrors.h">
-<area shape="rect" id="node1" title="Library error codes." alt="" coords="10,5,191,45"/>
-<area shape="rect" id="node2" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,93,196,133"/>
+<area shape="rect" id="Node000001" title="Library error codes." alt="" coords="10,5,191,46"/>
+<area shape="rect" id="Node000002" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="5,94,196,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,62,103,94,98,94,98,62"/>
 </map>

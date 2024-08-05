@@ -1,5 +1,7 @@
 <map id="WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/Scanner.h" name="WinRTBle/src/LibWinRTBle/Systemic/BluetoothLE/Scanner.h">
-<area shape="rect" id="node1" title="Definition of the Scanner class." alt="" coords="5,5,223,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="24,93,81,119"/>
-<area shape="rect" id="node3" href="$_scanned_peripheral_8h.html" title="Definition of the ManufacturerData, AdvertisementData and DiscoveredPeripheral classes." alt="" coords="106,93,247,119"/>
+<area shape="rect" id="Node000001" title="Definition of the Scanner class." alt="" coords="5,5,222,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="24,94,80,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,48,73,83,69,80,96,45"/>
+<area shape="rect" id="Node000003" href="$_scanned_peripheral_8h.html" title="Definition of the ManufacturerData, AdvertisementData and DiscoveredPeripheral classes." alt="" coords="105,94,245,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,45,158,80,154,83,127,48"/>
 </map>

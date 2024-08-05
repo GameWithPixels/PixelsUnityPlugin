@@ -1,6 +1,9 @@
 <map id="com.systemic.bluetoothle.Peripheral.MtuRequestCallback" name="com.systemic.bluetoothle.Peripheral.MtuRequestCallback">
-<area shape="rect" id="node1" title="Interface for MTU change request callbacks." alt="" coords="70,79,273,119"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,100,31"/>
-<area shape="rect" id="node3" title=" " alt="" coords="125,5,218,31"/>
-<area shape="rect" id="node4" title=" " alt="" coords="243,5,401,31"/>
+<area shape="rect" id="Node000001" title="Interface for MTU change request callbacks." alt="" coords="68,79,271,120"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,99,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,38,142,76,139,81,81,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="123,5,216,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,46,172,79,167,79,167,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="240,5,397,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="284,41,207,81,205,76,281,36"/>
 </map>

@@ -1,7 +1,11 @@
 <map id="Systemic.Unity.BluetoothLE.RequestEnumerator" name="Systemic.Unity.BluetoothLE.RequestEnumerator">
-<area shape="rect" id="node1" title="Enumerator handling a request to a BLE peripheral. Instances are meant to be run as coroutines." alt="" coords="145,77,312,117"/>
-<area shape="rect" id="node3" title=" " alt="" coords="360,5,609,45"/>
-<area shape="rect" id="node4" title=" " alt="" coords="385,70,585,125"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title="Enumerator handling a request for reading a value from a BLE peripheral. Instances are meant to be ru..." alt="" coords="375,149,594,189"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,85,97,110"/>
+<area shape="rect" id="Node000001" title="Enumerator handling a request to a BLE peripheral. Instances are meant to be run as coroutines." alt="" coords="145,77,311,118"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="359,5,607,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="308,70,358,55,399,44,400,49,360,60,310,75"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="384,70,583,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="327,95,383,95,383,100,327,100"/>
+<area shape="rect" id="Node000005" href="$class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_value_request_enumerator.html" title="Enumerator handling a request for reading a value from a BLE peripheral. Instances are meant to be ru..." alt="" coords="375,149,592,190"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="310,120,360,135,400,146,399,151,358,140,308,125"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,85,97,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,95,144,95,144,100,112,100"/>
 </map>

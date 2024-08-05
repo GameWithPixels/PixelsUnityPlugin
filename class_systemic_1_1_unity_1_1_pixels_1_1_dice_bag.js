@@ -1,6 +1,10 @@
 var class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag =
 [
-    [ "ScanStatus", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febe", null ],
+    [ "ScanStatus", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febe", [
+      [ "Started", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febea8428552d86c0d262a542a528af490afa", null ],
+      [ "NotReady", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febeadd353567e8118a2b8df4e822e59084ab", null ],
+      [ "Error", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a77fc0d5d2fea16ac6595a8ac8140febea902b0d55fddef6f8d651fe1035b7d4bd", null ]
+    ] ],
     [ "ClearAvailablePixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a818febabf9679c94fd4887008a66d819", null ],
     [ "ConnectPixel", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a017444565afada4b32472ffa1586945c", null ],
     [ "ConnectPixels", "class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a62dae041353de194bad720e72de599d2", null ],

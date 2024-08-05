@@ -1,6 +1,9 @@
 <map id="Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator&lt; TMsg, TResp &gt;" name="Systemic.Unity.Pixels.Pixel.SendMessageAndWaitForResponseEnumerator&lt; TMsg, TResp &gt;">
-<area shape="rect" id="node1" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="240,49,537,104"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="585,5,885,60"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="605,85,865,154"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="5,57,192,97"/>
+<area shape="rect" id="Node000001" title="Enumerator that first sends a message to a Pixel and then waits for a message of the given type as th..." alt="" coords="239,49,535,105"/>
+<area shape="rect" id="Node000003" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="583,5,882,61"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="550,54,582,50,583,55,551,59"/>
+<area shape="rect" id="Node000004" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_send_message_and_process_response_with_value_enumerator.html" title="Enumerator that first sends a message to a Pixel, then waits for a message of the given type as the r..." alt="" coords="603,85,862,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="550,95,603,101,602,106,550,100"/>
+<area shape="rect" id="Node000002" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel_1_1_wait_for_message_enumerator.html" title=" " alt="" coords="5,57,191,98"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,75,239,75,239,80,206,80"/>
 </map>

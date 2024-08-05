@@ -1,7 +1,14 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleTypes.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleTypes.h">
-<area shape="rect" id="node1" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="95,5,278,45"/>
-<area shape="rect" id="node2" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="73,93,301,148"/>
-<area shape="rect" id="node3" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,196,200,251"/>
-<area shape="rect" id="node4" href="$_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="149,299,325,339"/>
-<area shape="rect" id="node5" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="142,387,333,427"/>
+<area shape="rect" id="Node000001" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="97,5,279,46"/>
+<area shape="rect" id="Node000002" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="74,94,302,150"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,61,191,93,185,93,185,61"/>
+<area shape="rect" id="Node000003" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="5,198,200,253"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="110,55,84,73,65,95,57,120,61,147,71,173,84,196,80,199,66,175,55,148,52,120,60,93,81,69,107,51"/>
+<area shape="rect" id="Node000004" href="$_unity_bridge_8h.html" title="This file exists only to be included in UnityBridge.mm." alt="" coords="150,301,325,342"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="269,51,295,69,315,93,327,121,329,150,324,180,314,210,286,263,256,303,252,299,281,260,309,207,319,179,324,150,321,122,311,95,291,73,266,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="157,163,127,199,123,195,153,160"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="205,164,214,197,236,301,231,302,209,198,200,165"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="156,260,211,299,207,303,153,265"/>
+<area shape="rect" id="Node000005" href="$_unity_bridge_8mm.html" title="C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) peripherals..." alt="" coords="142,390,332,431"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="240,358,240,390,235,390,235,358"/>
 </map>

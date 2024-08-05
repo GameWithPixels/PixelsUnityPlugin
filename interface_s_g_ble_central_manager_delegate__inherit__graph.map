@@ -1,5 +1,7 @@
 <map id="SGBleCentralManagerDelegate" name="SGBleCentralManagerDelegate">
-<area shape="rect" id="node1" title="Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ..." alt="" coords="25,79,227,104"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,84,31"/>
-<area shape="rect" id="node3" title=" " alt="" coords="108,5,307,31"/>
+<area shape="rect" id="Node000001" title="Implementation of CBCentralManagerDelegate protocol. Stores and notifies of discovered Bluetooth Low ..." alt="" coords="24,79,225,105"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,39,113,77,109,81,68,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,5,305,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,43,140,81,136,77,179,39"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleUtils.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleUtils.h">
-<area shape="rect" id="node1" title="A few internal functions." alt="" coords="103,5,277,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,93,169,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="194,93,394,119"/>
+<area shape="rect" id="Node000001" title="A few internal functions." alt="" coords="103,5,276,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,169,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,49,116,86,113,82,163,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="193,94,392,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,44,266,82,263,86,213,49"/>
 </map>

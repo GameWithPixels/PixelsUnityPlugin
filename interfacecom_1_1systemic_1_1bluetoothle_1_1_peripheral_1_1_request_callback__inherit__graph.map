@@ -1,6 +1,9 @@
 <map id="com.systemic.bluetoothle.Peripheral.RequestCallback" name="com.systemic.bluetoothle.Peripheral.RequestCallback">
-<area shape="rect" id="node1" title="Interface for most BLE request callbacks." alt="" coords="108,79,289,119"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,31"/>
-<area shape="rect" id="node3" title=" " alt="" coords="152,5,245,31"/>
-<area shape="rect" id="node4" title=" " alt="" coords="270,5,429,31"/>
+<area shape="rect" id="Node000001" title="Interface for most BLE request callbacks." alt="" coords="108,79,289,120"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,37,167,76,165,81,98,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,5,245,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,46,201,79,196,79,196,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="269,5,427,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="313,41,237,81,234,76,311,36"/>
 </map>

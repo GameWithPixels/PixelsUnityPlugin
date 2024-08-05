@@ -36,7 +36,6 @@ var annotated_dup =
       [ "Unity", "namespace_systemic_1_1_unity.html", [
         [ "BluetoothLE", "namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html", [
           [ "BleUuid", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_ble_uuid" ],
-          [ "Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central" ],
           [ "ManufacturerData", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_manufacturer_data" ],
           [ "NativeInterface", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface.html", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_interface" ],
           [ "NativePeripheralHandle", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle.html", "struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_native_peripheral_handle" ],

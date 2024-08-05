@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isscanningchanged_0',['IsScanningChanged',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#ae3f099be2ad6901234360722e91fd757',1,'Systemic::Unity::BluetoothLE::Central']]]
+  ['pixeldiscovered_0',['PixelDiscovered',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a9543da90a1d5b0860151c0983e8ca7fc',1,'Systemic::Unity::Pixels::DiceBag']]]
 ];

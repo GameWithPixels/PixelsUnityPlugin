@@ -1,6 +1,11 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h" name="Assets/Plugins/Systemic/Plugins/iOS/SGBleCentralManagerDelegate.h">
-<area shape="rect" id="node1" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="83,5,311,60"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,181,169,207"/>
-<area shape="rect" id="node3" title=" " alt="" coords="194,181,394,207"/>
-<area shape="rect" id="node4" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="144,108,249,133"/>
+<area shape="rect" id="Node000001" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="72,5,299,61"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,183,169,208"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,63,124,110,109,140,98,169,93,167,104,138,119,108,157,60"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="193,183,392,208"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,60,252,108,284,167,279,170,247,110,210,63"/>
+<area shape="rect" id="Node000004" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="134,109,238,135"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,61,188,93,183,93,183,61"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="170,137,117,176,114,171,167,133"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="205,133,263,171,260,176,202,137"/>
 </map>

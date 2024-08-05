@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['peripheral_0',['Peripheral',['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html',1,'com.systemic.bluetoothle.Peripheral'],['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html',1,'Systemic::BluetoothLE::Peripheral']]],
+  ['peripheral_0',['peripheral',['../class_systemic_1_1_bluetooth_l_e_1_1_peripheral.html',1,'Systemic::BluetoothLE::Peripheral'],['../classcom_1_1systemic_1_1bluetoothle_1_1_peripheral.html',1,'com.systemic.bluetoothle.Peripheral']]],
   ['pixel_1',['Pixel',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html',1,'Systemic::Unity::Pixels']]],
   ['pixelbleuuids_2',['PixelBleUuids',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html',1,'Systemic::Unity::Pixels']]],
   ['pixelcontroller_3',['PixelController',['../class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html',1,'Systemic::Unity::Examples']]],

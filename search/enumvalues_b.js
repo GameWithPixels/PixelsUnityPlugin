@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['sgbleconnectioneventconnected_0',['SGBleConnectionEventConnected',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7aae6c83567c94e9ff792cdf428c62678e',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventconnecting_1',['SGBleConnectionEventConnecting',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a673eb38d75dfd0ed1ecebbc9ccd8517c',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventdisconnected_2',['SGBleConnectionEventDisconnected',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a58536bb1bc9a399939941ba98dccfe12',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventdisconnecting_3',['SGBleConnectionEventDisconnecting',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a6ff50324c1b41a252f7c54b3307580e3',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventfailedtoconnect_4',['SGBleConnectionEventFailedToConnect',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7a916e62d0298a5715f0fa50e3730a8491',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventready_5',['SGBleConnectionEventReady',['../group___apple___objective-_c.html#ggadf764cbdea00d65edcd07bb9953ad2b7acec85e9e9c63ca56e39300ab1ed5629c',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasonadapteroff_6',['SGBleConnectionEventReasonAdapterOff',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a13ce53c963b9ba520d3d6943193b830b',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasoncanceled_7',['SGBleConnectionEventReasonCanceled',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5affeb4734877e11a6fdac50ee1fda3832',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasonlinkloss_8',['SGBleConnectionEventReasonLinkLoss',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a2ef464fec9871252d620bc01d2acc154',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasonnotsupported_9',['SGBleConnectionEventReasonNotSupported',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a70a5b369e1950d5840b7b53e0a8761c0',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasonsuccess_10',['SGBleConnectionEventReasonSuccess',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a6e3580469f3f3ad504d3d745a5026563',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasontimeout_11',['SGBleConnectionEventReasonTimeout',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5afcd8119d12c1d314431c71a91b394cb7',1,'SGBleTypes.h']]],
-  ['sgbleconnectioneventreasonunknown_12',['SGBleConnectionEventReasonUnknown',['../group___apple___objective-_c.html#gga99fb83031ce9923c84392b4e92f956b5a96aafed235ff9f6f276e06d9d06e54f2',1,'SGBleTypes.h']]],
-  ['sgbleerrorinvalidparameter_13',['SGBleErrorInvalidParameter',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8cfcceea8c2a2eaf3d1388a0be66d2b4',1,'SGBleTypes.h']]],
-  ['sgbleerrorinvalidstate_14',['SGBleErrorInvalidState',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ab896ace6b7a5c4e1b0ea20680400efef',1,'SGBleTypes.h']]],
-  ['sgbleerrornotimplemented_15',['SGBleErrorNotImplemented',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04adcf130c884ff05b80ff38578fa126909',1,'SGBleTypes.h']]],
-  ['sgbleerroroutofmemory_16',['SGBleErrorOutOfMemory',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04ac4e60b53fc113335403d9216ba492978',1,'SGBleTypes.h']]],
-  ['sgbleerrorperipheraldisconnected_17',['SGBleErrorPeripheralDisconnected',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a96156c8fe9118100e13f3dcaf9e66995',1,'SGBleTypes.h']]],
-  ['sgbleerrorrequestcanceled_18',['SGBleErrorRequestCanceled',['../group___apple___objective-_c.html#ggabc6126af1d45847bc59afa0aa3216b04a8d11be38c99c41f0b1f186e13c56b30b',1,'SGBleTypes.h']]],
-  ['signedwrite_19',['SignedWrite',['../namespace_systemic_1_1_bluetooth_l_e.html#acd6a573cf3ebbf3fbc154ddf408723f1a132ba19ceb5f61b0ff81098c590a1585',1,'Systemic::BluetoothLE']]],
-  ['success_20',['Success',['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449a505a83f220c02df2f85c3810cd9ceb38',1,'Systemic::BluetoothLE::Success()'],['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a505a83f220c02df2f85c3810cd9ceb38',1,'Systemic::BluetoothLE::Success()']]]
+  ['peripheral_0',['peripheral',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9',1,'Systemic.Unity.BluetoothLE.Peripheral'],['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a911e8211a55efee5a43a609b7bcb5db9',1,'Systemic::BluetoothLE::Peripheral']]],
+  ['protocolerror_1',['protocolerror',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaca3da8f495e4e628912a7798655da6c2',1,'Systemic.Unity.BluetoothLE.ProtocolError'],['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449aca3da8f495e4e628912a7798655da6c2',1,'Systemic::BluetoothLE::ProtocolError']]]
 ];

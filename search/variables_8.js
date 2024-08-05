@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['rollstatechanged_0',['RollStateChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a346e7c126e2555d5288c8fd6344dba6c',1,'Systemic::Unity::Pixels::Pixel']]]
+  ['service_0',['Service',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html#ae087848771bd1ab0c7a93d87d2ce0ec5',1,'Systemic::Unity::Pixels::PixelBleUuids']]],
+  ['sgbledisconnectederror_1',['sgbledisconnectederror',['../group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26',1,'SGBleDisconnectedError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26',1,'SGBleDisconnectedError:&#160;SGBleErrors.mm']]],
+  ['sgbleinvalidparametererror_2',['sgbleinvalidparametererror',['../group___apple___objective-_c.html#ga93d0ce0c99d54363f0ae45c75ceedcca',1,'SGBleInvalidParameterError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga93d0ce0c99d54363f0ae45c75ceedcca',1,'SGBleInvalidParameterError:&#160;SGBleErrors.mm']]],
+  ['sgbleinvalidstateerror_3',['sgbleinvalidstateerror',['../group___apple___objective-_c.html#ga03c59da94341f4f7fb44531f22f9d884',1,'SGBleInvalidStateError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga03c59da94341f4f7fb44531f22f9d884',1,'SGBleInvalidStateError:&#160;SGBleErrors.mm']]],
+  ['sgblenotimplementederror_4',['sgblenotimplementederror',['../group___apple___objective-_c.html#ga81afcc5f2473c31916e643191e13c5f3',1,'SGBleNotImplementedError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga81afcc5f2473c31916e643191e13c5f3',1,'SGBleNotImplementedError:&#160;SGBleErrors.mm']]],
+  ['sgbleoutofmemoryerror_5',['sgbleoutofmemoryerror',['../group___apple___objective-_c.html#ga5b802701cdf80a98d48cab5dcad65606',1,'SGBleOutOfMemoryError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga5b802701cdf80a98d48cab5dcad65606',1,'SGBleOutOfMemoryError:&#160;SGBleErrors.mm']]],
+  ['sgblerequestcancelederror_6',['sgblerequestcancelederror',['../group___apple___objective-_c.html#ga41029f4ecf7a8b64e00e1c7e89ffee54',1,'SGBleRequestCanceledError:&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga41029f4ecf7a8b64e00e1c7e89ffee54',1,'SGBleRequestCanceledError:&#160;SGBleErrors.mm']]]
 ];

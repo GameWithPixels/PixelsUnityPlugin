@@ -1,6 +1,9 @@
 <map id="com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback" name="com.systemic.bluetoothle.Peripheral.ReadValueRequestCallback">
-<area shape="rect" id="node1" title="Interface for characteristic&#39;s value read request callbacks." alt="" coords="108,79,352,119"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,159,31"/>
-<area shape="rect" id="node3" title=" " alt="" coords="183,5,277,31"/>
-<area shape="rect" id="node4" title=" " alt="" coords="301,5,460,31"/>
+<area shape="rect" id="Node000001" title="Interface for characteristic&#39;s value read request callbacks." alt="" coords="107,79,350,120"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,158,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,36,193,76,191,81,116,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="182,5,274,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,46,231,79,226,79,226,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="299,5,456,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="343,41,266,81,264,76,340,36"/>
 </map>

@@ -1,13 +1,33 @@
 <map id="Assets/Plugins/Systemic/Plugins/iOS/UnityBridge.h" name="Assets/Plugins/Systemic/Plugins/iOS/UnityBridge.h">
-<area shape="rect" id="node1" title="This file exists only to be included in UnityBridge.mm." alt="" coords="431,5,607,45"/>
-<area shape="rect" id="node2" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="269,167,481,192"/>
-<area shape="rect" id="node5" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="269,240,374,265"/>
-<area shape="rect" id="node6" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="182,93,349,119"/>
-<area shape="rect" id="node8" href="$_s_g_ble_utils_8h.html" title="A few internal functions." alt="" coords="45,240,142,265"/>
-<area shape="rect" id="node9" title=" " alt="" coords="556,93,617,119"/>
-<area shape="rect" id="node10" title=" " alt="" coords="641,93,703,119"/>
-<area shape="rect" id="node11" title=" " alt="" coords="727,93,780,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="98,313,262,339"/>
-<area shape="rect" id="node4" title=" " alt="" coords="299,313,499,339"/>
-<area shape="rect" id="node7" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="23,167,142,192"/>
+<area shape="rect" id="Node000001" title="This file exists only to be included in UnityBridge.mm." alt="" coords="426,5,601,46"/>
+<area shape="rect" id="Node000002" href="$_s_g_ble_central_manager_delegate_8h.html" title="Definition of the SGBleCentralManagerDelegate class." alt="" coords="265,168,476,193"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="497,48,394,158,390,154,493,44"/>
+<area shape="rect" id="Node000005" href="$_s_g_ble_types_8h.html" title="Definition of SGBleConnectionEvent and SGBleConnectionEventReason enumerations." alt="" coords="265,241,369,267"/>
+<area shape="poly" id="edge14_Node000001_Node000005" title=" " alt="" coords="519,46,521,78,519,117,510,158,490,195,468,216,441,231,385,249,384,243,439,226,465,211,486,192,505,156,514,116,516,78,514,47"/>
+<area shape="rect" id="Node000006" href="$_s_g_ble_peripheral_queue_8h.html" title="Definition of the SGBlePeripheralQueue class." alt="" coords="179,94,344,120"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="451,49,315,91,314,86,449,44"/>
+<area shape="rect" id="Node000008" href="$_s_g_ble_utils_8h.html" title="A few internal functions." alt="" coords="44,241,140,267"/>
+<area shape="poly" id="edge15_Node000001_Node000008" title=" " alt="" coords="426,40,312,58,186,86,127,103,77,123,37,145,13,169,9,186,17,202,33,218,53,231,50,236,29,222,12,206,4,187,8,166,34,141,74,118,126,98,184,81,311,53,425,35"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="551,94,611,120"/>
+<area shape="poly" id="edge18_Node000001_Node000009" title=" " alt="" coords="532,45,563,80,559,84,528,48"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="635,94,695,120"/>
+<area shape="poly" id="edge19_Node000001_Node000010" title=" " alt="" coords="552,44,630,84,627,89,550,49"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="719,94,771,120"/>
+<area shape="poly" id="edge20_Node000001_Node000011" title=" " alt="" coords="572,44,705,89,704,94,570,49"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,315,259,341"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,196,298,216,255,243,222,274,196,305,192,301,219,270,252,239,296,211,338,191"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="295,315,494,341"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="375,193,384,241,393,299,388,300,379,242,370,194"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="364,195,338,230,333,227,360,192"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="295,270,216,310,213,305,292,265"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="332,266,372,302,369,306,329,270"/>
+<area shape="poly" id="edge10_Node000006_Node000002" title=" " alt="" coords="281,118,341,157,338,161,278,122"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="259,121,190,302,185,300,254,119"/>
+<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="345,117,432,136,467,149,490,166,499,185,501,204,496,224,485,244,456,279,425,308,421,304,452,275,481,241,491,222,495,204,494,186,486,169,465,154,430,141,344,122"/>
+<area shape="poly" id="edge11_Node000006_Node000005" title=" " alt="" coords="259,121,251,154,251,174,256,192,269,213,287,230,284,234,265,216,251,194,246,174,246,154,254,120"/>
+<area shape="rect" id="Node000007" href="$_s_g_ble_request_8h.html" title="Internal types for representing a BLE request." alt="" coords="23,168,140,193"/>
+<area shape="poly" id="edge12_Node000006_Node000007" title=" " alt="" coords="232,123,127,164,125,159,230,118"/>
+<area shape="poly" id="edge13_Node000007_Node000003" title=" " alt="" coords="67,196,51,211,37,229,30,248,34,266,59,290,91,307,89,312,56,295,30,268,24,247,32,226,47,207,63,192"/>
+<area shape="poly" id="edge16_Node000008_Node000003" title=" " alt="" coords="108,265,153,303,150,307,105,270"/>
+<area shape="poly" id="edge17_Node000008_Node000004" title=" " alt="" coords="141,264,329,308,328,314,140,270"/>
 </map>

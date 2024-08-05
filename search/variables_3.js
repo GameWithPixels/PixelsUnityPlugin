@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['defaultrequesttimeout_0',['DefaultRequestTimeout',['../class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html#a9fbf811ec5d116d1617a34570258edcc',1,'Systemic::Unity::BluetoothLE::Central']]]
+  ['errorencountered_0',['ErrorEncountered',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a39051e63864a60e68a9fad7c343100ee',1,'Systemic::Unity::Pixels::Pixel']]]
 ];

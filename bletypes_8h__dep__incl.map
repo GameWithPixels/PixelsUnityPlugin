@@ -1,5 +1,7 @@
 <map id="WinRTBle/include/bletypes.h" name="WinRTBle/include/bletypes.h">
-<area shape="rect" id="node1" title="Some types used across the Systemic::BluetoothLE library." alt="" coords="92,5,279,31"/>
-<area shape="rect" id="node2" href="$cble_8h.html" title="A C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) periphera..." alt="" coords="5,86,168,111"/>
-<area shape="rect" id="node3" href="$pch_8h.html" title="Precompiled header file." alt="" coords="193,79,375,119"/>
+<area shape="rect" id="Node000001" title="Some types used across the Systemic::BluetoothLE library." alt="" coords="91,5,277,31"/>
+<area shape="rect" id="Node000002" href="$cble_8h.html" title="A C library for discovering, connecting to, and interacting with Bluetooth Low Energy (BLE) periphera..." alt="" coords="5,87,168,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,43,103,88,100,84,156,39"/>
+<area shape="rect" id="Node000003" href="$pch_8h.html" title="Precompiled header file." alt="" coords="192,79,373,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,39,260,77,256,81,209,43"/>
 </map>

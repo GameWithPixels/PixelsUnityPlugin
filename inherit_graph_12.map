@@ -1,10 +1,17 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,205,117,230"/>
-<area shape="rect" id="node2" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html" title="Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,..." alt="" coords="169,5,340,45"/>
-<area shape="rect" id="node3" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html" title="Demonstrates various Bluetooth operations on Pixels using the device agnostic Central class...." alt="" coords="169,69,340,109"/>
-<area shape="rect" id="node4" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html" title="Demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated..." alt="" coords="169,133,340,173"/>
-<area shape="rect" id="node5" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html" title="Gets the log messages and copy them to a UI.Text object." alt="" coords="169,197,340,237"/>
-<area shape="rect" id="node6" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html" title="Show information about a Pixels.Pixel and buttons to connect, disconnect and remove a Pixel." alt="" coords="169,261,340,301"/>
-<area shape="rect" id="node7" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html" title="Specialized class that updates the state of a Toggle instance based on whether the DiceBag is scannin..." alt="" coords="169,325,340,365"/>
-<area shape="rect" id="node8" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die." alt="" coords="165,390,344,415"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,209,117,235"/>
+<area shape="rect" id="Node000001" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_console.html" title="Demonstrates scanning for Pixels dice, connecting to one of them, retrieving information from it,..." alt="" coords="168,5,339,46"/>
+<area shape="poly" id="edge29_Node000000_Node000001" title=" " alt="" coords="71,193,105,126,131,89,163,57,182,44,185,49,166,61,135,92,110,129,75,196"/>
+<area shape="rect" id="Node000002" href="$class_systemic_1_1_unity_1_1_examples_1_1_ble_controller.html" title="Demonstrates various Bluetooth operations on Pixels using the device agnostic Central class...." alt="" coords="168,71,339,111"/>
+<area shape="poly" id="edge30_Node000000_Node000002" title=" " alt="" coords="81,195,118,158,163,122,187,110,189,114,166,127,121,162,85,199"/>
+<area shape="rect" id="Node000003" href="$class_systemic_1_1_unity_1_1_examples_1_1_pixel_controller.html" title="Demonstrates how to scan for, connect to and retrieve information from Pixel dice using the dedicated..." alt="" coords="168,136,339,177"/>
+<area shape="poly" id="edge31_Node000000_Node000003" title=" " alt="" coords="115,201,190,175,192,180,116,206"/>
+<area shape="rect" id="Node000004" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_log_to_text.html" title="Gets the log messages and copy them to a UI.Text object." alt="" coords="168,201,339,242"/>
+<area shape="poly" id="edge32_Node000000_Node000004" title=" " alt="" coords="132,219,168,219,168,224,132,224"/>
+<area shape="rect" id="Node000005" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html" title="Show information about a Pixels.Pixel and buttons to connect, disconnect and remove a Pixel." alt="" coords="168,267,339,307"/>
+<area shape="poly" id="edge33_Node000000_Node000005" title=" " alt="" coords="116,237,192,264,190,269,115,243"/>
+<area shape="rect" id="Node000006" href="$class_systemic_1_1_unity_1_1_examples_1_1_u_i_update_scan_toggle.html" title="Specialized class that updates the state of a Toggle instance based on whether the DiceBag is scannin..." alt="" coords="168,332,339,373"/>
+<area shape="poly" id="edge34_Node000000_Node000006" title=" " alt="" coords="85,245,121,281,166,317,189,329,187,334,163,321,118,285,81,248"/>
+<area shape="rect" id="Node000007" href="$class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html" title="Represents a Pixel die." alt="" coords="165,397,342,423"/>
+<area shape="poly" id="edge35_Node000000_Node000007" title=" " alt="" coords="75,248,109,316,135,352,166,382,187,394,185,399,163,386,131,355,104,318,70,250"/>
 </map>

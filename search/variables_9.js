@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['service_0',['Service',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel_ble_uuids.html#ae087848771bd1ab0c7a93d87d2ce0ec5',1,'Systemic::Unity::Pixels::PixelBleUuids']]],
-  ['sgbledisconnectederror_1',['SGBleDisconnectedError',['../group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26',1,'SGBleDisconnectedError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga6abb2f68f175b07ef5634407929eeb26',1,'SGBleDisconnectedError():&#160;SGBleErrors.mm']]],
-  ['sgbleinvalidparametererror_2',['SGBleInvalidParameterError',['../group___apple___objective-_c.html#ga93d0ce0c99d54363f0ae45c75ceedcca',1,'SGBleInvalidParameterError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga93d0ce0c99d54363f0ae45c75ceedcca',1,'SGBleInvalidParameterError():&#160;SGBleErrors.mm']]],
-  ['sgbleinvalidstateerror_3',['SGBleInvalidStateError',['../group___apple___objective-_c.html#ga03c59da94341f4f7fb44531f22f9d884',1,'SGBleInvalidStateError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga03c59da94341f4f7fb44531f22f9d884',1,'SGBleInvalidStateError():&#160;SGBleErrors.mm']]],
-  ['sgblenotimplementederror_4',['SGBleNotImplementedError',['../group___apple___objective-_c.html#ga81afcc5f2473c31916e643191e13c5f3',1,'SGBleNotImplementedError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga81afcc5f2473c31916e643191e13c5f3',1,'SGBleNotImplementedError():&#160;SGBleErrors.mm']]],
-  ['sgbleoutofmemoryerror_5',['SGBleOutOfMemoryError',['../group___apple___objective-_c.html#ga5b802701cdf80a98d48cab5dcad65606',1,'SGBleOutOfMemoryError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga5b802701cdf80a98d48cab5dcad65606',1,'SGBleOutOfMemoryError():&#160;SGBleErrors.mm']]],
-  ['sgblerequestcancelederror_6',['SGBleRequestCanceledError',['../group___apple___objective-_c.html#ga41029f4ecf7a8b64e00e1c7e89ffee54',1,'SGBleRequestCanceledError():&#160;SGBleErrors.mm'],['../group___apple___objective-_c.html#ga41029f4ecf7a8b64e00e1c7e89ffee54',1,'SGBleRequestCanceledError():&#160;SGBleErrors.mm']]]
+  ['temperaturechanged_0',['TemperatureChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a6ade3225d87b7680a6161b620e990061',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['timeandcolor_1',['timeAndColor',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_r_g_b_keyframe.html#a2b48af7bca8c27cf216a8df3bb9f6331',1,'Systemic::Unity::Pixels::Animations::RGBKeyframe']]],
+  ['timeandintensity_2',['timeAndIntensity',['../struct_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_simple_keyframe.html#ac13c3a8974f095305d9fc71eff0b2663',1,'Systemic::Unity::Pixels::Animations::SimpleKeyframe']]]
 ];

@@ -19,7 +19,6 @@ var hierarchy =
     [ "<CBPeripheralDelegate>", null, [
       [ "SGBlePeripheralQueue", "interface_s_g_ble_peripheral_queue.html", null ]
     ] ],
-    [ "Systemic.Unity.BluetoothLE.Central", "class_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_central.html", null ],
     [ "Systemic::BluetoothLE::Characteristic", "class_systemic_1_1_bluetooth_l_e_1_1_characteristic.html", null ],
     [ "Systemic.Unity.Pixels.ColorUIntUtils", "class_systemic_1_1_unity_1_1_pixels_1_1_color_u_int_utils.html", null ],
     [ "Systemic.Unity.Pixels.Animations.Constants", "class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_constants.html", null ],

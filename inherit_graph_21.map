@@ -1,3 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$struct_systemic_1_1_unity_1_1_bluetooth_l_e_1_1_service_data.html" title="Represents the service data of an advertisement packet." alt="" coords="5,5,172,45"/>
+<area shape="rect" id="Node000000" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance.html" title="Animation instance data, refers to an animation preset but stores the instance data and (derived clas..." alt="" coords="5,169,223,210"/>
+<area shape="rect" id="Node000001" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_fade_candy.html" title="Procedural on off animation instance data." alt="" coords="272,5,490,46"/>
+<area shape="poly" id="edge37_Node000000_Node000001" title=" " alt="" coords="143,156,199,105,233,79,269,57,297,44,299,49,272,61,236,84,202,109,147,160"/>
+<area shape="rect" id="Node000002" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient.html" title="Procedural on off animation instance data." alt="" coords="272,71,490,111"/>
+<area shape="poly" id="edge38_Node000000_Node000002" title=" " alt="" coords="175,160,270,122,307,109,309,114,272,127,177,165"/>
+<area shape="rect" id="Node000003" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_gradient_pattern.html" title="Keyframe&#45;based animation instance data." alt="" coords="271,136,491,177"/>
+<area shape="poly" id="edge39_Node000000_Node000003" title=" " alt="" coords="238,172,270,167,271,173,239,177"/>
+<area shape="rect" id="Node000004" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_keyframed.html" title="Keyframe&#45;based animation instance data." alt="" coords="272,201,490,242"/>
+<area shape="poly" id="edge40_Node000000_Node000004" title=" " alt="" coords="239,202,272,206,271,211,238,207"/>
+<area shape="rect" id="Node000005" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_rainbow.html" title="Procedural on off animation instance data." alt="" coords="272,267,490,307"/>
+<area shape="poly" id="edge41_Node000000_Node000005" title=" " alt="" coords="178,214,272,251,309,264,307,269,270,256,176,219"/>
+<area shape="rect" id="Node000006" href="$class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html" title="Procedural on off animation instance data." alt="" coords="272,332,490,373"/>
+<area shape="poly" id="edge42_Node000000_Node000006" title=" " alt="" coords="148,219,203,269,236,295,272,317,299,329,297,334,269,321,233,299,199,273,144,223"/>
 </map>

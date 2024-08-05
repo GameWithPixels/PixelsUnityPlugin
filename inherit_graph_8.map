@@ -1,6 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,60,80"/>
-<area shape="rect" id="node2" href="$classble_1_1_ble_request_status.html" title=" " alt="" coords="121,5,267,31"/>
-<area shape="rect" id="node3" href="$classpixel_1_1_pixel_design_and_color.html" title=" " alt="" coords="108,55,280,80"/>
-<area shape="rect" id="node4" href="$classpixel_1_1_pixel_roll_state.html" title=" " alt="" coords="128,104,260,129"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,55,60,80"/>
+<area shape="rect" id="Node000001" href="$classble_1_1_ble_request_status.html" title=" " alt="" coords="120,5,267,31"/>
+<area shape="poly" id="edge18_Node000000_Node000001" title=" " alt="" coords="74,51,107,40,142,29,144,34,108,45,75,56"/>
+<area shape="rect" id="Node000002" href="$classpixel_1_1_pixel_design_and_color.html" title=" " alt="" coords="108,55,279,80"/>
+<area shape="poly" id="edge19_Node000000_Node000002" title=" " alt="" coords="76,65,107,65,107,70,76,70"/>
+<area shape="rect" id="Node000003" href="$classpixel_1_1_pixel_roll_state.html" title=" " alt="" coords="128,104,259,130"/>
+<area shape="poly" id="edge20_Node000000_Node000003" title=" " alt="" coords="75,79,108,90,144,101,142,106,107,95,74,84"/>
 </map>

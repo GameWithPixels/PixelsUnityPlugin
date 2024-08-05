@@ -1,5 +1,7 @@
 <map id="SGBlePeripheralQueue" name="SGBlePeripheralQueue">
-<area shape="rect" id="node1" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue..." alt="" coords="40,79,196,104"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,84,31"/>
-<area shape="rect" id="node3" title=" " alt="" coords="109,5,274,31"/>
+<area shape="rect" id="Node000001" title="Implementation of the CBPeripheralDelegate protocol. Queues up operations to be performed with a Blue..." alt="" coords="39,79,194,105"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,40,106,77,102,80,65,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="108,5,272,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,44,131,80,127,77,165,40"/>
 </map>
