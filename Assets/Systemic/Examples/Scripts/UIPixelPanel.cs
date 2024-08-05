@@ -97,7 +97,7 @@ namespace Systemic.Unity.Examples
             if (Pixel != pixel)
             {
                 Pixel = pixel;
-                Pixel.ConnectionStateChanged += (pixel, oldState, newState) =>
+                Pixel.ConnectionStateChanged += (pixel, newState) =>
                 {
                     if (newState == PixelConnectionState.Ready)
                     {

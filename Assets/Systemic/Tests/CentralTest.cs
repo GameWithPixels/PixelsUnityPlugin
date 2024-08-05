@@ -25,19 +25,19 @@ namespace Systemic.Unity.BluetoothLE.Test
 
         IEnumerator WaitCentralReady()
         {
-            yield return WaitUntilWithTimeout(() => Central.IsReady);
-            Assert.IsTrue(Central.IsReady, "Central not ready");
+            yield return WaitUntilWithTimeout(() => Central.Status == BluetoothStatus.Ready);
+            Assert.IsTrue(Central.Status == BluetoothStatus.Ready, "Central not ready");
         }
 
         IEnumerator SelectPeripheral()
         {
-            Central.ScanForPeripheralsWithServices(new[] { PixelBleUuids.Service });
+            Central.StartScanning(new[] { PixelBleUuids.Service });
             yield return WaitUntilWithTimeout(() =>
             {
                 _peripheral = Central.ScannedPeripherals.FirstOrDefault(p => p.Services.Contains(PixelBleUuids.Service));
                 return _peripheral != null;
             });
-            Central.StopScan();
+            Central.StopScanning();
             Assert.NotNull(_peripheral, "No Pixel peripheral found");
         }
 

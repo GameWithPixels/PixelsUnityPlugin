@@ -37,7 +37,7 @@ namespace Systemic.Unity.Examples
             yield return null;
 
             Debug.Log("Waiting for Central to be ready...");
-            while (!Central.IsReady)
+            while (Central.Status != BluetoothStatus.Ready)
             {
                 yield return null;
             }
@@ -49,7 +49,7 @@ namespace Systemic.Unity.Examples
             Debug.Log("Scanning for Pixels...");
 
             // Filter peripherals with the Pixel service UUID
-            Central.ScanForPeripheralsWithServices(new[] { PixelBleUuids.Service });
+            Central.StartScanning(new[] { PixelBleUuids.Service });
 
             // Wait until a Pixel is found
             while (Central.ScannedPeripherals.Length == 0)
@@ -57,7 +57,7 @@ namespace Systemic.Unity.Examples
                 yield return null;
             }
 
-            Central.StopScan();
+            Central.StopScanning();
 
             Debug.Log($"Found {Central.ScannedPeripherals.Length} Pixels");
 

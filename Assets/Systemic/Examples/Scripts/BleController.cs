@@ -82,17 +82,18 @@ namespace Systemic.Unity.Examples
         void Update()
         {
             // Update buttons intractability based on Bluetooth state
-            _startScanBtn.interactable = Central.IsReady && !Central.IsScanning;
-            _stopScanBtn.interactable = Central.IsReady && Central.IsScanning;
-            _connectBtn.interactable = Central.IsReady && (Central.ScannedPeripherals.Length > 0) && (!_peripheralIsConnected);
-            _shutdownBtn.interactable = Central.IsReady;
+            bool isReady = Central.Status == BluetoothStatus.Ready;
+            _startScanBtn.interactable = isReady && !Central.IsScanning;
+            _stopScanBtn.interactable = isReady && Central.IsScanning;
+            _connectBtn.interactable = isReady && (Central.ScannedPeripherals.Length > 0) && (!_peripheralIsConnected);
+            _shutdownBtn.interactable = isReady;
             foreach (var btn in _operationsBtn)
             {
-                btn.interactable = Central.IsReady && (_peripheral != null) && _peripheralIsConnected;
+                btn.interactable = isReady && (_peripheral != null) && _peripheralIsConnected;
             }
 
             // Update status text
-            _statusText.text = Central.IsReady ? (Central.IsScanning ? "Scanning" : "Ready") : "Unavailable";
+            _statusText.text = isReady ? (Central.IsScanning ? "Scanning" : "Ready") : "Unavailable";
             if (Central.ScannedPeripherals.Length > 0)
             {
                 _statusText.text += $"- Found {Central.ScannedPeripherals.Length} Pixel(s)";
@@ -115,7 +116,7 @@ namespace Systemic.Unity.Examples
         public void StartScan()
         {
             // Filter peripherals with the Pixel service UUID
-            Central.ScanForPeripheralsWithServices(new[] { PixelBleUuids.Service });
+            Central.StartScanning(new[] { PixelBleUuids.Service });
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace Systemic.Unity.Examples
         /// </summary>
         public void StopScan()
         {
-            Central.StopScan();
+            Central.StopScanning();
         }
 
         /// <summary>

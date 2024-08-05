@@ -26,7 +26,7 @@ namespace Systemic::BluetoothLE
         using BluetoothLEAdvertisementWatcherStoppedEventArgs = winrt::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs;
 
         // Watcher and its event tokens
-        BluetoothLEAdvertisementWatcher _watcher{ nullptr };
+        BluetoothLEAdvertisementWatcher _watcher{};
         winrt::event_token _receivedToken{};
         winrt::event_token _stoppedToken{};
 
@@ -55,7 +55,6 @@ namespace Systemic::BluetoothLE
             std::function<void(std::shared_ptr<ScannedPeripheral>)> peripheralDiscovered,
             std::vector<winrt::guid> services = std::vector<winrt::guid>{})
             :
-            _watcher{},
             _requestedServices{ services },
             _onPeripheralDiscovered{ peripheralDiscovered }
         {
