@@ -35,60 +35,7 @@ namespace Systemic.Unity.Pixels.Messages
                         ret = FromByteArray<WhoAreYou>(data);
                         break;
                     case MessageType.IAmADie:
-                        if (data.Length == Marshal.SizeOf<IAmADie>())
-                        {
-                            ret = FromByteArray<IAmADie>(data);
-                        }
-                        else
-                        {
-                            // This an older firmware with the "versionInfo" string
-                            Debug.Log("Got older version of IAmADie message");
-
-                            // Get the message part before the versionInfo string
-                            var baseData = new byte[Marshal.SizeOf<IAmADieMarshaledDataBeforeBuildTimestamp>()];
-                            System.Array.Copy(data, baseData, baseData.Length);
-                            var baseMsg = FromByteArray<IAmADieMarshaledDataBeforeBuildTimestamp>(baseData);
-
-                            if (baseMsg != null)
-                            {
-                                // Get the versionInfo string
-                                var versionInfo = BytesToString(data, baseData.Length, data.Length - baseData.Length);
-
-                                // Convert to timestamp
-                                uint timestamp = 0;
-                                if (versionInfo?.Length > 0)
-                                {
-                                    var numbers = versionInfo.Split('_');
-                                    if (numbers.Length >= 2)
-                                    {
-                                        try
-                                        {
-                                            int month = int.Parse(numbers[0]);
-                                            int day = int.Parse(numbers[1]);
-                                            int year = numbers.Length > 2 ? 2000 + int.Parse(numbers[2]) : (month < 7 ? 2021 : 2020);
-                                            var dt = new System.DateTime(year, month, day);
-                                            var epoch = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-                                            timestamp = (uint)(dt - epoch).TotalSeconds;
-                                        }
-                                        catch (System.Exception ex)
-                                        {
-                                            Debug.LogError($"Error parsing versionInfo: {ex.Message}");
-                                        }
-                                    }
-                                }
-
-                                ret = new IAmADie
-                                {
-                                    ledCount = baseMsg.ledCount,
-                                    designAndColor = baseMsg.designAndColor,
-                                    padding = baseMsg.padding,
-                                    dataSetHash = baseMsg.dataSetHash,
-                                    pixelId = baseMsg.pixelId,
-                                    availableFlashSize = baseMsg.flashSize,
-                                    buildTimestamp = timestamp,
-                                };
-                            }
-                        }
+                        ret = FromByteArray<IAmADie>(data);
                         break;
                     case MessageType.Telemetry:
                         ret = FromByteArray<Telemetry>(data);
@@ -113,15 +60,6 @@ namespace Systemic.Unity.Pixels.Messages
                         break;
                     case MessageType.TransferAnimationSetFinished:
                         ret = FromByteArray<TransferAnimationSetFinished>(data);
-                        break;
-                    case MessageType.TransferTestAnimationSet:
-                        ret = FromByteArray<TransferTestAnimationSet>(data);
-                        break;
-                    case MessageType.TransferTestAnimationSetAck:
-                        ret = FromByteArray<TransferTestAnimationSetAck>(data);
-                        break;
-                    case MessageType.TransferTestAnimationSetFinished:
-                        ret = FromByteArray<TransferTestAnimationSetFinished>(data);
                         break;
                     case MessageType.TransferSettings:
                         ret = FromByteArray<TransferSettings>(data);
@@ -195,12 +133,6 @@ namespace Systemic.Unity.Pixels.Messages
                     case MessageType.TestHardware:
                         ret = FromByteArray<TestHardware>(data);
                         break;
-                    case MessageType.TestLedLoopback:
-                        ret = FromByteArray<TestLedLoopback>(data);
-                        break;
-                    case MessageType.LedLoopback:
-                        ret = FromByteArray<LedLoopback>(data);
-                        break;
                     case MessageType.SetTopLevelState:
                         ret = FromByteArray<SetTopLevelState>(data);
                         break;
@@ -209,12 +141,6 @@ namespace Systemic.Unity.Pixels.Messages
                         break;
                     case MessageType.ProgramDefaultParametersFinished:
                         ret = FromByteArray<ProgramDefaultParametersFinished>(data);
-                        break;
-                    case MessageType.AttractMode:
-                        ret = FromByteArray<AttractMode>(data);
-                        break;
-                    case MessageType.PrintNormals:
-                        ret = FromByteArray<PrintNormals>(data);
                         break;
                     case MessageType.SetDesignAndColor:
                         ret = FromByteArray<SetDesignAndColor>(data);
@@ -234,14 +160,32 @@ namespace Systemic.Unity.Pixels.Messages
                     case MessageType.SetNameAck:
                         ret = FromByteArray<SetNameAck>(data);
                         break;
+                    case MessageType.PowerOperation:
+                        ret = FromByteArray<PowerOperation>(data);
+                        break;
+                    case MessageType.ExitValidation:
+                        ret = FromByteArray<ExitValidation>(data);
+                        break;
+                    case MessageType.TransferInstantAnimationSet:
+                        ret = FromByteArray<TransferInstantAnimationSet>(data);
+                        break;
+                    case MessageType.TransferInstantAnimationSetAck:
+                        ret = FromByteArray<TransferInstantAnimationSetAck>(data);
+                        break;
+                    case MessageType.TransferInstantAnimationSetFinished:
+                        ret = FromByteArray<TransferInstantAnimationSetFinished>(data);
+                        break;
+                    case MessageType.PlayInstantAnimation:
+                        ret = FromByteArray<PlayInstantAnimation>(data);
+                        break;
+                    case MessageType.StopAllAnimations:
+                        ret = FromByteArray<StopAllAnimations>(data);
+                        break;
                     case MessageType.RequestTemperature:
                         ret = FromByteArray<RequestTemperature>(data);
                         break;
                     case MessageType.Temperature:
                         ret = FromByteArray<Temperature>(data);
-                        break;
-                    case MessageType.PrintAnimControllerState:
-                        ret = FromByteArray<PrintAnimationControllerState>(data);
                         break;
                     default:
                         throw new System.Exception($"Unhandled DieMessage type {type} for marshaling");

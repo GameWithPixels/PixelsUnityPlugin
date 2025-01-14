@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Ack
+﻿// Ignore Spelling: Ack Colorway
 
 using System.Collections;
 using Systemic.Unity.Pixels.Animations;
@@ -115,29 +115,6 @@ namespace Systemic.Unity.Pixels
         }
 
         /// <summary>
-        /// Sends a message to the Pixel to set its design and color.
-        /// </summary>
-        /// <param name="designAndColor">The design and color value to set.</param>
-        /// <param name="onResult">An optional callback that is called when the operation completes
-        ///                        successfully (true) or not (false) with an error message.</param>
-        /// <returns>An enumerator meant to be run as a coroutine.</returns>
-        public IEnumerator SetDesignAndColorAsync(PixelDesignAndColor designAndColor, OperationResultCallback onResult = null)
-        {
-            var op = new SendMessageAndProcessResponseEnumerator<SetDesignAndColor, Rssi>(this,
-                new SetDesignAndColor() { designAndColor = designAndColor },
-                _ =>
-                {
-                    if (this.designAndColor != designAndColor)
-                    {
-                        this.designAndColor = designAndColor;
-                        AppearanceChanged?.Invoke(this, ledCount, this.designAndColor);
-                    }
-                });
-            yield return op;
-            onResult?.Invoke(op.IsSuccess, op.Error);
-        }
-
-        /// <summary>
         /// Sends a message to the Pixel to change its name.
         /// </summary>
         /// <param name="name">The name to set.</param>
@@ -151,19 +128,6 @@ namespace Systemic.Unity.Pixels
             var op = new SendMessageAndWaitForResponseEnumerator<SetName, SetNameAck>(this, new SetName { name = bytes });
             yield return op;
             onResult?.Invoke(op.IsSuccess, op.Error);
-        }
-
-        /// <summary>
-        /// Sends a message to the Pixel to set all the Pixel LEDs with the same given color.
-        /// </summary>
-        /// <param name="color">The desired color for the LEDs.</param>
-        public void SetLEDsToColor(Color color)
-        {
-            Color32 color32 = color;
-            PostMessage(new SetAllLEDsToColor
-            {
-                color = (uint)((color32.r << 16) + (color32.g << 8) + color32.b)
-            });
         }
 
         /// <summary>

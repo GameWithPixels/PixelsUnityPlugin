@@ -60,12 +60,11 @@ namespace Systemic.Unity.Examples
             {
                 _connectionState.text = Pixel.connectionState.ToString();
                 _name.text = Pixel.name;
-                int battery = Mathf.RoundToInt(100 * Pixel.batteryLevel);
                 string charging = Pixel.isCharging ? "charging" : "not charging";
-                _battery.text = $"{battery}%, {charging}";
-                _rssi.text = Pixel.rssi.ToString();
+                _battery.text = $"{Pixel.batteryLevel}%, {charging}";
+                _rssi.text = $"{Pixel.rssi} dBm";
                 _version.text = Pixel.buildDateTime.ToString();
-                _design.text = Pixel.designAndColor.ToString();
+                _design.text = $"{Pixel.dieType} {Pixel.colorway}";
                 _rollstate.text = Pixel.rollState.ToString();
                 _face.text = $"{Pixel.currentFace + 1} of {Pixel.ledCount}";
 

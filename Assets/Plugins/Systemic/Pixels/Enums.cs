@@ -1,45 +1,61 @@
-﻿
+﻿// Ignore Spelling: Colorway
+
 namespace Systemic.Unity.Pixels
 {
     /// <summary>
-    /// Available combinations of Pixel designs and colors.
+    /// The different types of dice.
     /// </summary>
-    public enum PixelDesignAndColor : byte
+    public enum PixelDieType: byte
     {
         Unknown = 0,
-        Generic,
-        V3Orange,
-        V4BlackClear,
-        V4WhiteClear,
-        V5Grey,
-        V5White,
-        V5Black,
-        V5Gold,
-        OnyxBlack,
-        HematiteGrey,
-        MidnightGalaxy,
-        AuroraSky
+        D4,
+        D6,
+        D8,
+        D10,
+        D00,
+        D12,
+        D20,
+        D6Pipped,
+        D6Fudge,
     }
 
     /// <summary>
-    /// Pixel roll states.
+    /// Available Pixels dice colorways.
+    /// </summary>
+    public enum PixelColorway: byte
+    {
+        Unknown = 0,
+        OnyxBlack,
+        HematiteGrey,
+        MidnightGalaxy,
+        AuroraSky,
+        Clear,
+        WhiteAurora,
+        Custom = 0xFF,
+    }
+
+    /// <summary>
+    /// Pixels dice roll states.
     /// </summary>
     public enum PixelRollState : byte
     {
-        /// The Pixel roll state could not be determined.
+        // The die roll state could not be determined.
         Unknown = 0,
 
-        /// The Pixel is resting in a position with a face up.
-        OnFace,
+        // The die finished rolling and is now on a face, and it looked like a proper roll.
+        Rolled,
 
-        /// The Pixel is being handled.
+        // The die is being handled.
         Handling,
 
-        /// The Pixel is rolling.
+        // The die is rolling.
         Rolling,
 
-        /// The Pixel is resting in a crooked position.
+        // The die finished rolling but is not on a valid face.
         Crooked,
+
+        // The die is not moving and, as far as we know, it has either never moved or it didn't move enough to trigger a roll.
+        OnFace,
     };
 
     /// <summary>

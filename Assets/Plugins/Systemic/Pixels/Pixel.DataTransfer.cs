@@ -291,7 +291,7 @@ namespace Systemic.Unity.Pixels
         /// <param name="onProgress">An optional callback that is called as the operation progresses
         ///                          with the progress value being between 0 an 1.</param>
         /// <returns>An enumerator meant to be run as a coroutine.</returns>
-        public IEnumerator PlayTestAnimationAsync(DataSet testAnimSet, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
+        public IEnumerator PlayInstantAnimationAsync(DataSet testAnimSet, OperationResultCallback onResult = null, OperationProgressCallback onProgress = null)
         {
             if (testAnimSet == null) throw new System.ArgumentNullException(nameof(testAnimSet));
             if (testAnimSet.getAnimationCount() < 1) throw new System.ArgumentException(nameof(testAnimSet), "Need one animation");
@@ -302,7 +302,7 @@ namespace Systemic.Unity.Pixels
             // Prepare the Pixel
             var data = testAnimSet.ToSingleAnimationByteArray();
             uint hash = DataSet.ComputeHash(data);
-            var prepareDie = new TransferTestAnimationSet
+            var prepareDie = new TransferInstantAnimationSet
             {
                 paletteSize = testAnimSet.animationBits.getPaletteSize(),
                 rgbKeyFrameCount = testAnimSet.animationBits.getRGBKeyframeCount(),
@@ -319,7 +319,7 @@ namespace Systemic.Unity.Pixels
             // Debug.Log("rgb tracks: " + prepareDie.rgbTrackCount + " * " + Marshal.SizeOf<Animations.RGBTrack>());
             // Debug.Log("keyframes: " + prepareDie.keyFrameCount + " * " + Marshal.SizeOf<Animations.Keyframe>());
             // Debug.Log("tracks: " + prepareDie.trackCount + " * " + Marshal.SizeOf<Animations.Track>());
-            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<TransferTestAnimationSet, TransferTestAnimationSetAck>(this, prepareDie);
+            var waitForMsg = new SendMessageAndWaitForResponseEnumerator<TransferInstantAnimationSet, TransferInstantAnimationSetAck>(this, prepareDie);
             yield return waitForMsg;
 
             string error = null;
@@ -327,15 +327,15 @@ namespace Systemic.Unity.Pixels
             {
                 switch (waitForMsg.Message.ackType)
                 {
-                    case TransferTestAnimationSetAckType.Download:
+                    case TransferInstantAnimationSetAckType.Download:
                         // Upload data
                         Debug.Log($"Pixel {name}: Ready to receive test dataset, byte array should be:"
                             + $" {data.Length} bytes and hash 0x{hash:X8}");
                         yield return InternalUploadDataSetAsync(
-                            MessageType.TransferTestAnimationSetFinished, data, err => error = err, onProgress);
+                            MessageType.TransferInstantAnimationSetFinished, data, err => error = err, onProgress);
                         break;
 
-                    case TransferTestAnimationSetAckType.UpToDate:
+                    case TransferInstantAnimationSetAckType.UpToDate:
                         // Nothing to do
                         Debug.Assert(error == null);
                         break;

@@ -1,6 +1,7 @@
 ﻿// Ignore Spelling: mcu
 
 using System.Collections.Generic;
+using Systemic.Unity.Pixels;
 using Systemic.Unity.Pixels.Messages;
 using UnityEngine;
 
@@ -115,11 +116,18 @@ namespace Systemic.Unity.Pixels
         public int ledCount { get; protected set; }
 
         /// <summary>
+        /// Gets the die type of the Pixel.
+        ///
+        /// This value is set when the Pixel is being scanned or once when connected.
+        /// </summary>
+        public PixelDieType dieType { get; protected set; } = PixelDieType.Unknown;
+
+        /// <summary>
         /// Gets the Pixel combination of design and color.
         ///
         /// This value is set when the Pixel is being scanned or once when connected.
         /// </summary>
-        public PixelDesignAndColor designAndColor { get; protected set; } = PixelDesignAndColor.Unknown;
+        public PixelColorway colorway { get; protected set; } = PixelColorway.Unknown;
 
         /// <summary>
         /// Gets the Pixel firmware build Unix timestamp.
@@ -434,9 +442,10 @@ namespace Systemic.Unity.Pixels
                     + $" current dataset hash {message.dataSetHash:X08}, firmware build is {UnixTimestampToDateTime(message.buildTimestamp)}");
 
                 // Update instance
-                bool appearanceChanged = ledCount != message.ledCount || designAndColor != message.designAndColor;
+                bool appearanceChanged = ledCount != message.ledCount || dieType != message.dieType || colorway != message.colorway;
                 ledCount = message.ledCount;
-                designAndColor = message.designAndColor;
+                dieType= message.dieType;
+                colorway = message.colorway;
                 dataSetHash = message.dataSetHash;
                 availableFlashSize = message.availableFlashSize;
                 pixelId = message.pixelId;
@@ -451,7 +460,7 @@ namespace Systemic.Unity.Pixels
                 if (appearanceChanged)
                 {
                     // Notify
-                    AppearanceChanged?.Invoke(this, ledCount, designAndColor);
+                    AppearanceChanged?.Invoke(this, ledCount, dieType, colorway);
                 }
             }
 

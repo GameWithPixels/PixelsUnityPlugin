@@ -51,8 +51,9 @@ namespace Systemic.Unity.Pixels
     /// </summary>
     /// <param name="pixel">The source of the event.</param>
     /// <param name="ledCount">Number of LEDs on the die.</param>
-    /// <param name="design">Design and coloring of the die.</param>
-    public delegate void AppearanceChangedEventHandler(Pixel pixel, int ledCount, PixelDesignAndColor design);
+    /// <param name="dieType">Type of the die.</param>
+    /// <param name="colorway">The coloring of the die.</param>
+    public delegate void AppearanceChangedEventHandler(Pixel pixel, int ledCount, PixelDieType dieType, PixelColorway colorway);
 
     /// <summary>
     /// Delegate for Pixel roll events.

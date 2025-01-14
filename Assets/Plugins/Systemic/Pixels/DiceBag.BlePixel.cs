@@ -34,7 +34,7 @@ namespace Systemic.Unity.Pixels
             {
                 // Pixel type identification
                 public byte ledCount; // Number of LEDs
-                public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
+                public byte designAndColor; // Physical look, highest 4 bits for die type, lowest 4 bits for colorway
 
                 // Current state
                 public PixelRollState rollState; // Indicates whether the dice is being shaken
@@ -50,25 +50,6 @@ namespace Systemic.Unity.Pixels
             {
                 public uint pixelId;
                 public uint buildTimestamp;
-            };
-
-            /// <summary>
-            /// Older version of the CustomManufacturerData (was named CustomAdvertisingData in firmware code)
-            /// </summary>
-            [StructLayout(LayoutKind.Sequential, Pack = 1)]
-            struct OlderCustomAdvertisingData
-            {
-                // Pixel type identification
-                public PixelDesignAndColor designAndColor; // Physical look, also only 8 bits
-                public byte ledCount; // Number of LEDs
-
-                // Device ID
-                public uint pixelId;
-
-                // Current state
-                public PixelRollState rollState; // Indicates whether the dice is being shaken
-                public byte currentFace; // Which face is currently up
-                public byte batteryLevel; // 0 -> 255
             };
 
             // Error message on timeout
@@ -132,78 +113,49 @@ namespace Systemic.Unity.Pixels
                 {
                     var manufDataSrc = _peripheral.ManufacturersData[0]; // Assume we want to use the first one
                     bool isNewAdvData = manufDataSrc.Data.Count == Marshal.SizeOf(typeof(CustomManufacturerData));
-                    bool isOldAdvData = manufDataSrc.Data.Count == (Marshal.SizeOf(typeof(OlderCustomAdvertisingData)) - 2);
 
                     // Marshall the data into the struct we expect
-                    if (isNewAdvData || isOldAdvData)
+                    if (isNewAdvData)
                     {
                         var manufData = new CustomManufacturerData();
                         var servData = new CustomServiceData();
 
-                        if (isNewAdvData)
+                        int size = Marshal.SizeOf(typeof(CustomManufacturerData));
+
+                        // Marshal data to an object
+                        var ptr = Marshal.AllocHGlobal(size);
+                        Marshal.Copy(manufDataSrc.Data.ToArray(), 0, ptr, size);
+                        manufData = Marshal.PtrToStructure<CustomManufacturerData>(ptr);
+                        Marshal.FreeHGlobal(ptr);
+
+                        // Now with service data
+                        size = Marshal.SizeOf(typeof(CustomServiceData));
+
+                        var servDataSrc = _peripheral.ServicesData.FirstOrDefault(s => s.Uuid == InformationServiceUuid).Data;
+                        if (servDataSrc?.Count == size)
                         {
-                            int size = Marshal.SizeOf(typeof(CustomManufacturerData));
-
                             // Marshal data to an object
-                            var ptr = Marshal.AllocHGlobal(size);
-                            Marshal.Copy(manufDataSrc.Data.ToArray(), 0, ptr, size);
-                            manufData = Marshal.PtrToStructure<CustomManufacturerData>(ptr);
+                            ptr = Marshal.AllocHGlobal(size);
+                            Marshal.Copy(servDataSrc.ToArray(), 0, ptr, size);
+                            servData = Marshal.PtrToStructure<CustomServiceData>(ptr);
                             Marshal.FreeHGlobal(ptr);
-
-                            // Now with service data
-                            size = Marshal.SizeOf(typeof(CustomServiceData));
-
-                            var servDataSrc = _peripheral.ServicesData.FirstOrDefault(s => s.Uuid == InformationServiceUuid).Data;
-                            if (servDataSrc?.Count == size)
-                            {
-                                // Marshal data to an object
-                                ptr = Marshal.AllocHGlobal(size);
-                                Marshal.Copy(servDataSrc.ToArray(), 0, ptr, size);
-                                servData = Marshal.PtrToStructure<CustomServiceData>(ptr);
-                                Marshal.FreeHGlobal(ptr);
-                            }
-                            else if(servDataSrc != null)
-                            {
-                                Debug.LogError($"Pixel {name}: unexpected advertising service data length, got {servDataSrc.Count}");
-                            }
-                            else
-                            {
-                                Debug.LogError($"Pixel {name}: missing advertising service data");
-                            }
+                        }
+                        else if(servDataSrc != null)
+                        {
+                            Debug.LogError($"Pixel {name}: unexpected advertising service data length, got {servDataSrc.Count}");
                         }
                         else
                         {
-                            Debug.Log("Got older version of advertisement data");
-                            int size = Marshal.SizeOf(typeof(OlderCustomAdvertisingData));
-
-                            // Copy data in a byte array for marshaling
-                            var arr = new byte[size];
-                            arr[0] = (byte)(manufDataSrc.CompanyId & 0xFF); // designAndColor
-                            arr[1] = (byte)(manufDataSrc.CompanyId >> 8); // ledCount
-                            for (int i = 2; i < size; ++i)
-                            {
-                                arr[i] = manufDataSrc.Data[i - 2];
-                            }
-
-                            // Marshal data to an object
-                            var ptr = Marshal.AllocHGlobal(size);
-                            Marshal.Copy(arr, 0, ptr, size);
-                            var advData = Marshal.PtrToStructure<OlderCustomAdvertisingData>(ptr);
-                            Marshal.FreeHGlobal(ptr);
-
-                            manufData.ledCount = advData.ledCount;
-                            manufData.designAndColor = advData.designAndColor;
-                            manufData.rollState = advData.rollState;
-                            manufData.faceIndex = advData.currentFace;
-                            manufData.batteryLevel = (byte)(Mathf.RoundToInt(100f * advData.batteryLevel / 255) & 0x7F);
-
-                            servData.pixelId = advData.pixelId;
+                            Debug.LogError($"Pixel {name}: missing advertising service data");
                         }
-
+                        
                         // Update Pixel data
-                        bool appearanceChanged = ledCount != manufData.ledCount || designAndColor != manufData.designAndColor;
+                        var newDieType  = (PixelDieType)(manufData.designAndColor >> 4) ;
+                        var newColorway= (PixelColorway)(manufData.designAndColor & 0xF);
+                        bool appearanceChanged = ledCount != manufData.ledCount || dieType != newDieType || colorway != newColorway;
                         ledCount = manufData.ledCount;
-                        designAndColor = manufData.designAndColor;
+                        dieType = newDieType;
+                        colorway = newColorway;
 
                         pixelId = servData.pixelId;
                         buildTimestamp = servData.buildTimestamp;
@@ -215,7 +167,7 @@ namespace Systemic.Unity.Pixels
                         // Run callbacks
                         if (appearanceChanged)
                         {
-                            AppearanceChanged?.Invoke(this, ledCount, designAndColor);
+                            AppearanceChanged?.Invoke(this, ledCount, dieType, colorway);
                         }
                         NotifyRollState(manufData.rollState, manufData.faceIndex);
                         NotifyBatteryLevel(newBatteryLevel, newIsCharging);

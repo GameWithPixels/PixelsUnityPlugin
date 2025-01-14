@@ -2,6 +2,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using UnityEditor.VersionControl;
 
 namespace Systemic.Unity.Pixels.Messages
 {
@@ -16,27 +17,14 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.WhoAreYou;
     }
 
-    // Represents the first part of IAmADie message (before versionInfo was replaced by buildTimestamp)
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal class IAmADieMarshaledDataBeforeBuildTimestamp
-    {
-        public MessageType type;
-        public byte ledCount; // Which kind of dice this is
-        public PixelDesignAndColor designAndColor; // Physical look
-        public byte padding;
-        public uint dataSetHash;
-        public uint pixelId; // A unique identifier
-        public ushort flashSize;
-    }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class IAmADie : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.IAmADie;
 
         public byte ledCount; // Which kind of dice this is
-        public PixelDesignAndColor designAndColor; // Physical look
-        public byte padding;
+        public PixelColorway colorway;
+        public PixelDieType dieType;
         public uint dataSetHash;
         public uint pixelId; // A unique identifier
         public ushort availableFlashSize; // Available flash memory size for storing settings
@@ -152,38 +140,11 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.TransferAnimationSetFinished;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TransferTestAnimationSet : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimationSet;
-
-        public ushort paletteSize;
-        public ushort rgbKeyFrameCount;
-        public ushort rgbTrackCount;
-        public ushort keyFrameCount;
-        public ushort trackCount;
-        public ushort animationSize;
-        public uint hash;
-    }
-
     public enum TransferTestAnimationSetAckType : byte
     {
         Download = 0,
         UpToDate,
         NoMemory
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TransferTestAnimationSetAck : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimationSetAck;
-        public TransferTestAnimationSetAckType ackType;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TransferTestAnimationSetFinished : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TransferTestAnimationSetFinished;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -326,25 +287,6 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TestBulkSend : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TestBulkSend;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TestBulkReceive : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TestBulkReceive;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class SetAllLEDsToColor : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.SetAllLEDsToColor;
-        public uint color;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RequestBatteryLevel : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.RequestBatteryLevel;
@@ -411,19 +353,6 @@ namespace Systemic.Unity.Pixels.Messages
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class TestLedLoopback : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.TestLedLoopback;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class LedLoopback : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.LedLoopback;
-        public byte value;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class SetTopLevelState : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetTopLevelState;
@@ -442,31 +371,17 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.ProgramDefaultParametersFinished;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class AttractMode : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.AttractMode;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class PrintNormals : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.PrintNormals;
-        public byte faceIndex;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class SetDesignAndColor : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetDesignAndColor;
-        public PixelDesignAndColor designAndColor;
-    }
+        public PixelDieType dieType;
+        public PixelColorway colorway;
+    };
 
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class SetDesignAndColorAck : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.SetDesignAndColorAck;
-    }
+    };
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class SetCurrentBehavior : IPixelMessage
@@ -497,6 +412,81 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.SetNameAck;
     }
 
+    public enum PixelPowerOperation : byte
+    {
+        TurnOff = 0,
+        Reset,
+        Sleep,
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class PowerOperation : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.PowerOperation;
+
+        public PixelPowerOperation operation;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class ExitValidation : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.ExitValidation;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class TransferInstantAnimationSet : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.TransferInstantAnimationSet;
+
+        public ushort paletteSize;
+        public ushort rgbKeyFrameCount;
+        public ushort rgbTrackCount;
+        public ushort keyFrameCount;
+        public ushort trackCount;
+
+        public ushort animationCount;
+        public ushort animationSize;
+
+        public uint hash;
+    }
+
+    public enum TransferInstantAnimationSetAckType : byte
+    {
+        Download = 0,
+        UpToDate,
+        NoMemory
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class TransferInstantAnimationSetAck : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.TransferInstantAnimationSetAck;
+
+        public TransferInstantAnimationSetAckType ackType;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class TransferInstantAnimationSetFinished : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.TransferInstantAnimationSetFinished;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class PlayInstantAnimation : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.PlayInstantAnimation;
+
+        public byte animation;
+        public byte faceIndex;  // Assumes that an animation was made for face 20
+        public byte loopCount;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class StopAllAnimations : IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.StopAllAnimations;
+    }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RequestTemperature : IPixelMessage
     {
@@ -510,12 +500,6 @@ namespace Systemic.Unity.Pixels.Messages
 
         public short mcuTemperatureTimes100;
         public short batteryTemperatureTimes100;
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class PrintAnimationControllerState : IPixelMessage
-    {
-        public MessageType type { get; set; } = MessageType.PrintAnimControllerState;
     }
 }
 
