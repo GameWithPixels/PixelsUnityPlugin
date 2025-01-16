@@ -92,7 +92,7 @@ namespace Systemic.Unity.Examples
 
             // Enumerate characteristics (we could also directly retrieve them by their UUID)
             var characteristics = Central.GetServiceCharacteristics(peripheral, PixelBleUuids.Service);
-            Guid notifyCharacteristicUuid, writeCharacteristicUuid;
+            Guid notifyCharacteristicUuid = new Guid(), writeCharacteristicUuid = new Guid();
             for (int i = 0; i < characteristics.Length; ++i)
             {
                 var uuid = characteristics[i];

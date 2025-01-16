@@ -17,24 +17,12 @@ namespace Systemic.Unity.Examples
 
         #region Unity messages
 
-        // Called when the instance becomes enabled and active
-        void OnEnable()
-        {
-            //TODO handle error + user message
-            BluetoothLE.Central.Initialize();
-        }
-
-        // Called when the instance becomes disabled or inactive
-        void OnDisable()
-        {
-            BluetoothLE.Central.Shutdown();
-        }
-
         // Start is called before the first frame update
         void Start()
         {
             _pixelPanelTemplate = _pixelsRoot.GetChild(0).GetComponent<UIPixelPanel>();
             _pixelPanelTemplate.gameObject.SetActive(false);
+            DiceBag.Initialize();
         }
 
         // Update is called once per frame
