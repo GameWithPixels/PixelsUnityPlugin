@@ -150,7 +150,7 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">peripheralDiscovered</td><td>Called for each received advertisement packet. <br  />
  When receiving a scan response, the advertisement data is combined with the data from the last DiscoveredPeripheral instance created for the same peripheral before being passed to this callback. </td></tr>
-    <tr><td class="paramname">services</td><td>List of services UUIDs that the peripheral should advertise, may be empty. </td></tr>
+    <tr><td class="paramname">services</td><td>List of service UUIDs. Peripherals advertising at least one of the services will be reported. Notify for all peripherals if the list is empty. </td></tr>
   </table>
   </dd>
 </dl>

@@ -109,9 +109,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5f9a9f761f757809fa03693552213066" id="r_a5f9a9f761f757809fa03693552213066"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a5f9a9f761f757809fa03693552213066">startScan</a> (final String requiredServicesUuids, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a> callback)</td></tr>
-<tr class="memdesc:a5f9a9f761f757809fa03693552213066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals advertising the given list of services.  <br /></td></tr>
-<tr class="separator:a5f9a9f761f757809fa03693552213066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e5507aa668a5084430a68e2d303ade" id="r_a81e5507aa668a5084430a68e2d303ade"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1systemic_1_1bluetoothle_1_1_scanner.html#a81e5507aa668a5084430a68e2d303ade">startScan</a> (final String servicesUuids, final <a class="el" href="interfacecom_1_1systemic_1_1bluetoothle_1_1_scanner_1_1_scanner_callback.html">ScannerCallback</a> callback)</td></tr>
+<tr class="memdesc:a81e5507aa668a5084430a68e2d303ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts scanning for BLE peripherals advertising the given list of services.  <br /></td></tr>
+<tr class="separator:a81e5507aa668a5084430a68e2d303ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d2ad7045c60766825997ef0af0fe00b" id="r_a5d2ad7045c60766825997ef0af0fe00b"><td class="memItemLeft" align="right" valign="top"><a id="a5d2ad7045c60766825997ef0af0fe00b" name="a5d2ad7045c60766825997ef0af0fe00b"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> ()</td></tr>
 <tr class="memdesc:a5d2ad7045c60766825997ef0af0fe00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops an on-going BLE scan. <br /></td></tr>
@@ -122,8 +122,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> (
 <dl class="section note"><dt>Note</dt><dd>This class was designed to work in a Unity plugin and its marshaling mechanism, and as such the advertisement data returned by a scan is passed as JSON string rather than a complex object.</dd></dl>
 <p>It relies on Nordic's Android-Scanner-Compat-Library library for most of the work. </p><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library">https://github.com/NordicSemiconductor/Android-Scanner-Compat-Library</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5f9a9f761f757809fa03693552213066" name="a5f9a9f761f757809fa03693552213066"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f9a9f761f757809fa03693552213066">&#9670;&#160;</a></span>startScan()</h2>
+<a id="a81e5507aa668a5084430a68e2d303ade" name="a81e5507aa668a5084430a68e2d303ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e5507aa668a5084430a68e2d303ade">&#9670;&#160;</a></span>startScan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -135,7 +135,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> (
           <td class="memname">static void com.systemic.bluetoothle.Scanner.startScan </td>
           <td>(</td>
           <td class="paramtype">final String&#160;</td>
-          <td class="paramname"><em>requiredServicesUuids</em>, </td>
+          <td class="paramname"><em>servicesUuids</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -160,7 +160,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>stopScan</b> (
 <p>If a scan is already running, it is stopped before starting the new one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">requiredServicesUuids</td><td>Comma separated list of services UUIDs that the peripheral should advertise, may be null or empty. </td></tr>
+    <tr><td class="paramname">servicesUuids</td><td>Comma separated list of services UUIDs. Peripherals advertising at least one of the services will be reported. Notify for all peripherals if the list is null or empty. </td></tr>
     <tr><td class="paramname">callback</td><td>The callback for notifying of the scan results (called for each advertisement packet). </td></tr>
   </table>
   </dd>

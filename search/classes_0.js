@@ -17,6 +17,5 @@ var searchData=
   ['animationinstancesimple_14',['AnimationInstanceSimple',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_instance_simple.html',1,'Systemic::Unity::Pixels::Animations']]],
   ['animationkeyframed_15',['AnimationKeyframed',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_keyframed.html',1,'Systemic::Unity::Pixels::Animations']]],
   ['animationrainbow_16',['AnimationRainbow',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_rainbow.html',1,'Systemic::Unity::Pixels::Animations']]],
-  ['animationsimple_17',['AnimationSimple',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html',1,'Systemic::Unity::Pixels::Animations']]],
-  ['attractmode_18',['AttractMode',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html',1,'Systemic::Unity::Pixels::Messages']]]
+  ['animationsimple_17',['AnimationSimple',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html',1,'Systemic::Unity::Pixels::Animations']]]
 ];

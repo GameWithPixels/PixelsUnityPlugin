@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ok_0',['Ok',['../namespace_systemic_1_1_unity_1_1_pixels.html#aeab0518779a4ff74a82e9326d4e6adf5aa60852f204ed8028c1c58808b746d115',1,'Systemic::Unity::Pixels']]],
-  ['onface_1',['OnFace',['../namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a3288eaee32652fe2cbd9dabe0f218667',1,'Systemic::Unity::Pixels']]]
+  ['peripheral_0',['peripheral',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#a8adc4dbbd6eb7a31f29b3968470a0053a911e8211a55efee5a43a609b7bcb5db9',1,'Systemic.Unity.BluetoothLE.Peripheral'],['../namespace_systemic_1_1_bluetooth_l_e.html#afe5f28749f3cd25418c6ca2f593376f6a911e8211a55efee5a43a609b7bcb5db9',1,'Systemic::BluetoothLE::Peripheral']]],
+  ['protocolerror_1',['protocolerror',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eaca3da8f495e4e628912a7798655da6c2',1,'Systemic.Unity.BluetoothLE.ProtocolError'],['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449aca3da8f495e4e628912a7798655da6c2',1,'Systemic::BluetoothLE::ProtocolError']]]
 ];

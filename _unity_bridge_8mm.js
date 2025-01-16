@@ -14,7 +14,7 @@ var _unity_bridge_8mm =
     [ "sgBleReleasePeripheral", "_unity_bridge_8mm.html#aee85385f9aba0bece5e129674dbabeef", null ],
     [ "sgBleSetNotifyCharacteristic", "_unity_bridge_8mm.html#a9493f6491e10f6ac6ee5721db6d08f99", null ],
     [ "sgBleShutdown", "_unity_bridge_8mm.html#aec51364ffaa0ef8838c1a8dc2ec6ac3c", null ],
-    [ "sgBleStartScan", "_unity_bridge_8mm.html#a5cc1ed930419a499cdac49fafafe874b", null ],
+    [ "sgBleStartScan", "_unity_bridge_8mm.html#a51682ae36fad8fcc11a7b8023acbad4d", null ],
     [ "sgBleStopScan", "_unity_bridge_8mm.html#aabaa08ebedf2b39063535411582a75a7", null ],
     [ "sgBleWriteCharacteristic", "_unity_bridge_8mm.html#a6c93738fed71fd3c4eb16df51ad20ffd", null ]
 ];

@@ -21,7 +21,7 @@ var searchData=
   ['resetparameters_18',['ResetParameters',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#af2381aefefd2d7e0435a9d211bae5b18',1,'Systemic::Unity::Pixels::Pixel']]],
   ['reversegamma_19',['ReverseGamma',['../class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html#a276afe1a9c2e54a31b7f91f17f3799e9',1,'Systemic::Unity::Pixels::GammaUtils']]],
   ['reversegamma8_20',['ReverseGamma8',['../class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html#a6d2798671eeb427aacc91c1390ddbba2',1,'Systemic::Unity::Pixels::GammaUtils']]],
-  ['rollstatechangedeventhandler_21',['RollStateChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1',1,'Systemic::Unity::Pixels']]],
+  ['rollstatechangedeventhandler_21',['RollStateChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a3f58141afa35ce3ea2850c34845ca94b',1,'Systemic::Unity::Pixels']]],
   ['rssi_22',['rssi',['../class_systemic_1_1_bluetooth_l_e_1_1_scanned_peripheral.html#a8ef2c10e3627ea4fa20f5b13c0b5dda3',1,'Systemic::BluetoothLE::ScannedPeripheral']]],
   ['rssichangedeventhandler_23',['RssiChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#aebe8e47010eb4d4f2ddc51f6e03327b6',1,'Systemic::Unity::Pixels']]]
 ];

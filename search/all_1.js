@@ -1,7 +1,7 @@
 var searchData=
 [
   ['accelerationframe_0',['AccelerationFrame',['../struct_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_acceleration_frame.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['accessdenied_1',['accessdenied',['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449acbcc0759909213e7cdba1f0cbf253126',1,'Systemic::BluetoothLE::AccessDenied'],['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacbcc0759909213e7cdba1f0cbf253126',1,'Systemic.Unity.BluetoothLE.AccessDenied']]],
+  ['accessdenied_1',['accessdenied',['../namespace_systemic_1_1_unity_1_1_bluetooth_l_e.html#aa48491fac62d06c124431209f5b41b1eacbcc0759909213e7cdba1f0cbf253126',1,'Systemic.Unity.BluetoothLE.AccessDenied'],['../namespace_systemic_1_1_bluetooth_l_e.html#ac1603adad69e83af9fb9eb2c57761449acbcc0759909213e7cdba1f0cbf253126',1,'Systemic::BluetoothLE::AccessDenied']]],
   ['ackmessagetimeout_2',['AckMessageTimeout',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0a4008679ef75e48e5fa5b36b87cc23f',1,'Systemic::Unity::Pixels::Pixel']]],
   ['actionplayanimation_3',['ActionPlayAnimation',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_animation.html',1,'Systemic::Unity::Pixels::Profiles']]],
   ['actionplayaudioclip_4',['ActionPlayAudioClip',['../class_systemic_1_1_unity_1_1_pixels_1_1_profiles_1_1_action_play_audio_clip.html',1,'Systemic::Unity::Pixels::Profiles']]],
@@ -33,13 +33,12 @@ var searchData=
   ['animationsimple_30',['AnimationSimple',['../class_systemic_1_1_unity_1_1_pixels_1_1_animations_1_1_animation_simple.html',1,'Systemic::Unity::Pixels::Animations']]],
   ['animationtype_31',['AnimationType',['../namespace_systemic_1_1_unity_1_1_pixels_1_1_animations.html#a7de5647aa893d53a0a62977d89307877',1,'Systemic::Unity::Pixels::Animations']]],
   ['appearancechanged_32',['AppearanceChanged',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#ac6fd65b15976433f2ad24ab69492e0c8',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['appearancechangedeventhandler_33',['AppearanceChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#ae5a5699fbe0cf5013bef1d3e57937d4c',1,'Systemic::Unity::Pixels']]],
+  ['appearancechangedeventhandler_33',['AppearanceChangedEventHandler',['../namespace_systemic_1_1_unity_1_1_pixels.html#a7e18cb57ea620ee1a9f0fb9cb4e39905',1,'Systemic::Unity::Pixels']]],
   ['apple_5fobjective_20c_34',['Apple_Objective-C',['../group___apple___objective-_c.html',1,'']]],
   ['application_35',['application',['../index.html#autotoc_md12',1,'Console Application'],['../index.html#autotoc_md13',1,'Test Pad Application']]],
   ['architecture_36',['Architecture',['../index.html#autotoc_md14',1,'']]],
   ['attachtopixel_37',['AttachToPixel',['../class_systemic_1_1_unity_1_1_examples_1_1_u_i_pixel_panel.html#a6f780001bce02858daef41f1c298f740',1,'Systemic::Unity::Examples::UIPixelPanel']]],
-  ['attractmode_38',['AttractMode',['../class_systemic_1_1_unity_1_1_pixels_1_1_messages_1_1_attract_mode.html',1,'Systemic::Unity::Pixels::Messages']]],
-  ['available_39',['Available',['../namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a78945de8de090e90045d299651a68a9b',1,'Systemic::Unity::Pixels']]],
-  ['availableflashsize_40',['availableFlashSize',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0909df4c9f81fef80dfa15a4f0e601a1',1,'Systemic::Unity::Pixels::Pixel']]],
-  ['availablepixels_41',['AvailablePixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a',1,'Systemic::Unity::Pixels::DiceBag']]]
+  ['available_38',['Available',['../namespace_systemic_1_1_unity_1_1_pixels.html#aab45f6871dd362b700bc0557849d71b7a78945de8de090e90045d299651a68a9b',1,'Systemic::Unity::Pixels']]],
+  ['availableflashsize_39',['availableFlashSize',['../class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html#a0909df4c9f81fef80dfa15a4f0e601a1',1,'Systemic::Unity::Pixels::Pixel']]],
+  ['availablepixels_40',['AvailablePixels',['../class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#a173439e563a2be48d46fd6f139ef017a',1,'Systemic::Unity::Pixels::DiceBag']]]
 ];

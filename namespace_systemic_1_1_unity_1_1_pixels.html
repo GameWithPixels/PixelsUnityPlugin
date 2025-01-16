@@ -122,6 +122,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html">DiceBag</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static class that scan for and connect to Pixel dice. Scan and connection requests are counted, meaning that the same number of respectively scan cancellation and disconnection requests must be made for them to effectively happen.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_bag.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_utils.html">DiceUtils</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper static class that implements various gamma operations on colors.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_dice_utils.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html">GammaUtils</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper static class that implements various gamma operations on colors.  <a href="class_systemic_1_1_unity_1_1_pixels_1_1_gamma_utils.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,37 +137,48 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a4956bccf98cf185c46be27d4e7c0b933" id="r_a4956bccf98cf185c46be27d4e7c0b933"><td class="memItemLeft" align="right" valign="top"><a id="a4956bccf98cf185c46be27d4e7c0b933" name="a4956bccf98cf185c46be27d4e7c0b933"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> : byte { <br />
+<tr class="memitem:a75f94d6a81b89b230ec0c6950012b16e" id="r_a75f94d6a81b89b230ec0c6950012b16e"><td class="memItemLeft" align="right" valign="top"><a id="a75f94d6a81b89b230ec0c6950012b16e" name="a75f94d6a81b89b230ec0c6950012b16e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a75f94d6a81b89b230ec0c6950012b16e">PixelDieType</a> : byte { <br />
 &#160;&#160;<b>Unknown</b> = 0
-, <b>Generic</b>
-, <b>V3Orange</b>
-, <b>V4BlackClear</b>
+, <b>D4</b>
+, <b>D6</b>
+, <b>D8</b>
 , <br />
-&#160;&#160;<b>V4WhiteClear</b>
-, <b>V5Grey</b>
-, <b>V5White</b>
-, <b>V5Black</b>
+&#160;&#160;<b>D10</b>
+, <b>D00</b>
+, <b>D12</b>
+, <b>D20</b>
 , <br />
-&#160;&#160;<b>V5Gold</b>
+&#160;&#160;<b>D6Pipped</b>
+, <b>D6Fudge</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:a75f94d6a81b89b230ec0c6950012b16e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The different types of dice. <br /></td></tr>
+<tr class="separator:a75f94d6a81b89b230ec0c6950012b16e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793f6e5dca2d7d3f5eb9da90f367fcb1" id="r_a793f6e5dca2d7d3f5eb9da90f367fcb1"><td class="memItemLeft" align="right" valign="top"><a id="a793f6e5dca2d7d3f5eb9da90f367fcb1" name="a793f6e5dca2d7d3f5eb9da90f367fcb1"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a793f6e5dca2d7d3f5eb9da90f367fcb1">PixelColorway</a> : byte { <br />
+&#160;&#160;<b>Unknown</b> = 0
 , <b>OnyxBlack</b>
 , <b>HematiteGrey</b>
 , <b>MidnightGalaxy</b>
 , <br />
 &#160;&#160;<b>AuroraSky</b>
+, <b>Clear</b>
+, <b>WhiteAurora</b>
+, <b>Custom</b> = 0xFF
 <br />
  }</td></tr>
-<tr class="memdesc:a4956bccf98cf185c46be27d4e7c0b933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available combinations of Pixel designs and colors. <br /></td></tr>
-<tr class="separator:a4956bccf98cf185c46be27d4e7c0b933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdadd27224819442e9127d26c9a10500" id="r_afdadd27224819442e9127d26c9a10500"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> : byte { <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</a> = 0
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a3288eaee32652fe2cbd9dabe0f218667">OnFace</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500a2605fbb693837be42d0cd0e701cb5aa3">Handling</a>
-, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500af4920797afb92022a9c6608efcd86317">Rolling</a>
+<tr class="memdesc:a793f6e5dca2d7d3f5eb9da90f367fcb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available Pixels dice colorways. <br /></td></tr>
+<tr class="separator:a793f6e5dca2d7d3f5eb9da90f367fcb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdadd27224819442e9127d26c9a10500" id="r_afdadd27224819442e9127d26c9a10500"><td class="memItemLeft" align="right" valign="top"><a id="afdadd27224819442e9127d26c9a10500" name="afdadd27224819442e9127d26c9a10500"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> : byte { <br />
+&#160;&#160;<b>Unknown</b> = 0
+, <b>Rolled</b>
+, <b>Handling</b>
+, <b>Rolling</b>
 , <br />
-&#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3">Crooked</a>
+&#160;&#160;<b>Crooked</b>
+, <b>OnFace</b>
 <br />
  }</td></tr>
-<tr class="memdesc:afdadd27224819442e9127d26c9a10500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel roll states.  <a href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">More...</a><br /></td></tr>
+<tr class="memdesc:afdadd27224819442e9127d26c9a10500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixels dice roll states. <br /></td></tr>
 <tr class="separator:afdadd27224819442e9127d26c9a10500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeab0518779a4ff74a82e9326d4e6adf5" id="r_aeab0518779a4ff74a82e9326d4e6adf5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aeab0518779a4ff74a82e9326d4e6adf5">PixelBatteryState</a> : byte { <br />
 &#160;&#160;<a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#aeab0518779a4ff74a82e9326d4e6adf5aa60852f204ed8028c1c58808b746d115">Ok</a> = 0
@@ -217,12 +231,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0a95ad905f8e80d3eb2925e8dfa17e6" id="r_ab0a95ad905f8e80d3eb2925e8dfa17e6"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ab0a95ad905f8e80d3eb2925e8dfa17e6">ErrorRaisedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af1f5d9f10b8f7a3a020d5334729c87b3">PixelError</a> error)</td></tr>
 <tr class="memdesc:ab0a95ad905f8e80d3eb2925e8dfa17e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel communication error events.  <br /></td></tr>
 <tr class="separator:ab0a95ad905f8e80d3eb2925e8dfa17e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5a5699fbe0cf5013bef1d3e57937d4c" id="r_ae5a5699fbe0cf5013bef1d3e57937d4c"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ae5a5699fbe0cf5013bef1d3e57937d4c">AppearanceChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int ledCount, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a> design)</td></tr>
-<tr class="memdesc:ae5a5699fbe0cf5013bef1d3e57937d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel appearance setting changes.  <br /></td></tr>
-<tr class="separator:ae5a5699fbe0cf5013bef1d3e57937d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2cf0022f76d5e9c6bcaa02d2ca406c1" id="r_af2cf0022f76d5e9c6bcaa02d2ca406c1"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#af2cf0022f76d5e9c6bcaa02d2ca406c1">RollStateChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> rollState, int face)</td></tr>
-<tr class="memdesc:af2cf0022f76d5e9c6bcaa02d2ca406c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel roll events.  <br /></td></tr>
-<tr class="separator:af2cf0022f76d5e9c6bcaa02d2ca406c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e18cb57ea620ee1a9f0fb9cb4e39905" id="r_a7e18cb57ea620ee1a9f0fb9cb4e39905"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a7e18cb57ea620ee1a9f0fb9cb4e39905">AppearanceChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int ledCount, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a75f94d6a81b89b230ec0c6950012b16e">PixelDieType</a> dieType, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a793f6e5dca2d7d3f5eb9da90f367fcb1">PixelColorway</a> colorway)</td></tr>
+<tr class="memdesc:a7e18cb57ea620ee1a9f0fb9cb4e39905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel appearance setting changes.  <br /></td></tr>
+<tr class="separator:a7e18cb57ea620ee1a9f0fb9cb4e39905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f58141afa35ce3ea2850c34845ca94b" id="r_a3f58141afa35ce3ea2850c34845ca94b"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a3f58141afa35ce3ea2850c34845ca94b">RollStateChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">PixelRollState</a> rollState, int face, int faceIndex)</td></tr>
+<tr class="memdesc:a3f58141afa35ce3ea2850c34845ca94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel roll events.  <br /></td></tr>
+<tr class="separator:a3f58141afa35ce3ea2850c34845ca94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac17841da0564550cb27f86895f0436dc" id="r_ac17841da0564550cb27f86895f0436dc"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#ac17841da0564550cb27f86895f0436dc">BatteryLevelChangedEventHandler</a> (<a class="el" href="class_systemic_1_1_unity_1_1_pixels_1_1_pixel.html">Pixel</a> pixel, int batteryLevel, bool isCharging)</td></tr>
 <tr class="memdesc:ac17841da0564550cb27f86895f0436dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for Pixel battery level changes.  <br /></td></tr>
 <tr class="separator:ac17841da0564550cb27f86895f0436dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,37 +343,9 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afdadd27224819442e9127d26c9a10500" name="afdadd27224819442e9127d26c9a10500"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdadd27224819442e9127d26c9a10500">&#9670;&#160;</a></span>PixelRollState</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#afdadd27224819442e9127d26c9a10500">Systemic.Unity.Pixels.PixelRollState</a> : byte</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pixel roll states. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e" name="afdadd27224819442e9127d26c9a10500a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>The Pixel roll state could not be determined. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="afdadd27224819442e9127d26c9a10500a3288eaee32652fe2cbd9dabe0f218667" name="afdadd27224819442e9127d26c9a10500a3288eaee32652fe2cbd9dabe0f218667"></a>OnFace&#160;</td><td class="fielddoc"><p>The Pixel is resting in a position with a face up. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="afdadd27224819442e9127d26c9a10500a2605fbb693837be42d0cd0e701cb5aa3" name="afdadd27224819442e9127d26c9a10500a2605fbb693837be42d0cd0e701cb5aa3"></a>Handling&#160;</td><td class="fielddoc"><p>The Pixel is being handled. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="afdadd27224819442e9127d26c9a10500af4920797afb92022a9c6608efcd86317" name="afdadd27224819442e9127d26c9a10500af4920797afb92022a9c6608efcd86317"></a>Rolling&#160;</td><td class="fielddoc"><p>The Pixel is rolling. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3" name="afdadd27224819442e9127d26c9a10500aa88947d07091f36f93e364eed0137de3"></a>Crooked&#160;</td><td class="fielddoc"><p>The Pixel is resting in a crooked position. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae5a5699fbe0cf5013bef1d3e57937d4c" name="ae5a5699fbe0cf5013bef1d3e57937d4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5a5699fbe0cf5013bef1d3e57937d4c">&#9670;&#160;</a></span>AppearanceChangedEventHandler()</h2>
+<a id="a7e18cb57ea620ee1a9f0fb9cb4e39905" name="a7e18cb57ea620ee1a9f0fb9cb4e39905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e18cb57ea620ee1a9f0fb9cb4e39905">&#9670;&#160;</a></span>AppearanceChangedEventHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,8 +365,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a4956bccf98cf185c46be27d4e7c0b933">PixelDesignAndColor</a>&#160;</td>
-          <td class="paramname"><em>design</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a75f94d6a81b89b230ec0c6950012b16e">PixelDieType</a>&#160;</td>
+          <td class="paramname"><em>dieType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_systemic_1_1_unity_1_1_pixels.html#a793f6e5dca2d7d3f5eb9da90f367fcb1">PixelColorway</a>&#160;</td>
+          <td class="paramname"><em>colorway</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -395,7 +387,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">pixel</td><td>The source of the event.</td></tr>
     <tr><td class="paramname">ledCount</td><td>Number of LEDs on the die.</td></tr>
-    <tr><td class="paramname">design</td><td>Design and coloring of the die.</td></tr>
+    <tr><td class="paramname">dieType</td><td>Type of the die.</td></tr>
+    <tr><td class="paramname">colorway</td><td>The coloring of the die.</td></tr>
   </table>
   </dd>
 </dl>
@@ -763,8 +756,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af2cf0022f76d5e9c6bcaa02d2ca406c1" name="af2cf0022f76d5e9c6bcaa02d2ca406c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2cf0022f76d5e9c6bcaa02d2ca406c1">&#9670;&#160;</a></span>RollStateChangedEventHandler()</h2>
+<a id="a3f58141afa35ce3ea2850c34845ca94b" name="a3f58141afa35ce3ea2850c34845ca94b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f58141afa35ce3ea2850c34845ca94b">&#9670;&#160;</a></span>RollStateChangedEventHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -785,7 +778,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>face</em>&#160;</td>
+          <td class="paramname"><em>face</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>faceIndex</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -800,7 +799,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">pixel</td><td>The source of the event.</td></tr>
     <tr><td class="paramname">rollState</td><td>The roll state.</td></tr>
-    <tr><td class="paramname">face</td><td>The face index, when applicable (face number is index + 1).</td></tr>
+    <tr><td class="paramname">face</td><td>The face that is up (fudge die returns +1, 0 and -1).</td></tr>
+    <tr><td class="paramname">faceIndex</td><td>The 0-based index of the die face that is up.</td></tr>
   </table>
   </dd>
 </dl>
