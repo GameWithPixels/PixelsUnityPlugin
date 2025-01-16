@@ -116,7 +116,7 @@ namespace Systemic.Unity.Examples
         public void StartScan()
         {
             // Filter peripherals with the Pixel service UUID
-            Central.StartScanning(new[] { PixelBleUuids.Service });
+            Central.StartScanning(new[] { PixelBleUuids.Service, PixelBleUuids.LegacyService });
         }
 
         /// <summary>

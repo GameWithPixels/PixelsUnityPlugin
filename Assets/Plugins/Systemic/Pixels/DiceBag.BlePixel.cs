@@ -111,51 +111,38 @@ namespace Systemic.Unity.Pixels
 
                 if (_peripheral.ManufacturersData?.Count > 0)
                 {
-                    var manufDataSrc = _peripheral.ManufacturersData[0]; // Assume we want to use the first one
-                    bool isNewAdvData = manufDataSrc.Data.Count == Marshal.SizeOf(typeof(CustomManufacturerData));
+                    var manufDataSrc = _peripheral.ManufacturersData[0].Data; // Assume we want to use the first one
+                    var servDataSrc = _peripheral.ServicesData.FirstOrDefault(s => s.Uuid == InformationServiceUuid).Data; // TODO should be PixelBleUuids.Service
+                    int manufDataSize = Marshal.SizeOf(typeof(CustomManufacturerData));
+                    int serviceDataSize = Marshal.SizeOf(typeof(CustomServiceData));
 
                     // Marshall the data into the struct we expect
-                    if (isNewAdvData)
+                    if (manufDataSrc.Count == manufDataSize && servDataSrc?.Count == serviceDataSize)
                     {
                         var manufData = new CustomManufacturerData();
                         var servData = new CustomServiceData();
 
-                        int size = Marshal.SizeOf(typeof(CustomManufacturerData));
-
                         // Marshal data to an object
-                        var ptr = Marshal.AllocHGlobal(size);
-                        Marshal.Copy(manufDataSrc.Data.ToArray(), 0, ptr, size);
+                        var ptr = Marshal.AllocHGlobal(manufDataSize);
+                        Marshal.Copy(manufDataSrc.ToArray(), 0, ptr, manufDataSize);
                         manufData = Marshal.PtrToStructure<CustomManufacturerData>(ptr);
                         Marshal.FreeHGlobal(ptr);
 
-                        // Now with service data
-                        size = Marshal.SizeOf(typeof(CustomServiceData));
-
-                        var servDataSrc = _peripheral.ServicesData.FirstOrDefault(s => s.Uuid == InformationServiceUuid).Data;
-                        if (servDataSrc?.Count == size)
-                        {
-                            // Marshal data to an object
-                            ptr = Marshal.AllocHGlobal(size);
-                            Marshal.Copy(servDataSrc.ToArray(), 0, ptr, size);
-                            servData = Marshal.PtrToStructure<CustomServiceData>(ptr);
-                            Marshal.FreeHGlobal(ptr);
-                        }
-                        else if(servDataSrc != null)
-                        {
-                            Debug.LogError($"Pixel {name}: unexpected advertising service data length, got {servDataSrc.Count}");
-                        }
-                        else
-                        {
-                            Debug.LogError($"Pixel {name}: missing advertising service data");
-                        }
-                        
                         // Update Pixel data
-                        var newDieType  = (PixelDieType)(manufData.designAndColor >> 4) ;
-                        var newColorway= (PixelColorway)(manufData.designAndColor & 0xF);
+                        var newDieType = (PixelDieType)(manufData.designAndColor >> 4);
+                        var newColorway = (PixelColorway)(manufData.designAndColor & 0xF);
                         bool appearanceChanged = ledCount != manufData.ledCount || dieType != newDieType || colorway != newColorway;
                         ledCount = manufData.ledCount;
                         dieType = newDieType;
                         colorway = newColorway;
+
+                        // Now with service data
+
+                        // Marshal data to an object
+                        ptr = Marshal.AllocHGlobal(serviceDataSize);
+                        Marshal.Copy(servDataSrc.ToArray(), 0, ptr, serviceDataSize);
+                        servData = Marshal.PtrToStructure<CustomServiceData>(ptr);
+                        Marshal.FreeHGlobal(ptr);
 
                         pixelId = servData.pixelId;
                         buildTimestamp = servData.buildTimestamp;
@@ -174,12 +161,12 @@ namespace Systemic.Unity.Pixels
                     }
                     else
                     {
-                        Debug.LogError($"Pixel {name}: unexpected advertising manufacturer data length, got {_peripheral.ManufacturersData[0].Data.Count}");
+                        Debug.LogError($"Pixel {name}: unexpected advertisement data, service data size is {servDataSrc?.Count ?? -1} and advertising manufacturer data is {manufDataSrc.Count}");
                     }
                 }
                 else
                 {
-                    Debug.LogError($"Pixel {name}: empty manufacturer data");
+                    Debug.LogError($"Pixel {name}: no manufacturer data");
                 }
             }
 
@@ -312,9 +299,10 @@ namespace Systemic.Unity.Pixels
                         if (connectRequest.IsSuccess)
                         {
                             // Now connected to a Pixel, get characteristics and subscribe before switching to Identifying state
-                            var pixelService = PixelBleUuids.Service;
-                            var subscribeCharacteristic = PixelBleUuids.NotifyCharacteristic;
-                            var writeCharacteristic = PixelBleUuids.WriteCharacteristic;
+                            bool isLegacy = _peripheral.Services.Contains(PixelBleUuids.LegacyService);
+                            var pixelService = isLegacy ? PixelBleUuids.LegacyService : PixelBleUuids.Service;
+                            var subscribeCharacteristic = isLegacy ? PixelBleUuids.LegacyNotifyCharacteristic : PixelBleUuids.NotifyCharacteristic;
+                            var writeCharacteristic = isLegacy ? PixelBleUuids.LegacyWriteCharacteristic : PixelBleUuids.WriteCharacteristic;
 
                             var characteristics = Central.GetServiceCharacteristics(_peripheral, pixelService);
                             if ((characteristics != null) && characteristics.Contains(subscribeCharacteristic) && characteristics.Contains(writeCharacteristic))
@@ -540,8 +528,9 @@ namespace Systemic.Unity.Pixels
 
                 public WriteDataEnumerator(Peripheral peripheral, byte[] bytes, float timeout)
                 {
-                    var pixelService = PixelBleUuids.Service;
-                    var writeCharacteristic = PixelBleUuids.WriteCharacteristic;
+                    bool isLegacy = peripheral.Services.Contains(PixelBleUuids.LegacyService);
+                    var pixelService = isLegacy ? PixelBleUuids.LegacyService : PixelBleUuids.Service;
+                    var writeCharacteristic = isLegacy ? PixelBleUuids.LegacyWriteCharacteristic : PixelBleUuids.WriteCharacteristic;
                     _request = Central.WriteCharacteristicAsync(peripheral, pixelService, writeCharacteristic, bytes, timeout);
                 }
 

@@ -35,7 +35,40 @@ namespace Systemic.Unity.Pixels.Messages
                         ret = FromByteArray<WhoAreYou>(data);
                         break;
                     case MessageType.IAmADie:
-                        ret = FromByteArray<IAmADie>(data);
+                        if (data.Length == Marshal.SizeOf<IAmADieLegacy>())
+                        {
+                            var iAmADie = FromByteArray<IAmADieLegacy>(data);
+                            ret = new IAmADie()
+                            {
+                                dieInfo = new DieInfo()
+                                {
+                                    ledCount = iAmADie.ledCount,
+                                    colorway = iAmADie.colorway,
+                                    dieType = iAmADie.dieType,
+                                    pixelId = iAmADie.pixelId,
+                                },
+                                versionInfo = new VersionInfo()
+                                {
+                                    buildTimestamp = iAmADie.buildTimestamp,
+                                },
+                                settingsInfo = new SettingsInfo()
+                                {
+                                    profileDataHash = iAmADie.dataSetHash,
+                                    availableFlash = iAmADie.availableFlashSize,
+                                },
+                                statusInfo = new StatusInfo()
+                                {
+                                    rollState = iAmADie.rollState,
+                                    rollFaceIndex = iAmADie.rollFaceIndex,
+                                    batteryLevelPercent = iAmADie.batteryLevelPercent,
+                                    batteryState = iAmADie.batteryState,
+                                },
+                            };
+                        }
+                        else
+                        {
+                            ret = FromByteArray<IAmADie>(data);
+                        }
                         break;
                     case MessageType.Telemetry:
                         ret = FromByteArray<Telemetry>(data);

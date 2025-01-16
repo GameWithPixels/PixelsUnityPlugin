@@ -110,7 +110,7 @@ namespace Systemic.Unity.Pixels
                 ++_scanRequestCount;
                 Central.PeripheralDiscovered -= OnPeripheralDiscovered; // Prevents from subscribing twice
                 Central.PeripheralDiscovered += OnPeripheralDiscovered;
-                if (!Central.StartScanning(new[] { PixelBleUuids.Service }))
+                if (!Central.StartScanning(new[] { PixelBleUuids.Service, PixelBleUuids.LegacyService }))
                 {
                     StopScanning();
                     return ScanStatus.Error;
@@ -188,8 +188,6 @@ namespace Systemic.Unity.Pixels
             // Discard discovery event if peripheral is not available anymore (it might just have started connecting)
             if (pixel.connectionState <= PixelConnectionState.Available)
             {
-                Debug.Log($"Discovered Pixel {peripheral.Name}, systemId is {peripheral.SystemId}");
-
                 // Update Pixel
                 pixel.Setup(peripheral);
 

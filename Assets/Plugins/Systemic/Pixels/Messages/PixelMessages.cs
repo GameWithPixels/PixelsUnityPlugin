@@ -2,7 +2,9 @@
 
 using System;
 using System.Runtime.InteropServices;
+using UnityEditor.PackageManager;
 using UnityEditor.VersionControl;
+using UnityEngine;
 
 namespace Systemic.Unity.Pixels.Messages
 {
@@ -17,8 +19,144 @@ namespace Systemic.Unity.Pixels.Messages
         public MessageType type { get; set; } = MessageType.WhoAreYou;
     }
 
+    // Supported chip models
+    public enum PixelChipModel : byte
+    {
+        Unknown = 0,
+        nRF52810
+    };
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class IAmADie : IPixelMessage
+    public struct VersionInfo
+    {
+        public byte chunkSize; // sizeof(VersionInfo);
+
+        public ushort firmwareVersion; // From makefile
+        public uint buildTimestamp;   // From makefile
+
+        // Version of the settings default data and data structure
+        public ushort settingsVersion;
+
+        // API compatibility versions
+        public ushort compatStandardApiVersion; // WhoAreYou, IAmADie, RollState, BatteryLevel, RequestRssi, Rssi, Blink, BlinkAck
+        public ushort compatExtendedApiVersion; // Animations (including anim classes), profile
+        public ushort compatManagementApiVersion; // The rest
+    };
+
+    public enum PixelRunMode : byte
+    {
+        User = 0,       // Die is in regular mode
+        Validation,     // Validation mode, blinks ID, etc...
+        Attract,        // Special logic for displays
+        Count,
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct DieInfo
+    {
+        public byte chunkSize; // sizeof(DieInfo);
+
+        public uint pixelId;  // A unique identifier
+        public PixelChipModel chipModel;
+        public PixelDieType dieType;
+        public byte ledCount;  // Number of LEDs
+        public PixelColorway colorway; // Physical look
+        public PixelRunMode runMode;   // Validation or user or attract mode at the moment
+    };
+
+    // No need to make room for null terminator
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct MessageString
+    {
+        public char char0;
+        public char char1;
+        public char char2;
+        public char char3;
+        public char char4;
+        public char char5;
+        public char char6;
+        public char char7;
+        public char char8;
+        public char char9;
+        public char char10;
+        public char char11;
+        public char char12;
+        public char char13;
+        public char char14;
+        public char char15;
+        public char char16;
+        public char char17;
+        public char char18;
+        public char char19;
+        public char char20;
+        public char char21;
+        public char char22;
+        public char char23;
+        public char char24;
+        public char char25;
+        public char char26;
+        public char char27;
+        public char char28;
+        public char char29;
+        public char char30;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct CustomDesignAndColorName
+    {
+        public byte chunkSize; // sizeof(CustomDesignAndColorName);
+
+        // Set only when designAndColor is custom
+        public MessageString name;
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct DieName
+    {
+        public byte chunkSize; // = sizeof(DieName);
+
+        public MessageString name;
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct SettingsInfo
+    {
+        public byte chunkSize; // sizeof(SettingsInfo);
+
+        public uint profileDataHash;
+        public uint availableFlash;   // Amount of available flash to store data
+        public uint totalUsableFlash; // Total amount of flash that can be used to store data
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct StatusInfo
+    {
+        public byte chunkSize; // sizeof(StatusInfo);
+
+        // Battery info
+        public byte batteryLevelPercent;
+        public PixelBatteryState batteryState;
+
+        // Roll info
+        public PixelRollState rollState;
+        public byte rollFaceIndex; // This is the current face index
+    };
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class IAmADie: IPixelMessage
+    {
+        public MessageType type { get; set; } = MessageType.IAmADie;
+
+        public VersionInfo versionInfo;
+        public DieInfo dieInfo;
+        public CustomDesignAndColorName customDesignAndColorName;
+        public DieName dieName;
+        public SettingsInfo settingsInfo;
+        public StatusInfo statusInfo;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class IAmADieLegacy : IPixelMessage
     {
         public MessageType type { get; set; } = MessageType.IAmADie;
 
@@ -52,9 +190,9 @@ namespace Systemic.Unity.Pixels.Messages
     {
         public MessageType type { get; set; } = MessageType.Telemetry;
 
-        public Int16 accXTimes1000;
-        public Int16 accYTimes1000;
-        public Int16 accZTimes1000;
+        public short accXTimes1000;
+        public short accYTimes1000;
+        public short accZTimes1000;
 
         public int faceConfidenceTimes1000;
 

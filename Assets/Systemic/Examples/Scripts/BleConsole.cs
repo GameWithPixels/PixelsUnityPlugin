@@ -49,7 +49,7 @@ namespace Systemic.Unity.Examples
             Debug.Log("Scanning for Pixels...");
 
             // Filter peripherals with the Pixel service UUID
-            Central.StartScanning(new[] { PixelBleUuids.Service });
+            Central.StartScanning(new[] { PixelBleUuids.Service, PixelBleUuids.LegacyService });
 
             // Wait until a Pixel is found
             while (Central.ScannedPeripherals.Length == 0)
@@ -91,12 +91,13 @@ namespace Systemic.Unity.Examples
             Debug.Log(" * MTU: " + Central.GetPeripheralMtu(peripheral));
 
             // Enumerate characteristics (we could also directly retrieve them by their UUID)
-            var characteristics = Central.GetServiceCharacteristics(peripheral, PixelBleUuids.Service);
+            var serviceUuid = peripheral.Services.Contains(PixelBleUuids.Service) ? PixelBleUuids.Service : PixelBleUuids.LegacyService;
+            var characteristics = Central.GetServiceCharacteristics(peripheral, serviceUuid);
             Guid notifyCharacteristicUuid = new Guid(), writeCharacteristicUuid = new Guid();
             for (int i = 0; i < characteristics.Length; ++i)
             {
                 var uuid = characteristics[i];
-                var props = Central.GetCharacteristicProperties(peripheral, PixelBleUuids.Service, uuid);
+                var props = Central.GetCharacteristicProperties(peripheral, serviceUuid, uuid);
                 Debug.Log($" * Characteristic #{i} properties: " + props);
 
                 if ((props & CharacteristicProperties.Notify) != 0)
@@ -127,7 +128,7 @@ namespace Systemic.Unity.Examples
 
             // Subscribe to get Pixel events (such as roll state) and responses from queries
             yield return Central.SubscribeCharacteristicAsync(
-                peripheral, PixelBleUuids.Service, notifyCharacteristicUuid, OnReceivedData);
+                peripheral, serviceUuid, notifyCharacteristicUuid, OnReceivedData);
             Debug.Log("Subscribed to characteristic");
 
             // Helper method to send a message to a Pixel
@@ -135,7 +136,7 @@ namespace Systemic.Unity.Examples
             {
                 Debug.Log("Sending message: " + messageType);
                 yield return Central.WriteCharacteristicAsync(
-                    peripheral, PixelBleUuids.Service, writeCharacteristicUuid, new byte[] { (byte)messageType });
+                    peripheral, serviceUuid, writeCharacteristicUuid, new byte[] { (byte)messageType });
             }
 
             // Identify Pixel

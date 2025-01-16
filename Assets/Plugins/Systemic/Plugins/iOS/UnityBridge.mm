@@ -84,8 +84,8 @@ void sgBleShutdown()
  *
  * If a scan is already running, it is updated to run with the new parameters.
  *
- * @param requiredServicesUuids Comma separated list of services UUIDs that the peripheral
- *                              should advertise, may be null or empty.
+ * @param servicesUuids Comma separated list of services UUIDs. Peripherals advertising at least one of
+     *                      the services will be reported. Notify for all peripherals if the list is null or empty.
  * @param allowDuplicates If <c>false</c>, let the system coalesces multiple discoveries of the same peripheral
                           into a single discovery event which preserves battery life. <br>
                           If <c>true</c>, generates a discovery event each time it receives an advertising
@@ -96,7 +96,7 @@ void sgBleShutdown()
  *                               The callback must stay valid until the scan is stopped.
  * @return Whether the scan was successfully started.
  */
-bool sgBleStartScan(const char *requiredServicesUuids,
+bool sgBleStartScan(const char *servicesUuids,
                     bool allowDuplicates,
                     DiscoveredPeripheralCallback onDiscoveredPeripheral)
 {
@@ -110,7 +110,7 @@ bool sgBleStartScan(const char *requiredServicesUuids,
     };
     
     // If already scanning, update the existing scan
-    [_central.centralManager scanForPeripheralsWithServices:toCBUUIDArray(requiredServicesUuids)
+    [_central.centralManager scanForPeripheralsWithServices:toCBUUIDArray(servicesUuids)
                                                     options:allowDuplicates ? @{ CBCentralManagerScanOptionAllowDuplicatesKey: @YES } : nil];
     
     return _central != nil;

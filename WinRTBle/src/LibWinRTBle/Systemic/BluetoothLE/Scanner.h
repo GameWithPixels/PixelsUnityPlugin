@@ -30,7 +30,7 @@ namespace Systemic::BluetoothLE
         winrt::event_token _receivedToken{};
         winrt::event_token _stoppedToken{};
 
-        // List of user required services
+        // List of user requested services
         std::vector<winrt::guid> _requestedServices{};
 
         // Discovered peripherals
@@ -49,7 +49,8 @@ namespace Systemic::BluetoothLE
          *                             When receiving a scan response, the advertisement data is combined with
          *                             the data from the last DiscoveredPeripheral instance created for the same
          *                             peripheral before being passed to this callback.
-         * @param services List of services UUIDs that the peripheral should advertise, may be empty.
+         * @param services List of service UUIDs. Peripherals advertising at least one of the services will be reported.
+                           Notify for all peripherals if the list is empty.
          */
         Scanner(
             std::function<void(std::shared_ptr<ScannedPeripheral>)> peripheralDiscovered,
@@ -241,7 +242,7 @@ namespace Systemic::BluetoothLE
         void notify(const std::shared_ptr<ScannedPeripheral>& peripheral)
         {
             if (_onPeripheralDiscovered &&
-                (_requestedServices.empty() || Internal::isSubset(_requestedServices, peripheral->services())))
+                (_requestedServices.empty() || Internal::isOverlapping(_requestedServices, peripheral->services())))
             {
                 _onPeripheralDiscovered(peripheral);
             }

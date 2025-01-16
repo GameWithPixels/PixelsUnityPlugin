@@ -116,6 +116,13 @@ namespace Systemic.Unity.Pixels
         public int ledCount { get; protected set; }
 
         /// <summary>
+        /// Gets the Pixel combination of design and color.
+        ///
+        /// This value is set when the Pixel is being scanned or once when connected.
+        /// </summary>
+        public PixelColorway colorway { get; protected set; } = PixelColorway.Unknown;
+
+        /// <summary>
         /// Gets the die type of the Pixel.
         ///
         /// This value is set when the Pixel is being scanned or once when connected.
@@ -123,11 +130,9 @@ namespace Systemic.Unity.Pixels
         public PixelDieType dieType { get; protected set; } = PixelDieType.Unknown;
 
         /// <summary>
-        /// Gets the Pixel combination of design and color.
-        ///
-        /// This value is set when the Pixel is being scanned or once when connected.
+        /// Gets the number of faces of the Pixel.
         /// </summary>
-        public PixelColorway colorway { get; protected set; } = PixelColorway.Unknown;
+        public int dieFaceCount { get => DiceUtils.GetFaceCount(dieType); }
 
         /// <summary>
         /// Gets the Pixel firmware build Unix timestamp.
@@ -167,9 +172,17 @@ namespace Systemic.Unity.Pixels
         /// <summary>
         /// Gets Pixel the current face that is up.
         /// 
+        /// Fudge die returns +1, 0 and -1.
         /// This value is set when the Pixel is being scanned or when connected.
         /// </summary>
         public int currentFace { get; private set; }
+
+        /// <summary>
+        /// Gets the 0-based index of the die face that is currently facing up.
+        /// 
+        /// This value is set when the Pixel is being scanned or when connected.
+        /// </summary>
+        public int currentFaceIndex { get; private set; }
 
         /// <summary>
         /// Gets the Pixel last read battery level in percent.
@@ -438,24 +451,25 @@ namespace Systemic.Unity.Pixels
 
             void ProcessIAmADieMessage(IAmADie message)
             {
-                Debug.Log($"Pixel {SafeName}: {message.availableFlashSize} bytes available for data,"
-                    + $" current dataset hash {message.dataSetHash:X08}, firmware build is {UnixTimestampToDateTime(message.buildTimestamp)}");
+                Debug.Log($"Pixel {SafeName}: Id={message.dieInfo.pixelId:X08} availableFlash={message.settingsInfo.availableFlash},"
+                    + $" dieType={message.dieInfo.dieType}, colorway={message.dieInfo.colorway}"
+                    + $" hash={message.settingsInfo.profileDataHash:X08}, firmware={UnixTimestampToDateTime(message.versionInfo.buildTimestamp)}");
 
                 // Update instance
-                bool appearanceChanged = ledCount != message.ledCount || dieType != message.dieType || colorway != message.colorway;
-                ledCount = message.ledCount;
-                dieType= message.dieType;
-                colorway = message.colorway;
-                dataSetHash = message.dataSetHash;
-                availableFlashSize = message.availableFlashSize;
-                pixelId = message.pixelId;
-                buildTimestamp = message.buildTimestamp;
+                bool appearanceChanged = ledCount != message.dieInfo.ledCount || dieType != message.dieInfo.dieType || colorway != message.dieInfo.colorway;
+                ledCount = message.dieInfo.ledCount;
+                dieType= message.dieInfo.dieType;
+                colorway = message.dieInfo.colorway;
+                dataSetHash = message.settingsInfo.profileDataHash;
+                availableFlashSize = message.settingsInfo.availableFlash;
+                pixelId = message.dieInfo.pixelId;
+                buildTimestamp = message.versionInfo.buildTimestamp;
 
                 // Roll state
-                NotifyRollState(message.rollState, message.rollFaceIndex);
+                NotifyRollState(message.statusInfo.rollState, message.statusInfo.rollFaceIndex);
 
                 // Battery level
-                NotifyBatteryLevel(message.batteryLevelPercent, message.batteryState);
+                NotifyBatteryLevel(message.statusInfo.batteryLevelPercent, message.statusInfo.batteryState);
 
                 if (appearanceChanged)
                 {
@@ -531,16 +545,17 @@ namespace Systemic.Unity.Pixels
 
         protected void NotifyRollState(PixelRollState state, byte faceIndex)
         {
-            int face = faceIndex + 1;
-            if ((state != rollState) || (face != this.currentFace))
+            int face = DiceUtils.GetFaceFromIndex(faceIndex, dieType, buildTimestamp);
+            if ((state != rollState) || (face != currentFace))
             {
                 // Update instance
                 rollState = state;
                 currentFace = face;
+                currentFaceIndex = faceIndex;
 
                 // Notify
-                Debug.Log($"Pixel {SafeName}: Notifying roll state: {rollState}, face: {currentFace}");
-                RollStateChanged?.Invoke(this, rollState, this.currentFace);
+                Debug.Log($"Pixel {SafeName}: Notifying roll state: {rollState}, face: {face}, faceIndex: {faceIndex}");
+                RollStateChanged?.Invoke(this, rollState, face, faceIndex);
             }
         }
 
@@ -564,13 +579,13 @@ namespace Systemic.Unity.Pixels
 
         protected void NotifyRssi(int newRssi)
         {
-            if (newRssi == 0) Debug.LogError("ZERO RSSSSI!!!");
+            if (newRssi == 0) Debug.LogError("ZERO RSSI!!!");
 
             if (rssi != newRssi)
             {
                 rssi = newRssi;
 
-                Debug.Log($"Pixel {SafeName}: Notifying RSSI: {rssi}");
+                //Debug.Log($"Pixel {SafeName}: Notifying RSSI: {rssi}");
                 _notifyRssi?.Invoke(this, rssi);
             }
         }

@@ -280,7 +280,7 @@ namespace Systemic.Unity.BluetoothLE
             {
                 EnqueueAction(() =>
                 {
-                    Debug.Log($"[BLE:{scannedPeripheral.Name}] Peripheral discovered with name={scannedPeripheral.Name}, RSSI={scannedPeripheral.Rssi}");
+                    //Debug.Log($"[BLE:{scannedPeripheral.Name}] Peripheral discovered with name={scannedPeripheral.Name}, system ID={scannedPeripheral.SystemId}, RSSI={scannedPeripheral.Rssi}");
 
                     // Keep track of discovered peripherals
                     if (!_peripheralsInfo.TryGetValue(scannedPeripheral.SystemId, out PeripheralInfo pInf))
@@ -288,7 +288,7 @@ namespace Systemic.Unity.BluetoothLE
                         _peripheralsInfo[scannedPeripheral.SystemId] = pInf = new PeripheralInfo();
                     }
                     pInf.ScannedPeripheral = scannedPeripheral;
-                    pInf.RequiredServices = requiredServices;
+                    pInf.RequiredServices = requiredServices.Intersect(scannedPeripheral.Services).ToArray();
                     //TODO pInf.State = PeripheralState.Disconnected;
 
                     // Notify

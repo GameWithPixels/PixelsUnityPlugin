@@ -25,6 +25,12 @@ namespace Systemic::BluetoothLE::Internal
         return std::includes(superset.begin(), superset.end(), subset.begin(), subset.end());
     }
 
+    template <typename T>
+    bool isOverlapping(const std::vector<T>& v0, const std::vector<T>& v1)
+    {
+        return std::find_first_of(v0.begin(), v0.end(), v1.begin(), v1.end()) != v0.end();
+    }
+
     /**
      * @brief Converts a WinRT IBuffer to a std::vector<uint8_t>.
      * 

@@ -60,8 +60,9 @@ namespace Systemic.Unity.Pixels
     /// </summary>
     /// <param name="pixel">The source of the event.</param>
     /// <param name="rollState">The roll state.</param>
-    /// <param name="face">The face index, when applicable (face number is index + 1).</param>
-    public delegate void RollStateChangedEventHandler(Pixel pixel, PixelRollState rollState, int face);
+    /// <param name="face">The face that is up (fudge die returns +1, 0 and -1).</param>
+    /// <param name="faceIndex">The 0-based index of the die face that is up.</param>
+    public delegate void RollStateChangedEventHandler(Pixel pixel, PixelRollState rollState, int face, int faceIndex);
 
     /// <summary>
     /// Delegate for Pixel battery level changes.
